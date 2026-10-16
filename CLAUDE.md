@@ -33,7 +33,7 @@ Python 3.12 + FastAPI backend; React + Vite + Tailwind frontend; local text LLM 
 Secrets: the Gemini key lives only in a local, git-ignored `.env`. Never paste it into code, docs, commits or chat.
 
 ## Where things are
-`docs/core` foundation · `docs/discovery` · `docs/requirements` · `docs/design` · `docs/verify` · `docs/release` · `mock-data/` · `src/` · `tests/`
+`docs/core` foundation · `docs/epics/zest/` (README, `discovery/`, `requirements/`, `design/` incl. `adr/`, `verify/`, `release/`) · `mock-data/` · `src/` · `tests/`. This mirrors the core/epics playbook structure.
 
 ## Definition of done (any task)
 Spec section referenced, tests written and passing, docs updated, CHANGELOG entry added, no guardrail weakened.

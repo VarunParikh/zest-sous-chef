@@ -1,0 +1,60 @@
+{
+  "_note": "Fictional personas for demos and tests. Values not listed in a persona's 'levers' use 'defaults'. Source of defaults: RecommendationSettingsPanel.md.",
+  "defaults": {
+    "weights": { "culinary_pairing": 0.30, "purchase_history": 0.35, "market_trend": 0.20, "persona_gourmet": 0.15 },
+    "gender": "Unisex / Neutral",
+    "diet": "Non-Veg / Flexitarian",
+    "faith": "None / Secular",
+    "specialized_diets": ["Standard / Balanced"],
+    "gourmet_affinity": 0.50,
+    "artisanal_organic": 0.60,
+    "history": { "bakery": 0.85, "dairy": 0.70, "desserts": 0.65, "salads": 0.60, "kebabs": 0.75 },
+    "trends": { "weekend_indulgence": 0.80, "cooling_drinks": 0.65 },
+    "business": { "price_cap_inr": 200, "stock_filter": true }
+  },
+  "personas": [
+    {
+      "id": "P1", "name": "Meera Shah",
+      "levers": { "gender": "Female", "diet": "Jain (No Root Veggies / Pure Veg)", "faith": "Jain (Strict Root-Free)",
+                  "history": { "dairy": 0.85, "desserts": 0.80, "kebabs": 0.05 } },
+      "test_prompts": ["I want to make Garlic Bread", "I need kandha and batata"]
+    },
+    {
+      "id": "P2", "name": "Rohan Deshmukh",
+      "levers": { "gender": "Male", "diet": "Pure Veg (Strict)", "faith": "Hindu (Regular)",
+                  "history": { "bakery": 0.90 }, "trends": { "cooling_drinks": 0.80 } },
+      "test_prompts": ["I want to make Chicken Tikka Masala"]
+    },
+    {
+      "id": "P3", "name": "Imran Qureshi",
+      "levers": { "gender": "Male", "diet": "Non-Veg / Flexitarian", "faith": "Muslim (Strict Halal Only)",
+                  "history": { "kebabs": 0.90, "dairy": 0.80 }, "trends": { "weekend_indulgence": 0.90 } },
+      "test_prompts": ["I want to make Chicken Biryani for 6"]
+    },
+    {
+      "id": "P4", "name": "Ananya Iyer",
+      "levers": { "gender": "Female", "diet": "Pure Veg (Strict)", "faith": "Hindu (Shravan Month / Fasting Active)",
+                  "history": { "salads": 0.80 }, "trends": { "cooling_drinks": 0.75 } },
+      "test_prompts": ["I want something light and simple", "Add onion and garlic to my dish"]
+    },
+    {
+      "id": "P5", "name": "Karan Malhotra",
+      "levers": { "gender": "Male", "diet": "Non-Veg / Flexitarian", "faith": "None / Secular",
+                  "specialized_diets": ["Keto Diet", "High-Protein Fitness"],
+                  "gourmet_affinity": 0.60, "history": { "bakery": 0.10, "kebabs": 0.95 } },
+      "test_prompts": ["I want to make Dal Chawal"]
+    },
+    {
+      "id": "P6", "name": "Priya Nair",
+      "levers": { "gender": "Female", "diet": "Pure Veg (Strict)", "faith": "None / Secular",
+                  "specialized_diets": ["Vegan", "Gluten-Free"],
+                  "gourmet_affinity": 0.20, "artisanal_organic": 0.70, "business": { "price_cap_inr": 120 } },
+      "test_prompts": ["Make a mushroom risotto"]
+    },
+    {
+      "id": "P7", "name": "Alex (Reviewer)",
+      "levers": {},
+      "test_prompts": ["I am feeling indulgent"]
+    }
+  ]
+}
