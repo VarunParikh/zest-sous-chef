@@ -1,6 +1,6 @@
 # Evaluation Plan: Zest AI Sous-Chef
 
-Status: DRAFT v0.1 (awaiting owner approval) · Date: 2026-10-17 · Source: PRD v0.3, BRD objectives O1 to O8, ADR-002 to ADR-008, Agent Design, Security and Privacy Note (follows the `eval-runner` procedure)
+Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, BRD objectives O1 to O8, ADR-002 to ADR-008, Agent Design, Security and Privacy Note (follows the `eval-runner` procedure)
 **Status of every evaluation: NOT RUN.** No system exists yet. This plan defines the questions, datasets, scoring and pass rules *before* any results exist. No score in this document is a result, and the thresholds below are my proposals that the owner approves before the first run.
 
 ## 1. Purpose

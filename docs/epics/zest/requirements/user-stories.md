@@ -1,6 +1,6 @@
 # User Stories and Traceability Matrix: Zest AI Sous-Chef
 
-Status: DRAFT v0.2 (adds hybrid retrieval stories US-37 to US-40) · Date: 2026-10-17 · Source: PRD v0.3, BRD, Strategy
+Status: APPROVED v0.2 (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, BRD, Strategy
 Sizing: S = under 1 day, M = 1 to 2 days, L = 2 to 3 days of build effort. The playbook allows 1 to 5 days; the 3-day deadline means each story here is kept to 3 days or less and the parallel work is stated in the Strategy plan. Priority follows PRD (M/S/C). Every story states acceptance criteria (AC) as Given/When/Then, and test IDs are assigned in the Test Plan (document 19).
 
 Format: **US-xx** As a *persona*, I want *capability*, so that *benefit*. Covers: FR/AC.

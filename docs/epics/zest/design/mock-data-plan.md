@@ -1,6 +1,6 @@
 # Mock Data Plan: Zest AI Sous-Chef
 
-Status: DRAFT v0.1 (awaiting owner approval) · Date: 2026-10-17
+Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-17
 The full field-level schema belongs in the Data Model document (document 16). This plan fixes **when** the data is built, **how**, and **what** it contains.
 
 ## 1. When

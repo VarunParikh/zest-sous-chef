@@ -1,6 +1,6 @@
 # Personas: Zest AI Sous-Chef
 
-Status: DRAFT v0.1 (awaiting owner approval) · Date: 2026-10-16
+Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-16
 All personas are **fictional** and built to exercise the guardrails and levers, not to represent real people. Each maps to a concrete lever configuration in `mock-data/personas.json`, so the same file drives demos and automated tests.
 
 ## 1. Design rules

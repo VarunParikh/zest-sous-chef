@@ -1,6 +1,6 @@
 # Product Platforms: Zest AI Sous-Chef
 
-Status: DRAFT v0.1 (awaiting owner approval) · Date: 2026-10-16
+Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-16
 Model names and limits change quickly. Everything model-specific is configuration (`.env`), never hard-coded. Choices here are provisional until ratified in ADR-001 to ADR-004.
 
 ## 1. Platform map

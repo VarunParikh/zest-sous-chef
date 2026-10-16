@@ -1,6 +1,6 @@
 # Product References and Glossary: Zest AI Sous-Chef
 
-Status: DRAFT v0.1 (awaiting owner approval) · Date: 2026-10-16
+Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-16
 
 ## 1. How to use this document
 Every other document cites sources by the IDs below (for example, [R3]). "Verified" means the source was opened and read in this session. "From knowledge" means it is cited from the author's background knowledge and **must be checked (title, year, DOI) before the interview submission**.

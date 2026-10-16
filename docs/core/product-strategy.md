@@ -1,6 +1,6 @@
 # Product Strategy: Zest AI Sous-Chef
 
-Status: DRAFT v0.1 (awaiting owner approval) · Date: 2026-10-16
+Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-16
 
 ## 1. Purpose
 Zest turns a cooking intent (a YouTube recipe, a typed dish or mood, or a photo of ingredients) into a correct, dietary-compliant quick-commerce cart in a few messages. Its defining feature is a transparent recommendation engine whose levers visibly change what the bot suggests.

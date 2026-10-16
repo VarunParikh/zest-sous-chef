@@ -1,6 +1,6 @@
 # Assumptions and Risk Register: Zest AI Sous-Chef
 
-Status: DRAFT v0.1 (awaiting owner approval) · Date: 2026-10-17
+Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-17
 Weighting (owner input): the biggest threats are (1) the demo not working, (2) lack of technical depth, and (3) unsourced claims. The reviewer is a product leader who will also probe technical choices and expects decisions to be backed by data. The 3-day deadline is firm.
 
 Scoring: Likelihood (L) and Impact (I) from 1 to 5; Score = L × I. 15 or more is Critical, 8 to 14 High, below 8 Medium.

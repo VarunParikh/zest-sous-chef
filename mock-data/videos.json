@@ -1,0 +1,9 @@
+{
+  "_note": "Owner-supplied demo videos (2026-10-17). Titles/channels read from the public YouTube pages by the assistant; durations were not retrievable for some. NO transcripts are copied. Each fixture under mock-data/transcripts/<id>.txt must be an own-written narration of the dish, labelled as such; it does not reproduce the creator's words and may differ from the video.",
+  "videos": [
+    {"id": "V1", "url": "https://www.youtube.com/watch?v=6YVx0i_hrZ0", "youtube_id": "6YVx0i_hrZ0", "title": "Mysore Rasam | I Tried This Simple Trick to Make Traditional South Indian Rasam at Home", "channel": "HomeCookingShow", "dishes": ["D02"], "demo_purpose": "Single veg dish; Jain check (no onion in the classic recipe, tamarind and tomato present); curry leaves not in lexicon yet"},
+    {"id": "V2", "url": "https://www.youtube.com/watch?v=fRPDabc-Oh0", "youtube_id": "fRPDabc-Oh0", "title": "Chicken Curry | Easy Chicken Recipe | Side dish for Rice & Idli Dosa | Chicken Curry Village Style", "channel": "HomeCookingShow", "duration": "4:53", "dishes": ["D03"], "demo_purpose": "Non-veg video with a Pure-veg or Jain persona: must be blocked with a veg alternative offered"},
+    {"id": "V3", "url": "https://www.youtube.com/watch?v=xed2EfO9BRc", "youtube_id": "xed2EfO9BRc", "title": "Keto Chicken Salad | Keto Recipes | Headbanger's Kitchen", "channel": "HK's Keto & Low Carb Recipes", "dishes": ["D19"], "demo_purpose": "Keto persona; variant choice (full-fat vs low-fat, olive oil)"},
+    {"id": "V4", "url": "https://www.youtube.com/watch?v=l0Hylzi8v9Y", "youtube_id": "l0Hylzi8v9Y", "title": "Indian Vegetarian Meal Prep for Calorie Deficit | High-Protein Desi Favorites!", "channel": "Sonal | Culinary Therapy", "dishes": ["D12", "D18", "D17", "D16", "D15"], "demo_purpose": "Multi-dish video: shared ingredients across dishes (onion, tomato, wheat flour), pack allocation, Greek yogurt as an extra"}
+  ]
+}

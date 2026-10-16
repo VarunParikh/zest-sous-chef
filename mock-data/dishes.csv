@@ -1,0 +1,35 @@
+dish_id,name,course,cuisine,serves,moods,claimed_diet,ingredients
+D01,Dal Chawal,main,north-indian,2,comfort|light|quick,vegetarian,toor dal:150:g;rice:150:g;ghee:20:g;cumin:3:g;turmeric:2:g;tomato:100:g;salt:4:g;garlic:10:g
+D02,Mysore Rasam,soup,south-indian,3,comfort|light|spicy,vegetarian,toor dal:60:g;tamarind:15:g;tomato:150:g;coconut:40:g;black pepper:3:g;cumin:3:g;ghee:10:g;mustard seeds:3:g;curry leaves:5:g;salt:4:g
+D03,Village Style Chicken Curry,main,south-indian,3,spicy|comfort|indulgent,non_veg,chicken:600:g;onion:200:g;tomato:150:g;ginger:15:g;garlic:15:g;coconut:50:g;red chilli powder:6:g;coriander powder:8:g;turmeric:2:g;sunflower oil:30:ml;curry leaves:5:g;salt:5:g
+D04,Chicken Biryani,main,hyderabadi,4,indulgent|festive,non_veg,chicken:700:g;basmati rice:400:g;curd:150:g;onion:250:g;ginger:20:g;garlic:20:g;garam masala:8:g;saffron:1:g;ghee:40:g;mint:15:g;salt:8:g
+D05,Chicken Tikka Masala,main,north-indian,3,indulgent|comfort,non_veg,chicken:500:g;curd:100:g;tomato:300:g;onion:150:g;cream:60:ml;butter:30:g;ginger:15:g;garlic:15:g;garam masala:6:g;red chilli powder:5:g;salt:5:g
+D06,Paneer Butter Masala,main,north-indian,3,indulgent|comfort|festive,vegetarian,paneer:300:g;tomato:350:g;butter:40:g;cream:60:ml;cashew:30:g;onion:100:g;ginger:10:g;garam masala:5:g;red chilli powder:4:g;salt:5:g
+D07,Palak Paneer,main,north-indian,3,healthy|comfort,vegetarian,spinach:500:g;paneer:250:g;onion:100:g;tomato:100:g;garlic:10:g;cumin:3:g;cream:30:ml;garam masala:4:g;salt:5:g
+D08,Chole,main,punjabi,3,spicy|comfort,vegan,chickpeas:250:g;onion:150:g;tomato:200:g;ginger:15:g;garlic:10:g;garam masala:6:g;tea leaves:3:g;sunflower oil:30:ml;salt:5:g
+D09,Rajma Chawal,main,punjabi,3,comfort,vegan,kidney beans:250:g;rice:300:g;onion:150:g;tomato:200:g;ginger:15:g;garlic:10:g;garam masala:5:g;sunflower oil:30:ml;salt:5:g
+D10,Masala Dosa,breakfast,south-indian,3,indulgent|comfort,vegan,rice:200:g;urad dal:60:g;potato:300:g;onion:100:g;mustard seeds:3:g;turmeric:2:g;curry leaves:5:g;sunflower oil:40:ml;salt:5:g
+D11,Idli Sambar,breakfast,south-indian,3,light|comfort|healthy,vegan,rice:200:g;urad dal:70:g;toor dal:100:g;tamarind:15:g;tomato:100:g;drumstick:100:g;mustard seeds:3:g;curry leaves:5:g;salt:6:g
+D12,Poha with Tofu Scramble,breakfast,maharashtrian,2,light|healthy|quick,vegan,flattened rice:150:g;tofu:150:g;onion:80:g;green peas:50:g;green chilli:5:g;lemon:1:unit;turmeric:2:g;mustard seeds:3:g;peanut:20:g;salt:3:g
+D13,Upma,breakfast,south-indian,2,light|quick,vegan,semolina:150:g;onion:60:g;green chilli:5:g;mustard seeds:3:g;curry leaves:5:g;cashew:15:g;sunflower oil:20:ml;salt:3:g
+D14,Aloo Paratha,breakfast,punjabi,2,comfort|indulgent,vegetarian,wheat flour:250:g;potato:300:g;butter:30:g;green chilli:5:g;coriander leaves:10:g;red chilli powder:3:g;salt:4:g;curd:100:g
+D15,Whole Wheat Roti,side,north-indian,3,light|quick,vegan,wheat flour:250:g;water:150:ml;salt:2:g
+D16,Masala Bhindi,side,north-indian,2,healthy|spicy,vegan,okra:300:g;onion:100:g;tomato:80:g;cumin:3:g;coriander powder:5:g;turmeric:2:g;sunflower oil:25:ml;salt:3:g
+D17,Spinach Dal,main,north-indian,2,healthy|light|comfort,vegetarian,toor dal:120:g;spinach:200:g;garlic:10:g;cumin:3:g;turmeric:2:g;ghee:15:g;tomato:100:g;salt:4:g
+D18,Achari Tofu Tikka with Orange Salad,main,north-indian,2,healthy|light,vegetarian,tofu:250:g;curd:100:g;mustard oil:20:ml;fennel seeds:3:g;cumin:3:g;red chilli powder:4:g;orange:2:unit;onion:60:g;mint:10:g;salt:3:g
+D19,Keto Chicken Salad,main,international,2,healthy|light,non_veg,chicken:300:g;lettuce:100:g;cucumber:100:g;olive oil:20:ml;cheese:40:g;lemon:1:unit;black pepper:2:g;salt:3:g;avocado:1:unit
+D20,Vegetable Pulao,main,north-indian,3,comfort|light,vegan,basmati rice:300:g;carrot:80:g;green peas:60:g;cauliflower:100:g;cumin:3:g;bay leaf:2:g;cloves:2:g;sunflower oil:30:ml;salt:5:g
+D21,Moong Dal Khichdi,main,north-indian,2,comfort|light,vegetarian,rice:150:g;moong dal:100:g;ghee:20:g;cumin:3:g;turmeric:2:g;ginger:10:g;asafoetida:1:g;salt:4:g
+D22,Pav Bhaji,main,mumbai,3,indulgent|comfort,vegetarian,potato:300:g;cauliflower:150:g;green peas:80:g;tomato:200:g;onion:100:g;capsicum:80:g;butter:50:g;pav bhaji masala:15:g;bread rolls:6:unit;lemon:1:unit;salt:5:g
+D23,Egg Bhurji,breakfast,north-indian,2,quick|comfort,egg,egg:4:unit;onion:80:g;tomato:80:g;green chilli:5:g;turmeric:2:g;coriander leaves:10:g;sunflower oil:20:ml;salt:3:g
+D24,Coastal Fish Curry,main,konkani,3,spicy|comfort,non_veg,fish:500:g;coconut:100:g;tamarind:15:g;onion:100:g;red chilli powder:6:g;turmeric:2:g;coconut oil:25:ml;curry leaves:5:g;salt:5:g
+D25,Mutton Curry,main,north-indian,4,indulgent|festive|spicy,non_veg,mutton:700:g;onion:250:g;tomato:150:g;curd:100:g;ginger:20:g;garlic:20:g;garam masala:8:g;red chilli powder:6:g;mustard oil:40:ml;salt:6:g
+D26,Gulab Jamun,dessert,north-indian,4,indulgent|sweet|festive,vegetarian,khoya:200:g;refined flour:40:g;sugar:300:g;cardamom:2:g;sunflower oil:300:ml;water:300:ml;saffron:1:g
+D27,Kheer,dessert,north-indian,4,sweet|comfort|festive,vegetarian,milk:1000:ml;rice:60:g;sugar:100:g;cardamom:2:g;almond:20:g;cashew:20:g;saffron:1:g
+D28,Masala Chai,beverage,north-indian,2,comfort|quick,vegetarian,milk:200:ml;water:200:ml;tea leaves:6:g;ginger:5:g;cardamom:2:g;sugar:12:g
+D29,Mango Lassi,beverage,punjabi,2,sweet|refreshing|indulgent,vegetarian,curd:300:g;mango:300:g;sugar:30:g;cardamom:1:g;milk:100:ml
+D30,Nimbu Pani,beverage,north-indian,2,refreshing|light|quick,vegan,lemon:3:unit;sugar:30:g;salt:2:g;mint:8:g;black salt:2:g;water:500:ml
+D31,Sabudana Khichdi,breakfast,maharashtrian,2,light|comfort,vegan,tapioca pearls:200:g;peanut:60:g;potato:100:g;green chilli:5:g;cumin:3:g;lemon:1:unit;coconut oil:20:ml;salt:3:g
+D32,Garlic Bread (international),side,international,3,indulgent|comfort,vegetarian,bread loaf:1:unit;butter:60:g;garlic:20:g;parsley:10:g;cheese:60:g;salt:2:g
+D33,Mushroom Risotto (international),main,international,2,indulgent|comfort,non_veg,arborio rice:200:g;mushroom:250:g;onion:80:g;garlic:10:g;butter:30:g;parmesan:40:g;olive oil:20:ml;vegetable stock:600:ml;salt:3:g
+D34,Creamy Pasta (international),main,international,2,indulgent|comfort,vegetarian,pasta:250:g;cream:150:ml;cheese:60:g;garlic:10:g;butter:20:g;black pepper:2:g;parsley:8:g;salt:3:g

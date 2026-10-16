@@ -16,3 +16,6 @@ dist/
 # local data and models
 *.gguf
 uploads/
+
+# Third-party sample photos: local only until replaced with own photos
+assets/sample-photos-local/

@@ -1,6 +1,6 @@
 # Business Requirements Document (BRD): Zest AI Sous-Chef
 
-Status: DRAFT v0.1 (awaiting owner approval) · Date: 2026-10-17
+Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-17
 Inputs: product vision, Strategy, Platforms, Product Research, Personas, Risk Register, Settings Panel, User Journeys. Traceability IDs: B# (brief capabilities), UJ# (journeys), BR# (this document).
 
 ## 1. Purpose and background

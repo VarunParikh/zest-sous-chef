@@ -1,6 +1,6 @@
 # Product Constitution: Zest AI Sous-Chef
 
-Status: DRAFT v0.1 (awaiting owner approval) · Date: 2026-10-16
+Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-16
 
 This document is the highest-authority engineering rulebook after the owner's brief. Every spec, design, prompt and test must comply with it. Use the `constitution-check` skill before merging anything significant.
 

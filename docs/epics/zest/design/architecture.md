@@ -1,6 +1,6 @@
 # Architecture: Zest AI Sous-Chef
 
-Status: DRAFT v0.1 (awaiting owner approval) · Date: 2026-10-17 · Source: PRD v0.3, Data Model v0.1, Constitution v0.2, ADR-001 to ADR-010
+Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Data Model v0.1, Constitution v0.2, ADR-001 to ADR-010
 Scope: components, boundaries, data flows, failure handling and quality attributes. Field definitions are in the Data Model; endpoints will be detailed in the API Spec; prompts and tool contracts in the Agent Design.
 
 ## 1. Architectural stance

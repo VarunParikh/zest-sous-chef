@@ -1,6 +1,6 @@
 # API Spec: Zest AI Sous-Chef
 
-Status: DRAFT v0.1 (awaiting owner approval) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, Data Model v0.1, Conversation Design v0.1
+Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, Data Model v0.1, Conversation Design v0.1
 Scope: the browser-to-backend REST contract, the response card types, errors, and the outbound contracts to the model, Gemini and the transcript source. **Webhooks:** none. The app is a browser client with no inbound callbacks; there are no outbound webhooks. The live contract is the OpenAPI document that FastAPI generates from the Pydantic models in the Data Model; this document is the design that those models must satisfy.
 
 ## 1. Design decisions (owner delegated the API style, 2026-10-17)

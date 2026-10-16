@@ -1,6 +1,6 @@
 # Product Research: Zest AI Sous-Chef
 
-Status: DRAFT v0.1 (awaiting owner approval) · Date: 2026-10-16
+Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-16
 Basis: the owner-supplied market research (`market-research-source.md`), read against the product vision, Settings Panel and user journeys. No new web research was done for this version. The supplied file itself has no source links. The owner later supplied six URLs (Blinkit x2, JioMart, Shopvora x2, Zepto), which we checked on 2026-10-17: the JioMart and Shopvora pages loaded and support some claims; the Blinkit and Zepto pages did not load in our session. See section 9 and the claims ledger in the Risk Register. Claims without a verified source stay labelled "as supplied" and must not be stated as fact in an interview.
 
 ## 1. Question and recommendation

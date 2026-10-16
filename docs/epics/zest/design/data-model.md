@@ -1,6 +1,6 @@
 # Data Model: Zest AI Sous-Chef
 
-Status: DRAFT v0.1 (awaiting owner approval) · Date: 2026-10-17 · Source: PRD v0.3, Settings Panel, mock-data plan, Constitution G9
+Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Settings Panel, mock-data plan, Constitution G9
 Scope: field-level schema for the structured catalogue, recipe base, engine inputs, session state, the retrieval documents embedded in Chroma, trace events and test fixtures. The Pydantic sketches are the contract the generator, validators, API and tests share. Field values in the mock data are illustrative and are not nutritional or medical data.
 
 ## 1. Principles

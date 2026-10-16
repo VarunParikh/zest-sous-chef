@@ -1,6 +1,6 @@
 # Security and Privacy Note: Zest AI Sous-Chef
 
-Status: DRAFT v0.1 (awaiting owner approval) · Date: 2026-10-17 · Method: design-stage review (`security-privacy-reviewer` procedure) of PRD v0.3, Architecture v0.1, Data Model v0.1, API Spec v0.1, Agent Design v0.1
+Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-17 · Method: design-stage review (`security-privacy-reviewer` procedure) of PRD v0.3, Architecture v0.1, Data Model v0.1, API Spec v0.1, Agent Design v0.1
 This note supplements, and does not replace, a specialist security or compliance review. No code exists yet, so findings are tied to documented data flows and design gaps. Nothing here is a statement that the system is secure or compliant.
 
 ## 1. Scope and assumptions

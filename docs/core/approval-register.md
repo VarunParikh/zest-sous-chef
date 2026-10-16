@@ -1,5 +1,7 @@
 # Approval Register
 
+**2026-10-17: owner replied "Approve all" (all tiers). ADR-002 and ADR-006 stay Proposed by design (decided by the Day-1 benchmark). Proposed conflicts C1, C2, C3, C5, C6, C7, C9, C10, C14, the evaluation thresholds and the OQ defaults were accepted as written.**
+
 Purpose: one place that records which documents the owner has approved, and when. Only the owner approves (Authority Matrix 3.2). Claude changes a document's header from "DRAFT" to "Approved" only after the owner says so, and records it here and in the CHANGELOG.
 
 Why it matters: `CLAUDE.md` tells Claude Code not to implement anything that lacks an approved spec section. Until the build-gating documents are approved, Claude Code is meant to stop.
@@ -19,17 +21,17 @@ Approving a document means: you have read it or the parts you care about, you ac
 ## Register
 | Doc | Path | Version | Tier | Status | Approved by / date |
 |---|---|---|---|---|---|
-| Product spec (PRD) | `docs/epics/zest/requirements/product-spec.md` | v0.3 | A | Draft | |
-| Data Model | `docs/epics/zest/design/data-model.md` | v0.1 | A | Draft | |
-| Architecture | `docs/epics/zest/design/architecture.md` | v0.1 | A | Draft | |
-| API Spec | `docs/epics/zest/design/api-spec.md` | v0.1 | A | Draft | |
-| Agent Design | `docs/epics/zest/design/agent-design.md` | v0.1 | A | Draft | |
-| Build Plan | `docs/epics/zest/build-plan.md` | v0.1 | A | Draft | |
-| User Stories and Traceability | `docs/epics/zest/requirements/user-stories.md` | v0.2 | B | Draft | |
-| Conversation Design | `docs/epics/zest/design/conversation-design.md` | v0.1 | B | Draft (voice agreed 2026-10-17) | |
-| Security and Privacy Note | `docs/epics/zest/design/security-privacy-note.md` | v0.1 | B | Draft | |
-| Test Plan | `docs/epics/zest/verify/test-plan.md` | v0.1 | B | Draft (lean set agreed) | |
-| Evaluation Plan | `docs/epics/zest/verify/evaluation-plan.md` | v0.1 | B | Draft (thresholds unapproved) | |
+| Product spec (PRD) | `docs/epics/zest/requirements/product-spec.md` | v0.3 | A | **Approved** | Owner, 2026-10-17 |
+| Data Model | `docs/epics/zest/design/data-model.md` | v0.1 | A | **Approved** | Owner, 2026-10-17 |
+| Architecture | `docs/epics/zest/design/architecture.md` | v0.1 | A | **Approved** | Owner, 2026-10-17 |
+| API Spec | `docs/epics/zest/design/api-spec.md` | v0.1 | A | **Approved** | Owner, 2026-10-17 |
+| Agent Design | `docs/epics/zest/design/agent-design.md` | v0.1 | A | **Approved** | Owner, 2026-10-17 |
+| Build Plan | `docs/epics/zest/build-plan.md` | v0.1 | A | **Approved** | Owner, 2026-10-17 |
+| User Stories and Traceability | `docs/epics/zest/requirements/user-stories.md` | v0.2 | B | **Approved** | Owner, 2026-10-17 |
+| Conversation Design | `docs/epics/zest/design/conversation-design.md` | v0.1 | B | **Approved** (voice agreed 2026-10-17) | Owner, 2026-10-17 |
+| Security and Privacy Note | `docs/epics/zest/design/security-privacy-note.md` | v0.1 | B | **Approved** | Owner, 2026-10-17 |
+| Test Plan | `docs/epics/zest/verify/test-plan.md` | v0.1 | B | **Approved** (lean set agreed) | Owner, 2026-10-17 |
+| Evaluation Plan | `docs/epics/zest/verify/evaluation-plan.md` | v0.1 | B | **Approved** (thresholds unapproved) | Owner, 2026-10-17 |
 | ADR-001 Backend framework | `design/adr/ADR-001-...` | | B | **Accepted** | Owner, 2026-10-17 |
 | ADR-003 Vision approach | `design/adr/ADR-003-...` | | B | **Accepted** (accuracy measured Day 1) | Owner, 2026-10-16/17 |
 | ADR-004 Retrieval approach | `design/adr/ADR-004-...` | | B | **Accepted** (benchmark gate Day 1) | Owner, 2026-10-17 |
@@ -40,15 +42,15 @@ Approving a document means: you have read it or the parts you care about, you ac
 | ADR-010 Frontend stack | `design/adr/ADR-010-...` | | B | **Accepted** (with TypeScript) | Owner, 2026-10-17 |
 | ADR-002 Text model | `design/adr/ADR-002-...` | | B | Proposed: decided by Day-1 benchmark | |
 | ADR-006 Guard design | `design/adr/ADR-006-...` | | B | Proposed: decided by Day-1 benchmark | |
-| Constitution | `docs/core/constitution.md` | v0.2 | C | Draft | |
-| Product Strategy | `docs/core/product-strategy.md` | v0.1 | C | Draft | |
-| Product Platforms | `docs/core/product-platforms.md` | v0.1 | C | Draft | |
-| References and Glossary | `docs/core/references-and-glossary.md` | v0.1 | C | Draft | |
-| BRD | `docs/epics/zest/requirements/business-requirements.md` | v0.1 | C | Draft (has its own approval table) | |
-| Personas | `docs/epics/zest/discovery/personas.md` | v0.1 | C | Draft | |
-| Product Research | `docs/epics/zest/discovery/product-research.md` | v0.1 | C | Draft | |
-| Assumptions and Risk Register | `docs/epics/zest/discovery/assumptions-and-risk-register.md` | v0.1 | C | Living document, versioned, not approved once | |
-| Mock Data Plan | `docs/epics/zest/design/mock-data-plan.md` | v0.1 | C | Draft | |
+| Constitution | `docs/core/constitution.md` | v0.2 | C | **Approved** | Owner, 2026-10-17 |
+| Product Strategy | `docs/core/product-strategy.md` | v0.1 | C | **Approved** | Owner, 2026-10-17 |
+| Product Platforms | `docs/core/product-platforms.md` | v0.1 | C | **Approved** | Owner, 2026-10-17 |
+| References and Glossary | `docs/core/references-and-glossary.md` | v0.1 | C | **Approved** | Owner, 2026-10-17 |
+| BRD | `docs/epics/zest/requirements/business-requirements.md` | v0.1 | C | **Approved** (has its own approval table) | Owner, 2026-10-17 |
+| Personas | `docs/epics/zest/discovery/personas.md` | v0.1 | C | **Approved** | Owner, 2026-10-17 |
+| Product Research | `docs/epics/zest/discovery/product-research.md` | v0.1 | C | **Approved** | Owner, 2026-10-17 |
+| Assumptions and Risk Register | `docs/epics/zest/discovery/assumptions-and-risk-register.md` | v0.1 | C | **Approved** as baseline v0.1; stays a living document | Owner, 2026-10-17 |
+| Mock Data Plan | `docs/epics/zest/design/mock-data-plan.md` | v0.1 | C | **Approved** | Owner, 2026-10-17 |
 
 ## Items that need an explicit owner answer (not just approval)
 | Item | Where | Default if you say "go" |
@@ -56,8 +58,8 @@ Approving a document means: you have read it or the parts you care about, you ac
 | Conflicts still marked "Proposed" (C1, C2, C3, C5, C6, C7, C9, C10, C14) | `docs/core/open-conflicts.md` | Follow the proposed resolution in each row |
 | Open questions OQ-8, OQ-9, OQ-10 (kept at defaults), OQ-13 constants | PRD section 15 | Accept defaults; tune β0 in testing |
 | Evaluation thresholds and ADR gates (all my proposals) | Evaluation Plan section 4; ADR-002, 003, 006 | Accept as proposed and commit `eval/thresholds.yaml` before the first run |
-| Repository licence | Not yet chosen | Choose before first push |
-| Real demo YouTube links (3 to 4) and phone photos | Mock Data Plan, Test Plan | Owner supplies |
+| Repository licence | **Decided 2026-10-17: MIT** (owner delegated the choice) | Done |
+| Demo YouTube links and photos | Supplied 2026-10-17; see `mock-data/videos.json` and `mock-data/photos.json` | Photo provenance problem open (see photos.json) |
 
 ## Rules
 1. Approving does not freeze a document; it baselines it. Later edits are amendments with a version bump, a CHANGELOG entry and a note here.

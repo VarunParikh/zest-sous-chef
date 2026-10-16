@@ -1,6 +1,6 @@
 # Agent Design: Zest AI Sous-Chef
 
-Status: DRAFT v0.1 (awaiting owner approval) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, Conversation Design v0.1, API Spec v0.1, ADR-002, 003, 006
+Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, Conversation Design v0.1, API Spec v0.1, ADR-002, 003, 006
 Owner decisions applied (2026-10-17): **single-shot model calls only** (no tool-calling loop); **English-only prompts and few-shot examples** for the MVP.
 
 ## 1. Principle
