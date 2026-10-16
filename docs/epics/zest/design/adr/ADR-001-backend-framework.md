@@ -1,8 +1,8 @@
 # ADR-001: Use Python 3.12 and FastAPI for the backend
-- **Status:** Proposed (no benchmark needed; awaiting owner approval)
+- **Status:** Accepted (owner approval, 2026-10-17)
 - **Date:** 2026-10-17
 - **Decision owner:** VJP (product owner); drafted by Claude
-- **Authorisation:** Owner said "I am open to Python" (2026-10-16); the platform map is still marked draft. Not yet ratified.
+- **Authorisation:** Owner approved on 2026-10-17 ("Yes approved"). Earlier: owner said "I am open to Python" (2026-10-16).
 
 ## Context
 The backend orchestrates chat turns, retrieval, the recommendation engine, catalogue and cart, and calls Ollama and Gemini. It runs locally on a MacBook Air M5 (16 GB). The owner is new to the terminal and uses Claude Code to build.

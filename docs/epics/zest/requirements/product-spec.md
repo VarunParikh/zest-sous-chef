@@ -141,7 +141,7 @@ Below 1024 px, a segmented control switches between Levers and Chat.
 | ID | Requirement | Pri |
 |---|---|---|
 | FR-80 | Buy Now shall be the only action that places an order and shall be disabled after the first press until completion | M |
-| FR-81 | On order, the cart window shall show "Order placed! Our delivery partner will see you in 10 mins" with a progress bar and close after 10 seconds; the cart shall then be empty | M |
+| FR-81 | On order, the cart window shall show "Order is placed, the rider will see you in 10 mins" (the owner's wording; conflict C13) with a progress bar and close after 10 seconds; the cart shall then be empty | M |
 | FR-82 | After placement the system may show one pairing suggestion (suggest-only); a tap starts a new cart, and the placed order is unchanged | S |
 | FR-83 | At Buy Now the system shall revalidate stock and price. If a line is out of stock (including when the stock filter is off), the order is blocked until the user swaps or removes it; a price change is shown before ordering | M |
 

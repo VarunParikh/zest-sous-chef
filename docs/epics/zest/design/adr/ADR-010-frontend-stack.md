@@ -1,8 +1,8 @@
 # ADR-010: Use React, Vite and Tailwind for the frontend
-- **Status:** Proposed (no benchmark needed; awaiting owner approval)
+- **Status:** Accepted (owner approval, 2026-10-17)
 - **Date:** 2026-10-17
 - **Decision owner:** VJP (product owner); drafted by Claude
-- **Authorisation:** The platform map lists this choice as draft.
+- **Authorisation:** Owner approved on 2026-10-17 ("Yes approved").
 
 ## Context
 The UI is a split screen with a lever panel, chat, a mobile-shaped cart window and an inspector, built from DESIGN.md tokens.
