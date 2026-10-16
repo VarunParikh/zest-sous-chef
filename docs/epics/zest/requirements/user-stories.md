@@ -1,6 +1,6 @@
 # User Stories and Traceability Matrix: Zest AI Sous-Chef
 
-Status: DRAFT v0.1 · Date: 2026-10-17 · Source: PRD v0.2, BRD, Strategy
+Status: DRAFT v0.2 (adds hybrid retrieval stories US-37 to US-40) · Date: 2026-10-17 · Source: PRD v0.3, BRD, Strategy
 Sizing: S = under 1 day, M = 1 to 2 days, L = 2 to 3 days of build effort. The playbook allows 1 to 5 days; the 3-day deadline means each story here is kept to 3 days or less and the parallel work is stated in the Strategy plan. Priority follows PRD (M/S/C). Every story states acceptance criteria (AC) as Given/When/Then, and test IDs are assigned in the Test Plan (document 19).
 
 Format: **US-xx** As a *persona*, I want *capability*, so that *benefit*. Covers: FR/AC.
@@ -31,6 +31,7 @@ Format: **US-xx** As a *persona*, I want *capability*, so that *benefit*. Covers
 **US-06** As Meera (P1), I want regional names such as kothmir and kandha understood, so that I can write the way I speak. *M · M* Covers FR-13; AC-17.
 - Given "kothmir, kandha, batata", then Coriander Leaves, Onion and Potato are resolved.
 - Given an ambiguous name (methi), then one short clarifying question is asked.
+- Given the hybrid retriever, the same names resolve when the vector store is off (FR-117).
 
 **US-07** As a user, I want estimates and safety limits stated honestly, so that I can trust the bot. *M · S* Covers FR-14, 15.
 - Given a detected quantity, then it is labelled an estimate.
@@ -90,6 +91,17 @@ Format: **US-xx** As a *persona*, I want *capability*, so that *benefit*. Covers
 
 **US-20** As a user, I want rejected add-ons to reduce similar suggestions this session, so that the bot learns from me. *C · S* Covers FR-65. (Could.)
 
+**US-37** As Karan (P5), I want "something cooling" or "feeling indulgent" understood by meaning, so that I do not have to know dish names. *M · L* Covers FR-110, 111, 112; AC-35, 36, 37.
+- Given a mood phrase with no keyword match, then relevant dishes appear in a pool of at least 15, guardrails remove ineligible ones after retrieval, and the levers rank the rest.
+
+**US-38** As Alex (P7), I want the engine's levers to choose among product variants, so that I see the effect in my cart. *M · M* Covers FR-113, 114, 116; AC-38, 39.
+- Given "milk" with organic high versus low, then different eligible variants are carted and the line explains the choice.
+- Given "skimmed milk", then only skimmed variants are eligible; the cart line offers switching to another eligible variant.
+
+**US-39** As Alex (P7), I want a retrieval and scoring inspector, so that I can see candidates, similarity, eligibility and final score. *M · M* Covers FR-115; AC-41.
+
+**US-40** As the owner, I want retrieval to degrade to lexical matching if the vector store fails, so that the demo never breaks. *M · S* Covers FR-117; AC-40.
+
 ## H. Catalogue and cart
 **US-21** As Meera (P1), I want prices and stock to come from the store, never invented, so that the total is correct. *M · M* Covers FR-70, 71, 79; AC-14, 24.
 - Given a model reply with a different price, then the catalogue price is shown.
@@ -130,16 +142,17 @@ Format: **US-xx** As a *persona*, I want *capability*, so that *benefit*. Covers
 ## L. Platform quality
 **US-34** As the owner, I want every external call to time out and fall back, so that the demo never hangs. *M · M* Covers NFR-02, 10; section 9.
 **US-35** As the reviewer, I want a trace log with no personal data, so that decisions can be audited. *M · S* Covers NFR-06; AC-34.
-**US-36** As the owner, I want seeded, validated mock data and a one-command setup, so that anyone can reproduce the demo. *M · L* Covers NFR-08, 09; mock-data plan.
+**US-36** As the owner, I want a seeded, validated catalogue of at least 1,000 unique SKUs and a one-command setup, so that anyone can reproduce the demo. *M · L* Covers NFR-08, 09, 12, 13; mock-data plan.
+- Given the generator, then every tag agrees with its SKU's ingredient list, every dish ingredient resolves, and the 5,000-SKU set builds with the same code.
 
 ## Traceability matrix (objectives to stories)
 | Objective | BR | FR | Stories | AC | Tests |
 |---|---|---|---|---|---|
-| O1 Ranking divergence | BR lever effect | FR-01 to 08, 61 to 67 | US-01, 02, 17, 18 | AC-01 to 03, 20 | Test Plan (TBD) |
-| O2 Constraint compliance | BR guardrails | FR-09, 60, 90 to 92, 15 | US-04, 07, 28 to 30 | AC-04 to 06, 25 | TBD |
+| O1 Ranking divergence | BR lever effect | FR-01 to 08, 61 to 67, 111, 113 | US-01, 02, 17, 18, 37, 38, 39 | AC-01 to 03, 20, 36, 38 | Test Plan (TBD) |
+| O2 Constraint compliance | BR guardrails | FR-09, 60, 90 to 92, 15, 112, 116 | US-04, 07, 28 to 30, 37 | AC-04 to 06, 25, 37 | TBD |
 | O3 Data integrity | BR catalogue | FR-70 to 79, 83 | US-21 to 25 | AC-08, 14, 24, 28, 33 | TBD |
-| O4 Intent-to-cart accuracy | BR flows | FR-20 to 57 | US-06, 08 to 16 | AC-07, 09, 10, 16, 17, 26 | TBD |
-| O5 Journey resilience | BR resilience | FR-10 to 12, 55, NFR-02, 10 | US-05, 16, 34 | AC-11, 15, 21 to 23 | TBD |
+| O4 Intent-to-cart accuracy | BR flows | FR-20 to 57, 110 | US-06, 08 to 16, 37 | AC-07, 09, 10, 16, 17, 26, 35 | TBD |
+| O5 Journey resilience | BR resilience | FR-10 to 12, 55, 117, NFR-02, 10 | US-05, 16, 34, 40 | AC-11, 15, 21 to 23, 40 | TBD |
 | O6 Responsiveness | BR performance | NFR-01, 10 | US-34 | Benchmark ADR | TBD |
 | O7 Traceability | BR governance | NFR-06 | US-35 | AC-34 | TBD |
 | O8 Responsible AI | BR responsibility | FR-07, 14, 15, 50, 51 | US-04, 07, 14 | AC-34 | TBD |

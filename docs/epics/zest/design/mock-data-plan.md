@@ -31,15 +31,25 @@ Mock data is built **in parallel with the remaining documents, but after the PRD
 
 | Dataset | Content | Target size |
 |---|---|---|
-| Catalogue (SKUs) | id, name, category, brand (generic), pack size, price in ₹, diet tags, allergens, halal flag, glycaemic label (simplified), gourmet and organic scores, stock count | About 200 |
+| Catalogue (SKUs) | id, name, category, variant attributes (fat level, grain, fortification, organic, spice level), ingredient list, brand (generic), pack size, price in ₹, diet tags, allergens, halal flag, glycaemic label (simplified), gourmet and organic scores, stock count, embedding text | **At least 1,000 shipped; a generated 5,000-SKU set for the scale benchmark** |
 | Dishes and recipes | name, cuisine, servings, steps summary, ingredient lines (name, quantity, unit), scaling rules, diet compatibility | About 34 (Indian food and beverages plus 2 edge-case dishes) |
 | Ingredient synonyms | Marathi, Hindi and common names to catalogue terms (kothmir, kandha, batata, dhaniya, methi) | About 60 |
+| Retrieval evaluation set | About 60 queries with expected IDs: ingredient names, regional names, mood phrases, variant requests ("skimmed milk") | 60 |
 | Pairings | main dish to companion item with co-occurrence strength | About 60 |
 | Trends | time-of-week and weather multipliers per category | About 20 rows |
 | Personas | done: `mock-data/personas.json` (11) | 11 |
 | Transcript fixtures | saved transcripts for the demo videos | 3 to 4 |
 | Default sample photos | fridge and pantry photos with pre-computed expected detections (fallback when live photo analysis fails; labelled as samples) | About 6 |
 | Stock scenarios | scripted stock-outs for UJ10 and UJ22 | 3 scenarios |
+
+## 3a. How 1,000 unique SKUs are generated (owner decision, 2026-10-17)
+A unique SKU is a distinct product defined by its **ingredient list and variant attributes**, then brand and pack size. Examples: Bread splits into White, Brown, Wheat, Whole Wheat and High-Protein; Milk into Skimmed, Toned, Full Fat and Lactose-Free.
+1. **Taxonomy file (curated):** about 250 base products across the categories, each with allowed variant attributes and a rule for the ingredient list (a template per attribute).
+2. **Generator:** expands base products by variant, generic brand and pack size with a fixed seed, writing the ingredient list, tags, price within the category range and embedding text. The same taxonomy generates a 5,000-SKU set for the scale test.
+3. **Tag integrity:** diet, allergen and halal tags are computed from the ingredient list by rules, not typed by hand. Validators fail the build when a tag contradicts the list (risk R22).
+4. **Audit:** a random 10% of shipped SKUs (about 100 rows) is reviewed by the owner; the 5,000 set is checked by validators only.
+5. **Dish coverage:** every dish ingredient must resolve to at least one SKU, and several variants where the levers should choose among them (milk, bread, rice, oil, paneer, flour).
+6. **Images:** category icons for SKUs (no 1,000 thumbnails); real images only for demo dishes. This closes OQ-7 for SKUs.
 
 ## 4. Dish list (Indian food and beverages, per owner direction 2026-10-17)
 
@@ -57,6 +67,6 @@ Mock data is built **in parallel with the remaining documents, but after the PRD
 - **Clearly mock:** the UI and README say all commerce data is synthetic (Constitution P8).
 - **Generic brand names** by default, to avoid implying real brand prices. Owner to confirm (open question).
 - **Transcript fixtures:** because the repo is public, write our own recipe narrations in the style of the demo videos rather than redistributing a creator's captions. The live-fetch path can still be shown with a real link.
-- **Images:** product thumbnails and sample photos need licensed or self-made images. This is a gap to resolve before the build.
+- **Images:** SKUs use category icons. Dish images and the sample photos for the photo flow still need licensed or self-made images; this remains a gap to resolve before the build.
 - **Dietary labels are simplified.** They are for demonstration and not certified or medical.
 - Datasheet-style documentation for each dataset (Gebru et al. 2021, [R9]).

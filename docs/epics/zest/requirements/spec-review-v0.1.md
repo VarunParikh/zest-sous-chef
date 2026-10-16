@@ -73,3 +73,5 @@ OQ-8 (multi-message recipe behaviour, now defaulted), initial timeout values, F-
 **Conflicts:** C11 (mood flow) resolved by the owner in favour of the brief.
 **Missing documents:** none.
 **Limits of this check:** document review only; no repository code exists.
+
+> Note (2026-10-17): this review covers PRD v0.1. PRD v0.2 and v0.3 were produced afterwards; v0.3 (hybrid retrieval, section 6.12) has not been re-reviewed. See PRD section 17.

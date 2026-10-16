@@ -56,6 +56,12 @@ This document is the highest-authority engineering rulebook after the owner's br
 **G8. Conflicts**
 - If two source documents disagree, follow the precedence order in `CLAUDE.md` and log the conflict in `docs/core/open-conflicts.md`.
 
+**G9. Retrieval**
+- The vector store proposes candidate IDs only. Prices, stock, tags and eligibility come from the structured catalogue (P3).
+- Hard guardrails run in code after retrieval, never inside a similarity query.
+- The candidate pool must be larger than the displayed set so the levers can change the outcome (PRD FR-111).
+- Embedding model and library versions are pinned in config.
+
 ## Part 3. AI Authority Matrix
 
 Defines what the AI may decide alone, what needs the user, and what it may never do. "Runtime" means the Zest bot talking to an end user. "Build" means Claude Code working for the owner.
@@ -93,4 +99,5 @@ Defines what the AI may decide alone, what needs the user, and what it may never
 | Weaken a guardrail test | **Never** |
 
 ## Part 4. Amendments
-Changes to this document require owner approval and a CHANGELOG entry. Version: 0.1.
+Changes to this document require owner approval and a CHANGELOG entry. Version: 0.2.
+- v0.2 (2026-10-17, owner decision to use a local vector database): added guardrail G9 (Retrieval). No principle changed.

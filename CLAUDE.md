@@ -29,7 +29,7 @@ When documents disagree, the higher one wins. Log every conflict in `docs/core/o
 - Commit style: conventional commits (`feat:`, `fix:`, `docs:`, `test:`).
 
 ## Stack (provisional, ratified in ADR-001)
-Python 3.12 + FastAPI backend; React + Vite + Tailwind frontend; local text LLM via Ollama; Gemini API free tier for photo analysis (local vision fallback); `youtube-transcript-api` plus saved fixtures; JSON/SQLite mock data; `pytest` and Playwright. Details: `docs/core/product-platforms.md`; decisions: `docs/design/adr/`.
+Python 3.12 + FastAPI backend; React + Vite + Tailwind frontend; local text LLM via Ollama; Gemini API free tier for photo analysis (local vision fallback); `youtube-transcript-api` plus saved fixtures; JSON/SQLite mock catalogue (1,000+ SKUs) plus an embedded Chroma vector store for hybrid retrieval (candidate IDs only; guardrails run after retrieval, see G9); `pytest` and Playwright. Details: `docs/core/product-platforms.md`; decisions: `docs/design/adr/`.
 Secrets: the Gemini key lives only in a local, git-ignored `.env`. Never paste it into code, docs, commits or chat.
 
 ## Where things are

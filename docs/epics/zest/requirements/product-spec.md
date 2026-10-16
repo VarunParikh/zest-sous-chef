@@ -1,10 +1,11 @@
 # Specification (PRD): Zest AI Sous-Chef
 
-- **Status:** v0.2, reviewed (see `spec-review-v0.1.md`); awaiting owner sign-off on OQ-8 to OQ-10
+- **Status:** v0.3, v0.2 reviewed (see `spec-review-v0.1.md`); v0.3 changes not yet re-reviewed; awaiting owner sign-off on OQ-8 to OQ-10
 - **Owner:** VJP (product owner) · **Date:** 2026-10-17
 - **Inputs:** BRD, Strategy, Platforms, Personas, Risk Register, Settings Panel, DESIGN.md, User Journeys, mockups
 - **Convention:** "shall" marks a testable requirement. Priority: M = Must, S = Should, C = Could. Items needing an owner decision are in section 15.
-- **Change log:** v0.2 resolves OQ-1 to OQ-7 (owner answers 2026-10-17), applies findings F-01 to F-24 and the constitution-check corrections.
+- **Change log v0.3 (2026-10-17):** owner decided to use a local vector database. Adds hybrid retrieval (section 11, FR-110 to FR-117), lever-driven SKU variant selection, a 1,000-SKU ingredient-level catalogue, NFR-12 and NFR-13, AC-35 to AC-41, and a retrieval inspector. The four levers are unchanged (option A).
+- **Change log v0.2:** resolves OQ-1 to OQ-7 (owner answers 2026-10-17), applies findings F-01 to F-24 and the constitution-check corrections.
 
 ## 1. Problem and evidence
 Turning a cooking intent into a delivered basket takes many steps, and generic recommendations ignore dietary, faith and pantry context. The supplied market research and the sources checked so far (JioMart page, Shopvora pages) show players using recipe filters, past-purchase recommendations and chat-based flows, but none visibly exposes recommendation controls to the user. Evidence status is recorded in the claims ledger of the Risk Register.
@@ -13,7 +14,7 @@ Turning a cooking intent into a delivered basket takes many steps, and generic r
 Goals are the prototype validation objectives O1 to O8 in the BRD (ranking divergence, constraint compliance, data integrity, intent-to-cart accuracy, journey resilience, responsiveness, traceability, responsible-AI posture). Part B outcome hypotheses (H1 to H7) are out of scope.
 
 ## 3. Non-goals
-Real JioMart or payment integration; accounts and login; persistence across page refresh; voice input; delivery fees and taxes (item subtotal only); languages beyond English (Marathi and Hindi ingredient names are understood); a vector database or embedding retrieval (section 11.4); native mobile apps; MCP server; Gemini or other cloud processing of text prompts; allergy or medical safety assurances.
+Real JioMart or payment integration; accounts and login; persistence across page refresh; voice input; delivery fees and taxes (item subtotal only); languages beyond English (Marathi and Hindi ingredient names are understood); a hosted or networked vector database (the embedded local one is in scope); a "taste vector" built from the history sliders (future scope); native mobile apps; MCP server; Gemini or other cloud processing of text prompts; allergy or medical safety assurances.
 
 ## 4. Users and use cases
 Personas P1 to P11 (`personas.md`). Primary use cases: build a cart from a YouTube recipe; from a typed recipe; from a mood; from a photo of ingredients. Secondary (reviewer, P7): change levers and observe different recommendations.
@@ -32,7 +33,7 @@ Personas P1 to P11 (`personas.md`). Primary use cases: build a cart from a YouTu
 4. Purchase history category affinity: five sliders.
 5. Real-time trends: two sliders.
 6. Business and inventory guardrails: add-on price cap, stock-availability toggle.
-7. Database and extracted ingredients inspector, and the score-breakdown chart for the latest suggestions.
+7. Retrieval and scoring inspector (FR-115): for the latest suggestions, the candidate pool with lexical rank, vector similarity, fused rank, eligibility result and final score; plus the extracted ingredients and the score-breakdown chart.
 
 **Right: Chat with Zest:** header with title, Clear chat button and the cart icon (count badge; greyed and disabled when empty); starter chips (YouTube link, Upload photo, Text recipe, Feeling hungry); message feed; input dock with only the upload button, text field and Send.
 
@@ -70,7 +71,7 @@ Below 1024 px, a segmented control switches between Levers and Chat.
 | FR-10 | An input guard shall screen every user message and fetched content before processing; off-topic, hazardous and injection attempts shall receive the standard redirect; ordinary cooking language ("attack the onions") shall pass | UJ9, 57 | M |
 | FR-11 | The system shall classify each message as: YouTube link, recipe text, mood or intent, cart edit, question, other | Routing | M |
 | FR-12 | Content retrieved from videos, photos or pages shall be treated as data and shall not trigger cart changes by itself | P4 (constitution-check) | M |
-| FR-13 | Ingredient names, including regional names (kothmir, kandha, batata), shall resolve to catalogue terms through the retriever; a name with several matches whose top two scores differ by less than the ambiguity margin (initial 0.15, tuned by the benchmark) shall trigger a short clarifying question | UJ23, 46 | M |
+| FR-13 | Ingredient names, including regional names (kothmir, kandha, batata), shall resolve to catalogue terms through the hybrid retriever (FR-110); a name with several matches whose top two fused scores differ by less than the ambiguity margin (initial 0.15, tuned by the benchmark) shall trigger a short clarifying question, except where the choice among variants is made by the engine (FR-113) | UJ23, 46 | M |
 | FR-14 | Estimated quantities, cook times and detections shall be labelled as estimates | P6, UJ76 | M |
 | FR-15 | The bot shall not state or imply that any item is safe for an allergy or medical condition; dietary labels are described as simplified | Authority matrix | M |
 
@@ -148,7 +149,7 @@ Below 1024 px, a segmented control switches between Levers and Chat.
 | ID | Requirement | Pri |
 |---|---|---|
 | FR-90 | A request that violates the persona (garlic for Jain, chicken for Pure Veg) shall be intercepted with a compliant alternative; the bot shall not override the persona on request | M |
-| FR-91 | Recipe text that looks compliant shall be checked against each SKU's full tag set, including hidden animal-derived ingredients | S |
+| FR-91 | Recipe text that looks compliant shall be checked against each SKU's full tag set and its ingredient list (FR-116), including hidden animal-derived ingredients | S |
 | FR-92 | A recipe with no available key ingredients shall be reported with partial items and compliant alternatives | S |
 
 ### 6.11 Interface (layout and controls)
@@ -159,6 +160,18 @@ Below 1024 px, a segmented control switches between Levers and Chat.
 | FR-102 | While a message is processing, the input shall be locked and a typing indicator shown; double submission shall not create duplicate requests | M |
 | FR-103 | The cart window shall trap keyboard focus, close on Escape (except during the order-placed state), and return focus to the cart icon | M |
 | FR-104 | The lever panel shall show the effective weight percentages and the score-breakdown chart for the latest suggestions | M |
+
+### 6.12 Hybrid retrieval and variant selection
+| ID | Requirement | Pri |
+|---|---|---|
+| FR-110 | Ingredient-to-SKU and mood-or-intent-to-dish lookups shall combine (a) lexical matching with the synonym table and (b) vector similarity from a local, embedded vector store, merged by reciprocal rank fusion (initial constant 60, tuned by the benchmark), into one ranked candidate pool | M |
+| FR-111 | The candidate pool shall be larger than the displayed set (initial pool 15 dishes for 3 shown). Eligibility is applied to the pool, then the levers rank the survivors. A pool equal to the display size is a defect, because it would make the levers inert | M |
+| FR-112 | The vector store shall return candidate IDs and similarity only. Names, prices, pack sizes, stock, tags and eligibility shall come from the structured catalogue. Hard guardrails shall run after retrieval in code and never inside the vector query | M |
+| FR-113 | When an ingredient resolves to several eligible SKU variants (for example Skimmed, Toned and Full Fat Milk), the engine shall choose one using the Appendix A scores: match closeness, category history, trend and persona or gourmet (organic and gourmet sliders). The lowest price breaks ties. If the user names a variant ("skimmed milk"), only variants matching that attribute are eligible | M |
+| FR-114 | Each cart line shall show the chosen variant and offer "Why this variant?" listing the alternatives; the user may switch to another eligible variant, which updates the cart | M |
+| FR-115 | The lever panel shall include a retrieval and scoring inspector showing, for the latest suggestion, each candidate's lexical rank, vector similarity, fused rank, eligibility result and final score | M |
+| FR-116 | Each SKU shall carry an ingredient list (or "single ingredient") and variant attributes (for example fat level, grain, fortification, organic). Eligibility checks shall use these fields | M |
+| FR-117 | If the vector store or embedding model is unavailable, retrieval shall fall back to lexical plus synonyms, the trace shall record `fallback_used`, and the UI shall not fail | M |
 
 ## 7. Non-functional requirements
 | ID | Requirement |
@@ -174,12 +187,14 @@ Below 1024 px, a segmented control switches between Levers and Chat.
 | NFR-09 | Transparency: UI and README state that all commerce data is mock |
 | NFR-10 | Timeouts: every external call has a timeout and at most one retry. Initial values: local model 30 s, Gemini 20 s, transcript fetch 10 s; tuned by the benchmark. On expiry the fallback in section 9 applies |
 | NFR-11 | Testability: temperature 0 for extraction; acceptance tests assert on structured output (IDs, quantities), not wording |
+| NFR-12 | Retrieval stack: the embedding model runs locally, its name and version are pinned in config, the index is built from the catalogue by one command, stored in a git-ignored folder, and rebuilt on catalogue change. Index build time and memory are recorded by the Day-1 benchmark |
+| NFR-13 | Scale: the shipped catalogue has at least 1,000 unique SKUs. Retrieval latency and recall shall also be benchmarked on a generated 5,000-SKU set; no functional change is allowed at that size |
 
 ## 8. Data, API and integration considerations
 - **Entities:** Session, LeverSnapshot, Message, CartDish, CartLine, Order, Product, Dish, RecipeIngredient, Synonym, Pairing, TrendRow, Persona, Context.
 - **State:** in memory per session; refresh resets.
 - **Provisional endpoints:** session create, chat message (text and image), cart read and edit, checkout, levers read, write and reset, chat clear, health. No inbound webhooks.
-- **Integrations:** local model (Ollama); Gemini API for images; `youtube-transcript-api` and fixtures; mock catalogue.
+- **Integrations:** local model (Ollama); embedded local vector store (Chroma) with a local embedding model; Gemini API for images; `youtube-transcript-api` and fixtures; mock catalogue.
 
 ## 9. Errors, edge cases and recovery
 | Case | Required behaviour |
@@ -206,10 +221,12 @@ Below 1024 px, a segmented control switches between Levers and Chat.
 No product analytics. A local trace log (no images, truncated text, no personal data) records: `session_started`, `lever_snapshot_applied`, `intent_classified`, `retrieval_candidates`, `guardrail_filtered`, `llm_call` (model, latency, schema_valid, retry), `suggestion_shown`, `suggestion_accepted`, `suggestion_dismissed`, `cart_mutated`, `fallback_used`, `checkout_placed`. Metric O6 uses `llm_call` latency.
 
 ## 11. Retrieval design
-1. Retrieval sits behind a `Retriever` interface for ingredient to SKU and intent to dish lookups.
-2. **MVP: lexical matching plus a synonym table.** Output is a candidate list with IDs; the model may choose only from that list.
-3. Guardrails run after retrieval as hard filters.
-4. **Future scope, not built:** embedding or vector-database retrieval. Excluded because of system limits (16 GB RAM shared with the chat model), budget and the 3-day deadline. Trade-offs are in the Decision Evidence Log.
+1. Retrieval sits behind a `Retriever` interface for ingredient-to-SKU and intent-to-dish lookups.
+2. **MVP: hybrid retrieval (owner decision, 2026-10-17).** Lexical plus synonym table and vector similarity (embedded Chroma, local embedding model), merged by reciprocal rank fusion into a candidate pool of IDs (FR-110). The model may choose only from that pool.
+3. Pipeline order is fixed: retrieve a wide pool, apply hard guardrails in code, rank survivors with the four levers, show the top results (FR-111, 112). This order is what keeps the levers causal.
+4. **Levers are unchanged (option A).** Vector similarity is an input to the culinary-pairing component `s_p`; it is not a separate control. The reason it is added: lexical matching cannot handle mood language ("something cooling") or hundreds of near-variant SKUs, and the inspector (FR-115) makes the extra step visible and testable.
+5. **Evidence rule:** the Day-1 benchmark compares lexical-only, vector-only and hybrid on recall at 5 over about 60 queries. If hybrid does not beat lexical on the benchmark, the result is recorded in the ADR and the owner decides whether the shipped default changes. The fallback in FR-117 is always kept.
+6. **Future scope:** a "taste vector" built from the history sliders; a larger embedding model served through Ollama; a networked vector database.
 
 ## 12. Acceptance criteria
 | ID | Given / When / Then | Covers |
@@ -248,6 +265,13 @@ No product analytics. A local trace log (no images, truncated text, no personal 
 | AC-32 | Cart window open: focus is trapped; Escape closes; focus returns to the icon | FR-103 |
 | AC-33 | Substitution proposed on stock-out: cart unchanged until accepted | FR-76 |
 | AC-34 | Trace log after a photo flow: contains no image data | NFR-06 |
+| AC-35 | "Something cooling": Chaas and Sweet Lassi appear in the candidate pool (vector-assisted), none of them keyword matches | FR-110 |
+| AC-36 | Mood request: the pool has at least 15 candidates and 3 are shown; changing a lever group and starting a new session changes the order of the shown set | FR-111 |
+| AC-37 | A vector candidate that breaks the persona (a Jain-excluded dish): removed after retrieval, with `guardrail_filtered` in the trace | FR-112 |
+| AC-38 | "Milk" with the organic slider high versus low: different eligible variants are carted; the cart line explains the choice | FR-113, 114 |
+| AC-39 | "Skimmed milk": only skimmed variants are eligible regardless of sliders | FR-113 |
+| AC-40 | Vector store disabled: the same ingredient list still resolves by lexical plus synonyms; no error shown to the user | FR-117 |
+| AC-41 | After a mood request: the inspector lists each candidate with lexical rank, vector similarity, fused rank, eligibility and final score | FR-115 |
 
 ## 13. Dependencies and rollout
 Ollama model passing the Day-1 benchmark; Gemini free-tier key in local `.env`; transcript fixtures; validated mock data. Rollout: public GitHub repository, run locally; at most 5 testers. Rollback: tag each working state.
@@ -268,15 +292,18 @@ A1 to A14 in the Risk Register. Also: default servings 2; one currency (₹); En
 | OQ-8 | Multi-message text recipe | Default: carted immediately under one open dish (FR-30). Owner to confirm |
 | OQ-9 | Photo flow: also add the top recipe's missing items directly, as the brief's B4 implies? | Default: yes, for consistency with OQ-2. Owner to confirm |
 | OQ-10 | Should dish options respect a budget (persona P10)? | Default: no for the MVP (F-22). Owner to confirm |
+| OQ-11 | Lever representation with the vector store | **Option A** (owner, 2026-10-17): four levers unchanged; vector similarity inside `s_p`; retrieval inspector |
+| OQ-12 | SKU uniqueness | **Owner, 2026-10-17:** unique by ingredient list and variant attributes (for example Brown, Wheat, Whole Wheat and Protein Bread); at least 1,000 shipped, 5,000 generated for the scale benchmark |
+| OQ-13 | Variant selection | **Lever-driven** (owner, 2026-10-17); FR-113. Open detail: price is a tie-breaker only. Owner to say if price should carry a weight |
 
 ## 16. Risks
 See the Risk Register: R1, R3, R4, R5, R6, R14. New: non-deterministic model output (NFR-11); direct-add of a wrong guess (mitigated by swap and Undo).
 
 ## 17. Validation status
-Reviewed on 2026-10-17 with `analyze-spec` and `constitution-check` (`spec-review-v0.1.md`): READY WITH CONDITIONS and PASS WITH CONDITIONS; corrections applied in this version. Open: F-17 (spice scaling in Data Model), OQ-8 to OQ-10. No requirement has been validated by implementation.
+v0.2 was reviewed on 2026-10-17 with `analyze-spec` and `constitution-check` (`spec-review-v0.1.md`): READY WITH CONDITIONS and PASS WITH CONDITIONS. v0.3 adds section 6.12 and has not been re-reviewed; a re-run is planned before the Data Model is approved. Open: F-17 (spice scaling in Data Model), OQ-8 to OQ-10, OQ-13 detail. No requirement has been validated by implementation.
 
 ## Appendix A. Score components by candidate type
-All components are computed per candidate, then min-max normalised across the candidate set (all equal gives 0.5).
+All components are computed per candidate over the candidate pool. Components built from similarity or retrieval ranks (`s_p`) use rank-based normalisation, `1 - (rank - 1) / (N - 1)`, because similarity scores are not comparable across queries and min-max on small sets exaggerates tiny gaps. Other components use min-max (all equal gives 0.5). The `s_p` input is the fused lexical and vector rank (FR-110) combined with the pairing or overlap signal below.
 
 | Component | Dish option | Add-on suggestion | Substitute |
 |---|---|---|---|
@@ -284,5 +311,7 @@ All components are computed per candidate, then min-max normalised across the ca
 | `s_h` history | Mean category affinity slider across the dish's categories | Affinity slider for the item's category | Affinity slider for the category |
 | `s_t` trend | Time-of-week and weather multiplier for the dish's tags | Multiplier for the item's category | Multiplier for the item's category |
 | `s_g` persona and gourmet | Gourmet and organic slider match, plus capped gender boost (FR-07) | Same | Same |
+
+**SKU variant (FR-113):** `s_p` = fused match rank for the ingredient; `s_h` = category affinity slider; `s_t` = category trend multiplier; `s_g` = organic and gourmet slider match to the variant's attributes. Lowest price breaks ties.
 
 Tie rule: FR-66. Context source: FR-67.

@@ -15,6 +15,7 @@ Model names and limits change quickly. Everything model-specific is configuratio
 | Guard / classifier | **Rules + small local classifier** (Llama Guard is a candidate, to be verified in ADR-003) | Off-topic, injection and hazard screening (UJ9, UJ57, UJ59) | Guardrails must not depend on the main model's good behaviour | Prompt-only guard | Free |
 | Transcripts | **`youtube-transcript-api`** + **pre-saved fixtures** + paste-transcript fallback | YouTube recipes (UJ2, UJ20) | See section 4 | Official YouTube Data API (captions need owner auth) | Free |
 | Catalogue and stock | **Mock catalogue service** (JSON/SQLite in `mock-data/`) | SKUs, prices, pack sizes, stock, dark-store flags | Brief requires mock data; scriptable stock-outs for UJ10 and UJ22 | Real platform (not available) | Free |
+| Retrieval | **Hybrid: lexical plus synonym table and embedded Chroma vector store** (local ONNX embedder by default; an Ollama embedder is an option to benchmark) merged by reciprocal rank fusion | Ingredient-to-SKU and mood-to-dish candidate pools (IDs only) | Owner decision 2026-10-17; handles mood language and near-variant SKUs; no separate service | Lexical only; networked vector database | Free |
 | Recommendation engine | **In-process Python module** | Eligibility filter then weighted score from the lever panel | Core of the product; fully unit-testable | External service | Free |
 | State | **In-memory per session** | Cart, chat, levers | `DESIGN.md`: refresh resets everything | Database | Free |
 | Testing | `pytest`, Playwright (UI), a scripted evaluation harness | Tests and evaluation | See Test and Evaluation Plans | None | Free |
@@ -44,11 +45,12 @@ This is logged as conflict C8. It needs your decision, because P9 can only be am
 - Small local models only. Run one model at a time. Close heavy apps during the demo.
 - Benchmark on Day 1: time to first token, tokens per second, and extraction accuracy on 10 sample recipes. The result drives ADR-001.
 - Gemini calls offload vision, so no local vision model needs to be loaded at the same time as the text model.
+- The embedded vector store and its small embedder run inside the Python process alongside the Ollama text model. Their memory and index build time are not yet measured; the Day-1 benchmark records them (risk R23).
 
 ## 6. Mock data (owned by us)
 | Dataset | Content | Used by |
 |---|---|---|
-| Catalogue | About 150 to 250 SKUs with category, diet tags, allergens, price, pack size, stock, gourmet/organic flags, images | Cart, engine |
+| Catalogue | At least 1,000 unique SKUs (unique by ingredient list and variant attributes) with category, ingredient list, diet tags, allergens, price, pack size, stock, gourmet/organic flags, category icons; a generated 5,000-SKU set for the scale benchmark | Cart, engine, retriever |
 | Dishes and recipes | About 25 Indian and international dishes with ingredients and quantities | Text and photo flows |
 | Pairings | Co-occurrence table (for example Biryani and Raita) | Culinary pairing weight |
 | Trends | Time-of-week and weather multipliers | Trend lever |

@@ -12,7 +12,7 @@ Scoring: Likelihood (L) and Impact (I) from 1 to 5; Score = L × I. 15 or more i
 | A1 | A small local model on the 16 GB MacBook can extract ingredients and answer in acceptable time | Core chat flow | Day-1 benchmark (section 5) | Day 1 |
 | A2 | Gemini free tier accepts image input and its rate limits are enough for at most 5 testers plus the demo | Photo flow | Read current limits; test 20 calls in a row | Day 1 |
 | A3 | `youtube-transcript-api` works from the owner's home network for the demo videos | YouTube flow | Fetch all demo videos; keep fixtures regardless | Day 1 |
-| A4 | A mock catalogue of 150 to 250 SKUs and 25 dishes covers the Must journeys | Cart, engine, edge cases | Coverage script: every dish ingredient maps to a SKU or a deliberate gap | Day 1 to 2 |
+| A4 | A mock catalogue of at least 1,000 unique SKUs (unique by ingredient list and variant attributes) and about 34 dishes covers the Must journeys | Cart, engine, edge cases | Coverage script: every dish ingredient maps to a SKU or a deliberate gap | Day 1 to 2 |
 | A5 | The reviewer accepts mock data and a simulated JioMart-style store | Scope | State clearly in the demo and limitations note | Day 3 |
 | A6 | Levers apply from the next session (C4), and this is acceptable to the reviewer | Core promise | Visible UI hint; demo script shows it | Day 2 |
 | A7 | Normalised weights (`w / Σw`) make slider effects visible enough to demonstrate | Core promise | Lever-sensitivity test on all personas | Day 2 |
@@ -55,6 +55,10 @@ Scoring: Likelihood (L) and Impact (I) from 1 to 5; Score = L × I. 15 or more i
 | R15 | Security | Prompt injection via transcript or photo text | 2 | 4 | 8 | Treat retrieved content as data (P4); test UJ57 |
 | R19 | Ethics | Diet modes read as medical advice | 2 | 3 | 6 | Disclaimer; "simplified labels" wording |
 | R20 | Repo | Messy public repo | 2 | 2 | 4 | Clean structure, README, CHANGELOG |
+| R21 | Retrieval | Vector retrieval adds no measurable gain over lexical plus synonyms, so the added layer looks decorative | 3 | 3 | 9 | Day-1 three-way benchmark (lexical, vector, hybrid); record the result in the ADR whichever way it goes; keep FR-117 fallback |
+| R22 | Retrieval | Wrong tag at 1,000+ SKUs (for example a non-Jain item tagged Jain) passes a guardrail | 3 | 5 | 15 | Rule-based validators on ingredient list versus tags; 10% manual audit; guardrail tests on every persona; hard filters run in code after retrieval |
+| R23 | Platform | Embedding model plus Ollama text model exceed 16 GB RAM or slow the demo | 2 | 4 | 8 | Small ONNX embedder in the Chroma process; measure memory on Day 1; warm-up script; lexical fallback (FR-117) |
+| R24 | Product | Candidate pool too small, so levers appear inert (the vector layer returns only what is displayed) | 3 | 5 | 15 | FR-111 pool larger than display set; AC-36 lever sensitivity test; inspector shows the pool |
 
 ## 3. Time-pressure cut order (Should and Could tiers)
 If time runs short, cut in this order. The order protects technical depth and the core promise.
@@ -95,7 +99,8 @@ Each decision gets an ADR listing alternatives, the evidence, and the result. Ev
 | Vision approach | Gemini free tier vs local vision model | 15 sample photos: ingredient precision and recall, latency, failure rate | `verify/benchmarks/vision.md` |
 | Guard design | Rules only; rules plus classifier (Llama Guard candidate) | 40 prompts in English and Hinglish: block rate, false-positive rate | `verify/benchmarks/guard.md` |
 | Backend framework | FastAPI vs Node | Qualitative (fit with local-AI libraries), recorded in ADR | `design/adr/` |
-| Retrieval approach (ingredient to SKU, intent to dish) | Lexical plus synonym table (chosen); small local embedding model; hybrid; vector database | **Decided by owner, 2026-10-17:** lexical plus synonym table behind a pluggable `Retriever`; embeddings and vector databases are future scope, not built, because of system, budget and time limits. Evidence: recall at 5 on about 60 ingredient queries including regional names, comparing exact, synonym and fuzzy matching | `verify/benchmarks/retrieval.md` |
+| Retrieval approach (ingredient to SKU, intent to dish) | Lexical plus synonym table; small local embedding model; hybrid with embedded Chroma (chosen); networked vector database | **Revised by owner, 2026-10-17 (reverses the earlier "future scope" decision):** hybrid retrieval, with embedded Chroma and a local embedding model merged with lexical plus synonyms by reciprocal rank fusion, behind the `Retriever` interface. Reason for reversal: owner instruction to use a local vector database where one exists; an embedded store needs no service, and a 1,000-SKU catalogue with near-variants plus mood language is where lexical alone is weakest. Evidence to collect: recall at 5 on about 60 queries (ingredient, regional-name, mood) for lexical only, vector only and hybrid, plus index build time, memory and latency at 1,000 and 5,000 SKUs. If hybrid does not beat lexical, record it and let the owner decide the default | `verify/benchmarks/retrieval.md` |
+| Variant selection | Fixed default variant per ingredient; lever-driven selection (chosen) | AC-38 and AC-39 sensitivity tests; cart-line explanations | ADR plus test report |
 | Weight handling | Normalise vs clamp | Lever-sensitivity test on personas | ADR plus test report |
 | Runtime MCP | Plain REST only; REST plus an MCP server over the mock store | **Decided by owner, 2026-10-17: no MCP; plain REST.** Rationale to record: scope, 3-day deadline, mock data only | ADR |
 | Dev-time tools | GitHub CLI vs a GitHub MCP; Playwright for UI tests | Setup effort and reliability | ADR |

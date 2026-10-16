@@ -31,6 +31,11 @@ Every other document cites sources by the IDs below (for example, [R3]). "Verifi
 | R11 | NIST (2023). *Artificial Intelligence Risk Management Framework (AI RMF 1.0),* NIST AI 100-1 | Risk register and responsible-AI structure |
 | R12 | OWASP. *Top 10 for LLM Applications* (LLM01 prompt injection and related items) | Security and Privacy note |
 | R13 | Government of India. *Digital Personal Data Protection Act, 2023* | Photo and personal-data handling (relevant to the P9 decision) |
+| R14 | Chroma documentation, embedding functions (via Tessl registry): https://tessl.io/registry/tessl/pypi-chromadb/files/docs/embedding-functions.md | Default local ONNX embedder (all-MiniLM-L6-v2); Ollama supported. Verified on 2026-10-17 from this page only |
+| R15 | Thakur, N. et al. (2021). *BEIR: A heterogeneous benchmark for zero-shot evaluation of information retrieval models.* https://arxiv.org/abs/2104.08663 | Lexical retrieval is a strong baseline; justifies benchmarking instead of assuming (from knowledge; verify) |
+| R16 | Cormack, G., Clarke, C., Buettcher, S. (2009). *Reciprocal rank fusion outperforms Condorcet and individual rank learning methods.* SIGIR. https://doi.org/10.1145/1571941.1572114 | Merging lexical and vector rankings (from knowledge; verify) |
+| R17 | Karpukhin, V. et al. (2020). *Dense passage retrieval for open-domain question answering.* https://arxiv.org/abs/2004.04906 | Dense versus sparse retrieval; hybrids (from knowledge; verify) |
+| R18 | Reimers, N., Gurevych, I. (2019). *Sentence-BERT.* https://arxiv.org/abs/1908.10084 | Basis of MiniLM-family sentence embeddings (from knowledge; verify) |
 
 ### 2.4 Project documents
 | ID | Document | Role |
@@ -103,3 +108,10 @@ Every other document cites sources by the IDs below (for example, [R3]). "Verifi
 | **BRD / PRD** | Business Requirements Document / Product Requirements Document (spec) |
 | **UJ# / B#** | A user journey from `UserJourneys.md` / a brief-defined capability |
 | **Must / Should / Could / Deferred** | Scope tiers (see Strategy section 6.2) |
+| **Embedding** | A list of numbers representing the meaning of a text, so similar meanings sit close together |
+| **Vector store (Chroma)** | A database that finds the stored items whose embeddings are closest to a query; Chroma runs inside our Python process |
+| **Cosine similarity** | A measure of how close two embeddings are |
+| **Hybrid retrieval** | Combining keyword matching with vector similarity |
+| **Reciprocal rank fusion (RRF)** | A rule that merges several ranked lists by summing 1/(k + rank) |
+| **Candidate pool** | The wider set retrieved before guardrails and levers pick the final suggestions |
+| **SKU variant** | A product that differs from another by ingredients or attributes (for example Skimmed versus Full Fat Milk) |
