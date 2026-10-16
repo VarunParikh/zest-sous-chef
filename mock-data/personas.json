@@ -55,6 +55,31 @@
       "id": "P7", "name": "Alex (Reviewer)",
       "levers": {},
       "test_prompts": ["I am feeling indulgent"]
+    },
+    {
+      "id": "P8", "name": "Lakshmi Pillai",
+      "levers": { "gender": "Female", "diet": "Pure Veg (Strict)", "faith": "Hindu (Regular)",
+                  "specialized_diets": ["Intermittent Fasting / Low-GI"],
+                  "history": { "desserts": 0.15, "salads": 0.80 } },
+      "test_prompts": ["Make gulab jamun and white rice"]
+    },
+    {
+      "id": "P9", "name": "Jordan Fernandes (control)",
+      "levers": { "gender": "Unisex / Neutral" },
+      "test_prompts": ["I am feeling indulgent"]
+    },
+    {
+      "id": "P10", "name": "Rahul Verma",
+      "levers": { "gender": "Male", "diet": "Non-Veg / Flexitarian", "faith": "None / Secular",
+                  "gourmet_affinity": 0.0, "artisanal_organic": 0.10, "business": { "price_cap_inr": 80 } },
+      "test_prompts": ["I want to make creamy pasta"]
+    },
+    {
+      "id": "P11", "name": "Vikram Rao",
+      "levers": { "gender": "Male", "diet": "Non-Veg / Flexitarian", "faith": "None / Secular",
+                  "specialized_diets": ["High-Protein Fitness"],
+                  "history": { "kebabs": 1.0, "dairy": 0.90, "bakery": 0.15, "desserts": 0.15 } },
+      "test_prompts": ["I am feeling indulgent"]
     }
   ]
 }

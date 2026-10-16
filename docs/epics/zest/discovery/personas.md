@@ -19,6 +19,10 @@ All personas are **fictional** and built to exercise the guardrails and levers, 
 | P5 | Karan Malhotra | Non-Veg / Flexitarian | None / Secular | Keto Diet + High-Protein | YouTube and photo | High-carb staples masked |
 | P6 | Priya Nair | Pure Veg (Strict) | None / Secular | Vegan + Gluten-Free (multi-select) | Photo and text | Stacked hard masks |
 | P7 | Alex (Reviewer) | any | any | any | Any | Lever causality demonstration |
+| P8 | Lakshmi Pillai | Pure Veg (Strict) | Hindu (Regular) | Intermittent Fasting / Low-GI | Text | High-glycaemic items flagged |
+| P9 | Jordan Fernandes | Non-Veg / Flexitarian (default) | None / Secular | Standard / Balanced | Mood and text | Baseline control, Unisex / Neutral |
+| P10 | Rahul Verma | Non-Veg / Flexitarian | None / Secular | Standard / Balanced | Text | Cost-effective only; no gourmet items |
+| P11 | Vikram Rao | Non-Veg / Flexitarian | None / Secular | High-Protein Fitness | Mood and text | Protein-first suggestions |
 
 ## 3. Persona details
 
@@ -71,16 +75,46 @@ All personas are **fictional** and built to exercise the guardrails and levers, 
 - **Trap:** changes a lever mid-chat and expects it to apply immediately. The UI must say it applies from the next session.
 - **Success:** the before and after suggestions differ visibly and the score breakdown explains why.
 
+### P8. Lakshmi Pillai, 52, bank manager, Kochi (Low-GI)
+- **Goal:** meals that keep blood-sugar spikes low, with simple recipes.
+- **Behaviour:** types dish names; reads the bot's explanations carefully.
+- **Levers:** Gender Female · Diet Pure Veg (Strict) · Faith Hindu (Regular) · Specialised Intermittent Fasting / Low-GI · Desserts 0.15 · Salads 0.80.
+- **Trap:** "Make gulab jamun and white rice."
+- **Success:** the bot flags high-glycaemic items and offers lower-GI swaps. The glycaemic tags in the mock catalogue are our own simplified labels, and the bot never presents them as medical advice.
+
+### P9. Jordan Fernandes, 29, designer, Mumbai (Unisex / Neutral, baseline)
+- **Goal:** inspiration for easy dinners; no strong preferences.
+- **Behaviour:** vague mood prompts such as "I am feeling indulgent."
+- **Levers:** Gender Unisex / Neutral · everything else at defaults.
+- **Role:** the **control persona**. Lever-causality tests compare every other persona's suggestions against Jordan's for the same prompt.
+- **Success:** a sensible mixed set of suggestions with no demographic skew.
+
+### P10. Rahul Verma, 20, engineering student, Nagpur (cost-conscious)
+- **Goal:** cheap, filling meals on a tight allowance.
+- **Behaviour:** short text messages; accepts only mass-market products; abandons the cart if it feels expensive.
+- **Levers:** Gender Male · Diet Non-Veg / Flexitarian · Faith None / Secular · Price cap ₹80 (the minimum) · Gourmet 0.00 · Organic 0.10.
+- **Trap:** a pasta request whose default recipe includes imported parmesan and truffle oil.
+- **Success:** no gourmet or imported item is suggested; every pairing suggestion costs ₹80 or less; the bot explains trade-offs plainly.
+- **Gap noted:** the Settings Panel has an add-on price cap but no whole-cart budget lever. The "keep the cart under ₹350" journey (UJ17) stays in the Could tier.
+
+### P11. Vikram Rao, 26, gym enthusiast, Hyderabad (high protein)
+- **Goal:** protein-forward meals at every opportunity.
+- **Behaviour:** short mood or goal prompts; likes quick grill-and-eat dishes.
+- **Levers:** Gender Male · Diet Non-Veg / Flexitarian · Faith None / Secular · Specialised High-Protein Fitness (no Keto) · Kebabs 1.00 · Dairy 0.90 · Bakery 0.15 · Desserts 0.15.
+- **Trap:** "I am feeling indulgent." The bot should lead with protein-rich indulgent options, not desserts, so the same prompt gives a different answer than for Jordan (P9).
+- **Success:** protein-rich items rank first; the suggestions differ clearly from Jordan's.
+
 ## 4. Coverage matrix
 
 | Need | Covered by |
 |---|---|
 | Every Diet option | P1 Jain, P2 and P4 and P6 Pure Veg, P3 and P5 Non-Veg |
 | Every Faith option | P1, P2, P3, P4, P5 (Hindu Regular, Jain, Muslim, Shravan, Secular) |
-| Specialised diets | P5 Keto and High-Protein, P6 Vegan and Gluten-Free (Intermittent Fasting / Low-GI not covered; add if wanted) |
-| Gender lever | P1, P4, P6 Female; P2, P3, P5 Male; Unisex / Neutral to be added to the test set |
-| Entry methods | P2 YouTube, P3 and P6 photo, P4 mood, P1 text |
-| Price cap | P6 low cap; others default |
+| Specialised diets (all six) | Standard: P9 · Keto: P5 · Intermittent Fasting / Low-GI: P8 · Vegan and Gluten-Free: P6 · High-Protein Fitness: P5, P11 |
+| Gender lever (all three) | Female: P1, P4, P6, P8 · Male: P2, P3, P5, P10, P11 · Unisex / Neutral: P9 |
+| Entry methods | P2 YouTube, P3 and P6 photo, P4 and P9 and P11 mood, P1 and P8 and P10 text |
+| Price cap and gourmet levers | P10 (₹80 cap, gourmet 0), P6 (₹120 cap) |
+| Control for lever causality | P9 (all defaults) |
 
 ## 5. Anti-goals
 No persona represents a real individual, and none is inferred from user behaviour. Persona fields are set by the user in the lever panel and never guessed by the bot.
