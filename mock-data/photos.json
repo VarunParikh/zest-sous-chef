@@ -1,11 +1,224 @@
 {
-  "_note": "Five photos supplied by the owner on 2026-10-17. They are NOT the owner's own photos: P1 carries a stock-site watermark, others carry website or brand marks. They are kept local (git-ignored in assets/sample-photos-local/) and must not be published until replaced with the owner's own photos or confirmed licensed. 'visible' is the assistant's reading of the image and is a draft ground truth for evaluation E3; the owner must confirm each list before it is used as ground truth.",
-  "photos": [
-    {"id": "PH1", "file": "assets/sample-photos-local/PH1.png", "kind": "fridge-full", "provenance_issue": "stock-site watermark visible", "visible": ["milk", "eggplant", "green onion", "dill", "red onion", "yellow capsicum", "orange capsicum", "tomato", "lettuce", "garlic", "egg", "cheese", "banana", "apple", "pear", "coconut", "orange", "cabbage", "orange juice or soup (jar)"], "hazards": []},
-    {"id": "PH2", "file": "assets/sample-photos-local/PH2.png", "kind": "fridge-cooked", "provenance_issue": "stock image, source unknown", "visible": ["roast chicken", "potato", "tomato", "yellow capsicum", "egg", "blueberries", "leafy greens", "white wine", "water"], "hazards": ["cooked non-veg dish", "alcohol"]},
-    {"id": "PH3", "file": "assets/sample-photos-local/PH3.png", "kind": "fridge-organised", "provenance_issue": "branded 'hellonutritarian.com' banner", "visible": ["tofu", "coriander leaves or parsley", "asparagus", "cherries", "blueberries", "orange", "apple", "carrot", "red cabbage", "grapes", "watermelon", "pineapple", "capsicum", "mixed salads"], "hazards": ["many items inside closed containers"]},
-    {"id": "PH4", "file": "assets/sample-photos-local/PH4.png", "kind": "meal-prep-top-down", "provenance_issue": "branded 'yummywholefoodrecipes.com' mark", "visible": ["cucumber", "roasted sweet potato", "orange capsicum strips", "tomato", "quinoa", "chickpeas (roasted)", "salad dressing jar"], "hazards": []},
-    {"id": "PH5", "file": "assets/sample-photos-local/PH5.png", "kind": "fridge-styled", "provenance_issue": "appliance advertisement (Whirlpool) with branded drinks", "visible": ["cucumber soda", "strawberry cake", "juice", "mint", "cherries", "olives", "cherry tomato", "salad", "watermelon", "pudding cups", "lemon"], "hazards": ["brand text in image", "dessert dominates"]}
-  ],
-  "needed_still": "About 15 photos for the vision evaluation (E3) and about 6 for the app; ideally the owner's own phone photos of a real fridge or counter, including 2 or 3 blurry or dark ones and 1 non-food image."
+ "_note": "Owner-supplied reference photos (2026-10-17). The owner states they are licensed and free to use; the assistant cannot verify the licence. Source files were named licensed-image-N.jpeg; licensed-image-11 is a byte-identical duplicate of 8 and was dropped. 'visible' is the assistant's reading of each image and is DRAFT ground truth for E3; the owner must confirm before use. Photos are tracked in assets/sample-photos/.",
+ "role_note": "Only 11 usable images exist against a planned 15 for E3, so intervals will be wide. Demo set is RF02, RF03, RF07 and RF01 (clear). All 11 are scored in E3, with demo images reported separately as development images, not as independent test images.",
+ "photos": [
+  {
+   "id": "RF01",
+   "file": "assets/sample-photos/RF01.jpeg",
+   "kind": "pantry-counter",
+   "split": "demo",
+   "visible": [
+    "oats",
+    "peanuts",
+    "orange",
+    "pasta",
+    "rice or flour in bags",
+    "olive oil",
+    "honey or nut jar"
+   ],
+   "hazards": [
+    "non-food items (spray bottle, coffee machine)",
+    "gluten items"
+   ]
+  },
+  {
+   "id": "RF02",
+   "file": "assets/sample-photos/RF02.jpeg",
+   "kind": "fridge-door-shelves",
+   "split": "demo",
+   "visible": [
+    "milk",
+    "peach",
+    "grapes",
+    "blueberries",
+    "egg",
+    "apple juice",
+    "orange juice",
+    "cheese",
+    "curd or yoghurt jars",
+    "red capsicum",
+    "yellow capsicum",
+    "basil",
+    "dark bottle (unclear: wine or sauce)"
+   ],
+   "hazards": [
+    "possible alcohol"
+   ]
+  },
+  {
+   "id": "RF03",
+   "file": "assets/sample-photos/RF03.jpeg",
+   "kind": "vegetable-drawer",
+   "split": "demo",
+   "visible": [
+    "red capsicum",
+    "green capsicum",
+    "yellow capsicum",
+    "spring onion",
+    "avocado",
+    "zucchini or cucumber",
+    "tomato",
+    "cherry tomato",
+    "button mushroom",
+    "rocket or salad leaves",
+    "fennel (uncertain)"
+   ],
+   "hazards": []
+  },
+  {
+   "id": "RF04",
+   "file": "assets/sample-photos/RF04.jpeg",
+   "kind": "blurry-fridge",
+   "split": "test",
+   "visible": [],
+   "hazards": [
+    "unreadable image: the app should say so and ask for a clearer photo, never guess"
+   ],
+   "expected_behaviour": "low confidence, no invented ingredients"
+  },
+  {
+   "id": "RF05",
+   "file": "assets/sample-photos/RF05.jpeg",
+   "kind": "paper-bag-produce",
+   "split": "test",
+   "visible": [
+    "carrot",
+    "tomato",
+    "spring onion or leek",
+    "potato",
+    "radish",
+    "cucumber",
+    "cherries or berries"
+   ],
+   "hazards": [
+    "small low-resolution image"
+   ]
+  },
+  {
+   "id": "RF06",
+   "file": "assets/sample-photos/RF06.jpeg",
+   "kind": "counter-vegetables",
+   "split": "test",
+   "visible": [
+    "lettuce",
+    "button mushroom",
+    "red capsicum",
+    "orange capsicum",
+    "cucumber or zucchini",
+    "tomato",
+    "brinjal"
+   ],
+   "hazards": [
+    "small low-resolution image"
+   ]
+  },
+  {
+   "id": "RF07",
+   "file": "assets/sample-photos/RF07.jpeg",
+   "kind": "baking-flatlay",
+   "split": "demo",
+   "visible": [
+    "egg",
+    "flour",
+    "berries",
+    "muffins (cooked)",
+    "parsley or herbs"
+   ],
+   "hazards": [
+    "cooked items",
+    "low resolution",
+    "mostly baking tools"
+   ]
+  },
+  {
+   "id": "RF08",
+   "file": "assets/sample-photos/RF08.jpeg",
+   "kind": "fridge-styled-full",
+   "split": "test",
+   "visible": [
+    "orange juice",
+    "milk",
+    "pickled cucumber",
+    "strawberry",
+    "cherry",
+    "spring onion",
+    "herbs",
+    "egg",
+    "lemon",
+    "lime",
+    "apple",
+    "orange",
+    "red capsicum",
+    "yellow capsicum",
+    "orange capsicum",
+    "lettuce",
+    "cut fruit and vegetables in containers",
+    "bottle (possibly wine)"
+   ],
+   "hazards": [
+    "possible alcohol",
+    "many items in small containers"
+   ]
+  },
+  {
+   "id": "RF09",
+   "file": "assets/sample-photos/RF09.jpeg",
+   "kind": "fridge-cluttered",
+   "split": "test",
+   "visible": [
+    "almond milk",
+    "egg",
+    "onion",
+    "red onion",
+    "broccoli",
+    "artichoke",
+    "salad greens",
+    "strawberry",
+    "minced garlic (jar)",
+    "juice bottles",
+    "canned drinks"
+   ],
+   "hazards": [
+    "packaged brand text",
+    "cluttered"
+   ]
+  },
+  {
+   "id": "RF10",
+   "file": "assets/sample-photos/RF10.jpeg",
+   "kind": "dark-fridge",
+   "split": "test",
+   "visible": [
+    "apple or tomato (uncertain)",
+    "orange",
+    "bottles"
+   ],
+   "hazards": [
+    "very low light: expect low confidence"
+   ],
+   "expected_behaviour": "low confidence, ask for a brighter photo"
+  },
+  {
+   "id": "RF11",
+   "file": "assets/sample-photos/RF11.jpeg",
+   "kind": "messy-counter",
+   "split": "test",
+   "visible": [
+    "raw minced meat",
+    "red onion",
+    "sliced onion",
+    "cooking oil",
+    "pepper grinder",
+    "egg carton",
+    "vinegar or sauce bottles"
+   ],
+   "hazards": [
+    "raw non-veg item",
+    "cluttered",
+    "non-food items"
+   ],
+   "expected_behaviour": "non-veg item detected; Pure-veg or Jain personas must not receive it"
+  }
+ ],
+ "retired": "The earlier five stock-site photos (PH1 to PH5) were removed from use because of unclear provenance; their local copies are git-ignored and can be deleted."
 }

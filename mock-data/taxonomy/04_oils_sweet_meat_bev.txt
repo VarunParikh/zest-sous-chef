@@ -1,0 +1,39 @@
+B129|oils|Sunflower oil|sunflower oil|ml|500/1000/5000|15|Refined~=refined~1.0~-;Cold pressed~=cold pressed~1.6~g
+B130|oils|Mustard oil|mustard oil|ml|500/1000|18|Kachi ghani~=kachi ghani~1.0~-;Filtered~=filtered~0.95~-
+B131|oils|Olive oil|olive oil|ml|250/500/1000|75|Pomace~=pomace~0.6~-;Extra light~=light~0.8~-;Extra virgin~=extra virgin~1.4~g;Organic extra virgin~=extra virgin~1.9~o
+B132|oils|Coconut oil|coconut oil|ml|200/500/1000|38|Refined~=refined~0.8~-;Cold pressed~=cold pressed~1.5~g
+B133|oils|Sesame oil|sesame oil|ml|200/500|40|Gingelly~=gingelly~1.0~-;Toasted~=toasted~1.3~g
+B134|oils|Groundnut oil|peanut|ml|500/1000|18|Refined~=refined~1.0~-;Cold pressed~=cold pressed~1.6~g
+B135|oils|Truffle oil|truffle oil|ml|50/100|600|Black truffle~=black~1.0~g
+B136|oils|Cooking spray|sunflower oil|ml|150|40|Plain~=spray~1.0~-
+B137|sweeteners|Sugar|sugar|g|500/1000/5000|5|Refined~=refined~1.0~-;Sulphurless~=sulphurless~1.1~-;Brown~=brown~1.5~g;Organic~=sulphurless~1.8~o;Powdered~=powdered~1.2~-
+B138|sweeteners|Jaggery|jaggery|g|500/1000|9|Block~=block~1.0~-;Powder~=powder~1.2~-;Organic~=block~1.7~o
+B139|sweeteners|Honey|honey|g|250/500|36|Regular~=regular~1.0~-;Raw unfiltered~=raw~1.5~g;Organic~=regular~1.8~o
+B140|sweeteners|Salt|salt|g|1000|2.5|Iodised~=iodised~1.0~-;Rock (sendha)~=rock~1.8~-;Pink Himalayan~=pink~2.5~g
+B141|sweeteners|Sweetener (zero sugar)|stevia|g|50/100|150|Stevia~=stevia~1.0~-
+B142|meat|Chicken|chicken|g|500/1000|26|Curry cut with skin~=curry cut~1.0~-;Boneless breast~=breast~1.5~-;Boneless thigh~=thigh~1.4~-;Free range~=free range~1.8~g;Whole~=whole~0.95~-
+B143|meat|Chicken (processed)|chicken|g|250/500|45|Sausages~salt~1.0~-;Marinated tikka~curd,red chilli powder,salt~1.3~-
+B144|meat|Mutton|mutton|g|500/1000|72|Curry cut~=curry cut~1.0~-;Boneless~=boneless~1.4~-;Keema~=keema~1.1~-
+B145|meat|Fish (freshwater)|fish|g|500/1000|22|Rohu~=rohu~1.0~-;Catla~=catla~1.0~-;Pangasius fillet~=fillet~1.1~-
+B146|meat|Fish (sea)|fish|g|250/500|45|Pomfret~=pomfret~1.6~g;Surmai (kingfish)~=surmai~1.3~-;Bombil~=bombil~0.9~-;Salmon fillet~=salmon~2.8~g
+B147|meat|Prawns|prawns|g|250/500|60|Medium cleaned~=medium~1.0~-;Jumbo~=jumbo~1.5~g
+B148|meat|Pork|pork|g|500|30|Curry cut~=curry cut~1.0~-
+B149|meat|Cold cuts|chicken|g|100/200|50|Chicken salami~salt~1.0~-;Chicken ham~salt,=ham~1.1~-
+B150|meat|Egg bhurji mix (frozen)|egg|g|200|25|Plain~onion,salt~1.0~-
+B151|protein|Tofu|tofu|g|200/400|28|Firm~=firm~1.0~-;Soft~=soft~0.95~-;Smoked~=smoked~1.4~g;Organic~=firm~1.7~o
+B152|protein|Soy sauce|soy sauce|ml|150/500|11|Light~=light~1.0~-;Dark~=dark~1.0~-;Gluten-free~=gluten free~1.5~g
+B153|protein|Whey protein|whey protein|g|500/1000|280|Unflavoured~=unflavoured~1.0~-;Chocolate~sugar~1.0~-;Plant protein~soy chunks,peanut~1.1~-
+B154|protein|Protein bars|peanut|pc|1/6|60|Nut~almond,honey~1.0~-;Whey~whey protein,honey~1.2~-;Plant~soy chunks,jaggery~1.1~-
+B155|protein|Gelatin|gelatin|g|50|90|Animal~=animal~1.0~-
+B156|beverages|Tea|tea leaves|g|250/500|35|CTC~=ctc~1.0~-;Assam premium~=assam~1.5~g;Darjeeling~=darjeeling~2.5~g;Green tea~=green~1.8~-;Masala chai~cardamom,ginger,cloves~1.3~-
+B157|beverages|Coffee|coffee|g|100/200|90|Instant~=instant~1.0~-;Filter coffee blend~chicory~0.9~-;Arabica ground~=arabica~1.8~g;Instant with milk powder~milk,sugar~1.0~-
+B158|beverages|Packaged juice|orange|ml|200/1000|9|Orange~=orange,sugar~1.0~-;Mango~mango,sugar~1.0~-;Apple~apple,sugar~1.05~-;Mixed fruit~apple,mango,sugar~1.05~-;100% no added sugar~=orange,=nosugar~1.5~g
+B159|beverages|Coconut water|coconut|ml|200/1000|9|Tender~=tender~1.0~-;Flavoured~lemon,sugar~1.1~-
+B160|beverages|Soft drinks|sugar|ml|250/750/2000|4.5|Cola~water,sugar~1.0~-;Lemon soda~lemon,sugar~1.0~-;Zero sugar~stevia~1.1~-
+B161|beverages|Sparkling water|water|ml|250/750|8|Plain~=plain~1.0~-;Cucumber~cucumber~1.3~g
+B162|beverages|Drinking water|water|ml|500/1000/20000|1.2|Packaged~=packaged~1.0~-;Mineral~=mineral~1.4~-;Alkaline~=alkaline~1.8~g
+B163|beverages|Lemonade mix|lemon|g|200/500|18|Sweet~sugar~1.0~-;Masala~sugar,black salt,cumin~1.1~-
+B164|beverages|Energy drink|sugar|ml|250|20|Regular~water,sugar~1.0~-;Sugar free~stevia~1.1~-
+B165|beverages|Thandai mix|almond|g|100/200|50|Regular~sugar,cardamom,black pepper,fennel seeds~1.0~-
+B166|beverages|Wine|wine|ml|750|120|Red~=red~1.0~g;White~=white~1.0~g
+B167|beverages|Beer|beer|ml|330/500|18|Lager~=lager~1.0~-

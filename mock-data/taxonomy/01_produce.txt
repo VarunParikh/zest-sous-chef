@@ -1,0 +1,50 @@
+B001|vegetables|Onion|onion|g|500/1000/2000|4|Red~=red~1.0~-;White~=white~1.1~-;Small (sambar)~=small~1.4~-;Organic red~=red~1.6~o
+B002|vegetables|Potato|potato|g|500/1000/2000|3.5|Regular~=table~1.0~-;New (washed)~=new,=washed~1.2~-;Baby~=baby~1.8~g;Organic~=table~1.7~o
+B003|vegetables|Tomato|tomato|g|250/500/1000|5|Hybrid~=hybrid~1.0~-;Desi~=desi~1.3~-;Cherry~=cherry~2.5~g;Organic~=desi~1.8~o
+B004|vegetables|Garlic|garlic|g|100/250/500|18|Regular~=regular~1.0~-;Peeled~=peeled~1.5~-;Organic~=regular~1.8~o
+B005|vegetables|Ginger|ginger|g|100/250/500|12|Fresh~=fresh~1.0~-;Peeled~=peeled~1.4~-;Organic~=fresh~1.8~o
+B006|vegetables|Spinach|spinach|g|250/500|6|Loose bunch~=bunch~1.0~-;Washed baby~=baby,=washed~1.8~g;Organic~=bunch~1.7~o
+B007|vegetables|Coriander leaves|coriander leaves|g|100/250|9|Bunch~=bunch~1.0~-;Washed~=washed~1.3~-;Organic~=bunch~1.8~o
+B008|vegetables|Mint|mint|g|50/100|12|Bunch~=bunch~1.0~-;Washed~=washed~1.3~-
+B009|vegetables|Green chilli|green chilli|g|100/250|14|Regular~=regular~1.0~-;Bhavnagri (mild)~=mild~1.3~-;Jwala (hot)~=hot~1.2~-
+B010|vegetables|Capsicum|capsicum|g|250/500|8|Green~=green~1.0~-;Red~=red~2.4~g;Yellow~=yellow~2.4~g;Mixed trio~=green,=red,=yellow~2.2~g
+B011|vegetables|Cauliflower|cauliflower|pc|1|40|Regular~=regular~1.0~-;Cut florets~=florets~1.5~-;Organic~=regular~1.7~o
+B012|vegetables|Green peas|green peas|g|250/500|9|Fresh pods~=fresh~1.0~-;Shelled~=shelled~1.4~-;Frozen~=frozen~1.2~-
+B013|vegetables|Cabbage|cabbage|pc|1|30|Green~=green~1.0~-;Red~=red~2.0~g;Shredded~=shredded~1.5~-
+B014|vegetables|Cucumber|cucumber|g|250/500|5|Regular~=regular~1.0~-;English seedless~=seedless~1.9~g;Organic~=regular~1.7~o
+B015|vegetables|Carrot|carrot|g|250/500/1000|6|Orange~=orange~1.0~-;Red (gajar halwa)~=red~1.3~-;Baby~=baby~2.0~g;Organic~=orange~1.7~o
+B016|vegetables|Beetroot|beetroot|g|250/500|5|Regular~=regular~1.0~-;Organic~=regular~1.8~o;Peeled cubes~=cubes~1.8~-
+B017|vegetables|Radish|radish|g|250/500|4|White mooli~=white~1.0~-;Red~=red~1.6~g
+B018|vegetables|Sweet potato|sweet potato|g|250/500|7|Red skin~=red~1.0~-;Purple~=purple~1.6~g;Organic~=red~1.7~o
+B019|vegetables|Raw banana|raw banana|pc|2/4|10|Regular~=regular~1.0~-;Peeled~=peeled~1.6~-
+B020|vegetables|Mushroom|mushroom|g|200/400|20|Button~=button~1.0~-;Oyster~=oyster~1.5~g;Shiitake~=shiitake~3.0~g;Organic button~=button~1.8~o
+B021|vegetables|Okra (bhindi)|okra|g|250/500|8|Regular~=regular~1.0~-;Tender small~=small~1.4~-;Organic~=regular~1.8~o
+B022|vegetables|Brinjal|brinjal|g|250/500|6|Long purple~=long~1.0~-;Round (bharta)~=round~1.1~-;Baby~=baby~1.6~-
+B023|vegetables|Bottle gourd (lauki)|bottle gourd|pc|1|25|Regular~=regular~1.0~-;Cut~=cut~1.4~-
+B024|vegetables|Bitter gourd (karela)|bitter gourd|g|250/500|7|Regular~=regular~1.0~-;Small~=small~1.2~-
+B025|vegetables|Ridge gourd (turai)|ridge gourd|g|250/500|7|Regular~=regular~1.0~-
+B026|vegetables|Pumpkin|pumpkin|g|500/1000|4|Yellow~=yellow~1.0~-;Cut~=cut~1.4~-
+B027|vegetables|French beans|french beans|g|250/500|9|Regular~=regular~1.0~-;Cut~=cut~1.4~-;Organic~=regular~1.8~o
+B028|vegetables|Drumstick|drumstick|g|250/500|14|Regular~=regular~1.0~-;Cut pieces~=cut~1.3~-
+B029|vegetables|Spring onion|spring onion|g|100/250|10|Bunch~=bunch~1.0~-;Washed~=washed~1.3~-
+B030|vegetables|Curry leaves|curry leaves|g|25/50|20|Fresh sprig~=fresh~1.0~-;Organic~=fresh~1.7~o
+B031|vegetables|Lemon|lemon|pc|4/6/12|5|Regular~=regular~1.0~-;Seedless~=seedless~1.4~-;Organic~=regular~1.8~o
+B032|vegetables|Lettuce|lettuce|g|150/250|16|Iceberg~=iceberg~1.0~-;Romaine~=romaine~1.4~g;Mixed leaves~=mixed~1.8~g
+B033|vegetables|Avocado|avocado|pc|1/2|90|Hass~=hass~1.0~g;Local green~=local~0.6~-
+B034|vegetables|Parsley|parsley|g|50/100|25|Flat leaf~=flat~1.0~g;Curly~=curly~0.9~g
+B035|vegetables|Broccoli|broccoli|g|250/500|14|Regular~=regular~1.0~-;Florets~=florets~1.4~-;Organic~=regular~1.8~o
+B036|vegetables|Corn|corn|pc|2/4|12|Sweet corn cob~=cob~1.0~-;Baby corn~=baby~2.0~-;Frozen kernels~=kernels,=frozen~1.5~-
+B037|fruits|Banana|banana|g|500/1000|6|Robusta~=robusta~1.0~-;Elaichi (small)~=elaichi~1.8~g;Raw for chips~=raw~0.8~-
+B038|fruits|Apple|apple|g|500/1000|20|Shimla~=shimla~1.0~-;Fuji~=fuji~1.4~g;Organic~=shimla~1.7~o
+B039|fruits|Mango|mango|g|500/1000|12|Alphonso~=alphonso~4.0~g;Kesar~=kesar~2.5~g;Totapuri~=totapuri~1.0~-
+B040|fruits|Orange|orange|g|500/1000|9|Nagpur~=nagpur~1.0~-;Kinnow~=kinnow~0.9~-;Imported navel~=navel~2.4~g
+B041|fruits|Pomegranate|pomegranate|g|500/1000|18|Bhagwa~=bhagwa~1.0~-;Arils (ready)~=arils~3.0~g
+B042|fruits|Papaya|papaya|g|500/1000|5|Regular~=regular~1.0~-;Cut~=cut~1.6~-
+B043|fruits|Watermelon|watermelon|g|1000/2000|3|Regular~=regular~1.0~-;Seedless~=seedless~1.7~g;Cut pack~=cut~1.8~-
+B044|fruits|Grapes|grapes|g|250/500|14|Green seedless~=green~1.0~-;Black seedless~=black~1.2~-;Red globe~=red~1.5~g
+B045|fruits|Strawberry|strawberry|g|200/250|30|Regular~=regular~1.0~-;Organic~=regular~1.8~o
+B046|fruits|Pineapple|pineapple|pc|1|50|Whole~=whole~1.0~-;Cut~=cut~1.6~-
+B047|fruits|Pear|pear|g|500/1000|18|Regular~=regular~1.0~-;Imported~=imported~1.6~g
+B048|fruits|Coconut|coconut|pc|1/2|30|Fresh whole~=whole~1.0~-;Tender (water)~=tender~1.4~-;Dry copra~=dry~1.3~-
+B049|fruits|Blueberries|blueberries|g|125/250|60|Fresh~=fresh~1.0~g;Frozen~=frozen~0.7~-
+B050|fruits|Sweet lime (mosambi)|mosambi|g|500/1000|8|Regular~=regular~1.0~-

@@ -1,0 +1,52 @@
+B077|grains|Rice (everyday)|rice|g|1000/5000/10000|7|Sona masoori~=sona masoori~1.0~-;Ponni~=ponni~1.0~-;Idli rice~=idli~0.95~-;Parboiled~=parboiled~1.0~-;Organic~=sona masoori~1.8~o
+B078|grains|Basmati rice|basmati rice|g|1000/5000|14|Regular~=regular~1.0~-;Aged premium~=aged~1.6~g;Organic~=regular~1.7~o;Brown~=brown~1.2~-
+B079|grains|Brown and specialty rice|brown rice|g|500/1000|10|Brown~=brown~1.0~-;Red~=red~1.3~-;Black (forbidden)~=black~2.0~g;Arborio~=arborio~2.2~g
+B080|grains|Wheat flour (atta)|wheat flour|g|1000/5000|5.5|Whole wheat~=whole~1.0~-;Multigrain~oats,gram flour~1.4~-;Organic~=whole~1.7~o;Sharbati~=sharbati~1.3~g
+B081|grains|Refined flour (maida)|refined flour|g|500/1000|4.5|Plain~=plain~1.0~-;Fortified~=fortified~1.1~-
+B082|grains|Semolina (rava)|semolina|g|500/1000|5|Fine~=fine~1.0~-;Bombay~=bombay~1.05~-;Roasted~=roasted~1.2~-
+B083|grains|Gram flour (besan)|gram flour|g|500/1000|9|Regular~=regular~1.0~-;Coarse~=coarse~1.0~-;Organic~=regular~1.8~o
+B084|grains|Poha|flattened rice|g|500/1000|7|Thin~=thin~1.0~-;Thick~=thick~1.0~-;Red~=red~1.4~g
+B085|grains|Sabudana|tapioca pearls|g|250/500|11|Small~=small~1.0~-;Large~=large~1.1~-
+B086|grains|Oats|oats|g|500/1000|13|Rolled~=rolled~1.0~-;Instant~=instant~1.1~-;Steel cut~=steel~1.5~g;Flavoured masala~salt,turmeric~1.2~-
+B087|grains|Millets|millet|g|500|10|Ragi~=ragi~1.0~-;Bajra~=bajra~0.9~-;Jowar~=jowar~0.9~-;Foxtail~=foxtail~1.3~g
+B088|grains|Quinoa|quinoa|g|250/500|45|White~=white~1.0~g;Tri-colour~=tricolour~1.2~g
+B089|grains|Vermicelli|refined flour|g|200/400|8|Plain~=plain~1.0~-;Roasted~=roasted~1.1~-;Wheat~wheat flour~1.15~-
+B090|grains|Pasta|pasta|g|200/500|18|Penne~=penne~1.0~-;Spaghetti~=spaghetti~1.0~-;Whole wheat~=whole wheat~1.3~-;Egg pasta~egg~1.5~g
+B091|grains|Noodles|refined flour|g|150/400|12|Hakka~=hakka~1.0~-;Instant masala~salt,turmeric,sunflower oil~0.9~-;Rice noodles~rice~1.2~-
+B092|pulses|Toor dal|toor dal|g|500/1000|13|Regular~=regular~1.0~-;Unpolished~=unpolished~1.2~-;Organic~=regular~1.8~o
+B093|pulses|Moong dal|moong dal|g|500/1000|12|Split yellow~=yellow~1.0~-;Whole green~=green~1.0~-;Organic~=yellow~1.8~o
+B094|pulses|Urad dal|urad dal|g|500/1000|14|Whole black~=black~1.0~-;Split white~=white~1.05~-;Organic~=white~1.8~o
+B095|pulses|Chana dal|chana dal|g|500/1000|10|Regular~=regular~1.0~-;Organic~=regular~1.8~o
+B096|pulses|Masoor dal|masoor dal|g|500/1000|9|Red split~=red~1.0~-;Whole~=whole~1.0~-
+B097|pulses|Kidney beans (rajma)|kidney beans|g|500/1000|13|Jammu~=jammu~1.3~g;Red~=red~1.0~-;Chitra~=chitra~1.1~-
+B098|pulses|Chickpeas (chole)|chickpeas|g|500/1000|10|Kabuli~=kabuli~1.0~-;Kala chana~=black~0.9~-;Canned boiled~=canned~1.8~-
+B099|pulses|Green peas dried|green peas|g|500|8|Dried white~=dried~1.0~-;Dried green~=green~1.0~-
+B100|pulses|Soya chunks|soy chunks|g|200/500|11|Plain~=plain~1.0~-;Granules~=granules~1.0~-
+B101|pulses|Black eyed beans (lobia)|cowpea|g|500|10|Regular~=regular~1.0~-
+B102|spices|Turmeric powder|turmeric|g|100/200/500|14|Regular~=regular~1.0~-;High curcumin~=high curcumin~1.5~g;Organic~=regular~1.8~o
+B103|spices|Cumin (jeera)|cumin|g|100/200|35|Whole~=whole~1.0~-;Powder~=powder~1.1~-
+B104|spices|Coriander powder|coriander powder|g|100/200|14|Regular~=regular~1.0~-;Organic~=regular~1.8~o
+B105|spices|Red chilli powder|red chilli powder|g|100/200/500|22|Regular~=regular~1.0~-;Kashmiri (mild)~=kashmiri~1.5~g;Guntur (hot)~=guntur~1.1~-
+B106|spices|Garam masala|garam masala|g|50/100|60|Regular~=regular~1.0~-;Premium~=premium~1.6~g;No onion no garlic~=jain~1.1~-
+B107|spices|Black pepper|black pepper|g|50/100|90|Whole~=whole~1.0~-;Powder~=powder~1.0~-;Tellicherry~=tellicherry~1.6~g
+B108|spices|Cardamom|cardamom|g|25/50|160|Green~=green~1.0~-;Large black~=black~0.6~-
+B109|spices|Cloves|cloves|g|25/50|85|Whole~=whole~1.0~-
+B110|spices|Cinnamon|cinnamon|g|25/50|40|Stick~=stick~1.0~-;Powder~=powder~0.9~-
+B111|spices|Bay leaf|bay leaf|g|10/25|40|Whole~=whole~1.0~-
+B112|spices|Mustard seeds|mustard seeds|g|100/200|16|Black~=black~1.0~-;Yellow~=yellow~0.9~-
+B113|spices|Asafoetida (hing)|asafoetida|g|10/50|230|Powder~=powder~1.0~-;Compounded~=compounded,wheat flour~0.7~-;Gluten-free~=gluten free,rice~0.8~-
+B114|spices|Kasuri methi|fenugreek leaves|g|25/50|45|Dried~=dried~1.0~-
+B115|spices|Saffron|saffron|g|0.5/1|9000|Kashmiri~=kashmiri~1.0~g;Spanish~=spanish~0.8~g
+B116|spices|Fennel seeds|fennel seeds|g|100/200|22|Regular~=regular~1.0~-;Lucknowi~=lucknowi~1.6~g
+B117|spices|Chaat masala|chaat masala|g|50/100|40|Regular~salt,cumin,coriander powder~1.0~-
+B118|spices|Pav bhaji masala|pav bhaji masala|g|50/100|35|Regular~=regular~1.0~-;Jain~=jain~1.1~-
+B119|spices|Biryani masala|garam masala|g|50/100|45|Regular~cardamom,cloves,cinnamon,bay leaf~1.0~-
+B120|spices|Sambar powder|coriander powder|g|100/200|20|Regular~toor dal,red chilli powder,fenugreek leaves~1.0~-
+B121|spices|Rasam powder|coriander powder|g|100|22|Regular~black pepper,cumin,red chilli powder~1.0~-
+B122|spices|Tea masala|cardamom|g|50|60|Regular~ginger,cloves,cinnamon~1.0~-
+B123|spices|Black salt|black salt|g|100/200|10|Powder~=powder~1.0~-
+B124|spices|Tamarind|tamarind|g|200/500|14|Block~=block~1.0~-;Paste~=paste~1.3~-
+B125|spices|Dried red chilli|red chilli powder|g|50/100|25|Whole~=whole~1.0~-
+B126|spices|Poppy seeds|poppy seeds|g|50/100|60|White~=white~1.0~-
+B127|spices|Carom seeds (ajwain)|carom seeds|g|50/100|28|Regular~=regular~1.0~-
+B128|spices|Fenugreek seeds (methi)|fenugreek seeds|g|100/200|12|Regular~=regular~1.0~-

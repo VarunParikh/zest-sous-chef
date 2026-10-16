@@ -1,0 +1,57 @@
+B168|breakfast|Corn flakes|corn|g|250/500|35|Plain~sugar,salt~1.0~-;Honey~sugar,honey~1.1~-;Muesli~oats,almond,honey~1.5~g
+B169|breakfast|Granola|oats|g|250/500|60|Honey almond~honey,almond~1.0~g;No added sugar~almond,peanut~1.1~g;Chocolate~sugar,almond~1.1~g
+B170|breakfast|Peanut butter|peanut|g|200/350/1000|38|Creamy~sugar,salt~1.0~-;Crunchy~sugar,salt,=crunchy~1.0~-;Natural~=natural~1.3~g
+B171|breakfast|Jam|sugar|g|200/500|22|Mixed fruit~apple,mango~1.0~-;Strawberry~strawberry~1.1~-;Sugar-free~stevia~1.3~-
+B172|breakfast|Chocolate spread|sugar|g|200/350|45|Hazelnut~hazelnut,milk~1.0~-;Dark~milk~1.1~g
+B173|breakfast|Instant poha mix|flattened rice|g|80/200|18|Masala~salt,turmeric,peanut~1.0~-
+B174|breakfast|Instant upma mix|semolina|g|80/200|16|Vegetable~salt,carrot,green peas~1.0~-
+B175|breakfast|Idli dosa batter|rice|g|500/1000|9|Plain~urad dal,salt~1.0~-;Ragi~millet,urad dal~1.2~-
+B176|snacks|Potato chips|potato|g|50/100/200|35|Salted~sunflower oil,salt~1.0~-;Masala~sunflower oil,salt,red chilli powder~1.0~-;Baked~salt~1.3~-
+B177|snacks|Namkeen mix|gram flour|g|200/400|28|Bhujia~sunflower oil,salt~1.0~-;Moong dal~moong dal,sunflower oil,salt~1.05~-;Chivda~flattened rice,peanut,sunflower oil~1.0~-
+B178|snacks|Roasted chana|chickpeas|g|100/200|18|Salted~salt~1.0~-;Masala~salt,red chilli powder~1.0~-
+B179|snacks|Makhana|makhana|g|50/100|85|Plain~=plain~1.0~g;Peri peri~sunflower oil,salt,red chilli powder~1.1~g
+B180|snacks|Biscuits|refined flour|g|75/200|25|Glucose~sugar,palm oil~1.0~-;Digestive~wheat flour,sugar,palm oil~1.2~-;Cream~sugar,palm oil,milk~1.1~-
+B181|snacks|Dark chocolate|sugar|g|50/100|140|55%~cocoa~1.0~g;70%~cocoa,=70~1.15~g;Sugar free~cocoa,stevia~1.3~g
+B182|snacks|Popcorn kernels|corn|g|200/500|18|Plain~=plain~1.0~-;Microwave butter~butter,salt~1.4~-
+B183|snacks|Papad|urad dal|g|100/200|45|Plain~salt,black pepper~1.0~-;Masala~salt,red chilli powder,asafoetida~1.1~-;Ragi~millet,salt~1.2~-
+B184|snacks|Khakhra|wheat flour|g|200/400|22|Plain~sunflower oil,salt~1.0~-;Methi~fenugreek leaves,sunflower oil,salt~1.05~-;Jain~sunflower oil,salt,=jain~1.1~-
+B185|sauces|Tomato ketchup|tomato|g|200/500/1000|12|Regular~sugar,vinegar,salt~1.0~-;No onion no garlic~sugar,vinegar,salt,=jain~1.1~-;Low sugar~vinegar,salt,stevia~1.2~-
+B186|sauces|Green chutney|mint|g|100/200|20|Mint coriander~coriander leaves,green chilli,salt,lemon~1.0~-
+B187|sauces|Pickle|lemon|g|200/500|22|Lemon~salt,red chilli powder,mustard oil~1.0~-;Mango~mango,salt,red chilli powder,mustard oil~1.0~-;Mixed veg~carrot,cauliflower,salt,mustard oil~1.0~-;Garlic~garlic,salt,mustard oil~1.05~-
+B188|sauces|Mayonnaise|egg|g|100/250|28|Egg based~sunflower oil,vinegar,salt~1.0~-;Eggless~sunflower oil,vinegar,milk~1.0~-;Vegan~sunflower oil,vinegar,soy~1.2~-
+B189|sauces|Ginger garlic paste|ginger|g|200/500|18|Classic~garlic,salt~1.0~-;Onion garlic ginger~garlic,onion,salt~1.0~-
+B190|sauces|Tomato puree|tomato|g|200/500|14|Plain~salt~1.0~-;With onion~onion,salt~1.0~-
+B191|sauces|Pasta sauce|tomato|g|200/400|28|Arrabbiata~garlic,olive oil,red chilli powder~1.0~-;Alfredo~cream,butter,parmesan~1.25~g;Pesto~olive oil,parmesan,garlic~1.5~g
+B192|sauces|Vinegar|vinegar|ml|200/500|9|White~=white~1.0~-;Apple cider~=apple cider~1.6~g;Balsamic~=balsamic~2.0~g
+B193|sauces|Hot sauce|green chilli|ml|60/200|40|Red chilli~vinegar,salt~1.0~-;Schezwan~garlic,soy sauce,vinegar~1.1~-
+B194|sauces|Vegetable stock cubes|vegetable stock|g|20/40|90|Plain~salt~1.0~-;With onion and garlic~onion,garlic,salt~1.0~-
+B195|sauces|Chicken stock|chicken|ml|250/500|55|Cube~salt~1.0~-
+B196|sauces|Baking essentials|baking soda|g|50/100|20|Baking soda~=soda~1.0~-;Baking powder~=powder~1.0~-;Dry yeast~yeast~1.8~-
+B197|nuts|Cashew|cashew|g|100/250/500|90|Whole W320~=whole~1.0~-;Broken~=broken~0.7~-;Roasted salted~salt~1.1~-
+B198|nuts|Almonds|almond|g|100/250/500|85|Raw~=raw~1.0~-;Roasted~=roasted~1.05~-;Organic~=raw~1.8~o
+B199|nuts|Peanuts|peanut|g|200/500|16|Raw~=raw~1.0~-;Roasted salted~salt~1.1~-
+B200|nuts|Walnuts|walnut|g|100/250|120|Halves~=halves~1.0~g
+B201|nuts|Raisins|raisin|g|100/250|50|Seedless~=seedless~1.0~-;Black~=black~1.1~-
+B202|nuts|Dates|dates|g|250/500|35|Medjool~=medjool~2.5~g;Regular~=regular~1.0~-
+B203|nuts|Pistachios|pistachio|g|100/200|150|Raw~=raw~1.0~g;Roasted salted~salt~1.1~g
+B204|nuts|Seeds mix|sesame seeds|g|100/200|35|Sesame~=sesame~1.0~-;Chia~chia~1.8~g;Flax~flax~1.2~g;Pumpkin~pumpkin seeds~1.6~g
+B205|nuts|Desiccated coconut|coconut|g|100/200|22|Fine~=fine~1.0~-;Chips~=chips~1.2~-
+B206|frozen|Frozen green peas|green peas|g|500/1000|11|Regular~=regular~1.0~-
+B207|frozen|Frozen mixed vegetables|carrot|g|500/1000|13|Regular~green peas,french beans,corn~1.0~-
+B208|frozen|Frozen parathas|wheat flour|pc|4/8|10|Plain~sunflower oil,salt~1.0~-;Aloo~potato,sunflower oil,salt~1.1~-;Paneer~paneer,sunflower oil,salt~1.3~-
+B209|frozen|Frozen fries|potato|g|400/750|20|Regular~sunflower oil,salt~1.0~-;Masala~sunflower oil,salt,red chilli powder~1.05~-
+B210|frozen|Ice cream|milk|ml|100/500/1000|28|Vanilla~cream,sugar~1.0~-;Mango~cream,sugar,mango~1.05~-;Eggless chocolate~cream,sugar,cocoa~1.1~-;Dairy-free~coconut,sugar~1.4~g
+B211|frozen|Frozen momos|refined flour|pc|8/12|12|Veg~cabbage,carrot,onion,garlic,sunflower oil~1.0~-;Chicken~chicken,onion,garlic,sunflower oil~1.2~-;Paneer~paneer,onion,garlic~1.2~-
+B212|frozen|Frozen kebabs|chicken|g|250/400|45|Veg seekh~potato,green peas,gram flour,salt~1.0~-;Chicken seekh~onion,garlic,salt~1.2~-
+B213|ready|Ready-to-eat meals|rice|g|250/300|22|Dal makhani~=dalmakhani,urad dal,butter,cream,salt~1.0~-;Veg biryani~basmati rice,carrot,green peas,onion,salt~1.0~-;Paneer butter masala~paneer,tomato,butter,cream,salt~1.2~-;Jain dal~toor dal,turmeric,salt,=jain~1.0~-
+B214|ready|Gulab jamun mix|khoya|g|100/200|35|Instant~milk,sugar,refined flour~1.0~-
+B215|ready|Instant noodles cup|refined flour|pc|1/4|20|Masala~salt,turmeric,sunflower oil~1.0~-;Veg~carrot,green peas,salt~1.1~-
+B216|ready|Soup mix|tomato|g|50/100|25|Tomato~salt,sugar~1.0~-;Sweet corn~corn,salt,sugar~1.0~-;Mushroom~mushroom,milk,salt~1.1~-
+B217|ready|Idli podi|chana dal|g|50/100|30|Classic~urad dal,red chilli powder,sesame seeds,salt~1.0~-;With garlic~urad dal,garlic,red chilli powder,salt~1.0~-
+B218|ready|Dosa chutney powder|coconut|g|50/100|28|Coconut~chana dal,red chilli powder,salt~1.0~-
+B219|household|Dish wash liquid|-|ml|250/500|10|Lemon~=nonfood~1.0~-
+B220|household|Floor cleaner|-|ml|500/1000|12|Pine~=nonfood~1.0~-
+B221|household|Kitchen towel|-|pc|2|45|Standard~=nonfood~1.0~-
+B222|household|Aluminium foil|-|pc|1|65|Standard~=nonfood~1.0~-
+B223|household|Garbage bags|-|pc|30|40|Medium~=nonfood~1.0~-
+B224|household|Matchbox|-|pc|10|3|Standard~=nonfood~1.0~-
