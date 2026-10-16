@@ -1,0 +1,22 @@
+{
+ "created": "2026-10-17",
+ "note": "Pre-registration manifest. Hashes prove the datasets did not change after commit. Do not edit a dataset after the first run without logging a post-hoc note.",
+ "files": {
+  "carts_v1.jsonl": {
+   "sha256": "afaaa6c1a186bfc5a248088259fb27004542e6a33475ad13d7bae9524dc11c1b",
+   "rows": 15
+  },
+  "guard_v1.jsonl": {
+   "sha256": "60581b2b9e0185816b1cd22992a45e3abc3f2ec08e7c28dc5c66b0a874d1851e",
+   "rows": 40
+  },
+  "recipes_v1.jsonl": {
+   "sha256": "dd20e562e934cc5069b4dfda3ec5195f17f7fd7956d0ff145502e688766b06af",
+   "rows": 10
+  },
+  "utterances_v1.jsonl": {
+   "sha256": "07d514fd976526924de95ed222f0eff74e83fd859cbecc84a68a2c78e15360cf",
+   "rows": 60
+  }
+ }
+}
