@@ -71,10 +71,14 @@ Could tier (UJ4, UJ16, UJ17, UJ24, UJ29): only if Must and Should are green.
 
 | Claim | Where used | Status | Action |
 |---|---|---|---|
-| Blinkit uses Microsoft generative AI for recipe pages | Research | Unsourced (supplied) | Find a public source or label "as supplied" |
-| Zepto has a recipe hub with festive collections | Research | Unsourced (supplied) | Same |
-| Swiggy Instamart exposes an MCP server for AI assistants | Research | Unsourced (supplied) | Same; it affects an MCP design decision |
-| JioMart has no prominent recipe-to-cart feature | Research | Unsourced (supplied) | Same |
+| Blinkit has recipe pages with ingredient ADD buttons | Research | Owner supplied two Blinkit recipe URLs; **could not be loaded in this session**, so unverified by us | Owner to confirm or add a screenshot |
+| Blinkit uses Microsoft generative AI for recipe pages | Research | **Unsourced**: the supplied Blinkit pages would not be expected to say this | Find a news or press source, or label "as supplied" |
+| Zepto has a recipe hub with festive collections | Research | **Unsourced**: the supplied Zepto page loaded empty; it is a product page for a recipe kit, which would not show a hub in any case | Find the hub page, or label "as supplied" |
+| Zepto sells recipe kits | Research | Owner supplied a kit product URL; page loaded empty, unverified by us | Owner to confirm |
+| Swiggy Instamart exposes an MCP server for AI assistants | Research | **Unsourced** (no source supplied) | Find Swiggy or Instamart documentation; it affects the MCP design decision |
+| Shopvora is a third-party recipe-to-cart tool powered by Swiggy Instamart, with filters for diet, budget per plate, region and meal time | Research (new) | **Verified** on the Shopvora recipes pages (page text; not independently confirmed with Swiggy) | Cite; use as an analogue |
+| JioMart recommends products from past purchasing habits | Research | **Verified** on the JioMart app page | Cite |
+| JioMart has no prominent recipe-to-cart feature | Research | **Partly supported**: the JioMart app page describes no recipe feature but does describe a shopping-list tool that fills the cart | Cite carefully; avoid "has no recipe feature" |
 | Gemini free tier content is used to improve Google products | Platforms, P9 | Verified on Google's pricing page | Cite |
 | `youtube-transcript-api` v1.2.4 and IP-blocking warning | Platforms | Verified on PyPI | Cite |
 | Burke 2002, Greshake 2023, Ji 2023, Mitchell 2019, Gebru 2021, Inan 2023, NIST AI RMF, OWASP LLM Top 10, DPDP Act 2023 | References | From knowledge | Check titles, years and DOIs |

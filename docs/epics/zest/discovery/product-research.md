@@ -1,7 +1,7 @@
 # Product Research: Zest AI Sous-Chef
 
 Status: DRAFT v0.1 (awaiting owner approval) · Date: 2026-10-16
-Basis: the owner-supplied market research (`market-research-source.md`), read against the product vision, Settings Panel and user journeys. No new web research was done for this version. The supplied file has **no source links**, so every market claim below is "as supplied" and must be sourced before it is stated as fact in an interview.
+Basis: the owner-supplied market research (`market-research-source.md`), read against the product vision, Settings Panel and user journeys. No new web research was done for this version. The supplied file itself has no source links. The owner later supplied six URLs (Blinkit x2, JioMart, Shopvora x2, Zepto), which we checked on 2026-10-17: the JioMart and Shopvora pages loaded and support some claims; the Blinkit and Zepto pages did not load in our session. See section 9 and the claims ledger in the Risk Register. Claims without a verified source stay labelled "as supplied" and must not be stated as fact in an interview.
 
 ## 1. Question and recommendation
 **Question:** Is a conversational, lever-driven recipe-to-cart assistant worth building, and where does it fit among Indian quick-commerce players?
@@ -84,5 +84,11 @@ Decision for the PRD:
 
 ## 9. Sources
 - Owner-supplied market research: `docs/epics/zest/discovery/market-research-source.md` (no links in the original).
+- Owner-supplied sources (accessed 2026-10-17):
+  - Jio. *JioMart app.* https://www.jio.com/apps/jiomart/ (loaded; supports purchase-history recommendations; describes a shopping-list tool, no recipe feature)
+  - Shopvora. *Recipes.* https://shopvora.in/recipes and https://shopvora.in/recipes?region=North+India (loaded; third-party recipe-to-cart tool powered by Swiggy Instamart, with diet, budget-per-plate, region and meal-time filters)
+  - Blinkit. *Breakfast boosters recipe.* https://blinkit.com/recipe/54319 and *Almond milk chia pudding recipe.* https://blinkit.com/recipe/51801 (did not load for us; unverified)
+  - Zepto. *Hidden Chefs kadai chicken masala kit.* https://www.zepto.com/pn/hidden-chefs-kadai-chicken-masala-kit-recipe-kit/pvid/c0b61844-96f9-448b-82c4-cefd79e56bab (loaded empty; unverified)
+- **New market observation:** Shopvora shows a "budget per plate" filter and a regional filter on top of Instamart. That supports Zest's cost-aware persona (P10) and suggests the cart budget gap noted in the Personas document is worth revisiting.
 - [R7] Burke, R. (2002). *Hybrid recommender systems: survey and experiments.* User Modeling and User-Adapted Interaction 12(4), 331–370 (cited from knowledge; verify before submission).
 - Project documents: `product-vision.md`, `RecommendationSettingsPanel.md`, `UserJourneys.md`.
