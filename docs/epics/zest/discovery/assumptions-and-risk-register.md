@@ -95,6 +95,7 @@ Each decision gets an ADR listing alternatives, the evidence, and the result. Ev
 | Vision approach | Gemini free tier vs local vision model | 15 sample photos: ingredient precision and recall, latency, failure rate | `verify/benchmarks/vision.md` |
 | Guard design | Rules only; rules plus classifier (Llama Guard candidate) | 40 prompts in English and Hinglish: block rate, false-positive rate | `verify/benchmarks/guard.md` |
 | Backend framework | FastAPI vs Node | Qualitative (fit with local-AI libraries), recorded in ADR | `design/adr/` |
+| Retrieval approach (ingredient to SKU, intent to dish) | Lexical plus synonym table; small local embedding model; hybrid of both | Recall at 5 on about 60 ingredient queries, including regional names (kothmir, kandha, batata), plus latency | `verify/benchmarks/retrieval.md` |
 | Weight handling | Normalise vs clamp | Lever-sensitivity test on personas | ADR plus test report |
 | Runtime MCP | Plain REST only; REST plus an MCP server over the mock store | **Decided by owner, 2026-10-17: no MCP; plain REST.** Rationale to record: scope, 3-day deadline, mock data only | ADR |
 | Dev-time tools | GitHub CLI vs a GitHub MCP; Playwright for UI tests | Setup effort and reliability | ADR |
