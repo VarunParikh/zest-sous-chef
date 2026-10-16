@@ -480,7 +480,8 @@ class CartLine(BaseModel):
 1. The `β0 = 0.30` value term, pool sizes, RRF constant and ambiguity margin are initial values to be tuned (Day-1 benchmark and the lever-sensitivity test).
 2. Whether to use a library for the lexical scorer (for example BM25) needs owner approval under G3; a simple token-overlap scorer needs no dependency.
 3. Nutrition values are illustrative, generated from base-product templates; they are not nutritional data.
-4. The ingredient lexicon (about 300 entries) must be curated before the generator runs. It is the highest-leverage file for guardrail correctness.
+4. The ingredient lexicon is the highest-leverage file for guardrail correctness. A starter set of 92 terms exists in `mock-data/ingredient_lexicon.csv` (owner chose the starter option, 2026-10-17); validator V4 will report every missing term when the generator runs, and the gaps are then filled. Its flags are simplified and need owner review (for example ginger as a root vegetable, mushroom as non-satvik).
+5. BM25 library approved in principle (G3); the exact package and version are confirmed at install and pinned (ADR-004).
 
 ## 17. Sources
 | Source | Used for | Link |
