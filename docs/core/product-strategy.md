@@ -71,13 +71,13 @@ Real JioMart or payment integration · real order tracking · accounts and login
 | **Local-first models** | Zero running cost, data stays on the laptop; trade-off is speed and accuracy |
 
 ## 8. Delivery strategy (3 days)
+The documents were completed before the build (decision of 2026-10-17), so the three build days now follow `docs/epics/zest/build-plan.md`:
 | Day | Focus |
 |---|---|
-| 1 | Foundation, discovery, requirements and design documents; repo; mock data |
-| 2 | Build Must journeys end to end (chat, catalogue, recommendation engine, cart UI) |
-| 3 | Should journeys, tests and evaluation, README, demo script, release notes |
-
-Docs lead the code, but we draft them in parallel waves so the build starts early on Day 2 at the latest.
+| 1 | Repo scaffold, mock data and validators, recommendation engine, retrieval, decision benchmarks |
+| 2 | Sessions, cart, flows (mood first), API, frontend, lever and persona evaluations |
+| 3 | End-to-end test, fault injection, latency, evidence report, README, demo script, limitations, rehearsals, publish |
+The plan, gates and cut order are in the build plan; this table is a summary.
 
 ## 9. Key strategic risks (details in the Risk Register)
 1. Local vision and LLM quality or speed on 16 GB RAM.

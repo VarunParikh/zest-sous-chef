@@ -149,13 +149,13 @@ Format: **US-xx** As a *persona*, I want *capability*, so that *benefit*. Covers
 ## Traceability matrix (objectives to stories)
 | Objective | BR | FR | Stories | AC | Tests |
 |---|---|---|---|---|---|
-| O1 Ranking divergence | BR lever effect | FR-01 to 08, 61 to 67, 111, 113 | US-01, 02, 17, 18, 37, 38, 39 | AC-01 to 03, 20, 36, 38 | Test Plan (TBD) |
-| O2 Constraint compliance | BR guardrails | FR-09, 60, 90 to 92, 15, 112, 116 | US-04, 07, 28 to 30, 37 | AC-04 to 06, 25, 37 | TBD |
-| O3 Data integrity | BR catalogue | FR-70 to 79, 83 | US-21 to 25 | AC-08, 14, 24, 28, 33 | TBD |
-| O4 Intent-to-cart accuracy | BR flows | FR-20 to 57, 110 | US-06, 08 to 16, 37 | AC-07, 09, 10, 16, 17, 26, 35 | TBD |
-| O5 Journey resilience | BR resilience | FR-10 to 12, 55, 117, NFR-02, 10 | US-05, 16, 34, 40 | AC-11, 15, 21 to 23, 40 | TBD |
-| O6 Responsiveness | BR performance | NFR-01, 10 | US-34 | Benchmark ADR | TBD |
-| O7 Traceability | BR governance | NFR-06 | US-35 | AC-34 | TBD |
-| O8 Responsible AI | BR responsibility | FR-07, 14, 15, 50, 51 | US-04, 07, 14 | AC-34 | TBD |
+| O1 Ranking divergence | BR-05 | FR-01 to 08, 61 to 67, 111, 113 | US-01, 02, 17, 18, 37, 38, 39 | AC-01 to 03, 20, 36, 38 | T-001 to 004, 030 to 038, 034; E6 |
+| O2 Constraint compliance | BR-06 | FR-09, 60, 90 to 92, 15, 112, 116 | US-04, 07, 28 to 30, 37 | AC-04 to 06, 25, 37 | T-010 to 022, 070 to 074; E7 |
+| O3 Data integrity | BR-08 | FR-70 to 79, 83 | US-21 to 25 | AC-08, 14, 24, 28, 33 | T-050 to 062, 100, 101; E8 |
+| O4 Intent-to-cart accuracy | BR-01, BR-03 | FR-20 to 57, 110 | US-06, 08 to 16, 37 | AC-07, 09, 10, 16, 17, 26, 35 | T-080 to 092; E9 |
+| O5 Journey resilience | BR-10, BR-14 | FR-10 to 12, 55, 117, NFR-02, 10 | US-05, 16, 34, 40 | AC-11, 15, 21 to 23, 40 | T-042, 070 to 072, 090, 091; E10 |
+| O6 Responsiveness | BR-13 | NFR-01, 10 | US-34 | Benchmark ADR | E1, E11 |
+| O7 Traceability | BR-12 | NFR-06 | US-35 | AC-34 | E14 |
+| O8 Responsible AI | BR-11 | FR-07, 14, 15, 50, 51 | US-04, 07, 14 | AC-34 | T-102, 103, 109; E3 |
 
-Exact BR identifiers (BR-01 to BR-14) are mapped in the BRD; the BR column here names the theme and will be replaced by IDs when the Test Plan is written. Coverage check: every FR above FR-92 appears in at least one story; FR-65 and FR-32 sit in Could stories.
+BR identifiers follow BRD section 9. Test IDs (T-xxx) are from the Test Plan and E-numbers from the Evaluation Plan. O6's AC cell is the benchmark ADR target, which is set on Day 1. Coverage check: every FR above FR-92 appears in at least one story; FR-65 and FR-32 sit in Could stories.

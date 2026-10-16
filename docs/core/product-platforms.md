@@ -30,10 +30,7 @@ A single provider interface with two implementations, chosen by `.env`:
 - Every LLM call returns schema-validated JSON. One retry, then fallback (Constitution G5).
 
 ## 3. Privacy implication of the Gemini free tier (important)
-Google's pricing page lists free-tier content as **used to improve its products**. That conflicts with Constitution P9 (photos processed locally). Options:
-1. Default vision to local Ollama; use Gemini only as an opt-in for the demo.
-2. Use Gemini, but only with sample photos supplied for the demo, never personal photos, and show a notice in the UI.
-This is logged as conflict C8. It needs your decision, because P9 can only be amended by you.
+Google's pricing page lists free-tier content as **used to improve its products**. That conflicted with Constitution P9 (photos processed locally). **Resolved by the owner on 2026-10-16 (conflict C8):** Gemini is used with user-uploaded photos, and P9 was amended with a pre-upload notice, EXIF stripping, no storage, a warning to testers, and a labelled sample-photo fallback (ADR-003). The local-vision option was dropped.
 
 ## 4. YouTube transcripts
 - `youtube-transcript-api` is unofficial. Its own documentation warns that YouTube blocks many cloud-provider IPs and can block self-hosted servers that make too many requests. Running on your own laptop at low volume is the best case, but it can still fail.
@@ -51,7 +48,7 @@ This is logged as conflict C8. It needs your decision, because P9 can only be am
 | Dataset | Content | Used by |
 |---|---|---|
 | Catalogue | At least 1,000 unique SKUs (unique by ingredient list and variant attributes) with category, ingredient list, diet tags, allergens, price, pack size, stock, gourmet/organic flags, category icons; a generated 5,000-SKU set for the scale benchmark | Cart, engine, retriever |
-| Dishes and recipes | About 25 Indian and international dishes with ingredients and quantities | Text and photo flows |
+| Dishes and recipes | About 34 dishes (Indian food and beverages, plus two clearly marked international edge-case dishes) with ingredients and quantities | Text, mood and photo flows |
 | Pairings | Co-occurrence table (for example Biryani and Raita) | Culinary pairing weight |
 | Trends | Time-of-week and weather multipliers | Trend lever |
 | Personas | Eligibility rules per diet and faith option | Guardrails |

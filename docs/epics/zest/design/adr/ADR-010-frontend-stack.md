@@ -21,7 +21,7 @@ The UI is a split screen with a lever panel, chat, a mobile-shaped cart window a
 | Next.js | Full-stack features | More than needed; server rendering not required |
 
 ## Decision
-Use React with Vite and Tailwind CSS. State management (a small store or React context) is decided at build time and recorded in the CHANGELOG.
+Use React with Vite, Tailwind CSS and **TypeScript** (approved by the owner on 2026-10-17, for typed API cards). State management (a small store or React context) is decided at build time and recorded in the CHANGELOG.
 
 ## Rationale
 It is the quickest route to a polished, testable split-screen UI.

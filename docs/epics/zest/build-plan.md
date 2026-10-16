@@ -40,7 +40,7 @@ Versions are pinned at install. Package names marked * must be confirmed on the 
 | Integrations | `google-genai`* | Gemini API client | Confirm the current official package name |
 | Testing | `pytest`, `pytest-playwright`, `coverage` | Tests, E2E, coverage | Test Plan |
 | Frontend | `react`, `react-dom`, `vite`, `tailwindcss` | UI | ADR-010 |
-| Frontend (decision) | `typescript` | Typed cards and API types | Recommended; owner to approve |
+| Frontend | `typescript` | Typed cards and API types | Owner approved 2026-10-17 |
 Anything else needs a separate ask.
 
 ## 5. Build order
@@ -116,7 +116,8 @@ Update the Risk Register scores, list the stories done and tests passing (real s
 Return for: a failed gate; any document conflict; writing README, Demo Script, Known Limitations and Prototyping Feedback from real results; the final evidence-report review; and a last consistency check (`doc-sync`) before publishing.
 
 ## 11. Open items for the owner
-1. Approve the dependency list (section 4), including TypeScript.
-2. Approve this plan.
-3. Confirm that publishing the input files in `docs/inputs/` (your design documents and two mockup images, about 9 MB) in the public repository is acceptable.
-4. Provide or approve images for the dish cards and sample photos (an open gap, OQ-7), or accept category icons only for the prototype.
+Decided on 2026-10-17: TypeScript approved; publishing `docs/inputs/` (design documents and two mockup images) in the public repository approved; images are category icons plus the owner's own phone photos for the sample set.
+Still needed from the owner:
+1. Approve the dependency list (section 4) and this plan, through the approval register (`docs/core/approval-register.md`).
+2. Supply the sample photos (about 6 for the app plus the 15 for the vision evaluation) and choose 3 to 4 real demo YouTube links.
+3. Choose a licence for the repository.
