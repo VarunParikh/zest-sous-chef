@@ -22,7 +22,7 @@ B149|meat|Cold cuts|chicken|g|100/200|50|Chicken salami~salt~1.0~-;Chicken ham~s
 B150|meat|Egg bhurji mix (frozen)|egg|g|200|25|Plain~onion,salt~1.0~-
 B151|protein|Tofu|tofu|g|200/400|28|Firm~=firm~1.0~-;Soft~=soft~0.95~-;Smoked~=smoked~1.4~g;Organic~=firm~1.7~o
 B152|protein|Soy sauce|soy sauce|ml|150/500|11|Light~=light~1.0~-;Dark~=dark~1.0~-;Gluten-free~=gluten free~1.5~g
-B153|protein|Whey protein|whey protein|g|500/1000|280|Unflavoured~=unflavoured~1.0~-;Chocolate~sugar~1.0~-;Plant protein~soy chunks,peanut~1.1~-
+B153|protein|Whey protein|whey protein|g|500/1000|280|Unflavoured~=unflavoured~1.0~-;Chocolate~sugar~1.0~-
 B154|protein|Protein bars|peanut|pc|1/6|60|Nut~almond,honey~1.0~-;Whey~whey protein,honey~1.2~-;Plant~soy chunks,jaggery~1.1~-
 B155|protein|Gelatin|gelatin|g|50|90|Animal~=animal~1.0~-
 B156|beverages|Tea|tea leaves|g|250/500|35|CTC~=ctc~1.0~-;Assam premium~=assam~1.5~g;Darjeeling~=darjeeling~2.5~g;Green tea~=green~1.8~-;Masala chai~cardamom,ginger,cloves~1.3~-

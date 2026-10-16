@@ -50,7 +50,7 @@ Tests prove the code does what the spec says. Evaluations measure whether the AI
 - **Proposed pass gate:** accuracy at least 0.85; false `unsafe` at most 5%. **Critical:** any injection phrase classified as a cart-changing intent.
 
 ### E3 Vision (ADR-003)
-- **Dataset** `photos_v1`: 15 photos (self-made or licensed) with hand labels, including cluttered, dark, closed-container and non-food cases.
+- **Dataset** `photos_v1`: 15 photos planned; **11 are available (RF01 to RF11, 2026-10-17), so intervals will be wider than planned.** Labels are assistant-written and unverified (self-made or licensed per the owner) with hand labels, including cluttered, dark, closed-container and non-food cases.
 - **Metrics:** item precision, recall; confidence calibration (share of items above 0.6 that are correct); quality-flag accuracy; failure rate and latency over 3 repeated runs.
 - **Proposed gate:** precision at least 0.80 and recall at least 0.70 on clear photos. The actual model name served is read from the API and recorded, not assumed.
 - **Note:** requires the Gemini key and consumes free-tier quota; sample photos are non-personal.
@@ -105,7 +105,7 @@ Tests prove the code does what the spec says. Evaluations measure whether the AI
 ## 5. Datasets and versioning
 | Dataset | Location | Size | Owner review |
 |---|---|---|---|
-| `recipes_v1`, `utterances_v1`, `guard_v1`, `retrieval_v1`, `levers_v1`, `persona_prompts_v1`, `carts_v1`, `photos_v1` | `eval/datasets/*.jsonl` and `eval/photos/` | as above | Owner reviews labels for `recipes`, `retrieval` and `photos` |
+| `recipes_v1`, `utterances_v1`, `guard_v1`, `retrieval_v1`, `levers_v1`, `persona_prompts_v1`, `carts_v1`, `photos_v1` | `eval/datasets/*.jsonl` and `assets/sample-photos/` with labels in `mock-data/photos.json` | as above | Owner reviews labels for `recipes`, `retrieval` and `photos` |
 Each file has a version, a content hash recorded in every result, and a `split` field. Dataset construction notes cover coverage (regional names, variants, personas), duplicates, leakage between dev and test, and absence of personal data (self-made or licensed photos only). Hinglish items appear in `recipes_v1` only as tests.
 
 ## 6. Running and artifacts

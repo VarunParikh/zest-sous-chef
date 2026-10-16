@@ -228,7 +228,7 @@ Temperature 0 and a fixed seed where the provider supports it (NFR-11). **No res
 | A3 | 10 recipe prompts (ADR-002), plus 2 Hinglish prompts used as **tests only** | Ingredient F1, quantity accuracy, schema validity |
 | A4 | 30 suggestions | Validator pass rate, template fallback rate |
 | A5 | 20 edit phrases | Accuracy |
-| A6 | 15 sample photos | Precision, recall, quality flag accuracy |
+| A6 | 15 sample photos (11 available on 2026-10-17) | Precision, recall, quality flag accuracy |
 Hinglish test prompts are in the evaluation set, not in the prompts, so the benchmark shows honestly how an English-only prompt copes with mixed input.
 
 ## 11. Responsible-AI notes

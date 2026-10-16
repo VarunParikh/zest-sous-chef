@@ -18,7 +18,7 @@ B184|snacks|Khakhra|wheat flour|g|200/400|22|Plain~sunflower oil,salt~1.0~-;Meth
 B185|sauces|Tomato ketchup|tomato|g|200/500/1000|12|Regular~sugar,vinegar,salt~1.0~-;No onion no garlic~sugar,vinegar,salt,=jain~1.1~-;Low sugar~vinegar,salt,stevia~1.2~-
 B186|sauces|Green chutney|mint|g|100/200|20|Mint coriander~coriander leaves,green chilli,salt,lemon~1.0~-
 B187|sauces|Pickle|lemon|g|200/500|22|Lemon~salt,red chilli powder,mustard oil~1.0~-;Mango~mango,salt,red chilli powder,mustard oil~1.0~-;Mixed veg~carrot,cauliflower,salt,mustard oil~1.0~-;Garlic~garlic,salt,mustard oil~1.05~-
-B188|sauces|Mayonnaise|egg|g|100/250|28|Egg based~sunflower oil,vinegar,salt~1.0~-;Eggless~sunflower oil,vinegar,milk~1.0~-;Vegan~sunflower oil,vinegar,soy~1.2~-
+B188|sauces|Mayonnaise|egg|g|100/250|28|Egg based~sunflower oil,vinegar,salt~1.0~-
 B189|sauces|Ginger garlic paste|ginger|g|200/500|18|Classic~garlic,salt~1.0~-;Onion garlic ginger~garlic,onion,salt~1.0~-
 B190|sauces|Tomato puree|tomato|g|200/500|14|Plain~salt~1.0~-;With onion~onion,salt~1.0~-
 B191|sauces|Pasta sauce|tomato|g|200/400|28|Arrabbiata~garlic,olive oil,red chilli powder~1.0~-;Alfredo~cream,butter,parmesan~1.25~g;Pesto~olive oil,parmesan,garlic~1.5~g
@@ -40,7 +40,7 @@ B206|frozen|Frozen green peas|green peas|g|500/1000|11|Regular~=regular~1.0~-
 B207|frozen|Frozen mixed vegetables|carrot|g|500/1000|13|Regular~green peas,french beans,corn~1.0~-
 B208|frozen|Frozen parathas|wheat flour|pc|4/8|10|Plain~sunflower oil,salt~1.0~-;Aloo~potato,sunflower oil,salt~1.1~-;Paneer~paneer,sunflower oil,salt~1.3~-
 B209|frozen|Frozen fries|potato|g|400/750|20|Regular~sunflower oil,salt~1.0~-;Masala~sunflower oil,salt,red chilli powder~1.05~-
-B210|frozen|Ice cream|milk|ml|100/500/1000|28|Vanilla~cream,sugar~1.0~-;Mango~cream,sugar,mango~1.05~-;Eggless chocolate~cream,sugar,cocoa~1.1~-;Dairy-free~coconut,sugar~1.4~g
+B210|frozen|Ice cream|milk|ml|100/500/1000|28|Vanilla~cream,sugar~1.0~-;Mango~cream,sugar,mango~1.05~-;Eggless chocolate~cream,sugar,cocoa~1.1~-
 B211|frozen|Frozen momos|refined flour|pc|8/12|12|Veg~cabbage,carrot,onion,garlic,sunflower oil~1.0~-;Chicken~chicken,onion,garlic,sunflower oil~1.2~-;Paneer~paneer,onion,garlic~1.2~-
 B212|frozen|Frozen kebabs|chicken|g|250/400|45|Veg seekh~potato,green peas,gram flour,salt~1.0~-;Chicken seekh~onion,garlic,salt~1.2~-
 B213|ready|Ready-to-eat meals|rice|g|250/300|22|Dal makhani~=dalmakhani,urad dal,butter,cream,salt~1.0~-;Veg biryani~basmati rice,carrot,green peas,onion,salt~1.0~-;Paneer butter masala~paneer,tomato,butter,cream,salt~1.2~-;Jain dal~toor dal,turmeric,salt,=jain~1.0~-

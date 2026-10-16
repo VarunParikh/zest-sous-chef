@@ -34,7 +34,7 @@ B257|fruits|Berries mixed|blueberries|g|125/250|55|Mixed fresh~=mixed,=fresh~1.0
 B258|fruits|Cut fruit bowls|apple|g|200/300|30|Seasonal mix~papaya,watermelon~1.0~-;Tropical~pineapple,mango,papaya~1.2~g;Apple and pomegranate~pomegranate~1.2~-;Melon mix~muskmelon,watermelon~1.0~-
 B259|fruits|Frozen fruit pulp|mango|g|250/500|22|Alphonso~=alphonso~2.0~g;Totapuri~=totapuri~1.0~-;Guava~guava~1.0~-;Chikoo~sapota~1.0~-
 B260|dairy|Flavoured milk|milk|ml|200/1000|8|Chocolate~cocoa,sugar~1.0~-;Strawberry~strawberry,sugar~1.0~-;Badam~almond,sugar~1.2~-;Kesar~saffron,sugar~1.3~g;Cold coffee~coffee,sugar~1.1~-
-B261|dairy|Paneer (specialty)|paneer|g|200/400|42|Smoked~=smoked~1.3~g;Peppered~black pepper~1.2~g;Low-fat protein~=protein~1.1~-;Vegan tofu-style~tofu~1.0~-
+B261|dairy|Paneer (specialty)|paneer|g|200/400|42|Smoked~=smoked~1.3~g;Peppered~black pepper~1.2~g;Low-fat protein~=protein~1.1~-;Hung-curd paneer~=hung curd~1.1~g
 B262|dairy|Cheese spread|cheese|g|180/400|28|Plain~=plain~1.0~-;Garlic herb~garlic,parsley~1.2~-;Cream cheese~cream~1.3~g;Pimento~capsicum~1.1~-
 B263|dairy|Shrikhand and desserts|curd|g|100/200|25|Elaichi shrikhand~sugar,cardamom~1.0~-;Mango shrikhand~sugar,mango~1.1~-;Kesar shrikhand~sugar,saffron~1.3~g;Rabri~milk,sugar,cardamom~1.2~-
 B264|dairy|Kulfi|milk|pc|2/4|20|Malai~cream,sugar,cardamom~1.0~-;Pista~cream,sugar,pistachio~1.3~g;Mango~cream,sugar,mango~1.1~-;Eggless chocolate~cream,sugar,cocoa~1.1~-
@@ -89,7 +89,7 @@ B312|spices|Whole garam spices pack|cloves|g|50/100|90|Biryani pack~cardamom,cin
 B313|oils|Rice bran oil|rice bran oil|ml|500/1000/5000|14|Refined~=refined~1.0~-;Physically refined~=physical~1.2~-;Fortified~=fortified~1.1~-;Organic~=refined~1.8~o
 B314|oils|Blended oils|sunflower oil|ml|500/1000|13|Sunflower and rice bran~rice bran oil~1.0~-;Sunflower and soy~soy~1.0~-;Palm blend~palm oil~0.8~-;Heart blend~olive oil~1.3~-
 B315|oils|Avocado and flaxseed oil|flax|ml|100/250|120|Avocado~avocado~1.3~g;Flaxseed~=oil~1.0~g;Walnut oil~walnut~1.4~g;Grapeseed~=grapeseed~1.2~g
-B316|oils|Ghee substitutes and spreads|butter|g|200/500|40|Margarine~palm oil,salt~0.7~-;Vanaspati~palm oil~0.6~-;Cooking butter~salt~1.0~-;Plant butter~coconut oil,salt~1.4~g
+B316|oils|Ghee substitutes and spreads|butter|g|200/500|40|Margarine~palm oil,salt~0.7~-;Vanaspati~palm oil~0.6~-;Cooking butter~salt~1.0~-
 B317|meat|Chicken (specialty cuts)|chicken|g|250/500|35|Wings~=wings~1.0~-;Drumsticks~=drumstick~1.0~-;Keema~=keema~1.1~-;Liver~=liver~0.7~-;Tikka boneless marinated~curd,red chilli powder,salt~1.3~-
 B318|meat|Mutton (specialty cuts)|mutton|g|250/500|80|Chops~=chops~1.2~g;Paya~=paya~0.7~-;Liver~=liver~0.8~-;Mince~=mince~1.05~-
 B319|meat|Fish (specialty)|fish|g|250/500|50|Tuna steak~=tuna~2.0~g;Mackerel (bangda)~=bangda~0.8~-;Crab~=crab~1.6~g;Squid~=squid~1.4~g;Sardine~=sardine~0.7~-
@@ -98,7 +98,7 @@ B321|meat|Sausages and bacon|pork|g|200/400|60|Pork sausage~salt~1.0~-;Pork baco
 B322|meat|Plant-based meat|soy chunks|g|200/400|50|Soy keema~=keema~1.0~-;Plant nuggets~soy,wheat flour~1.3~g;Jackfruit meat~jackfruit,salt~1.4~g;Seitan strips~wheat flour,soy sauce~1.4~g
 B323|beverages|Kokum and sharbat syrups|sugar|ml|500|18|Kokum~kokum~1.0~-;Rose~rose,=syrup~1.1~-;Khus~khus,=syrup~1.1~-;Jaljeera concentrate~cumin,black salt,mint~1.1~-;Orange squash~orange~1.0~-
 B324|beverages|Iced tea and cold coffee|tea leaves|ml|200/1000|10|Lemon iced tea~lemon,sugar~1.0~-;Peach iced tea~peach,sugar~1.05~-;Cold coffee~coffee,milk,sugar~1.2~-;Green iced tea~=green,sugar~1.1~-
-B325|beverages|Protein and health shakes|whey protein|ml|200/330|60|Chocolate whey~cocoa,milk~1.0~g;Vanilla whey~milk~1.0~g;Plant almond~almond,soy milk~1.1~g;Millet health drink~millet,jaggery~1.0~-
+B325|beverages|Protein and health shakes|whey protein|ml|200/330|60|Chocolate whey~cocoa,milk~1.0~g;Vanilla whey~milk~1.0~g;Millet health drink~millet,jaggery~1.0~-
 B326|beverages|Kombucha and fermented drinks|tea leaves|ml|250/330|55|Ginger kombucha~ginger,sugar~1.0~g;Kanji (carrot)~carrot,mustard seeds,salt~0.8~-;Kvass~=kvass~1.1~g;Probiotic soda~apple,sugar~1.1~g
 B327|beverages|Hot chocolate and malt mix|cocoa|g|200/500|35|Malted~milk powder,sugar~1.0~-;Dark hot chocolate~sugar~1.4~g;Turmeric golden milk~turmeric,milk powder,black pepper~1.3~g;Bournvita-style~milk powder,sugar,oats~1.1~-
 B328|beverages|Coffee (specialty)|coffee|g|100/250|120|Cold brew bags~=cold brew~1.2~g;Instant arabica~=instant arabica~1.4~g;Decaf~=decaf~1.3~g;Chicory filter mix~chicory~0.8~-
@@ -108,3 +108,10 @@ B331|snacks|Mithai and sweets|sugar|g|250/500|60|Rasgulla tin~milk,sugar~1.0~-;G
 B332|snacks|Chikki and energy bites|jaggery|g|100/250|35|Peanut chikki~peanut~1.0~-;Sesame chikki~sesame seeds~1.0~-;Dry fruit laddu~dates,almond,cashew~1.8~g;Makhana roasted bites~makhana,jaggery~1.5~g
 B333|snacks|Wafers and extruded snacks|potato|g|50/150|35|Banana wafers~raw banana,coconut oil,salt~1.0~-;Sabudana wafers~tapioca pearls,salt~1.0~-;Corn puffs~corn,palm oil,salt~0.9~-;Rice puffs masala~rice,palm oil,red chilli powder~0.9~-
 B334|snacks|Dry fruit and trail mixes|almond|g|100/250|90|Trail mix~raisin,cashew,peanut~1.0~-;Nutty fruit~dates,walnut,raisin~1.2~g;Diet mix~almond,pumpkin seeds~1.3~g;Roasted salted mix~cashew,almond,salt~1.1~-
+B335|dairy|Hard Italian-style cheese (vegetarian rennet)|cheese|g|50/100|110|Parmesan-style~=parmesan style,=veg rennet~1.0~g;Pecorino-style~=pecorino style,=veg rennet~1.1~g;Grana-style~=grana style,=veg rennet~1.05~g
+B336|dairy|Plant-based cream|coconut|ml|200/250|42|Coconut cream~=cream~1.0~-;Oat cream~oats~1.1~-;Soy cream~soy~1.0~-
+B337|protein|Plant protein powder|soy|g|500/1000|240|Soy isolate~=isolate~1.0~-;Soy and peanut blend~peanut~1.05~-
+B338|sauces|Eggless mayonnaise|sunflower oil|g|100/250|28|Eggless (milk-based)~vinegar,salt,milk~1.0~-;Vegan (soy-based)~vinegar,salt,soy milk~1.2~-;Garlic eggless~vinegar,salt,milk,garlic~1.1~-
+B339|frozen|Dairy-free ice cream|coconut|ml|100/500|45|Coconut vanilla~sugar~1.0~g;Almond~almond,sugar~1.1~g;Oat~oats,sugar~1.05~g
+B340|dairy|Plant butter|coconut oil|g|100/200|50|Plain~salt~1.0~g;Almond~almond,salt~1.2~g;Cashew~cashew,salt~1.2~g
+B341|protein|Plant protein shakes|almond|ml|200/330|55|Almond~soy milk~1.0~g;Soy~soy~1.0~g;Oat~oats,soy milk~1.05~g

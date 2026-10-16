@@ -47,7 +47,7 @@ Rollback: switch provider to the sample-photo path by config. Nothing is stored.
 ## Evidence to be measured on Day 1
 | Measure | Method |
 |---|---|
-| Ingredient precision and recall | 15 sample photos with hand labels |
+| Ingredient precision and recall | 15 sample photos (11 available on 2026-10-17) with hand labels |
 | Latency | Per-call time including upload |
 | Failure rate | Error and timeout count over repeated runs |
 | Model name actually used | Recorded from the API listing on the day (not assumed) |

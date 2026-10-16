@@ -21,7 +21,7 @@ Owner decision (2026-10-17): **lean test set.** Full coverage of the engine, car
 | End-to-end UI | **One** demo-path test in a real browser | Playwright (`pytest-playwright`) with `LLM_PROVIDER=fake` | Before each demo rehearsal |
 | Evaluation | Real model, Gemini, real embedder; measured, reported | `eval/` harness (Evaluation Plan) | Day 1 to 3 |
 | Manual rehearsal | Live model, live Gemini, live transcript, network-off | Checklist (section 9) | Day 2 evening, Day 3 morning |
-New dependencies awaiting owner approval under G3 (Pillow is approved): `pytest`, `httpx`, `pytest-playwright` and Playwright browsers, `coverage`.
+New dependencies approved by the owner on 2026-10-17 ("Approve all", build-plan section 4): `pytest`, `httpx`, `pytest-playwright` and Playwright browsers, `coverage`.
 
 ## 3. Test doubles and fixtures
 | Double | Behaviour |

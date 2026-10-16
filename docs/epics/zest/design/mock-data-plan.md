@@ -44,7 +44,7 @@ Mock data is built **in parallel with the remaining documents, but after the PRD
 
 ## 3a. How 1,000 unique SKUs are generated (owner decision, 2026-10-17)
 A unique **variant** is a distinct product defined by its **ingredient list and variant attributes**; a SKU is a variant in one pack size (data model section 4). This refines the earlier wording "product, brand and pack size", per the owner's clarification that uniqueness comes from the ingredient list. Examples: Bread splits into White, Brown, Wheat, Whole Wheat and High-Protein; Milk into Skimmed, Toned, Full Fat and Lactose-Free.
-1. **Taxonomy file (curated):** about 250 base products across the categories, each with allowed variant attributes and a rule for the ingredient list (a template per attribute).
+1. **Taxonomy file (curated; written 2026-10-17 in `mock-data/taxonomy/`: 341 base products, 1,023 variants):** originally planned at about 250 base products across the categories, each with allowed variant attributes and a rule for the ingredient list (a template per attribute).
 2. **Generator:** expands base products by variant, generic brand and pack size with a fixed seed, writing the ingredient list, tags, price within the category range and embedding text. The same taxonomy generates a 5,000-variant set for the scale test. About 280 base products at 3 to 4 variants each reach 1,000 variants.
 3. **Tag integrity:** diet, allergen and halal tags are computed from the ingredient list by rules, not typed by hand. Validators fail the build when a tag contradicts the list (risk R22).
 4. **Audit:** a random 10% of shipped SKUs (about 100 rows) is reviewed by the owner; the 5,000 set is checked by validators only.
@@ -52,6 +52,8 @@ A unique **variant** is a distinct product defined by its **ingredient list and 
 6. **Images:** category icons for SKUs (no 1,000 thumbnails); real images only for demo dishes. This closes OQ-7 for SKUs.
 
 ## 4. Dish list (Indian food and beverages, per owner direction 2026-10-17)
+
+> **Authority note (2026-10-17):** `mock-data/dishes.csv` (34 dishes) is the authoritative dish list. It differs from the plan below because it was built around the owner's demo videos and persona test prompts (for example it adds Mysore Rasam and Keto Chicken Salad; it has no Sushi, Kadai Paneer, Dal Makhani, Butter Chicken, Gajar Halwa or Garlic Butter Naan). **Open owner decision:** UJ10 (an unavailable ingredient) was to use Sushi. Options: (a) add a 35th dish, Sushi, whose key ingredients are deliberately absent from the catalogue; (b) use a scripted stock-out of a normal ingredient instead. Until decided, UJ10 and its tests use option (b).
 
 **Mains and sides (about 18):** Paneer Butter Masala, Kadai Paneer, Shahi Paneer, Palak Paneer, Dal Tadka with Jeera Rice, Dal Makhani, Rajma Chawal, Chole, Chicken Biryani, Veg Biryani, Butter Chicken, Chicken Tikka Masala, Veg Tikka Masala, Egg Curry, Goan Fish Curry, Moong Dal Khichdi, Garlic Butter Naan, Pav Bhaji (with a Jain variant).
 **Snacks and breakfast (about 6):** Paneer Tikka, Chicken Seekh Kebab, Sprout Salad, Poha, Masala Dosa, Sabudana Khichdi (fasting-friendly).
@@ -61,12 +63,14 @@ A unique **variant** is a distinct product defined by its **ingredient list and 
 
 **Two clearly marked international edge-case dishes (recommended, owner may veto):** Sushi (needed by UJ10, where exotic ingredients are unavailable) and Creamy Pasta (needed by the gourmet lever and persona P10, where imported items such as parmesan and truffle oil must be steerable). Without them, the "unavailable ingredient" and "gourmet" levers have nothing to act on.
 
-**Proposed demo set (to confirm):** Paneer Butter Masala (YouTube; matches the mockup), Garlic Butter Naan (shared-butter deduplication), Chicken Biryani with Boondi Raita (non-veg, halal persona, suggest-only pairing), Gajar Halwa (second link, dessert), plus one beverage prompt (for example "something cooling", leading to Sweet Lassi or Chaas) and a photo of paneer and capsicum leading to Kadai Paneer.
+**Superseded 2026-10-17 by the owner-chosen demo videos in `mock-data/videos.json` (V1 Mysore Rasam, V2 village chicken curry, V3 keto chicken salad, V4 vegetarian meal prep). The list below is the earlier proposal and is kept for history.**
+
+**Earlier proposed demo set:** Paneer Butter Masala (YouTube; matches the mockup), Garlic Butter Naan (shared-butter deduplication), Chicken Biryani with Boondi Raita (non-veg, halal persona, suggest-only pairing), Gajar Halwa (second link, dessert), plus one beverage prompt (for example "something cooling", leading to Sweet Lassi or Chaas) and a photo of paneer and capsicum leading to Kadai Paneer.
 
 ## 5. Principles and cautions
 - **Clearly mock:** the UI and README say all commerce data is synthetic (Constitution P8).
 - **Generic brand names** by default, to avoid implying real brand prices. Owner to confirm (open question).
 - **Transcript fixtures:** because the repo is public, write our own recipe narrations in the style of the demo videos rather than redistributing a creator's captions. The live-fetch path can still be shown with a real link.
-- **Images:** SKUs use category icons. Dish images and the sample photos for the photo flow still need licensed or self-made images; this remains a gap to resolve before the build.
+- **Images:** SKUs use category icons. Dish images and the sample photos for the photo flow still need licensed or self-made images; Resolved 2026-10-17: 11 licensed reference photos (per the owner) are in `assets/sample-photos/`; dish images are still not supplied, so dish cards use category icons.
 - **Dietary labels are simplified.** They are for demonstration and not certified or medical.
 - Datasheet-style documentation for each dataset (Gebru et al. 2021, [R9]).

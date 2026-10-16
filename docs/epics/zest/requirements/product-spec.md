@@ -1,6 +1,6 @@
 # Specification (PRD): Zest AI Sous-Chef
 
-- **Status:** v0.3, v0.2 reviewed (see `spec-review-v0.1.md`); v0.3 changes not yet re-reviewed; awaiting owner sign-off on OQ-8 to OQ-10
+- **Status:** v0.3, v0.2 reviewed (see `spec-review-v0.1.md`); v0.3 changes not independently re-reviewed; **approved by the owner 2026-10-17** (OQ-8 to OQ-10 accepted at their defaults)
 - **Owner:** VJP (product owner) · **Date:** 2026-10-17
 - **Inputs:** BRD, Strategy, Platforms, Personas, Risk Register, Settings Panel, DESIGN.md, User Journeys, mockups
 - **Convention:** "shall" marks a testable requirement. Priority: M = Must, S = Should, C = Could. Items needing an owner decision are in section 15.
