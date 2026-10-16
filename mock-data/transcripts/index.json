@@ -1,0 +1,39 @@
+{
+ "_note": "Fixtures keyed by YouTube ID. All are own-written summaries (see header in each file), never copied transcripts.",
+ "fixtures": {
+  "6YVx0i_hrZ0": {
+   "file": "V1.txt",
+   "dishes": [
+    "D02"
+   ]
+  },
+  "fRPDabc-Oh0": {
+   "file": "V2.txt",
+   "dishes": [
+    "D03"
+   ]
+  },
+  "xed2EfO9BRc": {
+   "file": "V3.txt",
+   "dishes": [
+    "D19"
+   ]
+  },
+  "l0Hylzi8v9Y": {
+   "file": "V4.txt",
+   "dishes": [
+    "D12",
+    "D18",
+    "D17",
+    "D16",
+    "D15"
+   ]
+  }
+ },
+ "resolution_order": [
+  "live fetch (youtube-transcript-api)",
+  "fixture by video id",
+  "title and description",
+  "ask the user to paste"
+ ]
+}

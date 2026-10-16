@@ -1,0 +1,110 @@
+B225|vegetables|Fenugreek leaves (methi)|fenugreek leaves|g|100/250|8|Fresh bunch~=bunch~1.0~-;Washed~=washed~1.3~-;Organic~=bunch~1.8~o;Frozen~=frozen~1.2~-
+B226|vegetables|Amaranth leaves (chaulai)|amaranth|g|250/500|7|Green~=green~1.0~-;Red~=red~1.05~-;Washed~=washed~1.3~-;Organic~=green~1.8~o
+B227|vegetables|Mustard greens (sarson)|mustard greens|g|250/500|7|Fresh~=fresh~1.0~-;Chopped~=chopped~1.4~-;Organic~=fresh~1.8~o;Frozen~=frozen~1.2~-
+B228|vegetables|Yam (suran)|yam|g|250/500|9|Whole~=whole~1.0~-;Cut~=cut~1.4~-;Elephant foot~=elephant foot~1.1~-;Organic~=whole~1.8~o
+B229|vegetables|Colocasia (arbi)|colocasia|g|250/500|8|Regular~=regular~1.0~-;Peeled~=peeled~1.5~-;Baby~=baby~1.3~-;Organic~=regular~1.8~o
+B230|vegetables|Raw mango|raw mango|g|250/500|6|Green sour~=green~1.0~-;Pickle grade~=pickle~1.1~-;Peeled slices~=sliced~1.6~-;Organic~=green~1.8~o
+B231|vegetables|Ash gourd|ash gourd|g|500/1000|4|Whole~=whole~1.0~-;Cut~=cut~1.4~-;Organic~=whole~1.8~o;Peeled cubes~=cubes~1.7~-
+B232|vegetables|Snake gourd|snake gourd|g|250/500|6|Regular~=regular~1.0~-;Tender~=tender~1.3~-;Cut~=cut~1.4~-;Organic~=regular~1.8~o
+B233|vegetables|Cluster beans (gavar)|cluster beans|g|250/500|9|Regular~=regular~1.0~-;Tender~=tender~1.3~-;Cut~=cut~1.4~-;Organic~=regular~1.8~o
+B234|vegetables|Flat beans (papdi)|flat beans|g|250/500|9|Regular~=regular~1.0~-;Tender~=tender~1.2~-;Cut~=cut~1.4~-;Organic~=regular~1.8~o
+B235|vegetables|Ivy gourd (tindora)|ivy gourd|g|250/500|8|Regular~=regular~1.0~-;Tender~=tender~1.3~-;Cut~=cut~1.4~-;Organic~=regular~1.8~o
+B236|vegetables|Banana flower|banana flower|pc|1|30|Whole~=whole~1.0~-;Cleaned~=cleaned~1.5~-;Chopped~=chopped~1.7~-;Organic~=whole~1.8~o
+B237|vegetables|Raw jackfruit|jackfruit|g|500/1000|7|Whole piece~=whole~1.0~-;Cut~=cut~1.4~-;Canned in brine~=canned~1.6~-;Frozen~=frozen~1.3~-
+B238|vegetables|Zucchini|zucchini|g|250/500|14|Green~=green~1.0~-;Yellow~=yellow~1.15~g;Organic~=green~1.8~o;Baby~=baby~1.5~g
+B239|vegetables|Celery|celery|g|200/400|18|Stalks~=stalks~1.0~g;Leaves~=leaves~0.8~-;Organic~=stalks~1.8~o;Hearts~=hearts~1.4~g
+B240|vegetables|Baby spinach and rocket|spinach|g|100/200|35|Baby spinach~=baby~1.0~g;Rocket~=rocket~1.2~g;Mixed salad leaves~=mixed~1.1~g;Organic mix~=mixed~1.8~o
+B241|vegetables|Garlic (specialty)|garlic|g|100/250|35|Single clove~=single~1.4~g;Black aged~=black~4.0~g;Smoked~=smoked~2.0~g;Peeled frozen~=frozen~1.1~-
+B242|vegetables|Shallots (sambar onion)|onion|g|250/500|9|Madras~=madras~1.0~-;Pearl white~=pearl~1.4~-;Peeled~=peeled~1.6~-;Organic~=madras~1.8~o
+B243|vegetables|Leek|spring onion|g|250|20|Whole~=leek~1.0~g;Cleaned~=leek,=cleaned~1.3~g;Organic~=leek~1.8~o;Baby~=leek,=baby~1.6~g
+B244|vegetables|Beans sprouts and microgreens|moong dal|g|100/200|14|Moong sprouts~=sprouts~1.0~-;Mixed sprouts~=mixed sprouts~1.2~-;Microgreens~=microgreens~3.0~g;Organic sprouts~=sprouts~1.8~o
+B245|vegetables|Ready salad kits|lettuce|g|150/250|28|Caesar~parmesan,bread loaf~1.2~g;Garden~cucumber,tomato~1.0~-;Greek~cucumber,tomato,olive oil,cheese~1.4~g;Vegan power~quinoa,chickpeas,olive oil~1.5~g
+B246|vegetables|Pre-cut curry vegetables|potato|g|300/500|10|Sambar mix~drumstick,brinjal,okra~1.2~-;Soup mix~carrot,cabbage,green peas~1.1~-;Pulao mix~carrot,green peas,cauliflower~1.1~-;Jain mix~french beans,carrot,=jain~1.2~-
+B247|fruits|Guava|guava|g|500/1000|7|White~=white~1.0~-;Pink~=pink~1.3~g;Thai~=thai~1.5~g;Organic~=white~1.8~o
+B248|fruits|Sapota (chikoo)|sapota|g|500/1000|9|Regular~=regular~1.0~-;Large~=large~1.3~-;Organic~=regular~1.8~o;Ready ripe~=ripe~1.2~-
+B249|fruits|Jackfruit (ripe)|jackfruit|g|500/1000|8|Whole~=ripe~1.0~-;Pulp pack~=pulp~2.0~-;Seedless~=seedless~2.4~g;Frozen~=frozen~1.6~-
+B250|fruits|Litchi|litchi|g|250/500|22|Fresh~=fresh~1.0~g;Peeled~=peeled~1.9~g;Canned~=canned~1.1~-;Frozen~=frozen~1.2~-
+B251|fruits|Kiwi|kiwi|pc|2/4|20|Green~=green~1.0~g;Gold~=gold~1.5~g;Organic~=green~1.8~o;Imported large~=large~1.3~g
+B252|fruits|Dragon fruit|dragon fruit|pc|1/2|60|White flesh~=white~1.0~g;Red flesh~=red~1.3~g;Peeled cubes~=cubes~1.8~g;Frozen~=frozen~1.2~g
+B253|fruits|Plum and peach|plum|g|250/500|25|Plum~=plum~1.0~g;Peach~=peach~1.2~g;Nectarine~=nectarine~1.3~g;Organic plum~=plum~1.8~o
+B254|fruits|Muskmelon|muskmelon|g|1000/2000|4|Regular~=regular~1.0~-;Honeydew~=honeydew~1.3~g;Cut pack~=cut~1.8~-;Organic~=regular~1.8~o
+B255|fruits|Custard apple|custard apple|g|500/1000|18|Regular~=regular~1.0~g;Large~=large~1.3~g;Organic~=regular~1.8~o;Pulp~=pulp~2.0~g
+B256|fruits|Fig (anjeer)|fig|g|200/400|40|Fresh~=fresh~1.0~g;Dried~=dried~1.6~g;Organic dried~=dried~2.3~o;Dried Afghan~=afghan~2.0~g
+B257|fruits|Berries mixed|blueberries|g|125/250|55|Mixed fresh~=mixed,=fresh~1.0~g;Frozen mixed~=mixed,=frozen~0.7~-;Raspberry~=raspberry~1.4~g;Blackberry~=blackberry~1.4~g
+B258|fruits|Cut fruit bowls|apple|g|200/300|30|Seasonal mix~papaya,watermelon~1.0~-;Tropical~pineapple,mango,papaya~1.2~g;Apple and pomegranate~pomegranate~1.2~-;Melon mix~muskmelon,watermelon~1.0~-
+B259|fruits|Frozen fruit pulp|mango|g|250/500|22|Alphonso~=alphonso~2.0~g;Totapuri~=totapuri~1.0~-;Guava~guava~1.0~-;Chikoo~sapota~1.0~-
+B260|dairy|Flavoured milk|milk|ml|200/1000|8|Chocolate~cocoa,sugar~1.0~-;Strawberry~strawberry,sugar~1.0~-;Badam~almond,sugar~1.2~-;Kesar~saffron,sugar~1.3~g;Cold coffee~coffee,sugar~1.1~-
+B261|dairy|Paneer (specialty)|paneer|g|200/400|42|Smoked~=smoked~1.3~g;Peppered~black pepper~1.2~g;Low-fat protein~=protein~1.1~-;Vegan tofu-style~tofu~1.0~-
+B262|dairy|Cheese spread|cheese|g|180/400|28|Plain~=plain~1.0~-;Garlic herb~garlic,parsley~1.2~-;Cream cheese~cream~1.3~g;Pimento~capsicum~1.1~-
+B263|dairy|Shrikhand and desserts|curd|g|100/200|25|Elaichi shrikhand~sugar,cardamom~1.0~-;Mango shrikhand~sugar,mango~1.1~-;Kesar shrikhand~sugar,saffron~1.3~g;Rabri~milk,sugar,cardamom~1.2~-
+B264|dairy|Kulfi|milk|pc|2/4|20|Malai~cream,sugar,cardamom~1.0~-;Pista~cream,sugar,pistachio~1.3~g;Mango~cream,sugar,mango~1.1~-;Eggless chocolate~cream,sugar,cocoa~1.1~-
+B265|dairy|Probiotic drinks|curd|ml|65/200|14|Plain~=plain~1.0~-;Sweet~sugar~1.0~-;Mango~sugar,mango~1.05~-;Zero sugar~stevia~1.1~-
+B266|dairy|Ghee (small and specialty)|ghee|ml|100/200|75|Desi cow tin~=cow tin~1.0~-;Cultured~=cultured~1.4~g;Garlic ghee~garlic~1.3~g;Chilli ghee~green chilli~1.3~g
+B267|dairy|Egg alternatives|egg|g|200/400|40|Quail eggs~=quail~2.5~g;Duck eggs~=duck~1.6~g;Boiled peeled~=boiled~1.5~-;Egg whites~=whites~1.3~-
+B268|dairy|Cottage cheese (cheese-style)|cheese|g|200/400|30|Cottage cheese~=cottage~1.0~-;Feta~=feta~1.8~g;Ricotta~=ricotta~1.5~g;Halloumi~=halloumi~2.0~g
+B269|dairy|Plain yoghurt (specialty)|curd|g|200/450|18|Skyr~=skyr~1.6~g;High protein~=protein~1.4~g;A2~=a2~1.7~g;Goat~=goat~2.0~g
+B270|dairy|Milk (small pack and shelf stable)|milk|ml|200/1000|8|UHT full cream~=uht,=full cream~1.1~-;UHT toned~=uht,=toned~1.0~-;Lactose-free UHT~=uht,=lactose free~1.6~-;Goat milk~=goat~3.0~g
+B271|bakery|Croissant and puffs|refined flour|pc|2/4|20|Butter croissant~butter,yeast,sugar,milk~1.0~g;Veg puff~potato,onion,sunflower oil~0.8~-;Egg puff~egg,onion,sunflower oil~0.9~-;Chicken puff~chicken,onion,sunflower oil~1.0~-
+B272|bakery|Cookies|refined flour|g|75/200|30|Choco chip~sugar,butter,cocoa~1.0~-;Oat raisin~oats,raisin,sugar,butter~1.1~-;Jeera~sunflower oil,cumin,salt~0.9~-;Eggless butter~sugar,butter~1.0~-
+B273|bakery|Muffins and brownies|refined flour|pc|2/4|25|Choco muffin~egg,sugar,cocoa,butter~1.0~-;Eggless muffin~sugar,cocoa,sunflower oil~1.0~-;Walnut brownie~egg,sugar,cocoa,walnut,butter~1.3~g;Vegan brownie~sugar,cocoa,sunflower oil,walnut~1.3~g
+B274|bakery|Tortilla and wraps|wheat flour|pc|4/8|8|Wheat tortilla~sunflower oil,salt~1.0~-;Multigrain wrap~oats,sunflower oil,salt~1.2~-;Corn tortilla~corn,salt~1.1~-;Gluten-free~rice,salt~1.4~g
+B275|bakery|Garlic bread and breadsticks|bread loaf|pc|1/2|25|Garlic butter~garlic,butter,parsley~1.0~-;Cheese garlic~garlic,butter,cheese~1.3~-;Vegan garlic~garlic,olive oil,parsley~1.2~-;Whole wheat~wheat flour,garlic,butter~1.1~-
+B276|bakery|Cake mix|refined flour|g|200/500|18|Vanilla~sugar,baking soda~1.0~-;Chocolate~sugar,cocoa,baking soda~1.1~-;Eggless red velvet~sugar,cocoa,baking soda,=red velvet~1.3~g;Gluten-free~rice,sugar,baking soda~1.5~g
+B277|bakery|Bakery buns and rolls (sweet)|bread rolls|pc|2/6|9|Cream roll~milk,sugar,cream~1.0~-;Bun maska~butter,sugar~1.0~-;Fruit bun~raisin,sugar~1.0~-;Eggless milk bun~milk,sugar~1.0~-
+B278|bakery|Khari and toast|refined flour|g|150/300|12|Khari~sunflower oil,salt~1.0~-;Butter toast~butter,sugar~1.2~-;Jeera toast~cumin,sunflower oil,salt~1.1~-;Atta toast~wheat flour,sunflower oil,salt~1.2~-
+B279|grains|Jowar atta|jowar|g|500/1000|7|Plain~=plain~1.0~-;Organic~=plain~1.8~o;Roasted~=roasted~1.2~-;Instant roti mix~salt~1.4~-
+B280|grains|Ragi atta|ragi|g|500/1000|9|Plain~=plain~1.0~-;Organic~=plain~1.8~o;Sprouted~=sprouted~1.5~g;Instant dosa mix~salt,rice~1.3~-
+B281|grains|Bajra atta|bajra|g|500/1000|7|Plain~=plain~1.0~-;Organic~=plain~1.8~o;Roasted~=roasted~1.2~-;Instant roti mix~salt~1.4~-
+B282|grains|Multigrain atta|wheat flour|g|1000/5000|7|Five grain~jowar,bajra,ragi,oats~1.0~-;Seven grain~jowar,bajra,ragi,oats,soy chunks~1.15~-;High protein~soy chunks,gram flour~1.3~g;Diabetic friendly~gram flour,oats,fenugreek seeds~1.3~g
+B283|grains|Rice flour|rice|g|500/1000|6|Plain~=plain~1.0~-;Idiyappam~=idiyappam~1.1~-;Roasted~=roasted~1.15~-;Organic~=plain~1.8~o
+B284|grains|Corn flour and meal|corn|g|200/500|7|Cornstarch~=starch~1.0~-;Makki atta~=makki~0.9~-;Cornmeal polenta~=polenta~1.4~g;Organic makki~=makki~1.8~o
+B285|grains|Barley and buckwheat|barley|g|250/500|11|Barley pearl~=pearl~1.0~-;Buckwheat (kuttu) flour~=kuttu~1.4~-;Buckwheat groats~=groats~1.8~g;Singhara atta~=singhara~1.5~-
+B286|grains|Idli rava and dosa mixes|rice|g|500/1000|8|Idli rava~urad dal~1.0~-;Ready dosa mix~urad dal,salt~1.2~-;Rava dosa mix~semolina,salt~1.2~-;Millet dosa mix~millet,urad dal,salt~1.3~g
+B287|grains|Poha and puffed rice|flattened rice|g|250/500|7|Mamra puffed rice~=mamra~0.9~-;Jada poha~=jada~1.1~-;Nylon poha~=nylon~1.2~-;Roasted poha chivda base~=chivda~1.1~-
+B288|grains|Couscous and bulgur|semolina|g|250/500|18|Couscous~=couscous~1.0~g;Whole wheat couscous~=whole wheat~1.3~g;Bulgur~=bulgur~1.1~g;Dalia (broken wheat)~=dalia~0.7~-
+B289|grains|Breakfast porridge mix|oats|g|200/400|24|Banana oats~banana,sugar~1.0~-;Apple cinnamon~apple,cinnamon,sugar~1.0~-;Millet porridge~millet,jaggery~1.2~-;Protein oats~whey protein,sugar~1.5~g
+B290|grains|Fried rice and biryani kits|basmati rice|g|200/500|30|Veg biryani kit~biryani masala,onion,salt~1.0~-;Jeera rice kit~cumin,ghee,salt~1.0~-;Lemon rice kit~lemon,mustard seeds,curry leaves,peanut~1.1~-;Jain pulao kit~cumin,bay leaf,=jain~1.1~-
+B291|pulses|Kala chana|chickpeas|g|500/1000|9|Black~=black~1.0~-;Organic~=black~1.8~o;Sprouted~=sprouted~1.5~-;Roasted~=roasted~1.3~-
+B292|pulses|Green moong (whole)|moong dal|g|500/1000|11|Whole~=whole green~1.0~-;Organic~=whole green~1.8~o;Sprouted~=sprouted~1.5~-;Moong dal chilka~=chilka~1.0~-
+B293|pulses|Matki and moth|moth beans|g|500|12|Matki~=matki~1.0~-;Moth~=moth~1.0~-;Sprouted matki~=sprouted~1.5~-;Organic~=matki~1.8~o
+B294|pulses|Horse gram and lentils|horse gram|g|500|10|Horse gram~=horse~1.0~-;Whole masoor~=masoor~1.0~-;Black masoor~=black masoor~1.1~-;French green lentils~=french~2.0~g
+B295|pulses|Rajma (small) and white beans|kidney beans|g|500/1000|13|Small red~=small red~1.0~-;White cannellini~=cannellini~1.5~g;Navy beans~=navy~1.2~-;Canned baked beans~tomato,sugar,salt~1.7~-
+B296|pulses|Dal mixes|toor dal|g|500/1000|13|Panchmel dal~chana dal,moong dal,urad dal,masoor dal~1.1~-;Dal tadka mix~moong dal,turmeric,salt~1.2~-;Sambar dal mix~moong dal,tamarind~1.2~-;Khichdi mix~rice,moong dal,turmeric~1.0~-
+B297|pulses|Sattu|gram flour|g|250/500|10|Plain~=sattu~1.0~-;Spiced~=sattu,cumin,black salt~1.15~-;Organic~=sattu~1.8~o;Barley sattu~=sattu,barley~1.2~-
+B298|pulses|Besan (specialty)|gram flour|g|250/500|12|Roasted~=roasted~1.1~-;Laddu besan~=laddu~1.2~-;Bhajiya mix~rice,salt,carom seeds~1.2~-;Dhokla mix~semolina,salt,baking soda~1.3~-
+B299|spices|Kitchen king masala|coriander powder|g|50/100|45|Regular~cumin,turmeric,garam masala~1.0~-;No onion no garlic~cumin,turmeric,garam masala,=jain~1.1~-;Premium~cumin,turmeric,garam masala,saffron~1.8~g
+B300|spices|Sabzi masala|coriander powder|g|50/100|40|Regular~cumin,turmeric,red chilli powder~1.0~-;Jain~cumin,turmeric,red chilli powder,=jain~1.1~-;Potato masala~cumin,turmeric,asafoetida~1.05~-;Bhindi masala~cumin,turmeric,chaat masala~1.1~-
+B301|spices|Chole and rajma masala|coriander powder|g|50/100|42|Chole~cumin,black pepper,tea leaves,tamarind~1.0~-;Rajma~cumin,cinnamon,cloves,cardamom~1.0~-;Pindi chole~cumin,black pepper,tamarind,garam masala~1.1~-;Jain chole~cumin,black pepper,=jain~1.1~-
+B302|spices|Tandoori and kebab masala|red chilli powder|g|50/100|55|Tandoori~cumin,coriander powder,garam masala,salt~1.0~-;Seekh kebab~cumin,coriander powder,black pepper,salt~1.0~-;Tikka~cumin,fenugreek leaves,garam masala~1.1~-;Achari tikka~mustard seeds,fennel seeds,fenugreek seeds,carom seeds~1.15~-
+B303|spices|Curry powder|coriander powder|g|50/100|38|Madras~cumin,turmeric,red chilli powder,fenugreek seeds~1.0~-;Mild~cumin,turmeric,fennel seeds~1.0~-;Thai green paste~green chilli,lemon,garlic~1.5~g;Jain~cumin,turmeric,=jain~1.1~-
+B304|spices|Mixed herbs and oregano|oregano|g|10/25|60|Oregano~=oregano~1.0~-;Mixed Italian herbs~basil,thyme~1.1~g;Chilli flakes~red chilli powder~0.9~-;Pizza seasoning~oregano,garlic,chilli flakes~1.0~-
+B305|spices|Paprika and pepper blends|paprika|g|25/50|70|Sweet paprika~=sweet~1.0~g;Smoked paprika~=smoked~1.4~g;Lemon pepper~black pepper,lemon~1.1~g;Peri peri~red chilli powder,garlic,paprika~1.1~g
+B306|spices|Nutmeg and mace|nutmeg|g|10/25|180|Nutmeg whole~=whole~1.0~-;Nutmeg powder~=powder~1.1~-;Mace (javitri)~=mace~1.4~g;Jaiphal mix~=nutmeg,cardamom~1.2~-
+B307|spices|Star anise and whole spices|star anise|g|25/50|120|Star anise~=star~1.0~-;Shahi jeera~=shahi jeera~1.3~g;Stone flower~=stone flower~1.2~-;Marathi moggu~=moggu~1.3~-
+B308|spices|Amchur and sour powders|amchur|g|50/100|35|Amchur powder~=powder~1.0~-;Anardana~=anardana~1.4~-;Kokum~=kokum~1.5~-;Citric blend~=citric~0.8~-
+B309|spices|Dry ginger and tonics|ginger|g|50/100|45|Saunth powder~=dry~1.0~-;Ginger candy~sugar~0.8~-;Kadha mix~tulsi,black pepper,cinnamon~1.3~-;Turmeric latte mix~turmeric,milk,black pepper~1.5~g
+B310|spices|Panch phoron and tadka|cumin|g|50/100|40|Panch phoron~fennel seeds,fenugreek seeds,mustard seeds,carom seeds~1.0~-;Sambar tadka mix~mustard seeds,curry leaves~1.1~-;Rasam tadka mix~cumin,black pepper~1.1~-;Dal tadka mix~cumin,asafoetida~1.1~-
+B311|spices|Cumin (specialty)|cumin|g|100/200|45|Shahi~=shahi~1.4~g;Roasted powder~=roasted~1.2~-;Kala jeera~=black~1.6~g;Organic~=whole~1.8~o
+B312|spices|Whole garam spices pack|cloves|g|50/100|90|Biryani pack~cardamom,cinnamon,bay leaf,star anise~1.0~-;Pulao pack~cardamom,cinnamon,bay leaf~0.9~-;Chai pack~cardamom,cinnamon~0.9~-;Masala dabba (7 spice)~cumin,mustard seeds,turmeric,red chilli powder,coriander powder~1.1~-
+B313|oils|Rice bran oil|rice bran oil|ml|500/1000/5000|14|Refined~=refined~1.0~-;Physically refined~=physical~1.2~-;Fortified~=fortified~1.1~-;Organic~=refined~1.8~o
+B314|oils|Blended oils|sunflower oil|ml|500/1000|13|Sunflower and rice bran~rice bran oil~1.0~-;Sunflower and soy~soy~1.0~-;Palm blend~palm oil~0.8~-;Heart blend~olive oil~1.3~-
+B315|oils|Avocado and flaxseed oil|flax|ml|100/250|120|Avocado~avocado~1.3~g;Flaxseed~=oil~1.0~g;Walnut oil~walnut~1.4~g;Grapeseed~=grapeseed~1.2~g
+B316|oils|Ghee substitutes and spreads|butter|g|200/500|40|Margarine~palm oil,salt~0.7~-;Vanaspati~palm oil~0.6~-;Cooking butter~salt~1.0~-;Plant butter~coconut oil,salt~1.4~g
+B317|meat|Chicken (specialty cuts)|chicken|g|250/500|35|Wings~=wings~1.0~-;Drumsticks~=drumstick~1.0~-;Keema~=keema~1.1~-;Liver~=liver~0.7~-;Tikka boneless marinated~curd,red chilli powder,salt~1.3~-
+B318|meat|Mutton (specialty cuts)|mutton|g|250/500|80|Chops~=chops~1.2~g;Paya~=paya~0.7~-;Liver~=liver~0.8~-;Mince~=mince~1.05~-
+B319|meat|Fish (specialty)|fish|g|250/500|50|Tuna steak~=tuna~2.0~g;Mackerel (bangda)~=bangda~0.8~-;Crab~=crab~1.6~g;Squid~=squid~1.4~g;Sardine~=sardine~0.7~-
+B320|meat|Canned fish and meat|fish|g|100/200|50|Tuna in oil~=tuna,sunflower oil~1.0~-;Tuna in water~=tuna,water~1.0~-;Sardine in tomato~=sardine,tomato~0.9~-;Chicken luncheon~chicken,salt~1.1~-
+B321|meat|Sausages and bacon|pork|g|200/400|60|Pork sausage~salt~1.0~-;Pork bacon~=bacon,salt~1.3~-;Chicken sausage~chicken,salt~0.9~-;Chicken bacon~chicken,=bacon,salt~1.2~-
+B322|meat|Plant-based meat|soy chunks|g|200/400|50|Soy keema~=keema~1.0~-;Plant nuggets~soy,wheat flour~1.3~g;Jackfruit meat~jackfruit,salt~1.4~g;Seitan strips~wheat flour,soy sauce~1.4~g
+B323|beverages|Kokum and sharbat syrups|sugar|ml|500|18|Kokum~kokum~1.0~-;Rose~rose,=syrup~1.1~-;Khus~khus,=syrup~1.1~-;Jaljeera concentrate~cumin,black salt,mint~1.1~-;Orange squash~orange~1.0~-
+B324|beverages|Iced tea and cold coffee|tea leaves|ml|200/1000|10|Lemon iced tea~lemon,sugar~1.0~-;Peach iced tea~peach,sugar~1.05~-;Cold coffee~coffee,milk,sugar~1.2~-;Green iced tea~=green,sugar~1.1~-
+B325|beverages|Protein and health shakes|whey protein|ml|200/330|60|Chocolate whey~cocoa,milk~1.0~g;Vanilla whey~milk~1.0~g;Plant almond~almond,soy milk~1.1~g;Millet health drink~millet,jaggery~1.0~-
+B326|beverages|Kombucha and fermented drinks|tea leaves|ml|250/330|55|Ginger kombucha~ginger,sugar~1.0~g;Kanji (carrot)~carrot,mustard seeds,salt~0.8~-;Kvass~=kvass~1.1~g;Probiotic soda~apple,sugar~1.1~g
+B327|beverages|Hot chocolate and malt mix|cocoa|g|200/500|35|Malted~milk powder,sugar~1.0~-;Dark hot chocolate~sugar~1.4~g;Turmeric golden milk~turmeric,milk powder,black pepper~1.3~g;Bournvita-style~milk powder,sugar,oats~1.1~-
+B328|beverages|Coffee (specialty)|coffee|g|100/250|120|Cold brew bags~=cold brew~1.2~g;Instant arabica~=instant arabica~1.4~g;Decaf~=decaf~1.3~g;Chicory filter mix~chicory~0.8~-
+B329|beverages|Green and herbal teas|tea leaves|g|25/100|60|Tulsi tea~tulsi~1.0~-;Chamomile~chamomile~1.3~g;Peppermint~mint~1.1~-;Hibiscus~hibiscus~1.2~g;Kashmiri kahwa~saffron,almond,cardamom~1.8~g
+B330|beverages|Tender coconut and fresh juices|coconut|ml|200/500|20|Tender coconut water~=tender~1.0~-;Fresh sugarcane~sugarcane~1.0~-;Fresh orange (cold pressed)~orange~1.6~g;Fresh pomegranate~pomegranate~1.8~g
+B331|snacks|Mithai and sweets|sugar|g|250/500|60|Rasgulla tin~milk,sugar~1.0~-;Gulab jamun tin~khoya,refined flour,sugar~1.0~-;Soan papdi~gram flour,sugar,ghee~1.1~-;Kaju katli~cashew,sugar~2.0~g;Besan laddu~gram flour,ghee,sugar,=laddu~1.2~-
+B332|snacks|Chikki and energy bites|jaggery|g|100/250|35|Peanut chikki~peanut~1.0~-;Sesame chikki~sesame seeds~1.0~-;Dry fruit laddu~dates,almond,cashew~1.8~g;Makhana roasted bites~makhana,jaggery~1.5~g
+B333|snacks|Wafers and extruded snacks|potato|g|50/150|35|Banana wafers~raw banana,coconut oil,salt~1.0~-;Sabudana wafers~tapioca pearls,salt~1.0~-;Corn puffs~corn,palm oil,salt~0.9~-;Rice puffs masala~rice,palm oil,red chilli powder~0.9~-
+B334|snacks|Dry fruit and trail mixes|almond|g|100/250|90|Trail mix~raisin,cashew,peanut~1.0~-;Nutty fruit~dates,walnut,raisin~1.2~g;Diet mix~almond,pumpkin seeds~1.3~g;Roasted salted mix~cashew,almond,salt~1.1~-

@@ -19,7 +19,8 @@
    "hazards": [
     "non-food items (spray bottle, coffee machine)",
     "gluten items"
-   ]
+   ],
+   "label_status": "assistant-labelled, unverified"
   },
   {
    "id": "RF02",
@@ -43,7 +44,8 @@
    ],
    "hazards": [
     "possible alcohol"
-   ]
+   ],
+   "label_status": "assistant-labelled, unverified"
   },
   {
    "id": "RF03",
@@ -63,7 +65,8 @@
     "rocket or salad leaves",
     "fennel (uncertain)"
    ],
-   "hazards": []
+   "hazards": [],
+   "label_status": "assistant-labelled, unverified"
   },
   {
    "id": "RF04",
@@ -74,7 +77,8 @@
    "hazards": [
     "unreadable image: the app should say so and ask for a clearer photo, never guess"
    ],
-   "expected_behaviour": "low confidence, no invented ingredients"
+   "expected_behaviour": "low confidence, no invented ingredients",
+   "label_status": "assistant-labelled, unverified"
   },
   {
    "id": "RF05",
@@ -92,7 +96,8 @@
    ],
    "hazards": [
     "small low-resolution image"
-   ]
+   ],
+   "label_status": "assistant-labelled, unverified"
   },
   {
    "id": "RF06",
@@ -110,7 +115,8 @@
    ],
    "hazards": [
     "small low-resolution image"
-   ]
+   ],
+   "label_status": "assistant-labelled, unverified"
   },
   {
    "id": "RF07",
@@ -128,7 +134,8 @@
     "cooked items",
     "low resolution",
     "mostly baking tools"
-   ]
+   ],
+   "label_status": "assistant-labelled, unverified"
   },
   {
    "id": "RF08",
@@ -158,7 +165,8 @@
    "hazards": [
     "possible alcohol",
     "many items in small containers"
-   ]
+   ],
+   "label_status": "assistant-labelled, unverified"
   },
   {
    "id": "RF09",
@@ -181,7 +189,8 @@
    "hazards": [
     "packaged brand text",
     "cluttered"
-   ]
+   ],
+   "label_status": "assistant-labelled, unverified"
   },
   {
    "id": "RF10",
@@ -196,7 +205,8 @@
    "hazards": [
     "very low light: expect low confidence"
    ],
-   "expected_behaviour": "low confidence, ask for a brighter photo"
+   "expected_behaviour": "low confidence, ask for a brighter photo",
+   "label_status": "assistant-labelled, unverified"
   },
   {
    "id": "RF11",
@@ -217,8 +227,10 @@
     "cluttered",
     "non-food items"
    ],
-   "expected_behaviour": "non-veg item detected; Pure-veg or Jain personas must not receive it"
+   "expected_behaviour": "non-veg item detected; Pure-veg or Jain personas must not receive it",
+   "label_status": "assistant-labelled, unverified"
   }
  ],
- "retired": "The earlier five stock-site photos (PH1 to PH5) were removed from use because of unclear provenance; their local copies are git-ignored and can be deleted."
+ "retired": "The earlier five stock-site photos (PH1 to PH5) were removed from use because of unclear provenance; their local copies are git-ignored and can be deleted.",
+ "label_status": "assistant-labelled, UNVERIFIED (owner decision 2026-10-17). Every evaluation report that uses these labels must say so next to the E3 result."
 }
