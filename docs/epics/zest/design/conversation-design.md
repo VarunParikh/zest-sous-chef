@@ -31,7 +31,7 @@ Zest turns a cooking intent into the right cart with the fewest turns and no unw
 ## 3. How text is produced (reliability rule)
 Small local models drift in tone and invent details. So:
 - **Templated copy (code):** all system messages in section 6 are templates with slots filled by code. This covers greetings, confirmations, redirects, errors, consent notices and questions.
-- **Model-written text (constrained):** only (a) the one-line reason for a dish or variant (at most 18 words, built from the score breakdown and tags, validated to contain no price, SKU or claim not in the data) and (b) the short draft recipe summary. If validation fails, a template reason is used ("Matches your mood and fits your settings").
+- **Model-written text (constrained):** only the one-line reason for a dish or variant (at most 18 words, built from the score breakdown and tags, validated to contain no price, SKU or claim not in the data). The draft-recipe confirmation is a template (see Agent Design section 2). If validation fails, a template reason is used ("Matches your mood and fits your settings").
 - Every reply passes the price and SKU check (FR-79) before sending.
 
 ## 4. Intents and slots
