@@ -9,9 +9,9 @@ Zest is a web-based AI sous-chef chatbot linked to a mock quick-commerce store (
 When documents disagree, the higher one wins. Log every conflict in `docs/core/open-conflicts.md`; never resolve one silently.
 1. `docs/core/product-vision.md` (the owner's brief)
 2. `docs/core/constitution.md`
-3. `RecommendationSettingsPanel.md` (levers, defaults, ranges)
-4. `DESIGN.md` and the mockup images (look and feel)
-5. `UserJourneys.md` (behaviour; MVP subset only, see Strategy)
+3. `docs/inputs/RecommendationSettingsPanel.md` (levers, defaults, ranges)
+4. `docs/inputs/DESIGN.md` and the mockup images in `docs/inputs/` (look and feel)
+5. `docs/inputs/UserJourneys.md` (behaviour; MVP subset only, see Strategy)
 
 ## Non-negotiables (full text in the Constitution)
 - Mock data only. No real platform data, no real credentials, no real payments.
@@ -32,8 +32,14 @@ When documents disagree, the higher one wins. Log every conflict in `docs/core/o
 Python 3.12 + FastAPI backend; React + Vite + Tailwind frontend; local text LLM via Ollama; Gemini API free tier for photo analysis (local vision fallback); `youtube-transcript-api` plus saved fixtures; JSON/SQLite mock catalogue (1,000+ SKUs) plus an embedded Chroma vector store for hybrid retrieval (candidate IDs only; guardrails run after retrieval, see G9); `pytest` and Playwright. Details: `docs/core/product-platforms.md`; decisions: `docs/design/adr/`.
 Secrets: the Gemini key lives only in a local, git-ignored `.env`. Never paste it into code, docs, commits or chat.
 
+## Read order and build plan
+Start with `docs/epics/zest/build-plan.md` (sections 5 to 7). It lists the build order, gates, approved dependencies and the cut order. Then read the PRD, User Stories, design documents, Test Plan and Evaluation Plan in the order given there.
+
+## Architecture in one paragraph
+Single-shot model calls turn text into schema-validated JSON; code does everything exact. Retrieval is hybrid (BM25 + embedded Chroma, fused by RRF) and returns IDs only. Guardrails run in code after retrieval, then the four levers rank the survivors (wide pool, show 3). Variants are chosen by the lever scores plus a price value term. The cart, pricing and checkout are pure code. See `docs/epics/zest/design/architecture.md` and ADR-001 to ADR-010.
+
 ## Where things are
-`docs/core` foundation · `docs/epics/zest/` (README, `discovery/`, `requirements/`, `design/` incl. `adr/`, `verify/`, `release/`) · `mock-data/` · `src/` · `tests/`. This mirrors the core/epics playbook structure.
+`docs/core` foundation · `docs/inputs` owner inputs · `docs/epics/zest/` (README, `build-plan.md`, `discovery/`, `requirements/`, `design/` incl. `adr/`, `verify/`) · `mock-data/` · `src/` · `tests/` · `eval/`. This mirrors the core/epics playbook structure.
 
 ## Definition of done (any task)
-Spec section referenced, tests written and passing, docs updated, CHANGELOG entry added, no guardrail weakened.
+Spec section referenced, tests written and passing (real statuses only: PASS, FAIL, BLOCKED, NOT RUN), docs updated, CHANGELOG entry added, no guardrail weakened, no test skipped or weakened to get green.

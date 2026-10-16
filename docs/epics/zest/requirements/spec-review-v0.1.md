@@ -75,3 +75,12 @@ OQ-8 (multi-message recipe behaviour, now defaulted), initial timeout values, F-
 **Limits of this check:** document review only; no repository code exists.
 
 > Note (2026-10-17): this review covers PRD v0.1. PRD v0.2 and v0.3 were produced afterwards; v0.3 (hybrid retrieval, section 6.12) has not been re-reviewed. See PRD section 17.
+
+## Addendum (2026-10-17): consistency check after PRD v0.3 and the design set
+Method: a mechanical script plus my reading. This is not a re-run of `analyze-spec` and `constitution-check` by an independent reviewer.
+- **Reference check:** every single FR, NFR, AC and US identifier cited in any document is defined in the PRD or User Stories; every endpoint of a cited range exists. No dangling references found. All 42 acceptance criteria appear in the Test Plan's map.
+- **Conflicts logged and resolved in this period:** C11 (mood flow), C12 (vector database), C13 (order-confirmation copy).
+- **New items since v0.2:** FR-110 to 117, NFR-12, 13, AC-35 to 42, OQ-11 to 13; Constitution G9. Each was written after the owner's decisions and carries an acceptance criterion and a test.
+- **Known weak spots, not defects:** thresholds in the Evaluation Plan and ADR gates are unapproved proposals; some FR ranges mix Must and Could items; Hinglish robustness is untested by design (English-only prompts); no code exists, so no requirement is verified.
+- **Recommended before release:** a fresh independent pass of both skills on the final documents, after the owner approves them.
+
