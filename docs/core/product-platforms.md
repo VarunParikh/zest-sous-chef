@@ -11,7 +11,7 @@ Model names and limits change quickly. Everything model-specific is configuratio
 | Frontend | **React + Vite + Tailwind** (design tokens from `DESIGN.md`) | Split screen, chat, cart window | Fast to build; maps cleanly to the design spec | Plain HTML/JS, Next.js | Free |
 | Text LLM (default) | **Local model via Ollama** (small instruction-tuned model, to be benchmarked Day 1) | Intent, recipe and ingredient extraction, dish suggestions, replies | Free, private, offline | Cloud LLM | Free |
 | Vision (default) | **Gemini API free tier** (a Flash or Flash-Lite model that accepts images) | Identify ingredients in photos | Better accuracy than small local vision models on 16 GB RAM | Local vision model through Ollama | Free tier |
-| Vision (fallback) | **Local vision model via Ollama** | Offline demo, no data leaves the laptop | Privacy and resilience | None | Free |
+| Vision (fallback) | **Bundled default sample photos** with pre-computed results | Keeps the photo flow demonstrable if Gemini is unavailable | Owner decision, 2026-10-17 | Local vision model (dropped) | Free |
 | Guard / classifier | **Rules + small local classifier** (Llama Guard is a candidate, to be verified in ADR-003) | Off-topic, injection and hazard screening (UJ9, UJ57, UJ59) | Guardrails must not depend on the main model's good behaviour | Prompt-only guard | Free |
 | Transcripts | **`youtube-transcript-api`** + **pre-saved fixtures** + paste-transcript fallback | YouTube recipes (UJ2, UJ20) | See section 4 | Official YouTube Data API (captions need owner auth) | Free |
 | Catalogue and stock | **Mock catalogue service** (JSON/SQLite in `mock-data/`) | SKUs, prices, pack sizes, stock, dark-store flags | Brief requires mock data; scriptable stock-outs for UJ10 and UJ22 | Real platform (not available) | Free |
@@ -24,7 +24,8 @@ Model names and limits change quickly. Everything model-specific is configuratio
 ## 2. Model routing
 A single provider interface with two implementations, chosen by `.env`:
 - `LLM_PROVIDER=ollama` (default) for text.
-- `VISION_PROVIDER=gemini` or `ollama`. If the Gemini call fails, times out or is rate-limited, the system falls back to Ollama, then to a "please type your ingredients" message (UJ19 spirit, never a silent failure).
+- `VISION_PROVIDER=gemini`. If the Gemini call fails, times out or is rate-limited, the app offers the bundled default sample photos with pre-computed results, clearly labelled as samples (owner decision, 2026-10-17). A local vision model is no longer in the fallback chain.
+- No cloud fallback for text prompts (owner decision, 2026-10-17): text runs on the local model only.
 - Every LLM call returns schema-validated JSON. One retry, then fallback (Constitution G5).
 
 ## 3. Privacy implication of the Gemini free tier (important)
