@@ -42,7 +42,7 @@ Do not download any language model yet. Day 1 block 1.5 benchmarks two or three 
 2. Double-click the zip to unzip it. You should see a folder `zest-sous-chef`.
 3. In Terminal: `cd ~/Projects/zest-sous-chef` then `git status`. It should say "nothing to commit" (a clean copy).
 4. Connect it to GitHub: `git remote add origin <your repo URL>`.
-5. **Secret check before the first push:** run `git log -p | grep -c "AIza"`. It must print `0`. (Google API keys begin with AIza.) Also run `git status --ignored` and confirm `.env` is not listed as tracked.
+5. **Secret check before the first push:** run `git log -p | grep -cE "AIza[0-9A-Za-z_-]{35}"`. It must print `0`. (Google API keys begin with AIza followed by 35 characters; this pattern does not match the walkthrough's own text.) Also run `git status --ignored` and confirm `.env` is not listed as tracked.
 6. Push: `git push -u origin main`. Everything pushed is public, including `docs/inputs/` (you approved that) and the licensed reference photos in `assets/sample-photos/` (you stated they are licensed; I could not verify that).
 
 ## Step 6: Install the Claude desktop app and open the Code tab
