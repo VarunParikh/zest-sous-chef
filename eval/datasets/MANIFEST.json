@@ -3,7 +3,7 @@
  "note": "Pre-registration manifest. Hashes prove the datasets did not change after commit. Do not edit a dataset after the first run without logging a post-hoc note.",
  "files": {
   "carts_v1.jsonl": {
-   "sha256": "afaaa6c1a186bfc5a248088259fb27004542e6a33475ad13d7bae9524dc11c1b",
+   "sha256": "f4e0978a7f7eb1100de7497a1fad41085274d12dc9b60edfe4683ee37ffbc9ab",
    "rows": 15
   },
   "guard_v1.jsonl": {

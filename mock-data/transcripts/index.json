@@ -35,5 +35,43 @@
   "fixture by video id",
   "title and description",
   "ask the user to paste"
- ]
+ ],
+ "fixtures_own_written": {
+  "F05": {
+   "file": "F05.txt",
+   "dishes": [
+    "D05"
+   ]
+  },
+  "F07": {
+   "file": "F07.txt",
+   "dishes": [
+    "D07"
+   ]
+  },
+  "F10": {
+   "file": "F10.txt",
+   "dishes": [
+    "D10"
+   ]
+  },
+  "F14": {
+   "file": "F14.txt",
+   "dishes": [
+    "D14"
+   ]
+  },
+  "F22": {
+   "file": "F22.txt",
+   "dishes": [
+    "D22"
+   ]
+  },
+  "F25": {
+   "file": "F25.txt",
+   "dishes": [
+    "D25"
+   ]
+  }
+ }
 }
