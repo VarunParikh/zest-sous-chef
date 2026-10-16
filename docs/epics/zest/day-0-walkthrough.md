@@ -12,7 +12,7 @@ Audience: the owner, new to the terminal. Time: about 60 to 90 minutes. Commands
 ## Step 1: What you need before you start
 | Need | Check |
 |---|---|
-| A Claude paid plan (or an Anthropic Console account) for Claude Code | Docs say most surfaces need one: https://code.claude.com/docs/en/overview |
+| A Claude Pro, Max, Team or Enterprise plan (you have Pro) | https://code.claude.com/docs/en/desktop-quickstart |
 | A GitHub account | https://github.com |
 | A Google account for the Gemini key | https://aistudio.google.com |
 | About 10 GB free disk space (local model, tools) | Apple menu, About This Mac, Storage |
@@ -43,16 +43,19 @@ Do not download any language model yet. Day 1 block 1.5 benchmarks two or three 
 5. **Secret check before the first push:** run `git log -p | grep -c "AIza"`. It must print `0`. (Google API keys begin with AIza.) Also run `git status --ignored` and confirm `.env` is not listed as tracked.
 6. Push: `git push -u origin main`. Everything pushed is public, including `docs/inputs/` (you approved that) and the licensed reference photos in `assets/sample-photos/` (you stated they are licensed; I could not verify that).
 
-## Step 6: Install Claude Code
-You have two options. Pick one.
-- **Option A, desktop app (simplest if you already use it):** the docs say the Claude desktop app includes Claude Code. Open the app, sign in, click the **Code** tab, and choose the folder `~/Projects/zest-sous-chef`.
-- **Option B, terminal:** run `curl -fsSL https://claude.ai/install.sh | bash` (docs list this as the recommended macOS install; it shows no progress while downloading). Then **open a new Terminal window** and run `claude --version`. If it says "command not found", see https://code.claude.com/docs/en/troubleshoot-install. To start: `cd ~/Projects/zest-sous-chef` then `claude`, and log in when prompted.
+## Step 6: Install the Claude desktop app and open the Code tab
+Decided 2026-10-17: you will use the desktop app. Your Claude Pro plan qualifies: the docs say Claude Code requires a Pro, Max, Team or Enterprise subscription (https://code.claude.com/docs/en/desktop-quickstart).
+1. Download the macOS installer from the docs page above (universal build for Intel and Apple silicon), run it, launch Claude from Applications and sign in.
+2. Click the **Code** tab at the top centre. If it asks you to upgrade or sign in, follow the prompt. If you see a 403 error, see https://code.claude.com/docs/en/desktop#403-or-authentication-errors-in-the-code-tab.
+3. Choose **Local**, click **Select folder**, and pick `~/Projects/zest-sous-chef`. The app includes Claude Code, so you do not need to install Node or the CLI for this.
+4. Pick a model from the dropdown next to the send button.
+5. **Permission mode (next to the send button):** use **Plan** for the first prompt, then **Manual** for Day 1 so you see a diff and Accept or Reject buttons for every change. Do not use **Auto** until Day-1 gates have passed.
 
 ## Step 7: First session
-1. Start Claude Code in the project folder (it reads `CLAUDE.md` automatically).
-2. Paste the first prompt from `docs/epics/zest/build-plan.md` section 7 (copied below).
-3. Claude Code works in plan mode first and asks before installing packages. Approve only packages on the list in build-plan section 4. Say no to anything else and tell me.
-4. It will create `.env.example`. Then run `cp .env.example .env`, open `.env` in TextEdit (`open -e .env`) and paste the **new** Gemini key there. Save. `.env` is git-ignored; check with `git status` that it does not appear.
+1. In the Code tab, with the project folder selected, paste the prompt below into the prompt box (it is also in `docs/epics/zest/build-plan.md` section 7). Claude Code reads `CLAUDE.md` automatically.
+2. It proposes a plan first. Read it, then approve. It will ask before installing packages: approve only those on the list in build-plan section 4, and say no to anything else.
+3. You can interrupt at any time with the stop button, or type a correction and press Enter.
+4. After it creates `.env.example`, open the Terminal app, `cd ~/Projects/zest-sous-chef`, run `cp .env.example .env`, then `open -e .env` and paste the **new** Gemini key. Save. Check with `git status` that `.env` does not appear.
 
 ```
 You are building Zest, a web-based AI sous-chef prototype. Read CLAUDE.md first, then follow
@@ -75,7 +78,7 @@ me if a Day-1 gate fails.
 | Symptom | First thing to try |
 |---|---|
 | `command not found: brew` after installing | Run the two "Next steps" lines Homebrew printed, reopen Terminal |
-| `command not found: claude` | Open a new Terminal window; then see the Claude Code install troubleshooting page |
+| The Code tab asks you to upgrade or shows a 403 error | Sign in again and restart the app; see the desktop troubleshooting link in Step 6 |
 | `git push` asks for a password | Run `gh auth login` again and choose HTTPS |
 | `ollama list` cannot connect | Open the Ollama app once, retry |
 | Disk full during install | Free space first; local models are several GB |

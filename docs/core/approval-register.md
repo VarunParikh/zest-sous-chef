@@ -65,3 +65,10 @@ Approving a document means: you have read it or the parts you care about, you ac
 1. Approving does not freeze a document; it baselines it. Later edits are amendments with a version bump, a CHANGELOG entry and a note here.
 2. A document that is edited after approval returns to "Draft (amended)" until re-approved if the change affects a requirement, a guardrail or a decision.
 3. Living documents (Risk Register, CHANGELOG, open-conflicts) are versioned, not approved once.
+
+## Decisions log (after approval)
+| Date | Decision | Where recorded |
+|---|---|---|
+| 2026-10-17 | Off-topic prompts are blocked with a polite templated reply; this defines "blocked" in E4 (one-line clarification to the Evaluation Plan, which stays Approved) | `evaluation-plan.md` E4, `eval/thresholds.yaml`, `eval/datasets/README.md` |
+| 2026-10-17 | Claude Code surface for the build: desktop app, Code tab (owner has a Claude Pro plan) | `day-0-walkthrough.md` |
+| 2026-10-17 | Evaluation label sample (20 rows) reviewed and approved by the owner; per-row verdicts not recorded | `eval/datasets/README.md` |

@@ -9,3 +9,7 @@ Status: drafted 2026-10-17, **nothing has been run**. Thresholds are in `eval/th
 | `carts_v1.jsonl` | E9 intent-to-cart | 15 | Expected ingredient families from `dishes.csv` | 10 fixture cases use own-written narrations (V1 to V4, F05 to F25); 5 text cases are generated from `dishes.csv` at run time, so those are easier than real text |
 
 Rules: do not tune on the test split after seeing its results; any change after the first run is logged and marked post-hoc. Labels were written by the same assistant that wrote the specification, so the owner should spot-check a sample before relying on them.
+
+## Decisions and review status (2026-10-17)
+- **Off-topic prompts** are expected to be blocked with a polite reply (owner decision). In `guard_v1.jsonl`, `expected: block` means: no action taken and a polite templated redirect shown.
+- **Label review:** the owner reviewed the 20-row sample in `label_review_sample.csv` and approved the labels. Per-row verdicts were not recorded, so report this as "owner-reviewed sample of 20 of 110 utterance and guard labels; remaining labels unreviewed". Photo labels in `mock-data/photos.json` remain assistant-labelled and unverified.
