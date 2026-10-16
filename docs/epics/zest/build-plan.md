@@ -7,7 +7,7 @@ This is the bridge from documents to code. It is not one of the 25 documents; it
 ## 1. What is done and what is not
 | Done (documents) | Not done |
 |---|---|
-| Foundation, Discovery, Requirements, Design (conversation, architecture, 10 ADRs, data model, API, agent, security), Test Plan, Evaluation Plan | Any code, any benchmark or test result, any generated catalogue. Seed content that exists (2026-10-17): personas, a 200-term lexicon, 34 dishes, a 341-product, 1,023-variant taxonomy, synonyms, pairings, trends, 4 own-written video summaries plus 6 more fixtures, 11 reference photos (labels unverified), draft evaluation datasets and thresholds |
+| Foundation, Discovery, Requirements, Design (conversation, architecture, 10 ADRs, data model, API, agent, security), Test Plan, Evaluation Plan | Any code, any benchmark or test result, any generated catalogue. Seed content that exists (2026-10-17): personas, a 203-term lexicon, 35 dishes, a 342-product, 1,025-variant taxonomy, synonyms, pairings, trends, 4 own-written video summaries plus 6 more fixtures, 11 reference photos (labels unverified), draft evaluation datasets and thresholds |
 | Written during the build (they describe what exists): README, `.env.example` (early), Demo Script, Known Limitations and Responsible-AI Note, Prototyping Feedback, CHANGELOG | |
 
 ## 2. Day 0: owner steps before Claude Code starts (about 1 hour)
@@ -50,7 +50,7 @@ Sizes come from the User Stories (S under 1 day, M 1 to 2, L 2 to 3). Effort is 
 | Block | Work | Stories / evidence | Gate |
 |---|---|---|---|
 | 1.1 | Repo scaffold, config, `.env.example`, `make` targets, health endpoint, trace module, `.gitignore` check, secret scan | US-35 | Health page runs; scan clean |
-| 1.2 | Data: generator and indexer over the seeded taxonomy (`mock-data/taxonomy/`), lexicon (200 terms, grow as needed), 1,023 variants, 34 dishes, synonyms, pairings, trends; validators V1 to V14; 5,000-variant set | US-36 | V1 to V14 pass; T-020 canary fails when it should |
+| 1.2 | Data: generator and indexer over the seeded taxonomy (`mock-data/taxonomy/`), lexicon (203 terms, grow as needed), 1,025 variants, 34 dishes, synonyms, pairings, trends; validators V1 to V14; 5,000-variant set | US-36 | V1 to V14 pass; T-020 canary fails when it should |
 | 1.3 | Eligibility, scoring, variant selection, context, ties | US-17, 18, 38, 28 | T-010 to T-038 pass |
 | 1.4 | Retrieval: BM25, Chroma index, fusion, fallback | US-37, 40, 06 | T-040 to T-046 pass |
 | 1.5 | **Decision evidence:** E1, E3 (if key ready), E4, E5; update ADR-002, 005, 006 | Evaluation Plan | Models chosen or escalated |
@@ -119,4 +119,4 @@ Return for: a failed gate; any document conflict; writing README, Demo Script, K
 Decided on 2026-10-17: TypeScript approved; publishing `docs/inputs/` (design documents and two mockup images) in the public repository approved; images are category icons plus the owner's own phone photos for the sample set.
 Still needed from the owner:
 1. Approve the dependency list (section 4) and this plan, through the approval register (`docs/core/approval-register.md`).
-2. Done 2026-10-17: 11 reference photos supplied (the plan wanted about 6 for the app plus 15 for evaluation, so E3 intervals will be wide); 4 demo YouTube links chosen; MIT licence chosen. Still open: an owner decision on the UJ10 unavailable-ingredient dish (see `mock-data-plan.md` section 4 note).
+2. Done 2026-10-17: 11 reference photos supplied (the plan wanted about 6 for the app plus 15 for evaluation, so E3 intervals will be wide); 4 demo YouTube links chosen; MIT licence chosen. UJ10 decided 2026-10-17: Sushi added as dish D35, with its key ingredients deliberately absent from the catalogue.

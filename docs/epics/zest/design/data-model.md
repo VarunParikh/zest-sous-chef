@@ -95,7 +95,7 @@ Lever values use the Settings Panel option strings exactly (for example `Jain (N
 
 ## 5. Recipes
 
-### 5.1 Dish (about 34)
+### 5.1 Dish (about 35)
 | Field | Type | Notes |
 |---|---|---|
 | `dish_id` | str | `paneer_butter_masala` |
@@ -146,7 +146,7 @@ Lever values use the Settings Panel option strings exactly (for example `Jain (N
 ### 7.1 Collections
 | Collection | One document per | Count | ID |
 |---|---|---|---|
-| `zest_dishes` | Dish | about 34 | `dish:{dish_id}` |
+| `zest_dishes` | Dish | about 35 | `dish:{dish_id}` |
 | `zest_variants` | **Variant** (not SKU), because pack sizes would duplicate results | at least 1,000 | `var:{variant_id}` |
 
 Distance: cosine. Embedding model and provider come from config (`EMBEDDING_PROVIDER`, `EMBEDDING_MODEL`); the default is Chroma's local ONNX embedder (all-MiniLM-L6-v2, per the Chroma documentation). Collection metadata records model name, library version and a hash of the catalogue; a mismatch triggers a rebuild.
@@ -480,7 +480,7 @@ class CartLine(BaseModel):
 1. The `β0 = 0.30` value term, pool sizes, RRF constant and ambiguity margin are initial values to be tuned (Day-1 benchmark and the lever-sensitivity test).
 2. Whether to use a library for the lexical scorer (for example BM25) needs owner approval under G3; a simple token-overlap scorer needs no dependency.
 3. Nutrition values are illustrative, generated from base-product templates; they are not nutritional data.
-4. The ingredient lexicon is the highest-leverage file for guardrail correctness. A starter set of 92 terms was written first and has since grown to 200 terms (2026-10-17) to cover the dishes and the taxonomy; it exists in `mock-data/ingredient_lexicon.csv` (owner chose the starter option, 2026-10-17); validator V4 will report every missing term when the generator runs, and the gaps are then filled. Its flags are simplified and need owner review (for example ginger as a root vegetable, mushroom as non-satvik).
+4. The ingredient lexicon is the highest-leverage file for guardrail correctness. A starter set of 92 terms was written first and has since grown to 203 terms (2026-10-17) to cover the dishes and the taxonomy; it exists in `mock-data/ingredient_lexicon.csv` (owner chose the starter option, 2026-10-17); validator V4 will report every missing term when the generator runs, and the gaps are then filled. Its flags are simplified and need owner review (for example ginger as a root vegetable, mushroom as non-satvik).
 5. BM25 library approved in principle (G3); the exact package and version are confirmed at install and pinned (ADR-004).
 
 ## 17. Sources

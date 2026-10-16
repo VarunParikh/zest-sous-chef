@@ -2,6 +2,8 @@
 
 Audience: the owner, new to the terminal. Time: about 60 to 90 minutes. Commands were written for macOS on Apple silicon. Install commands change; where I could not verify one, the step says "copy it from the official page". Nothing here has been run on your Mac.
 
+**Report back after each step** (key, tools, repo, first prompt), as you asked: send me a one-line "done" or the exact error text.
+
 **Rules for the whole day:** never paste a key into chat, code, a document or a commit. If a command asks "Are you sure?", read it before saying yes. If anything prints a red error, stop and paste the error to me, with the command you ran.
 
 ## Terminal basics (2 minutes)

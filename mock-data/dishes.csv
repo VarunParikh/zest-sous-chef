@@ -33,3 +33,4 @@ D31,Sabudana Khichdi,breakfast,maharashtrian,2,light|comfort,vegan,tapioca pearl
 D32,Garlic Bread (international),side,international,3,indulgent|comfort,vegetarian,bread loaf:1:unit;butter:60:g;garlic:20:g;parsley:10:g;cheese:60:g;salt:2:g
 D33,Mushroom Risotto (international),main,international,2,indulgent|comfort,non_veg,arborio rice:200:g;mushroom:250:g;onion:80:g;garlic:10:g;butter:30:g;parmesan:40:g;olive oil:20:ml;vegetable stock:600:ml;salt:3:g
 D34,Creamy Pasta (international),main,international,2,indulgent|comfort,vegetarian,pasta:250:g;cream:150:ml;cheese:60:g;garlic:10:g;butter:20:g;black pepper:2:g;parsley:8:g;salt:3:g
+D35,Sushi Rolls (international; unavailable-ingredient case),main,international,2,light|refreshing,non_veg,sushi rice:200:g;nori:4:unit;fish:150:g;cucumber:100:g;soy sauce:30:ml;wasabi:10:g;vinegar:30:ml;sugar:10:g

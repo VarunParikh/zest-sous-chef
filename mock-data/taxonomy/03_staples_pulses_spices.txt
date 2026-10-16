@@ -1,6 +1,6 @@
 B077|grains|Rice (everyday)|rice|g|1000/5000/10000|7|Sona masoori~=sona masoori~1.0~-;Ponni~=ponni~1.0~-;Idli rice~=idli~0.95~-;Parboiled~=parboiled~1.0~-;Organic~=sona masoori~1.8~o
 B078|grains|Basmati rice|basmati rice|g|1000/5000|14|Regular~=regular~1.0~-;Aged premium~=aged~1.6~g;Organic~=regular~1.7~o;Brown~=brown~1.2~-
-B079|grains|Brown and specialty rice|brown rice|g|500/1000|10|Brown~=brown~1.0~-;Red~=red~1.3~-;Black (forbidden)~=black~2.0~g;Arborio~=arborio~2.2~g
+B079|grains|Brown and specialty rice|brown rice|g|500/1000|10|Brown~=brown~1.0~-;Red~=red~1.3~-;Black (forbidden)~=black~2.0~g
 B080|grains|Wheat flour (atta)|wheat flour|g|1000/5000|5.5|Whole wheat~=whole~1.0~-;Multigrain~oats,gram flour~1.4~-;Organic~=whole~1.7~o;Sharbati~=sharbati~1.3~g
 B081|grains|Refined flour (maida)|refined flour|g|500/1000|4.5|Plain~=plain~1.0~-;Fortified~=fortified~1.1~-
 B082|grains|Semolina (rava)|semolina|g|500/1000|5|Fine~=fine~1.0~-;Bombay~=bombay~1.05~-;Roasted~=roasted~1.2~-

@@ -48,7 +48,7 @@ Google's pricing page lists free-tier content as **used to improve its products*
 | Dataset | Content | Used by |
 |---|---|---|
 | Catalogue | At least 1,000 unique SKUs (unique by ingredient list and variant attributes) with category, ingredient list, diet tags, allergens, price, pack size, stock, gourmet/organic flags, category icons; a generated 5,000-SKU set for the scale benchmark | Cart, engine, retriever |
-| Dishes and recipes | About 34 dishes (Indian food and beverages, plus two clearly marked international edge-case dishes) with ingredients and quantities | Text, mood and photo flows |
+| Dishes and recipes | About 35 dishes (Indian food and beverages, plus four clearly marked international edge-case dishes, one of them Sushi, whose key ingredients are deliberately absent from the catalogue for UJ10) with ingredients and quantities | Text, mood and photo flows |
 | Pairings | Co-occurrence table (for example Biryani and Raita) | Culinary pairing weight |
 | Trends | Time-of-week and weather multipliers | Trend lever |
 | Personas | Eligibility rules per diet and faith option | Guardrails |
