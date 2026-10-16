@@ -31,7 +31,7 @@ Mock data is built **in parallel with the remaining documents, but after the PRD
 
 | Dataset | Content | Target size |
 |---|---|---|
-| Catalogue (SKUs) | id, name, category, variant attributes (fat level, grain, fortification, organic, spice level), ingredient list, brand (generic), pack size, price in ₹, diet tags, allergens, halal flag, glycaemic label (simplified), gourmet and organic scores, stock count, embedding text | **At least 1,000 shipped; a generated 5,000-SKU set for the scale benchmark** |
+| Catalogue (SKUs) | id, name, category, variant attributes (fat level, grain, fortification, organic, spice level), ingredient list, brand (generic), pack size, price in ₹, diet tags, allergens, halal flag, glycaemic label (simplified), gourmet and organic scores, stock count, embedding text | **At least 1,000 unique variants shipped (each in 1 to 3 pack sizes, so 1,000+ SKUs); a generated 5,000-variant set for the scale benchmark.** Field-level schema: `data-model.md` |
 | Dishes and recipes | name, cuisine, servings, steps summary, ingredient lines (name, quantity, unit), scaling rules, diet compatibility | About 34 (Indian food and beverages plus 2 edge-case dishes) |
 | Ingredient synonyms | Marathi, Hindi and common names to catalogue terms (kothmir, kandha, batata, dhaniya, methi) | About 60 |
 | Retrieval evaluation set | About 60 queries with expected IDs: ingredient names, regional names, mood phrases, variant requests ("skimmed milk") | 60 |
@@ -43,9 +43,9 @@ Mock data is built **in parallel with the remaining documents, but after the PRD
 | Stock scenarios | scripted stock-outs for UJ10 and UJ22 | 3 scenarios |
 
 ## 3a. How 1,000 unique SKUs are generated (owner decision, 2026-10-17)
-A unique SKU is a distinct product defined by its **ingredient list and variant attributes**, then brand and pack size. Examples: Bread splits into White, Brown, Wheat, Whole Wheat and High-Protein; Milk into Skimmed, Toned, Full Fat and Lactose-Free.
+A unique **variant** is a distinct product defined by its **ingredient list and variant attributes**; a SKU is a variant in one pack size (data model section 4). This refines the earlier wording "product, brand and pack size", per the owner's clarification that uniqueness comes from the ingredient list. Examples: Bread splits into White, Brown, Wheat, Whole Wheat and High-Protein; Milk into Skimmed, Toned, Full Fat and Lactose-Free.
 1. **Taxonomy file (curated):** about 250 base products across the categories, each with allowed variant attributes and a rule for the ingredient list (a template per attribute).
-2. **Generator:** expands base products by variant, generic brand and pack size with a fixed seed, writing the ingredient list, tags, price within the category range and embedding text. The same taxonomy generates a 5,000-SKU set for the scale test.
+2. **Generator:** expands base products by variant, generic brand and pack size with a fixed seed, writing the ingredient list, tags, price within the category range and embedding text. The same taxonomy generates a 5,000-variant set for the scale test. About 280 base products at 3 to 4 variants each reach 1,000 variants.
 3. **Tag integrity:** diet, allergen and halal tags are computed from the ingredient list by rules, not typed by hand. Validators fail the build when a tag contradicts the list (risk R22).
 4. **Audit:** a random 10% of shipped SKUs (about 100 rows) is reviewed by the owner; the 5,000 set is checked by validators only.
 5. **Dish coverage:** every dish ingredient must resolve to at least one SKU, and several variants where the levers should choose among them (milk, bread, rice, oil, paneer, flour).

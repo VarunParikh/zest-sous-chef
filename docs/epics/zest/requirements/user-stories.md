@@ -94,8 +94,9 @@ Format: **US-xx** As a *persona*, I want *capability*, so that *benefit*. Covers
 **US-37** As Karan (P5), I want "something cooling" or "feeling indulgent" understood by meaning, so that I do not have to know dish names. *M · L* Covers FR-110, 111, 112; AC-35, 36, 37.
 - Given a mood phrase with no keyword match, then relevant dishes appear in a pool of at least 15, guardrails remove ineligible ones after retrieval, and the levers rank the rest.
 
-**US-38** As Alex (P7), I want the engine's levers to choose among product variants, so that I see the effect in my cart. *M · M* Covers FR-113, 114, 116; AC-38, 39.
+**US-38** As Alex (P7), I want the engine's levers to choose among product variants, so that I see the effect in my cart. *M · M* Covers FR-113, 114, 116; AC-38, 39, 42.
 - Given "milk" with organic high versus low, then different eligible variants are carted and the line explains the choice.
+- Given "milk" with gourmet affinity 0 versus 1, then a cheaper variant is carted at 0 and a premium one at 1 (price carries weight, FR-113; AC-42).
 - Given "skimmed milk", then only skimmed variants are eligible; the cart line offers switching to another eligible variant.
 
 **US-39** As Alex (P7), I want a retrieval and scoring inspector, so that I can see candidates, similarity, eligibility and final score. *M · M* Covers FR-115; AC-41.

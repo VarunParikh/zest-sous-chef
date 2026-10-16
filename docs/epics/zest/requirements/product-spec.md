@@ -167,7 +167,7 @@ Below 1024 px, a segmented control switches between Levers and Chat.
 | FR-110 | Ingredient-to-SKU and mood-or-intent-to-dish lookups shall combine (a) lexical matching with the synonym table and (b) vector similarity from a local, embedded vector store, merged by reciprocal rank fusion (initial constant 60, tuned by the benchmark), into one ranked candidate pool | M |
 | FR-111 | The candidate pool shall be larger than the displayed set (initial pool 15 dishes for 3 shown). Eligibility is applied to the pool, then the levers rank the survivors. A pool equal to the display size is a defect, because it would make the levers inert | M |
 | FR-112 | The vector store shall return candidate IDs and similarity only. Names, prices, pack sizes, stock, tags and eligibility shall come from the structured catalogue. Hard guardrails shall run after retrieval in code and never inside the vector query | M |
-| FR-113 | When an ingredient resolves to several eligible SKU variants (for example Skimmed, Toned and Full Fat Milk), the engine shall choose one using the Appendix A scores: match closeness, category history, trend and persona or gourmet (organic and gourmet sliders). The lowest price breaks ties. If the user names a variant ("skimmed milk"), only variants matching that attribute are eligible | M |
+| FR-113 | When an ingredient resolves to several eligible SKU variants (for example Skimmed, Toned and Full Fat Milk), the engine shall choose one using the Appendix A scores (match closeness, category history, trend, and persona or gourmet via the organic and gourmet sliders) blended with a value term based on price per unit. The value term's weight falls as the Gourmet / Imported Food Affinity slider rises, so cheaper variants win at low gourmet settings and premium variants win at high ones (OQ-13). Remaining ties go to the lowest price. If the user names a variant ("skimmed milk"), only variants matching that attribute are eligible | M |
 | FR-114 | Each cart line shall show the chosen variant and offer "Why this variant?" listing the alternatives; the user may switch to another eligible variant, which updates the cart | M |
 | FR-115 | The lever panel shall include a retrieval and scoring inspector showing, for the latest suggestion, each candidate's lexical rank, vector similarity, fused rank, eligibility result and final score | M |
 | FR-116 | Each SKU shall carry an ingredient list (or "single ingredient") and variant attributes (for example fat level, grain, fortification, organic). Eligibility checks shall use these fields | M |
@@ -188,10 +188,10 @@ Below 1024 px, a segmented control switches between Levers and Chat.
 | NFR-10 | Timeouts: every external call has a timeout and at most one retry. Initial values: local model 30 s, Gemini 20 s, transcript fetch 10 s; tuned by the benchmark. On expiry the fallback in section 9 applies |
 | NFR-11 | Testability: temperature 0 for extraction; acceptance tests assert on structured output (IDs, quantities), not wording |
 | NFR-12 | Retrieval stack: the embedding model runs locally, its name and version are pinned in config, the index is built from the catalogue by one command, stored in a git-ignored folder, and rebuilt on catalogue change. Index build time and memory are recorded by the Day-1 benchmark |
-| NFR-13 | Scale: the shipped catalogue has at least 1,000 unique SKUs. Retrieval latency and recall shall also be benchmarked on a generated 5,000-SKU set; no functional change is allowed at that size |
+| NFR-13 | Scale: the shipped catalogue has at least 1,000 unique variants (each with a distinct ingredient list), sold in one to three pack sizes, so at least 1,000 purchasable SKUs. Retrieval latency and recall shall also be benchmarked on a generated set of 5,000 variants; no functional change is allowed at that size |
 
 ## 8. Data, API and integration considerations
-- **Entities:** Session, LeverSnapshot, Message, CartDish, CartLine, Order, Product, Dish, RecipeIngredient, Synonym, Pairing, TrendRow, Persona, Context.
+- **Entities:** Session, LeverSnapshot, Message, CartDish, CartLine, Order, Variant, Sku, Dish, RecipeIngredient, Synonym, Pairing, TrendRow, Persona, Context, RetrievalDocument, Candidate. Field-level definitions are in `design/data-model.md`.
 - **State:** in memory per session; refresh resets.
 - **Provisional endpoints:** session create, chat message (text and image), cart read and edit, checkout, levers read, write and reset, chat clear, health. No inbound webhooks.
 - **Integrations:** local model (Ollama); embedded local vector store (Chroma) with a local embedding model; Gemini API for images; `youtube-transcript-api` and fixtures; mock catalogue.
@@ -271,6 +271,7 @@ No product analytics. A local trace log (no images, truncated text, no personal 
 | AC-38 | "Milk" with the organic slider high versus low: different eligible variants are carted; the cart line explains the choice | FR-113, 114 |
 | AC-39 | "Skimmed milk": only skimmed variants are eligible regardless of sliders | FR-113 |
 | AC-40 | Vector store disabled: the same ingredient list still resolves by lexical plus synonyms; no error shown to the user | FR-117 |
+| AC-42 | "Milk" with gourmet affinity 0 versus 1 (organic constant): the cheaper variant is carted at 0 and a premium variant at 1; the cart line shows the price as a reason | FR-113 |
 | AC-41 | After a mood request: the inspector lists each candidate with lexical rank, vector similarity, fused rank, eligibility and final score | FR-115 |
 
 ## 13. Dependencies and rollout
@@ -294,7 +295,10 @@ A1 to A14 in the Risk Register. Also: default servings 2; one currency (₹); En
 | OQ-10 | Should dish options respect a budget (persona P10)? | Default: no for the MVP (F-22). Owner to confirm |
 | OQ-11 | Lever representation with the vector store | **Option A** (owner, 2026-10-17): four levers unchanged; vector similarity inside `s_p`; retrieval inspector |
 | OQ-12 | SKU uniqueness | **Owner, 2026-10-17:** unique by ingredient list and variant attributes (for example Brown, Wheat, Whole Wheat and Protein Bread); at least 1,000 shipped, 5,000 generated for the scale benchmark |
-| OQ-13 | Variant selection | **Lever-driven** (owner, 2026-10-17); FR-113. Open detail: price is a tie-breaker only. Owner to say if price should carry a weight |
+| OQ-13 | Variant selection | **Lever-driven, with price carrying real weight** (owner, 2026-10-17); FR-113. Price enters as a value term whose weight shrinks as the gourmet slider rises. `β0 = 0.30` is my initial value and is tuned by the lever-sensitivity test (AC-38, AC-42) |
+| OQ-8 | (revisited 2026-10-17 after the vector decision) Multi-message text recipe | **Kept:** carted immediately under one open dish. Vector retrieval does not change this; it only helps FR-33 find the nearest stored dishes |
+| OQ-9 | (revisited) Photo flow direct add | **Kept:** the top dish's missing items are added directly. Vector plus lexical retrieval builds the dish pool from detected items; swap and Undo cover a wrong guess |
+| OQ-10 | (revisited) Budget for dish options | **Kept: no budget for dish options.** The student persona's budget goal is now served at the SKU level through the value term (FR-113) |
 
 ## 16. Risks
 See the Risk Register: R1, R3, R4, R5, R6, R14. New: non-deterministic model output (NFR-11); direct-add of a wrong guess (mitigated by swap and Undo).
@@ -312,6 +316,6 @@ All components are computed per candidate over the candidate pool. Components bu
 | `s_t` trend | Time-of-week and weather multiplier for the dish's tags | Multiplier for the item's category | Multiplier for the item's category |
 | `s_g` persona and gourmet | Gourmet and organic slider match, plus capped gender boost (FR-07) | Same | Same |
 
-**SKU variant (FR-113):** `s_p` = fused match rank for the ingredient; `s_h` = category affinity slider; `s_t` = category trend multiplier; `s_g` = organic and gourmet slider match to the variant's attributes. Lowest price breaks ties.
+**SKU variant (FR-113):** `s_p` = fused match rank for the ingredient; `s_h` = category affinity slider; `s_t` = category trend multiplier; `s_g` = match between the variant's premium and organic attributes and the Gourmet and Artisanal-Organic sliders. The variant score is `S_v = M_elig × [ (1 − β) × Σ(ŵ_k × s_k) + β × v ]`, where `v = 1 − min-max-normalised price per unit` among the eligible variants of that ingredient, and `β = β0 × (1 − gourmet_affinity)` with `β0 = 0.30` in config (`VALUE_WEIGHT`). At gourmet 0 the value weight is 0.30; at the default 0.5 it is 0.15; at 1 it is 0. No new slider is added. Lowest price breaks remaining ties.
 
 Tie rule: FR-66. Context source: FR-67.
