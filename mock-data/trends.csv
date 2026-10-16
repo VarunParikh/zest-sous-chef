@@ -1,0 +1,21 @@
+trend_id,when,condition,boost_dish_or_mood,multiplier,note
+T01,weekend_evening,any,indulgent,1.25,Weekend treats
+T02,weekday_morning,any,breakfast,1.3,Breakfast course favoured
+T03,weekday_morning,any,quick,1.2,Time pressure
+T04,weekday_evening,any,comfort,1.15,Comfort after work
+T05,monsoon,rain,D28,1.4,Chai in the rain
+T06,monsoon,rain,D22,1.25,Pav bhaji in the rain
+T07,monsoon,rain,D02,1.3,Rasam in the rain
+T08,summer,hot,refreshing,1.4,Cold drinks
+T09,summer,hot,D29,1.35,Lassi in summer
+T10,summer,hot,D30,1.4,Nimbu pani in summer
+T11,winter,cold,comfort,1.2,Warm food
+T12,winter,cold,D26,1.2,Sweets in winter
+T13,festive_season,any,festive,1.4,Festival cooking
+T14,festive_season,any,D26,1.35,Gulab jamun
+T15,festive_season,any,D27,1.3,Kheer
+T16,weekend_morning,any,D14,1.2,Weekend paratha
+T17,weekday_lunch,any,D01,1.15,Dal chawal lunch
+T18,weekend_lunch,any,D04,1.3,Weekend biryani
+T19,navratri,any,D31,1.5,Fasting-day dish
+T20,new_year_health,any,healthy,1.25,January resolutions

@@ -1,0 +1,34 @@
+dish_a,dish_b,strength,note
+D04,D29,0.5,Biryani with a cooling drink
+D04,D26,0.7,Festive meal ending
+D05,D15,0.9,Curry with bread
+D06,D15,0.9,Curry with bread
+D07,D15,0.9,Curry with bread
+D03,D15,0.7,Curry with bread
+D03,D10,0.6,Village curry with dosa (video title)
+D03,D11,0.5,Curry with idli (video title)
+D25,D15,0.8,Curry with bread
+D08,D14,0.6,Chole with paratha
+D09,D30,0.4,Heavy meal with a light drink
+D01,D23,0.4,Simple plate with egg
+D01,D16,0.6,Dal chawal with a dry sabzi
+D17,D15,0.9,Dal with roti
+D16,D15,0.9,Sabzi with roti
+D17,D16,0.7,Meal prep pair (video V4)
+D12,D28,0.7,Breakfast with chai
+D13,D28,0.7,Breakfast with chai
+D14,D28,0.6,Paratha with chai
+D14,D29,0.5,Paratha with lassi
+D10,D28,0.4,Breakfast with chai
+D22,D30,0.5,Street food with a refreshing drink
+D26,D28,0.6,Sweet with chai
+D27,D26,0.3,Two desserts rarely together
+D18,D15,0.5,Tofu tikka with roti
+D19,D30,0.5,Light salad with nimbu pani
+D32,D34,0.6,Garlic bread with pasta
+D32,D33,0.5,Garlic bread with risotto
+D02,D20,0.6,Rasam with rice or pulao
+D02,D01,0.7,Rasam beside dal chawal
+D24,D20,0.5,Fish curry with rice dish
+D21,D30,0.4,Light comfort pair
+D31,D28,0.5,Fasting-day breakfast with chai

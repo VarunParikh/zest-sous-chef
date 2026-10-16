@@ -1,0 +1,64 @@
+query_term,maps_to,type
+kandha,onion,ingredient
+kanda,onion,ingredient
+pyaz,onion,ingredient
+batata,potato,ingredient
+aloo,potato,ingredient
+lehsun,garlic,ingredient
+adrak,ginger,ingredient
+tamatar,tomato,ingredient
+dhaniya,coriander leaves,ingredient
+kothmir,coriander leaves,ingredient
+palak,spinach,ingredient
+gobi,cauliflower,ingredient
+bhindi,okra,ingredient
+paneer cheese,paneer,ingredient
+dahi,curd,ingredient
+yogurt,curd,ingredient
+greek yogurt,curd,ingredient
+chaas,buttermilk,ingredient
+atta,wheat flour,ingredient
+maida,refined flour,ingredient
+suji,semolina,ingredient
+rava,semolina,ingredient
+besan,gram flour,ingredient
+chawal,rice,ingredient
+sabudana,tapioca pearls,ingredient
+poha,flattened rice,ingredient
+rajma,kidney beans,ingredient
+chole,chickpeas,ingredient
+kabuli chana,chickpeas,ingredient
+arhar dal,toor dal,ingredient
+masoor,moong dal,ingredient
+haldi,turmeric,ingredient
+jeera,cumin,ingredient
+mirch,green chilli,ingredient
+kali mirch,black pepper,ingredient
+elaichi,cardamom,ingredient
+laung,cloves,ingredient
+dalchini,cinnamon,ingredient
+hing,asafoetida,ingredient
+kesar,saffron,ingredient
+gur,jaggery,ingredient
+shakkar,sugar,ingredient
+nariyal,coconut,ingredient
+mutton,mutton,ingredient
+murgh,chicken,ingredient
+machli,fish,ingredient
+anda,egg,ingredient
+nimbu,lemon,ingredient
+saunf,fennel seeds,ingredient
+imli,tamarind,ingredient
+pudina,mint,ingredient
+indulgent,indulgent,mood
+treat myself,indulgent,mood
+cheat day,indulgent,mood
+comfort food,comfort,mood
+feeling low,comfort,mood
+something light,light,mood
+easy on the stomach,light,mood
+feeling spicy,spicy,mood
+festive,festive,mood
+sweet tooth,sweet,mood
+something cold,refreshing,mood
+in a hurry,quick,mood
