@@ -1,0 +1,147 @@
+# User Stories and Traceability Matrix: Zest AI Sous-Chef
+
+Status: DRAFT v0.1 · Date: 2026-10-17 · Source: PRD v0.2, BRD, Strategy
+Sizing: S = under 1 day, M = 1 to 2 days, L = 2 to 3 days of build effort. The playbook allows 1 to 5 days; the 3-day deadline means each story here is kept to 3 days or less and the parallel work is stated in the Strategy plan. Priority follows PRD (M/S/C). Every story states acceptance criteria (AC) as Given/When/Then, and test IDs are assigned in the Test Plan (document 19).
+
+Format: **US-xx** As a *persona*, I want *capability*, so that *benefit*. Covers: FR/AC.
+
+## A. Session and levers
+**US-01** As Rohan (P7 reviewer), I want lever changes to apply from my next chat session, so that I can compare outcomes cleanly. *M · M* Covers FR-01, 02, 03; AC-01.
+- Given levers changed mid-session, when I send the same prompt, then results match the snapshot and the banner shows.
+- Given Clear chat after the change, when I send it again, then the new levers apply.
+
+**US-02** As Alex (P7), I want four independent weight sliders with effective percentages, so that I can see exactly how the mix changes. *M · M* Covers FR-06, 08, 104; AC-03.
+- Given weights 80/80/40/0, when I view the panel, then shares show as 40/40/20/0 percent.
+- Given all weights 0, when the engine runs, then defaults return with a notice.
+
+**US-03** As a user, I want Clear chat and Reset levers to act independently, so that I never lose work by accident. *M · S* Covers FR-04, 05; AC-18, 19.
+- Given a non-empty cart, when I press Clear chat, then I must confirm; Cancel changes nothing.
+- Given Reset levers, then chat and cart are unchanged.
+
+**US-04** As Priya (P6), I want to set my persona myself and have contradictory settings flagged, so that the bot never guesses who I am. *S · S* Covers FR-07, 09; AC-25.
+- Given Jain faith with Non-Veg diet, then a warning shows and masks intersect.
+- Given gender not set, then no cohort boost applies.
+
+## B. Input safety and understanding
+**US-05** As the product owner, I want off-topic and injection input redirected, so that the bot stays safe and on task. *M · M* Covers FR-10, 11, 12; AC-15, 21, 22.
+- Given "Forget all previous instructions…", then the standard redirect appears and nothing is carted.
+- Given "attack the onions", then the message is processed normally.
+- Given a transcript that contains instructions, then they are ignored and not carted.
+
+**US-06** As Meera (P1), I want regional names such as kothmir and kandha understood, so that I can write the way I speak. *M · M* Covers FR-13; AC-17.
+- Given "kothmir, kandha, batata", then Coriander Leaves, Onion and Potato are resolved.
+- Given an ambiguous name (methi), then one short clarifying question is asked.
+
+**US-07** As a user, I want estimates and safety limits stated honestly, so that I can trust the bot. *M · S* Covers FR-14, 15.
+- Given a detected quantity, then it is labelled an estimate.
+- Given "is this safe for my nut allergy?", then the bot gives no assurance and says labels are simplified.
+
+## C. YouTube flow
+**US-08** As Meera (P1), I want to paste a recipe video link and get a cart, so that I skip transcribing ingredients. *M · L* Covers FR-20, 21, 24; AC-07, 16, 31.
+- Given the demo Paneer Butter Masala link, then ingredients are extracted, mapped to SKUs and carted at catalogue prices.
+- Given the transcript fetch fails, then fixture, then title and description, then a paste prompt.
+- Given the same link twice, then the dish is not duplicated and I am asked.
+
+**US-09** As a user, I want sponsor talk and non-recipe videos ignored, so that my cart holds only food. *S · S* Covers FR-22.
+- Given a video without recipe context, then the off-topic reply appears.
+
+**US-10** As Meera (P1), I want a second link to merge shared ingredients and ask about staples, so that I do not double-buy. *M · M* Covers FR-23; AC-08, 24.
+- Given two dishes needing butter within one pack, then one pack is carted and the second line is dimmed.
+
+## D. Text recipe flow
+**US-11** As Imran (P3), I want to type a recipe over several messages, so that I can describe it naturally. *M · M* Covers FR-30, 31, 33; AC-26.
+- Given three messages listing ingredients for one dish, then each is carted immediately under one open dish.
+- Given "new dish", then the open dish closes.
+- Given a dish not in the recipe base, then ingredients are requested or nearest dishes offered.
+
+**US-12** As a user, I want servings to scale quantities, so that the cart matches how many I cook for. *C · S* Covers FR-32. (Could; first to cut.)
+- Given "for 4", then quantities scale and the scaling is stated.
+
+## E. Mood flow
+**US-13** As Karan (P5), I want to say "I am feeling indulgent" and have the bot add a suitable dish, so that I do not have to decide. *M · L* Covers FR-40, 41, 42; AC-09, 29, 30.
+- Given the message, then the top eligible dish is carted with a one-line reason and two swap options appear.
+- Given a swap tap, then only that suggestion's dish is replaced; earlier items are untouched.
+- Given Undo, then the cart returns to its prior state.
+- Given no eligible dish, then the reason is stated and the cart is unchanged.
+
+## F. Photo flow
+**US-14** As Ananya (P4), I want a clear privacy notice before I upload, so that I choose with informed consent. *M · S* Covers FR-50, 51; AC-34.
+- Given first upload, then the Gemini notice appears and metadata is stripped and the photo deleted after parsing.
+
+**US-15** As Lakshmi (P8), I want to photograph my kitchen and get dishes I can finish, so that I buy only what is missing. *M · L* Covers FR-52, 53, 54, 57; AC-10, 23.
+- Given a photo of paneer and capsicum, then three dishes are ranked and the top dish's missing items only are carted.
+- Given low-confidence items, then I am asked to confirm.
+- Given a wrong file type or over 5 MB, then it is rejected with a reason.
+
+**US-16** As the owner, I want a labelled sample-photo fallback, so that the flow works when Gemini does not. *M · S* Covers FR-55, 56; AC-11.
+- Given Gemini fails, then sample photos are offered and labelled as samples.
+- Given a non-food photo, then the "couldn't spot any ingredients" reply appears.
+
+## G. Recommendation engine
+**US-17** As Alex (P7), I want lever changes to visibly change recommendations, so that I can verify the engine is real. *M · L* Covers FR-60, 61, 62, 66, 67; AC-02, 06.
+- Given a changed lever group and a new session, then the Ranking Divergence Index meets the objective.
+- Given equal scores, then ties break by `s_p` then ID, reproducibly.
+
+**US-18** As a user, I want a "Why this?" view, so that I understand each suggestion. *M · M* Covers FR-63, 104; AC-20.
+- Given a suggestion, then the component contributions are listed and sum to the displayed score; the panel shows the stacked chart.
+
+**US-19** As Meera (P1), I want add-on suggestions that I must tap, so that I am never upsold silently. *M · S* Covers FR-62, 64, 82.
+- Given an add-on suggestion, then the cart changes only after my tap.
+
+**US-20** As a user, I want rejected add-ons to reduce similar suggestions this session, so that the bot learns from me. *C · S* Covers FR-65. (Could.)
+
+## H. Catalogue and cart
+**US-21** As Meera (P1), I want prices and stock to come from the store, never invented, so that the total is correct. *M · M* Covers FR-70, 71, 79; AC-14, 24.
+- Given a model reply with a different price, then the catalogue price is shown.
+- Given two 200 g paneer needs, then two packs are carted.
+
+**US-22** As Meera (P1), I want to see my cart grouped by dish with totals, so that I understand the cost. *M · M* Covers FR-72, 73, 74.
+- Given dishes in the cart, then each dish total equals its active lines; I can remove a dish, a line, or change a quantity (1 to 9).
+
+**US-23** As a user, I want a cart icon with a badge that is disabled when empty, so that state is obvious. *M · S* Covers FR-75; AC-12.
+
+**US-24** As Imran (P3), I want a stock-out handled with a proposed substitute, so that I choose the replacement. *M · M* Covers FR-76, 83; AC-28, 33.
+- Given a stock-out, then a substitute with price and flavour difference is proposed and the cart changes only on accept.
+- Given stock drops to zero before Buy Now, then the order is blocked until I swap or remove.
+
+**US-25** As a user, I want chat cart edits and confirmed destructive actions, so that I stay in control. *S/M · S* Covers FR-77, 78.
+- Given "clear my cart" in chat, then a confirmation and Undo are offered.
+
+## I. Checkout
+**US-26** As Meera (P1), I want Buy Now to place one order and confirm it, so that I know it worked. *M · M* Covers FR-80, 81; AC-13.
+- Given Buy Now, then the order-placed message with a progress bar shows in the same window and closes after 10 seconds; the cart is empty; a second press does nothing.
+
+**US-27** As a user, I want one pairing suggestion after ordering, so that I discover a companion. *S · S* Covers FR-82. A tap starts a new cart; the placed order is unchanged.
+
+## J. Persona guardrails
+**US-28** As Rohan (P2) and Ananya (P4), I want requests that break my diet intercepted, so that I never receive them. *M · M* Covers FR-90; AC-04, 05.
+- Given Jain asking for Garlic Bread, then no garlic is carted and a compliant alternative is offered.
+- Given Pure Veg and a chicken video, then the mismatch is flagged and a vegetarian version offered.
+
+**US-29** As Priya (P6), I want hidden animal-derived ingredients caught, so that "looks vegan" is checked against tags. *S · M* Covers FR-91.
+
+**US-30** As Rahul (P10), I want a recipe with unavailable ingredients reported with alternatives, so that I know what I can make. *S · S* Covers FR-92.
+
+## K. Interface and accessibility
+**US-31** As a user, I want a split screen with chat and levers that adapts below 1024 px, so that it works on my laptop. *M · M* Covers FR-100, 101; NFR-03.
+**US-32** As a user, I want the input locked while Zest is thinking, so that I cannot send duplicates. *M · S* Covers FR-102; AC-27.
+**US-33** As a keyboard user, I want the cart window to trap focus and close with Escape, so that I can operate it without a mouse. *M · S* Covers FR-103; AC-32.
+
+## L. Platform quality
+**US-34** As the owner, I want every external call to time out and fall back, so that the demo never hangs. *M · M* Covers NFR-02, 10; section 9.
+**US-35** As the reviewer, I want a trace log with no personal data, so that decisions can be audited. *M · S* Covers NFR-06; AC-34.
+**US-36** As the owner, I want seeded, validated mock data and a one-command setup, so that anyone can reproduce the demo. *M · L* Covers NFR-08, 09; mock-data plan.
+
+## Traceability matrix (objectives to stories)
+| Objective | BR | FR | Stories | AC | Tests |
+|---|---|---|---|---|---|
+| O1 Ranking divergence | BR lever effect | FR-01 to 08, 61 to 67 | US-01, 02, 17, 18 | AC-01 to 03, 20 | Test Plan (TBD) |
+| O2 Constraint compliance | BR guardrails | FR-09, 60, 90 to 92, 15 | US-04, 07, 28 to 30 | AC-04 to 06, 25 | TBD |
+| O3 Data integrity | BR catalogue | FR-70 to 79, 83 | US-21 to 25 | AC-08, 14, 24, 28, 33 | TBD |
+| O4 Intent-to-cart accuracy | BR flows | FR-20 to 57 | US-06, 08 to 16 | AC-07, 09, 10, 16, 17, 26 | TBD |
+| O5 Journey resilience | BR resilience | FR-10 to 12, 55, NFR-02, 10 | US-05, 16, 34 | AC-11, 15, 21 to 23 | TBD |
+| O6 Responsiveness | BR performance | NFR-01, 10 | US-34 | Benchmark ADR | TBD |
+| O7 Traceability | BR governance | NFR-06 | US-35 | AC-34 | TBD |
+| O8 Responsible AI | BR responsibility | FR-07, 14, 15, 50, 51 | US-04, 07, 14 | AC-34 | TBD |
+
+Exact BR identifiers (BR-01 to BR-14) are mapped in the BRD; the BR column here names the theme and will be replaced by IDs when the Test Plan is written. Coverage check: every FR above FR-92 appears in at least one story; FR-65 and FR-32 sit in Could stories.
