@@ -144,3 +144,23 @@ def test_ollama_embedder_batches_large_inputs():
 
     out = OllamaEmbedder("http://x.test", "m", transport=httpx.MockTransport(handler))(["t"] * 150)
     assert len(out) == 150 and max(sizes) <= 64 and sum(sizes) == 150
+
+
+def test_t044_interrupted_build_is_rebuilt(tmp_path, store):
+    """A build that crashes half-way must not look up to date on the next run."""
+
+    class Flaky(HashEmbedder):
+        calls = 0
+
+        def __call__(self, texts):
+            Flaky.calls += 1
+            if Flaky.calls == 2:
+                raise RuntimeError("embedder crashed mid-build")
+            return super().__call__(texts)
+
+    v = VectorStore(tmp_path / "c", Flaky())
+    with pytest.raises(RuntimeError):
+        v.ensure(store)
+    fresh = VectorStore(tmp_path / "c", HashEmbedder())  # same name as Flaky: hash-bow-256
+    assert fresh.ensure(store) is True
+    assert len(fresh.query("zest_variants", "skimmed milk", 5)) == 5

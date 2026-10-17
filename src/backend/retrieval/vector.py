@@ -46,24 +46,33 @@ class VectorStore:
         self._client = chromadb.PersistentClient(path=str(self.path), settings=ChromaSettings(anonymized_telemetry=False))
 
     def _meta(self, digest: str) -> dict:
-        return {"hnsw:space": "cosine", "embedder": self.embedder.name, "chroma": self._chroma_version, "catalogue": digest}
+        return {"embedder": self.embedder.name, "chroma": self._chroma_version, "catalogue": digest}
 
     def ensure(self, store: Store) -> bool:
         """Build the collections if missing or stale. Returns True when it (re)built."""
         digest = catalogue_hash(store)
         want = self._meta(digest)
+        docs_by = _docs(store)
         current = {c.name: c for c in self._client.list_collections()}
-        if all(n in current and {k: current[n].metadata.get(k) for k in want} == want for n in (DISHES, VARIANTS)):
+
+        def complete(name: str) -> bool:
+            c = current.get(name)
+            return (c is not None and {k: (c.metadata or {}).get(k) for k in want} == want
+                    and c.count() == len(docs_by[name]))
+
+        if all(complete(n) for n in (DISHES, VARIANTS)):
             return False
-        for name, docs in _docs(store).items():
+        for name, docs in docs_by.items():
             if name in current:
                 self._client.delete_collection(name)
-            col = self._client.create_collection(name, metadata=want)
+            # stamped "building" first; the real metadata is written only after every document is in
+            col = self._client.create_collection(name, metadata={"hnsw:space": "cosine", **want, "catalogue": "building"})
             ids = sorted(docs)
             for start in range(0, len(ids), 500):
                 batch = ids[start:start + 500]
                 col.add(ids=batch, embeddings=self.embedder([docs[i] for i in batch]),
                         metadatas=[{"kind": name} for _ in batch])
+            col.modify(metadata=want)
         return True
 
     def query(self, collection: str, text: str, n: int) -> list[dict]:

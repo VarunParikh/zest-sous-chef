@@ -57,7 +57,8 @@ def overall_status(gates: dict, critical: list) -> str:
 def environment(extra: dict | None = None) -> dict:
     try:
         commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=REPO_ROOT, capture_output=True, text=True).stdout.strip()
-        dirty = bool(subprocess.run(["git", "status", "--porcelain"], cwd=REPO_ROOT, capture_output=True, text=True).stdout.strip())
+        status = subprocess.run(["git", "status", "--porcelain"], cwd=REPO_ROOT, capture_output=True, text=True).stdout
+        dirty = any(line and not line[3:].startswith("eval/results/") for line in status.splitlines())  # a run's own outputs do not count
     except OSError:
         commit, dirty = "unknown", True
     pkgs = {}
