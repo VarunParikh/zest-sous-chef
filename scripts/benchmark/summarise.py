@@ -55,18 +55,30 @@ def guard():
     return "\n".join(lines) + "\n"
 
 
-def text_models():
-    rs = load("E1")
-    lines = ["# E1 Text-model results (generated)", "", f"Split: test (5 rows). {env_line(rs)}", "",
-             "| Model | F1 mean (gate ≥ 0.80) | Schema-valid (gate ≥ 0.95) | Quantity accuracy | Invention rate (critical > 0.10) | Free RAM after (gate ≥ 3 GB) | Latency median / p95 (ms) | Status |",
-             "|---|---|---|---|---|---|---|---|"]
+def text_rows(rs):
+    out = []
     for r in rs:
         m = r["metrics"]
         if not m:
-            lines.append(f"| {r['system']} | NOT RUN | | | | | | {r['status']} |")
+            out.append(f"| {r['system']} | NOT RUN | | | | | | {r['status']} |")
             continue
-        lines.append(f"| {r['system']} | {m['extraction_f1_mean']} | {kn(m['schema_valid'])} | {kn(m['quantity_accuracy'])} | {kn(m['invention_rate'])} | "
-                     f"{m['free_ram_gb_after']} | {m['latency_ms_median']:.0f} / {m['latency_ms_p95']:.0f} | {r['status']} |")
+        out.append(f"| {r['system']} | {m['extraction_f1_mean']} | {kn(m['schema_valid'])} | {kn(m['quantity_accuracy'])} | {kn(m['invention_rate'])} | "
+                   f"{m['free_ram_gb_after']} | {m['latency_ms_median']:.0f} / {m['latency_ms_p95']:.0f} | {r['status']} |")
+    return out
+
+
+def text_models():
+    rs = load("E1")
+    post = [json.loads(p.read_text()) for p in sorted((RES / "post-hoc").glob("E1-*.json"))]
+    lines = ["# E1 Text-model results (generated)", "", f"Split: test (5 rows). {env_line(rs)}", "",
+             "| Model | F1 mean (gate ≥ 0.80) | Schema-valid (gate ≥ 0.95) | Quantity accuracy | Invention rate (critical > 0.10) | Free RAM after (gate ≥ 3 GB) | Latency median / p95 (ms) | Status |",
+             "|---|---|---|---|---|---|---|---|"]
+    lines += text_rows(rs)
+    if post:
+        lines += ["", "## Post-hoc rerun (marked as such; first results above are unchanged)", "",
+                  f"{env_line(post)} Context window {post[0]['metrics'].get('num_ctx')}; free RAM before load "
+                  f"{post[0]['metrics'].get('free_ram_gb_before_load')} GB. Notes: {post[0]['notes']}", "",
+                  lines[4], lines[5]] + text_rows(post)
     return "\n".join(lines) + "\n"
 
 
