@@ -19,3 +19,12 @@ uploads/
 
 # Third-party sample photos: local only until replaced with own photos
 assets/sample-photos-local/
+
+# generated test results
+docs/epics/zest/verify/test-results/
+
+# local runtime data (S-07)
+logs/
+data/chroma/
+.coverage
+htmlcov/
