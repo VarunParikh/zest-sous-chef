@@ -21,6 +21,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 
 ### Fixed
 - Nine catalogue variants whose names contradicted their derived tags (the taxonomy rule is base term plus extras) moved to correct base products B343 to B350: almond, oat and coconut milk (listed soy milk), gluten-free soy sauce (now tamari, new lexicon term), gluten-free wraps and cake mix (listed wheat or refined flour), veg seekh kebab (listed chicken), chicken sausage and bacon (listed pork). Dried kokum moved from the amchur base to its own base B351 so it resolves as kokum. A new test guards name-versus-tag agreement; two plant protein shakes are reviewed exceptions (their extras declare soy milk).
+- V3 now also fails when an optional (garnish) line would break a dish's claimed diet, matching `check_seed.py`; found while building tranche 4.
 - Logged C19 (`config.yaml` and `eval/thresholds.yaml` need a YAML parser that is not on the approved list) and added a block 1.1 note to C15 (vision default and health-page wording follow ADR-003 v2).
 - Logged C20 (dish schema columns; resolved by the owner's choice to add columns), C21 (category and `LeverSet` vocabulary mismatches; doc-sync pending) and C22 (nine curated pairings whose `dish_b` is not a companion course; owner decision).
 - C22 resolved: the owner kept the nine curated pairings.

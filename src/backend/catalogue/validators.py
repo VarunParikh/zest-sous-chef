@@ -123,6 +123,12 @@ def v3(ctx: Context) -> Result:
             continue
         if rec.dish.diet_class != t.diet_class:
             errors.append(f"{rec.dish.dish_id}: claimed {rec.dish.diet_class}, essential ingredients give {t.diet_class}")
+        try:
+            full = derive([i.ingredient_name for i in rec.ingredients], ctx.lexicon)
+        except UnknownIngredient:
+            continue
+        if full.diet_class != rec.dish.diet_class:
+            errors.append(f"{rec.dish.dish_id}: an optional line makes it {full.diet_class}, claimed {rec.dish.diet_class}")
     return _result("V3", "Derived tags equal a recomputation from the lexicon", errors)
 
 

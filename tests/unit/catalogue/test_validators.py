@@ -134,3 +134,10 @@ def test_v14_persona_out_of_range(ctx):
 def test_v14_unknown_option_string(ctx):
     ctx.personas["personas"][0]["levers"]["diet"] = "Jain"
     assert VALIDATORS["V14"](ctx).status == "FAIL"
+
+
+def test_v3_optional_line_must_not_break_claimed_diet(ctx):
+    rec = next(r for r in ctx.dishes if r.dish.diet_class == "vegan")
+    extra = rec.ingredients[0].model_copy(update={"ingredient_name": "ghee", "essential": False, "line_no": 99})
+    rec.ingredients.append(extra)
+    assert VALIDATORS["V3"](ctx).status == "FAIL"
