@@ -30,6 +30,9 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 - Ollama embedder arm (`EMBEDDING_PROVIDER=ollama`, ADR-005 comparison) batching 64 texts per call; E5 now runs both embedders with separate git-ignored indexes in `data/chroma-eval/`, and records index build time, peak memory and query latency at 1,027 and 5,135 variants.
 - Three Jain dish variants (D128 Jain Pav Bhaji, D129 Jain Dal Chawal, D130 Jain Paneer Butter Masala) with a new `variant_of` column; V9 found the Jain persona had only 2 eligible mains.
 
+- Photo path building blocks (ADR-003 v2; FR-51, 57; S-03, S-04): `backend.llm.image.prepare_image` checks size and magic bytes, decodes with a pixel limit, re-encodes pixels only (EXIF and GPS removed, T-102) and downscales to 1280 px, in memory; `backend.llm.vision` providers `OllamaVision`, `GeminiVision` (REST, key only in the `x-goog-api-key` header, scrubbed from errors; no new dependency) and `SampleVision`; prompt `photo_detect_v1`. Adds Pillow 13.0.0 (approved list).
+- E3 benchmark `scripts/benchmark/vision.py` with the item-matching rule fixed in code and tests before any run (`backend.evaluation.photos`), the text model and guard resident during the runs, 3 repeats, swap and GPU-offload checks (C29).
+
 ### Changed
 - Variant ingredient lists carry the product form as the first qualifier when the base product name differs from its lexicon term (`milk (milk powder, skimmed)`), so different products never share an ingredient list (Data Model §1.4). Two taxonomy rows that were still duplicates got a qualifier (`=boneless` on B317 tikka, `=filter mix` on B328 chicory coffee).
 - Lexicon: `sarson` is now an alias of `mustard greens` only (it was also on `mustard seeds`; V10 caught the collision); added `non-food item` for household products.
@@ -52,3 +55,4 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 - `LLM_NUM_CTX` setting (default 4096) passed to Ollama as `num_ctx`; E1 records free RAM before and after loading. Logged as a post-hoc E1 change by owner decision (day1-plan.md).
 - E1 post-hoc rerun (`eval/results/post-hoc/`): `llama3.2:3b` at a 4,096-token context with other apps closed passes every E1 gate (F1 0.86, schema 5/5, invention 0/41, free RAM after 6.7 GB). Proposed ADR updates for ADR-002, 004, 005 and 006 in `verify/benchmarks/adr-proposals.md`, awaiting owner approval.
 - **ADR-002, 004, 005 and 006 updated with the Day-1 evidence (owner approved 2026-10-18):** text model `llama3.2:3b` at a 4,096-token context; hybrid retrieval stays the default with `RRF_K=60` and add-on weights 2:1; Chroma with its default all-MiniLM-L6-v2 embedder; guard is rules plus `llama-guard3:1b`. ADR index, Approval Register and `adr-proposals.md` updated; `LLM_MODEL` now defaults to `llama3.2:3b`. ADR-003 (vision) stays open until E3 runs.
+- Logged C29 (how "no swap thrash" is measured in E3), defined before any E3 run.

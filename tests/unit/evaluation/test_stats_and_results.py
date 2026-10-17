@@ -72,3 +72,9 @@ def test_c28_non_separable_pass_carries_note():
     assert g["status"] == "PASS" and g["note"] == "not separable" and g["ci95"] == proportion(10, 10)["ci95"]
     clear = gate_status(proportion(40, 40), minimum=0.80)
     assert clear["status"] == "PASS" and "note" not in clear
+
+
+def test_dataset_outside_eval_datasets_is_hashed():
+    r = make_result("E3", system="x", dataset="mock-data/photos.json", split="all", metrics={}, per_example=[],
+                    critical_failures=[], status="NOT RUN")
+    assert r["dataset"]["sha256"] and len(r["dataset"]["sha256"]) == 64

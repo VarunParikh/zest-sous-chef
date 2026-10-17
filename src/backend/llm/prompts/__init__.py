@@ -4,7 +4,7 @@ from __future__ import annotations
 from pathlib import Path
 
 HERE = Path(__file__).parent
-VERSIONS = {"recipe_extract": "recipe_extract_v1.txt"}
+VERSIONS = {"recipe_extract": "recipe_extract_v1.txt", "photo_detect": "photo_detect_v1.txt"}
 
 
 def spotlight(text: str) -> str:
@@ -19,3 +19,7 @@ def render(name: str, text: str) -> tuple[str, str]:
 
 def version(name: str) -> str:
     return VERSIONS[name].removesuffix(".txt")
+
+
+def text(name: str) -> str:
+    return (HERE / VERSIONS[name]).read_text()

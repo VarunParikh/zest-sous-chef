@@ -32,3 +32,21 @@ class ExtractionResult(BaseModel):
 class GuardResult(BaseModel):
     label: Literal["ok", "off_topic", "injection", "hazard"]
     confidence: float = Field(ge=0, le=1)
+
+
+class DetectedItem(BaseModel):
+    name: str = Field(min_length=1, max_length=60)
+    confidence: float = Field(ge=0, le=1)
+
+    @field_validator("name")
+    @classmethod
+    def _plausible(cls, v: str) -> str:
+        if _IMPLAUSIBLE.search(v) or len(v.split()) > 6:
+            raise ValueError("item name is not a plausible name")
+        return v.strip()
+
+
+class DetectionResult(BaseModel):
+    items: list[DetectedItem] = Field(max_length=40)
+    scene_is_food: bool
+    quality: Literal["ok", "dark", "blurry"]

@@ -76,7 +76,7 @@ def make_result(eval_id: str, system: str, dataset: str, split: str, metrics: di
                 critical_failures: list, status: str, notes: str = "", env: dict | None = None) -> dict:
     if status not in STATUSES:
         raise ValueError(f"status must be one of {sorted(STATUSES)}")
-    path = DATASETS / dataset
+    path = DATASETS / dataset if (DATASETS / dataset).exists() else REPO_ROOT / dataset
     digest = hashlib.sha256(path.read_bytes()).hexdigest() if path.exists() else None
     return {"id": eval_id, "system": system, "dataset": {"name": dataset, "sha256": digest, "split": split},
             "environment": environment(env), "metrics": metrics, "critical_failures": critical_failures,
