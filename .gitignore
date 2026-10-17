@@ -28,3 +28,6 @@ logs/
 data/chroma/
 .coverage
 htmlcov/
+
+# large generated benchmark set (5,000 variants)
+mock-data/generated/scale_*/

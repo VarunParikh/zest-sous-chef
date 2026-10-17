@@ -1,4 +1,5 @@
-"""Seed consistency checks (draft of validators V1-V3). Run: python3 mock-data/check_seed.py"""
+"""Seed consistency checks (draft of validators V1-V3; superseded by validate.py, kept as a cross-check). Run: python3 mock-data/check_seed.py
+Ingredient items are term:qty:unit, with an optional fourth field `opt` for non-essential lines."""
 import csv, sys, pathlib
 here = pathlib.Path(__file__).parent
 lex = {r["term"]: r for r in csv.DictReader(open(here/"ingredient_lexicon.csv"))}
@@ -9,7 +10,7 @@ dishes = list(csv.DictReader(open(here/"dishes.csv")))
 for d in dishes:
     worst = "vegan"
     for it in d["ingredients"].split(";"):
-        t, q, u = it.split(":")
+        t = it.split(":")[0]
         t = alias.get(t, t)
         if t not in lex:
             missing.setdefault(t, []).append(d["dish_id"]); continue

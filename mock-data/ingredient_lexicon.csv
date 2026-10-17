@@ -63,7 +63,7 @@ cardamom,elaichi,,,vegan,
 cloves,laung,,,vegan,
 cinnamon,dalchini,,,vegan,
 bay leaf,tej patta,,,vegan,
-mustard seeds,rai|sarson,,,vegan,
+mustard seeds,rai,,,vegan,
 asafoetida,hing,,,vegan,Allowed for Jain (simplified)
 fenugreek leaves,methi,,,vegan,Ambiguous with fenugreek seeds; ask
 saffron,kesar,,,vegan,
@@ -202,3 +202,4 @@ zucchini,courgette,,,vegan,
 sushi rice,japanese rice,,,vegan,Deliberately absent from the catalogue (UJ10 unavailable-ingredient case)
 nori,seaweed sheets,,,vegan,Deliberately absent from the catalogue (UJ10)
 wasabi,,,,vegan,Deliberately absent from the catalogue (UJ10)
+non-food item,,,,vegan,Household products (UJ8); never a recipe ingredient. Tags are not meaningful for non-food

@@ -90,7 +90,7 @@ B313|oils|Rice bran oil|rice bran oil|ml|500/1000/5000|14|Refined~=refined~1.0~-
 B314|oils|Blended oils|sunflower oil|ml|500/1000|13|Sunflower and rice bran~rice bran oil~1.0~-;Sunflower and soy~soy~1.0~-;Palm blend~palm oil~0.8~-;Heart blend~olive oil~1.3~-
 B315|oils|Avocado and flaxseed oil|flax|ml|100/250|120|Avocado~avocado~1.3~g;Flaxseed~=oil~1.0~g;Walnut oil~walnut~1.4~g;Grapeseed~=grapeseed~1.2~g
 B316|oils|Ghee substitutes and spreads|butter|g|200/500|40|Margarine~palm oil,salt~0.7~-;Vanaspati~palm oil~0.6~-;Cooking butter~salt~1.0~-
-B317|meat|Chicken (specialty cuts)|chicken|g|250/500|35|Wings~=wings~1.0~-;Drumsticks~=drumstick~1.0~-;Keema~=keema~1.1~-;Liver~=liver~0.7~-;Tikka boneless marinated~curd,red chilli powder,salt~1.3~-
+B317|meat|Chicken (specialty cuts)|chicken|g|250/500|35|Wings~=wings~1.0~-;Drumsticks~=drumstick~1.0~-;Keema~=keema~1.1~-;Liver~=liver~0.7~-;Tikka boneless marinated~curd,red chilli powder,salt,=boneless~1.3~-
 B318|meat|Mutton (specialty cuts)|mutton|g|250/500|80|Chops~=chops~1.2~g;Paya~=paya~0.7~-;Liver~=liver~0.8~-;Mince~=mince~1.05~-
 B319|meat|Fish (specialty)|fish|g|250/500|50|Tuna steak~=tuna~2.0~g;Mackerel (bangda)~=bangda~0.8~-;Crab~=crab~1.6~g;Squid~=squid~1.4~g;Sardine~=sardine~0.7~-
 B320|meat|Canned fish and meat|fish|g|100/200|50|Tuna in oil~=tuna,sunflower oil~1.0~-;Tuna in water~=tuna,water~1.0~-;Sardine in tomato~=sardine,tomato~0.9~-;Chicken luncheon~chicken,salt~1.1~-
@@ -101,7 +101,7 @@ B324|beverages|Iced tea and cold coffee|tea leaves|ml|200/1000|10|Lemon iced tea
 B325|beverages|Protein and health shakes|whey protein|ml|200/330|60|Chocolate whey~cocoa,milk~1.0~g;Vanilla whey~milk~1.0~g;Millet health drink~millet,jaggery~1.0~-
 B326|beverages|Kombucha and fermented drinks|tea leaves|ml|250/330|55|Ginger kombucha~ginger,sugar~1.0~g;Kanji (carrot)~carrot,mustard seeds,salt~0.8~-;Kvass~=kvass~1.1~g;Probiotic soda~apple,sugar~1.1~g
 B327|beverages|Hot chocolate and malt mix|cocoa|g|200/500|35|Malted~milk powder,sugar~1.0~-;Dark hot chocolate~sugar~1.4~g;Turmeric golden milk~turmeric,milk powder,black pepper~1.3~g;Bournvita-style~milk powder,sugar,oats~1.1~-
-B328|beverages|Coffee (specialty)|coffee|g|100/250|120|Cold brew bags~=cold brew~1.2~g;Instant arabica~=instant arabica~1.4~g;Decaf~=decaf~1.3~g;Chicory filter mix~chicory~0.8~-
+B328|beverages|Coffee (specialty)|coffee|g|100/250|120|Cold brew bags~=cold brew~1.2~g;Instant arabica~=instant arabica~1.4~g;Decaf~=decaf~1.3~g;Chicory filter mix~chicory,=filter mix~0.8~-
 B329|beverages|Green and herbal teas|tea leaves|g|25/100|60|Tulsi tea~tulsi~1.0~-;Chamomile~chamomile~1.3~g;Peppermint~mint~1.1~-;Hibiscus~hibiscus~1.2~g;Kashmiri kahwa~saffron,almond,cardamom~1.8~g
 B330|beverages|Tender coconut and fresh juices|coconut|ml|200/500|20|Tender coconut water~=tender~1.0~-;Fresh sugarcane~sugarcane~1.0~-;Fresh orange (cold pressed)~orange~1.6~g;Fresh pomegranate~pomegranate~1.8~g
 B331|snacks|Mithai and sweets|sugar|g|250/500|60|Rasgulla tin~milk,sugar~1.0~-;Gulab jamun tin~khoya,refined flour,sugar~1.0~-;Soan papdi~gram flour,sugar,ghee~1.1~-;Kaju katli~cashew,sugar~2.0~g;Besan laddu~gram flour,ghee,sugar,=laddu~1.2~-

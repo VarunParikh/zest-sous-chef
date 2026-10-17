@@ -4,7 +4,7 @@ VENV := .venv
 PY := $(VENV)/bin/python
 RESULTS := docs/epics/zest/verify/test-results
 
-.PHONY: setup dev test scan health
+.PHONY: setup dev test scan health data
 
 setup: ## create the venv and install pinned dependencies; create .env from the example if missing
 	$(PYTHON) -m venv $(VENV)
@@ -24,3 +24,11 @@ scan: ## secret scan of the working tree and full git history (T-106)
 
 health: ## print the health JSON from a running backend
 	@curl -s http://127.0.0.1:8000/api/v1/health | $(PY) -m json.tool
+
+data: ## generate the mock catalogue (1,000+ and 5,000+ sets) and run validators V1-V14 on both
+	$(PY) mock-data/build.py
+	$(PY) mock-data/build.py --scale 5
+	$(PY) mock-data/validate.py
+	$(PY) mock-data/validate.py --scale 5
+	$(PY) mock-data/check_seed.py
+	$(PY) mock-data/check_taxonomy.py
