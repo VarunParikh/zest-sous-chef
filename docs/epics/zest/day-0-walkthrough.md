@@ -53,7 +53,7 @@ Decided 2026-10-17: you will use the desktop app. Your Claude Pro plan qualifies
 5. **Permission mode (next to the send button):** use **Plan** for the first prompt, then **Manual** for Day 1 so you see a diff and Accept or Reject buttons for every change. Do not use **Auto** until Day-1 gates have passed.
 
 ## Step 7: First session
-1. In the Code tab, with the project folder selected, paste the prompt below into the prompt box (it is also in `docs/epics/zest/build-plan.md` section 7). Claude Code reads `CLAUDE.md` automatically.
+1. In the Code tab, with the project folder selected, paste the prompt below (all session prompts and tonight's plan are collected in `claude-code-prompts.md`) into the prompt box (it is also in `docs/epics/zest/build-plan.md` section 7). Claude Code reads `CLAUDE.md` automatically.
 2. It proposes a plan first. Read it, then approve. It will ask before installing packages: approve only those on the list in build-plan section 4, and say no to anything else.
 3. You can interrupt at any time with the stop button, or type a correction and press Enter.
 4. After it creates `.env.example`, open the Terminal app, `cd ~/Projects/zest-sous-chef`, run `cp .env.example .env`, then `open -e .env` and paste the **new** Gemini key. Save. Check with `git status` that `.env` does not appear.
