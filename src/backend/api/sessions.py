@@ -5,6 +5,7 @@ from fastapi import APIRouter, Request, Response
 from pydantic import BaseModel, ConfigDict
 
 from backend.catalogue.seed import load_personas
+from backend.engine.scoring import effective_weights
 from backend.flows.cards import TurnResponse
 from backend.flows.greeting import greeting_turn
 from backend.session.levers import LEVER_OPTIONS, LeverSet, merge_levers
@@ -55,6 +56,7 @@ def config_levers(request: Request) -> dict:
         "defaults": LeverSet().model_dump(mode="json"),
         "options": {k: list(v) for k, v in LEVER_OPTIONS.items()},
         "ranges": _ranges(LeverSet),
+        "default_shares": effective_weights(LeverSet().weights)[0],  # FR-08, FR-104
         "presets": [{"name": n, "levers": p.model_dump(mode="json")} for n, p in presets.items()],
     }
 
