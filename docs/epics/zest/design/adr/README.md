@@ -5,11 +5,11 @@ Format follows the `write-adr` skill. An ADR is marked **Accepted** only where t
 | ADR | Decision | Status | Evidence |
 |---|---|---|---|
 | [001](ADR-001-backend-framework.md) | Python 3.12 and FastAPI | Accepted (owner, 2026-10-17) | Qualitative |
-| [002](ADR-002-text-model.md) | Local text model | **Proposed: to be measured Day 1** | `verify/benchmarks/text-models.md` |
+| [002](ADR-002-text-model.md) | Local text model: `llama3.2:3b`, 4k context | **Accepted (owner, 2026-10-18)** from E1 | `verify/benchmarks/text-models.md` |
 | [003](ADR-003-vision-approach.md) | Gemini free tier for photos, sample-photo fallback | Accepted; accuracy to be measured Day 1 | `verify/benchmarks/vision.md` |
-| [004](ADR-004-retrieval-approach.md) | Hybrid BM25 + vector with RRF; v2: add-on suggestions from curated pairs plus vector neighbours (weighted RRF, course rule) | Accepted; v2 amended 2026-10-17; benchmark gate Day 1 | `verify/benchmarks/retrieval.md` |
-| [005](ADR-005-vector-store-and-embedder.md) | Embedded Chroma; embedder open | Store accepted; **embedder to be measured Day 1** | `verify/benchmarks/retrieval.md` |
-| [006](ADR-006-guard-design.md) | Input guard design | **Proposed: to be measured Day 1** | `verify/benchmarks/guard.md` |
+| [004](ADR-004-retrieval-approach.md) | Hybrid BM25 + vector with RRF; v2: add-on suggestions from curated pairs plus vector neighbours (weighted RRF, course rule) | Accepted; v2 amended 2026-10-17; Day-1 evidence recorded 2026-10-18 (hybrid default, k = 60, add-ons 2:1) | `verify/benchmarks/retrieval.md` |
+| [005](ADR-005-vector-store-and-embedder.md) | Embedded Chroma with the default all-MiniLM-L6-v2 embedder | **Accepted (owner, 2026-10-18)** from E5 | `verify/benchmarks/retrieval.md` |
+| [006](ADR-006-guard-design.md) | Input guard: rules plus `llama-guard3:1b` | **Accepted (owner, 2026-10-18)** from E4 | `verify/benchmarks/guard.md` |
 | [007](ADR-007-state-and-storage.md) | In-memory state, JSON catalogue | Accepted | Qualitative |
 | [008](ADR-008-variant-scoring.md) | Lever scores plus price value term | Accepted; constants to be tuned | `verify/benchmarks/variant-scoring.md` |
 | [009](ADR-009-no-mcp-plain-rest.md) | Plain REST, no MCP | Accepted | Qualitative |

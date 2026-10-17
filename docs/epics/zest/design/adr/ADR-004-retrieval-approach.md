@@ -1,5 +1,5 @@
 # ADR-004 (v2): Hybrid retrieval, extended to add-on suggestions with curated pairs plus vector neighbours
-- **Status:** Accepted; **amended 2026-10-17 (v2)** by owner decision. v1 (hybrid retrieval for ingredient and mood-to-dish lookups) stays in force and is kept below under "v1 record". The Day-1 benchmark gate now also covers the add-on evidence listed in the v2 amendment.
+- **Status:** Accepted; **amended 2026-10-17 (v2)** by owner decision; **Day-1 evidence recorded 2026-10-18 (owner approved): hybrid stays the default, `RRF_K=60`, add-on weights curated 2 : vector 1.** v1 (hybrid retrieval for ingredient and mood-to-dish lookups) stays in force and is kept below under "v1 record". The Day-1 benchmark gate now also covers the add-on evidence listed in the v2 amendment.
 - **Date:** 2026-10-17
 - **Decision owner:** VJP (product owner); drafted by Claude
 - **Authorisation:** v1: owner instructed use of a local vector database where possible and approved a BM25 library dependency (G3). v2: owner decisions of 2026-10-17 listed below.
@@ -93,6 +93,23 @@ Rollback: set retrieval mode to lexical-only in config.
 | Latency | Query time at 1,000 and 5,000 variants |
 | Fusion constant | Compare k = 20, 60, 100 |
 Results go in `verify/benchmarks/retrieval.md`. Decision rule: if hybrid does not beat lexical on recall at the pool size, the owner decides the shipped default.
+
+## Evidence and decision (Day 1, 2026-10-18)
+Approved by the owner on 2026-10-18 ("Approve the ADR-002, 004, 005 and 006 proposals as written"). Evidence: `eval/results/` and `verify/benchmarks/` (see [adr-proposals.md](../../verify/benchmarks/adr-proposals.md)).
+
+- **Evidence (E5, 30 test queries):**
+  - Hybrid found a relevant item in the pool for 30/30 queries, lexical for 28/30. On the mood subset: hybrid 7/7, lexical 5/7.
+  - The pre-registered rule is met: at least as good overall, and better on moods. Not separable at n = 7 moods.
+  - No critical failure: no pool omitted an exact-name match.
+  - k = 20, 60 and 100 gave identical results, so `RRF_K` stays 60.
+  - Latency at 5,135 variants: query median about 12 ms, p95 about 20 ms. Index build about 54 s.
+- **Add-on arm:**
+  - Fused 2:1 passes both gates: curated pairs in the top 5, 108/127 (0.85); dishes with no pair covered, 101/101. 0 persona breaks.
+  - 3:1 gives the same; 1:1 fails curated recovery (88/127).
+  - Curated only covers 0/101 dishes that have no pair, and vector only recovers 16/127 curated pairs.
+  - The ADR-004 v2 rule ("if the vector arm adds no eligible add-on for no-pair dishes, the owner decides") does not trigger: the vector arm covers all of them.
+  - **Keep `ADDON_WEIGHTS=curated:2,vector:1`.**
+  - Course rule: 1937/2580 (0.75) of raw vector neighbours are companion courses. The rule removes the rest, as designed.
 
 ## Related documents
 PRD section 11, FR-110 to 117; Data Model section 7; Constitution G9; Risk R21, R24. v2 adds: PRD FR-62, 64, 66 and Appendix A; Data Model section 5.4; conflicts C16 and C17 in `docs/core/open-conflicts.md`.

@@ -1,6 +1,6 @@
 # Proposed ADR updates from the Day-1 evidence (awaiting owner approval)
 
-Status: **PROPOSED, 2026-10-18.** Nothing here changes an ADR until the owner approves it. On approval, each block below goes into its ADR as an "Evidence and decision (Day 1)" section, the ADR's status line changes as stated, and the change goes in the Approval Register and the CHANGELOG.
+Status: **APPROVED by the owner, 2026-10-18** ("Approve the ADR-002, 004, 005 and 006 proposals as written"); applied to the four ADRs the same day. On approval, each block below goes into its ADR as an "Evidence and decision (Day 1)" section, the ADR's status line changes as stated, and the change goes in the Approval Register and the CHANGELOG.
 Evidence: `eval/results/*.json` (test split; commits `28a69da`, `4b3ae25`) and `eval/results/post-hoc/E1-llama3.2_3b.json` (commit `782db12`), summarised in [retrieval.md](retrieval.md), [guard.md](guard.md) and [text-models.md](text-models.md). These are small samples: every rate is quoted as k/n with its 95% Wilson interval, and passes whose interval straddles the gate are marked "not separable" (C28).
 
 ## ADR-002 Text model: Proposed → **Accepted: `llama3.2:3b` with a 4,096-token context**

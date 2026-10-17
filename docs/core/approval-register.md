@@ -34,14 +34,14 @@ Approving a document means: you have read it or the parts you care about, you ac
 | Evaluation Plan | `docs/epics/zest/verify/evaluation-plan.md` | v0.2 | B | **Approved** (ADR-004 v2 sync, C16); thresholds v3 approved as proposed | Owner, 2026-10-17 (re-approved after ADR-004 v2 sync) |
 | ADR-001 Backend framework | `design/adr/ADR-001-...` | | B | **Accepted** | Owner, 2026-10-17 |
 | ADR-003 Vision approach | `design/adr/ADR-003-...` | v2 | B | **Accepted, amended v2** (local-first, pluggable; provider chosen by Day-1 E3) | Owner, 2026-10-17 |
-| ADR-004 Retrieval approach | `design/adr/ADR-004-...` | v2 | B | **Accepted, amended v2** (add-on suggestions: curated pairs plus vector neighbours; benchmark gate Day 1) | Owner, 2026-10-17 |
-| ADR-005 Vector store | `design/adr/ADR-005-...` | | B | **Accepted** for the store; embedder open | Owner, 2026-10-17 |
+| ADR-004 Retrieval approach | `design/adr/ADR-004-...` | v2 | B | **Accepted, amended v2**; Day-1 evidence recorded (hybrid default, k = 60, add-ons 2:1) | Owner, 2026-10-17; evidence approved 2026-10-18 |
+| ADR-005 Vector store | `design/adr/ADR-005-...` | | B | **Accepted**: store and default all-MiniLM-L6-v2 embedder (E5) | Owner, 2026-10-17 (store); 2026-10-18 (embedder) |
 | ADR-007 State and storage | `design/adr/ADR-007-...` | | B | **Accepted** | Owner brief |
 | ADR-008 Variant scoring | `design/adr/ADR-008-...` | | B | **Accepted** (constants tuned) | Owner, 2026-10-17 |
 | ADR-009 No MCP | `design/adr/ADR-009-...` | | B | **Accepted** | Owner, 2026-10-17 |
 | ADR-010 Frontend stack | `design/adr/ADR-010-...` | | B | **Accepted** (with TypeScript) | Owner, 2026-10-17 |
-| ADR-002 Text model | `design/adr/ADR-002-...` | | B | Proposed: decided by Day-1 benchmark | |
-| ADR-006 Guard design | `design/adr/ADR-006-...` | | B | Proposed: decided by Day-1 benchmark | |
+| ADR-002 Text model | `design/adr/ADR-002-...` | | B | **Accepted**: `llama3.2:3b`, 4k context (E1, post-hoc rerun) | Owner, 2026-10-18 |
+| ADR-006 Guard design | `design/adr/ADR-006-...` | | B | **Accepted**: rules plus `llama-guard3:1b` (E4) | Owner, 2026-10-18 |
 | Constitution | `docs/core/constitution.md` | v0.2 | C | **Approved** | Owner, 2026-10-17 |
 | Product Strategy | `docs/core/product-strategy.md` | v0.1 | C | **Approved** | Owner, 2026-10-17 |
 | Product Platforms | `docs/core/product-platforms.md` | v0.1 | C | **Approved** | Owner, 2026-10-17 |
@@ -83,3 +83,4 @@ Approving a document means: you have read it or the parts you care about, you ac
 
 | 2026-10-17 | Owner re-approved the eight amended documents (PRD v0.4, Data Model v0.2, Architecture v0.2, Build Plan v0.2, User Stories v0.3, Test Plan v0.2 with Test Cases, Evaluation Plan v0.2, Mock Data Plan v0.2); accepted at 127 minimum dishes, the proposed config keys and values (pool 8, ADDON_COURSES side/beverage/dessert), at least 6 companion dishes in the test catalogue, and the proposed add-on evaluation gates (`eval/thresholds.yaml` v3). Also: ADR-004 v1 record and ADR-005 counts refreshed; Data Model aligned to the seed (`pairings.csv` fields `dish_a`/`dish_b`, `soup` course added); expansion of `dishes.csv`, `pairings.csv` and eval datasets approved for Claude Code to build | this register, `eval/thresholds.yaml` |
 | 2026-10-17 | Owner resolved C18 with option (c): the add-on price cap applies to the basket cost of the add-on dish, excluding ingredients already in the cart | `open-conflicts.md` C18, `data-model.md` eligibility table |
+| 2026-10-18 | Owner approved the Day-1 ADR proposals as written: ADR-002 `llama3.2:3b` with a 4,096-token context (E1 passed only after the owner-approved post-hoc rerun at 4k with other apps closed); ADR-004 evidence recorded (hybrid default, `RRF_K=60`, `ADDON_WEIGHTS` 2:1); ADR-005 default all-MiniLM-L6-v2 embedder; ADR-006 rules plus `llama-guard3:1b`. ADR-003 vision is not decided (E3 not run) | ADR-002, 004, 005, 006; `verify/benchmarks/adr-proposals.md`; `eval/results/` |

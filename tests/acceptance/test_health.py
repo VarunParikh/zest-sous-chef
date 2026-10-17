@@ -44,7 +44,8 @@ def test_model_not_served_is_reported(tmp_path):
 
 
 def test_model_not_configured_is_reported(tmp_path):
-    r = _client(tmp_path, _ollama_up).get("/api/v1/health")
+    settings = load_settings(env={"CHROMA_PATH": str(tmp_path / "chroma")}, env_file=None).model_copy(update={"llm_model": ""})
+    r = TestClient(create_app(settings, http_transport=httpx.MockTransport(_ollama_up))).get("/api/v1/health")
     assert r.json()["components"]["text_model"]["status"] == "not_configured"
 
 

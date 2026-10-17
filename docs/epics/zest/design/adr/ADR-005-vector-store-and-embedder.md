@@ -1,5 +1,5 @@
 # ADR-005: Use embedded Chroma as the vector store; embedder to be measured
-- **Status:** Accepted for the store (owner decision, 2026-10-17); Proposed for the embedder (to be measured Day 1)
+- **Status:** **Accepted (owner, 2026-10-18):** embedded Chroma with its default all-MiniLM-L6-v2 embedder, chosen by the Day-1 benchmark E5
 - **Date:** 2026-10-17
 - **Decision owner:** VJP (product owner); drafted by Claude
 - **Authorisation:** Owner decided to use a local vector database such as Chroma. The embedder is not decided.
@@ -52,6 +52,17 @@ Rollback: lexical-only mode; swapping the store requires only the `Retriever` im
 | Retrieval recall | Same evaluation set as ADR-004, per embedder (default vs Ollama embedder) |
 | Regional-name behaviour | Hindi and Marathi query subset |
 Results go in `verify/benchmarks/retrieval.md`.
+
+## Evidence and decision (Day 1, 2026-10-18)
+Approved by the owner on 2026-10-18 ("Approve the ADR-002, 004, 005 and 006 proposals as written"). Evidence: `eval/results/` and `verify/benchmarks/` (see [adr-proposals.md](../../verify/benchmarks/adr-proposals.md)).
+
+- **Evidence (E5):** the default embedder and `nomic-embed-text` (Ollama) tied on recall within the pool in every subset (30/30 in hybrid).
+  - nomic was slightly better on the vector-only mood top 5 (7/7 vs 5/7) and on hybrid MRR (0.89 vs 0.88).
+  - Index build at 5,135 variants: 54 s (MiniLM) vs 62 s (nomic). Query p95 was about 20 ms for both.
+- **Why the default:** it runs inside the backend process with no extra Ollama model (nomic is resident at 335 MB beside the text model and Llama Guard). It was already downloaded once into the git-ignored `data/models/`, and it showed no measured quality loss on this set.
+  - nomic was run without its recommended task prefixes, which may understate it. It stays available through `EMBEDDING_PROVIDER=ollama`.
+- **Regional names:** kothmir, kandha, batata and the other regional test queries resolved in every hybrid system. The misspelling "paner" did not resolve (spot check in block 1.4). That is a known limitation.
+- **Bug found and fixed during E5:** an interrupted index build had been treated as current (fixed in `28a69da`; that run was discarded).
 
 ## Related documents
 Data Model section 7; PRD NFR-12, 13; Risk R23.
