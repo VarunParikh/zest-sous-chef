@@ -5,8 +5,6 @@ Gemini is never called here (no paid or quota-consuming calls from a health chec
 """
 from __future__ import annotations
 
-import json
-
 import httpx
 
 from backend.config import Settings
@@ -52,15 +50,9 @@ def _vision(settings: Settings, served: list[str] | None) -> dict:
 
 
 def _fixtures(settings: Settings) -> dict:
-    index = settings.resolve("mock-data/transcripts/index.json")
+    folder = settings.resolve("mock-data/transcripts")
     photos = settings.resolve("assets/sample-photos")
-    transcripts = 0
-    if index.exists():
-        try:
-            data = json.loads(index.read_text())
-            transcripts = len(data) if isinstance(data, (list, dict)) else 0
-        except ValueError:
-            transcripts = 0
+    transcripts = len(list(folder.glob("*.txt"))) if (folder / "index.json").exists() else 0
     sample_photos = len([p for p in photos.glob("*") if p.is_file()]) if photos.exists() else 0
     present = transcripts > 0 and sample_photos > 0 and settings.resolve("mock-data/photos.json").exists()
     return {"status": OK if present else "missing", "transcripts": transcripts, "sample_photos": sample_photos}

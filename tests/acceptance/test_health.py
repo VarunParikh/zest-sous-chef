@@ -112,3 +112,12 @@ def test_unhandled_error_hides_stack_trace(tmp_path):
     assert "secret internals" not in r.text
     assert "Traceback" not in r.text
     assert r.json()["error"]["code"] == "INTERNAL"
+
+
+def test_fixture_counts_match_files_on_disk(tmp_path):
+    from backend.config import REPO_ROOT
+
+    expected = len(list((REPO_ROOT / "mock-data/transcripts").glob("*.txt")))
+    fixtures = _client(tmp_path, _ollama_up).get("/api/v1/health").json()["components"]["fixtures"]
+    assert fixtures["transcripts"] == expected == 10
+    assert fixtures["sample_photos"] == 11
