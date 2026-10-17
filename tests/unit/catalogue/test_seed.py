@@ -37,7 +37,7 @@ def test_optional_marker_parsed(dishes):
 
 def test_add_on_pool_growing(dishes):
     companions = [d for d in dishes if d.dish.course in COMPANION]
-    assert len(companions) >= 30  # 8 in the original seed plus tranche 1
+    assert len(companions) >= 57  # 8 in the original seed plus tranches 1 and 2
 
 
 def test_pairings_reference_dishes(dishes):

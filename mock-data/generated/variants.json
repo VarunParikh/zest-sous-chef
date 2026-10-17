@@ -40503,5 +40503,79 @@
   "satvik_ok": true,
   "variant_id": "b351-b82a5dcc",
   "vegan": true
+ },
+ {
+  "allergens": [],
+  "attributes": {
+   "organic": "no",
+   "premium": "yes",
+   "qualifiers": "sweet",
+   "variant": "Sweet basil"
+  },
+  "base_id": "B352",
+  "brand": "MockMart Gourmet",
+  "category": "vegetables",
+  "diet_class": "vegan",
+  "embedding_text": "Basil (Sweet basil). Category: vegetables. sweet, premium. Ingredients: basil (sweet). Also called: Basil, tulsi basil.",
+  "flags": [],
+  "gi_label": "low",
+  "gluten_free": true,
+  "gourmet_score": 0.903,
+  "halal_status": "not_applicable",
+  "history_bucket": "desserts",
+  "icon": "vegetables",
+  "ingredient_list": [
+   "basil (sweet)"
+  ],
+  "jain_ok": true,
+  "name": "Basil (Sweet basil)",
+  "nutrition": {
+   "carbs_g": 5.8,
+   "fat_g": 0.3,
+   "protein_g": 2.0,
+   "sugar_g": 3.1
+  },
+  "organic_score": 0.135,
+  "price_per_unit_inr": 39.32,
+  "satvik_ok": true,
+  "variant_id": "b352-a2715ab7",
+  "vegan": true
+ },
+ {
+  "allergens": [],
+  "attributes": {
+   "organic": "no",
+   "premium": "yes",
+   "qualifiers": "thai",
+   "variant": "Thai basil"
+  },
+  "base_id": "B352",
+  "brand": "MockMart Gourmet",
+  "category": "vegetables",
+  "diet_class": "vegan",
+  "embedding_text": "Basil (Thai basil). Category: vegetables. thai, premium. Ingredients: basil (thai). Also called: Basil, tulsi basil.",
+  "flags": [],
+  "gi_label": "low",
+  "gluten_free": true,
+  "gourmet_score": 0.812,
+  "halal_status": "not_applicable",
+  "history_bucket": null,
+  "icon": "vegetables",
+  "ingredient_list": [
+   "basil (thai)"
+  ],
+  "jain_ok": true,
+  "name": "Basil (Thai basil)",
+  "nutrition": {
+   "carbs_g": 6.3,
+   "fat_g": 0.3,
+   "protein_g": 2.0,
+   "sugar_g": 3.0
+  },
+  "organic_score": 0.237,
+  "price_per_unit_inr": 43.92,
+  "satvik_ok": true,
+  "variant_id": "b352-2304be1c",
+  "vegan": true
  }
 ]

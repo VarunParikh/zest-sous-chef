@@ -125,3 +125,4 @@ B348|bakery|Gluten-free cake mix|rice|g|200/500|18|Vanilla~sugar,baking soda~1.5
 B349|frozen|Frozen veg kebabs|potato|g|250/400|45|Veg seekh~green peas,gram flour,salt~1.0~-
 B350|meat|Chicken sausages and bacon|chicken|g|200/400|60|Chicken sausage~salt,=sausage~0.9~-;Chicken bacon~=bacon,salt~1.2~-
 B351|spices|Kokum (dried)|kokum|g|100/200|52|Dried rind~=dried~1.0~-
+B352|vegetables|Basil|basil|g|25/50|40|Sweet basil~=sweet~1.0~g;Thai basil~=thai~1.1~g

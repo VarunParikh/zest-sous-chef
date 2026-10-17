@@ -22944,5 +22944,49 @@
   "sku_id": "b351-b82a5dcc-200g",
   "stock_count": 17,
   "variant_id": "b351-b82a5dcc"
+ },
+ {
+  "dark_store_ok": true,
+  "pack": {
+   "qty": 25.0,
+   "unit": "g"
+  },
+  "price_inr": 10,
+  "sku_id": "b352-a2715ab7-25g",
+  "stock_count": 21,
+  "variant_id": "b352-a2715ab7"
+ },
+ {
+  "dark_store_ok": true,
+  "pack": {
+   "qty": 50.0,
+   "unit": "g"
+  },
+  "price_inr": 19,
+  "sku_id": "b352-a2715ab7-50g",
+  "stock_count": 56,
+  "variant_id": "b352-a2715ab7"
+ },
+ {
+  "dark_store_ok": true,
+  "pack": {
+   "qty": 25.0,
+   "unit": "g"
+  },
+  "price_inr": 11,
+  "sku_id": "b352-2304be1c-25g",
+  "stock_count": 19,
+  "variant_id": "b352-2304be1c"
+ },
+ {
+  "dark_store_ok": true,
+  "pack": {
+   "qty": 50.0,
+   "unit": "g"
+  },
+  "price_inr": 21,
+  "sku_id": "b352-2304be1c-50g",
+  "stock_count": 41,
+  "variant_id": "b352-2304be1c"
  }
 ]
