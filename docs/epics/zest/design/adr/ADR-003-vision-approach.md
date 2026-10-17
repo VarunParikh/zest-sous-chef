@@ -1,5 +1,5 @@
 # ADR-003 (v2): Local-first photo ingredient detection with a pluggable provider; Gemini optional; labelled sample photos as last fallback
-- **Status:** Accepted, **amended 2026-10-17 (v2)** by owner decision: local-first, Gemini optional, pluggable. v1 (Gemini primary) is superseded; the original text is kept below under "v1 record". Local model choice is decided by the Day-1 benchmark, so the model name is still open.
+- **Status:** Accepted, **amended 2026-10-17 (v2)** by owner decision: local-first, Gemini optional, pluggable. v1 (Gemini primary) is superseded; the original text is kept below under "v1 record". **Day-1 decision 2026-10-18 (owner approved): default `VISION_PROVIDER=samples`; photo accuracy NOT MET; Gemini 3.5 Flash-Lite available as an opt-in for demos only.**
 - **Date:** 2026-10-17
 - **Decision owner:** VJP (product owner); drafted by Claude
 - **Authorisation:** Owner chose Gemini with user-uploaded photos and Constitution P9 was amended.
@@ -23,6 +23,34 @@
 **Dependencies.** No new Python package (`httpx` already calls Ollama). `google-genai` becomes optional. Pulling any vision model (several GB) needs the owner's go-ahead on the day (CLAUDE.md "ask before").
 
 **Downstream documents** that still describe Gemini as primary are logged as conflict C15 and are overridden by this ADR until synced.
+
+## Evidence and decision (Day 1, 2026-10-18)
+Approved by the owner on 2026-10-18 ("Approve ADR-003: samples as the default (photo accuracy NOT MET), with Gemini Flash-Lite available as an opt-in for demos (option a)"). Evidence: `eval/results/E3-*.json`, [vision.md](../../verify/benchmarks/vision.md), [adr-proposals.md](../../verify/benchmarks/adr-proposals.md).
+
+**Decision.** Default `VISION_PROVIDER=samples`: the bundled sample photos with pre-computed results, labelled as samples (FR-55). **Opt-in for demos (owner option a):** `VISION_PROVIDER=gemini` with `VISION_MODEL=gemini-3.5-flash-lite`, set by hand in the local `.env`, never the default. When it is on, the consent notice applies (FR-50, S-03, C8), detections are labelled as estimates and always confirmed before the cart changes, and photo accuracy is still reported as NOT MET. No local vision model is configured; the local `ollama` provider stays in code for a future re-run.
+
+- **Decision (the pre-registered selection rule, applied as written):** no local model qualified, and Gemini did not qualify either. So the labelled sample-photo path is the default, and photo accuracy is reported as **NOT MET**. No claim of local or cloud vision accuracy is made.
+- **Evidence (clear photos; gates: precision ≥ 0.80, recall ≥ 0.70, p95 ≤ 20 s, no failures, C29 memory checks):**
+
+  | Candidate | Precision | Recall | p95 latency | Failures | Other |
+  |---|---|---|---|---|---|
+  | `gemini-3.5-flash-lite` (reference) | 159/207 = 0.77 (CI 0.71–0.82) | 159/252 = 0.63 (CI 0.57–0.69) | 3.5 s | 0/33 | Quality flags 30/33; flagged the dark photo RF10 as "ok" and listed 3–4 items on it in every run |
+  | `qwen3-vl:4b-instruct` | 108/159 = 0.68 | 108/252 = 0.43 | 110 s | 6/33 (runaway JSON output) | About 1.1 GB swapped (71,575 swap-outs); text model stayed resident |
+  | `gemma4:e2b-it-qat` | 31/70 = 0.44 | 31/252 = 0.12 | 51 s | 12/33 (schema errors) | |
+  | `qwen3-vl:8b-instruct` | NOT RUN | | | | Owner decision: skipped for time and memory |
+
+  `gemini-3.8-flash` was probed and not benchmarked: three calls took 23.5 s, 40 s and over 60 s, past the 20 s gate.
+- **Closest candidate:** Gemini Flash-Lite. It is fast and reliable, and its precision interval reaches 0.80, but its recall interval lies wholly below 0.70. It did better on the demo photos (precision 0.87, recall 0.73) than on the test photos (0.70, 0.57).
+- **Harness fix found while reviewing (before this proposal):** failed calls had been left out of recall, which flattered the failing models. The stored per-call rows were re-scored with failed calls counting as "found nothing" (Gemini unchanged; `qwen3-vl:4b` 0.65 → 0.43; `gemma4` 0.18 → 0.12). Raw model outputs are unchanged, each file says "RESCORED", and every verdict stays FAIL.
+- **Caveats:**
+  1. The labels are unverified and the pre-registered matching rule is strict. For example, a detection of "pepper" does not match a "red capsicum" label, and generic labels ("herbs", "bottles", "cut fruit in containers") rarely match anything. This likely understates every candidate. It was not changed after the results.
+  2. 11 photos only, 4 of them development (demo) photos.
+  3. On this 16 GB machine, memory pressure from the text model and guard makes local vision slow or swapping.
+- **Consequences:** the photo flow (block 2.4) offers the bundled sample photos with pre-computed results, labelled as samples (FR-55). The demo can still show the full photo journey (consent notice, detections, confirmation step, cart) on those samples.
+
+## Choices the owner may make instead (not a recommendation to override the rule)
+- **(a) Opt-in Gemini Flash-Lite for demos:** `VISION_PROVIDER=gemini` set by hand, never the default. Detections are labelled as estimates and always confirmed before the cart changes; the consent notice applies (FR-50, S-03, C8); accuracy stays reported as NOT MET.
+- **(b) Post-hoc improvement round:** the owner verifies the photo labels, then a re-run with an output-length cap for the local models (`qwen3-vl:4b`'s failures were runaway outputs). Results would be marked post-hoc.
 
 ## v1 record (superseded)
 

@@ -1,6 +1,6 @@
 # Business Requirements Document (BRD): Zest AI Sous-Chef
 
-Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-17
+Status: APPROVED v0.1 (owner, 2026-10-17); wording refreshed 2026-10-18 for C15 (no requirement changed) · Date: 2026-10-17
 Inputs: product vision, Strategy, Platforms, Product Research, Personas, Risk Register, Settings Panel, User Journeys. Traceability IDs: B# (brief capabilities), UJ# (journeys), BR# (this document).
 
 ## 1. Purpose and background
@@ -75,7 +75,7 @@ Priority: M = Must, S = Should. Each has acceptance criteria in Given/When/Then 
 4. Order placement happens only through the Buy Now action.
 
 ## 8. Constraints, assumptions, dependencies
-Constraints: 3-day deadline; free tools only; MacBook with 16 GB RAM; mock data only. Assumptions: A1 to A14 in the Risk Register. Dependencies: Gemini free tier for photos (fallback to labelled sample photos); `youtube-transcript-api` (fallback to fixtures); local model through Ollama (benchmark gate).
+Constraints: 3-day deadline; free tools only; MacBook with 16 GB RAM; mock data only. Assumptions: A1 to A14 in the Risk Register. Dependencies: labelled sample photos for the photo flow, with the Gemini free tier as an opt-in for demos (ADR-003); `youtube-transcript-api` (fallback to fixtures); local model through Ollama (benchmark gate).
 
 ## 9. Traceability summary
 | Objective | Requirements | Journeys |

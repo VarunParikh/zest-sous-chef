@@ -1,6 +1,6 @@
 # Assumptions and Risk Register: Zest AI Sous-Chef
 
-Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-17
+Status: APPROVED v0.1 (owner, 2026-10-17); living document, v0.2 refreshed 2026-10-18 for C15 (Rule 3) · Date: 2026-10-17
 Weighting (owner input): the biggest threats are (1) the demo not working, (2) lack of technical depth, and (3) unsourced claims. The reviewer is a product leader who will also probe technical choices and expects decisions to be backed by data. The 3-day deadline is firm.
 
 Scoring: Likelihood (L) and Impact (I) from 1 to 5; Score = L × I. 15 or more is Critical, 8 to 14 High, below 8 Medium.
@@ -40,7 +40,7 @@ Scoring: Likelihood (L) and Impact (I) from 1 to 5; Score = L × I. 15 or more i
 | R4 | Demo | Hallucinated ingredient, SKU or price appears live | 3 | 5 | **15** | Catalogue grounding (P3); schema validation; golden test set | Tighten the schema, re-run the golden set, and demo only tested paths | 2 |
 | R6 | Product | A lever shows no visible effect | 3 | 5 | **15** | Lever-sensitivity tests per lever group; score breakdown chart; choose demo prompts with clear divergence; control persona P9 | Adjust weights or data until effect is clear; document honestly | 2 |
 | R11 | Credibility | Decisions not backed by data (model choice, MCP, framework) | 3 | 5 | **15** | Decision Evidence Log; benchmarks; ADRs listing alternatives | Present the measured limits and the reasoning | 1 to 3 |
-| R2 | Demo | Gemini rate limit, outage or model rename | 3 | 4 | 12 | Model name in `.env`; bundled default sample photos with pre-computed results, labelled as samples | Switch to the labelled sample photos; say so plainly | 1 |
+| R2 | Demo | Opt-in Gemini demo: rate limit, outage or model rename (default photo path is sample photos, ADR-003) | 3 | 4 | 12 | Model name in `.env`; bundled default sample photos with pre-computed results, labelled as samples | Switch to the labelled sample photos; say so plainly | 1 |
 | R7 | Delivery | UI and engine do not integrate on Day 2 | 3 | 4 | 12 | Thin vertical slice first (one dish end to end); integrate daily | Cut features, keep the slice | 2 |
 | R9 | Demo | Live demo conditions (Wi-Fi, memory pressure, cold model) | 3 | 4 | 12 | Warm-up step; close other apps; offline mode; health-check page | Backup screen recording | 3 |
 | R17 | Data | Mock catalogue too thin, causing visible gaps | 3 | 4 | 12 | Build catalogue from the dish list; coverage script; regional synonyms (kothmir, kandha, batata) | Add SKUs; script stock-outs deliberately | 1 to 2 |
@@ -106,7 +106,7 @@ Each decision gets an ADR listing alternatives, the evidence, and the result. Ev
 | Dev-time tools | GitHub CLI vs a GitHub MCP; Playwright for UI tests | Setup effort and reliability | ADR |
 
 ## 6. Demo reliability plan
-1. **Health-check page** that shows each dependency (model loaded, Gemini reachable, transcript fixtures present).
+1. **Health-check page** that shows each dependency (model loaded, vision provider status, transcript fixtures present).
 2. **Warm-up script** that loads the local model before the demo.
 3. **Default sample photos (owner decision, 2026-10-17):** there is no general replay mode. If live photo analysis fails, the app switches to bundled sample photos with pre-computed results, labelled as samples in the UI and the demo script, never presented as live.
 4. **Backup screen recording** of the full happy path.

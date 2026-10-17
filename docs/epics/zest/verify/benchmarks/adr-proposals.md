@@ -64,7 +64,7 @@ Evidence: `eval/results/*.json` (test split; commits `28a69da`, `4b3ae25`) and `
 
 ---
 
-# ADR-003 Vision (PROPOSED, 2026-10-18, awaiting owner approval)
+# ADR-003 Vision (APPROVED by the owner 2026-10-18 with option (a), opt-in Gemini Flash-Lite for demos; applied the same day)
 Evidence: `eval/results/E3-*.json` (commit `6e0317e`, all 11 photos, 3 runs each, text model and guard resident; re-scored after a harness fix, see below), summarised in [vision.md](vision.md). **Photo labels are assistant-written and UNVERIFIED** (owner decision 2026-10-17).
 
 ## ADR-003 Vision approach: Accepted v2 → **Accepted v2, evidence recorded: default `VISION_PROVIDER=samples`; photo accuracy NOT MET**

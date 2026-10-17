@@ -1,11 +1,11 @@
 # Security and Privacy Note: Zest AI Sous-Chef
 
-Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-17 · Method: design-stage review (`security-privacy-reviewer` procedure) of PRD v0.3, Architecture v0.1, Data Model v0.1, API Spec v0.1, Agent Design v0.1
+Status: v0.2 Draft (amended v0.2, 2026-10-18, C15 sync to ADR-003 Day-1 decision): awaiting owner re-approval (Approval Register Rule 2). v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Method: design-stage review (`security-privacy-reviewer` procedure) of PRD v0.3, Architecture v0.1, Data Model v0.1, API Spec v0.1, Agent Design v0.1
 This note supplements, and does not replace, a specialist security or compliance review. No code exists yet, so findings are tied to documented data flows and design gaps. Nothing here is a statement that the system is secure or compliant.
 
 ## 1. Scope and assumptions
 - A local prototype on one laptop, shared as a public GitHub repository. No hosting, no accounts, mock commerce data only, at most 5 testers running it locally.
-- The only cloud call is the Gemini API for photos. Text prompts stay on the machine.
+- By default there is no cloud call: photos use bundled sample photos (ADR-003, 2026-10-18). The only possible cloud call is the opt-in Gemini photo demo, off by default. Text prompts stay on the machine.
 - The owner built this with Claude Code; the repo is public, so everything committed is world-readable.
 - Out of scope: production hosting, payments, real user accounts, multi-tenant isolation (there is no tenancy).
 
@@ -24,7 +24,7 @@ This note supplements, and does not replace, a specialist security or compliance
 flowchart LR
   B[Browser: untrusted input] -->|REST, localhost| S[Backend]
   S -->|local| O[Ollama]
-  S -->|HTTPS, photos only| G[Gemini API: third party]
+  S -.->|HTTPS, opt-in photo demo only| G[Gemini API: third party]
   S -->|HTTPS| Y[YouTube transcript source: untrusted content]
   S --> F[(Local files: catalogue, Chroma, logs)]
   R[Public GitHub repo] -.clone/run.-> S
@@ -69,7 +69,7 @@ Mapping reference: OWASP Top 10 for LLM Applications (verify the current list an
 |---|---|---|---|---|---|
 | Lever settings | Browser form | Personalise recommendations | Browser, backend (snapshot) | In memory only | Lost on refresh or restart |
 | Chat text | Chat input | Understand requests | Backend, local model | In memory; truncated copies in local trace | Session end; trace file deleted by owner |
-| Uploaded photo | Upload | Detect ingredients | Backend, then **Google Gemini** | Never written to disk | Discarded after parsing |
+| Uploaded photo | Upload (opt-in live analysis only) | Detect ingredients | Backend, then **Google Gemini** only when the opt-in demo is enabled; by default sample photos are used and nothing leaves the laptop | Never written to disk | Discarded after parsing |
 | Cart and order | Actions | Mock checkout | Backend | In memory | Lost on refresh |
 | Trace log | System | Debugging, evaluation | Backend | Local file, git-ignored | Owner deletes; no images; text truncated |
 | API key | Owner | Gemini access | Backend | Local `.env` | Rotate on exposure |

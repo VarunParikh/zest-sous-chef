@@ -1,6 +1,6 @@
 # Product Platforms: Zest AI Sous-Chef
 
-Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-16
+Status: v0.2 Draft (amended v0.2, 2026-10-18, C15 sync to ADR-003 Day-1 decision): awaiting owner re-approval (Approval Register Rule 2). v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-16
 Model names and limits change quickly. Everything model-specific is configuration (`.env`), never hard-coded. Choices here are provisional until ratified in ADR-001 to ADR-004.
 
 ## 1. Platform map
@@ -9,10 +9,10 @@ Model names and limits change quickly. Everything model-specific is configuratio
 |---|---|---|---|---|---|
 | Backend | **Python 3.12 + FastAPI** | Chat orchestration, recommendation engine, catalogue and cart services | Best local-AI ecosystem; typed schemas; simple to test with `pytest` | Node/TypeScript | Free |
 | Frontend | **React + Vite + Tailwind** (design tokens from `DESIGN.md`) | Split screen, chat, cart window | Fast to build; maps cleanly to the design spec | Plain HTML/JS, Next.js | Free |
-| Text LLM (default) | **Local model via Ollama** (small instruction-tuned model, to be benchmarked Day 1) | Intent, recipe and ingredient extraction, dish suggestions, replies | Free, private, offline | Cloud LLM | Free |
-| Vision (default) | **Gemini API free tier** (a Flash or Flash-Lite model that accepts images) | Identify ingredients in photos | Better accuracy than small local vision models on 16 GB RAM | Local vision model through Ollama | Free tier |
-| Vision (fallback) | **Bundled default sample photos** with pre-computed results | Keeps the photo flow demonstrable if Gemini is unavailable | Owner decision, 2026-10-17 | Local vision model (dropped) | Free |
-| Guard / classifier | **Rules + small local classifier** (Llama Guard is a candidate, to be verified in ADR-003) | Off-topic, injection and hazard screening (UJ9, UJ57, UJ59) | Guardrails must not depend on the main model's good behaviour | Prompt-only guard | Free |
+| Text LLM (default) | **Local model via Ollama: `llama3.2:3b`, 4k context** (ADR-002, chosen by E1 on 2026-10-18) | Intent, recipe and ingredient extraction, dish suggestions, replies | Free, private, offline | Cloud LLM | Free |
+| Vision (default) | **Bundled sample photos** with pre-computed results, labelled as samples | Keeps the photo flow demonstrable | ADR-003, E3 on 2026-10-18: no provider met the accuracy gate; photo accuracy NOT MET | Local vision model through Ollama (failed E3 on 16 GB) | Free |
+| Vision (opt-in, demos) | **Gemini API free tier, `gemini-3.5-flash-lite`** | Live detection, labelled as estimates and confirmed before the cart changes | Closest to the E3 gate (precision 0.77, recall 0.63, p95 3.5 s); owner opt-in, 2026-10-18 | Off (default) | Free tier |
+| Guard / classifier | **Rules + `llama-guard3:1b`** (ADR-006, chosen by E4 on 2026-10-18) | Off-topic, injection and hazard screening (UJ9, UJ57, UJ59) | Guardrails must not depend on the main model's good behaviour | Prompt-only guard | Free |
 | Transcripts | **`youtube-transcript-api`** + **pre-saved fixtures** + paste-transcript fallback | YouTube recipes (UJ2, UJ20) | See section 4 | Official YouTube Data API (captions need owner auth) | Free |
 | Catalogue and stock | **Mock catalogue service** (JSON/SQLite in `mock-data/`) | SKUs, prices, pack sizes, stock, dark-store flags | Brief requires mock data; scriptable stock-outs for UJ10 and UJ22 | Real platform (not available) | Free |
 | Retrieval | **Hybrid: lexical plus synonym table and embedded Chroma vector store** (local ONNX embedder by default; an Ollama embedder is an option to benchmark) merged by reciprocal rank fusion | Ingredient-to-SKU and mood-to-dish candidate pools (IDs only) | Owner decision 2026-10-17; handles mood language and near-variant SKUs; no separate service | Lexical only; networked vector database | Free |
@@ -25,7 +25,7 @@ Model names and limits change quickly. Everything model-specific is configuratio
 ## 2. Model routing
 A single provider interface with two implementations, chosen by `.env`:
 - `LLM_PROVIDER=ollama` (default) for text.
-- `VISION_PROVIDER=gemini`. If the Gemini call fails, times out or is rate-limited, the app offers the bundled default sample photos with pre-computed results, clearly labelled as samples (owner decision, 2026-10-17). A local vision model is no longer in the fallback chain.
+- `VISION_PROVIDER=samples` by default (ADR-003, 2026-10-18). Opt-in for demos: `VISION_PROVIDER=gemini` with `VISION_MODEL=gemini-3.5-flash-lite`; if the Gemini call fails, times out or is rate-limited, the app offers the bundled sample photos with pre-computed results, clearly labelled as samples. No local vision model is configured.
 - No cloud fallback for text prompts (owner decision, 2026-10-17): text runs on the local model only.
 - Every LLM call returns schema-validated JSON. One retry, then fallback (Constitution G5).
 
@@ -41,7 +41,7 @@ Google's pricing page lists free-tier content as **used to improve its products*
 ## 5. Hardware budget (MacBook Air M5, 16 GB)
 - Small local models only. Run one model at a time. Close heavy apps during the demo.
 - Benchmark on Day 1: time to first token, tokens per second, and extraction accuracy on 10 sample recipes. The result drives ADR-001.
-- Gemini calls offload vision, so no local vision model needs to be loaded at the same time as the text model.
+- No local vision model is loaded beside the text model and guard: E3 showed local vision models swapping or evicting models on this 16 GB machine.
 - The embedded vector store and its small embedder run inside the Python process alongside the Ollama text model. Their memory and index build time are not yet measured; the Day-1 benchmark records them (risk R23).
 
 ## 6. Mock data (owned by us)

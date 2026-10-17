@@ -1,12 +1,12 @@
 # Architecture: Zest AI Sous-Chef
 
-Status: **APPROVED v0.2 (owner, 2026-10-17)** (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2: add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4, Data Model v0.2, Constitution v0.2, ADR-001 to ADR-010
+Status: **v0.3 Draft (amended v0.3, 2026-10-18, C15 sync to ADR-003 Day-1 decision): awaiting owner re-approval (Approval Register Rule 2).** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2: add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4, Data Model v0.2, Constitution v0.2, ADR-001 to ADR-010
 Scope: components, boundaries, data flows, failure handling and quality attributes. Field definitions are in the Data Model; endpoints will be detailed in the API Spec; prompts and tool contracts in the Agent Design.
 
 ## 1. Architectural stance
 1. **A deterministic pipeline with language-model steps, not a free-roaming agent.** The model interprets language (intent, ingredient extraction, short replies). Code does everything that must be exact: retrieval, eligibility, scoring, variant choice, pack allocation, pricing, cart and checkout. This is how Constitution P2 and P3 are enforced.
 2. **Narrow interfaces to every dependency** (model, vision, transcripts, vector store, catalogue), so each can fail, be replaced or be faked in tests.
-3. **Everything runs on one laptop.** No hosting, no accounts (apart from a Gemini API key held in a local `.env`).
+3. **Everything runs on one laptop.** No hosting, no accounts (apart from an optional Gemini API key held in a local `.env` for the opt-in photo demo).
 4. **The reviewer can see inside.** Every request leaves a trace, and the lever panel shows retrieval and scoring (FR-115).
 
 ## 2. System context
@@ -15,13 +15,13 @@ flowchart LR
   U[User in browser] --> FE[React app: levers, chat, cart]
   FE -->|REST/JSON| BE[FastAPI backend]
   BE --> OL[Ollama local text model]
-  BE --> GM[Gemini API, photos only]
+  BE -.-> GM[Gemini API, opt-in photo demo only]
   BE --> YT[YouTube transcript source + fixtures]
   BE --> CH[(Chroma embedded vector store)]
   BE --> MD[(Mock catalogue and recipe files)]
   BE --> TR[(Local trace log)]
 ```
-Trust boundaries: browser to backend (untrusted input); backend to Gemini (the only cloud call, photos only, consent notice first); backend to transcript source and any fetched text (untrusted content, treated as data, FR-12). Text prompts never leave the laptop.
+Trust boundaries: browser to backend (untrusted input); backend to Gemini (the only possible cloud call: the opt-in photo demo, off by default, consent notice first); backend to transcript source and any fetched text (untrusted content, treated as data, FR-12). Text prompts never leave the laptop.
 
 ## 3. Components
 ```mermaid
@@ -68,7 +68,7 @@ flowchart TB
 | `engine` | Eligibility mask, `S_final`, variant score, ties, context (FR-60 to 67, 113) | catalogue |
 | `catalogue` | Read-only SKU, variant, dish, recipe, synonym data; mutable stock; stock scenarios | files |
 | `cart` | Pack allocation, shared lines, edits, revalidation, checkout, idempotency (FR-71 to 83) | catalogue |
-| `llm` | One interface, two providers: Ollama text, Gemini vision; timeouts, one retry, schema validation (G5, NFR-10) | config |
+| `llm` | Ollama text client; vision providers `samples` (default), `gemini` (opt-in) and `ollama` (kept for re-runs) behind one interface; timeouts, one retry, schema validation (G5, NFR-10) | config |
 | `transcripts` | Live fetch, then fixture, then title and description (FR-20) | network |
 | `trace` | JSONL events, no images, truncated text (NFR-06) | none |
 
@@ -105,7 +105,7 @@ sequenceDiagram
   A-->>U: cards: added dish, 2 swaps, Undo, Why this?
 ```
 ### 4.2 Photo flow (B4)
-Consent notice (first upload) → upload validation (FR-57) → metadata stripped, bytes held in memory only → Gemini returns detections with confidence (schema-validated) → low-confidence items confirmed with the user → dish pool from detected items (BM25 + vector) → eligibility → rank → add the top dish's missing items → swaps and Undo → image discarded. If Gemini fails or times out, bundled labelled sample photos are offered (FR-55).
+Default (ADR-003, decided 2026-10-18): the flow offers labelled sample photos with pre-computed detections (FR-55), then continues from the detections below. Opt-in live analysis: consent notice (first upload) → upload validation (FR-57) → metadata stripped, bytes held in memory only → Gemini returns detections with confidence (schema-validated) → low-confidence items confirmed with the user → dish pool from detected items (BM25 + vector) → eligibility → rank → add the top dish's missing items → swaps and Undo → image discarded. If Gemini fails or times out, bundled labelled sample photos are offered (FR-55).
 
 ### 4.3 YouTube flow (B1)
 Validate URL (FR-24) → transcript chain (live, fixture, title and description, paste prompt) → guard on fetched text → LLM extracts dish and ingredient lines → retrieval maps each ingredient to variants → engine picks variants and persona-filters → cart allocation → pantry question for staples (FR-23).
@@ -128,7 +128,7 @@ The pool must be larger than the display set, otherwise the levers cannot reorde
 | Key | Purpose | Default |
 |---|---|---|
 | `LLM_PROVIDER`, `LLM_MODEL` | Local text model | `ollama`, chosen by benchmark |
-| `VISION_PROVIDER`, `VISION_MODEL`, `GEMINI_API_KEY` | Photo analysis (key only in local `.env`) | `gemini` |
+| `VISION_PROVIDER`, `VISION_MODEL`, `GEMINI_API_KEY` | Photo analysis (key only in local `.env`) | `samples`; opt-in `gemini` with `gemini-3.5-flash-lite` (ADR-003) |
 | `EMBEDDING_PROVIDER`, `EMBEDDING_MODEL` | Vector embedder | Chroma default ONNX |
 | `RRF_K`, `DISH_POOL`, `VARIANT_POOL`, `AMBIGUITY_MARGIN` | Retrieval tuning | 60, 15, 10, 0.15 |
 | `ADDON_COURSES`, `ADDON_WEIGHTS`, `ADDON_POOL` | Add-on retrieval: companion courses for the vector list; curated and vector fusion weights; add-on pool size (proposed names and starting values, tuned by the ADR-004 v2 weight sweep) | `side,beverage,dessert`; curated 2, vector 1; 8 |
@@ -141,7 +141,7 @@ The pool must be larger than the display set, otherwise the levers cannot reorde
 | Dependency fails | Detected by | Behaviour |
 |---|---|---|
 | Local model: timeout or invalid JSON | timeout, schema check | One retry, then rephrase request; trace `fallback_used` |
-| Gemini: error, rate limit, timeout | provider interface | Labelled sample photos |
+| Opt-in Gemini: error, rate limit, timeout | provider interface (one retry on 429 or 5xx) | Labelled sample photos |
 | Transcript source blocked | exception | Fixture, then title and description, then paste prompt |
 | Vector store or embedder | startup check and call error | Lexical-only retrieval; add-ons from the curated list alone (FR-117) |
 | Catalogue stock change | revalidation at Buy Now | Block order until swap or remove (FR-83) |
@@ -161,7 +161,7 @@ Guard in front of every model call; fetched content wrapped as data with no tool
 | Reproducibility | Seeded data, pinned versions, temperature 0 | V13; NFR-08, 11 |
 
 ## 10. Run and deployment view
-Three local processes: Ollama daemon, backend (`uvicorn`), frontend (Vite dev server or built static files served by the backend). One command (`make dev` or a shell script) starts the backend and frontend, builds the Chroma index if missing, and prints a health summary. No containers are required. A health page lists model loaded, Gemini reachable, fixtures present and index ready.
+Three local processes: Ollama daemon, backend (`uvicorn`), frontend (Vite dev server or built static files served by the backend). One command (`make dev` or a shell script) starts the backend and frontend, builds the Chroma index if missing, and prints a health summary. No containers are required. A health page lists model loaded, vision provider status, fixtures present and index ready.
 
 ## 11. Repository layout (planned)
 ```

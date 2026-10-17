@@ -1,6 +1,6 @@
 # Conversation Design: Zest AI Sous-Chef
 
-Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, DESIGN.md, UserJourneys.md, Constitution v0.2
+Status: v0.2 Draft (amended v0.2, 2026-10-18, C15 sync to ADR-003 Day-1 decision): awaiting owner re-approval (Approval Register Rule 2). v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, DESIGN.md, UserJourneys.md, Constitution v0.2
 Design stance: provisional where marked. The tools Zest can use are only the ones in the Architecture; this document promises no integration that does not exist (all commerce is mock).
 
 ## 1. Goals and measurable outcomes
@@ -124,12 +124,12 @@ Timeout: if the user is silent, nothing happens; the session persists until refr
 | MSG-MOOD-SWAP | swap tapped | "Swapped to {dish}. Your earlier items are untouched." |
 | MSG-UNDO | Undo tapped | "Done. Removed {dish}." |
 | MSG-MOOD-NONE | no eligible dish | "I couldn't find a dish that fits your {constraint} settings for that mood. Try another mood, or tell me what you'd like to cook." |
-| MSG-PHOTO-CONSENT | first upload | "Heads up: photos are sent to Google's Gemini free tier, which may use them to improve its products. Please don't upload personal photos. Continue?" |
+| MSG-PHOTO-CONSENT | first upload, opt-in live analysis enabled | "Heads up: photos are sent to Google's Gemini free tier, which may use them to improve its products. Please don't upload personal photos. Continue?" |
 | MSG-PHOTO-OK | detection done | "I can see {items}. You can make {dish}! I've added {n} missing items. ✅" + swaps + Undo |
 | MSG-PHOTO-LOW | items below threshold | "I'm not sure about {items}. Are they in your photo?" (Yes / No per item) |
 | MSG-PHOTO-DARK | unusable image | "I can't make out much in that photo. Could you try better lighting, or type what you have?" |
 | MSG-PHOTO-NONE | no food | "I couldn't spot any ingredients there. Try a photo of your fridge or counter." |
-| MSG-PHOTO-SAMPLES | Gemini failed | "Live photo analysis isn't available right now. Try one of these sample photos instead." (labelled "Sample") |
+| MSG-PHOTO-SAMPLES | photo uploaded while live analysis is off (default), or the opt-in Gemini failed | "Live photo analysis isn't available right now. Try one of these sample photos instead." (labelled "Sample") |
 | MSG-UPLOAD-REJECT | wrong type or size | "I can take one JPEG, PNG or WebP image up to 5 MB. Could you try again?" |
 
 ### 6.4 Constraints, stock and variants
@@ -234,7 +234,7 @@ Illustrative: prices and SKUs are placeholders and come from the catalogue at re
 
 **D4. Photo with consent**
 > User: [uploads photo first time]
-> Zest: Heads up: photos are sent to Google's Gemini free tier… Continue? [Continue] [Cancel]
+> Zest (opt-in live analysis only): Heads up: photos are sent to Google's Gemini free tier… Continue? [Continue] [Cancel]
 > Zest: I can see paneer, capsicum and onion. You can make Kadai Paneer! I've added 3 missing items. ✅ [Swap…] [Undo]
 
 **D5. Ambiguity (methi)**

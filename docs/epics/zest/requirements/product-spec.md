@@ -1,6 +1,6 @@
 # Specification (PRD): Zest AI Sous-Chef
 
-- **Status:** **v0.4, approved by the owner 2026-10-17** after the ADR-004 v2 sync (Approval Register Rule 2). v0.3 was approved by the owner 2026-10-17 (OQ-8 to OQ-10 accepted at their defaults); v0.2 reviewed (see `spec-review-v0.1.md`); v0.3 and v0.4 changes not independently re-reviewed
+- **Status:** **v0.5 Draft (amended v0.5, 2026-10-18, C15 sync to ADR-003 Day-1 decision): awaiting owner re-approval (Approval Register Rule 2).** v0.4 was approved by the owner 2026-10-17 after the ADR-004 v2 sync (Approval Register Rule 2). v0.3 was approved by the owner 2026-10-17 (OQ-8 to OQ-10 accepted at their defaults); v0.2 reviewed (see `spec-review-v0.1.md`); v0.3 and v0.4 changes not independently re-reviewed
 - **Owner:** VJP (product owner) · **Date:** 2026-10-17
 - **Inputs:** BRD, Strategy, Platforms, Personas, Risk Register, Settings Panel, DESIGN.md, User Journeys, mockups
 - **Convention:** "shall" marks a testable requirement. Priority: M = Must, S = Should, C = Could. Items needing an owner decision are in section 15.
@@ -103,12 +103,12 @@ Below 1024 px, a segmented control switches between Levers and Chat.
 ### 6.6 Photo flow (B4)
 | ID | Requirement | Pri |
 |---|---|---|
-| FR-50 | Before the first upload the UI shall show a notice that the photo goes to a Gemini API free tier that Google may use to improve its products, and that personal photos should not be uploaded | M |
+| FR-50 | When live photo analysis is enabled (the opt-in Gemini demo, ADR-003), before the first upload the UI shall show a notice that the photo goes to the Gemini API free tier, which Google may use to improve its products, and that personal photos should not be uploaded. With the default sample-photo path no photo leaves the laptop | M |
 | FR-51 | The system shall strip photo metadata before any processing and delete the photo after parsing | M |
 | FR-52 | Detection output shall include a confidence per item; items below the threshold (initial 0.6, tuned by the benchmark) shall be confirmed with the user | M |
 | FR-53 | The system shall rank eligible dishes that use the detected items; the chat shall show three, each with its count of missing items | M |
 | FR-54 | The top dish's missing items only shall be added to the cart (OQ-9); the other two appear as one-tap swaps with Undo, as in FR-41 | M |
-| FR-55 | If live analysis fails or is unavailable, the UI shall offer bundled sample photos with pre-computed results, labelled as samples | M |
+| FR-55 | The default photo path (ADR-003, decided 2026-10-18 from E3) shall offer bundled sample photos with pre-computed results, labelled as samples. The same offer appears if the opt-in live analysis fails or is unavailable. Photo accuracy is reported as NOT MET; detections are labelled as estimates and confirmed before the cart changes | M |
 | FR-56 | A photo with no recognisable food shall receive the "couldn't spot any ingredients" reply | S |
 | FR-57 | Uploads shall be limited to JPEG, PNG or WebP, at most 5 MB, one image per message; others get a clear rejection | M |
 
@@ -197,14 +197,14 @@ Below 1024 px, a segmented control switches between Levers and Chat.
 - **Entities:** Session, LeverSnapshot, Message, CartDish, CartLine, Order, Variant, Sku, Dish, RecipeIngredient, Synonym, Pairing, TrendRow, Persona, Context, RetrievalDocument, Candidate. Field-level definitions are in `design/data-model.md`.
 - **State:** in memory per session; refresh resets.
 - **Provisional endpoints:** session create, chat message (text and image), cart read and edit, checkout, levers read, write and reset, chat clear, health. No inbound webhooks.
-- **Integrations:** local model (Ollama); embedded local vector store (Chroma) with a local embedding model; Gemini API for images; `youtube-transcript-api` and fixtures; mock catalogue.
+- **Integrations:** local model (Ollama); embedded local vector store (Chroma) with a local embedding model; photo analysis from labelled sample photos by default, with the Gemini API as an opt-in for demos (ADR-003); `youtube-transcript-api` and fixtures; mock catalogue.
 
 ## 9. Errors, edge cases and recovery
 | Case | Required behaviour |
 |---|---|
 | Local model returns invalid JSON | One retry, then a fallback asking the user to rephrase |
 | Any external call times out | NFR-10 retry once, then fallback or failure copy |
-| Gemini unavailable or rate-limited | Offer labelled sample photos (FR-55) |
+| Live photo analysis off (default) or the opt-in Gemini unavailable or rate-limited | Offer labelled sample photos (FR-55) |
 | Wrong type or oversized upload | Reject with reason (FR-57) |
 | Transcript unavailable | Fixture, title and description, paste prompt (FR-20) |
 | Photo with closed containers or dark image | Ask for a clearer photo or typed ingredients |
@@ -245,7 +245,7 @@ No product analytics. A local trace log (no images, truncated text, no personal 
 | AC-08 | Paneer Butter Masala and Garlic Butter Naan in cart: butter active under the first dish, dimmed under the second; removing it from the first transfers it; total stays correct | FR-73 |
 | AC-09 | "I am feeling indulgent": the top eligible dish's ingredients are added, two swap options appear, Undo is available | FR-40, 41 |
 | AC-10 | Photo of paneer and capsicum: the top dish's missing items only are added; swap replaces only that dish | FR-53, 54 |
-| AC-11 | Gemini unavailable, photo uploaded: labelled sample-photo option appears | FR-55 |
+| AC-11 | Live analysis off (default) or the opt-in Gemini unavailable, photo uploaded: labelled sample-photo option appears | FR-55 |
 | AC-12 | Empty cart: icon greyed and not clickable; with items: badge shows count | FR-75 |
 | AC-13 | Buy Now: order-placed message with progress bar closes after 10 s; second press has no effect | FR-80, 81 |
 | AC-14 | Model reply with a price differing from the catalogue: displayed price equals the catalogue | FR-79 |
@@ -282,7 +282,7 @@ No product analytics. A local trace log (no images, truncated text, no personal 
 | AC-45 | Vector store disabled: add-on suggestions are still offered from the curated list, `fallback_used` is traced and no error is shown | FR-117 |
 
 ## 13. Dependencies and rollout
-Ollama model passing the Day-1 benchmark; Gemini free-tier key in local `.env`; transcript fixtures; validated mock data. Rollout: public GitHub repository, run locally; at most 5 testers. Rollback: tag each working state.
+Ollama model passing the Day-1 benchmark; optional Gemini key in the local `.env` for the opt-in photo demo; transcript fixtures; validated mock data. Rollout: public GitHub repository, run locally; at most 5 testers. Rollback: tag each working state.
 
 ## 14. Assumptions
 A1 to A14 in the Risk Register. Also: default servings 2; one currency (₹); English UI.

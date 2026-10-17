@@ -1,6 +1,6 @@
 # User Stories and Traceability Matrix: Zest AI Sous-Chef
 
-Status: **APPROVED v0.3 (owner, 2026-10-17)** (v0.2 was approved earlier the same day; v0.3 changes US-19 only, to sync with ADR-004 v2 and PRD v0.4) · Date: 2026-10-17 · Source: PRD v0.4, BRD, Strategy
+Status: **v0.4 Draft (amended v0.4, 2026-10-18, C15 sync to ADR-003 Day-1 decision): awaiting owner re-approval (Approval Register Rule 2).** v0.3 was APPROVED (owner, 2026-10-17) (v0.2 was approved earlier the same day; v0.3 changes US-19 only, to sync with ADR-004 v2 and PRD v0.4) · Date: 2026-10-17 · Source: PRD v0.4, BRD, Strategy
 Sizing: S = under 1 day, M = 1 to 2 days, L = 2 to 3 days of build effort. The playbook allows 1 to 5 days; the 3-day deadline means each story here is kept to 3 days or less and the parallel work is stated in the Strategy plan. Priority follows PRD (M/S/C). Every story states acceptance criteria (AC) as Given/When/Then, and test IDs are assigned in the Test Plan (document 19).
 
 Format: **US-xx** As a *persona*, I want *capability*, so that *benefit*. Covers: FR/AC.
@@ -67,15 +67,15 @@ Format: **US-xx** As a *persona*, I want *capability*, so that *benefit*. Covers
 
 ## F. Photo flow
 **US-14** As Ananya (P4), I want a clear privacy notice before I upload, so that I choose with informed consent. *M · S* Covers FR-50, 51; AC-34.
-- Given first upload, then the Gemini notice appears and metadata is stripped and the photo deleted after parsing.
+- Given first upload with live analysis enabled (opt-in Gemini), then the Gemini notice appears and metadata is stripped and the photo deleted after parsing. With the default sample-photo path, no photo leaves the laptop.
 
 **US-15** As Lakshmi (P8), I want to photograph my kitchen and get dishes I can finish, so that I buy only what is missing. *M · L* Covers FR-52, 53, 54, 57; AC-10, 23.
 - Given a photo of paneer and capsicum, then three dishes are ranked and the top dish's missing items only are carted.
 - Given low-confidence items, then I am asked to confirm.
 - Given a wrong file type or over 5 MB, then it is rejected with a reason.
 
-**US-16** As the owner, I want a labelled sample-photo fallback, so that the flow works when Gemini does not. *M · S* Covers FR-55, 56; AC-11.
-- Given Gemini fails, then sample photos are offered and labelled as samples.
+**US-16** As the owner, I want a labelled sample-photo fallback, so that the flow works by default and when live analysis does not. *M · S* Covers FR-55, 56; AC-11.
+- Given live analysis is off (default) or the opt-in Gemini fails, then sample photos are offered and labelled as samples.
 - Given a non-food photo, then the "couldn't spot any ingredients" reply appears.
 
 ## G. Recommendation engine
