@@ -40,3 +40,4 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 - Logged and resolved C23 (trend groups), C24 (dish history buckets and premium level), C25 (Keto and Low-GI scope) and C26 (gender cohort boost), all by owner decision.
 - Logged C27 (ambiguity margin over rank-fused scores); open until the E5 benchmark.
 - C19 resolved: owner approved PyYAML (pinned 6.0.3) to read `eval/thresholds.yaml`.
+- Block 1.5 plan (`verify/benchmarks/day1-plan.md`): candidates, download sizes read from the Ollama library, build order and owner decisions (staged downloads, Gemini arm with a local key, labels reviewed before any run).
