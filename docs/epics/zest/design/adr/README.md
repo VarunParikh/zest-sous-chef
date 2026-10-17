@@ -7,7 +7,7 @@ Format follows the `write-adr` skill. An ADR is marked **Accepted** only where t
 | [001](ADR-001-backend-framework.md) | Python 3.12 and FastAPI | Accepted (owner, 2026-10-17) | Qualitative |
 | [002](ADR-002-text-model.md) | Local text model | **Proposed: to be measured Day 1** | `verify/benchmarks/text-models.md` |
 | [003](ADR-003-vision-approach.md) | Gemini free tier for photos, sample-photo fallback | Accepted; accuracy to be measured Day 1 | `verify/benchmarks/vision.md` |
-| [004](ADR-004-retrieval-approach.md) | Hybrid BM25 + vector with RRF | Accepted; benchmark gate Day 1 | `verify/benchmarks/retrieval.md` |
+| [004](ADR-004-retrieval-approach.md) | Hybrid BM25 + vector with RRF; v2: add-on suggestions from curated pairs plus vector neighbours (weighted RRF, course rule) | Accepted; v2 amended 2026-10-17; benchmark gate Day 1 | `verify/benchmarks/retrieval.md` |
 | [005](ADR-005-vector-store-and-embedder.md) | Embedded Chroma; embedder open | Store accepted; **embedder to be measured Day 1** | `verify/benchmarks/retrieval.md` |
 | [006](ADR-006-guard-design.md) | Input guard design | **Proposed: to be measured Day 1** | `verify/benchmarks/guard.md` |
 | [007](ADR-007-state-and-storage.md) | In-memory state, JSON catalogue | Accepted | Qualitative |
