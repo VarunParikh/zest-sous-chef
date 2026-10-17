@@ -25,6 +25,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 - Retrieval evaluation set `eval/datasets/retrieval_v1.jsonl` (61 queries: 15 mood, 20 ingredient, 16 regional, 10 variant; dev/test split), pre-registered in `MANIFEST.json` before any E5 run. V12 now runs (expected IDs may be dish IDs, variant IDs or `term:` lexicon terms); all of V1 to V14 pass.
 - Input guard, rules arm `backend.guard.screen()` (ADR-006; FR-10, 12; Agent Design §7.1): injection, hazard and off-topic rules in code before any model call; violent-sounding cooking verbs pass; instructions inside fetched transcripts return MSG-INJECT-DATA. The Llama Guard arm is measured in E4 before adoption.
 - Ollama JSON client `backend.llm` (Agent Design §5, §8; NFR-10, 11): temperature 0, JSON format, per-call timeout, one retry that names the error, Pydantic schemas with business validators (at most 40 ingredients, plausible names), `llm_call` traced without prompt text. Prompt file `recipe_extract_v1` with spotlighting of untrusted text.
+- Variant lookup `Retriever.variants()` (FR-110): BM25 over variant names and ingredient lists plus `zest_variants` neighbours, fused into a pool of `VARIANT_POOL`; "skimmed milk" ranks the skimmed variant first.
 - Three Jain dish variants (D128 Jain Pav Bhaji, D129 Jain Dal Chawal, D130 Jain Paneer Butter Masala) with a new `variant_of` column; V9 found the Jain persona had only 2 eligible mains.
 
 ### Changed

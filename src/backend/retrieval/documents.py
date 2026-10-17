@@ -24,6 +24,11 @@ def variant_embedding_text(v: Variant) -> str:
     return v.embedding_text  # built by the generator from the §7.2 variant template
 
 
+def variant_lexical_text(v: Variant) -> str:
+    """Name, ingredient list (qualifiers included) and attribute words; no price, stock or brand."""
+    return " ".join([v.name, *v.ingredient_list, v.attributes.get("variant", ""), v.attributes.get("qualifiers", "")])
+
+
 def dish_lexical_text(rec: DishRecord) -> str:
     d = rec.dish
     words = [d.name, *d.aliases, d.course, d.cuisine, *d.mood_tags, *d.flavour, *(i.ingredient_name for i in rec.ingredients)]

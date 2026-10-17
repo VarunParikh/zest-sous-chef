@@ -24,3 +24,12 @@ def test_plain_names_are_not_ambiguous(retriever):
 
 def test_unknown_name(lexical_only):
     assert lexical_only.resolve_ingredient("unobtainium").kind == "unknown"
+
+
+@pytest.mark.parametrize("which", ["retriever", "lexical_only"])
+def test_variant_lookup_ranks_named_variant_first(request, which, store):
+    r = request.getfixturevalue(which)
+    res = r.variants("skimmed milk")
+    assert 0 < len(res.hits) <= 10
+    top = store.variant(res.hits[0].id)
+    assert "skimmed" in top.ingredient_list[0] and top.ingredient_list[0].startswith("milk")

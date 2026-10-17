@@ -12,7 +12,7 @@ from dataclasses import dataclass, field
 
 from backend.catalogue.store import Store
 from backend.config import Settings, load_settings
-from backend.retrieval.documents import dish_lexical_text, term_lexical_texts
+from backend.retrieval.documents import dish_lexical_text, term_lexical_texts, variant_lexical_text
 from backend.retrieval.fusion import rrf
 from backend.retrieval.lexical import LexicalIndex
 from backend.retrieval.text import doc_tokens, expand
@@ -99,6 +99,21 @@ class Retriever:
         fused = rrf({"lexical": lex, "vector": vec_ids}, k=self.settings.rrf_k)[: self.settings.dish_pool]
         res = RetrievalResult("dish", self._hits(fused, dist), lex, vec_ids, fallback, (time.perf_counter() - t0) * 1000)
         self._trace("retrieval_candidates", session_id, kind="dish", lexical_top_ids=lex[:10], vector_top_ids=vec_ids[:10],
+                    fused_pool_ids=[h.id for h in res.hits], latency_ms=round(res.latency_ms, 1))
+        return res
+
+    # -- variants (FR-110, ingredient to SKU) ---------------------------------
+    def variants(self, query: str, session_id: str = "-") -> RetrievalResult:
+        t0 = time.perf_counter()
+        if not hasattr(self, "_variant_index"):
+            self._variant_index = LexicalIndex({v.variant_id: variant_lexical_text(v) for v in self.store.variants})
+        lex = [i for i, _ in self._variant_index.search(expand(query, self.store.synonyms), LEXICAL_TOP)]
+        vec, fallback = self._vector_call("query", VARIANTS, query, VECTOR_TOP, session_id=session_id)
+        vec_ids = [r["id"].removeprefix("var:") for r in vec or []]
+        dist = {r["id"].removeprefix("var:"): r["distance"] for r in vec or []}
+        fused = rrf({"lexical": lex, "vector": vec_ids}, k=self.settings.rrf_k)[: self.settings.variant_pool]
+        res = RetrievalResult("variant", self._hits(fused, dist), lex, vec_ids, fallback, (time.perf_counter() - t0) * 1000)
+        self._trace("retrieval_candidates", session_id, kind="variant", lexical_top_ids=lex[:10], vector_top_ids=vec_ids[:10],
                     fused_pool_ids=[h.id for h in res.hits], latency_ms=round(res.latency_ms, 1))
         return res
 
