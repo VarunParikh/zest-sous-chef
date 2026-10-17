@@ -60,3 +60,11 @@ def test_some_dishes_left_for_the_vector_arm(dishes):
     mains_without = [d for d in dishes if d.dish.course not in COMPANION and d.dish.dish_id not in with_pair]
     companions_unused = [d for d in dishes if d.dish.course in COMPANION and d.dish.dish_id not in as_companion]
     assert len(mains_without) >= 3 and len(companions_unused) >= 3
+
+
+def test_dish_variants_reference_a_dish_of_the_same_course(dishes):
+    by_id = {d.dish.dish_id: d.dish for d in dishes}
+    variants = [d.dish for d in dishes if d.dish.variant_of]
+    assert len(variants) >= 3
+    for v in variants:
+        assert v.variant_of in by_id and by_id[v.variant_of].course == v.course, v.dish_id

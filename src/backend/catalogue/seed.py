@@ -200,6 +200,7 @@ def load_dishes(
                 flavour=_split(r.get("flavour", "")),
                 description=r.get("description", ""),
                 diet_class=r["claimed_diet"],
+                variant_of=r.get("variant_of") or None,
                 edge_case="international" in r["name"].lower() and r["dish_id"] in {"D34", "D35"},
             )
             out.append(DishRecord(dish, parse_ingredients(dish.dish_id, r["ingredients"], lexicon, categories)))

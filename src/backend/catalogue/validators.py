@@ -15,7 +15,7 @@ from typing import Callable
 
 from pydantic import ValidationError
 
-from backend.catalogue.generator import SEED, build_catalogue, write_catalogue
+from backend.catalogue.generator import SEED, build_catalogue, product_form, write_catalogue
 from backend.catalogue.models import Sku, Variant
 from backend.catalogue.seed import (
     MOCK, BaseProduct, DishRecord, Lexicon, load_dishes, load_lexicon, load_pairings, load_personas,
@@ -223,9 +223,36 @@ def v8(ctx: Context) -> Result:
                    "by-design gaps: " + ", ".join(gaps))
 
 
+COMPANION_COURSES = {"side", "beverage", "dessert"}
+
+
 def v9(ctx: Context) -> Result:
-    return Result("V9", "Every Must journey and persona has an eligible dish and SKU", "NOT RUN",
-                  note="needs the eligibility engine (block 1.3); a second rule copy here would not be independent")
+    """Each persona (which encodes its Must journeys' constraints) can be served: at least 3
+    eligible non-companion dishes (the displayed set), 1 eligible companion and 1 eligible SKU,
+    using the real eligibility engine with the default stock filter."""
+    from backend.catalogue.store import Store
+    from backend.engine.eligibility import check_dish, check_variant
+
+    store = Store(
+        variants=[Variant.model_validate(v) for v in ctx.variants],
+        skus=[Sku.model_validate(s) for s in ctx.skus],
+        dishes=ctx.dishes,
+        lexicon=ctx.lexicon,
+        forms={b.base_id: product_form(b) for b in ctx.taxonomy},
+    )
+    defaults = ctx.personas["defaults"]
+    errors, counts = [], []
+    for p in [{"id": "defaults", "levers": {}}] + ctx.personas["personas"]:
+        lev = LeverSet.model_validate(merge_levers(defaults, p["levers"]))
+        ok = [r for r in store.dishes if check_dish(r, lev, store).eligible]
+        mains = [r for r in ok if r.dish.course not in COMPANION_COURSES]
+        companions = [r for r in ok if r.dish.course in COMPANION_COURSES]
+        skus = sum(check_variant(v, lev, store).eligible for v in store.variants)
+        counts.append(f"{p['id']} {len(mains)}/{len(companions)}/{skus}")
+        if len(mains) < 3 or not companions or not skus:
+            errors.append(f"{p['id']}: {len(mains)} dishes, {len(companions)} companions, {skus} variants eligible")
+    return _result("V9", "Every Must journey and persona has an eligible dish and SKU", errors,
+                   "dishes/companions/variants: " + ", ".join(counts))
 
 
 def v10(ctx: Context) -> Result:

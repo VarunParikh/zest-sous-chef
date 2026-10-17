@@ -68,7 +68,7 @@ def product_form(base: BaseProduct) -> str | None:
     """The base product's form when it differs from its lexicon term (`Milk powder` for `milk`).
     It is the first qualifier, so milk and milk powder never share an ingredient list."""
     form = re.sub(r"\s*\(.*?\)", "", base.name).strip().lower()
-    return form if form and form != base.term else None
+    return form if form and form not in {base.term, base.term + "s", base.term + "es"} else None
 
 
 def _ingredient_list(base: BaseProduct, spec: VariantSpec, replica: int) -> list[str]:
@@ -98,12 +98,18 @@ def _nutrition(base: BaseProduct, spec: VariantSpec, lexicon: Lexicon, rng: rand
     return Nutrition(carbs_g=j(carbs), sugar_g=j(min(sugar, carbs)), protein_g=j(protein), fat_g=j(fat))
 
 
+GI_NOT_APPLICABLE = {"spices", "oils", "sauces", "household"}  # condiment amounts (C25)
+GRAIN_EXTRAS = {"rice", "basmati rice", "semolina", "wheat flour", "refined flour"}
+
+
 def _gi(n: Nutrition, base: BaseProduct, spec: VariantSpec) -> str:
-    if n.carbs_g < 2:
+    if n.carbs_g < 2 or base.category in GI_NOT_APPLICABLE:
         return "not_applicable"
     words = " ".join(spec.qualifiers + (spec.name.lower(), base.term) + spec.extras)
     if n.sugar_g >= 40:
         return "high"
+    if base.category == "pulses" and not set(spec.extras) & GRAIN_EXTRAS:
+        return "low"  # pulses are generally low-GI (simplified, not dietary advice)
     if n.carbs_g >= 60:
         return "medium" if any(w in words for w in WHOLE_GRAIN) else "high"
     if n.carbs_g >= 25:

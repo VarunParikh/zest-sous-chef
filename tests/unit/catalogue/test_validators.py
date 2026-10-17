@@ -26,8 +26,8 @@ def test_shipped_data_passes(base_ctx):
     assert set(results) == {f"V{i}" for i in range(1, 15)}
     failing = {k: r.errors[:5] for k, r in results.items() if r.status == "FAIL"}
     assert not failing
-    # Honest statuses: these depend on later blocks and must not pretend to pass.
-    assert results["V9"].status == "NOT RUN"
+    # Honest status: V12 depends on block 1.4 and must not pretend to pass.
+    assert results["V9"].status == "PASS"
     assert results["V12"].status == "NOT RUN"
 
 
@@ -141,3 +141,10 @@ def test_v3_optional_line_must_not_break_claimed_diet(ctx):
     extra = rec.ingredients[0].model_copy(update={"ingredient_name": "ghee", "essential": False, "line_no": 99})
     rec.ingredients.append(extra)
     assert VALIDATORS["V3"](ctx).status == "FAIL"
+
+
+def test_v9_fails_when_a_persona_has_nothing_eligible(ctx):
+    for s in ctx.skus:
+        s["stock_count"] = 0
+    r = VALIDATORS["V9"](ctx)
+    assert r.status == "FAIL" and any("P7" in e for e in r.errors)
