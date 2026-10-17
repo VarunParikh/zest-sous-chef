@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from backend.engine.scoring import effective_weights
 from backend.flows.cards import Message, Notice, StarterChips, TurnResponse
+from backend.flows.turns import build_turn
 from backend.flows.templates import STARTER_CHIPS, TEMPLATES, render
 from backend.session.levers import LeverSet, persona_conflicts
 from backend.session.store import Session
@@ -21,4 +22,4 @@ def greeting_turn(session: Session) -> TurnResponse:
     msg = Message(message_id=session.next_message_id(), role="assistant", template_id="MSG-GREET",
                   text=TEMPLATES["MSG-GREET"], cards=[StarterChips(chips=list(STARTER_CHIPS))])
     session.messages.append(msg)
-    return TurnResponse(turn_id=session.next_turn_id(), messages=[msg], notices=snapshot_notices(session.snapshot))
+    return build_turn(session, [msg], notices=snapshot_notices(session.snapshot))  # a new session matches its snapshot

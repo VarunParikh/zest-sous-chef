@@ -187,3 +187,4 @@ class TurnResponse(BaseModel):
     suggestions: list[SuggestionRef] = []
     notices: list[Notice] = []
     fallbacks_used: list[str] = []
+    levers_changed_since_snapshot: bool = False  # v0.3, C31: shows MSG-LEVER-BANNER (FR-03)
