@@ -1,0 +1,161 @@
+{
+ "id": "E1",
+ "system": "qwen3:4b-instruct",
+ "dataset": {
+  "name": "recipes_v1.jsonl",
+  "sha256": "dd20e562e934cc5069b4dfda3ec5195f17f7fd7956d0ff145502e688766b06af",
+  "split": "test"
+ },
+ "environment": {
+  "commit": "4b3ae25",
+  "dirty": false,
+  "date": "2026-10-17T19:51:11+00:00",
+  "python": "3.12.15",
+  "machine": "arm64",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "packages": {
+   "chromadb": "1.5.9",
+   "rank-bm25": "0.2.2",
+   "pydantic": "2.14.1",
+   "httpx": "0.28.1",
+   "fastapi": "0.143.3"
+  }
+ },
+ "metrics": {
+  "extraction_f1_mean": 0.4,
+  "schema_valid": {
+   "k": 2,
+   "n": 5,
+   "rate": 0.4,
+   "ci95": [
+    0.11762077314099711,
+    0.7692757205908813
+   ]
+  },
+  "quantity_accuracy": {
+   "k": 12,
+   "n": 13,
+   "rate": 0.9230769230769231,
+   "ci95": [
+    0.666860488286395,
+    0.986289578909774
+   ]
+  },
+  "invention_rate": {
+   "k": 0,
+   "n": 13,
+   "rate": 0.0,
+   "ci95": [
+    0.0,
+    0.22809537513180025
+   ]
+  },
+  "latency_ms_median": 15954.8,
+  "latency_ms_p95": 27421.3,
+  "free_ram_gb_after": 2.42,
+  "ollama_ps": "NAME                 ID              SIZE      PROCESSOR    CONTEXT    RUNNER      UNTIL              \nqwen3:4b-instruct    0edcdef34593    5.1 GB    100% GPU     16384      llamacpp    4 minutes from now",
+  "prompt_version": "recipe_extract_v1",
+  "gates": {
+   "schema_valid": {
+    "status": "FAIL",
+    "separable": true,
+    "rate": 0.4,
+    "ci95": [
+     0.11762077314099711,
+     0.7692757205908813
+    ],
+    "min": 0.95
+   },
+   "free_ram": {
+    "status": "FAIL"
+   },
+   "extraction_f1": {
+    "status": "FAIL"
+   }
+  },
+  "f1_gate_min": 0.8
+ },
+ "critical_failures": [],
+ "per_example": [
+  {
+   "id": "R05",
+   "kind": "english_list",
+   "schema_valid": true,
+   "f1": 1.0,
+   "qty_correct": 7,
+   "qty_total": 7,
+   "invented": [],
+   "wall_ms": 8340.8,
+   "latency_ms": 8340.700250000737,
+   "retry": false,
+   "eval_count": 150,
+   "prompt_eval_count": 525,
+   "served_model": "qwen3:4b-instruct"
+  },
+  {
+   "id": "R06",
+   "kind": "english_list",
+   "schema_valid": true,
+   "f1": 1.0,
+   "qty_correct": 5,
+   "qty_total": 6,
+   "invented": [],
+   "wall_ms": 5749.2,
+   "latency_ms": 5749.135040998226,
+   "retry": false,
+   "eval_count": 121,
+   "prompt_eval_count": 499,
+   "served_model": "qwen3:4b-instruct"
+  },
+  {
+   "id": "R07",
+   "kind": "hinglish_list",
+   "schema_valid": false,
+   "f1": 0.0,
+   "qty_correct": 0,
+   "qty_total": 0,
+   "invented": [],
+   "wall_ms": 20721.7,
+   "error": "5 validation errors for ExtractionResult",
+   "latency_ms": 20721.66095800094,
+   "retry": true,
+   "eval_count": 226,
+   "prompt_eval_count": 795,
+   "served_model": "qwen3:4b-instruct"
+  },
+  {
+   "id": "R08",
+   "kind": "hinglish_list",
+   "schema_valid": false,
+   "f1": 0.0,
+   "qty_correct": 0,
+   "qty_total": 0,
+   "invented": [],
+   "wall_ms": 27421.3,
+   "error": "5 validation errors for ExtractionResult",
+   "latency_ms": 27421.29337500046,
+   "retry": true,
+   "eval_count": 292,
+   "prompt_eval_count": 838,
+   "served_model": "qwen3:4b-instruct"
+  },
+  {
+   "id": "R10",
+   "kind": "noisy_transcript",
+   "schema_valid": false,
+   "f1": 0.0,
+   "qty_correct": 0,
+   "qty_total": 0,
+   "invented": [],
+   "wall_ms": 15954.8,
+   "error": "1 validation error for ExtractionResult",
+   "latency_ms": 15954.778249999436,
+   "retry": true,
+   "eval_count": 157,
+   "prompt_eval_count": 734,
+   "served_model": "qwen3:4b-instruct"
+  }
+ ],
+ "status": "FAIL",
+ "notes": ""
+}

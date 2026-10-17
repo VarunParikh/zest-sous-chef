@@ -1,0 +1,159 @@
+{
+ "id": "E1",
+ "system": "llama3.2:3b",
+ "dataset": {
+  "name": "recipes_v1.jsonl",
+  "sha256": "dd20e562e934cc5069b4dfda3ec5195f17f7fd7956d0ff145502e688766b06af",
+  "split": "test"
+ },
+ "environment": {
+  "commit": "4b3ae25",
+  "dirty": false,
+  "date": "2026-10-17T19:48:35+00:00",
+  "python": "3.12.15",
+  "machine": "arm64",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "packages": {
+   "chromadb": "1.5.9",
+   "rank-bm25": "0.2.2",
+   "pydantic": "2.14.1",
+   "httpx": "0.28.1",
+   "fastapi": "0.143.3"
+  }
+ },
+ "metrics": {
+  "extraction_f1_mean": 0.8642,
+  "schema_valid": {
+   "k": 5,
+   "n": 5,
+   "rate": 1.0,
+   "ci95": [
+    0.5655175313406071,
+    1.0
+   ]
+  },
+  "quantity_accuracy": {
+   "k": 26,
+   "n": 27,
+   "rate": 0.9629629629629629,
+   "ci95": [
+    0.8171653389987218,
+    0.9934318540919532
+   ]
+  },
+  "invention_rate": {
+   "k": 0,
+   "n": 41,
+   "rate": 0.0,
+   "ci95": [
+    0.0,
+    0.08566757142012449
+   ]
+  },
+  "latency_ms_median": 4605.7,
+  "latency_ms_p95": 5758.9,
+  "free_ram_gb_after": 2.12,
+  "ollama_ps": "NAME           ID              SIZE      PROCESSOR    CONTEXT    RUNNER      UNTIL              \nllama3.2:3b    a80c4f17acd5    4.1 GB    100% GPU     16384      llamacpp    4 minutes from now",
+  "prompt_version": "recipe_extract_v1",
+  "gates": {
+   "schema_valid": {
+    "status": "PASS",
+    "separable": false,
+    "rate": 1.0,
+    "ci95": [
+     0.5655175313406071,
+     1.0
+    ],
+    "min": 0.95,
+    "note": "not separable"
+   },
+   "free_ram": {
+    "status": "FAIL"
+   },
+   "extraction_f1": {
+    "status": "PASS"
+   }
+  },
+  "f1_gate_min": 0.8
+ },
+ "critical_failures": [],
+ "per_example": [
+  {
+   "id": "R05",
+   "kind": "english_list",
+   "schema_valid": true,
+   "f1": 1.0,
+   "qty_correct": 7,
+   "qty_total": 7,
+   "invented": [],
+   "wall_ms": 5582.0,
+   "latency_ms": 5581.98616700065,
+   "retry": false,
+   "eval_count": 194,
+   "prompt_eval_count": 523,
+   "served_model": "llama3.2:3b"
+  },
+  {
+   "id": "R06",
+   "kind": "english_list",
+   "schema_valid": true,
+   "f1": 1.0,
+   "qty_correct": 5,
+   "qty_total": 6,
+   "invented": [],
+   "wall_ms": 3276.5,
+   "latency_ms": 3276.464083000974,
+   "retry": false,
+   "eval_count": 163,
+   "prompt_eval_count": 503,
+   "served_model": "llama3.2:3b"
+  },
+  {
+   "id": "R07",
+   "kind": "hinglish_list",
+   "schema_valid": true,
+   "f1": 0.9091,
+   "qty_correct": 7,
+   "qty_total": 7,
+   "invented": [],
+   "wall_ms": 5758.9,
+   "latency_ms": 5758.9355840009375,
+   "retry": false,
+   "eval_count": 288,
+   "prompt_eval_count": 535,
+   "served_model": "llama3.2:3b"
+  },
+  {
+   "id": "R08",
+   "kind": "hinglish_list",
+   "schema_valid": true,
+   "f1": 0.7059,
+   "qty_correct": 5,
+   "qty_total": 5,
+   "invented": [],
+   "wall_ms": 4280.7,
+   "latency_ms": 4280.647999999928,
+   "retry": false,
+   "eval_count": 214,
+   "prompt_eval_count": 516,
+   "served_model": "llama3.2:3b"
+  },
+  {
+   "id": "R10",
+   "kind": "noisy_transcript",
+   "schema_valid": true,
+   "f1": 0.7059,
+   "qty_correct": 2,
+   "qty_total": 2,
+   "invented": [],
+   "wall_ms": 4605.7,
+   "latency_ms": 4605.70029200062,
+   "retry": false,
+   "eval_count": 227,
+   "prompt_eval_count": 537,
+   "served_model": "llama3.2:3b"
+  }
+ ],
+ "status": "FAIL",
+ "notes": ""
+}

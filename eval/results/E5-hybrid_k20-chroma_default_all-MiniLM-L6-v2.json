@@ -1,0 +1,588 @@
+{
+ "id": "E5",
+ "system": "hybrid_k20-chroma_default:all-MiniLM-L6-v2",
+ "dataset": {
+  "name": "retrieval_v1.jsonl",
+  "sha256": "fb5f9a1ee875dea17316cf1b0bcf02a012c7e2490be06311c289a4efdf5a671c",
+  "split": "test"
+ },
+ "environment": {
+  "commit": "28a69da",
+  "dirty": false,
+  "date": "2026-10-17T19:44:35+00:00",
+  "python": "3.12.15",
+  "machine": "arm64",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "packages": {
+   "chromadb": "1.5.9",
+   "rank-bm25": "0.2.2",
+   "pydantic": "2.14.1",
+   "httpx": "0.28.1",
+   "fastapi": "0.143.3"
+  },
+  "embedder": "chroma_default:all-MiniLM-L6-v2",
+  "index_rebuilt": false,
+  "index_ready_s": 0.3,
+  "peak_rss_mb": 139.6
+ },
+ "metrics": {
+  "overall": {
+   "recall_at_5": {
+    "k": 28,
+    "n": 30,
+    "rate": 0.9333333333333333,
+    "ci95": [
+     0.7867654148312584,
+     0.9815229763754831
+    ]
+   },
+   "recall_at_pool": {
+    "k": 30,
+    "n": 30,
+    "rate": 1.0,
+    "ci95": [
+     0.886486605238548,
+     1.0
+    ]
+   },
+   "mrr": 0.8789,
+   "latency_ms_median": 10.0
+  },
+  "mood": {
+   "recall_at_5": {
+    "k": 5,
+    "n": 7,
+    "rate": 0.7142857142857143,
+    "ci95": [
+     0.3589344495310541,
+     0.9177810767507166
+    ]
+   },
+   "recall_at_pool": {
+    "k": 7,
+    "n": 7,
+    "rate": 1.0,
+    "ci95": [
+     0.6456695613241317,
+     1.0
+    ]
+   },
+   "mrr": 0.5524,
+   "latency_ms_median": 8.0
+  },
+  "ingredient": {
+   "recall_at_5": {
+    "k": 10,
+    "n": 10,
+    "rate": 1.0,
+    "ci95": [
+     0.7224671969739421,
+     0.9999999999999999
+    ]
+   },
+   "recall_at_pool": {
+    "k": 10,
+    "n": 10,
+    "rate": 1.0,
+    "ci95": [
+     0.7224671969739421,
+     0.9999999999999999
+    ]
+   },
+   "mrr": 0.95,
+   "latency_ms_median": 10.9
+  },
+  "regional": {
+   "recall_at_5": {
+    "k": 8,
+    "n": 8,
+    "rate": 1.0,
+    "ci95": [
+     0.6755924316585924,
+     1.0
+    ]
+   },
+   "recall_at_pool": {
+    "k": 8,
+    "n": 8,
+    "rate": 1.0,
+    "ci95": [
+     0.6755924316585924,
+     1.0
+    ]
+   },
+   "mrr": 1.0,
+   "latency_ms_median": 9.9
+  },
+  "variant": {
+   "recall_at_5": {
+    "k": 5,
+    "n": 5,
+    "rate": 1.0,
+    "ci95": [
+     0.5655175313406071,
+     1.0
+    ]
+   },
+   "recall_at_pool": {
+    "k": 5,
+    "n": 5,
+    "rate": 1.0,
+    "ci95": [
+     0.5655175313406071,
+     1.0
+    ]
+   },
+   "mrr": 1.0,
+   "latency_ms_median": 10.9
+  }
+ },
+ "critical_failures": [],
+ "per_example": [
+  {
+   "query_id": "M02",
+   "kind": "mood",
+   "top": [
+    "D76",
+    "D115",
+    "D13",
+    "D65",
+    "D51"
+   ],
+   "hit_at_5": 0.0,
+   "hit_at_pool": 1.0,
+   "rr": 0.16666666666666666,
+   "latency_ms": 10.9
+  },
+  {
+   "query_id": "M04",
+   "kind": "mood",
+   "top": [
+    "D92",
+    "D37",
+    "D120",
+    "D118",
+    "D17"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 0.2,
+   "latency_ms": 10.0
+  },
+  {
+   "query_id": "M06",
+   "kind": "mood",
+   "top": [
+    "D115",
+    "D107",
+    "D08",
+    "D61",
+    "D16"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 0.3333333333333333,
+   "latency_ms": 9.8
+  },
+  {
+   "query_id": "M08",
+   "kind": "mood",
+   "top": [
+    "D74",
+    "D97",
+    "D118",
+    "D51",
+    "D99"
+   ],
+   "hit_at_5": 0.0,
+   "hit_at_pool": 1.0,
+   "rr": 0.16666666666666666,
+   "latency_ms": 8.0
+  },
+  {
+   "query_id": "M10",
+   "kind": "mood",
+   "top": [
+    "D23",
+    "D12",
+    "D13",
+    "D31",
+    "D10"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 8.0
+  },
+  {
+   "query_id": "M12",
+   "kind": "mood",
+   "top": [
+    "D78",
+    "D74",
+    "D84",
+    "D46",
+    "D57"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 8.0
+  },
+  {
+   "query_id": "M14",
+   "kind": "mood",
+   "top": [
+    "D43",
+    "D112",
+    "D89",
+    "D19",
+    "D68"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 7.9
+  },
+  {
+   "query_id": "I01",
+   "kind": "ingredient",
+   "top": [
+    "term:coriander leaves",
+    "term:coriander powder",
+    "term:fenugreek leaves",
+    "term:mint",
+    "term:lettuce"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 13.9
+  },
+  {
+   "query_id": "I03",
+   "kind": "ingredient",
+   "top": [
+    "term:paneer",
+    "term:rice",
+    "term:wheat flour",
+    "term:refined flour",
+    "term:cumin"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 11.9
+  },
+  {
+   "query_id": "I05",
+   "kind": "ingredient",
+   "top": [
+    "term:basmati rice",
+    "term:rice",
+    "term:arborio rice",
+    "term:millet",
+    "term:sushi rice"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 8.7
+  },
+  {
+   "query_id": "I07",
+   "kind": "ingredient",
+   "top": [
+    "term:mustard seeds",
+    "term:mustard greens",
+    "term:mustard oil",
+    "term:sesame seeds",
+    "term:fennel seeds"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 8.3
+  },
+  {
+   "query_id": "I09",
+   "kind": "ingredient",
+   "top": [
+    "term:green chilli",
+    "term:red chilli powder",
+    "term:capsicum",
+    "term:chilli flakes",
+    "term:green peas"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 9.2
+  },
+  {
+   "query_id": "I11",
+   "kind": "ingredient",
+   "top": [
+    "term:curd"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 10.0
+  },
+  {
+   "query_id": "I13",
+   "kind": "ingredient",
+   "top": [
+    "term:capsicum",
+    "term:black pepper",
+    "term:mint",
+    "term:moong dal",
+    "term:tea leaves"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 12.5
+  },
+  {
+   "query_id": "I15",
+   "kind": "ingredient",
+   "top": [
+    "term:chickpeas",
+    "term:chicken",
+    "term:cluster beans",
+    "term:green peas"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 10.9
+  },
+  {
+   "query_id": "I17",
+   "kind": "ingredient",
+   "top": [
+    "term:butter",
+    "term:ghee",
+    "term:coconut oil",
+    "term:peanut",
+    "term:bread rolls"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 0.5,
+   "latency_ms": 8.6
+  },
+  {
+   "query_id": "I19",
+   "kind": "ingredient",
+   "top": [
+    "term:mosambi",
+    "term:sweet potato",
+    "term:lemon",
+    "term:corn",
+    "term:sugar"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 11.8
+  },
+  {
+   "query_id": "R01",
+   "kind": "regional",
+   "top": [
+    "term:coriander leaves",
+    "term:wheat flour",
+    "term:khoya",
+    "term:kokum",
+    "term:curry leaves"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 8.9
+  },
+  {
+   "query_id": "R03",
+   "kind": "regional",
+   "top": [
+    "term:potato",
+    "term:cumin",
+    "term:chickpeas",
+    "term:millet",
+    "term:rice"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 10.8
+  },
+  {
+   "query_id": "R05",
+   "kind": "regional",
+   "top": [
+    "term:fenugreek leaves",
+    "term:fenugreek seeds",
+    "term:wheat flour",
+    "term:curd",
+    "term:rice"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 9.9
+  },
+  {
+   "query_id": "R07",
+   "kind": "regional",
+   "top": [
+    "term:turmeric",
+    "term:urad dal",
+    "term:chana dal",
+    "term:salt",
+    "term:okra"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 8.3
+  },
+  {
+   "query_id": "R09",
+   "kind": "regional",
+   "top": [
+    "term:okra",
+    "term:coriander powder",
+    "term:brinjal",
+    "term:radish",
+    "term:snake gourd"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 11.3
+  },
+  {
+   "query_id": "R11",
+   "kind": "regional",
+   "top": [
+    "term:refined flour",
+    "term:rice",
+    "term:tomato"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 9.9
+  },
+  {
+   "query_id": "R13",
+   "kind": "regional",
+   "top": [
+    "term:kidney beans",
+    "term:coriander powder",
+    "term:millet",
+    "term:semolina",
+    "term:mango"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 10.5
+  },
+  {
+   "query_id": "R15",
+   "kind": "regional",
+   "top": [
+    "term:garlic",
+    "term:litchi",
+    "term:wheat flour",
+    "term:paneer",
+    "term:toor dal"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 9.5
+  },
+  {
+   "query_id": "V01",
+   "kind": "variant",
+   "top": [
+    "b051-8bf6581e",
+    "b064-201e558d",
+    "b270-84d3626b",
+    "b260-52a5fa01",
+    "b260-e90ff56a"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 13.6
+  },
+  {
+   "query_id": "V03",
+   "kind": "variant",
+   "top": [
+    "b069-3fb5198e",
+    "b062-9f88bdc5",
+    "b069-ad9cb30a",
+    "b069-63b5d400",
+    "b137-1a08a9a6"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 13.3
+  },
+  {
+   "query_id": "V05",
+   "kind": "variant",
+   "top": [
+    "b056-7d3cfb92",
+    "b051-ba3baa31",
+    "b056-a2efa2ec",
+    "b056-76ed03d4",
+    "b056-0c0d5461"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 10.8
+  },
+  {
+   "query_id": "V07",
+   "kind": "variant",
+   "top": [
+    "b131-a17a897a",
+    "b131-ab4ab0e3",
+    "b131-65aaee2f",
+    "b131-ef8f75d1",
+    "b314-3b05ede4"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 8.4
+  },
+  {
+   "query_id": "V09",
+   "kind": "variant",
+   "top": [
+    "b105-f827b878",
+    "b115-1e92b153",
+    "b329-a6454602",
+    "b125-563349d3",
+    "b105-0e04cfc6"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 10.9
+  }
+ ],
+ "status": "PASS",
+ "notes": "labels reviewed by the owner (owner: 'Yes continue', 2026-10-18); rerun after fix 28a69da, the first official run hit an empty index and was discarded"
+}

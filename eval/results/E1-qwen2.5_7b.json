@@ -1,0 +1,160 @@
+{
+ "id": "E1",
+ "system": "qwen2.5:7b",
+ "dataset": {
+  "name": "recipes_v1.jsonl",
+  "sha256": "dd20e562e934cc5069b4dfda3ec5195f17f7fd7956d0ff145502e688766b06af",
+  "split": "test"
+ },
+ "environment": {
+  "commit": "4b3ae25",
+  "dirty": false,
+  "date": "2026-10-17T19:49:50+00:00",
+  "python": "3.12.15",
+  "machine": "arm64",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "packages": {
+   "chromadb": "1.5.9",
+   "rank-bm25": "0.2.2",
+   "pydantic": "2.14.1",
+   "httpx": "0.28.1",
+   "fastapi": "0.143.3"
+  }
+ },
+ "metrics": {
+  "extraction_f1_mean": 0.55,
+  "schema_valid": {
+   "k": 3,
+   "n": 5,
+   "rate": 0.6,
+   "ci95": [
+    0.23072427940911855,
+    0.8823792268590028
+   ]
+  },
+  "quantity_accuracy": {
+   "k": 13,
+   "n": 15,
+   "rate": 0.8666666666666667,
+   "ci95": [
+    0.6211801694601944,
+    0.9626387412357151
+   ]
+  },
+  "invention_rate": {
+   "k": 0,
+   "n": 21,
+   "rate": 0.0,
+   "ci95": [
+    0.0,
+    0.15463902098714374
+   ]
+  },
+  "latency_ms_median": 11231.8,
+  "latency_ms_p95": 23832.1,
+  "free_ram_gb_after": 2.11,
+  "ollama_ps": "NAME          ID              SIZE      PROCESSOR    CONTEXT    RUNNER      UNTIL              \nqwen2.5:7b    845dbda0ea48    5.5 GB    100% GPU     16384      llamacpp    4 minutes from now",
+  "prompt_version": "recipe_extract_v1",
+  "gates": {
+   "schema_valid": {
+    "status": "FAIL",
+    "separable": true,
+    "rate": 0.6,
+    "ci95": [
+     0.23072427940911855,
+     0.8823792268590028
+    ],
+    "min": 0.95
+   },
+   "free_ram": {
+    "status": "FAIL"
+   },
+   "extraction_f1": {
+    "status": "FAIL"
+   }
+  },
+  "f1_gate_min": 0.8
+ },
+ "critical_failures": [],
+ "per_example": [
+  {
+   "id": "R05",
+   "kind": "english_list",
+   "schema_valid": true,
+   "f1": 1.0,
+   "qty_correct": 6,
+   "qty_total": 7,
+   "invented": [],
+   "wall_ms": 10459.3,
+   "latency_ms": 10459.269791999759,
+   "retry": false,
+   "eval_count": 150,
+   "prompt_eval_count": 525,
+   "served_model": "qwen2.5:7b"
+  },
+  {
+   "id": "R06",
+   "kind": "english_list",
+   "schema_valid": true,
+   "f1": 1.0,
+   "qty_correct": 5,
+   "qty_total": 6,
+   "invented": [],
+   "wall_ms": 5757.0,
+   "latency_ms": 5756.986166999923,
+   "retry": false,
+   "eval_count": 121,
+   "prompt_eval_count": 499,
+   "served_model": "qwen2.5:7b"
+  },
+  {
+   "id": "R07",
+   "kind": "hinglish_list",
+   "schema_valid": false,
+   "f1": 0.0,
+   "qty_correct": 0,
+   "qty_total": 0,
+   "invented": [],
+   "wall_ms": 23832.1,
+   "error": "1 validation error for ExtractionResult",
+   "latency_ms": 23832.088916999055,
+   "retry": true,
+   "eval_count": 226,
+   "prompt_eval_count": 795,
+   "served_model": "qwen2.5:7b"
+  },
+  {
+   "id": "R08",
+   "kind": "hinglish_list",
+   "schema_valid": false,
+   "f1": 0.0,
+   "qty_correct": 0,
+   "qty_total": 0,
+   "invented": [],
+   "wall_ms": 21508.7,
+   "error": "1 validation error for ExtractionResult",
+   "latency_ms": 21508.70004100034,
+   "retry": true,
+   "eval_count": 169,
+   "prompt_eval_count": 715,
+   "served_model": "qwen2.5:7b"
+  },
+  {
+   "id": "R10",
+   "kind": "noisy_transcript",
+   "schema_valid": true,
+   "f1": 0.75,
+   "qty_correct": 2,
+   "qty_total": 2,
+   "invented": [],
+   "wall_ms": 11231.8,
+   "latency_ms": 11231.807583000773,
+   "retry": false,
+   "eval_count": 158,
+   "prompt_eval_count": 531,
+   "served_model": "qwen2.5:7b"
+  }
+ ],
+ "status": "FAIL",
+ "notes": ""
+}

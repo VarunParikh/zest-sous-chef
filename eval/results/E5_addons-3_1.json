@@ -1,0 +1,67 @@
+{
+ "id": "E5_addons",
+ "system": "3:1",
+ "dataset": {
+  "name": "retrieval_v1.jsonl",
+  "sha256": "fb5f9a1ee875dea17316cf1b0bcf02a012c7e2490be06311c289a4efdf5a671c",
+  "split": "pairings.csv"
+ },
+ "environment": {
+  "commit": "28a69da",
+  "dirty": false,
+  "date": "2026-10-17T19:47:13+00:00",
+  "python": "3.12.15",
+  "machine": "arm64",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "packages": {
+   "chromadb": "1.5.9",
+   "rank-bm25": "0.2.2",
+   "pydantic": "2.14.1",
+   "httpx": "0.28.1",
+   "fastapi": "0.143.3"
+  },
+  "embedder": "chroma_default:all-MiniLM-L6-v2"
+ },
+ "metrics": {
+  "curated_pair_recovery_top5": {
+   "k": 108,
+   "n": 127,
+   "rate": 0.8503937007874016,
+   "ci95": [
+    0.7781297351590624,
+    0.9020827965641123
+   ]
+  },
+  "no_pair_dish_coverage": {
+   "k": 101,
+   "n": 101,
+   "rate": 1.0,
+   "ci95": [
+    0.96335935304329,
+    1.0
+   ]
+  },
+  "no_pair_non_companion_coverage": {
+   "k": 5,
+   "n": 5,
+   "rate": 1.0,
+   "ci95": [
+    0.5655175313406071,
+    1.0
+   ]
+  },
+  "course_rule_pass_raw_neighbours": {
+   "k": 1937,
+   "n": 2580,
+   "rate": 0.7507751937984496,
+   "ci95": [
+    0.7337193571360181,
+    0.7670853635066532
+   ]
+  }
+ },
+ "critical_failures": [],
+ "per_example": [],
+ "status": "PASS",
+ "notes": "dataset is pairings.csv and the dish pool (no labels); labels reviewed by the owner (owner: 'Yes continue', 2026-10-18); rerun after fix 28a69da, the first official run hit an empty index and was discarded"
+}
