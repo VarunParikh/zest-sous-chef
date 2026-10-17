@@ -10,6 +10,7 @@ from __future__ import annotations
 import base64
 import json
 import re
+import time
 
 import httpx
 from pydantic import ValidationError
@@ -53,8 +54,8 @@ class OllamaVision:
 
 
 class GeminiVision:
-    def __init__(self, api_key: str, model: str, timeout_s: float = 20, transport=None):
-        self._key, self.model = api_key, model
+    def __init__(self, api_key: str, model: str, timeout_s: float = 20, transport=None, retry_wait_s: float = 2.0):
+        self._key, self.model, self.retry_wait_s = api_key, model, retry_wait_s
         self._http = httpx.Client(transport=transport, timeout=timeout_s)
         self.name = f"gemini:{model}"
         self.last_served_model: str | None = None
@@ -66,12 +67,16 @@ class GeminiVision:
         body = {"contents": [{"parts": [{"text": text("photo_detect")},
                                         {"inline_data": {"mime_type": "image/jpeg", "data": base64.b64encode(image).decode()}}]}],
                 "generationConfig": {"temperature": 0, "responseMimeType": "application/json"}}
-        try:
-            r = self._http.post(GEMINI_URL.format(model=self.model), json=body, headers={"x-goog-api-key": self._key})
-        except httpx.TimeoutException as e:
-            raise LLMTimeout("Gemini timed out") from e
-        except httpx.HTTPError as e:
-            raise LLMError(self._scrub(f"Gemini call failed: {type(e).__name__}")) from None
+        for attempt in range(2):  # at most one retry, only for busy or server errors (NFR-10)
+            try:
+                r = self._http.post(GEMINI_URL.format(model=self.model), json=body, headers={"x-goog-api-key": self._key})
+            except httpx.TimeoutException as e:
+                raise LLMTimeout("Gemini timed out") from e
+            except httpx.HTTPError as e:
+                raise LLMError(self._scrub(f"Gemini call failed: {type(e).__name__}")) from None
+            if r.status_code == 200 or not (r.status_code == 429 or r.status_code >= 500) or attempt == 1:
+                break
+            time.sleep(self.retry_wait_s)
         if r.status_code != 200:
             raise LLMError(self._scrub(f"Gemini returned HTTP {r.status_code}"))
         data = r.json()

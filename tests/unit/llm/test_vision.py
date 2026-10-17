@@ -97,3 +97,25 @@ def test_sample_vision_is_labelled_and_needs_no_network():
     res = v.detect_sample("RF03")
     assert res.items and res.scene_is_food and all(0 < i.confidence <= 1 for i in res.items)
     assert v.name == "samples"
+
+
+def test_gemini_retries_once_on_busy_then_gives_up():
+    calls = []
+
+    def flaky(req):
+        calls.append(1)
+        if len(calls) == 1:
+            return httpx.Response(503, json={"error": {"message": "overloaded"}})
+        return httpx.Response(200, json={"candidates": [{"content": {"parts": [{"text": json.dumps(RESULT)}]}}]})
+
+    v = GeminiVision(FAKE_KEY, "gemini-x", transport=httpx.MockTransport(flaky), retry_wait_s=0)
+    assert v.detect(prepare_image(_jpeg_with_gps((300, 200)))).items and len(calls) == 2
+    always = []
+
+    def busy(req):
+        always.append(1)
+        return httpx.Response(429, json={})
+
+    with pytest.raises(Exception):
+        GeminiVision(FAKE_KEY, "gemini-x", transport=httpx.MockTransport(busy), retry_wait_s=0).detect(prepare_image(_jpeg_with_gps((300, 200))))
+    assert len(always) == 2  # at most one retry (NFR-10)
