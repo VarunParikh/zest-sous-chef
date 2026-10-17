@@ -1,6 +1,6 @@
 # Conversation Design: Zest AI Sous-Chef
 
-Status: v0.2 Draft (amended v0.2, 2026-10-18, C15 sync to ADR-003 Day-1 decision): awaiting owner re-approval (Approval Register Rule 2). v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, DESIGN.md, UserJourneys.md, Constitution v0.2
+Status: APPROVED v0.2 (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, DESIGN.md, UserJourneys.md, Constitution v0.2
 Design stance: provisional where marked. The tools Zest can use are only the ones in the Architecture; this document promises no integration that does not exist (all commerce is mock).
 
 ## 1. Goals and measurable outcomes

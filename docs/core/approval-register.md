@@ -21,16 +21,16 @@ Approving a document means: you have read it or the parts you care about, you ac
 ## Register
 | Doc | Path | Version | Tier | Status | Approved by / date |
 |---|---|---|---|---|---|
-| Product spec (PRD) | `docs/epics/zest/requirements/product-spec.md` | v0.5 | A | **Draft (amended v0.5, C15 sync 2026-10-18)**: awaiting owner re-approval | Owner, 2026-10-17 (re-approved after ADR-004 v2 sync) |
+| Product spec (PRD) | `docs/epics/zest/requirements/product-spec.md` | v0.5 | A | **Approved v0.5** (re-approved after the C15 sync to ADR-003) | Owner, 2026-10-18 (re-approved after C15 sync) |
 | Data Model | `docs/epics/zest/design/data-model.md` | v0.2 | A | **Approved** (ADR-004 v2 sync, C16) | Owner, 2026-10-17 (re-approved after ADR-004 v2 sync) |
-| Architecture | `docs/epics/zest/design/architecture.md` | v0.3 | A | **Draft (amended v0.3, C15 sync 2026-10-18)**: awaiting owner re-approval | Owner, 2026-10-17 (re-approved after ADR-004 v2 sync) |
-| API Spec | `docs/epics/zest/design/api-spec.md` | v0.2 | A | **Draft (amended v0.2, C15 sync 2026-10-18)**: awaiting owner re-approval | Owner, 2026-10-17 |
-| Agent Design | `docs/epics/zest/design/agent-design.md` | v0.2 | A | **Draft (amended v0.2, C15 sync 2026-10-18)**: awaiting owner re-approval | Owner, 2026-10-17 |
+| Architecture | `docs/epics/zest/design/architecture.md` | v0.3 | A | **Approved v0.3** (re-approved after the C15 sync to ADR-003) | Owner, 2026-10-18 (re-approved after C15 sync) |
+| API Spec | `docs/epics/zest/design/api-spec.md` | v0.2 | A | **Approved v0.2** (re-approved after the C15 sync to ADR-003) | Owner, 2026-10-18 (re-approved after C15 sync) |
+| Agent Design | `docs/epics/zest/design/agent-design.md` | v0.2 | A | **Approved v0.2** (re-approved after the C15 sync to ADR-003) | Owner, 2026-10-18 (re-approved after C15 sync) |
 | Build Plan | `docs/epics/zest/build-plan.md` | v0.2 | A | **Approved** (ADR-004 v2 sync, C16) | Owner, 2026-10-17 (re-approved after ADR-004 v2 sync) |
-| User Stories and Traceability | `docs/epics/zest/requirements/user-stories.md` | v0.4 | B | **Draft (amended v0.4, C15 sync 2026-10-18)**: awaiting owner re-approval | Owner, 2026-10-17 (re-approved after ADR-004 v2 sync) |
-| Conversation Design | `docs/epics/zest/design/conversation-design.md` | v0.2 | B | **Draft (amended v0.2, C15 sync 2026-10-18)**: awaiting owner re-approval | Owner, 2026-10-17 |
-| Security and Privacy Note | `docs/epics/zest/design/security-privacy-note.md` | v0.2 | B | **Draft (amended v0.2, C15 sync 2026-10-18)**: awaiting owner re-approval | Owner, 2026-10-17 |
-| Test Plan | `docs/epics/zest/verify/test-plan.md` | v0.3 | B | **Draft (amended v0.3, C15 sync 2026-10-18)**: awaiting owner re-approval | Owner, 2026-10-17 (re-approved after ADR-004 v2 sync) |
+| User Stories and Traceability | `docs/epics/zest/requirements/user-stories.md` | v0.4 | B | **Approved v0.4** (re-approved after the C15 sync to ADR-003) | Owner, 2026-10-18 (re-approved after C15 sync) |
+| Conversation Design | `docs/epics/zest/design/conversation-design.md` | v0.2 | B | **Approved v0.2** (re-approved after the C15 sync to ADR-003) | Owner, 2026-10-18 (re-approved after C15 sync) |
+| Security and Privacy Note | `docs/epics/zest/design/security-privacy-note.md` | v0.2 | B | **Approved v0.2** (re-approved after the C15 sync to ADR-003) | Owner, 2026-10-18 (re-approved after C15 sync) |
+| Test Plan | `docs/epics/zest/verify/test-plan.md` | v0.3 | B | **Approved v0.3** (re-approved after the C15 sync to ADR-003) | Owner, 2026-10-18 (re-approved after C15 sync) |
 | Evaluation Plan | `docs/epics/zest/verify/evaluation-plan.md` | v0.2 | B | **Approved** (ADR-004 v2 sync, C16); thresholds v3 approved as proposed | Owner, 2026-10-17 (re-approved after ADR-004 v2 sync) |
 | ADR-001 Backend framework | `design/adr/ADR-001-...` | | B | **Accepted** | Owner, 2026-10-17 |
 | ADR-003 Vision approach | `design/adr/ADR-003-...` | v2 | B | **Accepted, amended v2**; Day-1 decision: samples default, Gemini Flash-Lite opt-in for demos, photo accuracy NOT MET (E3) | Owner, 2026-10-17; decision 2026-10-18 |
@@ -44,7 +44,7 @@ Approving a document means: you have read it or the parts you care about, you ac
 | ADR-006 Guard design | `design/adr/ADR-006-...` | | B | **Accepted**: rules plus `llama-guard3:1b` (E4) | Owner, 2026-10-18 |
 | Constitution | `docs/core/constitution.md` | v0.2 | C | **Approved** | Owner, 2026-10-17 |
 | Product Strategy | `docs/core/product-strategy.md` | v0.1 | C | **Approved** | Owner, 2026-10-17 |
-| Product Platforms | `docs/core/product-platforms.md` | v0.2 | C | **Draft (amended v0.2, C15 sync 2026-10-18)**: awaiting owner re-approval | Owner, 2026-10-17 |
+| Product Platforms | `docs/core/product-platforms.md` | v0.2 | C | **Approved v0.2** (re-approved after the C15 sync to ADR-003) | Owner, 2026-10-18 (re-approved after C15 sync) |
 | References and Glossary | `docs/core/references-and-glossary.md` | v0.1 | C | **Approved** | Owner, 2026-10-17 |
 | BRD | `docs/epics/zest/requirements/business-requirements.md` | v0.1 | C | **Approved** (has its own approval table) | Owner, 2026-10-17 |
 | Personas | `docs/epics/zest/discovery/personas.md` | v0.1 | C | **Approved** | Owner, 2026-10-17 |
@@ -86,3 +86,4 @@ Approving a document means: you have read it or the parts you care about, you ac
 | 2026-10-18 | Owner approved the Day-1 ADR proposals as written: ADR-002 `llama3.2:3b` with a 4,096-token context (E1 passed only after the owner-approved post-hoc rerun at 4k with other apps closed); ADR-004 evidence recorded (hybrid default, `RRF_K=60`, `ADDON_WEIGHTS` 2:1); ADR-005 default all-MiniLM-L6-v2 embedder; ADR-006 rules plus `llama-guard3:1b`. ADR-003 vision is not decided (E3 not run) | ADR-002, 004, 005, 006; `verify/benchmarks/adr-proposals.md`; `eval/results/` |
 | 2026-10-18 | Owner approved ADR-003 from E3 with option (a): default `VISION_PROVIDER=samples`, photo accuracy NOT MET, Gemini 3.5 Flash-Lite as an opt-in for demos only (consent notice, estimates, confirmation step). `qwen3-vl:8b` was NOT RUN by owner decision | ADR-003, `verify/benchmarks/vision.md`, `adr-proposals.md` |
 | 2026-10-18 | C15 doc-sync to the ADR-003 Day-1 decision (samples default, Gemini Flash-Lite opt-in for demos, photo accuracy NOT MET). Amended and returned to Draft (Rule 2): PRD v0.5 (FR-50, FR-55, section 9, AC-11, integrations, prerequisites), User Stories v0.4 (US-14, US-16), Architecture v0.3, API Spec v0.2 (section 6.2), Security and Privacy Note v0.2, Conversation Design v0.2 (photo message triggers), Agent Design v0.2 (A6), Product Platforms v0.2 (vision rows; text-model and guard rows refreshed to ADR-002 and ADR-006), Test Plan v0.3 with Test Cases (T-088, rehearsal). Wording only, status unchanged: BRD (dependency line), Risk Register (living, Rule 3), Day-0 walkthrough note. **Claude Code stays blocked on the photo flow (block 2.4) and on any other changed section until the owner re-approves these documents** | this register, `open-conflicts.md` C15 |
+| 2026-10-18 | Owner re-approved the nine documents amended in the C15 sync as written: PRD v0.5, User Stories v0.4, Architecture v0.3, API Spec v0.2, Security and Privacy Note v0.2, Conversation Design v0.2, Agent Design v0.2, Product Platforms v0.2, Test Plan v0.3 with Test Cases. C15 resolved; the photo flow (block 2.4) is no longer blocked on these documents | this register, `open-conflicts.md` C15 |
