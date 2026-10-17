@@ -31,3 +31,6 @@ htmlcov/
 
 # large generated benchmark set (5,000 variants)
 mock-data/generated/scale_*/
+
+# downloaded embedding models (block 1.4)
+data/models/

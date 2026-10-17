@@ -4,7 +4,7 @@ VENV := .venv
 PY := $(VENV)/bin/python
 RESULTS := docs/epics/zest/verify/test-results
 
-.PHONY: setup dev test scan health data
+.PHONY: setup dev test test-embedder scan health data index
 
 setup: ## create the venv and install pinned dependencies; create .env from the example if missing
 	$(PYTHON) -m venv $(VENV)
@@ -17,7 +17,10 @@ dev: ## run the backend on 127.0.0.1:8000 (health page at /health)
 
 test: ## unit, contract and acceptance tests (fakes only)
 	@mkdir -p $(RESULTS)
-	$(PY) -m pytest --junitxml=$(RESULTS)/latest.xml -rA
+	$(PY) -m pytest -m "not embedder" --junitxml=$(RESULTS)/latest.xml -rA
+
+test-embedder: ## tests that use the real embedding model (downloads it once into data/models/)
+	$(PY) -m pytest -m embedder -rA
 
 scan: ## secret scan of the working tree and full git history (T-106)
 	$(PY) -I scripts/secret_scan.py
@@ -32,3 +35,6 @@ data: ## generate the mock catalogue (1,000+ and 5,000+ sets) and run validators
 	$(PY) mock-data/validate.py --scale 5
 	$(PY) mock-data/check_seed.py
 	$(PY) mock-data/check_taxonomy.py
+
+index: ## build or refresh the Chroma index in data/chroma/ with the default embedder
+	$(PY) scripts/index.py

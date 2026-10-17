@@ -18,8 +18,8 @@ from functools import cached_property
 from pathlib import Path
 
 from backend.catalogue.generator import product_form
-from backend.catalogue.models import Sku, Variant
-from backend.catalogue.seed import DishRecord, Lexicon, load_dishes, load_lexicon, load_taxonomy
+from backend.catalogue.models import Pairing, Sku, Variant
+from backend.catalogue.seed import DishRecord, Lexicon, load_dishes, load_lexicon, load_pairings, load_synonyms, load_taxonomy
 
 GENERATED = Path(__file__).resolve().parents[3] / "mock-data" / "generated"
 
@@ -31,6 +31,8 @@ class Store:
     dishes: list[DishRecord]
     lexicon: Lexicon
     forms: dict[str, str | None] = field(default_factory=dict)  # base_id -> product form, if any
+    pairings: list[Pairing] = field(default_factory=list)
+    synonyms: list[dict] = field(default_factory=list)
     stock_override: dict[str, int] = field(default_factory=dict)
 
     @cached_property
@@ -97,6 +99,9 @@ class Store:
             return list(tier)
         return []
 
+    def with_dishes(self, dishes: list[DishRecord]) -> "Store":
+        return replace(self, dishes=dishes)
+
     def with_stock(self, overrides: dict[str, int]) -> "Store":
         """A copy with scripted stock levels (stock scenarios, tests)."""
         new = replace(self, stock_override={**self.stock_override, **overrides})
@@ -111,4 +116,6 @@ def load_store(generated_dir: Path = GENERATED) -> Store:
         dishes=load_dishes(lexicon=lexicon, taxonomy=taxonomy),
         lexicon=lexicon,
         forms={b.base_id: product_form(b) for b in taxonomy},
+        pairings=load_pairings(),
+        synonyms=load_synonyms(),
     )

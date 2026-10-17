@@ -27,7 +27,8 @@ class Settings(BaseModel):
     gemini_api_key: SecretStr = SecretStr("")
     embedding_provider: str = "chroma_default"
     embedding_model: str = ""  # empty means Chroma's default ONNX embedder
-    # Retrieval and add-ons (ADR-004 v2)
+    # Retrieval and add-ons (ADR-004 v2); lexical-only is the ADR-004 rollback
+    retrieval_mode: Literal["hybrid", "lexical"] = "hybrid"
     rrf_k: int = 60
     dish_pool: int = 15
     variant_pool: int = 10

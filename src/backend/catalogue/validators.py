@@ -283,18 +283,9 @@ def v10(ctx: Context) -> Result:
     return _result("V10", "Synonym targets exist; no colliding canonical terms", errors)
 
 
-def dish_embedding_text(rec: DishRecord) -> str:
-    """Data Model §7.2 dish template (top 6 essential ingredients)."""
-    d = rec.dish
-    top = [i.ingredient_name for i in rec.ingredients if i.essential][:6]
-    text = (f"{d.name}. {d.course} from {d.cuisine} cuisine. Mood and occasion: {', '.join(d.mood_tags)}. "
-            f"Taste: {', '.join(d.flavour)}. Main ingredients: {', '.join(top)}.")
-    if d.aliases:
-        text += f" Also called: {', '.join(d.aliases)}."
-    return f"{text} {d.description}"
-
-
 def v11(ctx: Context) -> Result:
+    from backend.retrieval.documents import dish_embedding_text
+
     errors = []
     for v in ctx.variants:
         t = v.get("embedding_text", "")
