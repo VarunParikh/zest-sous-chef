@@ -31,15 +31,16 @@ def _parse(content: str) -> DetectionResult:
 
 
 class OllamaVision:
-    def __init__(self, base_url: str, model: str, timeout_s: float = 60, transport=None, keep_alive: str = "10m"):
-        self.base_url, self.model, self.keep_alive = base_url.rstrip("/"), model, keep_alive
+    def __init__(self, base_url: str, model: str, timeout_s: float = 60, transport=None, keep_alive: str = "10m",
+                 num_ctx: int | None = None):
+        self.base_url, self.model, self.keep_alive, self.num_ctx = base_url.rstrip("/"), model, keep_alive, num_ctx
         self._http = httpx.Client(transport=transport, timeout=timeout_s)
         self.name = f"ollama:{model}"
         self.last_served_model: str | None = None
 
     def detect(self, image: bytes) -> DetectionResult:
         body = {"model": self.model, "stream": False, "format": "json", "keep_alive": self.keep_alive,
-                "options": {"temperature": 0, "seed": 0},
+                "options": {"temperature": 0, "seed": 0, **({"num_ctx": self.num_ctx} if self.num_ctx else {})},
                 "messages": [{"role": "user", "content": text("photo_detect"), "images": [base64.b64encode(image).decode()]}]}
         try:
             r = self._http.post(f"{self.base_url}/api/chat", json=body)

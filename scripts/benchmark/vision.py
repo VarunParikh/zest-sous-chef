@@ -117,7 +117,7 @@ def summarise(per, failures, lat, runs):
 def main():
     ap = parser(__doc__)
     ap.add_argument("--models", default=CANDIDATES)
-    ap.add_argument("--gemini-model", default="gemini-3.8-flash")
+    ap.add_argument("--gemini-model", default="gemini-3.5-flash-lite")
     ap.add_argument("--runs", type=int, default=3)
     args = ap.parse_args()
     settings, th, lex = load_settings(), load_thresholds()["E3_vision"], load_lexicon()
@@ -140,7 +140,7 @@ def main():
         keep_resident(base)
         unload_vision(base)
         if kind == "ollama":
-            provider = OllamaVision(base, model, timeout_s=120)
+            provider = OllamaVision(base, model, timeout_s=120, num_ctx=settings.vision_num_ctx)
             t0 = time.perf_counter()
             try:
                 provider.detect(prepare_image((ROOT / "assets" / "sample-photos" / "RF05.jpeg").read_bytes()))  # warm-up, unscored
@@ -154,7 +154,7 @@ def main():
                                            pause_s=6.5 if kind == "gemini" else 0.0)  # stay under free-tier rate limits
         swap_delta, ps = swapouts() - swap0, ollama_ps()
         m = summarise(per, failures, lat, runs)
-        m.update({"served_model": provider.last_served_model, "cold_load_ms": cold_ms, "swapouts_delta": swap_delta,
+        m.update({"num_ctx": settings.vision_num_ctx if kind == "ollama" else None, "served_model": provider.last_served_model, "cold_load_ms": cold_ms, "swapouts_delta": swap_delta,
                   "ollama_ps": ps, "resident_models": list(RESIDENT), "confidence_threshold": settings.confidence_threshold})
         gates = {"precision": gate_status(m["precision_clear"], minimum=th["precision_min"]),
                  "recall": gate_status(m["recall_clear"], minimum=th["recall_min"]),
@@ -163,10 +163,13 @@ def main():
         if kind == "ollama":
             gates["no_swap"] = {"status": "PASS" if swap_delta == 0 else "FAIL"}
             gates["gpu_only"] = {"status": "PASS" if gpu_only(model, ps) else "FAIL"}
+            evicted = [r for r in RESIDENT if r not in ps]
+            gates["text_model_resident"] = {"status": "PASS" if not evicted else "FAIL", "evicted": evicted}
         m["gates"] = gates
         m["owner_recall_target_0_80_met"] = (m["recall_clear"]["rate"] or 0) >= th["recall_target_owner"]
         notes = "; ".join(x for x in ["smoke run: plumbing only, not a result" if args.smoke else "", LABEL_NOTE,
-                                     "Gemini free tier may use submitted content (C8); sample photos only" if kind == "gemini" else ""] if x)
+                                     "Gemini free tier may use submitted content (C8); sample photos only; Flash-Lite chosen because three "
+                                     "gemini-3.8-flash probe calls took 23.5 s, 40 s and over 60 s (gate 20 s)" if kind == "gemini" else ""] if x)
         save(make_result("E3", system, "mock-data/photos.json", split, m, per, [], overall_status(gates, []), notes=notes), args.out)
     unload_vision(base)
 

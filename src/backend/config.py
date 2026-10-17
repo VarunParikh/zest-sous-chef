@@ -25,6 +25,7 @@ class Settings(BaseModel):
     ollama_base_url: str = "http://127.0.0.1:11434"
     vision_provider: Literal["ollama", "gemini", "samples"] = "samples"  # local-first; E3 decides (C15)
     vision_model: str = ""
+    vision_num_ctx: int = 4096  # set before the first official E3 run: at 16k Ollama evicted the text model
     gemini_api_key: SecretStr = SecretStr("")
     embedding_provider: str = "chroma_default"
     embedding_model: str = ""  # empty means Chroma's default ONNX embedder

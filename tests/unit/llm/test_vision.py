@@ -119,3 +119,14 @@ def test_gemini_retries_once_on_busy_then_gives_up():
     with pytest.raises(Exception):
         GeminiVision(FAKE_KEY, "gemini-x", transport=httpx.MockTransport(busy), retry_wait_s=0).detect(prepare_image(_jpeg_with_gps((300, 200))))
     assert len(always) == 2  # at most one retry (NFR-10)
+
+
+def test_ollama_vision_sends_context_window():
+    seen = []
+
+    def handler(req):
+        seen.append(json.loads(req.content))
+        return httpx.Response(200, json={"model": "m", "message": {"content": json.dumps(RESULT)}})
+
+    OllamaVision("http://x.test", "m", transport=httpx.MockTransport(handler), num_ctx=4096).detect(prepare_image(_jpeg_with_gps((300, 200))))
+    assert seen[0]["options"]["num_ctx"] == 4096
