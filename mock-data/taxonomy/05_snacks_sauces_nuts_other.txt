@@ -42,7 +42,7 @@ B208|frozen|Frozen parathas|wheat flour|pc|4/8|10|Plain~sunflower oil,salt~1.0~-
 B209|frozen|Frozen fries|potato|g|400/750|20|Regular~sunflower oil,salt~1.0~-;Masala~sunflower oil,salt,red chilli powder~1.05~-
 B210|frozen|Ice cream|milk|ml|100/500/1000|28|Vanilla~cream,sugar~1.0~-;Mango~cream,sugar,mango~1.05~-;Eggless chocolate~cream,sugar,cocoa~1.1~-
 B211|frozen|Frozen momos|refined flour|pc|8/12|12|Veg~cabbage,carrot,onion,garlic,sunflower oil~1.0~-;Chicken~chicken,onion,garlic,sunflower oil~1.2~-;Paneer~paneer,onion,garlic~1.2~-
-B212|frozen|Frozen kebabs|chicken|g|250/400|45|Veg seekh~potato,green peas,gram flour,salt~1.0~-;Chicken seekh~onion,garlic,salt~1.2~-
+B212|frozen|Frozen kebabs|chicken|g|250/400|45|Chicken seekh~onion,garlic,salt~1.2~-
 B213|ready|Ready-to-eat meals|rice|g|250/300|22|Dal makhani~=dalmakhani,urad dal,butter,cream,salt~1.0~-;Veg biryani~basmati rice,carrot,green peas,onion,salt~1.0~-;Paneer butter masala~paneer,tomato,butter,cream,salt~1.2~-;Jain dal~toor dal,turmeric,salt,=jain~1.0~-
 B214|ready|Gulab jamun mix|khoya|g|100/200|35|Instant~milk,sugar,refined flour~1.0~-
 B215|ready|Instant noodles cup|refined flour|pc|1/4|20|Masala~salt,turmeric,sunflower oil~1.0~-;Veg~carrot,green peas,salt~1.1~-

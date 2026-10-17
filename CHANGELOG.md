@@ -17,6 +17,8 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 - Lexicon: `sarson` is now an alias of `mustard greens` only (it was also on `mustard seeds`; V10 caught the collision); added `non-food item` for household products.
 - `dishes.csv` gains `aliases`, `flavour` and `description` columns, back-filled for D01 to D35 (C20); ingredient lines accept a fourth field `opt` for non-essential garnish lines. `check_seed.py` reads the new format.
 
-### Docs
+### Fixed
+- Nine catalogue variants whose names contradicted their derived tags (the taxonomy rule is base term plus extras) moved to correct base products B343 to B350: almond, oat and coconut milk (listed soy milk), gluten-free soy sauce (now tamari, new lexicon term), gluten-free wraps and cake mix (listed wheat or refined flour), veg seekh kebab (listed chicken), chicken sausage and bacon (listed pork). Dried kokum moved from the amchur base to its own base B351 so it resolves as kokum. A new test guards name-versus-tag agreement; two plant protein shakes are reviewed exceptions (their extras declare soy milk).
 - Logged C19 (`config.yaml` and `eval/thresholds.yaml` need a YAML parser that is not on the approved list) and added a block 1.1 note to C15 (vision default and health-page wording follow ADR-003 v2).
 - Logged C20 (dish schema columns; resolved by the owner's choice to add columns), C21 (category and `LeverSet` vocabulary mismatches; doc-sync pending) and C22 (nine curated pairings whose `dish_b` is not a companion course; owner decision).
+- C22 resolved: the owner kept the nine curated pairings.

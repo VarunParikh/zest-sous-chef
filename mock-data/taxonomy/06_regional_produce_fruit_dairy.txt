@@ -47,9 +47,9 @@ B270|dairy|Milk (small pack and shelf stable)|milk|ml|200/1000|8|UHT full cream~
 B271|bakery|Croissant and puffs|refined flour|pc|2/4|20|Butter croissant~butter,yeast,sugar,milk~1.0~g;Veg puff~potato,onion,sunflower oil~0.8~-;Egg puff~egg,onion,sunflower oil~0.9~-;Chicken puff~chicken,onion,sunflower oil~1.0~-
 B272|bakery|Cookies|refined flour|g|75/200|30|Choco chip~sugar,butter,cocoa~1.0~-;Oat raisin~oats,raisin,sugar,butter~1.1~-;Jeera~sunflower oil,cumin,salt~0.9~-;Eggless butter~sugar,butter~1.0~-
 B273|bakery|Muffins and brownies|refined flour|pc|2/4|25|Choco muffin~egg,sugar,cocoa,butter~1.0~-;Eggless muffin~sugar,cocoa,sunflower oil~1.0~-;Walnut brownie~egg,sugar,cocoa,walnut,butter~1.3~g;Vegan brownie~sugar,cocoa,sunflower oil,walnut~1.3~g
-B274|bakery|Tortilla and wraps|wheat flour|pc|4/8|8|Wheat tortilla~sunflower oil,salt~1.0~-;Multigrain wrap~oats,sunflower oil,salt~1.2~-;Corn tortilla~corn,salt~1.1~-;Gluten-free~rice,salt~1.4~g
+B274|bakery|Tortilla and wraps|wheat flour|pc|4/8|8|Wheat tortilla~sunflower oil,salt~1.0~-;Multigrain wrap~oats,sunflower oil,salt~1.2~-;Corn tortilla~corn,salt~1.1~-
 B275|bakery|Garlic bread and breadsticks|bread loaf|pc|1/2|25|Garlic butter~garlic,butter,parsley~1.0~-;Cheese garlic~garlic,butter,cheese~1.3~-;Vegan garlic~garlic,olive oil,parsley~1.2~-;Whole wheat~wheat flour,garlic,butter~1.1~-
-B276|bakery|Cake mix|refined flour|g|200/500|18|Vanilla~sugar,baking soda~1.0~-;Chocolate~sugar,cocoa,baking soda~1.1~-;Eggless red velvet~sugar,cocoa,baking soda,=red velvet~1.3~g;Gluten-free~rice,sugar,baking soda~1.5~g
+B276|bakery|Cake mix|refined flour|g|200/500|18|Vanilla~sugar,baking soda~1.0~-;Chocolate~sugar,cocoa,baking soda~1.1~-;Eggless red velvet~sugar,cocoa,baking soda,=red velvet~1.3~g
 B277|bakery|Bakery buns and rolls (sweet)|bread rolls|pc|2/6|9|Cream roll~milk,sugar,cream~1.0~-;Bun maska~butter,sugar~1.0~-;Fruit bun~raisin,sugar~1.0~-;Eggless milk bun~milk,sugar~1.0~-
 B278|bakery|Khari and toast|refined flour|g|150/300|12|Khari~sunflower oil,salt~1.0~-;Butter toast~butter,sugar~1.2~-;Jeera toast~cumin,sunflower oil,salt~1.1~-;Atta toast~wheat flour,sunflower oil,salt~1.2~-
 B279|grains|Jowar atta|jowar|g|500/1000|7|Plain~=plain~1.0~-;Organic~=plain~1.8~o;Roasted~=roasted~1.2~-;Instant roti mix~salt~1.4~-
@@ -81,7 +81,7 @@ B304|spices|Mixed herbs and oregano|oregano|g|10/25|60|Oregano~=oregano~1.0~-;Mi
 B305|spices|Paprika and pepper blends|paprika|g|25/50|70|Sweet paprika~=sweet~1.0~g;Smoked paprika~=smoked~1.4~g;Lemon pepper~black pepper,lemon~1.1~g;Peri peri~red chilli powder,garlic,paprika~1.1~g
 B306|spices|Nutmeg and mace|nutmeg|g|10/25|180|Nutmeg whole~=whole~1.0~-;Nutmeg powder~=powder~1.1~-;Mace (javitri)~=mace~1.4~g;Jaiphal mix~=nutmeg,cardamom~1.2~-
 B307|spices|Star anise and whole spices|star anise|g|25/50|120|Star anise~=star~1.0~-;Shahi jeera~=shahi jeera~1.3~g;Stone flower~=stone flower~1.2~-;Marathi moggu~=moggu~1.3~-
-B308|spices|Amchur and sour powders|amchur|g|50/100|35|Amchur powder~=powder~1.0~-;Anardana~=anardana~1.4~-;Kokum~=kokum~1.5~-;Citric blend~=citric~0.8~-
+B308|spices|Amchur and sour powders|amchur|g|50/100|35|Amchur powder~=powder~1.0~-;Anardana~=anardana~1.4~-;Citric blend~=citric~0.8~-
 B309|spices|Dry ginger and tonics|ginger|g|50/100|45|Saunth powder~=dry~1.0~-;Ginger candy~sugar~0.8~-;Kadha mix~tulsi,black pepper,cinnamon~1.3~-;Turmeric latte mix~turmeric,milk,black pepper~1.5~g
 B310|spices|Panch phoron and tadka|cumin|g|50/100|40|Panch phoron~fennel seeds,fenugreek seeds,mustard seeds,carom seeds~1.0~-;Sambar tadka mix~mustard seeds,curry leaves~1.1~-;Rasam tadka mix~cumin,black pepper~1.1~-;Dal tadka mix~cumin,asafoetida~1.1~-
 B311|spices|Cumin (specialty)|cumin|g|100/200|45|Shahi~=shahi~1.4~g;Roasted powder~=roasted~1.2~-;Kala jeera~=black~1.6~g;Organic~=whole~1.8~o
@@ -94,7 +94,7 @@ B317|meat|Chicken (specialty cuts)|chicken|g|250/500|35|Wings~=wings~1.0~-;Drums
 B318|meat|Mutton (specialty cuts)|mutton|g|250/500|80|Chops~=chops~1.2~g;Paya~=paya~0.7~-;Liver~=liver~0.8~-;Mince~=mince~1.05~-
 B319|meat|Fish (specialty)|fish|g|250/500|50|Tuna steak~=tuna~2.0~g;Mackerel (bangda)~=bangda~0.8~-;Crab~=crab~1.6~g;Squid~=squid~1.4~g;Sardine~=sardine~0.7~-
 B320|meat|Canned fish and meat|fish|g|100/200|50|Tuna in oil~=tuna,sunflower oil~1.0~-;Tuna in water~=tuna,water~1.0~-;Sardine in tomato~=sardine,tomato~0.9~-;Chicken luncheon~chicken,salt~1.1~-
-B321|meat|Sausages and bacon|pork|g|200/400|60|Pork sausage~salt~1.0~-;Pork bacon~=bacon,salt~1.3~-;Chicken sausage~chicken,salt~0.9~-;Chicken bacon~chicken,=bacon,salt~1.2~-
+B321|meat|Sausages and bacon|pork|g|200/400|60|Pork sausage~salt~1.0~-;Pork bacon~=bacon,salt~1.3~-
 B322|meat|Plant-based meat|soy chunks|g|200/400|50|Soy keema~=keema~1.0~-;Plant nuggets~soy,wheat flour~1.3~g;Jackfruit meat~jackfruit,salt~1.4~g;Seitan strips~wheat flour,soy sauce~1.4~g
 B323|beverages|Kokum and sharbat syrups|sugar|ml|500|18|Kokum~kokum~1.0~-;Rose~rose,=syrup~1.1~-;Khus~khus,=syrup~1.1~-;Jaljeera concentrate~cumin,black salt,mint~1.1~-;Orange squash~orange~1.0~-
 B324|beverages|Iced tea and cold coffee|tea leaves|ml|200/1000|10|Lemon iced tea~lemon,sugar~1.0~-;Peach iced tea~peach,sugar~1.05~-;Cold coffee~coffee,milk,sugar~1.2~-;Green iced tea~=green,sugar~1.1~-
@@ -116,3 +116,12 @@ B339|frozen|Dairy-free ice cream|coconut|ml|100/500|45|Coconut vanilla~sugar~1.0
 B340|dairy|Plant butter|coconut oil|g|100/200|50|Plain~salt~1.0~g;Almond~almond,salt~1.2~g;Cashew~cashew,salt~1.2~g
 B341|protein|Plant protein shakes|almond|ml|200/330|55|Almond~soy milk~1.0~g;Soy~soy~1.0~g;Oat~oats,soy milk~1.05~g
 B342|grains|Risotto rice|arborio rice|g|500/1000|30|Arborio~=arborio~1.0~g;Carnaroli~=carnaroli~1.3~g;Vialone nano~=vialone~1.4~g
+B343|dairy|Almond milk|almond|ml|200/1000|18|Almond~~1.6~g
+B344|dairy|Oat milk|oats|ml|200/1000|18|Oat~~1.4~-
+B345|dairy|Coconut milk|coconut|ml|200/1000|18|Coconut~~1.3~-
+B346|protein|Tamari (gluten-free soy sauce)|tamari|ml|150/500|11|Gluten-free~=gluten free~1.5~g
+B347|bakery|Gluten-free wraps|rice|pc|4/8|8|Rice flour wrap~salt~1.4~g
+B348|bakery|Gluten-free cake mix|rice|g|200/500|18|Vanilla~sugar,baking soda~1.5~g
+B349|frozen|Frozen veg kebabs|potato|g|250/400|45|Veg seekh~green peas,gram flour,salt~1.0~-
+B350|meat|Chicken sausages and bacon|chicken|g|200/400|60|Chicken sausage~salt,=sausage~0.9~-;Chicken bacon~=bacon,salt~1.2~-
+B351|spices|Kokum (dried)|kokum|g|100/200|52|Dried rind~=dried~1.0~-

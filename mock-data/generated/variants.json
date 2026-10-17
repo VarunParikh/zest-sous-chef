@@ -7048,128 +7048,6 @@
  },
  {
   "allergens": [
-   "soy",
-   "tree_nut"
-  ],
-  "attributes": {
-   "organic": "no",
-   "premium": "yes",
-   "qualifiers": "none",
-   "variant": "Almond"
-  },
-  "base_id": "B065",
-  "brand": "MockMart Gourmet",
-  "category": "dairy",
-  "diet_class": "vegan",
-  "embedding_text": "Plant milk (Almond). Category: dairy. premium. Ingredients: soy milk (plant milk), almond. Also called: Plant milk.",
-  "flags": [],
-  "gi_label": "low",
-  "gluten_free": true,
-  "gourmet_score": 0.747,
-  "halal_status": "not_applicable",
-  "history_bucket": "dairy",
-  "icon": "dairy",
-  "ingredient_list": [
-   "soy milk (plant milk)",
-   "almond"
-  ],
-  "jain_ok": true,
-  "name": "Plant milk (Almond)",
-  "nutrition": {
-   "carbs_g": 4.9,
-   "fat_g": 3.4,
-   "protein_g": 3.5,
-   "sugar_g": 5.1
-  },
-  "organic_score": 0.225,
-  "price_per_unit_inr": 29.16,
-  "satvik_ok": true,
-  "variant_id": "b065-dd0209e8",
-  "vegan": true
- },
- {
-  "allergens": [
-   "gluten",
-   "soy"
-  ],
-  "attributes": {
-   "organic": "no",
-   "premium": "no",
-   "qualifiers": "none",
-   "variant": "Oat"
-  },
-  "base_id": "B065",
-  "brand": "MockMart Basics",
-  "category": "dairy",
-  "diet_class": "vegan",
-  "embedding_text": "Plant milk (Oat). Category: dairy. regular. Ingredients: soy milk (plant milk), oats. Also called: Plant milk.",
-  "flags": [],
-  "gi_label": "low",
-  "gluten_free": false,
-  "gourmet_score": 0.28,
-  "halal_status": "not_applicable",
-  "history_bucket": "dairy",
-  "icon": "dairy",
-  "ingredient_list": [
-   "soy milk (plant milk)",
-   "oats"
-  ],
-  "jain_ok": true,
-  "name": "Plant milk (Oat)",
-  "nutrition": {
-   "carbs_g": 4.9,
-   "fat_g": 3.3,
-   "protein_g": 3.5,
-   "sugar_g": 5.1
-  },
-  "organic_score": 0.078,
-  "price_per_unit_inr": 25.29,
-  "satvik_ok": true,
-  "variant_id": "b065-261ab4c6",
-  "vegan": true
- },
- {
-  "allergens": [
-   "soy"
-  ],
-  "attributes": {
-   "organic": "no",
-   "premium": "no",
-   "qualifiers": "none",
-   "variant": "Coconut"
-  },
-  "base_id": "B065",
-  "brand": "MockMart Daily",
-  "category": "dairy",
-  "diet_class": "vegan",
-  "embedding_text": "Plant milk (Coconut). Category: dairy. regular. Ingredients: soy milk (plant milk), coconut. Also called: Plant milk.",
-  "flags": [],
-  "gi_label": "low",
-  "gluten_free": true,
-  "gourmet_score": 0.238,
-  "halal_status": "not_applicable",
-  "history_bucket": "dairy",
-  "icon": "dairy",
-  "ingredient_list": [
-   "soy milk (plant milk)",
-   "coconut"
-  ],
-  "jain_ok": true,
-  "name": "Plant milk (Coconut)",
-  "nutrition": {
-   "carbs_g": 5.2,
-   "fat_g": 3.4,
-   "protein_g": 3.4,
-   "sugar_g": 5.1
-  },
-  "organic_score": 0.071,
-  "price_per_unit_inr": 22.88,
-  "satvik_ok": true,
-  "variant_id": "b065-42e825eb",
-  "vegan": true
- },
- {
-  "allergens": [
    "milk"
   ],
   "attributes": {
@@ -15421,46 +15299,6 @@
  },
  {
   "allergens": [
-   "gluten",
-   "soy"
-  ],
-  "attributes": {
-   "organic": "no",
-   "premium": "yes",
-   "qualifiers": "gluten free",
-   "variant": "Gluten-free"
-  },
-  "base_id": "B152",
-  "brand": "MockMart Reserve",
-  "category": "protein",
-  "diet_class": "vegan",
-  "embedding_text": "Soy sauce (Gluten-free). Category: protein. gluten free, premium. Ingredients: soy sauce (gluten free). Also called: Soy sauce.",
-  "flags": [],
-  "gi_label": "low",
-  "gluten_free": false,
-  "gourmet_score": 0.819,
-  "halal_status": "not_applicable",
-  "history_bucket": null,
-  "icon": "protein",
-  "ingredient_list": [
-   "soy sauce (gluten free)"
-  ],
-  "jain_ok": true,
-  "name": "Soy sauce (Gluten-free)",
-  "nutrition": {
-   "carbs_g": 7.9,
-   "fat_g": 6.0,
-   "protein_g": 40.8,
-   "sugar_g": 2.0
-  },
-  "organic_score": 0.108,
-  "price_per_unit_inr": 16.09,
-  "satvik_ok": true,
-  "variant_id": "b152-cdb7ca25",
-  "vegan": true
- },
- {
-  "allergens": [
    "milk"
   ],
   "attributes": {
@@ -21150,51 +20988,6 @@
   "price_per_unit_inr": 14.36,
   "satvik_ok": false,
   "variant_id": "b211-c98fa02d",
-  "vegan": false
- },
- {
-  "allergens": [],
-  "attributes": {
-   "organic": "no",
-   "premium": "no",
-   "qualifiers": "none",
-   "variant": "Veg seekh"
-  },
-  "base_id": "B212",
-  "brand": "MockMart Select",
-  "category": "frozen",
-  "diet_class": "non_veg",
-  "embedding_text": "Frozen kebabs (Veg seekh). Category: frozen. regular. Ingredients: chicken (frozen kebabs), potato, green peas, gram flour, salt. Also called: Frozen kebabs, murgh.",
-  "flags": [
-   "meat",
-   "non_satvik",
-   "root_veg"
-  ],
-  "gi_label": "not_applicable",
-  "gluten_free": true,
-  "gourmet_score": 0.104,
-  "halal_status": "not_halal",
-  "history_bucket": null,
-  "icon": "frozen",
-  "ingredient_list": [
-   "chicken (frozen kebabs)",
-   "potato",
-   "green peas",
-   "gram flour",
-   "salt"
-  ],
-  "jain_ok": false,
-  "name": "Frozen kebabs (Veg seekh)",
-  "nutrition": {
-   "carbs_g": 0.0,
-   "fat_g": 8.8,
-   "protein_g": 25.1,
-   "sugar_g": 0.0
-  },
-  "organic_score": 0.199,
-  "price_per_unit_inr": 44.85,
-  "satvik_ok": false,
-  "variant_id": "b212-27806087",
   "vegan": false
  },
  {
@@ -29899,49 +29692,6 @@
  },
  {
   "allergens": [
-   "gluten"
-  ],
-  "attributes": {
-   "organic": "no",
-   "premium": "yes",
-   "qualifiers": "none",
-   "variant": "Gluten-free"
-  },
-  "base_id": "B274",
-  "brand": "MockMart Gourmet",
-  "category": "bakery",
-  "diet_class": "vegan",
-  "embedding_text": "Tortilla and wraps (Gluten-free). Category: bakery. premium. Ingredients: wheat flour (tortilla and wraps), rice, salt. Also called: Tortilla and wraps, atta.",
-  "flags": [
-   "gluten"
-  ],
-  "gi_label": "medium",
-  "gluten_free": false,
-  "gourmet_score": 0.875,
-  "halal_status": "not_applicable",
-  "history_bucket": "bakery",
-  "icon": "bakery",
-  "ingredient_list": [
-   "wheat flour (tortilla and wraps)",
-   "rice",
-   "salt"
-  ],
-  "jain_ok": true,
-  "name": "Tortilla and wraps (Gluten-free)",
-  "nutrition": {
-   "carbs_g": 51.4,
-   "fat_g": 4.0,
-   "protein_g": 8.7,
-   "sugar_g": 5.2
-  },
-  "organic_score": 0.158,
-  "price_per_unit_inr": 11.34,
-  "satvik_ok": true,
-  "variant_id": "b274-d86dfd53",
-  "vegan": true
- },
- {
-  "allergens": [
    "gluten",
    "milk"
   ],
@@ -30256,50 +30006,6 @@
   "price_per_unit_inr": 23.41,
   "satvik_ok": true,
   "variant_id": "b276-0645b100",
-  "vegan": true
- },
- {
-  "allergens": [
-   "gluten"
-  ],
-  "attributes": {
-   "organic": "no",
-   "premium": "yes",
-   "qualifiers": "none",
-   "variant": "Gluten-free"
-  },
-  "base_id": "B276",
-  "brand": "MockMart Reserve",
-  "category": "bakery",
-  "diet_class": "vegan",
-  "embedding_text": "Cake mix (Gluten-free). Category: bakery. premium. Ingredients: refined flour (cake mix), rice, sugar, baking soda. Also called: Cake mix, maida.",
-  "flags": [
-   "gluten"
-  ],
-  "gi_label": "high",
-  "gluten_free": false,
-  "gourmet_score": 0.886,
-  "halal_status": "not_applicable",
-  "history_bucket": "desserts",
-  "icon": "bakery",
-  "ingredient_list": [
-   "refined flour (cake mix)",
-   "rice",
-   "sugar",
-   "baking soda"
-  ],
-  "jain_ok": true,
-  "name": "Cake mix (Gluten-free)",
-  "nutrition": {
-   "carbs_g": 62.1,
-   "fat_g": 4.0,
-   "protein_g": 9.2,
-   "sugar_g": 14.3
-  },
-  "organic_score": 0.256,
-  "price_per_unit_inr": 27.06,
-  "satvik_ok": true,
-  "variant_id": "b276-544b7a0b",
   "vegan": true
  },
  {
@@ -35213,43 +34919,6 @@
   "attributes": {
    "organic": "no",
    "premium": "no",
-   "qualifiers": "kokum",
-   "variant": "Kokum"
-  },
-  "base_id": "B308",
-  "brand": "MockMart Daily",
-  "category": "spices",
-  "diet_class": "vegan",
-  "embedding_text": "Amchur and sour powders (Kokum). Category: spices. kokum. Ingredients: amchur (amchur and sour powders, kokum). Also called: Amchur and sour powders, dry mango powder.",
-  "flags": [],
-  "gi_label": "medium",
-  "gluten_free": true,
-  "gourmet_score": 0.227,
-  "halal_status": "not_applicable",
-  "history_bucket": null,
-  "icon": "spices",
-  "ingredient_list": [
-   "amchur (amchur and sour powders, kokum)"
-  ],
-  "jain_ok": true,
-  "name": "Amchur and sour powders (Kokum)",
-  "nutrition": {
-   "carbs_g": 43.4,
-   "fat_g": 9.9,
-   "protein_g": 10.3,
-   "sugar_g": 3.0
-  },
-  "organic_score": 0.222,
-  "price_per_unit_inr": 52.47,
-  "satvik_ok": true,
-  "variant_id": "b308-1d3aa041",
-  "vegan": true
- },
- {
-  "allergens": [],
-  "attributes": {
-   "organic": "no",
-   "premium": "no",
    "qualifiers": "citric",
    "variant": "Citric blend"
   },
@@ -37327,90 +36996,6 @@
   "price_per_unit_inr": 76.36,
   "satvik_ok": false,
   "variant_id": "b321-51e3e6e3",
-  "vegan": false
- },
- {
-  "allergens": [],
-  "attributes": {
-   "organic": "no",
-   "premium": "no",
-   "qualifiers": "none",
-   "variant": "Chicken sausage"
-  },
-  "base_id": "B321",
-  "brand": "MockMart Select",
-  "category": "meat",
-  "diet_class": "non_veg",
-  "embedding_text": "Sausages and bacon (Chicken sausage). Category: meat. regular. Ingredients: pork (sausages and bacon), chicken, salt. Also called: Sausages and bacon.",
-  "flags": [
-   "meat",
-   "non_satvik"
-  ],
-  "gi_label": "not_applicable",
-  "gluten_free": true,
-  "gourmet_score": 0.081,
-  "halal_status": "not_halal",
-  "history_bucket": "kebabs",
-  "icon": "meat",
-  "ingredient_list": [
-   "pork (sausages and bacon)",
-   "chicken",
-   "salt"
-  ],
-  "jain_ok": false,
-  "name": "Sausages and bacon (Chicken sausage)",
-  "nutrition": {
-   "carbs_g": 0.0,
-   "fat_g": 14.6,
-   "protein_g": 24.7,
-   "sugar_g": 0.0
-  },
-  "organic_score": 0.136,
-  "price_per_unit_inr": 52.79,
-  "satvik_ok": false,
-  "variant_id": "b321-4f8cfce1",
-  "vegan": false
- },
- {
-  "allergens": [],
-  "attributes": {
-   "organic": "no",
-   "premium": "no",
-   "qualifiers": "bacon",
-   "variant": "Chicken bacon"
-  },
-  "base_id": "B321",
-  "brand": "MockMart Daily",
-  "category": "meat",
-  "diet_class": "non_veg",
-  "embedding_text": "Sausages and bacon (Chicken bacon). Category: meat. bacon. Ingredients: pork (sausages and bacon, bacon), chicken, salt. Also called: Sausages and bacon.",
-  "flags": [
-   "meat",
-   "non_satvik"
-  ],
-  "gi_label": "not_applicable",
-  "gluten_free": true,
-  "gourmet_score": 0.198,
-  "halal_status": "not_halal",
-  "history_bucket": "kebabs",
-  "icon": "meat",
-  "ingredient_list": [
-   "pork (sausages and bacon, bacon)",
-   "chicken",
-   "salt"
-  ],
-  "jain_ok": false,
-  "name": "Sausages and bacon (Chicken bacon)",
-  "nutrition": {
-   "carbs_g": 0.0,
-   "fat_g": 14.1,
-   "protein_g": 25.4,
-   "sugar_g": 0.0
-  },
-  "organic_score": 0.181,
-  "price_per_unit_inr": 72.04,
-  "satvik_ok": false,
-  "variant_id": "b321-8c0ce57e",
   "vegan": false
  },
  {
@@ -40525,6 +40110,398 @@
   "price_per_unit_inr": 41.0,
   "satvik_ok": true,
   "variant_id": "b342-b6abf37a",
+  "vegan": true
+ },
+ {
+  "allergens": [
+   "tree_nut"
+  ],
+  "attributes": {
+   "organic": "no",
+   "premium": "yes",
+   "qualifiers": "none",
+   "variant": "Almond"
+  },
+  "base_id": "B343",
+  "brand": "MockMart Gourmet",
+  "category": "dairy",
+  "diet_class": "vegan",
+  "embedding_text": "Almond milk (Almond). Category: dairy. premium. Ingredients: almond (almond milk). Also called: Almond milk, badam.",
+  "flags": [],
+  "gi_label": "low",
+  "gluten_free": true,
+  "gourmet_score": 0.811,
+  "halal_status": "not_applicable",
+  "history_bucket": "dairy",
+  "icon": "dairy",
+  "ingredient_list": [
+   "almond (almond milk)"
+  ],
+  "jain_ok": true,
+  "name": "Almond milk (Almond)",
+  "nutrition": {
+   "carbs_g": 22.8,
+   "fat_g": 48.6,
+   "protein_g": 20.9,
+   "sugar_g": 4.0
+  },
+  "organic_score": 0.225,
+  "price_per_unit_inr": 29.65,
+  "satvik_ok": true,
+  "variant_id": "b343-98daf0b2",
+  "vegan": true
+ },
+ {
+  "allergens": [
+   "gluten"
+  ],
+  "attributes": {
+   "organic": "no",
+   "premium": "no",
+   "qualifiers": "none",
+   "variant": "Oat"
+  },
+  "base_id": "B344",
+  "brand": "MockMart Basics",
+  "category": "dairy",
+  "diet_class": "vegan",
+  "embedding_text": "Oat milk (Oat). Category: dairy. regular. Ingredients: oats (oat milk). Also called: Oat milk.",
+  "flags": [],
+  "gi_label": "medium",
+  "gluten_free": false,
+  "gourmet_score": 0.232,
+  "halal_status": "not_applicable",
+  "history_bucket": "dairy",
+  "icon": "dairy",
+  "ingredient_list": [
+   "oats (oat milk)"
+  ],
+  "jain_ok": true,
+  "name": "Oat milk (Oat)",
+  "nutrition": {
+   "carbs_g": 65.5,
+   "fat_g": 7.0,
+   "protein_g": 17.0,
+   "sugar_g": 1.0
+  },
+  "organic_score": 0.137,
+  "price_per_unit_inr": 25.06,
+  "satvik_ok": true,
+  "variant_id": "b344-ac82bb06",
+  "vegan": true
+ },
+ {
+  "allergens": [],
+  "attributes": {
+   "organic": "no",
+   "premium": "no",
+   "qualifiers": "none",
+   "variant": "Coconut"
+  },
+  "base_id": "B345",
+  "brand": "MockMart Basics",
+  "category": "dairy",
+  "diet_class": "vegan",
+  "embedding_text": "Coconut milk (Coconut). Category: dairy. regular. Ingredients: coconut (coconut milk). Also called: Coconut milk, nariyal.",
+  "flags": [],
+  "gi_label": "low",
+  "gluten_free": true,
+  "gourmet_score": 0.225,
+  "halal_status": "not_applicable",
+  "history_bucket": "dairy",
+  "icon": "dairy",
+  "ingredient_list": [
+   "coconut (coconut milk)"
+  ],
+  "jain_ok": true,
+  "name": "Coconut milk (Coconut)",
+  "nutrition": {
+   "carbs_g": 14.8,
+   "fat_g": 33.6,
+   "protein_g": 3.1,
+   "sugar_g": 6.3
+  },
+  "organic_score": 0.176,
+  "price_per_unit_inr": 23.82,
+  "satvik_ok": true,
+  "variant_id": "b345-41fe5e45",
+  "vegan": true
+ },
+ {
+  "allergens": [
+   "soy"
+  ],
+  "attributes": {
+   "organic": "no",
+   "premium": "yes",
+   "qualifiers": "gluten free",
+   "variant": "Gluten-free"
+  },
+  "base_id": "B346",
+  "brand": "MockMart Gourmet",
+  "category": "protein",
+  "diet_class": "vegan",
+  "embedding_text": "Tamari (gluten-free soy sauce) (Gluten-free). Category: protein. gluten free, premium. Ingredients: tamari (gluten free). Also called: Tamari (gluten-free soy sauce), gluten-free soy sauce.",
+  "flags": [],
+  "gi_label": "low",
+  "gluten_free": true,
+  "gourmet_score": 0.836,
+  "halal_status": "not_applicable",
+  "history_bucket": null,
+  "icon": "protein",
+  "ingredient_list": [
+   "tamari (gluten free)"
+  ],
+  "jain_ok": true,
+  "name": "Tamari (gluten-free soy sauce) (Gluten-free)",
+  "nutrition": {
+   "carbs_g": 8.2,
+   "fat_g": 6.3,
+   "protein_g": 38.5,
+   "sugar_g": 2.0
+  },
+  "organic_score": 0.134,
+  "price_per_unit_inr": 16.07,
+  "satvik_ok": true,
+  "variant_id": "b346-927518c4",
+  "vegan": true
+ },
+ {
+  "allergens": [],
+  "attributes": {
+   "organic": "no",
+   "premium": "yes",
+   "qualifiers": "none",
+   "variant": "Rice flour wrap"
+  },
+  "base_id": "B347",
+  "brand": "MockMart Reserve",
+  "category": "bakery",
+  "diet_class": "vegan",
+  "embedding_text": "Gluten-free wraps (Rice flour wrap). Category: bakery. premium. Ingredients: rice (gluten-free wraps), salt. Also called: Gluten-free wraps, chawal.",
+  "flags": [],
+  "gi_label": "medium",
+  "gluten_free": true,
+  "gourmet_score": 0.834,
+  "halal_status": "not_applicable",
+  "history_bucket": "bakery",
+  "icon": "bakery",
+  "ingredient_list": [
+   "rice (gluten-free wraps)",
+   "salt"
+  ],
+  "jain_ok": true,
+  "name": "Gluten-free wraps (Rice flour wrap)",
+  "nutrition": {
+   "carbs_g": 48.8,
+   "fat_g": 3.9,
+   "protein_g": 8.8,
+   "sugar_g": 5.1
+  },
+  "organic_score": 0.238,
+  "price_per_unit_inr": 11.3,
+  "satvik_ok": true,
+  "variant_id": "b347-f80ffd47",
+  "vegan": true
+ },
+ {
+  "allergens": [],
+  "attributes": {
+   "organic": "no",
+   "premium": "yes",
+   "qualifiers": "none",
+   "variant": "Vanilla"
+  },
+  "base_id": "B348",
+  "brand": "MockMart Reserve",
+  "category": "bakery",
+  "diet_class": "vegan",
+  "embedding_text": "Gluten-free cake mix (Vanilla). Category: bakery. premium. Ingredients: rice (gluten-free cake mix), sugar, baking soda. Also called: Gluten-free cake mix, chawal.",
+  "flags": [],
+  "gi_label": "medium",
+  "gluten_free": true,
+  "gourmet_score": 0.746,
+  "halal_status": "not_applicable",
+  "history_bucket": "desserts",
+  "icon": "bakery",
+  "ingredient_list": [
+   "rice (gluten-free cake mix)",
+   "sugar",
+   "baking soda"
+  ],
+  "jain_ok": true,
+  "name": "Gluten-free cake mix (Vanilla)",
+  "nutrition": {
+   "carbs_g": 57.6,
+   "fat_g": 4.0,
+   "protein_g": 9.2,
+   "sugar_g": 14.3
+  },
+  "organic_score": 0.08,
+  "price_per_unit_inr": 27.77,
+  "satvik_ok": true,
+  "variant_id": "b348-22b60653",
+  "vegan": true
+ },
+ {
+  "allergens": [],
+  "attributes": {
+   "organic": "no",
+   "premium": "no",
+   "qualifiers": "none",
+   "variant": "Veg seekh"
+  },
+  "base_id": "B349",
+  "brand": "MockMart Daily",
+  "category": "frozen",
+  "diet_class": "vegan",
+  "embedding_text": "Frozen veg kebabs (Veg seekh). Category: frozen. regular. Ingredients: potato (frozen veg kebabs), green peas, gram flour, salt. Also called: Frozen veg kebabs, batata, aloo.",
+  "flags": [
+   "root_veg"
+  ],
+  "gi_label": "low",
+  "gluten_free": true,
+  "gourmet_score": 0.139,
+  "halal_status": "not_applicable",
+  "history_bucket": null,
+  "icon": "frozen",
+  "ingredient_list": [
+   "potato (frozen veg kebabs)",
+   "green peas",
+   "gram flour",
+   "salt"
+  ],
+  "jain_ok": false,
+  "name": "Frozen veg kebabs (Veg seekh)",
+  "nutrition": {
+   "carbs_g": 16.6,
+   "fat_g": 0.1,
+   "protein_g": 1.9,
+   "sugar_g": 1.0
+  },
+  "organic_score": 0.117,
+  "price_per_unit_inr": 45.88,
+  "satvik_ok": true,
+  "variant_id": "b349-2980115c",
+  "vegan": true
+ },
+ {
+  "allergens": [],
+  "attributes": {
+   "organic": "no",
+   "premium": "no",
+   "qualifiers": "sausage",
+   "variant": "Chicken sausage"
+  },
+  "base_id": "B350",
+  "brand": "MockMart Basics",
+  "category": "meat",
+  "diet_class": "non_veg",
+  "embedding_text": "Chicken sausages and bacon (Chicken sausage). Category: meat. sausage. Ingredients: chicken (chicken sausages and bacon, sausage), salt. Also called: Chicken sausages and bacon, murgh.",
+  "flags": [
+   "meat",
+   "non_satvik"
+  ],
+  "gi_label": "not_applicable",
+  "gluten_free": true,
+  "gourmet_score": 0.087,
+  "halal_status": "halal",
+  "history_bucket": "kebabs",
+  "icon": "meat",
+  "ingredient_list": [
+   "chicken (chicken sausages and bacon, sausage)",
+   "salt"
+  ],
+  "jain_ok": false,
+  "name": "Chicken sausages and bacon (Chicken sausage)",
+  "nutrition": {
+   "carbs_g": 0.0,
+   "fat_g": 9.4,
+   "protein_g": 22.9,
+   "sugar_g": 0.0
+  },
+  "organic_score": 0.058,
+  "price_per_unit_inr": 53.87,
+  "satvik_ok": false,
+  "variant_id": "b350-3e9086e0",
+  "vegan": false
+ },
+ {
+  "allergens": [],
+  "attributes": {
+   "organic": "no",
+   "premium": "no",
+   "qualifiers": "bacon",
+   "variant": "Chicken bacon"
+  },
+  "base_id": "B350",
+  "brand": "MockMart Select",
+  "category": "meat",
+  "diet_class": "non_veg",
+  "embedding_text": "Chicken sausages and bacon (Chicken bacon). Category: meat. bacon. Ingredients: chicken (chicken sausages and bacon, bacon), salt. Also called: Chicken sausages and bacon, murgh.",
+  "flags": [
+   "meat",
+   "non_satvik"
+  ],
+  "gi_label": "not_applicable",
+  "gluten_free": true,
+  "gourmet_score": 0.218,
+  "halal_status": "not_halal",
+  "history_bucket": "kebabs",
+  "icon": "meat",
+  "ingredient_list": [
+   "chicken (chicken sausages and bacon, bacon)",
+   "salt"
+  ],
+  "jain_ok": false,
+  "name": "Chicken sausages and bacon (Chicken bacon)",
+  "nutrition": {
+   "carbs_g": 0.0,
+   "fat_g": 8.7,
+   "protein_g": 23.0,
+   "sugar_g": 0.0
+  },
+  "organic_score": 0.079,
+  "price_per_unit_inr": 70.06,
+  "satvik_ok": false,
+  "variant_id": "b350-7265402b",
+  "vegan": false
+ },
+ {
+  "allergens": [],
+  "attributes": {
+   "organic": "no",
+   "premium": "no",
+   "qualifiers": "dried",
+   "variant": "Dried rind"
+  },
+  "base_id": "B351",
+  "brand": "MockMart Select",
+  "category": "spices",
+  "diet_class": "vegan",
+  "embedding_text": "Kokum (dried) (Dried rind). Category: spices. dried. Ingredients: kokum (dried). Also called: Kokum (dried).",
+  "flags": [],
+  "gi_label": "medium",
+  "gluten_free": true,
+  "gourmet_score": 0.191,
+  "halal_status": "not_applicable",
+  "history_bucket": null,
+  "icon": "spices",
+  "ingredient_list": [
+   "kokum (dried)"
+  ],
+  "jain_ok": true,
+  "name": "Kokum (dried) (Dried rind)",
+  "nutrition": {
+   "carbs_g": 44.1,
+   "fat_g": 9.6,
+   "protein_g": 10.1,
+   "sugar_g": 2.9
+  },
+  "organic_score": 0.138,
+  "price_per_unit_inr": 51.34,
+  "satvik_ok": true,
+  "variant_id": "b351-b82a5dcc",
   "vegan": true
  }
 ]

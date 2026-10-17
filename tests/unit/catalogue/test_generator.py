@@ -93,3 +93,26 @@ def test_embedding_text_has_no_price_or_stock(cat):
 def test_catalogue_bytes_is_json(cat):
     data = json.loads(catalogue_bytes(cat))
     assert set(data) == {"variants", "skus"}
+
+
+# Reviewed: soy milk is in these variants' declared extras, so the soy allergen is correct.
+REVIEWED_NAME_TAGS = {"Plant protein shakes (Almond)", "Plant protein shakes (Oat)"}
+
+
+def test_variant_names_agree_with_derived_tags(cat):
+    """A name that promises veg, gluten-free, chicken or a non-soy plant milk must not
+    derive the opposite from its ingredient list (taxonomy rule: base term + extras)."""
+    bad = []
+    for v in cat.variants:
+        n = v.name.lower()
+        if v.name in REVIEWED_NAME_TAGS:
+            continue
+        if re.search(r"\bveg\b|vegetarian|eggless|vegan|plant|dairy-free", n) and v.diet_class not in {"vegan", "vegetarian"}:
+            bad.append(f"{v.name}: {v.diet_class}")
+        if re.search(r"gluten[- ]free", n) and not v.gluten_free:
+            bad.append(f"{v.name}: not gluten_free")
+        if "chicken" in n and any(i.startswith("pork") for i in v.ingredient_list):
+            bad.append(f"{v.name}: lists pork")
+        if re.search(r"\((almond|oat|coconut)\)", n) and "soy" in v.allergens and "soy" not in n:
+            bad.append(f"{v.name}: soy allergen")
+    assert not bad, bad

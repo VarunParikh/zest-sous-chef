@@ -12,7 +12,7 @@ B061|dairy|Khoya (mawa)|khoya|g|100/200|90|Plain~=plain~1.0~-;Danedar~=danedar~1
 B062|dairy|Eggs|egg|pc|6/12/30|8|White~=white~1.0~-;Brown~=brown~1.1~-;Free range~=free range~1.6~g;Omega-3~=omega~1.5~g
 B063|dairy|Condensed milk|milk|g|200/400|30|Sweetened~sugar~1.0~-;Low sugar~=low sugar~1.2~-
 B064|dairy|Milk powder|milk|g|200/500|45|Full cream~=full cream~1.0~-;Skimmed~=skimmed~0.9~-
-B065|dairy|Plant milk|soy milk|ml|200/1000|18|Soy~soy~1.0~-;Almond~almond~1.6~g;Oat~oats~1.4~-;Coconut~coconut~1.3~-
+B065|dairy|Plant milk|soy milk|ml|200/1000|18|Soy~soy~1.0~-
 B066|dairy|Flavoured yoghurt|curd|g|100/200|22|Mango~mango,sugar~1.0~-;Strawberry~strawberry,sugar~1.0~-;Plain no sugar~=plain~0.8~-
 B067|dairy|Lassi|curd|ml|200/500|10|Sweet~sugar~1.0~-;Salted~salt~1.0~-;Mango~mango,sugar~1.2~-
 B068|dairy|Paneer cubes (ready)|paneer|g|200|40|Plain~=plain~1.0~-;Tikka marinated~curd,red chilli powder,salt~1.4~g
