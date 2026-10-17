@@ -4,7 +4,7 @@ VENV := .venv
 PY := $(VENV)/bin/python
 RESULTS := docs/epics/zest/verify/test-results
 
-.PHONY: setup dev test test-embedder scan health data index
+.PHONY: setup dev test test-embedder scan health data index eval-decisions
 
 setup: ## create the venv and install pinned dependencies; create .env from the example if missing
 	$(PYTHON) -m venv $(VENV)
@@ -38,3 +38,9 @@ data: ## generate the mock catalogue (1,000+ and 5,000+ sets) and run validators
 
 index: ## build or refresh the Chroma index in data/chroma/ with the default embedder
 	$(PY) scripts/index.py
+
+TEXT_MODELS ?= llama3.2:3b,qwen2.5:7b,qwen3:4b-instruct
+eval-decisions: ## Day-1 decision evidence E5, E4, E1 on the test split (E3 vision is added in stage 2)
+	$(PY) scripts/benchmark/retrieval.py --split test
+	$(PY) scripts/benchmark/guard.py --split test
+	$(PY) scripts/benchmark/text_models.py --split test --models $(TEXT_MODELS)

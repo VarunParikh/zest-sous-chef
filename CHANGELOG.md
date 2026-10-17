@@ -26,6 +26,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 - Input guard, rules arm `backend.guard.screen()` (ADR-006; FR-10, 12; Agent Design §7.1): injection, hazard and off-topic rules in code before any model call; violent-sounding cooking verbs pass; instructions inside fetched transcripts return MSG-INJECT-DATA. The Llama Guard arm is measured in E4 before adoption.
 - Ollama JSON client `backend.llm` (Agent Design §5, §8; NFR-10, 11): temperature 0, JSON format, per-call timeout, one retry that names the error, Pydantic schemas with business validators (at most 40 ingredients, plausible names), `llm_call` traced without prompt text. Prompt file `recipe_extract_v1` with spotlighting of untrusted text.
 - Variant lookup `Retriever.variants()` (FR-110): BM25 over variant names and ingredient lists plus `zest_variants` neighbours, fused into a pool of `VARIANT_POOL`; "skimmed milk" ranks the skimmed variant first.
+- Evaluation harness `backend.evaluation` (Evaluation Plan §2, §6): Wilson 95% intervals, k/n proportions, recall@k, MRR, F1, result files with dataset hash and environment, thresholds read with `yaml.safe_load`. Day-1 scripts `scripts/benchmark/{retrieval,guard,text_models}.py` and `make eval-decisions` (E5, E4, E1); missing models are reported NOT RUN and never pulled. Smoke-checked on 3 dev rows only; **no evaluation has been run.**
 - Three Jain dish variants (D128 Jain Pav Bhaji, D129 Jain Dal Chawal, D130 Jain Paneer Butter Masala) with a new `variant_of` column; V9 found the Jain persona had only 2 eligible mains.
 
 ### Changed
@@ -44,3 +45,4 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 - Logged C27 (ambiguity margin over rank-fused scores); open until the E5 benchmark.
 - C19 resolved: owner approved PyYAML (pinned 6.0.3) to read `eval/thresholds.yaml`.
 - Block 1.5 plan (`verify/benchmarks/day1-plan.md`): candidates, download sizes read from the Ollama library, build order and owner decisions (staged downloads, Gemini arm with a local key, labels reviewed before any run).
+- Logged C28 (how non-separable intervals are reported); owner decision before the first real run.

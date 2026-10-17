@@ -34,3 +34,6 @@ mock-data/generated/scale_*/
 
 # downloaded embedding models (block 1.4)
 data/models/
+
+# evaluation results are committed deliberately per run; smoke output never is
+eval/results/smoke/

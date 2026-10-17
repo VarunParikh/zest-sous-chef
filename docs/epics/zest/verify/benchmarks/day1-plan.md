@@ -38,3 +38,8 @@ E5 (no download) → E4 rules only → E1 (one 2.5 GB pull) → E4 classifier �
 1. **Downloads staged:** first `qwen3:4b-instruct`, `llama-guard3:1b`, `nomic-embed-text` (about 4.4 GB), each confirmed again just before its pull. Vision candidates wait until E1, E4 and E5 have results.
 2. **Gemini arm runs** in E3: the owner adds a fresh key to the local `.env` (never in chat, code or commits). The arm is NOT RUN until the key is there.
 3. **Labels reviewed first:** the harness and the E5, E4 and E1 code are built and smoke-checked on the dev split only (output discarded, nothing recorded), then work stops until the owner has reviewed `retrieval_v1`, `recipes_v1` and the photo labels.
+
+## Build status (2026-10-18)
+Built and smoke-checked on the first 3 dev rows only (output written to a scratch folder and discarded; nothing recorded): eval harness, E5 `retrieval.py`, E4 `guard.py`, E1 `text_models.py`, `make eval-decisions`. Missing models are reported NOT RUN and are never pulled by the scripts. E3 `vision.py` is stage 2.
+**Disclosure for E4:** while checking the file format of `guard_v1.jsonl` the rules author printed its first five rows, which include test items G02 and G04. The rules were then written from Agent Design §7 and hand-made cases only; the E4 result notes carry this disclosure.
+**Machine note:** with llama3.2:3b resident (4.0 GB in `ollama ps`) and this IDE open, free RAM fell to 2.87 GB, under the 3 GB E1 gate. Close other apps before the real run (Test Plan §9).
