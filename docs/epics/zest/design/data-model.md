@@ -262,7 +262,7 @@ Derived flags come from the ingredient lexicon. A candidate is eligible only if 
 | High-Protein Fitness | No mask; variants with `protein_g` ≥ 10 per 100 g get a boost in `s_g` and in `kebabs` history | |
 | Standard / Balanced | no rule | |
 | Stock filter on | `stock_count` > 0 and `dark_store_ok` for at least one SKU | At least one in-stock SKU for every essential ingredient |
-| Add-on price cap | `price_inr` of the smallest in-stock SKU ≤ cap (add-ons only) | |
+| Add-on price cap | Basket cost of the add-on dish ≤ cap (add-ons only): sum of the cheapest in-stock SKU for each non-optional ingredient at the dish's serving size, excluding ingredients already in the cart (C18, owner decision 2026-10-17) | |
 | Declared allergen (chat, Could) | `allergens` does not contain the declared allergen | |
 
 Gender never filters; it adds the capped cohort boost to `s_g` (at most 10% of that component, FR-07).
