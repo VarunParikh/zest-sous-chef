@@ -141,3 +141,27 @@ class Retriever:
             top = next(h for h in hits if h.lexical_rank is not None)
             return Resolution("resolved", top.id, [top.id], hits)
         return Resolution("unknown", None, [h.id for h in hits[:3]], hits)
+
+    # -- add-ons (ADR-004 v2, FR-118) -------------------------------------------
+    def addons(self, dish_id: str, cart_dish_ids: tuple[str, ...] = (), session_id: str = "-") -> RetrievalResult:
+        t0 = time.perf_counter()
+        exclude = set(cart_dish_ids) | {dish_id}
+        pairs = sorted((p for p in self.store.pairings if p.dish_a == dish_id and p.dish_b not in exclude),
+                       key=lambda p: (-p.strength, p.dish_b))
+        strength = {p.dish_b: p.strength for p in pairs}
+        curated = [p.dish_b for p in pairs]
+        vec, fallback = self._vector_call("neighbours", dish_id, VECTOR_TOP, session_id=session_id)
+        courses = set(self.settings.addon_courses)
+        vec_ids, dist = [], {}
+        for r in vec or []:
+            d = r["id"].removeprefix("dish:")
+            if d not in exclude and self.store.dish(d).dish.course in courses:  # course rule: vector list only
+                vec_ids.append(d)
+                dist[d] = r["distance"]
+        fused = rrf({"curated": curated, "vector": vec_ids}, k=self.settings.rrf_k, weights=self.settings.addon_weights,
+                    tiebreak=lambda i: (-strength.get(i, 0.0), i))[: self.settings.addon_pool]
+        extra = {i: {"curated_strength": strength[i]} for i in strength}
+        res = RetrievalResult("addon", self._hits(fused, dist, extra), curated, vec_ids, fallback, (time.perf_counter() - t0) * 1000)
+        self._trace("retrieval_candidates", session_id, kind="addon", lexical_top_ids=curated[:10], vector_top_ids=vec_ids[:10],
+                    fused_pool_ids=[h.id for h in res.hits], latency_ms=round(res.latency_ms, 1))
+        return res

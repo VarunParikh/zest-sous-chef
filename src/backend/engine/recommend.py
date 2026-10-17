@@ -56,3 +56,11 @@ def recommend_dishes(query: str, levers: LeverSet, ctx: Context, store: Store, r
     res = retriever.dishes(query, session_id)
     scored, shown = _rank(res.hits, levers, ctx, store, tracer, session_id, display, "dish")
     return Recommendation(res.hits, scored, shown, _inspector(res.hits, scored), res.fallback_used)
+
+
+def recommend_addons(dish_id: str, levers: LeverSet, ctx: Context, store: Store, retriever: Retriever, tracer=None,
+                     session_id: str = "-", cart_dish_ids: tuple[str, ...] = (), cart_terms: frozenset[str] = frozenset(),
+                     display: int = 3) -> Recommendation:
+    res = retriever.addons(dish_id, cart_dish_ids, session_id)
+    scored, shown = _rank(res.hits, levers, ctx, store, tracer, session_id, display, "addon", cart_terms)
+    return Recommendation(res.hits, scored, shown, _inspector(res.hits, scored), res.fallback_used)
