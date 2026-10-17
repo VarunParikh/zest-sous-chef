@@ -36,6 +36,7 @@ Shared fixtures: `personas.json`, transcript fixtures, sample photos with expect
 
 ## 4. Test catalogue
 IDs are stable. Priority P0 = must pass before any demo; P1 = should pass.
+**Format:** the tables below are the index (ID, title, coverage, priority). The full Given / When / Then for every test is in `test-cases.md`; both use the same IDs (checked 2026-10-17: 84 IDs, no missing or extra, coverage and priority identical).
 
 ### 4.1 Session and levers (US-01 to 04)
 | ID | Test | Covers | Pri |

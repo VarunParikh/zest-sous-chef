@@ -31,7 +31,7 @@ Format: **US-xx** As a *persona*, I want *capability*, so that *benefit*. Covers
 **US-06** As Meera (P1), I want regional names such as kothmir and kandha understood, so that I can write the way I speak. *M · M* Covers FR-13; AC-17.
 - Given "kothmir, kandha, batata", then Coriander Leaves, Onion and Potato are resolved.
 - Given an ambiguous name (methi), then one short clarifying question is asked.
-- Given the hybrid retriever, the same names resolve when the vector store is off (FR-117).
+- Given the vector store is off, when I name ingredients, then the same names resolve through the lexical retriever (FR-117).
 
 **US-07** As a user, I want estimates and safety limits stated honestly, so that I can trust the bot. *M · S* Covers FR-14, 15.
 - Given a detected quantity, then it is labelled an estimate.
