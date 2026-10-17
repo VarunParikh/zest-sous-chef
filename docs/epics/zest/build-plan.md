@@ -37,7 +37,7 @@ Versions are pinned at install. Package names marked * must be confirmed on the 
 | Retrieval | `rank-bm25`* | BM25 lexical scoring | ADR-004; owner approved in principle |
 | Images | `Pillow` | EXIF stripping, image validation | Owner approved 2026-10-17 |
 | Integrations | `youtube-transcript-api` | Transcripts | Version 1.2.4 noted in Platforms; verify |
-| Integrations | `google-genai`* | Gemini API client | Confirm the current official package name |
+| Integrations | `google-genai`* | Gemini API client (now OPTIONAL, ADR-003 v2) | Confirm the current official package name; install only if the Gemini arm is used |
 | Testing | `pytest`, `pytest-playwright`, `coverage` | Tests, E2E, coverage | Test Plan |
 | Frontend | `react`, `react-dom`, `vite`, `tailwindcss` | UI | ADR-010 |
 | Frontend | `typescript` | Typed cards and API types | Owner approved 2026-10-17 |

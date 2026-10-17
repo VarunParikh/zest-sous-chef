@@ -29,8 +29,8 @@ When documents disagree, the higher one wins. Log every conflict in `docs/core/o
 - Commit style: conventional commits (`feat:`, `fix:`, `docs:`, `test:`).
 
 ## Stack (provisional, ratified in ADR-001)
-Python 3.12 + FastAPI backend; React + Vite + Tailwind frontend; local text LLM via Ollama; Gemini API free tier for photo analysis (labelled sample photos as the fallback; no local vision model); `youtube-transcript-api` plus saved fixtures; JSON/SQLite mock catalogue (1,000+ SKUs) plus an embedded Chroma vector store for hybrid retrieval (candidate IDs only; guardrails run after retrieval, see G9); `pytest` and Playwright. Details: `docs/core/product-platforms.md`; decisions: `docs/epics/zest/design/adr/`.
-Secrets: the Gemini key lives only in a local, git-ignored `.env`. Never paste it into code, docs, commits or chat.
+Python 3.12 + FastAPI backend; React + Vite + Tailwind frontend; local text LLM via Ollama; a pluggable photo-analysis provider, local Ollama vision model first (chosen by the Day-1 benchmark, ADR-003 v2), Gemini free tier optional, labelled sample photos as the last fallback; `youtube-transcript-api` plus saved fixtures; JSON/SQLite mock catalogue (1,000+ SKUs) plus an embedded Chroma vector store for hybrid retrieval (candidate IDs only; guardrails run after retrieval, see G9); `pytest` and Playwright. Details: `docs/core/product-platforms.md`; decisions: `docs/epics/zest/design/adr/`.
+Secrets: any optional Gemini key lives only in a local, git-ignored `.env`. Never paste it into code, docs, commits or chat.
 
 ## Read order and build plan
 Start with `docs/epics/zest/build-plan.md` (sections 5 to 7). It lists the build order, gates, approved dependencies and the cut order. Then read the PRD, User Stories, design documents, Test Plan and Evaluation Plan in the order given there.

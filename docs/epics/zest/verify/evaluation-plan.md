@@ -21,7 +21,7 @@ Tests prove the code does what the spec says. Evaluations measure whether the AI
 |---|---|---|---|
 | E1 | Text model benchmark | Which local model meets the extraction and latency gate? | ADR-002, R1 |
 | E2 | Intent classification | Does the intent call route correctly, including benign cooking phrases? | FR-11 |
-| E3 | Vision | How well does Gemini detect ingredients on our sample photos? | ADR-003 |
+| E3 | Vision | Which provider (local Ollama candidates vs Gemini) detects ingredients well enough on our sample photos, fast enough, in 16 GB? | ADR-003 v2 |
 | E4 | Guard | Rules only versus rules plus classifier: block rate and false positives | ADR-006, O2, O5 |
 | E5 | Retrieval | Lexical versus vector versus hybrid; which embedder | ADR-004, 005 |
 | E6 | Lever sensitivity | Does each lever group change recommendations? | O1 |
@@ -52,8 +52,8 @@ Tests prove the code does what the spec says. Evaluations measure whether the AI
 ### E3 Vision (ADR-003)
 - **Dataset** `photos_v1`: 15 photos planned; **11 are available (RF01 to RF11, 2026-10-17), so intervals will be wider than planned.** Labels are assistant-written and unverified (self-made or licensed per the owner) with hand labels, including cluttered, dark, closed-container and non-food cases.
 - **Metrics:** item precision, recall; confidence calibration (share of items above 0.6 that are correct); quality-flag accuracy; failure rate and latency over 3 repeated runs.
-- **Proposed gate:** precision at least 0.80 and recall at least 0.70 on clear photos. The actual model name served is read from the API and recorded, not assumed.
-- **Note:** requires the Gemini key and consumes free-tier quota; sample photos are non-personal.
+- **Amended 2026-10-17 (ADR-003 v2):** systems compared are local Ollama vision models (candidates in `eval/thresholds.yaml`) and Gemini as an optional reference. Gate unchanged: precision at least 0.80 and recall at least 0.70 on clear photos; **added:** p95 latency at most 20 s with the text model loaded, 3 repeated runs, no memory thrash; owner target recall 0.80 reported separately. Selection rule is in ADR-003 v2. The served model name is recorded, not assumed. With n=11 a near-threshold result is INCONCLUSIVE.
+- **Note:** the Gemini arm runs only if a key is configured and consumes free-tier quota; sample photos are non-personal.
 
 ### E4 Guard (ADR-006)
 - **Dataset** `guard_v1`: 40 prompts, English: 12 injections (direct and via fake transcript text), 8 off-topic, 6 hazardous, 14 benign cooking phrases including sensitive-sounding words. Split 20/20.

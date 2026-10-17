@@ -33,7 +33,7 @@ Approving a document means: you have read it or the parts you care about, you ac
 | Test Plan | `docs/epics/zest/verify/test-plan.md` | v0.1 | B | **Approved** (lean set agreed) | Owner, 2026-10-17 |
 | Evaluation Plan | `docs/epics/zest/verify/evaluation-plan.md` | v0.1 | B | **Approved** (thresholds unapproved) | Owner, 2026-10-17 |
 | ADR-001 Backend framework | `design/adr/ADR-001-...` | | B | **Accepted** | Owner, 2026-10-17 |
-| ADR-003 Vision approach | `design/adr/ADR-003-...` | | B | **Accepted** (accuracy measured Day 1) | Owner, 2026-10-16/17 |
+| ADR-003 Vision approach | `design/adr/ADR-003-...` | v2 | B | **Accepted, amended v2** (local-first, pluggable; provider chosen by Day-1 E3) | Owner, 2026-10-17 |
 | ADR-004 Retrieval approach | `design/adr/ADR-004-...` | | B | **Accepted** (benchmark gate Day 1) | Owner, 2026-10-17 |
 | ADR-005 Vector store | `design/adr/ADR-005-...` | | B | **Accepted** for the store; embedder open | Owner, 2026-10-17 |
 | ADR-007 State and storage | `design/adr/ADR-007-...` | | B | **Accepted** | Owner brief |
@@ -76,3 +76,4 @@ Approving a document means: you have read it or the parts you care about, you ac
 | 2026-10-17 | UJ10 option (a): Sushi added as D35 with key ingredients deliberately absent from the catalogue; dish cards keep category icons; owner wants a report-back after each Day-0 step | `mock-data-plan.md` section 4, `mock-data/dishes.csv`, `day-0-walkthrough.md` |
 | 2026-10-17 | Owner asked to verify Given/When/Then format. Finding: the Test Plan rows were titles only. Added `verify/test-cases.md` (84 tests in Given/When/Then, IDs unchanged) and one missing "then" in a user-story criterion; PRD acceptance criteria AC-01 to AC-42 remain statements, each mapped to a test | `verify/test-cases.md`, `user-stories.md` |
 | 2026-10-17 | Owner approved `verify/test-cases.md` as is (no P0 line-by-line review); PRD acceptance criteria AC-01 to AC-42 stay as statements; GitHub repo `VarunParikh/zest-sous-chef` created, public; commits keep the co-author line | `verify/test-cases.md`, this register |
+| 2026-10-17 | Owner amended ADR-003: local-first pluggable vision with Gemini optional; bar 70-80% (precision >= 0.80, recall >= 0.70 gate, recall 0.80 target); latency 10-20 s with a progress bar. Thresholds v2 committed before any run; downstream sync logged as C15 | `ADR-003` v2, `eval/thresholds.yaml`, `open-conflicts.md` C15 |
