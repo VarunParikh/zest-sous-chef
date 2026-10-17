@@ -103,3 +103,44 @@ def test_lexical_mode_never_queries_vector(store, tracer):
     r = Retriever(store, BrokenVector(), load_settings(env={"RETRIEVAL_MODE": "lexical"}, env_file=None), tracer)
     res = r.dishes("paneer butter masala")
     assert res.hits and not events(tracer, "fallback_used")
+
+
+def test_ollama_embedder_calls_embed_api():
+    import json as _json
+
+    import httpx
+
+    from backend.retrieval.embedder import OllamaEmbedder, default_embedder
+    from backend.config import load_settings
+
+    seen = []
+
+    def handler(req):
+        body = _json.loads(req.content)
+        seen.append((req.url.path, body))
+        return httpx.Response(200, json={"embeddings": [[0.1, 0.2, 0.3] for _ in body["input"]]})
+
+    e = OllamaEmbedder("http://127.0.0.1:11434", "nomic-embed-text", transport=httpx.MockTransport(handler))
+    assert e.name == "ollama:nomic-embed-text"
+    assert e(["a", "b"]) == [[0.1, 0.2, 0.3], [0.1, 0.2, 0.3]]
+    assert seen[0][0] == "/api/embed" and seen[0][1] == {"model": "nomic-embed-text", "input": ["a", "b"]}
+    s = load_settings(env={"EMBEDDING_PROVIDER": "ollama", "EMBEDDING_MODEL": "nomic-embed-text"}, env_file=None)
+    assert isinstance(default_embedder(s), OllamaEmbedder)
+
+
+def test_ollama_embedder_batches_large_inputs():
+    import json as _json
+
+    import httpx
+
+    from backend.retrieval.embedder import OllamaEmbedder
+
+    sizes = []
+
+    def handler(req):
+        n = len(_json.loads(req.content)["input"])
+        sizes.append(n)
+        return httpx.Response(200, json={"embeddings": [[1.0] for _ in range(n)]})
+
+    out = OllamaEmbedder("http://x.test", "m", transport=httpx.MockTransport(handler))(["t"] * 150)
+    assert len(out) == 150 and max(sizes) <= 64 and sum(sizes) == 150

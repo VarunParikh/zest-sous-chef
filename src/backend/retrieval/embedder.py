@@ -42,7 +42,31 @@ class ChromaDefaultEmbedder:
         return [list(map(float, v)) for v in self._fn(texts)]
 
 
+class OllamaEmbedder:
+    """An Ollama embedding model via `/api/embed` (ADR-005 comparison arm). Texts are sent
+    without task prefixes, the same as for the default embedder."""
+
+    def __init__(self, base_url: str, model: str, timeout_s: float = 60, transport=None):
+        import httpx
+
+        self.base_url, self.model = base_url.rstrip("/"), model
+        self._http = httpx.Client(transport=transport, timeout=timeout_s)
+        self.name = f"ollama:{model}"
+
+    BATCH = 64  # Ollama 0.40.5's runner failed on a 500-text batch ("tokenize: EOF"); 250 worked
+
+    def __call__(self, texts: list[str]) -> list[list[float]]:
+        out: list[list[float]] = []
+        for start in range(0, len(texts), self.BATCH):
+            r = self._http.post(f"{self.base_url}/api/embed", json={"model": self.model, "input": texts[start:start + self.BATCH]})
+            r.raise_for_status()
+            out += [list(map(float, v)) for v in r.json()["embeddings"]]
+        return out
+
+
 def default_embedder(settings: Settings):
     if settings.embedding_provider == "chroma_default" and not settings.embedding_model:
         return ChromaDefaultEmbedder()
+    if settings.embedding_provider == "ollama" and settings.embedding_model:
+        return OllamaEmbedder(settings.ollama_base_url, settings.embedding_model)
     raise ValueError(f"unsupported embedder {settings.embedding_provider}:{settings.embedding_model} (ADR-005)")

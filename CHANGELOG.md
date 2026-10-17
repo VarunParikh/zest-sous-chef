@@ -27,6 +27,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 - Ollama JSON client `backend.llm` (Agent Design §5, §8; NFR-10, 11): temperature 0, JSON format, per-call timeout, one retry that names the error, Pydantic schemas with business validators (at most 40 ingredients, plausible names), `llm_call` traced without prompt text. Prompt file `recipe_extract_v1` with spotlighting of untrusted text.
 - Variant lookup `Retriever.variants()` (FR-110): BM25 over variant names and ingredient lists plus `zest_variants` neighbours, fused into a pool of `VARIANT_POOL`; "skimmed milk" ranks the skimmed variant first.
 - Evaluation harness `backend.evaluation` (Evaluation Plan §2, §6): Wilson 95% intervals, k/n proportions, recall@k, MRR, F1, result files with dataset hash and environment, thresholds read with `yaml.safe_load`. Day-1 scripts `scripts/benchmark/{retrieval,guard,text_models}.py` and `make eval-decisions` (E5, E4, E1); missing models are reported NOT RUN and never pulled. Smoke-checked on 3 dev rows only; **no evaluation has been run.**
+- Ollama embedder arm (`EMBEDDING_PROVIDER=ollama`, ADR-005 comparison) batching 64 texts per call; E5 now runs both embedders with separate git-ignored indexes in `data/chroma-eval/`, and records index build time, peak memory and query latency at 1,027 and 5,135 variants.
 - Three Jain dish variants (D128 Jain Pav Bhaji, D129 Jain Dal Chawal, D130 Jain Paneer Butter Masala) with a new `variant_of` column; V9 found the Jain persona had only 2 eligible mains.
 
 ### Changed

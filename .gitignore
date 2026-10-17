@@ -37,3 +37,6 @@ data/models/
 
 # evaluation results are committed deliberately per run; smoke output never is
 eval/results/smoke/
+
+# evaluation-only vector indexes
+data/chroma-eval/
