@@ -109,3 +109,27 @@ def persona_label(levers: LeverSet, presets: Mapping[str, LeverSet]) -> str:
     """
     h = snapshot_hash(levers)
     return next((name for name, preset in presets.items() if snapshot_hash(preset) == h), "Custom")
+
+
+# C30: item classes each diet allows, and the classes a faith or specialised diet forbids.
+ALL_CLASSES = frozenset({"meat_fish", "egg", "root_veg", "onion_garlic"})
+DIET_ALLOWS = {
+    "Non-Veg / Flexitarian": ALL_CLASSES,
+    "Pure Veg (Strict)": frozenset({"root_veg", "onion_garlic"}),
+    "Jain (No Root Veggies / Pure Veg)": frozenset(),
+}
+FORBIDS = {
+    "Jain (Strict Root-Free)": ALL_CLASSES,
+    "Hindu (Shravan Month / Fasting Active)": frozenset({"meat_fish", "egg", "onion_garlic"}),
+    "Vegan": frozenset({"meat_fish", "egg"}),
+}
+
+
+def persona_conflicts(levers: LeverSet) -> list[tuple[str, str]]:
+    """Contradictory settings (FR-09, C30): the diet allows a class that the faith or a specialised diet forbids.
+
+    Only a warning: the eligibility masks always intersect in code, so the stricter rule wins.
+    """
+    allowed = DIET_ALLOWS[levers.diet]
+    others = [levers.faith, *levers.specialized_diets]
+    return [(levers.diet, s) for s in others if allowed & FORBIDS.get(s, frozenset())]
