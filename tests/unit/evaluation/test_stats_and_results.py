@@ -65,3 +65,10 @@ def test_overall_status():
     assert overall_status({**ok, "b": {"status": "NOT RUN"}}, []) == "INCONCLUSIVE"
     assert overall_status({**ok, "b": {"status": "FAIL"}}, []) == "FAIL"
     assert overall_status(ok, [{"x": 1}]) == "FAIL"
+
+
+def test_c28_non_separable_pass_carries_note():
+    g = gate_status(proportion(10, 10), minimum=0.80)
+    assert g["status"] == "PASS" and g["note"] == "not separable" and g["ci95"] == proportion(10, 10)["ci95"]
+    clear = gate_status(proportion(40, 40), minimum=0.80)
+    assert clear["status"] == "PASS" and "note" not in clear

@@ -1,7 +1,8 @@
 """Result files `eval/results/{id}.json` (Evaluation Plan §6) and pre-registered thresholds.
 
 Point estimates decide PASS or FAIL; `separable` says whether the 95% interval clears
-the threshold. How a non-separable result is reported is logged as C28.
+the threshold. A non-separable pass stays PASS with its interval and a "not separable"
+note (C28, owner decision 2026-10-18).
 """
 from __future__ import annotations
 
@@ -38,7 +39,10 @@ def gate_status(p: dict, minimum: float | None = None, maximum: float | None = N
     else:
         ok, separable = rate <= maximum, (ci[1] <= maximum or ci[0] > maximum)
         threshold = {"max": maximum}
-    return {"status": "PASS" if ok else "FAIL", "separable": separable, **threshold}
+    out = {"status": "PASS" if ok else "FAIL", "separable": separable, "rate": rate, "ci95": ci, **threshold}
+    if ok and not separable:
+        out["note"] = "not separable"  # C28: a point-estimate pass is PASS, reported with its interval
+    return out
 
 
 def overall_status(gates: dict, critical: list) -> str:

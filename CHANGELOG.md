@@ -46,3 +46,4 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 - C19 resolved: owner approved PyYAML (pinned 6.0.3) to read `eval/thresholds.yaml`.
 - Block 1.5 plan (`verify/benchmarks/day1-plan.md`): candidates, download sizes read from the Ollama library, build order and owner decisions (staged downloads, Gemini arm with a local key, labels reviewed before any run).
 - Logged C28 (how non-separable intervals are reported); owner decision before the first real run.
+- C28 resolved: a point-estimate pass is PASS, reported with its Wilson interval and a "not separable" note; the harness adds the note.
