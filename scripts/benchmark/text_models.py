@@ -59,6 +59,8 @@ def free_ram_gb() -> float:
 def main():
     ap = parser(__doc__)
     ap.add_argument("--models", required=True)
+    ap.add_argument("--num-ctx", type=int, default=None, help="context window; default LLM_NUM_CTX from config")
+    ap.add_argument("--notes", default="")
     args = ap.parse_args()
     settings, th = load_settings(), load_thresholds()["E1_text_model"]
     lex = load_lexicon()
@@ -76,7 +78,9 @@ def main():
                              notes="model not installed (download needs owner approval)"), args.out)
             continue
         unload_all()  # each model is measured alone (plus Chroma), not beside the previous candidate
-        client = OllamaClient(settings.ollama_base_url, model, timeout_s=settings.timeout_llm_s)
+        num_ctx = args.num_ctx or settings.llm_num_ctx
+        baseline = free_ram_gb()
+        client = OllamaClient(settings.ollama_base_url, model, timeout_s=settings.timeout_llm_s, num_ctx=num_ctx)
         per, invented, predicted_total, valid = [], 0, 0, 0
         for r in data:
             system, user = render("recipe_extract", r["text"])
@@ -110,14 +114,15 @@ def main():
                    "quantity_accuracy": proportion(sum(p["qty_correct"] for p in per), sum(p["qty_total"] for p in per)),
                    "invention_rate": proportion(invented, predicted_total),
                    "latency_ms_median": lat[n // 2] if n else None, "latency_ms_p95": lat[min(n - 1, int(0.95 * n))] if n else None,
-                   "free_ram_gb_after": free_ram_gb(), "ollama_ps": ps.strip(), "prompt_version": version("recipe_extract")}
+                   "free_ram_gb_before_load": baseline, "free_ram_gb_after": free_ram_gb(), "num_ctx": num_ctx,
+                   "ollama_ps": ps.strip(), "prompt_version": version("recipe_extract")}
         gates = {"schema_valid": gate_status(metrics["schema_valid"], minimum=th["schema_valid_min"]),
                  "free_ram": {"status": "PASS" if metrics["free_ram_gb_after"] >= th["free_ram_gb_min"] else "FAIL"}}
         gates["extraction_f1"] = {"status": "NOT RUN" if mean_f1 is None else ("PASS" if mean_f1 >= th["extraction_f1_min"] else "FAIL")}
         crit = [{"invention_rate_above_10pct": metrics["invention_rate"]}] if (metrics["invention_rate"]["rate"] or 0) > 0.10 else []
         status = overall_status(gates, crit)
         save(make_result("E1", model, "recipes_v1.jsonl", split, {**metrics, "gates": gates, "f1_gate_min": th["extraction_f1_min"]},
-                         per, crit, status, notes="smoke run: plumbing only, not a result" if args.smoke else ""), args.out)
+                         per, crit, status, notes="smoke run: plumbing only, not a result" if args.smoke else args.notes), args.out)
 
 
 if __name__ == "__main__":

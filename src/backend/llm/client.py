@@ -31,15 +31,15 @@ class LLMInvalid(LLMError):
 
 class OllamaClient:
     def __init__(self, base_url: str, model: str, timeout_s: float = 30, transport: httpx.BaseTransport | None = None,
-                 tracer=None, session_id: str = "-"):
+                 tracer=None, session_id: str = "-", num_ctx: int | None = None):
         self.base_url, self.model, self.timeout_s = base_url.rstrip("/"), model, timeout_s
         self._http = httpx.Client(transport=transport, timeout=timeout_s)
-        self.tracer, self.session_id = tracer, session_id
+        self.tracer, self.session_id, self.num_ctx = tracer, session_id, num_ctx
         self.last_stats: dict = {}
 
     def _chat(self, messages: list[dict]) -> tuple[str, dict]:
         body = {"model": self.model, "messages": messages, "stream": False, "format": "json",
-                "options": {"temperature": 0, "seed": 0}}
+                "options": {"temperature": 0, "seed": 0, **({"num_ctx": self.num_ctx} if self.num_ctx else {})}}
         try:
             r = self._http.post(f"{self.base_url}/api/chat", json=body)
             r.raise_for_status()

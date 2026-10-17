@@ -43,3 +43,9 @@ E5 (no download) → E4 rules only → E1 (one 2.5 GB pull) → E4 classifier �
 Built and smoke-checked on the first 3 dev rows only (output written to a scratch folder and discarded; nothing recorded): eval harness, E5 `retrieval.py`, E4 `guard.py`, E1 `text_models.py`, `make eval-decisions`. Missing models are reported NOT RUN and are never pulled by the scripts. E3 `vision.py` is stage 2.
 **Disclosure for E4:** while checking the file format of `guard_v1.jsonl` the rules author printed its first five rows, which include test items G02 and G04. The rules were then written from Agent Design §7 and hand-made cases only; the E4 result notes carry this disclosure.
 **Machine note:** with llama3.2:3b resident (4.0 GB in `ollama ps`) and this IDE open, free RAM fell to 2.87 GB, under the 3 GB E1 gate. Close other apps before the real run (Test Plan §9).
+
+## Post-hoc change (logged 2026-10-18, after the first E1 results)
+**What:** E1 for `llama3.2:3b` is re-run with a 4,096-token context window (`LLM_NUM_CTX=4096`) instead of Ollama's default of 16,384, after the owner closes other apps.
+**Why:** in the first run `llama3.2:3b` met the F1, schema-validity and invention gates but missed the free-RAM gate (2.12 GB against 3 GB) with the model resident at 4.0 GB. The build plan's §8 fallback for "no local model passes E1" includes shortening prompts; a smaller window is that remedy. Owner decision 2026-10-18.
+**Fit check:** the longest fixture input (`V4.txt`) is about 800 prompt tokens plus at most about 600 output tokens, well inside 4,096. A long live YouTube transcript could exceed it, so the video flow must cap transcript length (block 2.4).
+**Effect on reporting:** the rerun is marked post-hoc in its result file; the first E1 results stay committed unchanged. Gates and thresholds are not changed.

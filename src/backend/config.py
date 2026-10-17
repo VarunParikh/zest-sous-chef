@@ -21,6 +21,7 @@ class Settings(BaseModel):
     # Models (ADR-002, ADR-003 v2, ADR-005)
     llm_provider: Literal["ollama"] = "ollama"
     llm_model: str = ""  # chosen by the Day-1 benchmark
+    llm_num_ctx: int = 4096  # context window; 4k keeps the model's memory down (E1 post-hoc, 2026-10-18)
     ollama_base_url: str = "http://127.0.0.1:11434"
     vision_provider: Literal["ollama", "gemini", "samples"] = "samples"  # local-first; E3 decides (C15)
     vision_model: str = ""

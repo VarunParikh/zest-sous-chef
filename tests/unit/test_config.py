@@ -8,6 +8,7 @@ def test_defaults_match_architecture_section_6():
     s = load_settings(env={}, env_file=None)
     assert s.llm_provider == "ollama"
     assert s.llm_model == ""  # chosen by the Day-1 benchmark (ADR-002)
+    assert s.llm_num_ctx == 4096  # E1 post-hoc change, owner decision 2026-10-18
     assert s.vision_provider == "samples"  # ADR-003 v2 local-first; C15
     assert (s.rrf_k, s.dish_pool, s.variant_pool) == (60, 15, 10)
     assert s.ambiguity_margin == 0.15
