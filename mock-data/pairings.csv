@@ -32,3 +32,30 @@ D02,D01,0.7,Rasam beside dal chawal
 D24,D20,0.5,Fish curry with rice dish
 D21,D30,0.4,Light comfort pair
 D31,D28,0.5,Fasting-day breakfast with chai
+D04,D36,0.9,Biryani with boondi raita
+D04,D38,0.6,Biryani with cucumber raita
+D04,D56,0.5,Biryani feast ending with phirni
+D06,D40,0.9,Paneer makhani with butter naan
+D05,D40,0.8,Tikka masala with naan
+D07,D40,0.7,Palak paneer with naan
+D07,D37,0.6,Palak paneer with jeera rice
+D09,D39,0.5,Rajma chawal with kachumber
+D17,D37,0.7,Dal with jeera rice
+D25,D41,0.7,Mutton curry with lachha paratha
+D25,D37,0.6,Mutton curry with jeera rice
+D01,D42,0.5,Dal chawal with jeera aloo
+D08,D39,0.5,Chole with kachumber
+D10,D48,0.9,Dosa with filter coffee
+D11,D48,0.8,Idli with filter coffee
+D13,D48,0.6,Upma with filter coffee
+D14,D46,0.7,Paratha with sweet lassi
+D21,D45,0.5,Khichdi with chaas
+D24,D52,0.7,Konkani fish curry with kokum sharbat
+D03,D45,0.4,Spicy curry with chaas
+D22,D47,0.5,Pav bhaji with jaljeera
+D34,D43,0.7,Pasta with a green salad
+D34,D44,0.5,Pasta with garlic broccoli
+D33,D43,0.6,Risotto with a green salad
+D34,D59,0.4,Pasta dinner with a brownie
+D06,D53,0.4,Festive paneer meal with gajar halwa
+D25,D58,0.4,Festive mutton meal with besan ladoo
