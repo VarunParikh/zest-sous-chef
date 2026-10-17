@@ -1,0 +1,9 @@
+# Direct dependencies, pinned at install (build-plan §4, approved list only).
+# Full transitive pins: requirements.lock.txt
+fastapi==0.143.3
+uvicorn==0.54.0
+pydantic==2.14.1
+python-dotenv==1.2.4
+httpx==0.28.1
+pytest==9.1.1
+coverage==7.16.2

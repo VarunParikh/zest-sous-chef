@@ -1,0 +1,8 @@
+# Changelog
+
+All notable changes to this project are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+
+## [Unreleased]
+
+### Added
+- Backend scaffold (FastAPI, Python 3.12), `Settings` config from `.env` with architecture §6 defaults, `.env.example`, `make setup|dev|test|scan|health`, and `GET /api/v1/health` plus a `/health` page that report text model, vision provider, fixtures and index status (block 1.1; API Spec endpoint 1, NFR-02).

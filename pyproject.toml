@@ -1,0 +1,14 @@
+[project]
+name = "zest-sous-chef"
+version = "0.0.1"
+description = "Zest AI sous-chef prototype (mock data only)"
+requires-python = ">=3.12,<3.13"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]
+addopts = "-q"
+
+[tool.coverage.run]
+branch = true
+source = ["src/backend"]
