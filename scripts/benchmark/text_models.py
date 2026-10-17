@@ -41,6 +41,14 @@ def norm_qty(qty, unit):
     return qty, unit
 
 
+def unload_all() -> None:
+    lines = subprocess.run(["ollama", "ps"], capture_output=True, text=True).stdout.splitlines()[1:]
+    for line in lines:
+        if line.split():
+            subprocess.run(["ollama", "stop", line.split()[0]], capture_output=True)
+    time.sleep(2)
+
+
 def free_ram_gb() -> float:
     out = subprocess.run(["vm_stat"], capture_output=True, text=True).stdout
     pages = sum(int(re.search(r"(\d+)", line.split(":")[1]).group(1)) for line in out.splitlines()
@@ -67,6 +75,7 @@ def main():
             save(make_result("E1", model, "recipes_v1.jsonl", split, {}, [], [], "NOT RUN",
                              notes="model not installed (download needs owner approval)"), args.out)
             continue
+        unload_all()  # each model is measured alone (plus Chroma), not beside the previous candidate
         client = OllamaClient(settings.ollama_base_url, model, timeout_s=settings.timeout_llm_s)
         per, invented, predicted_total, valid = [], 0, 0, 0
         for r in data:
