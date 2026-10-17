@@ -302,7 +302,8 @@ def v12(ctx: Context) -> Result:
     if not RETRIEVAL_SET.exists():
         return Result("V12", "Retrieval evaluation set expected IDs exist", "NOT RUN",
                       note=f"{RETRIEVAL_SET.relative_to(REPO_ROOT)} not written yet (block 1.4/1.5)")
-    known = {rec.dish.dish_id for rec in ctx.dishes} | {v["variant_id"] for v in ctx.variants}
+    known = ({rec.dish.dish_id for rec in ctx.dishes} | {v["variant_id"] for v in ctx.variants}
+             | {f"term:{t}" for t in ctx.lexicon.entries})
     errors = []
     for line in RETRIEVAL_SET.read_text().splitlines():
         q = json.loads(line)

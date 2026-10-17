@@ -26,9 +26,8 @@ def test_shipped_data_passes(base_ctx):
     assert set(results) == {f"V{i}" for i in range(1, 15)}
     failing = {k: r.errors[:5] for k, r in results.items() if r.status == "FAIL"}
     assert not failing
-    # Honest status: V12 depends on block 1.4 and must not pretend to pass.
     assert results["V9"].status == "PASS"
-    assert results["V12"].status == "NOT RUN"
+    assert results["V12"].status == "PASS"
 
 
 def test_v1_missing_field(ctx):
@@ -148,3 +147,13 @@ def test_v9_fails_when_a_persona_has_nothing_eligible(ctx):
         s["stock_count"] = 0
     r = VALIDATORS["V9"](ctx)
     assert r.status == "FAIL" and any("P7" in e for e in r.errors)
+
+
+def test_v12_unknown_expected_id(ctx, tmp_path, monkeypatch):
+    import backend.catalogue.validators as val
+
+    bad = tmp_path / "retrieval.jsonl"
+    bad.write_text('{"query_id": "X1", "query": "q", "kind": "mood", "expected_ids": ["D999", "term:unobtainium"]}\n')
+    monkeypatch.setattr(val, "RETRIEVAL_SET", bad)
+    r = VALIDATORS["V12"](ctx)
+    assert r.status == "FAIL" and len(r.errors) == 2

@@ -17,6 +17,11 @@
   "utterances_v1.jsonl": {
    "sha256": "07d514fd976526924de95ed222f0eff74e83fd859cbecc84a68a2c78e15360cf",
    "rows": 60
+  },
+  "retrieval_v1.jsonl": {
+   "sha256": "fb5f9a1ee875dea17316cf1b0bcf02a012c7e2490be06311c289a4efdf5a671c",
+   "rows": 61,
+   "added": "2026-10-18"
   }
  }
 }

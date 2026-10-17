@@ -1,0 +1,61 @@
+{"query_id": "M01", "query": "something cooling", "kind": "mood", "expected_ids": ["D45", "D46", "D47", "D50", "D29", "D30", "D38", "D52", "D74", "D96"], "notes": "keyword 'cooling' is a mood tag", "split": "dev"}
+{"query_id": "M02", "query": "beat the summer heat", "kind": "mood", "expected_ids": ["D45", "D46", "D47", "D50", "D29", "D30", "D38", "D52", "D74", "D96"], "notes": "no keyword match: vector-only (AC-35 spirit)", "split": "test"}
+{"query_id": "M03", "query": "feeling indulgent", "kind": "mood", "expected_ids": ["D06", "D26", "D40", "D53", "D59", "D101", "D103", "D106"], "notes": "", "split": "dev"}
+{"query_id": "M04", "query": "comfort food after a long day", "kind": "mood", "expected_ids": ["D01", "D21", "D09", "D17", "D27"], "notes": "", "split": "test"}
+{"query_id": "M05", "query": "something light for dinner", "kind": "mood", "expected_ids": ["D21", "D11", "D17", "D39", "D43", "D89"], "notes": "", "split": "dev"}
+{"query_id": "M06", "query": "I want something spicy", "kind": "mood", "expected_ids": ["D03", "D08", "D25", "D24", "D66", "D67", "D113", "D16"], "notes": "", "split": "test"}
+{"query_id": "M07", "query": "festive sweets for Diwali", "kind": "mood", "expected_ids": ["D26", "D27", "D53", "D58", "D101", "D102", "D106", "D121"], "notes": "", "split": "dev"}
+{"query_id": "M08", "query": "a warm drink on a rainy day", "kind": "mood", "expected_ids": ["D28", "D48", "D71", "D77", "D120", "D75"], "notes": "no 'warm drink' keyword", "split": "test"}
+{"query_id": "M09", "query": "high protein food", "kind": "mood", "expected_ids": ["D66", "D67", "D108", "D113", "D112", "D89", "D19"], "notes": "", "split": "dev"}
+{"query_id": "M10", "query": "quick breakfast", "kind": "mood", "expected_ids": ["D12", "D13", "D23", "D10", "D11"], "notes": "", "split": "test"}
+{"query_id": "M11", "query": "something for a fasting day", "kind": "mood", "expected_ids": ["D31", "D100", "D125"], "notes": "", "split": "dev"}
+{"query_id": "M12", "query": "something sweet but light", "kind": "mood", "expected_ids": ["D84", "D57", "D78", "D54"], "notes": "", "split": "test"}
+{"query_id": "M13", "query": "a refreshing summer drink", "kind": "mood", "expected_ids": ["D30", "D74", "D98", "D114", "D115", "D50", "D47"], "notes": "", "split": "dev"}
+{"query_id": "M14", "query": "a healthy salad", "kind": "mood", "expected_ids": ["D39", "D43", "D89", "D110", "D68", "D19"], "notes": "", "split": "test"}
+{"query_id": "M15", "query": "chocolate dessert", "kind": "mood", "expected_ids": ["D59", "D103", "D76"], "notes": "", "split": "dev"}
+{"query_id": "I01", "query": "coriander leaves", "kind": "ingredient", "expected_ids": ["term:coriander leaves"], "notes": "", "split": "test"}
+{"query_id": "I02", "query": "onion", "kind": "ingredient", "expected_ids": ["term:onion"], "notes": "", "split": "dev"}
+{"query_id": "I03", "query": "paneer", "kind": "ingredient", "expected_ids": ["term:paneer"], "notes": "", "split": "test"}
+{"query_id": "I04", "query": "toor dal", "kind": "ingredient", "expected_ids": ["term:toor dal"], "notes": "", "split": "dev"}
+{"query_id": "I05", "query": "basmati rice", "kind": "ingredient", "expected_ids": ["term:basmati rice"], "notes": "", "split": "test"}
+{"query_id": "I06", "query": "curry leaves", "kind": "ingredient", "expected_ids": ["term:curry leaves"], "notes": "", "split": "dev"}
+{"query_id": "I07", "query": "mustard seeds", "kind": "ingredient", "expected_ids": ["term:mustard seeds"], "notes": "", "split": "test"}
+{"query_id": "I08", "query": "ghee", "kind": "ingredient", "expected_ids": ["term:ghee"], "notes": "", "split": "dev"}
+{"query_id": "I09", "query": "green chilli", "kind": "ingredient", "expected_ids": ["term:green chilli"], "notes": "", "split": "test"}
+{"query_id": "I10", "query": "cottage cheese", "kind": "ingredient", "expected_ids": ["term:paneer"], "notes": "lexicon alias", "split": "dev"}
+{"query_id": "I11", "query": "yogurt", "kind": "ingredient", "expected_ids": ["term:curd"], "notes": "lexicon alias", "split": "test"}
+{"query_id": "I12", "query": "cilantro", "kind": "ingredient", "expected_ids": ["term:coriander leaves"], "notes": "lexicon alias", "split": "dev"}
+{"query_id": "I13", "query": "bell pepper", "kind": "ingredient", "expected_ids": ["term:capsicum"], "notes": "lexicon alias", "split": "test"}
+{"query_id": "I14", "query": "eggplant", "kind": "ingredient", "expected_ids": ["term:brinjal"], "notes": "lexicon alias", "split": "dev"}
+{"query_id": "I15", "query": "chickpeas", "kind": "ingredient", "expected_ids": ["term:chickpeas"], "notes": "", "split": "test"}
+{"query_id": "I16", "query": "red lentils", "kind": "ingredient", "expected_ids": ["term:masoor dal"], "notes": "lexicon alias", "split": "dev"}
+{"query_id": "I17", "query": "clarified butter", "kind": "ingredient", "expected_ids": ["term:ghee"], "notes": "lexicon alias", "split": "test"}
+{"query_id": "I18", "query": "lady finger", "kind": "ingredient", "expected_ids": ["term:okra"], "notes": "lexicon alias", "split": "dev"}
+{"query_id": "I19", "query": "sweet lime", "kind": "ingredient", "expected_ids": ["term:mosambi"], "notes": "lexicon alias", "split": "test"}
+{"query_id": "I20", "query": "semolina", "kind": "ingredient", "expected_ids": ["term:semolina"], "notes": "", "split": "dev"}
+{"query_id": "R01", "query": "kothmir", "kind": "regional", "expected_ids": ["term:coriander leaves"], "notes": "Marathi", "split": "test"}
+{"query_id": "R02", "query": "kandha", "kind": "regional", "expected_ids": ["term:onion"], "notes": "Marathi", "split": "dev"}
+{"query_id": "R03", "query": "batata", "kind": "regional", "expected_ids": ["term:potato"], "notes": "Marathi", "split": "test"}
+{"query_id": "R04", "query": "dhaniya", "kind": "regional", "expected_ids": ["term:coriander leaves", "term:coriander powder"], "notes": "ambiguous: expect clarify", "split": "dev"}
+{"query_id": "R05", "query": "methi", "kind": "regional", "expected_ids": ["term:fenugreek leaves", "term:fenugreek seeds"], "notes": "ambiguous: expect clarify", "split": "test"}
+{"query_id": "R06", "query": "jeera", "kind": "regional", "expected_ids": ["term:cumin"], "notes": "Hindi", "split": "dev"}
+{"query_id": "R07", "query": "haldi", "kind": "regional", "expected_ids": ["term:turmeric"], "notes": "Hindi", "split": "test"}
+{"query_id": "R08", "query": "palak", "kind": "regional", "expected_ids": ["term:spinach"], "notes": "Hindi", "split": "dev"}
+{"query_id": "R09", "query": "bhindi", "kind": "regional", "expected_ids": ["term:okra"], "notes": "Hindi", "split": "test"}
+{"query_id": "R10", "query": "atta", "kind": "regional", "expected_ids": ["term:wheat flour"], "notes": "Hindi", "split": "dev"}
+{"query_id": "R11", "query": "maida", "kind": "regional", "expected_ids": ["term:refined flour"], "notes": "Hindi", "split": "test"}
+{"query_id": "R12", "query": "sabudana", "kind": "regional", "expected_ids": ["term:tapioca pearls"], "notes": "Hindi and Marathi", "split": "dev"}
+{"query_id": "R13", "query": "rajma", "kind": "regional", "expected_ids": ["term:kidney beans"], "notes": "Hindi", "split": "test"}
+{"query_id": "R14", "query": "hing", "kind": "regional", "expected_ids": ["term:asafoetida"], "notes": "Hindi", "split": "dev"}
+{"query_id": "R15", "query": "lasun", "kind": "regional", "expected_ids": ["term:garlic"], "notes": "Marathi", "split": "test"}
+{"query_id": "R16", "query": "shimla mirch", "kind": "regional", "expected_ids": ["term:capsicum"], "notes": "Hindi", "split": "dev"}
+{"query_id": "V01", "query": "skimmed milk", "kind": "variant", "expected_ids": ["b051-8bf6581e"], "notes": "", "split": "test"}
+{"query_id": "V02", "query": "toned milk", "kind": "variant", "expected_ids": ["b051-daf98b8a", "b270-fb05de44"], "notes": "", "split": "dev"}
+{"query_id": "V03", "query": "brown bread", "kind": "variant", "expected_ids": ["b069-3fb5198e"], "notes": "", "split": "test"}
+{"query_id": "V04", "query": "whole wheat bread", "kind": "variant", "expected_ids": ["b069-63b5d400"], "notes": "", "split": "dev"}
+{"query_id": "V05", "query": "a2 ghee", "kind": "variant", "expected_ids": ["b056-7d3cfb92"], "notes": "", "split": "test"}
+{"query_id": "V06", "query": "low fat paneer", "kind": "variant", "expected_ids": ["b054-15e92b09", "b261-57eaaec8"], "notes": "", "split": "dev"}
+{"query_id": "V07", "query": "extra virgin olive oil", "kind": "variant", "expected_ids": ["b131-a17a897a", "b131-ab4ab0e3"], "notes": "", "split": "test"}
+{"query_id": "V08", "query": "organic toor dal", "kind": "variant", "expected_ids": ["b092-b9fe9982"], "notes": "", "split": "dev"}
+{"query_id": "V09", "query": "kashmiri chilli powder", "kind": "variant", "expected_ids": ["b105-f827b878"], "notes": "", "split": "test"}
+{"query_id": "V10", "query": "greek yogurt", "kind": "variant", "expected_ids": ["b052-19ac91f3"], "notes": "", "split": "dev"}
