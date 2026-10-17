@@ -1,6 +1,6 @@
 # API Spec: Zest AI Sous-Chef
 
-Status: APPROVED v0.2 (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, Data Model v0.1, Conversation Design v0.1
+Status: **DRAFT (amended) v0.3 (2026-10-18)**: §4.2 to §4.4 add the optional current `levers` and `levers_changed_since_snapshot` (C31); awaits owner re-approval (Approval Register Rule 2). v0.2 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, Data Model v0.1, Conversation Design v0.1
 Scope: the browser-to-backend REST contract, the response card types, errors, and the outbound contracts to the model, the opt-in Gemini photo provider and the transcript source. **Webhooks:** none. The app is a browser client with no inbound callbacks; there are no outbound webhooks. The live contract is the OpenAPI document that FastAPI generates from the Pydantic models in the Data Model; this document is the design that those models must satisfy.
 
 ## 1. Design decisions (owner delegated the API style, 2026-10-17)
@@ -72,6 +72,7 @@ Errors: `422 INVALID_LEVERS` (field out of range or unknown option).
 JSON request: `{ "text": "I am feeling indulgent" }`
 Multipart request: parts `text` (optional), `image` (JPEG, PNG or WebP, at most 5 MB), `consent` (`true` after the notice).
 Sample photo request: `{ "text": "", "sample_photo_id": "sp_03" }`
+Optional in every form (v0.3, C31): `"levers": LeverSet`, the lever panel's current values (a multipart request sends it as a JSON string part). The server only compares them with the session snapshot to set `levers_changed_since_snapshot` (FR-03); it never stores them and never uses them for ranking (FR-02).
 Response `200`: a `TurnResponse` (section 4.4).
 
 ### 4.3 `POST /sessions/{id}/action`
@@ -87,7 +88,7 @@ Response `200`: a `TurnResponse` (section 4.4).
 | `add_on` | `suggestion_id`, `choice` (`add`, `decline`) | Add-ons are added only on `add` (FR-64) |
 | `substitute` | `substitution_id`, `choice` (`accept`, `decline`) | FR-76 |
 | `consent_photo` | `choice` | Records the photo notice response for the session |
-Stale references return `409 STALE_ACTION`.
+Stale references return `409 STALE_ACTION`. The body may also carry the optional current `levers` (as in section 4.2, C31).
 
 ### 4.4 `TurnResponse`
 ```json
@@ -114,9 +115,11 @@ Stale references return `409 STALE_ACTION`.
   "pending": null,
   "suggestions": [{"suggestion_id": "sg_12", "type": "dish", "candidate_id": "butter_chicken", "rank": 1}],
   "notices": [],
-  "fallbacks_used": []
+  "fallbacks_used": [],
+  "levers_changed_since_snapshot": false
 }
 ```
+`levers_changed_since_snapshot` (v0.3, C31) is true when the request carried `levers` that differ from the session snapshot, and false when they match or were omitted; the UI then shows MSG-LEVER-BANNER (FR-03).
 The dish total and prices are examples; real values come from the catalogue. `cart` is the full cart snapshot, so the client never reconstructs it.
 
 ### 4.5 Card types (a discriminated union on `type`)

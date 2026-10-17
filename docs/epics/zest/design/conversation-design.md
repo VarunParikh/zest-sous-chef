@@ -99,6 +99,7 @@ Timeout: if the user is silent, nothing happens; the session persists until refr
 | MSG-THANKS | smalltalk thanks | "Anytime. What shall we cook next?" |
 | MSG-BUSY | processing | Typing indicator only (no text) |
 | MSG-LEVER-BANNER | levers changed mid-session (UI banner) | "Changes apply from your next chat session." |
+| MSG-WEIGHTS-DEFAULT | all four weights 0 at session start (FR-08; notice card) | "All four weights were 0, so I'm using the default mix." (owner, C30) |
 | MSG-EMPTY-CART | cart empty | "Your cart is empty. Pick a recipe or paste a YouTube link to get started!" (DESIGN.md) |
 
 ### 6.2 YouTube and text recipe
