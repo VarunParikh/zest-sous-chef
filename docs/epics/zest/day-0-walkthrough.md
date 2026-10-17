@@ -40,7 +40,7 @@ The public repository exists and the project is pushed: https://github.com/Varun
 1. In Terminal, create a folder and clone: `mkdir -p ~/Projects && cd ~/Projects && git clone https://github.com/VarunParikh/zest-sous-chef`
 2. `cd zest-sous-chef` then `git status`. It should say "nothing to commit" (a clean copy).
 3. `git remote -v` should already show the GitHub address (clone sets it for you).
-4. **Secret check:** run `git log -p | grep -cE "AIza[0-9A-Za-z_-]{35}"`. It must print `0`. Also confirm there is no `.env` file in the folder yet (`ls -a`).
+4. **Secret check:** run `git log -p | grep -cE "(AIza[0-9A-Za-z_-]{35}|AQ\.[0-9A-Za-z_-]{30,})"`. It must print `0`. (Google issues keys in more than one shape, so the pattern covers both known shapes; it is a safety net, not a guarantee.) Also confirm there is no `.env` file in the folder yet (`ls -a`).
 5. Note: the root `README.md` is a one-line placeholder. The real README (setup guide, demo script, limitations) is written after the build, from real results.
 Everything in the repo is public, including `docs/inputs/` (you approved) and the licensed reference photos in `assets/sample-photos/` (you stated they are licensed; I could not verify that).
 
