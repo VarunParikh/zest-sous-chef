@@ -1,0 +1,1080 @@
+{
+ "id": "E3",
+ "system": "ollama:gemma4:e2b-it-qat",
+ "dataset": {
+  "name": "mock-data/photos.json",
+  "sha256": "7a6deef108ddcddd1bf80184c331c48fe4735c68a5570bbb3f99a6381ea6fb74",
+  "split": "all-11-photos"
+ },
+ "environment": {
+  "commit": "6e0317e",
+  "dirty": false,
+  "date": "2026-10-17T20:45:18+00:00",
+  "python": "3.12.15",
+  "machine": "arm64",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "packages": {
+   "chromadb": "1.5.9",
+   "rank-bm25": "0.2.2",
+   "pydantic": "2.14.1",
+   "httpx": "0.28.1",
+   "fastapi": "0.143.3"
+  }
+ },
+ "metrics": {
+  "precision_clear": {
+   "k": 31,
+   "n": 70,
+   "rate": 0.44285714285714284,
+   "ci95": [
+    0.3324952882894659,
+    0.5591644903606224
+   ]
+  },
+  "recall_clear": {
+   "k": 31,
+   "n": 252,
+   "rate": 0.12301587301587301,
+   "ci95": [
+    0.08803268154231284,
+    0.16931989598439987
+   ]
+  },
+  "precision_test_photos": {
+   "k": 6,
+   "n": 21,
+   "rate": 0.2857142857142857,
+   "ci95": [
+    0.1381386287176154,
+    0.4995638088483033
+   ]
+  },
+  "recall_test_photos": {
+   "k": 6,
+   "n": 150,
+   "rate": 0.04,
+   "ci95": [
+    0.01845916049402265,
+    0.08451346467796861
+   ]
+  },
+  "precision_demo_photos": {
+   "k": 25,
+   "n": 49,
+   "rate": 0.5102040816326531,
+   "ci95": [
+    0.3746756364079098,
+    0.6442488978720089
+   ]
+  },
+  "recall_demo_photos": {
+   "k": 25,
+   "n": 102,
+   "rate": 0.24509803921568626,
+   "ci95": [
+    0.17188155443370615,
+    0.3368175834124627
+   ]
+  },
+  "per_run": {
+   "1": {
+    "precision": 0.4090909090909091,
+    "recall": 0.10714285714285714
+   },
+   "2": {
+    "precision": 0.4583333333333333,
+    "recall": 0.13095238095238096
+   },
+   "3": {
+    "precision": 0.4583333333333333,
+    "recall": 0.13095238095238096
+   }
+  },
+  "quality_flag_accuracy": {
+   "k": 21,
+   "n": 33,
+   "rate": 0.6363636363636364,
+   "ci95": [
+    0.46616178171050116,
+    0.7781282185578974
+   ]
+  },
+  "confident_items_on_unclear_photos": 0,
+  "failures": {
+   "k": 12,
+   "n": 33,
+   "rate": 0.36363636363636365,
+   "ci95": [
+    0.22187178144210248,
+    0.5338382182894987
+   ]
+  },
+  "latency_ms_median": 20424,
+  "latency_ms_p95": 51012,
+  "num_ctx": 4096,
+  "served_model": "gemma4:e2b-it-qat",
+  "cold_load_ms": 17471,
+  "swapouts_delta": 527,
+  "ollama_ps": "NAME                 ID              SIZE      PROCESSOR    CONTEXT    RUNNER      UNTIL               \nllama-guard3:1b      494147e06bf9    1.7 GB    100% GPU     16384      llamacpp    46 minutes from now    \nllama3.2:3b          a80c4f17acd5    2.6 GB    100% GPU     4096       llamacpp    46 minutes from now    \ngemma4:e2b-it-qat    07ea59a47401    230 MB    100% GPU     4096       llamacpp    9 minutes from now",
+  "resident_models": [
+   "llama3.2:3b",
+   "llama-guard3:1b"
+  ],
+  "confidence_threshold": 0.6,
+  "gates": {
+   "precision": {
+    "status": "FAIL",
+    "separable": true,
+    "rate": 0.44285714285714284,
+    "ci95": [
+     0.3324952882894659,
+     0.5591644903606224
+    ],
+    "min": 0.8
+   },
+   "recall": {
+    "status": "FAIL",
+    "separable": true,
+    "rate": 0.12301587301587301,
+    "ci95": [
+     0.08803268154231284,
+     0.16931989598439987
+    ],
+    "min": 0.7
+   },
+   "latency_p95": {
+    "status": "FAIL"
+   },
+   "no_failures": {
+    "status": "FAIL"
+   },
+   "no_swap": {
+    "status": "FAIL"
+   },
+   "gpu_only": {
+    "status": "PASS"
+   },
+   "text_model_resident": {
+    "status": "PASS",
+    "evicted": []
+   }
+  },
+  "owner_recall_target_0_80_met": false
+ },
+ "critical_failures": [],
+ "per_example": [
+  {
+   "run": 1,
+   "photo": "RF01",
+   "subset": "demo",
+   "latency_ms": 16898,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "Dried beans or grains (in jar)",
+     0.95
+    ],
+    [
+     "Oranges or tangerines (in bowl)",
+     1.0
+    ],
+    [
+     "Bread (loaf)",
+     1.0
+    ],
+    [
+     "Crackers or flatbread (stack)",
+     0.9
+    ],
+    [
+     "Dried pasta or grains (in basket)",
+     0.9
+    ]
+   ],
+   "error": null,
+   "tp": 2,
+   "fp": 3,
+   "found": 2,
+   "required": 7,
+   "pairs": [
+    [
+     "Oranges or tangerines (in bowl)",
+     "orange"
+    ],
+    [
+     "Dried pasta or grains (in basket)",
+     "pasta"
+    ]
+   ]
+  },
+  {
+   "run": 1,
+   "photo": "RF02",
+   "subset": "demo",
+   "latency_ms": 23502,
+   "quality": null,
+   "scene_is_food": null,
+   "items": [],
+   "error": "2 validation errors for DetectionResult",
+   "tp": 0,
+   "fp": 0,
+   "found": 0,
+   "required": 12,
+   "pairs": []
+  },
+  {
+   "run": 1,
+   "photo": "RF03",
+   "subset": "demo",
+   "latency_ms": 21014,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "Bell Pepper",
+     1.0
+    ],
+    [
+     "Celery",
+     1.0
+    ],
+    [
+     "Avocado",
+     1.0
+    ],
+    [
+     "Tomato",
+     1.0
+    ],
+    [
+     "Mushrooms",
+     1.0
+    ],
+    [
+     "Leafy Greens",
+     1.0
+    ]
+   ],
+   "error": null,
+   "tp": 4,
+   "fp": 2,
+   "found": 4,
+   "required": 10,
+   "pairs": [
+    [
+     "Bell Pepper",
+     "red capsicum"
+    ],
+    [
+     "Avocado",
+     "avocado"
+    ],
+    [
+     "Tomato",
+     "tomato"
+    ],
+    [
+     "Mushrooms",
+     "button mushroom"
+    ]
+   ]
+  },
+  {
+   "run": 1,
+   "photo": "RF04",
+   "subset": "test",
+   "latency_ms": 18967,
+   "quality": "blurry",
+   "scene_is_food": true,
+   "items": [],
+   "error": null,
+   "expected_quality": "blurry",
+   "confident_items_on_unclear_photo": 0
+  },
+  {
+   "run": 1,
+   "photo": "RF05",
+   "subset": "test",
+   "latency_ms": 17032,
+   "quality": null,
+   "scene_is_food": null,
+   "items": [],
+   "error": "1 validation error for DetectionResult",
+   "tp": 0,
+   "fp": 0,
+   "found": 0,
+   "required": 7,
+   "pairs": []
+  },
+  {
+   "run": 1,
+   "photo": "RF06",
+   "subset": "test",
+   "latency_ms": 19344,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "Lettuce/Greens",
+     1.0
+    ],
+    [
+     "Tomatoes",
+     1.0
+    ],
+    [
+     "Cauliflower",
+     1.0
+    ],
+    [
+     "Red/Orange Vegetable",
+     0.9
+    ]
+   ],
+   "error": null,
+   "tp": 2,
+   "fp": 2,
+   "found": 2,
+   "required": 7,
+   "pairs": [
+    [
+     "Lettuce/Greens",
+     "lettuce"
+    ],
+    [
+     "Tomatoes",
+     "tomato"
+    ]
+   ]
+  },
+  {
+   "run": 1,
+   "photo": "RF07",
+   "subset": "demo",
+   "latency_ms": 22064,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "Herbs (Green leafy item)",
+     1.0
+    ],
+    [
+     "Pasta",
+     1.0
+    ],
+    [
+     "Meatballs or small baked goods",
+     1.0
+    ],
+    [
+     "Cherry tomatoes",
+     1.0
+    ]
+   ],
+   "error": null,
+   "tp": 1,
+   "fp": 3,
+   "found": 1,
+   "required": 5,
+   "pairs": [
+    [
+     "Herbs (Green leafy item)",
+     "parsley or herbs"
+    ]
+   ]
+  },
+  {
+   "run": 1,
+   "photo": "RF08",
+   "subset": "test",
+   "latency_ms": 37431,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "Sliced fruit (apples and pears)",
+     0.95
+    ]
+   ],
+   "error": null,
+   "tp": 0,
+   "fp": 1,
+   "found": 0,
+   "required": 18,
+   "pairs": []
+  },
+  {
+   "run": 1,
+   "photo": "RF09",
+   "subset": "test",
+   "latency_ms": 25146,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "Packaged sauces/condiments",
+     1.0
+    ],
+    [
+     "Packaged food containers/boxes",
+     0.9
+    ]
+   ],
+   "error": null,
+   "tp": 0,
+   "fp": 2,
+   "found": 0,
+   "required": 11,
+   "pairs": []
+  },
+  {
+   "run": 1,
+   "photo": "RF10",
+   "subset": "test",
+   "latency_ms": 18392,
+   "quality": null,
+   "scene_is_food": null,
+   "items": [],
+   "error": "1 validation error for DetectionResult",
+   "expected_quality": "dark",
+   "confident_items_on_unclear_photo": 0
+  },
+  {
+   "run": 1,
+   "photo": "RF11",
+   "subset": "test",
+   "latency_ms": 51216,
+   "quality": null,
+   "scene_is_food": null,
+   "items": [],
+   "error": "1 validation error for DetectionResult",
+   "tp": 0,
+   "fp": 0,
+   "found": 0,
+   "required": 7,
+   "pairs": []
+  },
+  {
+   "run": 2,
+   "photo": "RF01",
+   "subset": "demo",
+   "latency_ms": 18559,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "Dried beans or grains (in jar)",
+     0.95
+    ],
+    [
+     "Oranges or tangerines (in bowl)",
+     1.0
+    ],
+    [
+     "Bread (loaf)",
+     1.0
+    ],
+    [
+     "Crackers or flatbread (stack)",
+     0.9
+    ],
+    [
+     "Dried pasta or grains (in basket)",
+     0.9
+    ]
+   ],
+   "error": null,
+   "tp": 2,
+   "fp": 3,
+   "found": 2,
+   "required": 7,
+   "pairs": [
+    [
+     "Oranges or tangerines (in bowl)",
+     "orange"
+    ],
+    [
+     "Dried pasta or grains (in basket)",
+     "pasta"
+    ]
+   ]
+  },
+  {
+   "run": 2,
+   "photo": "RF02",
+   "subset": "demo",
+   "latency_ms": 24905,
+   "quality": null,
+   "scene_is_food": null,
+   "items": [],
+   "error": "2 validation errors for DetectionResult",
+   "tp": 0,
+   "fp": 0,
+   "found": 0,
+   "required": 12,
+   "pairs": []
+  },
+  {
+   "run": 2,
+   "photo": "RF03",
+   "subset": "demo",
+   "latency_ms": 20135,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "Red/Pink Pepper or Tomato",
+     1.0
+    ],
+    [
+     "Celery or Stalks",
+     1.0
+    ],
+    [
+     "Yellow Bell Pepper",
+     1.0
+    ],
+    [
+     "Green Bell Pepper",
+     1.0
+    ],
+    [
+     "Avocado",
+     1.0
+    ],
+    [
+     "Tomatoes",
+     1.0
+    ],
+    [
+     "Mushrooms",
+     1.0
+    ],
+    [
+     "Leafy Greens (Spinach/Mixed Greens)",
+     1.0
+    ]
+   ],
+   "error": null,
+   "tp": 6,
+   "fp": 2,
+   "found": 6,
+   "required": 10,
+   "pairs": [
+    [
+     "Red/Pink Pepper or Tomato",
+     "tomato"
+    ],
+    [
+     "Yellow Bell Pepper",
+     "yellow capsicum"
+    ],
+    [
+     "Green Bell Pepper",
+     "green capsicum"
+    ],
+    [
+     "Avocado",
+     "avocado"
+    ],
+    [
+     "Tomatoes",
+     "cherry tomato"
+    ],
+    [
+     "Mushrooms",
+     "button mushroom"
+    ]
+   ]
+  },
+  {
+   "run": 2,
+   "photo": "RF04",
+   "subset": "test",
+   "latency_ms": 17246,
+   "quality": "blurry",
+   "scene_is_food": true,
+   "items": [],
+   "error": null,
+   "expected_quality": "blurry",
+   "confident_items_on_unclear_photo": 0
+  },
+  {
+   "run": 2,
+   "photo": "RF05",
+   "subset": "test",
+   "latency_ms": 16799,
+   "quality": null,
+   "scene_is_food": null,
+   "items": [],
+   "error": "1 validation error for DetectionResult",
+   "tp": 0,
+   "fp": 0,
+   "found": 0,
+   "required": 7,
+   "pairs": []
+  },
+  {
+   "run": 2,
+   "photo": "RF06",
+   "subset": "test",
+   "latency_ms": 18727,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "Lettuce/Greens",
+     1.0
+    ],
+    [
+     "Tomatoes",
+     1.0
+    ],
+    [
+     "Cauliflower",
+     1.0
+    ],
+    [
+     "Red/Orange Vegetable",
+     0.9
+    ]
+   ],
+   "error": null,
+   "tp": 2,
+   "fp": 2,
+   "found": 2,
+   "required": 7,
+   "pairs": [
+    [
+     "Lettuce/Greens",
+     "lettuce"
+    ],
+    [
+     "Tomatoes",
+     "tomato"
+    ]
+   ]
+  },
+  {
+   "run": 2,
+   "photo": "RF07",
+   "subset": "demo",
+   "latency_ms": 21294,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "Herbs (Green leafy item)",
+     1.0
+    ],
+    [
+     "Pasta",
+     1.0
+    ],
+    [
+     "Meatballs or small baked goods",
+     1.0
+    ],
+    [
+     "Cherry tomatoes",
+     1.0
+    ]
+   ],
+   "error": null,
+   "tp": 1,
+   "fp": 3,
+   "found": 1,
+   "required": 5,
+   "pairs": [
+    [
+     "Herbs (Green leafy item)",
+     "parsley or herbs"
+    ]
+   ]
+  },
+  {
+   "run": 2,
+   "photo": "RF08",
+   "subset": "test",
+   "latency_ms": 36558,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "Sliced fruit (apples and pears)",
+     0.95
+    ]
+   ],
+   "error": null,
+   "tp": 0,
+   "fp": 1,
+   "found": 0,
+   "required": 18,
+   "pairs": []
+  },
+  {
+   "run": 2,
+   "photo": "RF09",
+   "subset": "test",
+   "latency_ms": 25092,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "Packaged sauces/condiments",
+     1.0
+    ],
+    [
+     "Packaged food containers/boxes",
+     0.9
+    ]
+   ],
+   "error": null,
+   "tp": 0,
+   "fp": 2,
+   "found": 0,
+   "required": 11,
+   "pairs": []
+  },
+  {
+   "run": 2,
+   "photo": "RF10",
+   "subset": "test",
+   "latency_ms": 18525,
+   "quality": null,
+   "scene_is_food": null,
+   "items": [],
+   "error": "1 validation error for DetectionResult",
+   "expected_quality": "dark",
+   "confident_items_on_unclear_photo": 0
+  },
+  {
+   "run": 2,
+   "photo": "RF11",
+   "subset": "test",
+   "latency_ms": 51012,
+   "quality": null,
+   "scene_is_food": null,
+   "items": [],
+   "error": "1 validation error for DetectionResult",
+   "tp": 0,
+   "fp": 0,
+   "found": 0,
+   "required": 7,
+   "pairs": []
+  },
+  {
+   "run": 3,
+   "photo": "RF01",
+   "subset": "demo",
+   "latency_ms": 18367,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "Dried beans or grains (in jar)",
+     0.95
+    ],
+    [
+     "Oranges or tangerines (in bowl)",
+     1.0
+    ],
+    [
+     "Bread (loaf)",
+     1.0
+    ],
+    [
+     "Crackers or flatbread (stack)",
+     0.9
+    ],
+    [
+     "Dried pasta or grains (in basket)",
+     0.9
+    ]
+   ],
+   "error": null,
+   "tp": 2,
+   "fp": 3,
+   "found": 2,
+   "required": 7,
+   "pairs": [
+    [
+     "Oranges or tangerines (in bowl)",
+     "orange"
+    ],
+    [
+     "Dried pasta or grains (in basket)",
+     "pasta"
+    ]
+   ]
+  },
+  {
+   "run": 3,
+   "photo": "RF02",
+   "subset": "demo",
+   "latency_ms": 24249,
+   "quality": null,
+   "scene_is_food": null,
+   "items": [],
+   "error": "2 validation errors for DetectionResult",
+   "tp": 0,
+   "fp": 0,
+   "found": 0,
+   "required": 12,
+   "pairs": []
+  },
+  {
+   "run": 3,
+   "photo": "RF03",
+   "subset": "demo",
+   "latency_ms": 20424,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "Red/Pink Pepper or Tomato",
+     1.0
+    ],
+    [
+     "Celery or Stalks",
+     1.0
+    ],
+    [
+     "Yellow Bell Pepper",
+     1.0
+    ],
+    [
+     "Green Bell Pepper",
+     1.0
+    ],
+    [
+     "Avocado",
+     1.0
+    ],
+    [
+     "Tomatoes",
+     1.0
+    ],
+    [
+     "Mushrooms",
+     1.0
+    ],
+    [
+     "Leafy Greens (Spinach/Mixed Greens)",
+     1.0
+    ]
+   ],
+   "error": null,
+   "tp": 6,
+   "fp": 2,
+   "found": 6,
+   "required": 10,
+   "pairs": [
+    [
+     "Red/Pink Pepper or Tomato",
+     "tomato"
+    ],
+    [
+     "Yellow Bell Pepper",
+     "yellow capsicum"
+    ],
+    [
+     "Green Bell Pepper",
+     "green capsicum"
+    ],
+    [
+     "Avocado",
+     "avocado"
+    ],
+    [
+     "Tomatoes",
+     "cherry tomato"
+    ],
+    [
+     "Mushrooms",
+     "button mushroom"
+    ]
+   ]
+  },
+  {
+   "run": 3,
+   "photo": "RF04",
+   "subset": "test",
+   "latency_ms": 18226,
+   "quality": "blurry",
+   "scene_is_food": true,
+   "items": [],
+   "error": null,
+   "expected_quality": "blurry",
+   "confident_items_on_unclear_photo": 0
+  },
+  {
+   "run": 3,
+   "photo": "RF05",
+   "subset": "test",
+   "latency_ms": 18195,
+   "quality": null,
+   "scene_is_food": null,
+   "items": [],
+   "error": "1 validation error for DetectionResult",
+   "tp": 0,
+   "fp": 0,
+   "found": 0,
+   "required": 7,
+   "pairs": []
+  },
+  {
+   "run": 3,
+   "photo": "RF06",
+   "subset": "test",
+   "latency_ms": 20081,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "Lettuce/Greens",
+     1.0
+    ],
+    [
+     "Tomatoes",
+     1.0
+    ],
+    [
+     "Cauliflower",
+     1.0
+    ],
+    [
+     "Red/Orange Vegetable",
+     0.9
+    ]
+   ],
+   "error": null,
+   "tp": 2,
+   "fp": 2,
+   "found": 2,
+   "required": 7,
+   "pairs": [
+    [
+     "Lettuce/Greens",
+     "lettuce"
+    ],
+    [
+     "Tomatoes",
+     "tomato"
+    ]
+   ]
+  },
+  {
+   "run": 3,
+   "photo": "RF07",
+   "subset": "demo",
+   "latency_ms": 22734,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "Herbs (Green leafy item)",
+     1.0
+    ],
+    [
+     "Pasta",
+     1.0
+    ],
+    [
+     "Meatballs or small baked goods",
+     1.0
+    ],
+    [
+     "Cherry tomatoes",
+     1.0
+    ]
+   ],
+   "error": null,
+   "tp": 1,
+   "fp": 3,
+   "found": 1,
+   "required": 5,
+   "pairs": [
+    [
+     "Herbs (Green leafy item)",
+     "parsley or herbs"
+    ]
+   ]
+  },
+  {
+   "run": 3,
+   "photo": "RF08",
+   "subset": "test",
+   "latency_ms": 37546,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "Sliced fruit (apples and pears)",
+     0.95
+    ]
+   ],
+   "error": null,
+   "tp": 0,
+   "fp": 1,
+   "found": 0,
+   "required": 18,
+   "pairs": []
+  },
+  {
+   "run": 3,
+   "photo": "RF09",
+   "subset": "test",
+   "latency_ms": 24658,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "Packaged sauces/condiments",
+     1.0
+    ],
+    [
+     "Packaged food containers/boxes",
+     0.9
+    ]
+   ],
+   "error": null,
+   "tp": 0,
+   "fp": 2,
+   "found": 0,
+   "required": 11,
+   "pairs": []
+  },
+  {
+   "run": 3,
+   "photo": "RF10",
+   "subset": "test",
+   "latency_ms": 18145,
+   "quality": null,
+   "scene_is_food": null,
+   "items": [],
+   "error": "1 validation error for DetectionResult",
+   "expected_quality": "dark",
+   "confident_items_on_unclear_photo": 0
+  },
+  {
+   "run": 3,
+   "photo": "RF11",
+   "subset": "test",
+   "latency_ms": 49033,
+   "quality": null,
+   "scene_is_food": null,
+   "items": [],
+   "error": "1 validation error for DetectionResult",
+   "tp": 0,
+   "fp": 0,
+   "found": 0,
+   "required": 7,
+   "pairs": []
+  }
+ ],
+ "status": "FAIL",
+ "notes": "photo labels are assistant-written and UNVERIFIED (owner decision 2026-10-17); RESCORED 2026-10-18 from the stored per-call rows after a harness fix: failed calls on clear photos now count as finding nothing (before, they were left out of recall). Raw model outputs unchanged"
+}

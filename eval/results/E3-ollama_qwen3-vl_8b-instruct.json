@@ -1,0 +1,29 @@
+{
+ "id": "E3",
+ "system": "ollama:qwen3-vl:8b-instruct",
+ "dataset": {
+  "name": "mock-data/photos.json",
+  "sha256": "7a6deef108ddcddd1bf80184c331c48fe4735c68a5570bbb3f99a6381ea6fb74",
+  "split": "all-11-photos"
+ },
+ "environment": {
+  "commit": "6e0317e",
+  "dirty": false,
+  "date": "2026-10-17T20:31:28+00:00",
+  "python": "3.12.15",
+  "machine": "arm64",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "packages": {
+   "chromadb": "1.5.9",
+   "rank-bm25": "0.2.2",
+   "pydantic": "2.14.1",
+   "httpx": "0.28.1",
+   "fastapi": "0.143.3"
+  }
+ },
+ "metrics": {},
+ "critical_failures": [],
+ "per_example": [],
+ "status": "NOT RUN",
+ "notes": "owner decision 2026-10-18: skipped to save time; under the memory pressure seen with qwen3-vl:4b (about 1.1 GB swapped, p95 110 s) the larger 8B model was the least likely to pass the no-swap gate"
+}

@@ -85,7 +85,7 @@ def run_candidate(provider, photos, runs, lex, threshold, pause_s=0.0):
                 row["expected_quality"] = UNCLEAR[p["id"]]
                 row["confident_items_on_unclear_photo"] = len(confident)
             else:
-                m = match(confident, labels_from(p["visible"], lex), lex)
+                m = match(confident, labels_from(p["visible"], lex), lex)  # a failed call matches nothing
                 row.update(tp=m.true_positives, fp=m.false_positives, found=m.required_found, required=m.required_total, pairs=m.pairs)
             per.append(row)
             if pause_s:
@@ -97,7 +97,7 @@ def summarise(per, failures, lat, runs):
     def pr(rows):
         tp, fp = sum(r["tp"] for r in rows), sum(r["fp"] for r in rows)
         return proportion(tp, tp + fp), proportion(sum(r["found"] for r in rows), sum(r["required"] for r in rows))
-    clear = [r for r in per if "tp" in r and not r["error"]]
+    clear = [r for r in per if "tp" in r]  # failed calls stay in: they found nothing (fix 2026-10-18)
     prec, rec = pr(clear)
     prec_test, rec_test = pr([r for r in clear if r["subset"] == "test"])
     prec_demo, rec_demo = pr([r for r in clear if r["subset"] == "demo"])

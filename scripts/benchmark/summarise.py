@@ -82,8 +82,30 @@ def text_models():
     return "\n".join(lines) + "\n"
 
 
+def vision():
+    rs = load("E3")
+    lines = ["# E3 Vision results (generated)", "", f"{env_line(rs)} All 11 photos, 3 runs each; text model and guard resident. "
+             "Photo labels are assistant-written and **UNVERIFIED** (owner decision 2026-10-17).", "",
+             "| Candidate | Precision, clear photos (gate ≥ 0.80) | Recall, clear photos (gate ≥ 0.70) | Quality flags | Failures | Latency median / p95 (ms) | Swap-outs | Status |",
+             "|---|---|---|---|---|---|---|---|"]
+    for r in rs:
+        m = r["metrics"]
+        if not m:
+            lines.append(f"| {r['system']} | NOT RUN | | | | | | {r['status']}: {r['notes']} |")
+            continue
+        lines.append(f"| {r['system']} | {kn(m['precision_clear'])} | {kn(m['recall_clear'])} | {kn(m['quality_flag_accuracy'])} | {kn(m['failures'])} | "
+                     f"{m['latency_ms_median']} / {m['latency_ms_p95']} | {m['swapouts_delta']} | {r['status']} |")
+    lines += ["", "Test photos only (demo photos RF01, RF02, RF03, RF07 are development images):", "",
+              "| Candidate | Precision, test photos | Recall, test photos | Precision, demo photos | Recall, demo photos |", "|---|---|---|---|---|"]
+    for r in rs:
+        m = r["metrics"]
+        if m:
+            lines.append(f"| {r['system']} | {kn(m['precision_test_photos'])} | {kn(m['recall_test_photos'])} | {kn(m['precision_demo_photos'])} | {kn(m['recall_demo_photos'])} |")
+    return "\n".join(lines) + "\n"
+
+
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
-    for name, fn in (("retrieval.md", retrieval), ("guard.md", guard), ("text-models.md", text_models)):
+    for name, fn in (("retrieval.md", retrieval), ("guard.md", guard), ("text-models.md", text_models), ("vision.md", vision)):
         (OUT / name).write_text(fn())
         print("wrote", OUT / name)

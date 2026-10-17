@@ -1,0 +1,1879 @@
+{
+ "id": "E3",
+ "system": "ollama:qwen3-vl:4b-instruct",
+ "dataset": {
+  "name": "mock-data/photos.json",
+  "sha256": "7a6deef108ddcddd1bf80184c331c48fe4735c68a5570bbb3f99a6381ea6fb74",
+  "split": "all-11-photos"
+ },
+ "environment": {
+  "commit": "6e0317e",
+  "dirty": false,
+  "date": "2026-10-17T20:31:01+00:00",
+  "python": "3.12.15",
+  "machine": "arm64",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "packages": {
+   "chromadb": "1.5.9",
+   "rank-bm25": "0.2.2",
+   "pydantic": "2.14.1",
+   "httpx": "0.28.1",
+   "fastapi": "0.143.3"
+  }
+ },
+ "metrics": {
+  "precision_clear": {
+   "k": 108,
+   "n": 159,
+   "rate": 0.6792452830188679,
+   "ci95": [
+    0.6032011314877296,
+    0.7468325785489164
+   ]
+  },
+  "recall_clear": {
+   "k": 108,
+   "n": 252,
+   "rate": 0.42857142857142855,
+   "ci95": [
+    0.368994999998691,
+    0.4902928567958441
+   ]
+  },
+  "precision_test_photos": {
+   "k": 51,
+   "n": 66,
+   "rate": 0.7727272727272727,
+   "ci95": [
+    0.6583054453720281,
+    0.8571477049005964
+   ]
+  },
+  "recall_test_photos": {
+   "k": 51,
+   "n": 150,
+   "rate": 0.34,
+   "ci95": [
+    0.2690333497875853,
+    0.4189571285331073
+   ]
+  },
+  "precision_demo_photos": {
+   "k": 57,
+   "n": 93,
+   "rate": 0.6129032258064516,
+   "ci95": [
+    0.5113098262779832,
+    0.7055394471901177
+   ]
+  },
+  "recall_demo_photos": {
+   "k": 57,
+   "n": 102,
+   "rate": 0.5588235294117647,
+   "ci95": [
+    0.46207044759072957,
+    0.65130667444477
+   ]
+  },
+  "per_run": {
+   "1": {
+    "precision": 0.6792452830188679,
+    "recall": 0.42857142857142855
+   },
+   "2": {
+    "precision": 0.6792452830188679,
+    "recall": 0.42857142857142855
+   },
+   "3": {
+    "precision": 0.6792452830188679,
+    "recall": 0.42857142857142855
+   }
+  },
+  "quality_flag_accuracy": {
+   "k": 24,
+   "n": 33,
+   "rate": 0.7272727272727273,
+   "ci95": [
+    0.5578244085793955,
+    0.8493255918679357
+   ]
+  },
+  "confident_items_on_unclear_photos": 30,
+  "failures": {
+   "k": 6,
+   "n": 33,
+   "rate": 0.18181818181818182,
+   "ci95": [
+    0.08610768158724216,
+    0.34388231778649414
+   ]
+  },
+  "latency_ms_median": 7075,
+  "latency_ms_p95": 109823,
+  "num_ctx": 4096,
+  "served_model": "qwen3-vl:4b-instruct",
+  "cold_load_ms": 14239,
+  "swapouts_delta": 71575,
+  "ollama_ps": "NAME                    ID              SIZE      PROCESSOR    CONTEXT    RUNNER      UNTIL               \nllama-guard3:1b         494147e06bf9    1.7 GB    100% GPU     16384      llamacpp    46 minutes from now    \nllama3.2:3b             a80c4f17acd5    2.6 GB    100% GPU     4096       llamacpp    46 minutes from now    \nqwen3-vl:4b-instruct    ee4b975b58c1    3.7 GB    100% GPU     4096       llamacpp    9 minutes from now",
+  "resident_models": [
+   "llama3.2:3b",
+   "llama-guard3:1b"
+  ],
+  "confidence_threshold": 0.6,
+  "gates": {
+   "precision": {
+    "status": "FAIL",
+    "separable": true,
+    "rate": 0.6792452830188679,
+    "ci95": [
+     0.6032011314877296,
+     0.7468325785489164
+    ],
+    "min": 0.8
+   },
+   "recall": {
+    "status": "FAIL",
+    "separable": true,
+    "rate": 0.42857142857142855,
+    "ci95": [
+     0.368994999998691,
+     0.4902928567958441
+    ],
+    "min": 0.7
+   },
+   "latency_p95": {
+    "status": "FAIL"
+   },
+   "no_failures": {
+    "status": "FAIL"
+   },
+   "no_swap": {
+    "status": "FAIL"
+   },
+   "gpu_only": {
+    "status": "PASS"
+   },
+   "text_model_resident": {
+    "status": "PASS",
+    "evicted": []
+   }
+  },
+  "owner_recall_target_0_80_met": false
+ },
+ "critical_failures": [],
+ "per_example": [
+  {
+   "run": 1,
+   "photo": "RF01",
+   "subset": "demo",
+   "latency_ms": 6292,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "orange",
+     0.95
+    ],
+    [
+     "carrot",
+     0.85
+    ],
+    [
+     "peanuts",
+     0.9
+    ],
+    [
+     "oats",
+     0.8
+    ],
+    [
+     "bread",
+     0.75
+    ],
+    [
+     "baked goods",
+     0.7
+    ]
+   ],
+   "error": null,
+   "tp": 3,
+   "fp": 3,
+   "found": 3,
+   "required": 7,
+   "pairs": [
+    [
+     "orange",
+     "orange"
+    ],
+    [
+     "peanuts",
+     "peanuts"
+    ],
+    [
+     "oats",
+     "oats"
+    ]
+   ]
+  },
+  {
+   "run": 1,
+   "photo": "RF02",
+   "subset": "demo",
+   "latency_ms": 8524,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "peaches",
+     0.95
+    ],
+    [
+     "grapes",
+     0.95
+    ],
+    [
+     "blueberries",
+     0.95
+    ],
+    [
+     "peppers",
+     0.95
+    ],
+    [
+     "eggs",
+     0.95
+    ],
+    [
+     "juice",
+     0.95
+    ],
+    [
+     "cheese",
+     0.95
+    ],
+    [
+     "herbs",
+     0.95
+    ],
+    [
+     "milk",
+     0.95
+    ],
+    [
+     "yogurt",
+     0.95
+    ]
+   ],
+   "error": null,
+   "tp": 8,
+   "fp": 2,
+   "found": 8,
+   "required": 12,
+   "pairs": [
+    [
+     "peaches",
+     "peach"
+    ],
+    [
+     "grapes",
+     "grapes"
+    ],
+    [
+     "blueberries",
+     "blueberries"
+    ],
+    [
+     "eggs",
+     "egg"
+    ],
+    [
+     "juice",
+     "apple juice"
+    ],
+    [
+     "cheese",
+     "cheese"
+    ],
+    [
+     "milk",
+     "milk"
+    ],
+    [
+     "yogurt",
+     "curd or yoghurt jars"
+    ]
+   ]
+  },
+  {
+   "run": 1,
+   "photo": "RF03",
+   "subset": "demo",
+   "latency_ms": 7488,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "pepper",
+     0.95
+    ],
+    [
+     "tomato",
+     0.95
+    ],
+    [
+     "mushroom",
+     0.95
+    ],
+    [
+     "cucumber",
+     0.95
+    ],
+    [
+     "avocado",
+     0.95
+    ],
+    [
+     "onion",
+     0.95
+    ],
+    [
+     "celery",
+     0.95
+    ],
+    [
+     "leafy greens",
+     0.95
+    ]
+   ],
+   "error": null,
+   "tp": 5,
+   "fp": 3,
+   "found": 5,
+   "required": 10,
+   "pairs": [
+    [
+     "tomato",
+     "tomato"
+    ],
+    [
+     "mushroom",
+     "button mushroom"
+    ],
+    [
+     "cucumber",
+     "zucchini or cucumber"
+    ],
+    [
+     "avocado",
+     "avocado"
+    ],
+    [
+     "onion",
+     "spring onion"
+    ]
+   ]
+  },
+  {
+   "run": 1,
+   "photo": "RF04",
+   "subset": "test",
+   "latency_ms": 3233,
+   "quality": "blurry",
+   "scene_is_food": false,
+   "items": [],
+   "error": null,
+   "expected_quality": "blurry",
+   "confident_items_on_unclear_photo": 0
+  },
+  {
+   "run": 1,
+   "photo": "RF05",
+   "subset": "test",
+   "latency_ms": 4446,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "carrot",
+     0.95
+    ],
+    [
+     "tomato",
+     0.95
+    ],
+    [
+     "potato",
+     0.95
+    ],
+    [
+     "radish",
+     0.95
+    ],
+    [
+     "cucumber",
+     0.95
+    ],
+    [
+     "cherry",
+     0.95
+    ],
+    [
+     "green leafy vegetable",
+     0.85
+    ]
+   ],
+   "error": null,
+   "tp": 6,
+   "fp": 1,
+   "found": 6,
+   "required": 7,
+   "pairs": [
+    [
+     "carrot",
+     "carrot"
+    ],
+    [
+     "tomato",
+     "tomato"
+    ],
+    [
+     "potato",
+     "potato"
+    ],
+    [
+     "radish",
+     "radish"
+    ],
+    [
+     "cucumber",
+     "cucumber"
+    ],
+    [
+     "cherry",
+     "cherries or berries"
+    ]
+   ]
+  },
+  {
+   "run": 1,
+   "photo": "RF06",
+   "subset": "test",
+   "latency_ms": 6280,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "mushrooms",
+     0.95
+    ],
+    [
+     "lettuce",
+     0.95
+    ],
+    [
+     "pepper",
+     0.95
+    ],
+    [
+     "zucchini",
+     0.95
+    ],
+    [
+     "eggplant",
+     0.85
+    ],
+    [
+     "tomato",
+     0.85
+    ]
+   ],
+   "error": null,
+   "tp": 5,
+   "fp": 1,
+   "found": 5,
+   "required": 7,
+   "pairs": [
+    [
+     "mushrooms",
+     "button mushroom"
+    ],
+    [
+     "lettuce",
+     "lettuce"
+    ],
+    [
+     "zucchini",
+     "cucumber or zucchini"
+    ],
+    [
+     "eggplant",
+     "brinjal"
+    ],
+    [
+     "tomato",
+     "tomato"
+    ]
+   ]
+  },
+  {
+   "run": 1,
+   "photo": "RF07",
+   "subset": "demo",
+   "latency_ms": 7075,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "eggs",
+     0.95
+    ],
+    [
+     "flour",
+     0.95
+    ],
+    [
+     "cherry",
+     0.95
+    ],
+    [
+     "whipped cream",
+     0.95
+    ],
+    [
+     "muffin",
+     0.95
+    ],
+    [
+     "butter",
+     0.85
+    ],
+    [
+     "sugar",
+     0.85
+    ]
+   ],
+   "error": null,
+   "tp": 3,
+   "fp": 4,
+   "found": 3,
+   "required": 5,
+   "pairs": [
+    [
+     "eggs",
+     "egg"
+    ],
+    [
+     "flour",
+     "flour"
+    ],
+    [
+     "muffin",
+     "muffins (cooked)"
+    ]
+   ]
+  },
+  {
+   "run": 1,
+   "photo": "RF08",
+   "subset": "test",
+   "latency_ms": 77334,
+   "quality": null,
+   "scene_is_food": null,
+   "items": [],
+   "error": "Expecting ',' delimiter: line 527 column 22 (char 8298)",
+   "tp": 0,
+   "fp": 0,
+   "found": 0,
+   "required": 18,
+   "pairs": []
+  },
+  {
+   "run": 1,
+   "photo": "RF09",
+   "subset": "test",
+   "latency_ms": 92717,
+   "quality": null,
+   "scene_is_food": null,
+   "items": [],
+   "error": "Unterminated string starting at: line 534 column 7 (char 8239)",
+   "tp": 0,
+   "fp": 0,
+   "found": 0,
+   "required": 11,
+   "pairs": []
+  },
+  {
+   "run": 1,
+   "photo": "RF10",
+   "subset": "test",
+   "latency_ms": 11121,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "peppers",
+     0.95
+    ],
+    [
+     "apples",
+     0.85
+    ],
+    [
+     "oranges",
+     0.8
+    ],
+    [
+     "grapes",
+     0.75
+    ],
+    [
+     "tomatoes",
+     0.8
+    ],
+    [
+     "milk",
+     0.7
+    ],
+    [
+     "juice",
+     0.65
+    ],
+    [
+     "bottled water",
+     0.6
+    ],
+    [
+     "vegetables",
+     0.7
+    ],
+    [
+     "fruit",
+     0.65
+    ]
+   ],
+   "error": null,
+   "expected_quality": "dark",
+   "confident_items_on_unclear_photo": 10
+  },
+  {
+   "run": 1,
+   "photo": "RF11",
+   "subset": "test",
+   "latency_ms": 10822,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "onion",
+     0.95
+    ],
+    [
+     "meat",
+     0.95
+    ],
+    [
+     "pepper",
+     0.85
+    ],
+    [
+     "oil",
+     0.85
+    ],
+    [
+     "vinegar",
+     0.85
+    ],
+    [
+     "egg",
+     0.85
+    ],
+    [
+     "salt",
+     0.85
+    ],
+    [
+     "garlic",
+     0.85
+    ],
+    [
+     "herbs",
+     0.85
+    ]
+   ],
+   "error": null,
+   "tp": 6,
+   "fp": 3,
+   "found": 6,
+   "required": 7,
+   "pairs": [
+    [
+     "onion",
+     "red onion"
+    ],
+    [
+     "meat",
+     "raw minced meat"
+    ],
+    [
+     "pepper",
+     "pepper grinder"
+    ],
+    [
+     "oil",
+     "cooking oil"
+    ],
+    [
+     "vinegar",
+     "vinegar or sauce bottles"
+    ],
+    [
+     "egg",
+     "egg carton"
+    ]
+   ]
+  },
+  {
+   "run": 2,
+   "photo": "RF01",
+   "subset": "demo",
+   "latency_ms": 5044,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "orange",
+     0.95
+    ],
+    [
+     "carrot",
+     0.85
+    ],
+    [
+     "peanuts",
+     0.9
+    ],
+    [
+     "oats",
+     0.8
+    ],
+    [
+     "bread",
+     0.75
+    ],
+    [
+     "baked goods",
+     0.7
+    ]
+   ],
+   "error": null,
+   "tp": 3,
+   "fp": 3,
+   "found": 3,
+   "required": 7,
+   "pairs": [
+    [
+     "orange",
+     "orange"
+    ],
+    [
+     "peanuts",
+     "peanuts"
+    ],
+    [
+     "oats",
+     "oats"
+    ]
+   ]
+  },
+  {
+   "run": 2,
+   "photo": "RF02",
+   "subset": "demo",
+   "latency_ms": 7981,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "peaches",
+     0.95
+    ],
+    [
+     "grapes",
+     0.95
+    ],
+    [
+     "blueberries",
+     0.95
+    ],
+    [
+     "peppers",
+     0.95
+    ],
+    [
+     "eggs",
+     0.95
+    ],
+    [
+     "juice",
+     0.95
+    ],
+    [
+     "cheese",
+     0.95
+    ],
+    [
+     "herbs",
+     0.95
+    ],
+    [
+     "milk",
+     0.95
+    ],
+    [
+     "yogurt",
+     0.95
+    ]
+   ],
+   "error": null,
+   "tp": 8,
+   "fp": 2,
+   "found": 8,
+   "required": 12,
+   "pairs": [
+    [
+     "peaches",
+     "peach"
+    ],
+    [
+     "grapes",
+     "grapes"
+    ],
+    [
+     "blueberries",
+     "blueberries"
+    ],
+    [
+     "eggs",
+     "egg"
+    ],
+    [
+     "juice",
+     "apple juice"
+    ],
+    [
+     "cheese",
+     "cheese"
+    ],
+    [
+     "milk",
+     "milk"
+    ],
+    [
+     "yogurt",
+     "curd or yoghurt jars"
+    ]
+   ]
+  },
+  {
+   "run": 2,
+   "photo": "RF03",
+   "subset": "demo",
+   "latency_ms": 6713,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "pepper",
+     0.95
+    ],
+    [
+     "tomato",
+     0.95
+    ],
+    [
+     "mushroom",
+     0.95
+    ],
+    [
+     "cucumber",
+     0.95
+    ],
+    [
+     "avocado",
+     0.95
+    ],
+    [
+     "onion",
+     0.95
+    ],
+    [
+     "celery",
+     0.95
+    ],
+    [
+     "leafy greens",
+     0.95
+    ]
+   ],
+   "error": null,
+   "tp": 5,
+   "fp": 3,
+   "found": 5,
+   "required": 10,
+   "pairs": [
+    [
+     "tomato",
+     "tomato"
+    ],
+    [
+     "mushroom",
+     "button mushroom"
+    ],
+    [
+     "cucumber",
+     "zucchini or cucumber"
+    ],
+    [
+     "avocado",
+     "avocado"
+    ],
+    [
+     "onion",
+     "spring onion"
+    ]
+   ]
+  },
+  {
+   "run": 2,
+   "photo": "RF04",
+   "subset": "test",
+   "latency_ms": 775,
+   "quality": "blurry",
+   "scene_is_food": false,
+   "items": [],
+   "error": null,
+   "expected_quality": "blurry",
+   "confident_items_on_unclear_photo": 0
+  },
+  {
+   "run": 2,
+   "photo": "RF05",
+   "subset": "test",
+   "latency_ms": 6266,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "carrot",
+     0.95
+    ],
+    [
+     "tomato",
+     0.95
+    ],
+    [
+     "potato",
+     0.95
+    ],
+    [
+     "radish",
+     0.95
+    ],
+    [
+     "cucumber",
+     0.95
+    ],
+    [
+     "cherry",
+     0.95
+    ],
+    [
+     "green leafy vegetable",
+     0.85
+    ]
+   ],
+   "error": null,
+   "tp": 6,
+   "fp": 1,
+   "found": 6,
+   "required": 7,
+   "pairs": [
+    [
+     "carrot",
+     "carrot"
+    ],
+    [
+     "tomato",
+     "tomato"
+    ],
+    [
+     "potato",
+     "potato"
+    ],
+    [
+     "radish",
+     "radish"
+    ],
+    [
+     "cucumber",
+     "cucumber"
+    ],
+    [
+     "cherry",
+     "cherries or berries"
+    ]
+   ]
+  },
+  {
+   "run": 2,
+   "photo": "RF06",
+   "subset": "test",
+   "latency_ms": 5335,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "mushrooms",
+     0.95
+    ],
+    [
+     "lettuce",
+     0.95
+    ],
+    [
+     "pepper",
+     0.95
+    ],
+    [
+     "zucchini",
+     0.95
+    ],
+    [
+     "eggplant",
+     0.85
+    ],
+    [
+     "tomato",
+     0.85
+    ]
+   ],
+   "error": null,
+   "tp": 5,
+   "fp": 1,
+   "found": 5,
+   "required": 7,
+   "pairs": [
+    [
+     "mushrooms",
+     "button mushroom"
+    ],
+    [
+     "lettuce",
+     "lettuce"
+    ],
+    [
+     "zucchini",
+     "cucumber or zucchini"
+    ],
+    [
+     "eggplant",
+     "brinjal"
+    ],
+    [
+     "tomato",
+     "tomato"
+    ]
+   ]
+  },
+  {
+   "run": 2,
+   "photo": "RF07",
+   "subset": "demo",
+   "latency_ms": 5814,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "eggs",
+     0.95
+    ],
+    [
+     "flour",
+     0.95
+    ],
+    [
+     "cherry",
+     0.95
+    ],
+    [
+     "whipped cream",
+     0.95
+    ],
+    [
+     "muffin",
+     0.95
+    ],
+    [
+     "butter",
+     0.85
+    ],
+    [
+     "sugar",
+     0.85
+    ]
+   ],
+   "error": null,
+   "tp": 3,
+   "fp": 4,
+   "found": 3,
+   "required": 5,
+   "pairs": [
+    [
+     "eggs",
+     "egg"
+    ],
+    [
+     "flour",
+     "flour"
+    ],
+    [
+     "muffin",
+     "muffins (cooked)"
+    ]
+   ]
+  },
+  {
+   "run": 2,
+   "photo": "RF08",
+   "subset": "test",
+   "latency_ms": 102527,
+   "quality": null,
+   "scene_is_food": null,
+   "items": [],
+   "error": "Expecting ',' delimiter: line 527 column 22 (char 8298)",
+   "tp": 0,
+   "fp": 0,
+   "found": 0,
+   "required": 18,
+   "pairs": []
+  },
+  {
+   "run": 2,
+   "photo": "RF09",
+   "subset": "test",
+   "latency_ms": 107324,
+   "quality": null,
+   "scene_is_food": null,
+   "items": [],
+   "error": "Unterminated string starting at: line 534 column 7 (char 8239)",
+   "tp": 0,
+   "fp": 0,
+   "found": 0,
+   "required": 11,
+   "pairs": []
+  },
+  {
+   "run": 2,
+   "photo": "RF10",
+   "subset": "test",
+   "latency_ms": 9215,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "peppers",
+     0.95
+    ],
+    [
+     "apples",
+     0.85
+    ],
+    [
+     "oranges",
+     0.8
+    ],
+    [
+     "grapes",
+     0.75
+    ],
+    [
+     "tomatoes",
+     0.8
+    ],
+    [
+     "milk",
+     0.7
+    ],
+    [
+     "juice",
+     0.65
+    ],
+    [
+     "bottled water",
+     0.6
+    ],
+    [
+     "vegetables",
+     0.7
+    ],
+    [
+     "fruit",
+     0.65
+    ]
+   ],
+   "error": null,
+   "expected_quality": "dark",
+   "confident_items_on_unclear_photo": 10
+  },
+  {
+   "run": 2,
+   "photo": "RF11",
+   "subset": "test",
+   "latency_ms": 7921,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "onion",
+     0.95
+    ],
+    [
+     "meat",
+     0.95
+    ],
+    [
+     "pepper",
+     0.85
+    ],
+    [
+     "oil",
+     0.85
+    ],
+    [
+     "vinegar",
+     0.85
+    ],
+    [
+     "egg",
+     0.85
+    ],
+    [
+     "salt",
+     0.85
+    ],
+    [
+     "garlic",
+     0.85
+    ],
+    [
+     "herbs",
+     0.85
+    ]
+   ],
+   "error": null,
+   "tp": 6,
+   "fp": 3,
+   "found": 6,
+   "required": 7,
+   "pairs": [
+    [
+     "onion",
+     "red onion"
+    ],
+    [
+     "meat",
+     "raw minced meat"
+    ],
+    [
+     "pepper",
+     "pepper grinder"
+    ],
+    [
+     "oil",
+     "cooking oil"
+    ],
+    [
+     "vinegar",
+     "vinegar or sauce bottles"
+    ],
+    [
+     "egg",
+     "egg carton"
+    ]
+   ]
+  },
+  {
+   "run": 3,
+   "photo": "RF01",
+   "subset": "demo",
+   "latency_ms": 5409,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "orange",
+     0.95
+    ],
+    [
+     "carrot",
+     0.85
+    ],
+    [
+     "peanuts",
+     0.9
+    ],
+    [
+     "oats",
+     0.8
+    ],
+    [
+     "bread",
+     0.75
+    ],
+    [
+     "baked goods",
+     0.7
+    ]
+   ],
+   "error": null,
+   "tp": 3,
+   "fp": 3,
+   "found": 3,
+   "required": 7,
+   "pairs": [
+    [
+     "orange",
+     "orange"
+    ],
+    [
+     "peanuts",
+     "peanuts"
+    ],
+    [
+     "oats",
+     "oats"
+    ]
+   ]
+  },
+  {
+   "run": 3,
+   "photo": "RF02",
+   "subset": "demo",
+   "latency_ms": 8442,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "peaches",
+     0.95
+    ],
+    [
+     "grapes",
+     0.95
+    ],
+    [
+     "blueberries",
+     0.95
+    ],
+    [
+     "peppers",
+     0.95
+    ],
+    [
+     "eggs",
+     0.95
+    ],
+    [
+     "juice",
+     0.95
+    ],
+    [
+     "cheese",
+     0.95
+    ],
+    [
+     "herbs",
+     0.95
+    ],
+    [
+     "milk",
+     0.95
+    ],
+    [
+     "yogurt",
+     0.95
+    ]
+   ],
+   "error": null,
+   "tp": 8,
+   "fp": 2,
+   "found": 8,
+   "required": 12,
+   "pairs": [
+    [
+     "peaches",
+     "peach"
+    ],
+    [
+     "grapes",
+     "grapes"
+    ],
+    [
+     "blueberries",
+     "blueberries"
+    ],
+    [
+     "eggs",
+     "egg"
+    ],
+    [
+     "juice",
+     "apple juice"
+    ],
+    [
+     "cheese",
+     "cheese"
+    ],
+    [
+     "milk",
+     "milk"
+    ],
+    [
+     "yogurt",
+     "curd or yoghurt jars"
+    ]
+   ]
+  },
+  {
+   "run": 3,
+   "photo": "RF03",
+   "subset": "demo",
+   "latency_ms": 6933,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "pepper",
+     0.95
+    ],
+    [
+     "tomato",
+     0.95
+    ],
+    [
+     "mushroom",
+     0.95
+    ],
+    [
+     "cucumber",
+     0.95
+    ],
+    [
+     "avocado",
+     0.95
+    ],
+    [
+     "onion",
+     0.95
+    ],
+    [
+     "celery",
+     0.95
+    ],
+    [
+     "leafy greens",
+     0.95
+    ]
+   ],
+   "error": null,
+   "tp": 5,
+   "fp": 3,
+   "found": 5,
+   "required": 10,
+   "pairs": [
+    [
+     "tomato",
+     "tomato"
+    ],
+    [
+     "mushroom",
+     "button mushroom"
+    ],
+    [
+     "cucumber",
+     "zucchini or cucumber"
+    ],
+    [
+     "avocado",
+     "avocado"
+    ],
+    [
+     "onion",
+     "spring onion"
+    ]
+   ]
+  },
+  {
+   "run": 3,
+   "photo": "RF04",
+   "subset": "test",
+   "latency_ms": 822,
+   "quality": "blurry",
+   "scene_is_food": false,
+   "items": [],
+   "error": null,
+   "expected_quality": "blurry",
+   "confident_items_on_unclear_photo": 0
+  },
+  {
+   "run": 3,
+   "photo": "RF05",
+   "subset": "test",
+   "latency_ms": 6238,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "carrot",
+     0.95
+    ],
+    [
+     "tomato",
+     0.95
+    ],
+    [
+     "potato",
+     0.95
+    ],
+    [
+     "radish",
+     0.95
+    ],
+    [
+     "cucumber",
+     0.95
+    ],
+    [
+     "cherry",
+     0.95
+    ],
+    [
+     "green leafy vegetable",
+     0.85
+    ]
+   ],
+   "error": null,
+   "tp": 6,
+   "fp": 1,
+   "found": 6,
+   "required": 7,
+   "pairs": [
+    [
+     "carrot",
+     "carrot"
+    ],
+    [
+     "tomato",
+     "tomato"
+    ],
+    [
+     "potato",
+     "potato"
+    ],
+    [
+     "radish",
+     "radish"
+    ],
+    [
+     "cucumber",
+     "cucumber"
+    ],
+    [
+     "cherry",
+     "cherries or berries"
+    ]
+   ]
+  },
+  {
+   "run": 3,
+   "photo": "RF06",
+   "subset": "test",
+   "latency_ms": 5953,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "mushrooms",
+     0.95
+    ],
+    [
+     "lettuce",
+     0.95
+    ],
+    [
+     "pepper",
+     0.95
+    ],
+    [
+     "zucchini",
+     0.95
+    ],
+    [
+     "eggplant",
+     0.85
+    ],
+    [
+     "tomato",
+     0.85
+    ]
+   ],
+   "error": null,
+   "tp": 5,
+   "fp": 1,
+   "found": 5,
+   "required": 7,
+   "pairs": [
+    [
+     "mushrooms",
+     "button mushroom"
+    ],
+    [
+     "lettuce",
+     "lettuce"
+    ],
+    [
+     "zucchini",
+     "cucumber or zucchini"
+    ],
+    [
+     "eggplant",
+     "brinjal"
+    ],
+    [
+     "tomato",
+     "tomato"
+    ]
+   ]
+  },
+  {
+   "run": 3,
+   "photo": "RF07",
+   "subset": "demo",
+   "latency_ms": 6554,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "eggs",
+     0.95
+    ],
+    [
+     "flour",
+     0.95
+    ],
+    [
+     "cherry",
+     0.95
+    ],
+    [
+     "whipped cream",
+     0.95
+    ],
+    [
+     "muffin",
+     0.95
+    ],
+    [
+     "butter",
+     0.85
+    ],
+    [
+     "sugar",
+     0.85
+    ]
+   ],
+   "error": null,
+   "tp": 3,
+   "fp": 4,
+   "found": 3,
+   "required": 5,
+   "pairs": [
+    [
+     "eggs",
+     "egg"
+    ],
+    [
+     "flour",
+     "flour"
+    ],
+    [
+     "muffin",
+     "muffins (cooked)"
+    ]
+   ]
+  },
+  {
+   "run": 3,
+   "photo": "RF08",
+   "subset": "test",
+   "latency_ms": 109823,
+   "quality": null,
+   "scene_is_food": null,
+   "items": [],
+   "error": "Expecting ',' delimiter: line 527 column 22 (char 8298)",
+   "tp": 0,
+   "fp": 0,
+   "found": 0,
+   "required": 18,
+   "pairs": []
+  },
+  {
+   "run": 3,
+   "photo": "RF09",
+   "subset": "test",
+   "latency_ms": 113269,
+   "quality": null,
+   "scene_is_food": null,
+   "items": [],
+   "error": "Unterminated string starting at: line 534 column 7 (char 8239)",
+   "tp": 0,
+   "fp": 0,
+   "found": 0,
+   "required": 11,
+   "pairs": []
+  },
+  {
+   "run": 3,
+   "photo": "RF10",
+   "subset": "test",
+   "latency_ms": 10095,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "peppers",
+     0.95
+    ],
+    [
+     "apples",
+     0.85
+    ],
+    [
+     "oranges",
+     0.8
+    ],
+    [
+     "grapes",
+     0.75
+    ],
+    [
+     "tomatoes",
+     0.8
+    ],
+    [
+     "milk",
+     0.7
+    ],
+    [
+     "juice",
+     0.65
+    ],
+    [
+     "bottled water",
+     0.6
+    ],
+    [
+     "vegetables",
+     0.7
+    ],
+    [
+     "fruit",
+     0.65
+    ]
+   ],
+   "error": null,
+   "expected_quality": "dark",
+   "confident_items_on_unclear_photo": 10
+  },
+  {
+   "run": 3,
+   "photo": "RF11",
+   "subset": "test",
+   "latency_ms": 8493,
+   "quality": "ok",
+   "scene_is_food": true,
+   "items": [
+    [
+     "onion",
+     0.95
+    ],
+    [
+     "meat",
+     0.95
+    ],
+    [
+     "pepper",
+     0.85
+    ],
+    [
+     "oil",
+     0.85
+    ],
+    [
+     "vinegar",
+     0.85
+    ],
+    [
+     "egg",
+     0.85
+    ],
+    [
+     "salt",
+     0.85
+    ],
+    [
+     "garlic",
+     0.85
+    ],
+    [
+     "herbs",
+     0.85
+    ]
+   ],
+   "error": null,
+   "tp": 6,
+   "fp": 3,
+   "found": 6,
+   "required": 7,
+   "pairs": [
+    [
+     "onion",
+     "red onion"
+    ],
+    [
+     "meat",
+     "raw minced meat"
+    ],
+    [
+     "pepper",
+     "pepper grinder"
+    ],
+    [
+     "oil",
+     "cooking oil"
+    ],
+    [
+     "vinegar",
+     "vinegar or sauce bottles"
+    ],
+    [
+     "egg",
+     "egg carton"
+    ]
+   ]
+  }
+ ],
+ "status": "FAIL",
+ "notes": "photo labels are assistant-written and UNVERIFIED (owner decision 2026-10-17); RESCORED 2026-10-18 from the stored per-call rows after a harness fix: failed calls on clear photos now count as finding nothing (before, they were left out of recall). Raw model outputs unchanged"
+}
