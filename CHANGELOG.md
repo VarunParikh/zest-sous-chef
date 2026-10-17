@@ -19,3 +19,4 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 
 ### Docs
 - Logged C19 (`config.yaml` and `eval/thresholds.yaml` need a YAML parser that is not on the approved list) and added a block 1.1 note to C15 (vision default and health-page wording follow ADR-003 v2).
+- Logged C20 (dish schema columns; resolved by the owner's choice to add columns), C21 (category and `LeverSet` vocabulary mismatches; doc-sync pending) and C22 (nine curated pairings whose `dish_b` is not a companion course; owner decision).
