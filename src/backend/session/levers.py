@@ -5,6 +5,9 @@ Field nesting follows `mock-data/personas.json` (`business.price_cap_inr`).
 """
 from __future__ import annotations
 
+import hashlib
+import json
+from collections.abc import Mapping
 from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
@@ -89,3 +92,20 @@ def merge_levers(defaults: dict, overrides: dict) -> dict:
         else:
             out[k] = v
     return out
+
+
+def snapshot_hash(levers: LeverSet) -> str:
+    """Short, stable hash of a lever set (API Spec §4.1). Specialised-diet order does not matter."""
+    data = levers.model_dump(mode="json")
+    data["specialized_diets"] = sorted(data["specialized_diets"])
+    canon = json.dumps(data, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(canon.encode()).hexdigest()[:12]
+
+
+def persona_label(levers: LeverSet, presets: Mapping[str, LeverSet]) -> str:
+    """The preset name when the levers equal a preset, else "Custom" (API Spec §10 item 3).
+
+    When several presets are equal (P7 and P9 both use the defaults), the first in `personas.json` wins.
+    """
+    h = snapshot_hash(levers)
+    return next((name for name, preset in presets.items() if snapshot_hash(preset) == h), "Custom")

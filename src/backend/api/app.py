@@ -10,8 +10,12 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, JSONResponse
 
+from backend.api import errors
 from backend.api.health import check_health, render_page
+from backend.api.sessions import load_presets, router as sessions_router
 from backend.config import Settings, load_settings
+from backend.session.store import SessionStore
+from backend.trace import Tracer
 
 LOCALHOST_ORIGINS = r"^https?://(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$"
 log = logging.getLogger("zest")
@@ -30,6 +34,9 @@ def create_app(settings: Settings | None = None, http_transport: httpx.AsyncBase
     app = FastAPI(title="Zest AI Sous-Chef (mock data)", version="0.0.1", lifespan=lifespan)
     app.state.settings = settings
     app.state.http = http
+    app.state.tracer = Tracer(settings.resolve(settings.trace_path))
+    app.state.presets = load_presets()
+    app.state.sessions = SessionStore(app.state.tracer, app.state.presets)
 
     @app.middleware("http")
     async def request_id(request: Request, call_next):
@@ -39,15 +46,15 @@ def create_app(settings: Settings | None = None, http_transport: httpx.AsyncBase
             response = await call_next(request)
         except Exception:  # no stack traces or internals in responses (API Spec §7)
             log.exception("unhandled error, request_id=%s", rid)
-            response = JSONResponse(
-                status_code=500,
-                content={"error": {"code": "INTERNAL", "message": "Something went wrong.", "request_id": rid}},
-            )
+            response = errors.internal_error(rid)
         response.headers["X-Request-Id"] = rid
         return response
 
     # Added after the request-id middleware so CORS headers also wrap error responses.
     app.add_middleware(CORSMiddleware, allow_origin_regex=LOCALHOST_ORIGINS, allow_methods=["*"], allow_headers=["*"])
+
+    errors.install(app)
+    app.include_router(sessions_router)
 
     @app.get("/api/v1/health")
     async def health(request: Request) -> dict:
