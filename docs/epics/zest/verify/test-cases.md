@@ -1,6 +1,6 @@
 # Test Cases (Given / When / Then)
 
-Status: APPROVED format; content mirrors Test Plan v0.1 (owner approved 2026-10-17) · Date: 2026-10-17
+Status: **Draft (amended 2026-10-17): awaiting owner re-approval**; content mirrors Test Plan v0.2 (v0.1 was approved by the owner 2026-10-17; T-047 to T-049 are new) · Date: 2026-10-17
 **Status of every test: NOT RUN.** No code exists. This file expresses each test in the plan's catalogue (`test-plan.md` section 4) as Given / When / Then without changing its ID, coverage or priority. If this file and `test-plan.md` ever disagree on what a test proves, log it in `docs/core/open-conflicts.md`. Tests assert structure (message IDs, slot values, SKU IDs, quantities, totals), not wording (NFR-11). "Fake" doubles are those in test-plan section 3.
 
 ## 4.1 Session and levers
@@ -56,6 +56,9 @@ Status: APPROVED format; content mirrors Test Plan v0.1 (owner approved 2026-10-
 | T-044 | An existing index | The catalogue hash or the embedder changes | The index is rebuilt | NFR-12 | P1 |
 | T-045 | The embedding text generator | Embedding text is produced for variants | No price or stock token appears | V11 | P1 |
 | T-046 | A completed retrieval | The inspector payload is requested | It lists lexical rank, vector rank, fused rank, eligibility and final score | FR-115, AC-41 | P1 |
+| T-047 | A curated list and a vector list for one cart dish, with a hand-computed expected result (curated weight 2, vector weight 1, k = 60) | Weighted reciprocal rank fusion runs for add-ons | The merged order and scores match the hand calculation; equal scores break by curated strength, then ID; a dish in one list scores from that list alone | FR-118 | P0 |
+| T-048 | A cart dish whose vector neighbours include a main course and a dish that breaks the active persona, plus eligible side, beverage and dessert neighbours | Add-on candidates are built, fused and filtered | Only side, beverage and dessert vector candidates enter the fusion; the persona-breaking candidate is removed after fusion and `guardrail_filtered` is traced | FR-118, 119, AC-44 | P0 |
+| T-049 | A cart dish with no curated pair, then the same dish with the vector store disabled | Add-on suggestions are requested in each case | First, at least one eligible companion-course add-on is offered and none is added without a tap; then the curated list alone is used (or none, if it has no pair) and `fallback_used` is traced with no error shown | FR-118, 117, AC-43, AC-45 | P0 |
 
 ## 4.5 Cart and checkout
 | ID | Given | When | Then | Covers | Pri |

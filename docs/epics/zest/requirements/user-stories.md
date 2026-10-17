@@ -1,6 +1,6 @@
 # User Stories and Traceability Matrix: Zest AI Sous-Chef
 
-Status: APPROVED v0.2 (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, BRD, Strategy
+Status: **v0.3, Draft (amended 2026-10-17): awaiting owner re-approval** (v0.2 was approved by the owner 2026-10-17; v0.3 changes US-19 only, to sync with ADR-004 v2 and PRD v0.4) · Date: 2026-10-17 · Source: PRD v0.4, BRD, Strategy
 Sizing: S = under 1 day, M = 1 to 2 days, L = 2 to 3 days of build effort. The playbook allows 1 to 5 days; the 3-day deadline means each story here is kept to 3 days or less and the parallel work is stated in the Strategy plan. Priority follows PRD (M/S/C). Every story states acceptance criteria (AC) as Given/When/Then, and test IDs are assigned in the Test Plan (document 19).
 
 Format: **US-xx** As a *persona*, I want *capability*, so that *benefit*. Covers: FR/AC.
@@ -86,8 +86,10 @@ Format: **US-xx** As a *persona*, I want *capability*, so that *benefit*. Covers
 **US-18** As a user, I want a "Why this?" view, so that I understand each suggestion. *M · M* Covers FR-63, 104; AC-20.
 - Given a suggestion, then the component contributions are listed and sum to the displayed score; the panel shows the stacked chart.
 
-**US-19** As Meera (P1), I want add-on suggestions that I must tap, so that I am never upsold silently. *M · S* Covers FR-62, 64, 82.
+**US-19** As Meera (P1), I want add-on suggestions that I must tap, so that I am never upsold silently. *M · S* Covers FR-62, 64, 82, 118, 119; AC-43 to AC-45.
 - Given an add-on suggestion, then the cart changes only after my tap.
+- Given a dish with no curated pairing, when it is carted, then at least one eligible companion-course add-on is still offered (from vector neighbours), and none breaks my persona.
+- Given the vector store is unavailable, then add-ons are still offered from the curated pairings and no error is shown.
 
 **US-20** As a user, I want rejected add-ons to reduce similar suggestions this session, so that the bot learns from me. *C · S* Covers FR-65. (Could.)
 

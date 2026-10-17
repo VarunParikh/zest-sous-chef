@@ -1,13 +1,13 @@
 # Build Plan and Handover: Zest AI Sous-Chef
 
-Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-17 · Audience: the owner (VJP) and Claude Code
+Status: **v0.2, Draft (amended 2026-10-17): awaiting owner re-approval** (v0.1 was approved by the owner 2026-10-17; v0.2 syncs to ADR-004 v2: larger dish pool and add-on retrieval) · Date: 2026-10-17 · Audience: the owner (VJP) and Claude Code
 This is the bridge from documents to code. It is not one of the 25 documents; it exists because Claude Code works far better with a clear build order, gates and a first prompt.
 **Honest sizing:** 40 user stories in three days is aggressive. The plan protects the demo by ordering work so the highest-value path works first and by naming what to cut. Nothing below has been built or measured.
 
 ## 1. What is done and what is not
 | Done (documents) | Not done |
 |---|---|
-| Foundation, Discovery, Requirements, Design (conversation, architecture, 10 ADRs, data model, API, agent, security), Test Plan, Evaluation Plan | Any code, any benchmark or test result, any generated catalogue. Seed content that exists (2026-10-17): personas, a 203-term lexicon, 35 dishes, a 342-product, 1,025-variant taxonomy, synonyms, pairings, trends, 4 own-written video summaries plus 6 more fixtures, 11 reference photos (labels unverified), draft evaluation datasets and thresholds |
+| Foundation, Discovery, Requirements, Design (conversation, architecture, 10 ADRs, data model, API, agent, security), Test Plan, Evaluation Plan | Any code, any benchmark or test result, any generated catalogue. Seed content that exists (2026-10-17): personas, a 203-term lexicon, 35 dishes (to grow, see block 1.2), a 342-product, 1,025-variant taxonomy, synonyms, pairings, trends, 4 own-written video summaries plus 6 more fixtures, 11 reference photos (labels unverified), draft evaluation datasets and thresholds |
 | Written during the build (they describe what exists): README, `.env.example` (early), Demo Script, Known Limitations and Responsible-AI Note, Prototyping Feedback, CHANGELOG | |
 
 ## 2. Day 0: owner steps before Claude Code starts (about 1 hour)
@@ -50,10 +50,10 @@ Sizes come from the User Stories (S under 1 day, M 1 to 2, L 2 to 3). Effort is 
 | Block | Work | Stories / evidence | Gate |
 |---|---|---|---|
 | 1.1 | Repo scaffold, config, `.env.example`, `make` targets, health endpoint, trace module, `.gitignore` check, secret scan | US-35 | Health page runs; scan clean |
-| 1.2 | Data: generator and indexer over the seeded taxonomy (`mock-data/taxonomy/`), lexicon (203 terms, grow as needed), 1,025 variants, 34 dishes, synonyms, pairings, trends; validators V1 to V14; 5,000-variant set | US-36 | V1 to V14 pass; T-020 canary fails when it should |
+| 1.2 | Data: generator and indexer over the seeded taxonomy (`mock-data/taxonomy/`), lexicon (203 terms, grow as needed), 1,025 variants, dishes (35 now; **build 100 companion-course dishes (side, beverage, dessert), at least 127 in total**, in tranches, with their ingredients, lexicon and taxonomy entries so every ingredient resolves), pairings (about 60 now, extended; keep some dishes uncovered), trends; validators V1 to V14; 5,000-variant set | US-36 | V1 to V14 pass; T-020 canary fails when it should |
 | 1.3 | Eligibility, scoring, variant selection, context, ties | US-17, 18, 38, 28 | T-010 to T-038 pass |
-| 1.4 | Retrieval: BM25, Chroma index, fusion, fallback | US-37, 40, 06 | T-040 to T-046 pass |
-| 1.5 | **Decision evidence:** E1, E3 (if key ready), E4, E5; update ADR-002, 005, 006 | Evaluation Plan | Models chosen or escalated |
+| 1.4 | Retrieval: BM25, Chroma index, fusion, fallback; add-on retrieval (curated plus vector lists, course rule, weighted RRF, curated-only fallback; ADR-004 v2) | US-37, 40, 06, 19 | T-040 to T-049 pass |
+| 1.5 | **Decision evidence:** E1, E3 (if key ready), E4, E5 (including the add-on arm); update ADR-002, 004, 005, 006 | Evaluation Plan | Models chosen or escalated |
 **Day-1 exit (all required):** data validators green; engine and retrieval tests green; a local model passes the E1 gate (or the fallback in section 8 is invoked); the embedder decision recorded.
 
 ### Day 2: flows, API, UI
@@ -106,6 +106,7 @@ me if a Day-1 gate fails.
 | Hybrid does not beat lexical (E5) | Report it; owner decides the default; lexical-only stays available (FR-117) |
 | Gemini unavailable or key not ready | Use sample photos; mark E3 as NOT RUN; do not claim vision accuracy |
 | Chroma memory or build time too high | Embed dishes only, variants lexical-only, and record it in ADR-005 |
+| The 100-dish build slips the Day-1 gates | Ship the tranches finished; add-ons then run on a smaller pool and the shortfall is reported (ADR-004 v2 costs) |
 | YouTube blocks live fetch | Fixtures (own-written narrations) are the demo path |
 | Day-1 gates slip by more than half a day | Drop UJ12, 5 and the photo polish first; keep the mood path |
 

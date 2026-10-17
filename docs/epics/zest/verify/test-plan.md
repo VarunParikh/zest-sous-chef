@@ -1,6 +1,6 @@
 # Test Plan: Zest AI Sous-Chef
 
-Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3 (AC-01 to AC-42), User Stories, Architecture, API Spec, Agent Design, Security and Privacy Note
+Status: **v0.2, Draft (amended 2026-10-17): awaiting owner re-approval** (v0.1 was approved by the owner 2026-10-17; v0.2 adds T-047 to T-049 for ADR-004 v2 add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4 (AC-01 to AC-45), User Stories, Architecture, API Spec, Agent Design, Security and Privacy Note
 Owner decision (2026-10-17): **lean test set.** Full coverage of the engine, cart and guardrails; acceptance tests for the Must stories; one Playwright demo-path test. Dependency Pillow approved.
 **Status of every test in this plan: NOT RUN.** No code exists. Nothing here is a result.
 
@@ -30,13 +30,13 @@ New dependencies approved by the owner on 2026-10-17 ("Approve all", build-plan 
 | `FakeVision` | Returns a `DetectionResult` from a fixture; can fail or time out |
 | `FakeTranscript` | Returns fixture text, or raises `TranscriptUnavailable` |
 | `FakeEmbedder` | Deterministic hash-based vectors so Chroma behaves reproducibly offline |
-| Test catalogue | A small seeded catalogue (about 60 variants, 12 dishes, 4 personas) built by the same generator; plus the full 1,000-variant set in a slower marker `-m full_catalogue` |
+| Test catalogue | A small seeded catalogue (about 60 variants, 12 dishes plus at least 6 companion-course dishes for the add-on tests (a proposed size), 4 personas) built by the same generator; plus the full 1,000-variant set in a slower marker `-m full_catalogue` |
 | Clock and context | Frozen `Context` (time, weather) |
 Shared fixtures: `personas.json`, transcript fixtures, sample photos with expected detections, stock scenarios.
 
 ## 4. Test catalogue
 IDs are stable. Priority P0 = must pass before any demo; P1 = should pass.
-**Format:** the tables below are the index (ID, title, coverage, priority). The full Given / When / Then for every test is in `test-cases.md`; both use the same IDs (checked 2026-10-17: 84 IDs, no missing or extra, coverage and priority identical).
+**Format:** the tables below are the index (ID, title, coverage, priority). The full Given / When / Then for every test is in `test-cases.md`; both use the same IDs (checked 2026-10-17 at v0.1: 84 IDs, no missing or extra, coverage and priority identical; v0.2 adds T-047 to T-049 to both files, so 87 IDs, to be re-checked).
 
 ### 4.1 Session and levers (US-01 to 04)
 | ID | Test | Covers | Pri |
@@ -91,6 +91,9 @@ IDs are stable. Priority P0 = must pass before any demo; P1 = should pass.
 | T-044 | Index rebuilds when catalogue hash or embedder changes | NFR-12 | P1 |
 | T-045 | Embedding text contains no price or stock tokens | V11 | P1 |
 | T-046 | Inspector payload lists lexical rank, vector rank, fused rank, eligibility, final | FR-115, AC-41 | P1 |
+| T-047 | Weighted RRF for add-ons merges a curated list and a vector list per `Σ w_i / (k + rank_i)` (hand-computed example, curated 2 : vector 1); ties break by curated strength, then ID | FR-118 | P0 |
+| T-048 | Course rule keeps only side, beverage and dessert vector candidates, and a vector add-on that breaks the persona is removed after fusion with `guardrail_filtered` traced | FR-118, 119, AC-44 | P0 |
+| T-049 | A dish with no curated pair still gets an eligible add-on from the vector list; with the vector store disabled add-ons come from the curated list alone and `fallback_used` is traced | FR-118, 117, AC-43, AC-45 | P0 |
 
 ### 4.5 Cart and checkout (US-21 to 27)
 | ID | Test | Covers | Pri |
@@ -184,6 +187,8 @@ Component-level checks (React Testing Library, only if the dependency is approve
 | AC-19 | T-008 | AC-40 | T-042 |
 | AC-20 | T-031 | AC-41 | T-046 |
 | AC-21 | T-072 | AC-42 | T-035 |
+| AC-43 | T-049 | AC-44 | T-048 |
+| AC-45 | T-049 | | |
 
 ## 6. What the lean set deliberately does not cover
 Full browser tests for every journey; cross-browser testing; visual regression; load or stress testing beyond the 5,000-variant retrieval timing; real-model accuracy as an assertion; accessibility audit with assistive technology (only keyboard and focus checks). These are disclosed gaps, not omissions to hide.
@@ -202,7 +207,7 @@ Result statuses: PASS, FAIL, BLOCKED, NOT RUN. A skipped or disabled test is a d
 | Gate | Criterion |
 |---|---|
 | Story done | Its tests exist and pass; docs updated; CHANGELOG entry (CLAUDE.md definition of done) |
-| Day 1 exit | Data validators V1 to V14 pass; T-010, T-020, T-040 to T-042 pass; benchmarks run |
+| Day 1 exit | Data validators V1 to V14 pass; T-010, T-020, T-040 to T-042, T-047 to T-049 pass; benchmarks run |
 | Day 2 exit | All P0 in sections 4.1 to 4.8 pass |
 | Demo-ready | E2E-001 passes; manual rehearsal checklist done twice; secret scan clean; release blockers in the Security Note closed |
 

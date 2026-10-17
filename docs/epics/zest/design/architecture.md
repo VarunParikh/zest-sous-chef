@@ -1,6 +1,6 @@
 # Architecture: Zest AI Sous-Chef
 
-Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Data Model v0.1, Constitution v0.2, ADR-001 to ADR-010
+Status: **v0.2, Draft (amended 2026-10-17): awaiting owner re-approval** (v0.1 was approved by the owner 2026-10-17; v0.2 syncs to ADR-004 v2: add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4, Data Model v0.2, Constitution v0.2, ADR-001 to ADR-010
 Scope: components, boundaries, data flows, failure handling and quality attributes. Field definitions are in the Data Model; endpoints will be detailed in the API Spec; prompts and tool contracts in the Agent Design.
 
 ## 1. Architectural stance
@@ -122,6 +122,8 @@ variants:   S_v = M × [(1 − β) Σ(ŵ_k s_k) + β × value],  β = 0.30 × (1
 ```
 The pool must be larger than the display set, otherwise the levers cannot reorder anything (FR-111, risk R24).
 
+**Add-on path (ADR-004 v2).** For a cart dish, `retrieval` builds two lists: curated companions from `pairings.csv` and the nearest neighbours of the dish's stored embedding in `zest_dishes`. A course rule (`ADDON_COURSES`) filters the vector list; weighted RRF (`ADDON_WEIGHTS`, curated 2 : vector 1) merges them; the fused rank becomes the add-on `s_p`. Eligibility and the add-on price cap then run in code, and the levers rank the survivors. An add-on enters the cart only after a tap (FR-64).
+
 ## 6. Configuration (`.env` and `config.yaml`)
 | Key | Purpose | Default |
 |---|---|---|
@@ -129,6 +131,7 @@ The pool must be larger than the display set, otherwise the levers cannot reorde
 | `VISION_PROVIDER`, `VISION_MODEL`, `GEMINI_API_KEY` | Photo analysis (key only in local `.env`) | `gemini` |
 | `EMBEDDING_PROVIDER`, `EMBEDDING_MODEL` | Vector embedder | Chroma default ONNX |
 | `RRF_K`, `DISH_POOL`, `VARIANT_POOL`, `AMBIGUITY_MARGIN` | Retrieval tuning | 60, 15, 10, 0.15 |
+| `ADDON_COURSES`, `ADDON_WEIGHTS`, `ADDON_POOL` | Add-on retrieval: companion courses for the vector list; curated and vector fusion weights; add-on pool size (proposed names and starting values, tuned by the ADR-004 v2 weight sweep) | `side,beverage,dessert`; curated 2, vector 1; 8 |
 | `VALUE_WEIGHT` | β0 for variant price term | 0.30 |
 | `TIMEOUT_LLM_S`, `TIMEOUT_VISION_S`, `TIMEOUT_TRANSCRIPT_S` | NFR-10 | 30, 20, 10 |
 | `CONFIDENCE_THRESHOLD` | Photo detection | 0.6 |
@@ -140,7 +143,7 @@ The pool must be larger than the display set, otherwise the levers cannot reorde
 | Local model: timeout or invalid JSON | timeout, schema check | One retry, then rephrase request; trace `fallback_used` |
 | Gemini: error, rate limit, timeout | provider interface | Labelled sample photos |
 | Transcript source blocked | exception | Fixture, then title and description, then paste prompt |
-| Vector store or embedder | startup check and call error | Lexical-only retrieval (FR-117) |
+| Vector store or embedder | startup check and call error | Lexical-only retrieval; add-ons from the curated list alone (FR-117) |
 | Catalogue stock change | revalidation at Buy Now | Block order until swap or remove (FR-83) |
 | Backend unreachable | frontend fetch error | Failure copy (NFR-02) |
 

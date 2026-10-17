@@ -1,9 +1,10 @@
 # Specification (PRD): Zest AI Sous-Chef
 
-- **Status:** v0.3, v0.2 reviewed (see `spec-review-v0.1.md`); v0.3 changes not independently re-reviewed; **approved by the owner 2026-10-17** (OQ-8 to OQ-10 accepted at their defaults)
+- **Status:** **v0.4, Draft (amended 2026-10-17): awaiting owner re-approval** (Approval Register Rule 2). v0.3 was approved by the owner 2026-10-17 (OQ-8 to OQ-10 accepted at their defaults); v0.2 reviewed (see `spec-review-v0.1.md`); v0.3 and v0.4 changes not independently re-reviewed
 - **Owner:** VJP (product owner) · **Date:** 2026-10-17
 - **Inputs:** BRD, Strategy, Platforms, Personas, Risk Register, Settings Panel, DESIGN.md, User Journeys, mockups
 - **Convention:** "shall" marks a testable requirement. Priority: M = Must, S = Should, C = Could. Items needing an owner decision are in section 15.
+- **Change log v0.4 (2026-10-17):** sync to ADR-004 v2 (conflict C16). Add-on suggestions are dishes of a companion course (side, beverage, dessert), suggested for the dish being cooked, from two lists: curated pairs and vector neighbours of the cart dish, merged by weighted rank fusion with a course rule. Changes FR-62 (clarified), FR-117 (add-on fallback), new FR-118 and FR-119, section 11 points 4 and 7, AC-43 to AC-45, section 17 and Appendix A. The four levers, their ranges and defaults are unchanged. The mock dish pool grows: owner target of 100 companion-course dishes and a larger dish total (at least 127, to be fixed when the seed data is built).
 - **Change log v0.3 (2026-10-17):** owner decided to use a local vector database. Adds hybrid retrieval (section 11, FR-110 to FR-117), lever-driven SKU variant selection, a 1,000-SKU ingredient-level catalogue, NFR-12 and NFR-13, AC-35 to AC-41, and a retrieval inspector. The four levers are unchanged (option A).
 - **Change log v0.2:** resolves OQ-1 to OQ-7 (owner answers 2026-10-17), applies findings F-01 to F-24 and the constitution-check corrections.
 
@@ -116,7 +117,7 @@ Below 1024 px, a segmented control switches between Levers and Chat.
 |---|---|---|
 | FR-60 | Eligibility shall be applied before ranking: `M_elig` = 1 only if the item passes diet, faith, specialised diet, allergen (only if declared in chat), stock (when enabled) and, for add-ons, the price cap | M |
 | FR-61 | `S_final = M_elig × Σ(ŵ_k × s_k)`, with components `s_p`, `s_h`, `s_t`, `s_g` defined for each candidate type in Appendix A and normalised to 0 to 1 across the candidate set | M |
-| FR-62 | The engine shall rank (a) dish options, (b) add-on suggestions and (c) substitution candidates with the same eligibility and scoring | M |
+| FR-62 | The engine shall rank (a) dish options, (b) add-on suggestions and (c) substitution candidates with the same eligibility and scoring. Add-on suggestions are dishes of a companion course offered for the dish the user is cooking; their candidates come from FR-118. Missing ingredients found from a video or photo are not add-ons and keep their existing path | M |
 | FR-63 | Each suggestion shall carry its component contributions; the chat card shall offer "Why this?" and the lever panel shall show the stacked breakdown (History violet, Trend amber, Culinary emerald, Persona slate) | M |
 | FR-64 | Add-on suggestions shall never be added without a user tap | M |
 | FR-65 | Rejected add-on suggestions shall lower that category's weight for the rest of the session only, with a small decaying effect | C (UJ12, 74) |
@@ -171,7 +172,9 @@ Below 1024 px, a segmented control switches between Levers and Chat.
 | FR-114 | Each cart line shall show the chosen variant and offer "Why this variant?" listing the alternatives; the user may switch to another eligible variant, which updates the cart | M |
 | FR-115 | The lever panel shall include a retrieval and scoring inspector showing, for the latest suggestion, each candidate's lexical rank, vector similarity, fused rank, eligibility result and final score | M |
 | FR-116 | Each SKU shall carry an ingredient list (or "single ingredient") and variant attributes (for example fat level, grain, fortification, organic). Eligibility checks shall use these fields | M |
-| FR-117 | If the vector store or embedding model is unavailable, retrieval shall fall back to lexical plus synonyms, the trace shall record `fallback_used`, and the UI shall not fail | M |
+| FR-117 | If the vector store or embedding model is unavailable, retrieval shall fall back to lexical plus synonyms, the trace shall record `fallback_used`, and the UI shall not fail. For add-on suggestions the fallback is the curated list alone (FR-118) | M |
+| FR-118 | Add-on candidates for a cart dish shall come from two lists: (a) curated companions in `pairings.csv`, ranked by `strength`; (b) the nearest neighbours of the cart dish's stored embedding in `zest_dishes`, excluding the dish itself and dishes already in the cart. A course rule (config `ADDON_COURSES`, initially side, beverage and dessert) applies to list (b). The lists are merged by weighted reciprocal rank fusion, `score = Σ w_i / (k + rank_i)` with `k` as in FR-110 and initial weights curated 2 and vector 1 (config `ADDON_WEIGHTS`). The fused rank feeds the add-on `s_p` (Appendix A). Ties break by curated strength, then ID | M |
+| FR-119 | Eligibility (FR-60) shall be applied in code to every fused add-on candidate before ranking by the levers, so a vector neighbour that breaks the persona is removed (G9, FR-112). Each add-on suggestion shall show its curated strength, vector rank and fused rank in the inspector (FR-115) | M |
 
 ## 7. Non-functional requirements
 | ID | Requirement |
@@ -224,9 +227,10 @@ No product analytics. A local trace log (no images, truncated text, no personal 
 1. Retrieval sits behind a `Retriever` interface for ingredient-to-SKU and intent-to-dish lookups.
 2. **MVP: hybrid retrieval (owner decision, 2026-10-17).** Lexical plus synonym table and vector similarity (embedded Chroma, local embedding model), merged by reciprocal rank fusion into a candidate pool of IDs (FR-110). The model may choose only from that pool.
 3. Pipeline order is fixed: retrieve a wide pool, apply hard guardrails in code, rank survivors with the four levers, show the top results (FR-111, 112). This order is what keeps the levers causal.
-4. **Levers are unchanged (option A).** Vector similarity is an input to the culinary-pairing component `s_p`; it is not a separate control. The reason it is added: lexical matching cannot handle mood language ("something cooling") or hundreds of near-variant SKUs, and the inspector (FR-115) makes the extra step visible and testable.
+4. **Levers are unchanged (option A).** Vector similarity is an input to the culinary-pairing component `s_p`, for dishes through the fused retrieval rank and for add-ons through the weighted fusion in point 7; it is not a separate control. For add-ons the vector signal is semantic similarity, not purchase co-occurrence (conflict C17). The reason it is added: lexical matching cannot handle mood language ("something cooling") or hundreds of near-variant SKUs, and the inspector (FR-115) makes the extra step visible and testable.
 5. **Evidence rule:** the Day-1 benchmark compares lexical-only, vector-only and hybrid on recall at 5 over about 60 queries. If hybrid does not beat lexical on the benchmark, the result is recorded in the ADR and the owner decides whether the shipped default changes. The fallback in FR-117 is always kept.
 6. **Future scope:** a "taste vector" built from the history sliders; a larger embedding model served through Ollama; a networked vector database.
+7. **Add-on suggestions (ADR-004 v2, 2026-10-17).** For a cart dish, curated companions and vector neighbours in `zest_dishes` are merged by weighted rank fusion (curated 2 : vector 1, `k` = 60) after a course rule on the vector list (FR-118). Eligibility runs after fusion (FR-119); the curated list alone is the fallback (FR-117). The evidence for this design (curated-pair recovery, coverage of dishes with no pair, weight sweep) is in ADR-004 v2 and E5.
 
 ## 12. Acceptance criteria
 | ID | Given / When / Then | Covers |
@@ -273,6 +277,9 @@ No product analytics. A local trace log (no images, truncated text, no personal 
 | AC-40 | Vector store disabled: the same ingredient list still resolves by lexical plus synonyms; no error shown to the user | FR-117 |
 | AC-42 | "Milk" with gourmet affinity 0 versus 1 (organic constant): the cheaper variant is carted at 0 and a premium variant at 1; the cart line shows the price as a reason | FR-113 |
 | AC-41 | After a mood request: the inspector lists each candidate with lexical rank, vector similarity, fused rank, eligibility and final score | FR-115 |
+| AC-43 | A dish with no curated pair (for example Sushi, D35) is carted: at least one eligible companion-course add-on is offered from the vector list, and nothing is added without a tap | FR-118, 64 |
+| AC-44 | An add-on suggestion list for a cart dish: every vector-sourced dish is of an allowed companion course (`ADDON_COURSES`), and a vector neighbour that breaks the persona is removed with `guardrail_filtered` in the trace | FR-118, 119 |
+| AC-45 | Vector store disabled: add-on suggestions are still offered from the curated list, `fallback_used` is traced and no error is shown | FR-117 |
 
 ## 13. Dependencies and rollout
 Ollama model passing the Day-1 benchmark; Gemini free-tier key in local `.env`; transcript fixtures; validated mock data. Rollout: public GitHub repository, run locally; at most 5 testers. Rollback: tag each working state.
@@ -304,14 +311,14 @@ A1 to A14 in the Risk Register. Also: default servings 2; one currency (₹); En
 See the Risk Register: R1, R3, R4, R5, R6, R14. New: non-deterministic model output (NFR-11); direct-add of a wrong guess (mitigated by swap and Undo).
 
 ## 17. Validation status
-v0.2 was reviewed on 2026-10-17 with `analyze-spec` and `constitution-check` (`spec-review-v0.1.md`): READY WITH CONDITIONS and PASS WITH CONDITIONS. v0.3 adds section 6.12 and has not been re-reviewed; a re-run is planned before the Data Model is approved. Open: F-17 (spice scaling in Data Model), OQ-8 to OQ-10, OQ-13 detail. No requirement has been validated by implementation.
+v0.2 was reviewed on 2026-10-17 with `analyze-spec` and `constitution-check` (`spec-review-v0.1.md`): READY WITH CONDITIONS and PASS WITH CONDITIONS. v0.3 added section 6.12 and v0.4 adds the add-on retrieval requirements (FR-118, 119); neither has been re-reviewed independently, and a re-run is planned before re-approval. Open: F-17 (spice scaling in Data Model), OQ-8 to OQ-10, OQ-13 detail. No requirement has been validated by implementation.
 
 ## Appendix A. Score components by candidate type
-All components are computed per candidate over the candidate pool. Components built from similarity or retrieval ranks (`s_p`) use rank-based normalisation, `1 - (rank - 1) / (N - 1)`, because similarity scores are not comparable across queries and min-max on small sets exaggerates tiny gaps. Other components use min-max (all equal gives 0.5). The `s_p` input is the fused lexical and vector rank (FR-110) combined with the pairing or overlap signal below.
+All components are computed per candidate over the candidate pool. Components built from similarity or retrieval ranks (`s_p`) use rank-based normalisation, `1 - (rank - 1) / (N - 1)`, because similarity scores are not comparable across queries and min-max on small sets exaggerates tiny gaps. Other components use min-max (all equal gives 0.5). The `s_p` input is the fused lexical and vector rank (FR-110) combined with the pairing or overlap signal below. For add-ons it is the weighted fused rank of the curated and vector lists (FR-118).
 
 | Component | Dish option | Add-on suggestion | Substitute |
 |---|---|---|---|
-| `s_p` culinary pairing | Overlap with detected or requested ingredients, or mood-tag match | Pairing strength with dishes in the cart | Flavour-profile similarity to the unavailable item |
+| `s_p` culinary pairing | Overlap with detected or requested ingredients, or mood-tag match | Fused rank (FR-118) of the curated pairing strength with the cart dish and the vector similarity to it, restricted to companion courses | Flavour-profile similarity to the unavailable item |
 | `s_h` history | Mean category affinity slider across the dish's categories | Affinity slider for the item's category | Affinity slider for the category |
 | `s_t` trend | Time-of-week and weather multiplier for the dish's tags | Multiplier for the item's category | Multiplier for the item's category |
 | `s_g` persona and gourmet | Gourmet and organic slider match, plus capped gender boost (FR-07) | Same | Same |

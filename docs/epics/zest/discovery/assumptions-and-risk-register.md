@@ -12,7 +12,7 @@ Scoring: Likelihood (L) and Impact (I) from 1 to 5; Score = L × I. 15 or more i
 | A1 | A small local model on the 16 GB MacBook can extract ingredients and answer in acceptable time | Core chat flow | Day-1 benchmark (section 5) | Day 1 |
 | A2 | Gemini free tier accepts image input and its rate limits are enough for at most 5 testers plus the demo | Photo flow | Read current limits; test 20 calls in a row | Day 1 |
 | A3 | `youtube-transcript-api` works from the owner's home network for the demo videos | YouTube flow | Fetch all demo videos; keep fixtures regardless | Day 1 |
-| A4 | A mock catalogue of at least 1,000 unique SKUs (unique by ingredient list and variant attributes) and about 34 dishes covers the Must journeys | Cart, engine, edge cases | Coverage script: every dish ingredient maps to a SKU or a deliberate gap | Day 1 to 2 |
+| A4 | A mock catalogue of at least 1,000 unique SKUs (unique by ingredient list and variant attributes) and a dish pool of at least 127 (35 now, plus 100 companion-course dishes to be built; ADR-004 v2) covers the Must journeys | Cart, engine, edge cases | Coverage script: every dish ingredient maps to a SKU or a deliberate gap | Day 1 to 2 |
 | A5 | The reviewer accepts mock data and a simulated JioMart-style store | Scope | State clearly in the demo and limitations note | Day 3 |
 | A6 | Levers apply from the next session (C4), and this is acceptable to the reviewer | Core promise | Visible UI hint; demo script shows it | Day 2 |
 | A7 | Normalised weights (`w / Σw`) make slider effects visible enough to demonstrate | Core promise | Lever-sensitivity test on all personas | Day 2 |

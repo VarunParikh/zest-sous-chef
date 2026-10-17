@@ -1,6 +1,6 @@
 # Data Model: Zest AI Sous-Chef
 
-Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Settings Panel, mock-data plan, Constitution G9
+Status: **v0.2, Draft (amended 2026-10-17): awaiting owner re-approval** (v0.1 was approved by the owner 2026-10-17; v0.2 syncs to ADR-004 v2 and PRD v0.4: add-on retrieval, larger dish pool) · Date: 2026-10-17 · Source: PRD v0.4, Settings Panel, mock-data plan, Constitution G9, ADR-004 v2
 Scope: field-level schema for the structured catalogue, recipe base, engine inputs, session state, the retrieval documents embedded in Chroma, trace events and test fixtures. The Pydantic sketches are the contract the generator, validators, API and tests share. Field values in the mock data are illustrative and are not nutritional or medical data.
 
 ## 1. Principles
@@ -95,12 +95,13 @@ Lever values use the Settings Panel option strings exactly (for example `Jain (N
 
 ## 5. Recipes
 
-### 5.1 Dish (about 35)
+### 5.1 Dish (35 in the current seed; target at least 127, of which 100 are companion-course dishes)
+The companion-course dishes (`side`, `beverage`, `dessert`) are the add-on pool (ADR-004 v2). Claude Code builds the additional dishes in the Day-1 data block; the final total is fixed when the seed data is built.
 | Field | Type | Notes |
 |---|---|---|
 | `dish_id` | str | `paneer_butter_masala` |
 | `name`, `aliases` | str, list[str] | Includes Hinglish names |
-| `course` | `main`, `side`, `snack`, `breakfast`, `dessert`, `beverage` | |
+| `course` | `main`, `side`, `snack`, `breakfast`, `dessert`, `beverage` | Drives the add-on course rule (`ADDON_COURSES`, initially `side`, `beverage`, `dessert`) |
 | `cuisine` | str | |
 | `base_servings` | int | Default 2 |
 | `mood_tags` | list[str] | e.g. `indulgent`, `comfort`, `cooling`, `light`, `festive`, `high_protein` |
@@ -128,7 +129,7 @@ Lever values use the Settings Panel option strings exactly (for example `Jain (N
 `term` (e.g. `kothmir`), `canonical` (`coriander leaves`), `language` (`mr`, `hi`, `en`), `kind` (`ingredient`, `dish`, `attribute`). Used by the lexical retriever and appended to embedding text as "also called".
 
 ### 5.4 Pairing
-`main_dish_id`, `companion_type` (`dish` or `base_product`), `companion_id`, `strength` (0 to 1), `note`. Feeds `s_p` for add-ons.
+`main_dish_id`, `companion_type` (`dish` or `base_product`), `companion_id`, `strength` (0 to 1), `note`. For add-ons these rows are the *curated list*, one of two inputs to the add-on `s_p` (the other is the vector neighbours of the cart dish, section 7.4). Add-on companions are dishes (`companion_type = dish`) of a companion course. Target size grows with the dish pool (about 60 rows in the first seed, more with 100 companion-course dishes); a dish without a row is served by the vector list alone.
 
 ## 6. Engine inputs
 
@@ -146,7 +147,7 @@ Lever values use the Settings Panel option strings exactly (for example `Jain (N
 ### 7.1 Collections
 | Collection | One document per | Count | ID |
 |---|---|---|---|
-| `zest_dishes` | Dish | about 35 | `dish:{dish_id}` |
+| `zest_dishes` | Dish | 35 now; at least 127 target (100 companion-course) | `dish:{dish_id}` |
 | `zest_variants` | **Variant** (not SKU), because pack sizes would duplicate results | at least 1,000 | `var:{variant_id}` |
 
 Distance: cosine. Embedding model and provider come from config (`EMBEDDING_PROVIDER`, `EMBEDDING_MODEL`); the default is Chroma's local ONNX embedder (all-MiniLM-L6-v2, per the Chroma documentation). Collection metadata records model name, library version and a hash of the catalogue; a mismatch triggers a rebuild.
@@ -175,6 +176,20 @@ The attribute phrase turns attributes into words the user might say ("skimmed, l
 | 8. Levers | rank survivors with `S_final` | `S_v` (FR-113) |
 
 The constant 60, the pool sizes and the ambiguity margin 0.15 are config values tuned by the benchmark.
+
+**Add-on query (ADR-004 v2).** Input: a dish in the cart. No new embedding is computed.
+
+| Step | Add-on query |
+|---|---|
+| 1. Curated list | companions of the cart dish in `pairings.csv`, ordered by `strength` |
+| 2. Vector list | top 20 neighbours of the cart dish's stored embedding in `zest_dishes`; exclude the dish itself and dishes already in the cart |
+| 3. Course rule | keep only vector candidates whose `course` is in `ADDON_COURSES` (side, beverage, dessert); not applied to the curated list |
+| 4. Fuse | weighted reciprocal rank fusion: `score = Σ w_i / (60 + rank_i)`, curated weight 2, vector weight 1 (`ADDON_WEIGHTS`) |
+| 5. Pool | top `ADDON_POOL` candidates (config); the fused rank feeds the add-on `s_p` by rank-based normalisation |
+| 6. Guardrails (code) | `M_elig` including the add-on price cap, on each pool member (G9) |
+| 7. Levers | rank survivors with `S_final`; ties by curated strength, then ID |
+
+If the vector store is unavailable, steps 2 to 4 are skipped and the curated list alone is used (`fallback_used`).
 
 ## 8. Session state (in memory)
 
@@ -222,7 +237,7 @@ Pack allocation rule (FR-71, 73): process dishes in cart order. For each line, f
 |---|---|
 | `suggestion_id`, `type` (SuggestionType), `candidate_id`, `rank`, `reason` | |
 | `breakdown` | `components` (`s_p`, `s_h`, `s_t`, `s_g`: raw and normalised), `weights_effective`, `value_term` (variants only), `mask` (eligible, filtered_by list), `final` |
-| `retrieval` | `lexical_rank`, `vector_distance`, `vector_rank`, `fused_score`, `fused_rank` |
+| `retrieval` | `lexical_rank`, `vector_distance`, `vector_rank`, `fused_score`, `fused_rank`; for add-ons also `curated_strength` and `curated_rank` |
 
 The "Why this?" card and the inspector render `breakdown` and `retrieval` directly (FR-63, 115). Components sum to `final` (AC-20).
 
@@ -419,6 +434,8 @@ class RetrievalTrace(BaseModel):
     lexical_rank: Optional[int] = None
     vector_rank: Optional[int] = None
     vector_distance: Optional[float] = None
+    curated_rank: Optional[int] = None  # add-ons only
+    curated_strength: Optional[float] = None  # add-ons only
     fused_score: float = 0.0
     fused_rank: int = 0
 

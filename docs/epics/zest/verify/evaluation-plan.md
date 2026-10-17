@@ -1,6 +1,6 @@
 # Evaluation Plan: Zest AI Sous-Chef
 
-Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, BRD objectives O1 to O8, ADR-002 to ADR-008, Agent Design, Security and Privacy Note (follows the `eval-runner` procedure)
+Status: **v0.2, Draft (amended 2026-10-17): awaiting owner re-approval** (v0.1 was approved by the owner 2026-10-17; v0.2 adds the add-on arm to E5 and a note to E6) · Date: 2026-10-17 · Source: PRD v0.4, BRD objectives O1 to O8, ADR-002 to ADR-008, Agent Design, Security and Privacy Note (follows the `eval-runner` procedure)
 **Status of every evaluation: NOT RUN.** No system exists yet. This plan defines the questions, datasets, scoring and pass rules *before* any results exist. No score in this document is a result, and the thresholds below are my proposals that the owner approves before the first run.
 
 ## 1. Purpose
@@ -67,10 +67,11 @@ Tests prove the code does what the spec says. Evaluations measure whether the AI
 - **Metrics:** recall@5, recall@pool (10 variants, 15 dishes), MRR; index build time and memory; query latency at 1,000 and 5,000 variants.
 - **Decision rule (pre-registered):** hybrid ships as default only if recall@pool is at least as high as lexical overall and higher on the mood subset. Otherwise the result is reported and the owner decides (ADR-004). **Critical:** any pool that omits an eligible, exact-name match.
 - **Baseline:** lexical only.
+- **Add-on arm (ADR-004 v2, added 2026-10-17).** Uses the dish pool and `pairings.csv` as the dataset, so no new labels are needed. Systems: curated only; vector only with the course rule; weighted fusion at curated:vector 1:1, 2:1 and 3:1. Metrics: share of curated pairs recovered in the fused top N; coverage (share of dishes with no curated pair that get at least one eligible add-on); course-rule pass rate; fallback check (vector disabled, curated-only still works). **Decision rule (pre-registered in ADR-004 v2):** if the vector arm adds no eligible add-on for dishes without a curated pair, the owner decides whether to keep it. Numeric gates are not set here; they are proposed in `eval/thresholds.yaml` and committed before the first run. **Critical:** any add-on that breaks the active persona. Results go in `verify/benchmarks/retrieval.md`. The arm needs the enlarged dish pool (owner target 100 companion-course dishes); on the original 35 dishes the vector arm is expected to add little.
 
 ### E6 Lever sensitivity (O1)
 - **Definition (pre-registered):** for a lever group G, a *baseline* lever set and a *changed* lever set (G moved to a contrasting setting; everything else equal), run the same prompt set in fresh sessions. For each prompt compare the top-3 lists. `RDI = mean over prompts of (1 − |top3_base ∩ top3_changed| / 3)`. Also report the Kendall tau distance between the full pool rankings (Kendall, 1938).
-- **Dataset** `levers_v1`: 15 mood and cart prompts; lever groups: each of the 4 weights, gourmet, organic, each of the 5 history sliders, both trend sliders, diet, faith, specialised diets, add-on cap and stock filter (the last two act on add-ons and availability, so they use add-on and stock-scenario prompts).
+- **Dataset** `levers_v1`: 15 mood and cart prompts; lever groups: each of the 4 weights, gourmet, organic, each of the 5 history sliders, both trend sliders, diet, faith, specialised diets, add-on cap and stock filter (the last two act on add-ons and availability, so they use add-on and stock-scenario prompts; add-on candidates are the fused curated and vector list of ADR-004 v2).
 - **Proposed gate:** RDI at least 0.33 (at least one of three suggestions changes on average) for each group that can logically affect the prompt type. **Critical:** any such group with RDI = 0 (an inert lever). Groups that cannot logically apply to a prompt type are excluded and listed in the report.
 - **Persona contrast:** run the 11 personas on the same prompts and report the pairwise top-3 overlap matrix (the "same prompt, different persona" demo evidence).
 - **Baselines:** a random re-ranker of the pool (expected RDI) so the reader sees what "no signal" looks like.

@@ -21,20 +21,20 @@ Approving a document means: you have read it or the parts you care about, you ac
 ## Register
 | Doc | Path | Version | Tier | Status | Approved by / date |
 |---|---|---|---|---|---|
-| Product spec (PRD) | `docs/epics/zest/requirements/product-spec.md` | v0.3 | A | **Approved** | Owner, 2026-10-17 |
-| Data Model | `docs/epics/zest/design/data-model.md` | v0.1 | A | **Approved** | Owner, 2026-10-17 |
-| Architecture | `docs/epics/zest/design/architecture.md` | v0.1 | A | **Approved** | Owner, 2026-10-17 |
+| Product spec (PRD) | `docs/epics/zest/requirements/product-spec.md` | v0.4 | A | **Draft (amended)** (awaiting re-approval; ADR-004 v2 sync, C16) | v0.3 approved by owner, 2026-10-17 |
+| Data Model | `docs/epics/zest/design/data-model.md` | v0.2 | A | **Draft (amended)** (awaiting re-approval; ADR-004 v2 sync, C16) | v0.1 approved by owner, 2026-10-17 |
+| Architecture | `docs/epics/zest/design/architecture.md` | v0.2 | A | **Draft (amended)** (awaiting re-approval; ADR-004 v2 sync, C16) | v0.1 approved by owner, 2026-10-17 |
 | API Spec | `docs/epics/zest/design/api-spec.md` | v0.1 | A | **Approved** | Owner, 2026-10-17 |
 | Agent Design | `docs/epics/zest/design/agent-design.md` | v0.1 | A | **Approved** | Owner, 2026-10-17 |
-| Build Plan | `docs/epics/zest/build-plan.md` | v0.1 | A | **Approved** | Owner, 2026-10-17 |
-| User Stories and Traceability | `docs/epics/zest/requirements/user-stories.md` | v0.2 | B | **Approved** | Owner, 2026-10-17 |
+| Build Plan | `docs/epics/zest/build-plan.md` | v0.2 | A | **Draft (amended)** (awaiting re-approval; ADR-004 v2 sync, C16) | v0.1 approved by owner, 2026-10-17 |
+| User Stories and Traceability | `docs/epics/zest/requirements/user-stories.md` | v0.3 | B | **Draft (amended)** (awaiting re-approval; ADR-004 v2 sync, C16) | v0.2 approved by owner, 2026-10-17 |
 | Conversation Design | `docs/epics/zest/design/conversation-design.md` | v0.1 | B | **Approved** (voice agreed 2026-10-17) | Owner, 2026-10-17 |
 | Security and Privacy Note | `docs/epics/zest/design/security-privacy-note.md` | v0.1 | B | **Approved** | Owner, 2026-10-17 |
-| Test Plan | `docs/epics/zest/verify/test-plan.md` | v0.1 | B | **Approved** (lean set agreed) | Owner, 2026-10-17 |
-| Evaluation Plan | `docs/epics/zest/verify/evaluation-plan.md` | v0.1 | B | **Approved** (thresholds unapproved) | Owner, 2026-10-17 |
+| Test Plan | `docs/epics/zest/verify/test-plan.md` | v0.2 | B | **Draft (amended)** (awaiting re-approval; ADR-004 v2 sync, C16); `verify/test-cases.md` amended with it | v0.1 approved by owner, 2026-10-17 |
+| Evaluation Plan | `docs/epics/zest/verify/evaluation-plan.md` | v0.2 | B | **Draft (amended)** (awaiting re-approval; ADR-004 v2 sync, C16); thresholds still unapproved | v0.1 approved by owner, 2026-10-17 |
 | ADR-001 Backend framework | `design/adr/ADR-001-...` | | B | **Accepted** | Owner, 2026-10-17 |
 | ADR-003 Vision approach | `design/adr/ADR-003-...` | v2 | B | **Accepted, amended v2** (local-first, pluggable; provider chosen by Day-1 E3) | Owner, 2026-10-17 |
-| ADR-004 Retrieval approach | `design/adr/ADR-004-...` | | B | **Accepted** (benchmark gate Day 1) | Owner, 2026-10-17 |
+| ADR-004 Retrieval approach | `design/adr/ADR-004-...` | v2 | B | **Accepted, amended v2** (add-on suggestions: curated pairs plus vector neighbours; benchmark gate Day 1) | Owner, 2026-10-17 |
 | ADR-005 Vector store | `design/adr/ADR-005-...` | | B | **Accepted** for the store; embedder open | Owner, 2026-10-17 |
 | ADR-007 State and storage | `design/adr/ADR-007-...` | | B | **Accepted** | Owner brief |
 | ADR-008 Variant scoring | `design/adr/ADR-008-...` | | B | **Accepted** (constants tuned) | Owner, 2026-10-17 |
@@ -50,7 +50,7 @@ Approving a document means: you have read it or the parts you care about, you ac
 | Personas | `docs/epics/zest/discovery/personas.md` | v0.1 | C | **Approved** | Owner, 2026-10-17 |
 | Product Research | `docs/epics/zest/discovery/product-research.md` | v0.1 | C | **Approved** | Owner, 2026-10-17 |
 | Assumptions and Risk Register | `docs/epics/zest/discovery/assumptions-and-risk-register.md` | v0.1 | C | **Approved** as baseline v0.1; stays a living document | Owner, 2026-10-17 |
-| Mock Data Plan | `docs/epics/zest/design/mock-data-plan.md` | v0.1 | C | **Approved** | Owner, 2026-10-17 |
+| Mock Data Plan | `docs/epics/zest/design/mock-data-plan.md` | v0.2 | C | **Draft (amended)** (awaiting re-approval; ADR-004 v2 sync, C16) | v0.1 approved by owner, 2026-10-17 |
 
 ## Items that need an explicit owner answer (not just approval)
 | Item | Where | Default if you say "go" |
@@ -78,3 +78,5 @@ Approving a document means: you have read it or the parts you care about, you ac
 | 2026-10-17 | Owner approved `verify/test-cases.md` as is (no P0 line-by-line review); PRD acceptance criteria AC-01 to AC-42 stay as statements; GitHub repo `VarunParikh/zest-sous-chef` created, public; commits keep the co-author line | `verify/test-cases.md`, this register |
 | 2026-10-17 | Owner amended ADR-003: local-first pluggable vision with Gemini optional; bar 70-80% (precision >= 0.80, recall >= 0.70 gate, recall 0.80 target); latency 10-20 s with a progress bar. Thresholds v2 committed before any run; downstream sync logged as C15 | `ADR-003` v2, `eval/thresholds.yaml`, `open-conflicts.md` C15 |
 | 2026-10-17 | Owner confirmed the E3 gate stays recall >= 0.70 and precision >= 0.80, with recall 0.80 as a reported target only (thresholds v2 unchanged). Owner deferred creating a new Gemini key until the local benchmark has run; Gemini is optional, so `.env.example` carries a blank `GEMINI_API_KEY=`. The key pasted in chat is treated as compromised and is not stored in any repository file | `eval/thresholds.yaml` v2, ADR-003 v2 |
+| 2026-10-17 | Owner amended ADR-004 to v2: add-ons are dishes suggested for the dish being cooked, from curated pairs plus vector neighbours (weighted RRF, course rule), with an owner target of 100 companion-course dishes and a larger dish total. The Settings Panel wording is logged and resolved as C17 (Panel not edited). ADR-004 v2, ADR index and conflicts pushed as `fe38a4a` | `ADR-004` v2, `open-conflicts.md` C16, C17 |
+| 2026-10-17 | Owner asked for the other documents to be updated (doc-sync, C16). Amended and returned to Draft (Rule 2): PRD v0.4, Data Model v0.2, Architecture v0.2, Build Plan v0.2, User Stories v0.3, Test Plan v0.2 with Test Cases, Evaluation Plan v0.2, Mock Data Plan v0.2. Count and wording refreshes only, status unchanged: Product Platforms (dish and pairing rows), Assumptions and Risk Register (A4). ADR-005 not edited (ADR-004 v2: unchanged). No CHANGELOG file exists yet, so this row is the record. **Claude Code stays blocked on these documents under CLAUDE.md until the owner re-approves them** | this register, `open-conflicts.md` C16 |

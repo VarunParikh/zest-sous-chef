@@ -1,6 +1,6 @@
 # Mock Data Plan: Zest AI Sous-Chef
 
-Status: APPROVED v0.1 (owner, 2026-10-17) · Date: 2026-10-17
+Status: **v0.2, Draft (amended 2026-10-17): awaiting owner re-approval** (v0.1 was approved by the owner 2026-10-17; v0.2 syncs to ADR-004 v2: 100 companion-course dishes, larger dish and pairing sets) · Date: 2026-10-17
 The full field-level schema belongs in the Data Model document (document 16). This plan fixes **when** the data is built, **how**, and **what** it contains.
 
 ## 1. When
@@ -32,10 +32,10 @@ Mock data is built **in parallel with the remaining documents, but after the PRD
 | Dataset | Content | Target size |
 |---|---|---|
 | Catalogue (SKUs) | id, name, category, variant attributes (fat level, grain, fortification, organic, spice level), ingredient list, brand (generic), pack size, price in ₹, diet tags, allergens, halal flag, glycaemic label (simplified), gourmet and organic scores, stock count, embedding text | **At least 1,000 unique variants shipped (each in 1 to 3 pack sizes, so 1,000+ SKUs); a generated 5,000-variant set for the scale benchmark.** Field-level schema: `data-model.md` |
-| Dishes and recipes | name, cuisine, servings, steps summary, ingredient lines (name, quantity, unit), scaling rules, diet compatibility | About 34 (Indian food and beverages plus 2 edge-case dishes) |
+| Dishes and recipes | name, course, cuisine, servings, steps summary, ingredient lines (name, quantity, unit), scaling rules, diet compatibility | **Current seed: 35 (27 mains, breakfast and soup; 8 companion-course). Owner target (2026-10-17, ADR-004 v2): 100 companion-course dishes (side, beverage, dessert), so at least 127 dishes in total; the final total is fixed when the data is built.** Claude Code builds the additions in the Day-1 data block; every new dish ingredient must resolve to a catalogue product (section 3a item 5) |
 | Ingredient synonyms | Marathi, Hindi and common names to catalogue terms (kothmir, kandha, batata, dhaniya, methi) | About 60 |
 | Retrieval evaluation set | About 60 queries with expected IDs: ingredient names, regional names, mood phrases, variant requests ("skimmed milk") | 60 |
-| Pairings | main dish to companion item with co-occurrence strength | About 60 |
+| Pairings | main dish to companion dish (course side, beverage or dessert) with curated strength, the curated list of the add-on design (ADR-004 v2); dishes may lack a pair on purpose so the vector list is exercised | About 60 now; grows with the dish pool, with deliberately uncovered dishes (for example Sushi, D35) kept |
 | Trends | time-of-week and weather multipliers per category | About 20 rows |
 | Personas | done: `mock-data/personas.json` (11) | 11 |
 | Transcript fixtures | saved transcripts for the demo videos | 3 to 4 |
