@@ -33,17 +33,16 @@ Also read the free-tier limits and data-use terms on https://ai.google.dev/gemin
 4. Ollama may also need to run as a background app; if `ollama list` fails, open the Ollama app once and retry.
 Do not download any language model yet. Day 1 block 1.5 benchmarks two or three candidates and records the choice.
 
-## Step 4: Create the GitHub repository
-1. Sign in: `gh auth login` (choose GitHub.com, HTTPS, and log in through the browser).
-2. On github.com click New repository. Name it `zest-sous-chef`. Choose **Public**. Do **not** add a README, licence or .gitignore (the project already has them). Create it and copy its URL.
+## Step 4: GitHub repository (already created and filled)
+The public repository exists and the project is pushed: https://github.com/VarunParikh/zest-sous-chef (created 2026-10-17). You only need to sign in on your Mac so you can push your own changes later: `gh auth login` (choose GitHub.com, HTTPS, and log in through the browser).
 
-## Step 5: Put the project on your Mac
-1. Download `zest-sous-chef.zip` from the chat and move it to a folder you will remember, for example `~/Projects` (create the folder in Finder if needed).
-2. Double-click the zip to unzip it. You should see a folder `zest-sous-chef`.
-3. In Terminal: `cd ~/Projects/zest-sous-chef` then `git status`. It should say "nothing to commit" (a clean copy).
-4. Connect it to GitHub: `git remote add origin <your repo URL>`.
-5. **Secret check before the first push:** run `git log -p | grep -cE "AIza[0-9A-Za-z_-]{35}"`. It must print `0`. (Google API keys begin with AIza followed by 35 characters; this pattern does not match the walkthrough's own text.) Also run `git status --ignored` and confirm `.env` is not listed as tracked.
-6. Push: `git push -u origin main`. Everything pushed is public, including `docs/inputs/` (you approved that) and the licensed reference photos in `assets/sample-photos/` (you stated they are licensed; I could not verify that).
+## Step 5: Get the project onto your Mac
+1. In Terminal, create a folder and clone: `mkdir -p ~/Projects && cd ~/Projects && git clone https://github.com/VarunParikh/zest-sous-chef`
+2. `cd zest-sous-chef` then `git status`. It should say "nothing to commit" (a clean copy).
+3. `git remote -v` should already show the GitHub address (clone sets it for you).
+4. **Secret check:** run `git log -p | grep -cE "AIza[0-9A-Za-z_-]{35}"`. It must print `0`. Also confirm there is no `.env` file in the folder yet (`ls -a`).
+5. Note: the root `README.md` is a one-line placeholder. The real README (setup guide, demo script, limitations) is written after the build, from real results.
+Everything in the repo is public, including `docs/inputs/` (you approved) and the licensed reference photos in `assets/sample-photos/` (you stated they are licensed; I could not verify that).
 
 ## Step 6: Install the Claude desktop app and open the Code tab
 Decided 2026-10-17: you will use the desktop app. Your Claude Pro plan qualifies: the docs say Claude Code requires a Pro, Max, Team or Enterprise subscription (https://code.claude.com/docs/en/desktop-quickstart).
