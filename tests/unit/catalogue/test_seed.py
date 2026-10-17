@@ -37,7 +37,8 @@ def test_optional_marker_parsed(dishes):
 
 def test_add_on_pool_growing(dishes):
     companions = [d for d in dishes if d.dish.course in COMPANION]
-    assert len(companions) >= 79  # 8 in the original seed plus tranches 1 to 3
+    assert len(companions) >= 100  # owner target (ADR-004 v2)
+    assert len(dishes) >= 127
 
 
 def test_pairings_reference_dishes(dishes):
