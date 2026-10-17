@@ -1,6 +1,6 @@
 # Data Model: Zest AI Sous-Chef
 
-Status: **v0.2, Draft (amended 2026-10-17): awaiting owner re-approval** (v0.1 was approved by the owner 2026-10-17; v0.2 syncs to ADR-004 v2 and PRD v0.4: add-on retrieval, larger dish pool) · Date: 2026-10-17 · Source: PRD v0.4, Settings Panel, mock-data plan, Constitution G9, ADR-004 v2
+Status: **APPROVED v0.2 (owner, 2026-10-17)** (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2 and PRD v0.4: add-on retrieval, larger dish pool) · Date: 2026-10-17 · Source: PRD v0.4, Settings Panel, mock-data plan, Constitution G9, ADR-004 v2
 Scope: field-level schema for the structured catalogue, recipe base, engine inputs, session state, the retrieval documents embedded in Chroma, trace events and test fixtures. The Pydantic sketches are the contract the generator, validators, API and tests share. Field values in the mock data are illustrative and are not nutritional or medical data.
 
 ## 1. Principles
@@ -101,7 +101,7 @@ The companion-course dishes (`side`, `beverage`, `dessert`) are the add-on pool 
 |---|---|---|
 | `dish_id` | str | `paneer_butter_masala` |
 | `name`, `aliases` | str, list[str] | Includes Hinglish names |
-| `course` | `main`, `side`, `snack`, `breakfast`, `dessert`, `beverage` | Drives the add-on course rule (`ADDON_COURSES`, initially `side`, `beverage`, `dessert`) |
+| `course` | `main`, `soup`, `side`, `snack`, `breakfast`, `dessert`, `beverage` | Drives the add-on course rule (`ADDON_COURSES`, initially `side`, `beverage`, `dessert`) |
 | `cuisine` | str | |
 | `base_servings` | int | Default 2 |
 | `mood_tags` | list[str] | e.g. `indulgent`, `comfort`, `cooling`, `light`, `festive`, `high_protein` |
@@ -129,7 +129,7 @@ The companion-course dishes (`side`, `beverage`, `dessert`) are the add-on pool 
 `term` (e.g. `kothmir`), `canonical` (`coriander leaves`), `language` (`mr`, `hi`, `en`), `kind` (`ingredient`, `dish`, `attribute`). Used by the lexical retriever and appended to embedding text as "also called".
 
 ### 5.4 Pairing
-`main_dish_id`, `companion_type` (`dish` or `base_product`), `companion_id`, `strength` (0 to 1), `note`. For add-ons these rows are the *curated list*, one of two inputs to the add-on `s_p` (the other is the vector neighbours of the cart dish, section 7.4). Add-on companions are dishes (`companion_type = dish`) of a companion course. Target size grows with the dish pool (about 60 rows in the first seed, more with 100 companion-course dishes); a dish without a row is served by the vector list alone.
+`dish_a` (the cart or main dish ID), `dish_b` (the companion dish ID), `strength` (0.3 to 0.9 in the seed; 0 to 1 allowed), `note`, as in `mock-data/pairings.csv`. The earlier field names (`main_dish_id`, `companion_type`, `companion_id`) are retired: add-on companions are always dishes, so `companion_type` is dropped; a base-product companion is not an add-on (it is a missing ingredient, on the existing path). For add-ons these rows are the *curated list*, one of two inputs to the add-on `s_p` (the other is the vector neighbours of the cart dish, section 7.4). Add-on companions (`dish_b`) are dishes of a companion course. Target size grows with the dish pool (about 60 rows in the first seed, more with 100 companion-course dishes); a dish without a row is served by the vector list alone.
 
 ## 6. Engine inputs
 
@@ -395,7 +395,7 @@ class Dish(BaseModel):
     dish_id: str
     name: str
     aliases: list[str] = []
-    course: Literal["main", "side", "snack", "breakfast", "dessert", "beverage"]
+    course: Literal["main", "soup", "side", "snack", "breakfast", "dessert", "beverage"]
     cuisine: str
     base_servings: int = 2
     mood_tags: list[str]

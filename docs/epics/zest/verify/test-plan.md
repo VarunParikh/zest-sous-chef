@@ -1,6 +1,6 @@
 # Test Plan: Zest AI Sous-Chef
 
-Status: **v0.2, Draft (amended 2026-10-17): awaiting owner re-approval** (v0.1 was approved by the owner 2026-10-17; v0.2 adds T-047 to T-049 for ADR-004 v2 add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4 (AC-01 to AC-45), User Stories, Architecture, API Spec, Agent Design, Security and Privacy Note
+Status: **APPROVED v0.2 (owner, 2026-10-17)** (v0.1 was approved earlier the same day; v0.2 adds T-047 to T-049 for ADR-004 v2 add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4 (AC-01 to AC-45), User Stories, Architecture, API Spec, Agent Design, Security and Privacy Note
 Owner decision (2026-10-17): **lean test set.** Full coverage of the engine, cart and guardrails; acceptance tests for the Must stories; one Playwright demo-path test. Dependency Pillow approved.
 **Status of every test in this plan: NOT RUN.** No code exists. Nothing here is a result.
 

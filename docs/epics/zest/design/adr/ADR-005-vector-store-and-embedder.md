@@ -5,7 +5,7 @@
 - **Authorisation:** Owner decided to use a local vector database such as Chroma. The embedder is not decided.
 
 ## Context
-A local vector store is needed for about 35 dish documents and at least 1,000 variant documents (5,000 for the scale test) with no separate service, on a 16 GB laptop beside the text model.
+A local vector store is needed for 35 dish documents now (at least 127 under ADR-004 v2, whose add-on neighbours use the same `zest_dishes` collection; count refresh only, decision unchanged) and at least 1,000 variant documents (5,000 for the scale test) with no separate service, on a 16 GB laptop beside the text model.
 
 ## Decision drivers
 - Runs inside the Python process

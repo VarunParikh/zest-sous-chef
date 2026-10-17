@@ -1,6 +1,6 @@
 # Build Plan and Handover: Zest AI Sous-Chef
 
-Status: **v0.2, Draft (amended 2026-10-17): awaiting owner re-approval** (v0.1 was approved by the owner 2026-10-17; v0.2 syncs to ADR-004 v2: larger dish pool and add-on retrieval) · Date: 2026-10-17 · Audience: the owner (VJP) and Claude Code
+Status: **APPROVED v0.2 (owner, 2026-10-17)** (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2: larger dish pool and add-on retrieval) · Date: 2026-10-17 · Audience: the owner (VJP) and Claude Code
 This is the bridge from documents to code. It is not one of the 25 documents; it exists because Claude Code works far better with a clear build order, gates and a first prompt.
 **Honest sizing:** 40 user stories in three days is aggressive. The plan protects the demo by ordering work so the highest-value path works first and by naming what to cut. Nothing below has been built or measured.
 

@@ -47,7 +47,7 @@ Decision rule: if the vector arm adds no eligible add-on for the dishes without 
 **Original status:** Accepted (owner decision, 2026-10-17, reversing the earlier future-scope decision; conflict C12); benchmark gate to be run Day 1
 
 ## Context
-Ingredient-to-SKU and mood-to-dish lookups must handle regional names, near-identical variants and mood language over 1,000+ variants and about 34 dishes. Lexical matching alone cannot match "something cooling" to Chaas.
+Ingredient-to-SKU and mood-to-dish lookups must handle regional names, near-identical variants and mood language over 1,000+ variants and about 34 dishes (the count when v1 was written; 35 in the seed now, at least 127 under v2). Lexical matching alone cannot match "something cooling" to Chaas.
 
 ## Decision drivers
 - Recall of the right candidates
