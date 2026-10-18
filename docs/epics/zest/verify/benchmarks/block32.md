@@ -28,4 +28,4 @@
 - **Existing result files are unchanged.** The C68 E5 rerun was marked, because the reason was passed via `--notes`.
 
 ## Owner review
-**Status: pending.** The owner reviews the numbers on the published page. Block 3.2 closes when the owner confirms.
+**Confirmed by the owner on 2026-10-19:** the owner reviewed the published report and confirmed the numbers. Block 3.2 is closed.

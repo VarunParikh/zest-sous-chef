@@ -111,5 +111,34 @@ Report: `docs/epics/zest/verify/benchmarks/block31.md`.
   - 3B: validators V15 to V17 added and the catalogue fixed by rule (done). The C68 reruns left every status unchanged, and E14 still passes; `eval/headline.yaml` points to `post-hoc/c68/`.
 - **Still NOT RUN:** V7 stock scenarios; demo endpoints 14 and 15; `make` targets `test-full`, `coverage`, `eval` and `report`; `qwen3-vl:8b` in E3 (owner decision); chat cart edit in E11 (C59); live YouTube in E11.
 
-## Next: Day 3, block 3.2 (build-plan section 5)
-The evidence report: `make report`, built only from `eval/results/*.json` and `eval/headline.yaml`, with no NOT RUN on Must evaluations. Then block 3.3 (README and docs), 3.4 (rehearsals) and 3.5 (release).
+## Block 3.2 in one paragraph (closed 2026-10-19)
+**Report:** `docs/epics/zest/verify/report/index.html` (and `report.md`), built by `make report` (`scripts/eval_report.py`, `backend.evaluation.report`) from `eval/results/`, `eval/headline.yaml` and `eval/thresholds.yaml` v4. Rebuilding unchanged inputs gives identical output.
+
+**Results:**
+- Overall FAIL under Evaluation Plan §7 (C70).
+- No open FAIL and no critical failure.
+- Accepted FAILs: E2 (C55), E3 (C37), E4 (C56), E6 (C57).
+- No required evaluation without a result (C69).
+
+**Owner review:** the owner reviewed the published page and confirmed the numbers. Five numbers recomputed by hand: `verify/benchmarks/block32.md`.
+
+**Found and fixed:**
+- Five benchmark scripts dropped `--post-hoc`; a test now guards every save call.
+- Chart layout issues, found by rendering the report.
+
+**Rebuild rule:** after any new result or headline change, rebuild with `make report`. `make eval` reruns every harness; it is long, and E11 needs other apps closed.
+
+## Next: Day 3, block 3.3 (build-plan section 5)
+**What to write, from actual results only:**
+- README (a setup guide that works from a clean clone)
+- Demo Script
+- Known Limitations and Responsible-AI Note. It must include:
+  - "high protein" (C68)
+  - vector similarity is semantic, not co-occurrence (C17)
+  - photos are mock
+  - labels are assistant-written
+  - the accepted FAILs
+- Prototyping Feedback
+- CHANGELOG
+
+**After that:** 3.4 rehearsals (owner at the laptop) and 3.5 release (tag `v0.1.0`, push; owner approval).
