@@ -10,6 +10,7 @@ TEMPLATES = {
     "MSG-CHAT-CLEAR-CONFIRM": "Clearing the chat will also empty your cart. Continue?",
     "MSG-CLEAR-CONFIRM": "Replace the {dish} cart, or add to it?",
     "MSG-CLEAR-DONE": "Replaced. You can Undo if you change your mind.",
+    "MSG-MOOD-SWAP": "Swapped to {dish}. Your earlier items are untouched.",
     "MSG-UNDO": "Done. Removed {dish}.",
     "MSG-EMPTY-CART": "Your cart is empty. Pick a recipe or paste a YouTube link to get started!",
     "MSG-ORDER": "Order is placed, the rider will see you in 10 mins",

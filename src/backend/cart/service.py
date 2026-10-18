@@ -229,6 +229,7 @@ def undo(session, suggestion_id: str, store: Store) -> str:
     if entry is None:
         raise CartRuleError("STALE", "There's nothing to undo for that.")
     session.undo_stack.remove(entry)
+    session.suggestions.pop(suggestion_id, None)
     if entry["kind"] == "replace":
         session.cart = allocate(entry["prior"], store)
     else:
@@ -236,3 +237,34 @@ def undo(session, suggestion_id: str, store: Store) -> str:
         cart.dishes = [d for d in cart.dishes if d.added_by_suggestion_id != suggestion_id]
         session.cart = allocate(cart, store)
     return entry["dish_name"]
+
+
+def add_suggested(session, dish_id: str, alternatives: list[str], source: str, ctx, store: Store) -> tuple[str, CartDish]:
+    """FR-40, 41: cart the top dish under a new suggestion id, keep up to two alternatives for one-tap swaps."""
+    sid = session.next_id("sg")
+    added = add_dish(session, dish_id, source, ctx, store, suggestion_id=sid)
+    record_add(session, sid, added.name)
+    session.suggestions[sid] = {"dish_id": dish_id, "alternatives": list(alternatives)[:2], "source": source}
+    return sid, added
+
+
+def swap(session, suggestion_id: str, alt_dish_id: str, ctx, store: Store) -> CartDish:
+    """Replace only the dish this suggestion added, in place; items added earlier are never touched (FR-41)."""
+    rec = session.suggestions.get(suggestion_id)
+    current = next((d for d in session.cart.dishes if d.added_by_suggestion_id == suggestion_id), None)
+    if rec is None or current is None or alt_dish_id not in rec["alternatives"]:
+        raise CartRuleError("STALE", "That swap is no longer available.")
+    index = session.cart.dishes.index(current)
+    prior = session.cart.model_copy(deep=True)
+    session.cart.dishes = [d for d in session.cart.dishes if d is not current]
+    try:
+        added = add_dish(session, alt_dish_id, rec["source"], ctx, store, suggestion_id=suggestion_id, index=index)
+    except CartRuleError:
+        session.cart = prior
+        raise
+    rec["alternatives"] = [rec["dish_id"], *[a for a in rec["alternatives"] if a != alt_dish_id]][:2]
+    rec["dish_id"] = alt_dish_id
+    for e in session.undo_stack:
+        if e["suggestion_id"] == suggestion_id:
+            e["dish_name"] = added.name
+    return added

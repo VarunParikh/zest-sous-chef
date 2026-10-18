@@ -9,7 +9,7 @@ from pydantic import BaseModel, ConfigDict
 from backend.api.cart import context, rule_error
 from backend.cart import service
 from backend.cart.service import CartRuleError
-from backend.flows.cards import Message, TurnResponse, Undo
+from backend.flows.cards import Message, SwapOption, SwapOptions, TurnResponse, Undo
 from backend.flows.templates import render
 from backend.flows.turns import build_turn
 from backend.session.levers import LeverSet
@@ -60,7 +60,17 @@ def _undo(session, p: dict, request: Request) -> tuple[list[Message], bool]:
     return [reply(session, "MSG-UNDO", dish=name)], True
 
 
-HANDLERS = {"substitute": _substitute, "confirm": _confirm, "undo": _undo}
+def _swap(session, p: dict, request: Request) -> tuple[list[Message], bool]:
+    store = request.app.state.store
+    sid = p.get("suggestion_id", "")
+    added = service.swap(session, sid, p.get("alt_dish_id", ""), context(request), store)
+    msg = reply(session, "MSG-MOOD-SWAP", dish=added.name)
+    options = [SwapOption(dish_id=d, name=store.dish(d).dish.name) for d in session.suggestions[sid]["alternatives"]]
+    msg.cards = [SwapOptions(suggestion_id=sid, options=options), Undo(suggestion_id=sid)]
+    return [msg], True
+
+
+HANDLERS = {"substitute": _substitute, "confirm": _confirm, "undo": _undo, "swap": _swap}
 
 
 @router.post("/action")
