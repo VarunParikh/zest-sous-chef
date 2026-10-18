@@ -1,6 +1,6 @@
 # Specification (PRD): Zest AI Sous-Chef
 
-- **Status:** **APPROVED v0.7 (owner, 2026-10-18, with the block 2.6 lever plan): FR-111 pool 25, OQ-13 and Appendix A β0 0.20, dish premium rescaled (C53).** v0.6 was **APPROVED (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.5 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.4 was approved by the owner 2026-10-17 after the ADR-004 v2 sync (Approval Register Rule 2). v0.3 was approved by the owner 2026-10-17 (OQ-8 to OQ-10 accepted at their defaults); v0.2 reviewed (see `spec-review-v0.1.md`); v0.3 and v0.4 changes not independently re-reviewed
+- **Status:** **APPROVED v0.8 (owner, 2026-10-18, with the block 3.1 plan): §9 timeouts are not retried (C62); §10 `llm_call` adds call and outcome (C61).** v0.7 was **APPROVED (owner, 2026-10-18, with the block 2.6 lever plan): FR-111 pool 25, OQ-13 and Appendix A β0 0.20, dish premium rescaled (C53).** v0.6 was **APPROVED (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.5 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.4 was approved by the owner 2026-10-17 after the ADR-004 v2 sync (Approval Register Rule 2). v0.3 was approved by the owner 2026-10-17 (OQ-8 to OQ-10 accepted at their defaults); v0.2 reviewed (see `spec-review-v0.1.md`); v0.3 and v0.4 changes not independently re-reviewed
 - **Owner:** VJP (product owner) · **Date:** 2026-10-17
 - **Inputs:** BRD, Strategy, Platforms, Personas, Risk Register, Settings Panel, DESIGN.md, User Journeys, mockups
 - **Convention:** "shall" marks a testable requirement. Priority: M = Must, S = Should, C = Could. Items needing an owner decision are in section 15.
@@ -203,7 +203,7 @@ Below 1024 px, a segmented control switches between Levers and Chat.
 | Case | Required behaviour |
 |---|---|
 | Local model returns invalid JSON | One retry, then a fallback asking the user to rephrase |
-| Any external call times out | NFR-10 retry once, then fallback or failure copy |
+| Any external call times out | No retry (a retry would double the wait; US-34); the dependency's fallback or the failure copy (NFR-10; C62) |
 | Live photo analysis off (default) or the opt-in Gemini unavailable or rate-limited | Offer labelled sample photos (FR-55) |
 | Wrong type or oversized upload | Reject with reason (FR-57) |
 | Transcript unavailable | Fixture, title and description, paste prompt (FR-20) |
@@ -221,7 +221,7 @@ Below 1024 px, a segmented control switches between Levers and Chat.
 | Lever change mid-chat | Banner (FR-03) |
 
 ## 10. Analytics and observability
-No product analytics. A local trace log (no images, truncated text, no personal data) records: `session_started`, `lever_snapshot_applied`, `intent_classified`, `retrieval_candidates`, `guardrail_filtered`, `llm_call` (model, latency, schema_valid, retry), `suggestion_shown`, `suggestion_accepted`, `suggestion_dismissed`, `cart_mutated`, `fallback_used`, `checkout_placed`. Metric O6 uses `llm_call` latency.
+No product analytics. A local trace log (no images, truncated text, no personal data) records: `session_started`, `lever_snapshot_applied`, `intent_classified`, `retrieval_candidates`, `guardrail_filtered`, `llm_call` (model, call, outcome, latency, schema_valid, retry), `suggestion_shown`, `suggestion_accepted`, `suggestion_dismissed`, `cart_mutated`, `fallback_used`, `checkout_placed`. Metric O6 uses `llm_call` latency.
 
 ## 11. Retrieval design
 1. Retrieval sits behind a `Retriever` interface for ingredient-to-SKU and intent-to-dish lookups.

@@ -1,6 +1,6 @@
 # Architecture: Zest AI Sous-Chef
 
-Status: **APPROVED v0.9 (owner, 2026-10-18, C55): §6 `GUARD_IGNORE_CATEGORIES` S6 and `GUARD_IGNORE_IF_LINK` S8.** v0.8 was **APPROVED (owner, 2026-10-18, with the block 2.6 safety plan): §4 code routing between guard and intent (C54).** v0.7 was **APPROVED (owner, 2026-10-18, with the block 2.6 lever plan): §5 β0 from config, §6 `DISH_POOL` 25, `ADDON_POOL` 12, `VALUE_WEIGHT` 0.20 (C53).** v0.6 was **APPROVED (owner, 2026-10-18, with its plan): §4.1 adds open requests and the no-repeat rule (ADR-004 v3, C45).** v0.5 was APPROVED (owner re-approved 2026-10-18): §6 adds `GUARD_IGNORE_CATEGORIES` (ADR-006 v2, C40). v0.4 was APPROVED (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.3 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2: add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4, Data Model v0.2, Constitution v0.2, ADR-001 to ADR-010
+Status: **APPROVED v0.10 (owner, 2026-10-18, with the block 3.1 plan): §3 `llm` row and §7 local-model rows, a timeout is not retried (C62) and `llm_call` carries an outcome (C61).** v0.9 was **APPROVED (owner, 2026-10-18, C55): §6 `GUARD_IGNORE_CATEGORIES` S6 and `GUARD_IGNORE_IF_LINK` S8.** v0.8 was **APPROVED (owner, 2026-10-18, with the block 2.6 safety plan): §4 code routing between guard and intent (C54).** v0.7 was **APPROVED (owner, 2026-10-18, with the block 2.6 lever plan): §5 β0 from config, §6 `DISH_POOL` 25, `ADDON_POOL` 12, `VALUE_WEIGHT` 0.20 (C53).** v0.6 was **APPROVED (owner, 2026-10-18, with its plan): §4.1 adds open requests and the no-repeat rule (ADR-004 v3, C45).** v0.5 was APPROVED (owner re-approved 2026-10-18): §6 adds `GUARD_IGNORE_CATEGORIES` (ADR-006 v2, C40). v0.4 was APPROVED (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.3 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2: add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4, Data Model v0.2, Constitution v0.2, ADR-001 to ADR-010
 Scope: components, boundaries, data flows, failure handling and quality attributes. Field definitions are in the Data Model; endpoints will be detailed in the API Spec; prompts and tool contracts in the Agent Design.
 
 ## 1. Architectural stance
@@ -68,7 +68,7 @@ flowchart TB
 | `engine` | Eligibility mask, `S_final`, variant score, ties, context (FR-60 to 67, 113) | catalogue |
 | `catalogue` | Read-only SKU, variant, dish, recipe, synonym data; mutable stock; stock scenarios | files |
 | `cart` | Pack allocation, shared lines, edits, revalidation, checkout, idempotency (FR-71 to 83) | catalogue |
-| `llm` | Ollama text client; vision providers `ollama` with `qwen3-vl:4b-instruct` (default, ADR-003 v3), `gemini` (opt-in) and `samples` (demo path and fallback) behind one interface; timeouts, one retry, schema validation (G5, NFR-10) | config |
+| `llm` | Ollama text client; vision providers `ollama` with `qwen3-vl:4b-instruct` (default, ADR-003 v3), `gemini` (opt-in) and `samples` (demo path and fallback) behind one interface; timeouts, one retry on invalid output (none on timeout), schema validation (G5, NFR-10) | config |
 | `transcripts` | Live fetch, then fixture, then title and description (FR-20) | network |
 | `trace` | JSONL events, no images, truncated text (NFR-06) | none |
 
@@ -145,7 +145,8 @@ The pool must be larger than the display set, otherwise the levers cannot reorde
 ## 7. Failure handling
 | Dependency fails | Detected by | Behaviour |
 |---|---|---|
-| Local model: timeout or invalid JSON | timeout, schema check | One retry, then rephrase request; trace `fallback_used` |
+| Local model: invalid JSON | schema check | One retry, then MSG-REPHRASE or the flow's own fallback; `llm_call` outcome `invalid` |
+| Local model: timeout or unreachable | timeout | No retry (C62); the flow's fallback (YouTube MSG-YT-PASTE, photo samples, template reason, guard rules verdict) or MSG-SERVER; `llm_call` outcome `timeout` or `error` |
 | Opt-in Gemini: error, rate limit, timeout | provider interface (one retry on 429 or 5xx) | Labelled sample photos |
 | Transcript source blocked | exception | Fixture, then title and description, then paste prompt |
 | Vector store or embedder | startup check and call error | Lexical-only retrieval; add-ons from the curated list alone (FR-117) |

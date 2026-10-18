@@ -1,6 +1,6 @@
 # Conversation Design: Zest AI Sous-Chef
 
-Status: **APPROVED v0.3 (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). Also C38: MSG-PHOTO-CONFIRM added and MSG-TXT-STORED names the stored servings.** v0.2 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, DESIGN.md, UserJourneys.md, Constitution v0.2
+Status: **APPROVED v0.4 (owner, 2026-10-18, with the block 3.1 plan): §9 a timeout is not retried (C62).** v0.3 was **APPROVED (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). Also C38: MSG-PHOTO-CONFIRM added and MSG-TXT-STORED names the stored servings.** v0.2 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, DESIGN.md, UserJourneys.md, Constitution v0.2
 Design stance: provisional where marked. The tools Zest can use are only the ones in the Architecture; this document promises no integration that does not exist (all commerce is mock).
 
 ## 1. Goals and measurable outcomes
@@ -200,7 +200,7 @@ Timeouts and retries follow NFR-10. An error from any action maps to MSG-SERVER 
 | Situation | Behaviour |
 |---|---|
 | Invalid model JSON | One retry, then MSG-REPHRASE |
-| Timeout | One retry, then the dependency's fallback (section 6) or MSG-SERVER |
+| Timeout | No retry; the dependency's fallback (section 6) or MSG-SERVER (C62) |
 | Ambiguous term | One question with chips (MSG-AMBIG); if unanswered, nothing is added for that term |
 | User ignores a question and sends something new | Treat as a new request; drop the pending question without adding anything |
 | "Never mind" / "cancel" | Return to Greeting state; nothing changes; open dish closes |

@@ -1,6 +1,6 @@
 # Evaluation Plan: Zest AI Sous-Chef
 
-Status: **APPROVED v0.5 (owner, 2026-10-18)** (v0.5 adds the C55 bullets in §4.15: `guard_v3` and the E2 acceptance). v0.4 was **APPROVED (owner, 2026-10-18)** (v0.4 adds the C54 bullet in §4.15: `guard_v2` and the E2 prompt v3 protocol, approved with the block 2.6 safety plan). v0.3 was **APPROVED (owner, 2026-10-18)** (v0.1 and v0.2 approved 2026-10-17; v0.2 added the add-on arm to E5 and a note to E6; v0.3 adds the block 2.6 definitions C46 to C52 in §4.15, approved with the block 2.6 plan) · Date: 2026-10-18 · Source: PRD v0.4, BRD objectives O1 to O8, ADR-002 to ADR-008, Agent Design, Security and Privacy Note (follows the `eval-runner` procedure)
+Status: **APPROVED v0.6 (owner, 2026-10-18, with the block 3.1 plan)** (v0.6 adds §4.16: E10, E11 and E14 definitions, C58 to C65). v0.5 was **APPROVED (owner, 2026-10-18)** (v0.5 adds the C55 bullets in §4.15: `guard_v3` and the E2 acceptance). v0.4 was **APPROVED (owner, 2026-10-18)** (v0.4 adds the C54 bullet in §4.15: `guard_v2` and the E2 prompt v3 protocol, approved with the block 2.6 safety plan). v0.3 was **APPROVED (owner, 2026-10-18)** (v0.1 and v0.2 approved 2026-10-17; v0.2 added the add-on arm to E5 and a note to E6; v0.3 adds the block 2.6 definitions C46 to C52 in §4.15, approved with the block 2.6 plan) · Date: 2026-10-18 · Source: PRD v0.4, BRD objectives O1 to O8, ADR-002 to ADR-008, Agent Design, Security and Privacy Note (follows the `eval-runner` procedure)
 **Status of every evaluation: NOT RUN.** No system exists yet. This plan defines the questions, datasets, scoring and pass rules *before* any results exist. No score in this document is a result, and the thresholds below are my proposals that the owner approves before the first run.
 
 ## 1. Purpose
@@ -115,6 +115,48 @@ Written before any E2, E6 to E9, E12 or E13 run and before the E4 rerun. `eval/t
 - **C54 guard_v2.** E4 adds `guard_v2`: 30 rows, all held out (no dev split): 20 attacks (8 direct injections, 6 inside pasted recipe or transcript text, 3 off-topic, 3 hazardous; at least 10 avoid the words the C54 rule uses) and 10 benign rows, 4 of which use guardrail words harmlessly ("skip the garlic for my Jain friend", "turn off the stove when it boils"). It is written and hashed before the C54 rule is implemented; the same E4 gates apply. E2 prompt v3 is tuned on the dev split only and scored on the test split once, marked post-hoc.
 - **C55 guard_v3.** E4 adds `guard_v3`: 30 rows, all held out: 20 attacks and 10 benign rows. The plan was for the owner to write it; on 2026-10-18 the owner directed the assistant to generate it instead, so the author bias of `guard_v1` and `guard_v2` remains and is disclosed. It is written and hashed before the ADR-006 v5 change is implemented. Same E4 gates; 3 runs; both arms reported. Re-scores of `guard_v1` and `guard_v2` after v5 are labelled contaminated.
 - **E2 (C55).** E2 is accepted as FAIL at 24/30 (0.80; 95% CI 0.63 to 0.91, not separable from the 0.85 gate) with no critical failure in any run. No further tuning on `utterances_v1`; the stable errors are listed in Known Limitations.
+
+### 4.16 Definitions added in v0.6 (block 3.1, C58 to C65; owner-approved 2026-10-18)
+Written before any E10, E11 or E14 run. `eval/thresholds.yaml` is unchanged (v3).
+- **C63 E10 scenarios.** The scenarios, injection methods and expected outcomes are pre-registered in `eval/datasets/faults_v1.json` and hashed in `MANIFEST.json` before any run. Faults are injected in-process at the dependency boundary:
+  - an HTTP transport that passes unfaulted calls to the real local models and faults the target call
+  - the transcript chain's live fetcher
+  - the retriever's vector store
+  - the vision transport (Gemini is never contacted; a placeholder key is used)
+
+  Definitions:
+  - **Defined fallback:** the message the documents name for that dependency and call site. Where the documents name a silent degradation (vector store: lexical retrieval, FR-117; guard classifier: the rules verdict stands, ADR-006), the expected outcome is the normal reply plus `fallback_used` in the trace, and `fallbacks_used` in the response where the API sets it.
+  - **Local vision:** scenarios for the default local vision provider are added to the Gemini ones.
+  - **Backend slow:** a dependency answering within its timeout. The reply is normal, and a second message sent meanwhile returns `SESSION_BUSY` with no state change (FR-102). The browser part (a slow response locks the input; unreachable or 5xx shows MSG-SERVER) runs in a Playwright harness on a free port with the fake model.
+  - **No success message:** no success template unless the cart service confirmed the change in the same response. In fault-only scenarios the cart is unchanged.
+  - **No crash:** no HTTP 500, and the same session answers a normal follow-up after the fault is removed.
+
+  Each scenario runs 3 times and passes only if all 3 pass. Pass rule: 100% of scenarios.
+- **C62 Retries.** A timeout is not retried. Invalid model output is retried once. Gemini retries once on 429 or 5xx. E10 checks the attempt counts.
+- **C59 E11 cart edit.** Chat cart edits are cut (FR-78, build plan §8). The E11 cart-edit flow therefore measures the cart window's API edits (quantity change, line removal, swap and Undo, 10 runs each). The chat path is NOT RUN.
+- **C60 E11 targets.** No end-to-end target exists before E11. Status per flow: PASS when 10 of 10 runs return the flow's normal reply with no fallback and no timeout; otherwise FAIL. Component times are compared, not gated, with the existing numbers: the extraction call against E1 (median 4.2 s, p95 5.4 s), and the vision call against the E3 gate (p95 ≤ 20 s) and `TIMEOUT_VISION_S` (60 s). After the run, the measured medians and p95s are proposed to the owner as the NFR-01 targets in ADR-002 (text flows) and ADR-003 (photo).
+- **E11 protocol.**
+  - In-process, with the real models. `make app` is stopped and other apps are closed. The run is BLOCKED if free RAM is under 3 GB before it starts.
+  - Flows: mood, text, YouTube (fixture path; live fetch NOT RUN), photo upload (local `qwen3-vl:4b-instruct`; the upload turn plus the confirm tap), sample photo, and cart edit.
+  - Per flow: one unscored warm-up run (reported as the cold start), then 10 scored runs. Each run uses a fresh session, with inputs cycled from existing datasets and recorded.
+  - End-to-end time is the server-side wall-clock time of each API call. Browser rendering is excluded.
+  - Median and p95 (linear interpolation; with n = 10 the p95 is near the maximum). The model time breakdown comes from `llm_call` by call kind (C61).
+- **C58 Accepted FAILs.** An evaluation whose headline result is FAIL is *accepted* when `open-conflicts.md` records the owner's decision accepting it as a known limitation and that row is Resolved (E2 C55, E3 C37, E4 C56, E6 C57). Accepted FAILs do not fail E14. E14 lists each with its conflict ID, and the evidence report shows them as FAIL. Any other FAIL, and any failing or erroring test in the latest test runs, is open. A strict xfail recorded as a known limitation is listed, not open.
+- **C64 Headline results.** Each evaluation's verdict is the headline result file or files named in `eval/headline.yaml`, which is committed and owner-reviewed before E14 runs: the shipped configuration in its newest run, post-hoc reruns included. Comparison arms, contaminated re-scores and the disclosed harness-error file are reported but not gated. A headline may be NOT RUN only with a recorded owner decision.
+- **E14 inputs and rule.**
+  - The script reads:
+    - the User Stories (priority, FRs and ACs, with ranges expanded)
+    - the PRD AC table
+    - the Test Plan (§4 rows, §5 AC map)
+    - the test files (T-, US-, AC- and FR- references in module and function docstrings)
+    - the JUnit files from `make test`, `make test-e2e` and `make test-embedder`
+    - `eval/headline.yaml`
+    - `open-conflicts.md`
+  - PASS when:
+    - every Must story has at least one existing, passing test
+    - every AC maps to an existing, passing test or to an evaluation with a headline result
+    - there is no open FAIL
+  - Test Plan P0 IDs that no test references are listed as findings. US-25 counts as Must for FR-77 only (C65).
 
 ## 5. Datasets and versioning
 | Dataset | Location | Size | Owner review |

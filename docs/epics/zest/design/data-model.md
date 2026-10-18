@@ -1,6 +1,6 @@
 # Data Model: Zest AI Sous-Chef
 
-Status: **APPROVED v0.4 (owner, 2026-10-18, with the block 2.6 lever plan)**: §7 pool 25, §5.1 derived premium level, §16 β0 0.20 (C53). v0.3 was **APPROVED (owner, 2026-10-18)**: §8.4 pack allocation follows FR-71 (combined need per variant, C33) and defines line quantity (C35); §14 adds `CartLine.quantity` and `Cart.quotes` (C34). v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2 and PRD v0.4: add-on retrieval, larger dish pool) · Date: 2026-10-17 · Source: PRD v0.4, Settings Panel, mock-data plan, Constitution G9, ADR-004 v2
+Status: **APPROVED v0.5 (owner, 2026-10-18, with the block 3.1 plan)**: §11 `llm_call` adds call and outcome and covers the guard and vision calls (C61). v0.4 was **APPROVED (owner, 2026-10-18, with the block 2.6 lever plan)**: §7 pool 25, §5.1 derived premium level, §16 β0 0.20 (C53). v0.3 was **APPROVED (owner, 2026-10-18)**: §8.4 pack allocation follows FR-71 (combined need per variant, C33) and defines line quantity (C35); §14 adds `CartLine.quantity` and `Cart.quotes` (C34). v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2 and PRD v0.4: add-on retrieval, larger dish pool) · Date: 2026-10-17 · Source: PRD v0.4, Settings Panel, mock-data plan, Constitution G9, ADR-004 v2
 Scope: field-level schema for the structured catalogue, recipe base, engine inputs, session state, the retrieval documents embedded in Chroma, trace events and test fixtures. The Pydantic sketches are the contract the generator, validators, API and tests share. Field values in the mock data are illustrative and are not nutritional or medical data.
 
 ## 1. Principles
@@ -293,7 +293,7 @@ Each line of `trace.jsonl`: `ts`, `session_id`, `event`, `data`. No images, trun
 | `intent_classified` | intent, confidence |
 | `retrieval_candidates` | kind, lexical top ids, vector top ids, fused pool ids, latency_ms |
 | `guardrail_filtered` | candidate_id, rules failed |
-| `llm_call` | model, latency_ms, schema_valid, retry |
+| `llm_call` | model, call (`intent`, `extract`, `reason`, `guard`, `vision`), outcome (`ok`, `invalid`, `timeout`, `error`), latency_ms, schema_valid, retry. Emitted by the text client, the guard classifier and the vision providers, including calls that time out or fail (C61) |
 | `suggestion_shown` / `accepted` / `dismissed` | suggestion_id, type, rank |
 | `cart_mutated` | operation, line ids, subtotal |
 | `fallback_used` | which dependency, reason |
