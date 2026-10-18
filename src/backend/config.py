@@ -26,7 +26,8 @@ class Settings(BaseModel):
     # Input guard (ADR-006): rules first, then this classifier on text the rules pass
     guard_classifier: bool = True
     guard_model: str = "llama-guard3:1b"
-    guard_ignore_categories: list[str] = ["S8", "S6"]  # ADR-006 v3 (C40, C44): classifier categories that do not block
+    guard_ignore_categories: list[str] = ["S6"]  # ADR-006 v5 (C44, C55): classifier categories that never block
+    guard_ignore_if_link: list[str] = ["S8"]  # ADR-006 v5 (C40, C55): ignored only when the text has a YouTube link
     # Intent (Agent Design §6.1): below this confidence the bot asks to rephrase, never acts
     intent_confidence_min: float = 0.5
     vision_provider: Literal["ollama", "gemini", "samples"] = "ollama"  # ADR-003 v3 (owner decision, C37)
@@ -64,7 +65,7 @@ class Settings(BaseModel):
     trace_path: str = "logs/trace.jsonl"
     chroma_path: str = "data/chroma"
 
-    @field_validator("guard_ignore_categories", mode="before")
+    @field_validator("guard_ignore_categories", "guard_ignore_if_link", mode="before")
     @classmethod
     def _split_categories(cls, v):
         if isinstance(v, str):

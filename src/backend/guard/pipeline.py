@@ -12,7 +12,7 @@ from dataclasses import dataclass
 
 import httpx
 
-from backend.guard import Guard
+from backend.guard import YOUTUBE, Guard
 
 CLASSIFIER_TEMPLATE = {"user": "MSG-REDIRECT", "transcript": "MSG-INJECT-DATA"}
 
@@ -27,12 +27,14 @@ class Verdict:
 
 
 class LlamaGuard:
-    """`ignore`: categories that do not block (ADR-006 v3: S8 Intellectual Property flagged every bare video link, C40;
-    S6 Specialized Advice flagged "what should I eat", C44)."""
+    """`ignore`: categories that never block (S6 Specialized Advice flagged "what should I eat", C44).
+    `ignore_if_link`: categories ignored only when the text has a YouTube link (S8 Intellectual Property flagged
+    every bare video link, C40; ADR-006 v5, C55: elsewhere an S8 verdict blocks)."""
 
     def __init__(self, base_url: str, model: str, timeout_s: float, transport: httpx.BaseTransport | None = None,
-                 ignore: frozenset[str] = frozenset({"S8", "S6"})):
+                 ignore: frozenset[str] = frozenset({"S6"}), ignore_if_link: frozenset[str] = frozenset({"S8"})):
         self.base_url, self.model, self.ignore = base_url.rstrip("/"), model, frozenset(c.upper() for c in ignore)
+        self.ignore_if_link = frozenset(c.upper() for c in ignore_if_link)
         self._http = httpx.Client(transport=transport, timeout=timeout_s)
 
     def verdict(self, text: str) -> tuple[bool, tuple[str, ...]]:
@@ -45,7 +47,8 @@ class LlamaGuard:
         if not reply.lower().startswith("unsafe"):
             return False, ()
         categories = tuple(sorted({c.strip().upper() for c in re.split(r"[,\s]+", reply[len("unsafe"):]) if c.strip()}))
-        return (not categories or bool(set(categories) - self.ignore)), categories  # no category given: block
+        ignored = self.ignore | (self.ignore_if_link if YOUTUBE.search(text) else frozenset())
+        return (not categories or bool(set(categories) - ignored)), categories  # no category given: block
 
     def unsafe(self, text: str) -> bool:
         return self.verdict(text)[0]

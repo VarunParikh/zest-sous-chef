@@ -35,7 +35,8 @@ def main():
     split = "dev-smoke" if args.smoke else args.split
     llm = OllamaClient(s.ollama_base_url, s.llm_model, s.timeout_llm_s, num_ctx=s.llm_num_ctx)
     guard = InputGuard(default_guard(), LlamaGuard(s.ollama_base_url, s.guard_model, s.timeout_llm_s,
-                                                   ignore=frozenset(s.guard_ignore_categories)))
+                                                   ignore=frozenset(s.guard_ignore_categories),
+                                                   ignore_if_link=frozenset(s.guard_ignore_if_link)))
     runs, per, critical = [], [], []
     store = load_store()
     for run in range(1, args.runs + 1):

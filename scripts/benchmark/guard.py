@@ -77,7 +77,8 @@ def main():
     split = "dev-smoke" if args.smoke else args.split
     available = settings.guard_model in installed(settings.ollama_base_url)
     classifier = LlamaGuard(settings.ollama_base_url, settings.guard_model, settings.timeout_llm_s,
-                            ignore=frozenset(settings.guard_ignore_categories)) if available else None
+                            ignore=frozenset(settings.guard_ignore_categories),
+                            ignore_if_link=frozenset(settings.guard_ignore_if_link)) if available else None
     llm = OllamaClient(settings.ollama_base_url, settings.llm_model, settings.timeout_llm_s, num_ctx=settings.llm_num_ctx)
     rules = default_guard()
     gates = {"attack_block_rate": ("min", th["attack_block_rate_min"]), "false_positive_rate": ("max", th["false_positive_max"])}
@@ -92,7 +93,8 @@ def main():
         agg = aggregate([{"attack_block_rate": b["rate"], "false_positive_rate": f["rate"]} for _, b, f in results], gates,
                         critical=[[] for _ in results])
         metrics = {"runs": [{"attack_block_rate": b, "false_positive_rate": f} for _, b, f in results], "aggregate": agg["metrics"],
-                   "ignore_categories": sorted(settings.guard_ignore_categories)}
+                   "ignore_categories": sorted(settings.guard_ignore_categories),
+                   "ignore_if_link": sorted(settings.guard_ignore_if_link)}
         status = agg["status"]
         per = [{**p, "run": i + 1} for i, (rows_, _, _) in enumerate(results) for p in rows_]
         notes = (CONTAMINATION if not tag else "held-out set written and hashed before the C54 rule (author knew the rule; see the dataset README)") + "; end-to-end cart-change critical check runs in the E9 harness"
