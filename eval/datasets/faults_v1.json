@@ -1,0 +1,765 @@
+{
+ "version": 1,
+ "created": "2026-10-18",
+ "note": "E10 fault scenarios, pre-registered before the harness was written or run (Evaluation Plan v0.6 §4.16, C62, C63, C66). Every scenario runs 3 times and passes only if all 3 pass; pass rule 100% of scenarios.",
+ "inputs": {
+  "mood": "I am feeling indulgent",
+  "text": "recipe_text:D21 (E9 generator, scripts/benchmark/intent_to_cart.py)",
+  "video": "V1 (https://www.youtube.com/watch?v=6YVx0i_hrZ0)",
+  "unknown_video": "https://www.youtube.com/watch?v=zzzzzzzzzzz",
+  "photo_upload": "assets/sample-photos/RF01 uploaded as bytes, consent given"
+ },
+ "success_templates": [
+  "MSG-MOOD-ADD",
+  "MSG-TXT-DRAFT",
+  "MSG-YT-OK",
+  "MSG-PHOTO-OK",
+  "MSG-EDIT-OK",
+  "MSG-CLEAR-DONE",
+  "MSG-MOOD-SWAP",
+  "MSG-UNDO",
+  "MSG-ORDER"
+ ],
+ "always": [
+  "no HTTP 500",
+  "after the fault is removed the same session answers the mood prompt with HTTP 200 and no MSG-SERVER",
+  "no success template unless the response confirms a cart change (cart_changed true and the cart differs)",
+  "cart 'unchanged' means identical cart lines before and after",
+  "garbage mode: text and vision calls get a reply whose content is not JSON; the guard gets a reply with no message field (its protocol is plain text)",
+  "the proxy forwards only to the local Ollama host; any other host without a configured fault is refused, so Gemini is never contacted"
+ ],
+ "scenarios": [
+  {
+   "id": "F01",
+   "fault": "Gemini down (503)",
+   "layer": "api",
+   "input": "photo_upload",
+   "inject": {
+    "settings": {
+     "VISION_PROVIDER": "gemini",
+     "VISION_MODEL": "gemini-3.5-flash-lite",
+     "GEMINI_API_KEY": "not-a-real-key-e10"
+    },
+    "proxy": {
+     "vision": {
+      "mode": "status",
+      "code": 503
+     }
+    }
+   },
+   "expect": {
+    "status": 200,
+    "templates": [
+     "MSG-PHOTO-SAMPLES"
+    ],
+    "cart": "unchanged",
+    "fallbacks_used": [
+     "vision"
+    ],
+    "trace_fallback": [
+     "vision"
+    ],
+    "attempts": {
+     "vision": 2
+    },
+    "llm_outcomes": {
+     "vision": "error"
+    }
+   }
+  },
+  {
+   "id": "F02",
+   "fault": "Gemini rate-limited (429)",
+   "layer": "api",
+   "input": "photo_upload",
+   "inject": {
+    "settings": {
+     "VISION_PROVIDER": "gemini",
+     "VISION_MODEL": "gemini-3.5-flash-lite",
+     "GEMINI_API_KEY": "not-a-real-key-e10"
+    },
+    "proxy": {
+     "vision": {
+      "mode": "status",
+      "code": 429
+     }
+    }
+   },
+   "expect": {
+    "status": 200,
+    "templates": [
+     "MSG-PHOTO-SAMPLES"
+    ],
+    "cart": "unchanged",
+    "fallbacks_used": [
+     "vision"
+    ],
+    "trace_fallback": [
+     "vision"
+    ],
+    "attempts": {
+     "vision": 2
+    },
+    "llm_outcomes": {
+     "vision": "error"
+    }
+   }
+  },
+  {
+   "id": "F03",
+   "fault": "Gemini timeout",
+   "layer": "api",
+   "input": "photo_upload",
+   "inject": {
+    "settings": {
+     "VISION_PROVIDER": "gemini",
+     "VISION_MODEL": "gemini-3.5-flash-lite",
+     "GEMINI_API_KEY": "not-a-real-key-e10"
+    },
+    "proxy": {
+     "vision": {
+      "mode": "timeout"
+     }
+    }
+   },
+   "expect": {
+    "status": 200,
+    "templates": [
+     "MSG-PHOTO-SAMPLES"
+    ],
+    "cart": "unchanged",
+    "fallbacks_used": [
+     "vision"
+    ],
+    "trace_fallback": [
+     "vision"
+    ],
+    "attempts": {
+     "vision": 1
+    },
+    "llm_outcomes": {
+     "vision": "timeout"
+    }
+   }
+  },
+  {
+   "id": "F04",
+   "fault": "Local vision model unreachable",
+   "layer": "api",
+   "input": "photo_upload",
+   "inject": {
+    "settings": {
+     "VISION_PROVIDER": "ollama"
+    },
+    "proxy": {
+     "vision": {
+      "mode": "connect"
+     }
+    }
+   },
+   "expect": {
+    "status": 200,
+    "templates": [
+     "MSG-PHOTO-SAMPLES"
+    ],
+    "cart": "unchanged",
+    "fallbacks_used": [
+     "vision"
+    ],
+    "trace_fallback": [
+     "vision"
+    ],
+    "attempts": {
+     "vision": 1
+    },
+    "llm_outcomes": {
+     "vision": "error"
+    }
+   }
+  },
+  {
+   "id": "F05",
+   "fault": "Local vision model real deadline",
+   "layer": "api",
+   "input": "photo_upload",
+   "inject": {
+    "settings": {
+     "VISION_PROVIDER": "ollama",
+     "TIMEOUT_VISION_S": "0.1"
+    },
+    "proxy": {}
+   },
+   "expect": {
+    "status": 200,
+    "templates": [
+     "MSG-PHOTO-SAMPLES"
+    ],
+    "cart": "unchanged",
+    "fallbacks_used": [
+     "vision"
+    ],
+    "trace_fallback": [
+     "vision"
+    ],
+    "attempts": {
+     "vision": 1
+    },
+    "llm_outcomes": {
+     "vision": "timeout"
+    }
+   }
+  },
+  {
+   "id": "F06",
+   "fault": "Local vision model invalid output",
+   "layer": "api",
+   "input": "photo_upload",
+   "inject": {
+    "settings": {
+     "VISION_PROVIDER": "ollama"
+    },
+    "proxy": {
+     "vision": {
+      "mode": "garbage"
+     }
+    }
+   },
+   "expect": {
+    "status": 200,
+    "templates": [
+     "MSG-PHOTO-SAMPLES"
+    ],
+    "cart": "unchanged",
+    "fallbacks_used": [
+     "vision"
+    ],
+    "trace_fallback": [
+     "vision"
+    ],
+    "attempts": {
+     "vision": 1
+    },
+    "llm_outcomes": {
+     "vision": "invalid"
+    }
+   }
+  },
+  {
+   "id": "F07",
+   "fault": "Transcript live fetch blocked, fixture exists",
+   "layer": "api",
+   "input": "video",
+   "inject": {
+    "transcripts": {
+     "live": "blocked"
+    }
+   },
+   "expect": {
+    "status": 200,
+    "templates": [
+     "MSG-YT-FIXTURE"
+    ],
+    "forbid": [
+     "MSG-SERVER",
+     "MSG-YT-PASTE"
+    ],
+    "cart": "may_change",
+    "attempts": {
+     "transcript_live": 1
+    }
+   }
+  },
+  {
+   "id": "F08",
+   "fault": "Transcript live fetch blocked, no fixture",
+   "layer": "api",
+   "input": "video",
+   "inject": {
+    "transcripts": {
+     "live": "blocked",
+     "fixtures": "none"
+    }
+   },
+   "expect": {
+    "status": 200,
+    "templates": [
+     "MSG-YT-TITLE"
+    ],
+    "forbid": [
+     "MSG-SERVER"
+    ],
+    "cart": "may_change",
+    "attempts": {
+     "transcript_live": 1
+    },
+    "note": "title-to-dish lookup fixed before the run: stored_dish('Mysore Rasam') -> D02, so the defined fallback is MSG-YT-TITLE with the stored D02 recipe"
+   }
+  },
+  {
+   "id": "F09",
+   "fault": "Transcript unavailable from every source",
+   "layer": "api",
+   "input": "unknown_video",
+   "inject": {
+    "transcripts": {
+     "live": "blocked"
+    }
+   },
+   "expect": {
+    "status": 200,
+    "templates": [
+     "MSG-YT-PASTE"
+    ],
+    "cart": "unchanged",
+    "attempts": {
+     "transcript_live": 1
+    }
+   }
+  },
+  {
+   "id": "F10",
+   "fault": "Vector store fails to build",
+   "layer": "api",
+   "input": "mood",
+   "inject": {
+    "vector": "build_fails"
+   },
+   "expect": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD"
+    ],
+    "forbid": [
+     "MSG-SERVER"
+    ],
+    "cart": "may_change",
+    "fallbacks_used": [
+     "vector"
+    ],
+    "trace_fallback": [
+     "vector_index"
+    ]
+   }
+  },
+  {
+   "id": "F11",
+   "fault": "Vector store query fails mid-session",
+   "layer": "api",
+   "input": "mood",
+   "inject": {
+    "vector": "query_fails"
+   },
+   "expect": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD"
+    ],
+    "forbid": [
+     "MSG-SERVER"
+    ],
+    "cart": "may_change",
+    "fallbacks_used": [
+     "vector"
+    ],
+    "trace_fallback": [
+     "vector_store"
+    ]
+   }
+  },
+  {
+   "id": "F12",
+   "fault": "Intent call invalid JSON",
+   "layer": "api",
+   "input": "mood",
+   "inject": {
+    "proxy": {
+     "intent": {
+      "mode": "garbage"
+     }
+    }
+   },
+   "expect": {
+    "status": 200,
+    "templates": [
+     "MSG-REPHRASE"
+    ],
+    "cart": "unchanged",
+    "attempts": {
+     "intent": 2
+    },
+    "llm_outcomes": {
+     "intent": "invalid"
+    }
+   }
+  },
+  {
+   "id": "F13",
+   "fault": "Extraction invalid JSON (text recipe)",
+   "layer": "api",
+   "input": "text",
+   "inject": {
+    "proxy": {
+     "extract": {
+      "mode": "garbage"
+     }
+    }
+   },
+   "expect": {
+    "status": 200,
+    "templates": [
+     "MSG-REPHRASE"
+    ],
+    "cart": "unchanged",
+    "attempts": {
+     "extract": 2
+    },
+    "llm_outcomes": {
+     "extract": "invalid"
+    }
+   }
+  },
+  {
+   "id": "F14",
+   "fault": "Extraction invalid JSON (YouTube)",
+   "layer": "api",
+   "input": "video",
+   "inject": {
+    "transcripts": {
+     "live": "blocked"
+    },
+    "proxy": {
+     "extract": {
+      "mode": "garbage"
+     }
+    }
+   },
+   "expect": {
+    "status": 200,
+    "templates": [
+     "MSG-YT-PASTE"
+    ],
+    "cart": "unchanged",
+    "attempts": {
+     "extract": 2
+    },
+    "llm_outcomes": {
+     "extract": "invalid"
+    }
+   }
+  },
+  {
+   "id": "F15",
+   "fault": "Reason line invalid JSON",
+   "layer": "api",
+   "input": "mood",
+   "inject": {
+    "proxy": {
+     "reason": {
+      "mode": "garbage"
+     }
+    }
+   },
+   "expect": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD"
+    ],
+    "cart": "may_change",
+    "reason": "template",
+    "attempts": {
+     "reason": 2
+    },
+    "llm_outcomes": {
+     "reason": "invalid"
+    }
+   }
+  },
+  {
+   "id": "F16",
+   "fault": "Guard classifier malformed reply",
+   "layer": "api",
+   "input": "mood",
+   "inject": {
+    "proxy": {
+     "guard": {
+      "mode": "garbage"
+     }
+    }
+   },
+   "expect": {
+    "status": 200,
+    "forbid": [
+     "MSG-SERVER"
+    ],
+    "cart": "may_change",
+    "trace_fallback": [
+     "guard_classifier"
+    ],
+    "attempts": {
+     "guard": 1
+    },
+    "llm_outcomes": {
+     "guard": "invalid"
+    }
+   }
+  },
+  {
+   "id": "F17",
+   "fault": "Intent call timeout",
+   "layer": "api",
+   "input": "mood",
+   "inject": {
+    "proxy": {
+     "intent": {
+      "mode": "timeout"
+     }
+    }
+   },
+   "expect": {
+    "status": 503,
+    "error_code": "DEPENDENCY_UNAVAILABLE",
+    "templates": [
+     "MSG-SERVER"
+    ],
+    "cart": "unchanged",
+    "attempts": {
+     "intent": 1
+    },
+    "llm_outcomes": {
+     "intent": "timeout"
+    }
+   }
+  },
+  {
+   "id": "F18",
+   "fault": "Extraction timeout (text recipe)",
+   "layer": "api",
+   "input": "text",
+   "inject": {
+    "proxy": {
+     "extract": {
+      "mode": "timeout"
+     }
+    }
+   },
+   "expect": {
+    "status": 503,
+    "error_code": "DEPENDENCY_UNAVAILABLE",
+    "templates": [
+     "MSG-SERVER"
+    ],
+    "cart": "unchanged",
+    "attempts": {
+     "extract": 1
+    },
+    "llm_outcomes": {
+     "extract": "timeout"
+    }
+   }
+  },
+  {
+   "id": "F19",
+   "fault": "Extraction timeout (YouTube)",
+   "layer": "api",
+   "input": "video",
+   "inject": {
+    "transcripts": {
+     "live": "blocked"
+    },
+    "proxy": {
+     "extract": {
+      "mode": "timeout"
+     }
+    }
+   },
+   "expect": {
+    "status": 200,
+    "templates": [
+     "MSG-YT-PASTE"
+    ],
+    "cart": "unchanged",
+    "attempts": {
+     "extract": 1
+    },
+    "llm_outcomes": {
+     "extract": "timeout"
+    }
+   }
+  },
+  {
+   "id": "F20",
+   "fault": "Reason line timeout",
+   "layer": "api",
+   "input": "mood",
+   "inject": {
+    "proxy": {
+     "reason": {
+      "mode": "timeout"
+     }
+    }
+   },
+   "expect": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD"
+    ],
+    "cart": "may_change",
+    "reason": "template",
+    "attempts": {
+     "reason": 1
+    },
+    "llm_outcomes": {
+     "reason": "timeout"
+    }
+   }
+  },
+  {
+   "id": "F21",
+   "fault": "Guard classifier timeout",
+   "layer": "api",
+   "input": "mood",
+   "inject": {
+    "proxy": {
+     "guard": {
+      "mode": "timeout"
+     }
+    }
+   },
+   "expect": {
+    "status": 200,
+    "forbid": [
+     "MSG-SERVER"
+    ],
+    "cart": "may_change",
+    "trace_fallback": [
+     "guard_classifier"
+    ],
+    "attempts": {
+     "guard": 1
+    },
+    "llm_outcomes": {
+     "guard": "timeout"
+    }
+   }
+  },
+  {
+   "id": "F22",
+   "fault": "Text model real deadline",
+   "layer": "api",
+   "input": "mood",
+   "inject": {
+    "settings": {
+     "TIMEOUT_LLM_S": "0.1"
+    },
+    "proxy": {}
+   },
+   "expect": {
+    "status": 503,
+    "error_code": "DEPENDENCY_UNAVAILABLE",
+    "templates": [
+     "MSG-SERVER"
+    ],
+    "cart": "unchanged",
+    "attempts": {
+     "intent": 1
+    },
+    "llm_outcomes": {
+     "intent": "timeout"
+    },
+    "note": "the guard shares TIMEOUT_LLM_S; its outcome is recorded but not gated (a warm 1B model may answer inside 0.1 s)"
+   }
+  },
+  {
+   "id": "F23",
+   "fault": "Ollama unreachable",
+   "layer": "api",
+   "input": "mood",
+   "inject": {
+    "proxy": {
+     "*": {
+      "mode": "connect"
+     }
+    }
+   },
+   "expect": {
+    "status": 503,
+    "error_code": "DEPENDENCY_UNAVAILABLE",
+    "templates": [
+     "MSG-SERVER"
+    ],
+    "cart": "unchanged",
+    "trace_fallback": [
+     "guard_classifier"
+    ],
+    "attempts": {
+     "guard": 1,
+     "intent": 1
+    },
+    "llm_outcomes": {
+     "guard": "error",
+     "intent": "error"
+    }
+   }
+  },
+  {
+   "id": "F24",
+   "fault": "Backend slow: intent answers after 5 s, inside the 30 s timeout",
+   "layer": "api",
+   "input": "mood",
+   "inject": {
+    "proxy": {
+     "intent": {
+      "mode": "delay",
+      "seconds": 5
+     }
+    },
+    "second_message_after_s": 1.0
+   },
+   "expect": {
+    "status": 200,
+    "forbid": [
+     "MSG-SERVER"
+    ],
+    "cart": "may_change",
+    "busy": {
+     "status": 409,
+     "code": "SESSION_BUSY"
+    },
+    "attempts": {
+     "intent": 1
+    }
+   }
+  },
+  {
+   "id": "F25",
+   "fault": "Backend slow in the browser: the chat reply takes 5 s",
+   "layer": "browser",
+   "input": "mood",
+   "inject": {
+    "fake_delay_s": 5
+   },
+   "expect": {
+    "input_locked_while_pending": true,
+    "reply_text": "Let's go with",
+    "error_text_absent": true
+   }
+  },
+  {
+   "id": "F26",
+   "fault": "Backend down in the browser: the chat request is aborted, or returns 500",
+   "layer": "browser",
+   "input": "mood",
+   "inject": {
+    "route": [
+     "abort",
+     "500"
+    ]
+   },
+   "expect": {
+    "error_text": "seems like our servers are struggling",
+    "success_text_absent": "Let's go with",
+    "cart_label": "Cart is empty"
+   }
+  }
+ ]
+}

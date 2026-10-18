@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- `eval/datasets/faults_v1.json` (E10, C63): 26 fault scenarios with injection methods, expected fallback IDs, attempt counts and checks, hashed in `MANIFEST.json` before the harness was written or run.
 - Agent Design v0.5 (C66, owner decision): the A4 and A6 retry columns now match the code; Evaluation Plan v0.6 §4.16 retry bullet reworded to match.
 - `llm_call` traces carry `call` (intent, extract, reason, guard, vision) and `outcome` (ok, invalid, timeout, error); the guard classifier and the vision providers now emit them, including on timeout and error, and a timeout is not retried (Data Model v0.5 §11, C61, C62). `OllamaClient.generate` takes a required `call` keyword.
 - Block 3.1 document amendments (owner-approved with the plan): Evaluation Plan v0.6 §4.16 (E10 scenarios, E11 protocol and targets, E14 rule, C58 to C65), PRD v0.8, Conversation Design v0.4 and Architecture v0.10 (a timeout is not retried, C62), Data Model v0.5 (`llm_call` call and outcome, C61); conflicts C58 to C65 logged.
