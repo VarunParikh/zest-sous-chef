@@ -1,4 +1,4 @@
-# Session handover (written 2026-10-18, end of the blocks 2.1 to 2.5 session)
+# Session handover (updated 2026-10-18, end of the block 2.6 session)
 
 Paste everything below the line into the next Claude Code session.
 
@@ -6,8 +6,7 @@ Paste everything below the line into the next Claude Code session.
 
 You are continuing the build of Zest, a web-based AI sous-chef prototype (interview assignment).
 Repo: /Users/varunparikh/Projects/zest-sous-chef (GitHub: VarunParikh/zest-sous-chef, branch main).
-The last session ended with everything committed and pushed to `origin/main` (owner approved the push). Block 2.5 and the hand-test fixes are commits `1f651a7` to `a75d825`, plus this handover
-(block 2.4 ended at `c18b5c0`).
+The last session (block 2.6, evaluations) ended with everything committed and pushed to `origin/main` (owner approved the push). Block 2.6 is commits `6c1d115` to `23e2a7f` plus this handover update (block 2.5 ended at `a75d825`, block 2.4 at `c18b5c0`).
 Start by running `git status` and `git log --oneline -15` to confirm. Ask the owner before any future push.
 
 ## Read first, in this order
@@ -34,7 +33,7 @@ Work in plan mode for each block.
   - `make setup` (also runs `npm ci` in src/frontend)
   - `make app`: backend on 127.0.0.1:8000 and Vite on **http://localhost:5173**; Ctrl+C stops both
   - `make dev` (backend only), `make test`, `make test-e2e` (builds the frontend, then runs E2E-001 headless), `make test-embedder`, `make data`, `make index`, `make scan`, `make eval-decisions`
-- **Last results:** `make test` 441 passed, 2 deselected (embedder, e2e), 1 xfailed. `make test-e2e` 1 passed. `make scan` 0 findings. `npm run build` clean (tsc strict).
+- **Last results (end of block 2.6):** `make test` 513 passed, 2 deselected (embedder, e2e), 1 xfailed. `make test-embedder` 1 passed. `make test-e2e` 1 passed (frontend build clean). `make data` V1 to V14 PASS 14 on both sets. `make scan` 0 findings.
 - **Ollama models in use:** `llama3.2:3b` (text, 4k context), `llama-guard3:1b` (guard), `qwen3-vl:4b-instruct` (default vision). Others are installed but unused.
 - **Preview:** `.claude/launch.json` has `zest-backend` (:8000) and `zest-frontend` (:5173). The owner usually runs `make app` in terminal tab 0, so those ports are taken. For live checks, run the app in-process (`TestClient(create_app(load_settings()))`) instead of starting servers.
 - Playwright Chromium is in ~/Library/Caches/ms-playwright (owner approved the download).
@@ -92,9 +91,15 @@ Work in plan mode for each block.
   - make targets test-full, coverage, eval, report
   - qwen3-vl:8b in E3 (owner decision)
 
-## Next: block 2.6 (build-plan section 5)
-Evaluations E2, E6 to E9, E12 and E13 (Evaluation Plan; thresholds in `eval/thresholds.yaml`). Never tune on test splits; E4's G02 and G04 were seen while the rules were written.
+## Block 2.6 in one paragraph
+Evaluation harnesses live in `scripts/benchmark/` (pure parts in `src/backend/evaluation/`); run them in-process (`scripts/benchmark/_app.py`), never on ports 8000 or 5173. Results: `eval/results/` (first runs) and `eval/results/post-hoc/{c53,c54,c55}/` (reruns after owner decisions; first results are always kept). Report: `docs/epics/zest/verify/benchmarks/block26.md`. Final statuses: E7, E8, E9, E12, E13 PASS; E2 (intent 24/30), E4 (guard 11/20 on held-out guard_v3) and E6 (soft levers under the 0.33 gate) FAIL as owner-accepted known limitations (C55, C56, C57). Settings changed: `DISH_POOL` 25, `ADDON_POOL` 12, `VALUE_WEIGHT` 0.20 (also in the owner's `.env`), `GUARD_IGNORE_CATEGORIES` S6 plus `GUARD_IGNORE_IF_LINK` S8. Lessons: grep for hard-coded constants across all test markers (embedder and e2e too) when a config value changes; check `make test` output for any `FAILED` line or make error before committing, not just the last line; a dataset whose results have been seen is contaminated for any later change.
 
-The Day-2 exit is every P0 test in Test Plan sections 4.1 to 4.8 passing, and the mood demo path working in the browser with the real model. Both are met, apart from the NOT RUN items above.
+## Next: Day 3, block 3.1 (build-plan section 5)
+E2E-001 (passes today), **E10** fault injection (Gemini down, transcript blocked, vector store disabled, model invalid JSON, model timeout, backend slow: each takes its defined fallback message, no crash, no success message; pass rule 100%), **E11** latency (per flow, 10 runs after warm-up, median and p95 with the `llm_call` breakdown; targets come from E1 and are recorded, never invented), **E14** traceability (every Must story has a test, every AC maps to a test or evaluation, no open FAIL). Gate: pass or documented.
 
-Then Day 3 (build-plan section 5): E2E, fault injection, latency and traceability; the evidence report; the README and docs; rehearsals; release.
+Points to raise with the owner before building (log as C58 onward):
+- E14's rule "the latest results contain no open FAIL" conflicts with the owner-accepted FAILs (E2, E4, E6); decide how accepted exceptions count.
+- E11 lists a "cart edit" flow, but chat cart edits reply MSG-UNSUPPORTED (FR-78 is first in the cut list); decide whether to measure the API cart edit instead or mark it NOT RUN.
+- E11 should run with the owner's other apps closed (the E1 RAM floor is 3 GB free); ask the owner to stop `make app` during the latency runs.
+
+Then block 3.2: the evidence report (`make report`, built from `eval/results/*.json` only; no NOT RUN on Must evaluations), 3.3 README and docs, 3.4 rehearsals, 3.5 release.
