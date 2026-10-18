@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- E11 latency: `backend.evaluation.latency` (percentile, summary, per-kind model breakdown, flow status; unit-tested first) and `scripts/benchmark/latency.py` (six flows, warm-up plus 10 runs, `llm_call` breakdown, 3 GB free-RAM floor).
 - P0 tests T-103 (image bytes never written to disk during an upload) and T-104 (`file://`, internal-IP and look-alike URLs rejected with no fetch) in `tests/acceptance/test_security_p0.py`; they cover existing behaviour and passed on their first run. T-050 to T-052 already exist as `test_t050…` to `test_t052…` in `tests/unit/cart/test_allocation.py`.
 - E10 resilience result (`eval/results/E10-resilience-real-stack.json`): **PASS**, 26 of 26 pre-registered scenarios, every one in all 3 runs; no crash, no false success, attempt counts as C62 and C66 state.
 - E10 resilience harness: `backend.evaluation.resilience` (request kinds, `FaultProxy` that forwards only to local Ollama, per-run checks; unit-tested first), `scripts/benchmark/resilience.py` (26 pre-registered scenarios, 3 runs, in-process with the real models) and `resilience_ui.py` (F25, F26 in Chromium on free ports).
