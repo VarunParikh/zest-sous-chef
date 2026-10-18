@@ -44,7 +44,7 @@ class CartRuleError(Exception):
         self.code, self.message, self.details = code, message, details
 
 
-def _lines_for_dish(session, rec, cart_dish_id: str, ctx, store: Store) -> list[CartLine]:
+def _lines_for_dish(session, rec, cart_dish_id: str, ctx, store: Store, exclude_terms: frozenset = frozenset()) -> list[CartLine]:
     """Every variant is chosen and checked in code; the cart never holds an item the guardrails remove."""
     levers = session.snapshot
     mask = check_dish(rec, levers, store)
@@ -52,6 +52,8 @@ def _lines_for_dish(session, rec, cart_dish_id: str, ctx, store: Store) -> list[
         raise CartRuleError("NOT_ELIGIBLE", f"{rec.dish.name} isn't available with your settings.", rules=list(mask.failed))
     lines = []
     for ing in rec.ingredients:
+        if (store.lexicon.canonical(ing.ingredient_name) or ing.ingredient_name) in exclude_terms:
+            continue  # already at home (photo flow: only the missing items are carted, FR-54)
         required = tuple(ing.attribute_hint.values()) if ing.attribute_hint else ()
         choice = choose_variant(ing.ingredient_name, levers, ctx, store, required=required)
         if choice.chosen is None or not check_variant(choice.chosen, levers, store).eligible:
@@ -67,12 +69,12 @@ def _lines_for_dish(session, rec, cart_dish_id: str, ctx, store: Store) -> list[
 
 
 def add_dish(session, dish_id: str, source: str, ctx, store: Store, suggestion_id: str | None = None,
-             index: int | None = None) -> CartDish:
+             index: int | None = None, exclude_terms: frozenset = frozenset()) -> CartDish:
     """Cart a stored dish at its stored servings (FR-31; FR-32 is cut). Returns the allocated dish."""
     rec = store.dish(dish_id)
     cd_id = session.next_id("cd")
     dish = CartDish(cart_dish_id=cd_id, dish_id=dish_id, name=rec.dish.name, source=source,
-                    servings=rec.dish.base_servings, lines=_lines_for_dish(session, rec, cd_id, ctx, store),
+                    servings=rec.dish.base_servings, lines=_lines_for_dish(session, rec, cd_id, ctx, store, exclude_terms),
                     added_by_suggestion_id=suggestion_id)
     cart = session.cart.model_copy(deep=True)
     cart.dishes.insert(len(cart.dishes) if index is None else index, dish)
@@ -250,12 +252,15 @@ def undo(session, suggestion_id: str, store: Store) -> str | None:
     return entry["dish_name"]
 
 
-def add_suggested(session, dish_id: str, alternatives: list[str], source: str, ctx, store: Store) -> tuple[str, CartDish]:
-    """FR-40, 41: cart the top dish under a new suggestion id, keep up to two alternatives for one-tap swaps."""
+def add_suggested(session, dish_id: str, alternatives: list[str], source: str, ctx, store: Store,
+                  exclude_terms: frozenset = frozenset()) -> tuple[str, CartDish]:
+    """FR-40, 41: cart the top dish under a new suggestion id, keep up to two alternatives for one-tap swaps.
+    `exclude_terms`: ingredients the user already has (photo flow); swaps keep the same exclusions."""
     sid = session.next_id("sg")
-    added = add_dish(session, dish_id, source, ctx, store, suggestion_id=sid)
+    added = add_dish(session, dish_id, source, ctx, store, suggestion_id=sid, exclude_terms=exclude_terms)
     record_add(session, sid, added.name)
-    session.suggestions[sid] = {"dish_id": dish_id, "alternatives": list(alternatives)[:2], "source": source}
+    session.suggestions[sid] = {"dish_id": dish_id, "alternatives": list(alternatives)[:2], "source": source,
+                                "exclude": exclude_terms}
     return sid, added
 
 
@@ -269,7 +274,8 @@ def swap(session, suggestion_id: str, alt_dish_id: str, ctx, store: Store) -> Ca
     prior = session.cart.model_copy(deep=True)
     session.cart.dishes = [d for d in session.cart.dishes if d is not current]
     try:
-        added = add_dish(session, alt_dish_id, rec["source"], ctx, store, suggestion_id=suggestion_id, index=index)
+        added = add_dish(session, alt_dish_id, rec["source"], ctx, store, suggestion_id=suggestion_id, index=index,
+                         exclude_terms=rec.get("exclude", frozenset()))
     except CartRuleError:
         session.cart = prior
         raise

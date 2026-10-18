@@ -40,6 +40,7 @@ class Session:
     suggestions: dict = field(default_factory=dict)  # suggestion_id -> record
     orders: dict = field(default_factory=dict)  # idempotency key -> Order
     videos: dict = field(default_factory=dict)  # youtube id -> cart_dish_id (FR-24 duplicates)
+    photo_consent: bool = False  # opt-in Gemini notice accepted (FR-50)
     open_dish_id: str | None = None  # the text recipe dish still taking ingredients (FR-30)
     last_recommendation: object = None  # pool, scores and inspector rows of the latest suggestion (FR-115)
     _turns: int = 0

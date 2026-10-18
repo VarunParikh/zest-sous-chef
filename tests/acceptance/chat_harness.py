@@ -1,4 +1,6 @@
 """A fake Ollama for chat tests: the guard model, the intent classifier (A2) and the reason line (A4)."""
+import base64
+import io
 import json
 
 import httpx
@@ -8,6 +10,30 @@ from fastapi.testclient import TestClient
 from backend.api.app import create_app
 from backend.config import load_settings
 from backend.retrieval.retriever import Retriever
+
+
+def detection(*items, food=True, quality="ok"):
+    return {"items": [{"name": n, "confidence": c} for n, c in items], "scene_is_food": food, "quality": quality}
+
+
+def image_bytes(fmt="PNG", size=(64, 48), exif_gps=False) -> bytes:
+    from PIL import Image
+
+    img, buf = Image.new("RGB", size, (200, 120, 40)), io.BytesIO()
+    if exif_gps:
+        exif = Image.Exif()
+        exif[0x010F] = "MockCam"  # Make
+        exif[0x8825] = {1: "N", 2: (12.0, 58.0, 0.0)}  # GPS IFD
+        img.save(buf, fmt, exif=exif)
+    else:
+        img.save(buf, fmt)
+    return buf.getvalue()
+
+
+def upload(client, sid, data: bytes, content_type="image/png", consent=None, text="", files=None):
+    parts = files or [("image", ("photo.png", data, content_type))]
+    form = {"text": text, **({"consent": consent} if consent is not None else {})}
+    return client.post(f"/api/v1/sessions/{sid}/chat", data=form, files=parts)
 
 
 def intent(name, confidence=0.95, mood_tags=(), dish_name=None):
@@ -21,6 +47,8 @@ class FakeOllama:
         self.reason: object = {"reason": "Rich, creamy and a weekend favourite."}
         self.calls: list[str] = []  # "guard", "intent", "reason"
         self.down = False
+        self.detection: object = detection(("paneer", 0.95), ("capsicum", 0.9))  # vision reply dict or Exception
+        self.images: list[bytes] = []  # image bytes as the provider received them
         self.extractions: dict[str, object] = {}  # recipe text (substring) -> ExtractionResult dict, raw string, or Exception
 
     def __call__(self, request: httpx.Request) -> httpx.Response:
@@ -29,6 +57,21 @@ class FakeOllama:
         if request.url.path == "/api/tags":
             return httpx.Response(200, json={"models": []})
         body = json.loads(request.content)
+        if request.url.host == "generativelanguage.googleapis.com":  # opt-in Gemini (never real in tests)
+            self.calls.append("gemini")
+            assert request.headers["x-goog-api-key"] == "not-a-real-key-test"
+            self.images.append(base64.b64decode(body["contents"][0]["parts"][1]["inline_data"]["data"]))
+            out = self.detection
+            if isinstance(out, Exception):
+                raise out
+            return httpx.Response(200, json={"candidates": [{"content": {"parts": [{"text": json.dumps(out)}]}}]})
+        if body.get("model") == "qwen3-vl:4b-instruct":
+            self.calls.append("vision")
+            self.images.append(base64.b64decode(body["messages"][0]["images"][0]))
+            out = self.detection
+            if isinstance(out, Exception):
+                raise out
+            return httpx.Response(200, json={"model": body["model"], "message": {"content": json.dumps(out)}})
         if body["model"] == "llama-guard3:1b":
             self.calls.append("guard")
             text = body["messages"][-1]["content"]

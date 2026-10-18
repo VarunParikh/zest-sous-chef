@@ -32,7 +32,8 @@ def test_health_shape_with_model_served(tmp_path):
     tm = body["components"]["text_model"]
     assert tm["status"] == "ok"
     assert tm["served_models"] == ["fake-text:1b"]  # recorded, not assumed
-    assert body["components"]["vision"]["provider"] == "samples"
+    assert body["components"]["vision"]["provider"] == "ollama"  # ADR-003 v3 default (C37)
+    assert body["components"]["vision"]["status"] == "missing"  # the fake Ollama serves no vision model
     assert body["components"]["fixtures"]["status"] == "ok"
     assert body["components"]["index"]["status"] == "not_built"
     assert body["status"] == "degraded"  # index not built yet
@@ -60,7 +61,8 @@ def test_ollama_down_degrades_without_failing(tmp_path):
 
 def test_all_ok_when_index_present(tmp_path):
     (tmp_path / "chroma").mkdir()
-    r = _client(tmp_path, _ollama_up, LLM_MODEL="fake-text:1b").get("/api/v1/health")
+    # ADR-003 v3: the default vision provider is a local Ollama model, so it must be served too for "all ok".
+    r = _client(tmp_path, _ollama_up, LLM_MODEL="fake-text:1b", VISION_MODEL="fake-text:1b").get("/api/v1/health")
     assert r.json()["status"] == "ok"
 
 

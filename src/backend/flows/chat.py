@@ -37,6 +37,7 @@ class Deps:
     tracer: object
     settings: object
     transcripts: object = None  # TranscriptChain
+    vision_transport: object = None  # None: real providers; tests pass a fake
 
 
 def say(session, template_id: str, cards=None, **values) -> Message:

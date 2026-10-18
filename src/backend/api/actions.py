@@ -44,6 +44,16 @@ def _substitute(session, p: dict, request: Request) -> tuple[list[Message], bool
 
 def _confirm(session, p: dict, request: Request) -> tuple[list[Message], bool]:
     pending = session.pending.get(p.get("confirm_id", ""))
+    if pending and pending["kind"] in ("photo_item", "photo_confirm"):
+        from backend.flows import photo
+        from backend.flows.chat import Outcome
+
+        if p.get("choice") not in ("yes", "no"):
+            raise CartRuleError("STALE", "That question has expired.")
+        del session.pending[p["confirm_id"]]
+        out = Outcome()
+        photo.answer(session, pending, p["choice"], _deps(request, session.session_id), out)
+        return out.messages, out.cart_changed
     if pending and pending["kind"] in ("dup_video", "pantry"):
         from backend.flows.chat import Outcome
         from backend.flows.youtube import answer
@@ -118,7 +128,13 @@ def _answer(session, p: dict, request: Request) -> tuple[list[Message], bool]:
     return [reply(session, "MSG-EDIT-OK", change=f"Added {choice}")], True
 
 
-HANDLERS = {"substitute": _substitute, "confirm": _confirm, "undo": _undo, "swap": _swap, "answer": _answer}
+def _consent(session, p: dict, request: Request) -> tuple[list[Message], bool]:
+    """FR-50: the opt-in Gemini notice was accepted (or declined) for this session."""
+    session.photo_consent = p.get("choice") in ("yes", "accept", True, "true")
+    return [], False
+
+
+HANDLERS = {"consent_photo": _consent, "substitute": _substitute, "confirm": _confirm, "undo": _undo, "swap": _swap, "answer": _answer}
 
 
 @router.post("/action")

@@ -28,8 +28,8 @@ class Settings(BaseModel):
     guard_model: str = "llama-guard3:1b"
     # Intent (Agent Design §6.1): below this confidence the bot asks to rephrase, never acts
     intent_confidence_min: float = 0.5
-    vision_provider: Literal["ollama", "gemini", "samples"] = "samples"  # local-first; E3 decides (C15)
-    vision_model: str = ""
+    vision_provider: Literal["ollama", "gemini", "samples"] = "ollama"  # ADR-003 v3 (owner decision, C37)
+    vision_model: str = "qwen3-vl:4b-instruct"  # failed E3; photo accuracy NOT MET
     vision_num_ctx: int = 4096  # set before the first official E3 run: at 16k Ollama evicted the text model
     gemini_api_key: SecretStr = SecretStr("")
     embedding_provider: str = "chroma_default"
@@ -47,7 +47,7 @@ class Settings(BaseModel):
     value_weight: float = 0.30
     # Timeouts (NFR-10)
     timeout_llm_s: float = 30
-    timeout_vision_s: float = 20
+    timeout_vision_s: float = 60  # ADR-003 v3: above the 10 to 20 s target, by owner decision
     timeout_transcript_s: float = 10
     # Transcripts and recipe text (C39): live YouTube fetch switch; text cap for the 4k context (Agent Design §4)
     live_transcripts: bool = True
