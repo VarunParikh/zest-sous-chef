@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- README prerequisites for a fresh Mac: Apple command-line tools, Node 22 or newer, starting the Ollama server, free ports, the one-time Playwright browser install for `make test-e2e`, untested platforms.
 - T-075 (S-06, Security Note release blocker 5): an E2E test that markup and script strings in messages render as inert text; it covers existing behaviour and passed on its first run.
 - Block 3.3 done: release documents written from results; handover points to block 3.4 (rehearsals, owner at the laptop).
 - README (setup guide, status at a glance, usage, how it works, tests and evaluations, repository map, limitations, licence). Checked from a clean clone on 2026-10-19: `make setup`, `make index` (one transient download failure, retry succeeded), `make test`, `make test-e2e`, `make test-embedder`, `make data` and the health endpoint all succeed. `.env.example`: stale vision comment fixed.

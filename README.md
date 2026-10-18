@@ -29,10 +29,14 @@ What these mean, and everything else that is limited or not built: **[Known Limi
 
 ## Requirements
 - An **Apple-silicon Mac with 16 GB of RAM**. Close other apps before a demo or a latency run: the three models together need most of the memory.
-- **Homebrew**, **Git**, **Python 3.12**, **Node** (developed on Node 26) and **Ollama**. With Homebrew:
+- **Apple's command-line tools** (they provide `make` and `git`). Install them with `xcode-select --install` if `make --version` fails.
+- **Homebrew**, then **Python 3.12**, **Node 22 or newer** (Vite 8 needs it; developed on Node 26) and **Ollama**:
   ```bash
-  brew install git python@3.12 node ollama
+  brew install python@3.12 node ollama
   ```
+- Ports **8000** and **5173** free on your machine.
+- Internet access during setup (packages, models, embedder). After setup the app runs offline. Live YouTube transcripts need the network; the demo videos fall back to saved copies.
+- Tested on an Apple-silicon MacBook Air with 16 GB and macOS. Intel Macs, Linux and Windows are untested.
 - About **7 GB of disk** for the local models, plus about 1 GB for Python and Node packages.
 
 | Model (Ollama) | Role | Size |
@@ -42,6 +46,12 @@ What these mean, and everything else that is limited or not built: **[Known Limi
 | `qwen3-vl:4b-instruct` | Photo detection (ADR-003) | 3.3 GB |
 
 ## Setup from a clean clone
+Start the Ollama server first, and keep it running. Either open the Ollama app, or run this in its own terminal window:
+```bash
+ollama serve
+```
+
+Then, in another terminal:
 ```bash
 git clone https://github.com/VarunParikh/zest-sous-chef.git
 cd zest-sous-chef
@@ -55,9 +65,9 @@ make app
 
 What each step does:
 1. `make setup` creates `.venv` with Python 3.12, installs the pinned packages from `requirements.lock.txt`, creates `.env` from `.env.example` if it is missing, and runs `npm ci` for the frontend.
-2. `ollama pull` downloads each model. If `ollama` cannot connect, open the Ollama app once and retry.
+2. `ollama pull` downloads each model (about 7 GB in total). If it says it cannot connect, the Ollama server is not running: see above.
 3. `make index` builds the local vector index in `data/chroma/`. The first run downloads Chroma's default embedder (all-MiniLM-L6-v2, about 80 MB) into `data/models/`.
-4. `make app` starts the backend on http://127.0.0.1:8000 (health page at `/health`) and the app on **http://localhost:5173**. Ctrl+C stops both.
+4. `make app` starts the backend on http://127.0.0.1:8000 and the app on **http://localhost:5173**. Ctrl+C stops both. Open http://127.0.0.1:8000/health to check that the models, fixtures and index are ready. The first message after a start is slower while the models load (about 4 s; later mood replies take about 1.2 s).
 
 If `make index` stops with a connection error while downloading the embedder, run it again. This happened once in our clean-clone check, and the retry succeeded (81 s on a home connection).
 
@@ -98,7 +108,7 @@ Details: [architecture](docs/epics/zest/design/architecture.md) and the [ADRs](d
 | Command | What it proves | Time (measured on the demo Mac) |
 |---|---|---|
 | `make test` | Over 600 unit, contract and acceptance tests with fake models | about 10 s |
-| `make test-e2e` | The demo path in headless Chromium (E2E-001) | about 15 s plus a frontend build |
+| `make test-e2e` | The demo path (E2E-001) and inert rendering of markup (T-075) in headless Chromium. Needs Playwright's browser once: `.venv/bin/python -m playwright install chromium` | about 15 s plus a frontend build |
 | `make test-embedder` | Retrieval with the real embedder | about 15 s |
 | `make data` | Regenerates the catalogue and runs validators V1 to V17 on the 1,000- and 5,000-variant sets | under a minute |
 | `make scan` | Secret scan of the working tree and full git history | seconds |
