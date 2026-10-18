@@ -120,3 +120,12 @@ def test_do_something_else_with_an_empty_cart(chat_app, fake):
     sid = start(client)
     fake.intents["do something else"] = intent("cart_clear_or_replace")
     assert _msg(say(client, sid, "do something else"))["template_id"] == "MSG-EMPTY-CART"
+
+
+def test_c54_code_routing_skips_the_intent_model(chat_app, fake):
+    """C54: a stored dish with a cooking verb is routed in code; the intent model is not called."""
+    _, client = chat_app
+    sid = start(client)
+    turn = say(client, sid, "I want to cook palak paneer").json()
+    assert "intent" not in fake.calls
+    assert any(m["template_id"] in ("MSG-TXT-STORED", "MSG-PERSONA-BLOCK") for m in turn["messages"])

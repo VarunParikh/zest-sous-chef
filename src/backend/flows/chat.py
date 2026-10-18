@@ -9,6 +9,7 @@ from backend.flows.templates import render
 from backend.flows.text import CLOSE_WORDS, named_dish_turn, recipe_text_turn
 from backend.flows.youtube import youtube_turn
 from backend.intent.classify import classify
+from backend.intent.routing import route
 from backend.transcripts.source import find_url
 from backend.llm.client import LLMInvalid
 
@@ -61,13 +62,17 @@ def handle(session, text: str, deps: Deps) -> Outcome:
         session.open_dish_id = None
         out.messages.append(say(session, "MSG-THANKS"))
         return out
-    try:
-        result = classify(deps.llm, text)
-    except LLMInvalid:
-        out.messages.append(say(session, "MSG-REPHRASE"))
-        return out
-    deps.tracer.emit("intent_classified", session.session_id, intent=result.intent, confidence=result.confidence,
-                     layer="model")
+    result = route(text, deps.store)  # C54: named dishes and cart clears are routed in code
+    if result is not None:
+        deps.tracer.emit("intent_classified", session.session_id, intent=result.intent, confidence=1.0, layer="rules")
+    else:
+        try:
+            result = classify(deps.llm, text)
+        except LLMInvalid:
+            out.messages.append(say(session, "MSG-REPHRASE"))
+            return out
+        deps.tracer.emit("intent_classified", session.session_id, intent=result.intent, confidence=result.confidence,
+                         layer="model")
     if result.confidence < deps.settings.intent_confidence_min:
         out.messages.append(say(session, "MSG-REPHRASE"))
         return out

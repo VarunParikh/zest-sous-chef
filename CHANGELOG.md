@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- Code routing before the intent model (C54, Agent Design v0.4 §6.1): a cooking verb plus a stored dish name or alias (no digits, at most one comma) goes to `named_dish`; clearing the cart goes to `cart_clear_or_replace` (still confirmed, FR-77). Traced as `intent_classified` with `layer=rules`.
 - Rules guard (C54, ADR-006 v4): an injection rule for instructions aimed at the guardrails (disable, bypass, lift… a guard, filter, allergy, diet, faith or vegan setting in the same sentence; or "pretend … off").
 - `eval/datasets/guard_v2.jsonl` (C54): 30 held-out guard rows, hashed in `MANIFEST.json` before the C54 rule existed.
 - C53 post-hoc results (`eval/results/post-hoc/c53/`, `block26.md`): E12 PASS at β0 0.20; E6 FAIL without a critical; E7 both arms PASS; E8 PASS.
