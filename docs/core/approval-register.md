@@ -41,7 +41,7 @@ Approving a document means: you have read it or the parts you care about, you ac
 | ADR-009 No MCP | `design/adr/ADR-009-...` | | B | **Accepted** | Owner, 2026-10-17 |
 | ADR-010 Frontend stack | `design/adr/ADR-010-...` | | B | **Accepted** (with TypeScript) | Owner, 2026-10-17 |
 | ADR-002 Text model | `design/adr/ADR-002-...` | | B | **Accepted**: `llama3.2:3b`, 4k context (E1, post-hoc rerun) | Owner, 2026-10-18 |
-| ADR-006 Guard design | `design/adr/ADR-006-...` | v2 | B | **Approved v2** (C40: S8 Intellectual Property verdicts ignored) | Owner, 2026-10-18 (re-approved after C40) |
+| ADR-006 Guard design | `design/adr/ADR-006-...` | v3 | B | **Approved v3** (C40: S8 ignored; C44: S6 ignored) | Owner, 2026-10-18 (decisions C40, C44) |
 | Constitution | `docs/core/constitution.md` | v0.2 | C | **Approved** | Owner, 2026-10-17 |
 | Product Strategy | `docs/core/product-strategy.md` | v0.1 | C | **Approved** | Owner, 2026-10-17 |
 | Product Platforms | `docs/core/product-platforms.md` | v0.3 | C | **Approved v0.3** (C37: vision rows) | Owner, 2026-10-18 (re-approved after the C37 sync) |
@@ -96,3 +96,4 @@ Approving a document means: you have read it or the parts you care about, you ac
 | 2026-10-18 | Block 2.4 live check found `llama-guard3:1b` rating bare YouTube links unsafe (S8). Owner decided C40: ignore S8 everywhere (`GUARD_IGNORE_CATEGORIES=S8`). ADR-006 v2 and Architecture v0.5 return to Draft (amended); the code waits for re-approval | this register, `open-conflicts.md` C40 |
 | 2026-10-18 | Owner re-approved ADR-006 v2 and Architecture v0.5 (C40, S8 ignored) | this register |
 | 2026-10-18 | Block 2.5 planning: owner resolved C41 (cart `icon` and `course`) and C42 (`@types/react`, `@types/react-dom`); approved the Chromium download for Playwright and `make app` as two dev servers (backend :8000, Vite :5173). The approved plan re-approved exactly API Spec v0.6 and Build Plan v0.4 | this register, `open-conflicts.md` C41, C42 |
+| 2026-10-18 | Owner hand test of block 2.5: decided C43 (hunger, suggestion and stove words in the rules vocabulary; intent prompt v2; meal-aware mood picks) and C44 (ignore the classifier's S6 verdicts, ADR-006 v3). The E4 rerun is NOT RUN | this register, `open-conflicts.md` C43, C44 |

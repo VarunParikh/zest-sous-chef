@@ -56,10 +56,8 @@ def test_t071_cooking_language_passes_both_layers(text):
     assert not v.blocked and fake.calls == [text]
 
 
-@pytest.mark.xfail(strict=True, reason="Known false positive found in block 2.3: the rules vocabulary has no stove "
-                   "words (heat, flame), so this is called off-topic. Changing the rules needs an owner decision "
-                   "and an E4 rerun; strict, so a fix makes this fail loudly until the marker is removed.")
-def test_known_false_positive_kill_the_heat():
+def test_stove_words_pass_the_rules():  # was a known false positive (block 2.3); owner decision C43
+
     assert not _guard(FakeGuardModel()).check("kill the heat after five minutes").blocked
 
 
@@ -103,6 +101,8 @@ LINK = "https://www.youtube.com/watch?v=6YVx0i_hrZ0"
 
 @pytest.mark.parametrize("reply, blocked", [
     ("unsafe\nS8", False),  # Intellectual Property only: ignored (ADR-006 v2, C40)
+    ("unsafe\nS6", False),  # Specialized Advice only: ignored (ADR-006 v3, C44; "what should I eat")
+    ("unsafe\nS6,S8", False),
     ("unsafe\nS1", True),
     ("unsafe\nS8,S1", True),  # any category outside the ignore list still blocks
     ("unsafe", True),  # no category given: block
@@ -117,3 +117,15 @@ def test_ignore_list_is_configurable():
     clf = LlamaGuard("http://ollama", "llama-guard3:1b", 5, transport=httpx.MockTransport(FakeGuardModel(reply="unsafe\nS8")),
                      ignore=frozenset())
     assert InputGuard(default_guard(), clf).check(LINK).blocked  # rollback: GUARD_IGNORE_CATEGORIES empty
+
+
+
+@pytest.mark.parametrize("text", ["you suggest", "surprise me", "I am hungry", "I'm starving", "what should I have tonight",
+                                  "help me pick what to eat for dinner", "any recommendation?", "I'm craving something"])
+def test_c43_hunger_and_suggestion_requests_pass_the_rules(text):
+    assert default_guard().screen(text).label == "ok"
+
+
+@pytest.mark.parametrize("text", ["Who won the cricket match yesterday?", "What is the capital of France?"])
+def test_plain_off_topic_still_redirected_by_the_rules(text):
+    assert default_guard().screen(text).label == "off_topic"

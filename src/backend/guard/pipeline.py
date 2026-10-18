@@ -27,10 +27,11 @@ class Verdict:
 
 
 class LlamaGuard:
-    """`ignore`: categories that do not block (ADR-006 v2, C40: S8 Intellectual Property flagged every bare video link)."""
+    """`ignore`: categories that do not block (ADR-006 v3: S8 Intellectual Property flagged every bare video link, C40;
+    S6 Specialized Advice flagged "what should I eat", C44)."""
 
     def __init__(self, base_url: str, model: str, timeout_s: float, transport: httpx.BaseTransport | None = None,
-                 ignore: frozenset[str] = frozenset({"S8"})):
+                 ignore: frozenset[str] = frozenset({"S8", "S6"})):
         self.base_url, self.model, self.ignore = base_url.rstrip("/"), model, frozenset(c.upper() for c in ignore)
         self._http = httpx.Client(transport=transport, timeout=timeout_s)
 

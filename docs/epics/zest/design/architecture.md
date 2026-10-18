@@ -136,7 +136,7 @@ The pool must be larger than the display set, otherwise the levers cannot reorde
 | `TIMEOUT_LLM_S`, `TIMEOUT_VISION_S`, `TIMEOUT_TRANSCRIPT_S` | NFR-10 | 30, 60 (ADR-003 v3), 10 |
 | `LIVE_TRANSCRIPTS`, `MAX_RECIPE_CHARS` | Live YouTube transcript fetch on or off; transcript and recipe text cap for the 4k context (C39) | `true`, 6000 |
 | `CONFIDENCE_THRESHOLD` | Photo detection | 0.6 |
-| `GUARD_CLASSIFIER`, `GUARD_MODEL`, `GUARD_IGNORE_CATEGORIES` | Second guard layer on text the rules pass; classifier categories that do not block (ADR-006 v2; C36, C40) | `true`, `llama-guard3:1b`, `S8` |
+| `GUARD_CLASSIFIER`, `GUARD_MODEL`, `GUARD_IGNORE_CATEGORIES` | Second guard layer on text the rules pass; classifier categories that do not block (ADR-006 v2; C36, C40) | `true`, `llama-guard3:1b`, `S8,S6` (C44) |
 | `INTENT_CONFIDENCE_MIN` | Below it, the intent result triggers MSG-REPHRASE, never an action (Agent Design §6.1; C36 doc-sync) | 0.5 |
 | `CONTEXT_NOW`, `CONTEXT_WEATHER` | Reproducible trend context | system clock, mock label |
 

@@ -25,6 +25,33 @@ DRIVERS = {"s_p": "strong match for the mood", "s_h": "purchase history preferen
 DEFAULTS = LeverSet()
 
 
+MEAL_WORDS = {"breakfast": "breakfast", "brunch": "breakfast", "lunch": "lunch", "dinner": "dinner", "supper": "dinner",
+              "tonight": "dinner", "snack": "snack", "snacks": "snack"}
+MEAL_COURSES = {"breakfast": {"breakfast"}, "lunch": {"main"}, "dinner": {"main"}, "snack": {"side", "snack"}}
+PART_OF_DAY_MEAL = {"morning": "breakfast", "lunch": "lunch", "afternoon": "snack", "evening": "dinner", "night": "dinner"}
+GENERIC = {"hungry", "hunger", "starving", "food", "anything"}
+
+
+def meal_for(text: str, mood_tags: list[str], ctx) -> str | None:
+    """A meal named in the message steers the course; plain hunger with no mood uses the time of day (C43)."""
+    words = set(re.findall(r"[a-z]+", text.lower()))
+    for w, meal in MEAL_WORDS.items():
+        if w in words:
+            return meal
+    if not set(t.lower() for t in mood_tags) - GENERIC:
+        return PART_OF_DAY_MEAL.get(ctx.part_of_day)
+    return None
+
+
+def steer(shown, meal: str | None, store):
+    """Keep the levers' order, but put dishes of the meal's course first when the pool has any."""
+    if meal is None:
+        return list(shown)
+    courses = MEAL_COURSES[meal]
+    fit = [s for s in shown if store.dish(s.candidate_id).dish.course in courses]
+    return fit + [s for s in shown if s not in fit] if fit else list(shown)
+
+
 def _constraint(levers: LeverSet) -> str:
     parts = [v for v, d in ((levers.diet, DEFAULTS.diet), (levers.faith, DEFAULTS.faith)) if v != d]
     parts += [x for x in levers.specialized_diets if x not in DEFAULTS.specialized_diets]
@@ -56,10 +83,12 @@ def mood_turn(session, text: str, result, deps, out) -> None:
     from backend.flows.chat import say
 
     retriever = deps.retriever_factory()
-    query = " ".join([text, *result.mood_tags])
-    rec = session.recommend_dishes(query, deps.ctx, deps.store, retriever, deps.tracer)
+    meal = meal_for(text, result.mood_tags, deps.ctx)
+    query = " ".join([text, *result.mood_tags, *([meal] if meal else [])])
+    rec = session.recommend_dishes(query, deps.ctx, deps.store, retriever, deps.tracer, display=15)
     if rec.fallback_used:
         out.fallbacks.append("vector")
+    rec.shown = steer(rec.shown, meal, deps.store)[:3]
     session.last_recommendation = rec
     shown = list(rec.shown)
     top, added = None, None
@@ -89,7 +118,8 @@ def mood_turn(session, text: str, result, deps, out) -> None:
             "components": {"s_p": b.s_p, "s_h": b.s_h, "s_t": b.s_t, "s_g": b.s_g},
             "contributions": dict(b.contributions), "weights_effective": dict(b.weights_effective), "final": b.final}),
     ]
-    mood = result.mood_tags[0] if result.mood_tags else "hungry"
+    tags = [t for t in result.mood_tags if t.lower() not in GENERIC]
+    mood = tags[0] if tags else "hungry"
     out.messages.append(say(session, "MSG-MOOD-ADD", cards=cards, mood=mood, dish=dish.name, reason=reason))
     out.cart_changed = True
     out.suggestions.append(SuggestionRef(suggestion_id=sid, type="dish", candidate_id=dish.dish_id, rank=1))

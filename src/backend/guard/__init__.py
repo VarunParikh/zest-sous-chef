@@ -41,6 +41,10 @@ COOKING_WORDS = {
     "spicy", "sweet", "cooling", "indulgent", "veg", "vegan", "jain", "halal", "keto", "serves", "servings", "taste",
     "flavour", "flavor", "ingredient", "ingredients", "beat", "whip", "smash", "knead", "stir", "garnish", "bitterness",
     "curry", "salad", "chutney", "tea", "coffee", "juice", "cooler",
+    # C43 (owner decision, 2026-10-18): hunger, suggestion and stove words. Real off-topic asks that use them
+    # ("suggest a movie") are still redirected, by the intent model labelling them off_topic.
+    "starving", "famished", "brunch", "craving", "cravings", "crave", "suggest", "suggestion", "suggestions",
+    "recommend", "recommendation", "surprise", "pick", "tonight", "menu", "heat", "flame", "stove", "gas",
 }
 GREETINGS = {"hi", "hello", "hey", "thanks", "thank", "ok", "okay", "yes", "no", "namaste"}
 YOUTUBE = re.compile(r"(youtube\.com/|youtu\.be/)", re.I)

@@ -26,7 +26,7 @@ class Settings(BaseModel):
     # Input guard (ADR-006): rules first, then this classifier on text the rules pass
     guard_classifier: bool = True
     guard_model: str = "llama-guard3:1b"
-    guard_ignore_categories: list[str] = ["S8"]  # ADR-006 v2 (C40): classifier categories that do not block
+    guard_ignore_categories: list[str] = ["S8", "S6"]  # ADR-006 v3 (C40, C44): classifier categories that do not block
     # Intent (Agent Design §6.1): below this confidence the bot asks to rephrase, never acts
     intent_confidence_min: float = 0.5
     vision_provider: Literal["ollama", "gemini", "samples"] = "ollama"  # ADR-003 v3 (owner decision, C37)

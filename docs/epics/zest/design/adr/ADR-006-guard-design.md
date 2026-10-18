@@ -1,8 +1,11 @@
 # ADR-006: Design of the input guard: rules first, optional classifier
-- **Status:** **Accepted v2, 2026-10-18 (owner decision, C40; owner re-approved the same day): the classifier's S8 (Intellectual Property) verdicts are ignored.** v1 was **Accepted (owner, 2026-10-18):** rules plus the `llama-guard3:1b` classifier, chosen by the Day-1 benchmark E4
+- **Status:** **Accepted v3, 2026-10-18 (owner decision, C44): S6 (Specialized Advice) verdicts are ignored too.** v2 was Accepted, 2026-10-18 (owner decision, C40; owner re-approved the same day): the classifier's S8 (Intellectual Property) verdicts are ignored. v1 was **Accepted (owner, 2026-10-18):** rules plus the `llama-guard3:1b` classifier, chosen by the Day-1 benchmark E4
 - **Date:** 2026-10-17
 - **Decision owner:** VJP (product owner); drafted by Claude
 - **Authorisation:** Owner direction: guardrails must be robust; the guard design itself is not decided.
+
+## v3 amendment (2026-10-18, owner decision, C44)
+**Found in the owner's hand test:** `llama-guard3:1b` rated "suggest me what should i eat" `unsafe` with **S6, Specialized Advice** (medical, legal, financial), so an ordinary meal request was redirected. **Decision:** `GUARD_IGNORE_CATEGORIES` defaults to `S8,S6`. Health questions stay safe without S6: allergy statements get MSG-ALLERGY and no item is ever described as safe for a condition (FR-15); the injection and hazard rules are unchanged. The E4 rerun with S8 and S6 ignored is NOT RUN. Rollback: `GUARD_IGNORE_CATEGORIES=S8`.
 
 ## v2 amendment (2026-10-18, owner decision, C40)
 **Found in the block 2.4 live check:** `llama-guard3:1b` rates every bare YouTube link (all four demo videos, as `youtube.com/watch` and `youtu.be`) `unsafe` with category **S8, Intellectual Property**, so the main "paste a link" path was redirected. The same links inside a sentence ("Make this recipe: <link>") and all four transcript fixtures are rated `safe`; the rules pass all of them.
