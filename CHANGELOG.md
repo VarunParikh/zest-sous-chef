@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- E14 traceability result (`eval/results/E14-traceability.json`): **PASS**. Block 3.1 report `docs/epics/zest/verify/benchmarks/block31.md` (E2E-001, E10, E11, E14 all PASS; proposed NFR-01 latency targets for owner approval); handover updated for block 3.2.
 - E11 latency result (`eval/results/E11-latency-real-stack.json`): **PASS**, every flow 10 of 10 normal runs. Medians / p95 (server side): mood 1.2 / 1.3 s, text 5.1 / 5.5 s, YouTube fixture 5.6 / 11.0 s, photo upload 7.6 / 12.5 s, sample photo 0.27 / 0.33 s, cart edits ≤ 16 ms.
 - E14 traceability: `backend.evaluation.traceability` (unit-tested first) and `scripts/benchmark/traceability.py`; `eval/headline.yaml` names each evaluation's verdict file and accepting conflict (C58, C64, for owner review); `make test-e2e` and `make test-embedder` now write JUnit files; tag-only docstrings link T-074 and FR-14 to their existing tests (US-07).
 - E11 latency: `backend.evaluation.latency` (percentile, summary, per-kind model breakdown, flow status; unit-tested first) and `scripts/benchmark/latency.py` (six flows, warm-up plus 10 runs, `llm_call` breakdown, 3 GB free-RAM floor).
