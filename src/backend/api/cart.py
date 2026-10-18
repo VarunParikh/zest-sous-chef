@@ -100,3 +100,16 @@ def checkout(session_id: str, request: Request) -> dict:
                            details={"cart": _view(request, session).model_dump(mode="json")}) from None
     return {"order_id": order.order_id, "subtotal_inr": order.subtotal_inr, "placed_at": order.placed_at,
             "message": {"template_id": "MSG-ORDER", "text": TEMPLATES["MSG-ORDER"]}, "collapse_after_s": COLLAPSE_AFTER_S}
+
+
+@router.get("/inspector")
+def inspector(session_id: str, request: Request) -> dict:
+    """API Spec §4.8 (FR-115, US-39): the latest suggestion's pool with ranks, eligibility and scores."""
+    session = request.app.state.sessions.get(session_id)
+    rec = session.last_recommendation
+    if rec is None:
+        return {"rows": [], "shown": [], "weights_effective": {}}
+    store = request.app.state.store
+    rows = [{**row, "name": store.dish(row["candidate_id"]).dish.name} for row in rec.inspector]
+    weights = dict(rec.scored[0].breakdown.weights_effective) if rec.scored else {}
+    return {"rows": rows, "shown": [s.candidate_id for s in rec.shown], "weights_effective": weights}

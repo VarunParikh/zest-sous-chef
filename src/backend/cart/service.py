@@ -29,8 +29,9 @@ def view(cart: Cart, store: Store) -> CartView:
             packs=[PackView(sku_id=p.sku_id, count=p.count, pack=_pack_label(store, p.sku_id)) for p in ln.packs],
             price_inr=line_price(ln, store), priced=ln.priced, shared_from_line_id=ln.shared_from_line_id,
             estimated=ln.estimated, reason=ln.reason, alternative_variant_ids=ln.alternative_variant_ids,
-            in_stock=ln.in_stock, quantity=ln.quantity) for ln in d.lines]
-        dishes.append(CartDishView(cart_dish_id=d.cart_dish_id, dish_id=d.dish_id, name=d.name,
+            in_stock=ln.in_stock, quantity=ln.quantity, icon=store.variant(ln.variant_id).icon) for ln in d.lines]
+        course = store.dish(d.dish_id).dish.course if d.dish_id else None
+        dishes.append(CartDishView(cart_dish_id=d.cart_dish_id, dish_id=d.dish_id, name=d.name, course=course,
                                    dish_total_inr=sum(x.price_inr for x in lines), lines=lines))
     return CartView(dishes=dishes, item_count=sum(len(d.lines) for d in dishes),
                     subtotal_inr=sum(d.dish_total_inr for d in dishes))

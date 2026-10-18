@@ -156,12 +156,14 @@ class CartLineView(BaseModel):
     alternative_variant_ids: list[str] = []
     in_stock: bool = True  # API Spec v0.4, C34
     quantity: int = 1  # C35
+    icon: str = ""  # the variant's category icon key (API Spec v0.6, C41)
 
 
 class CartDishView(BaseModel):
     cart_dish_id: str
     dish_id: Optional[str] = None
     name: str
+    course: Optional[str] = None  # stored dish course; None for a free-text dish (C41)
     dish_total_inr: int
     lines: list[CartLineView] = []
 
