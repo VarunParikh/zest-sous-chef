@@ -26,7 +26,7 @@ def test_t035_gourmet_slider_changes_choice_via_value_term(store):
     hi = choose_variant("milk", levers(gourmet_affinity=1.0), CTX, store)
     assert lo.chosen.variant_id != hi.chosen.variant_id
     assert lo.chosen.price_per_unit_inr < hi.chosen.price_per_unit_inr
-    assert lo.beta == 0.30 and hi.beta == 0.0
+    assert lo.beta == 0.20 and hi.beta == 0.0  # C53: beta0 0.20 (ADR-008 v2)
 
 
 def test_t036_named_attribute_restricts_eligible_set(store):

@@ -54,7 +54,7 @@ def test_t033_each_weight_reorders_towards_its_component():
         assert score_pool(_pool(), w)[0].candidate_id == top, name
 
 
-def test_t034_pool_of_15_shows_exactly_3(store):
+def test_t034_pool_wider_than_display_shows_exactly_3(store):
     settings = load_settings(env={}, env_file=None)
     assert settings.dish_pool > 3  # a pool equal to the display size would make levers inert (FR-111)
     ctx = build_context(datetime(2026, 10, 17, 19, 0))
@@ -62,7 +62,8 @@ def test_t034_pool_of_15_shows_exactly_3(store):
     pool = [dish_candidate(rec, lev, ctx, store, match_rank=i + 1) for i, rec in enumerate(store.dishes[:settings.dish_pool])]
     ranked = score_pool(pool, lev.weights)
     shown = select(ranked, display=3)
-    assert len(pool) == 15 and len(shown) == 3 and all(s.breakdown.eligible for s in shown)
+    assert len(pool) == settings.dish_pool == 25 and len(shown) == 3  # pool 25 since C53 (was 15)
+    assert len(shown) == 3 and all(s.breakdown.eligible for s in shown)
 
 
 def test_dish_features_respond_to_history_lever(store):

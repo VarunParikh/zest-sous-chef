@@ -11,12 +11,12 @@ def test_defaults_match_architecture_section_6():
     assert s.llm_num_ctx == 4096  # E1 post-hoc change, owner decision 2026-10-18
     assert s.vision_num_ctx == 4096  # set before any official E3 run (smoke showed eviction at 16k)
     assert (s.vision_provider, s.vision_model) == ("ollama", "qwen3-vl:4b-instruct")  # ADR-003 v3 (owner, C37)
-    assert (s.rrf_k, s.dish_pool, s.variant_pool) == (60, 15, 10)
+    assert (s.rrf_k, s.dish_pool, s.variant_pool) == (60, 25, 10)  # C53: dish pool 25 (ADR-004 v4)
     assert s.ambiguity_margin == 0.15
     assert s.addon_courses == ["side", "beverage", "dessert"]
     assert s.addon_weights == {"curated": 2.0, "vector": 1.0}
-    assert s.addon_pool == 8
-    assert s.value_weight == 0.30
+    assert s.addon_pool == 12  # C53
+    assert s.value_weight == 0.20  # C53: beta0 from E12 (ADR-008 v2)
     assert (s.timeout_llm_s, s.timeout_vision_s, s.timeout_transcript_s) == (30, 60, 10)  # vision 60 s: ADR-003 v3
     assert s.confidence_threshold == 0.6
     assert s.demo_controls is False

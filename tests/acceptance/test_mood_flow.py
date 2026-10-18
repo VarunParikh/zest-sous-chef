@@ -70,6 +70,9 @@ def test_t086_no_eligible_dish_adds_nothing_and_says_why(chat_app, fake):
     _setup(fake)
     # Lexical pool on purpose: the test hash embedder's neighbours are arbitrary (pickles, chutneys) and some pass
     # Keto plus Vegan, so a hybrid pool here would not be a "no eligible dish" case. The fallback is reported.
+    # The pool stays at 15 here: this test is about the no-eligible reply, and the wider default pool (25, C53)
+    # reaches lexical matches that pass Keto plus Vegan, so it would no longer be a "no eligible dish" case.
+    app.state.settings = app.state.settings.model_copy(update={"dish_pool": 15})
     app.state.retriever = Retriever(app.state.store, None, app.state.settings, app.state.tracer)
     sid = start(client, {"specialized_diets": ["Keto Diet", "Vegan"]})
     turn = say(client, sid, MOOD).json()

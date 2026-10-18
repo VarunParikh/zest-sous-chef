@@ -44,11 +44,11 @@ def test_t045_embedding_texts_have_no_price_or_stock(store):
         assert not PRICE_OR_STOCK.search(variant_embedding_text(v))
 
 
-def test_mood_query_gives_pool_of_15(retriever, tracer):
+def test_mood_query_gives_the_configured_pool(retriever, tracer, settings):
     res = retriever.dishes("something cooling")
-    assert len(res.hits) == 15 and not res.fallback_used
+    assert len(res.hits) == settings.dish_pool == 25 and not res.fallback_used  # pool 25 since C53 (was 15)
     ids = [h.id for h in res.hits]
-    # every keyword hit carries the mood; which cooling dishes fill the pool of 15 (and AC-35's
+    # every keyword hit carries the mood; which cooling dishes fill the pool (and AC-35's
     # "Chaas and Sweet Lassi appear") is measured by evaluation E5 with the real embedder (Test Plan §5)
     lexical = [h.id for h in res.hits if h.lexical_rank is not None]
     assert lexical and all("cooling" in retriever.store.dish(i).dish.mood_tags for i in lexical)

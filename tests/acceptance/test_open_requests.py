@@ -62,4 +62,4 @@ def test_a_stated_mood_keeps_hybrid_retrieval(chat_app, fake):
     sid = start(client)
     say(client, sid, "I want to eat something sweet")
     rows = client.get(f"/api/v1/sessions/{sid}/inspector").json()["rows"]
-    assert any(r["lexical_rank"] is not None or r["vector_rank"] is not None for r in rows) and len(rows) <= 15
+    assert any(r["lexical_rank"] is not None or r["vector_rank"] is not None for r in rows) and len(rows) <= 25  # DISH_POOL since C53 (was 15)

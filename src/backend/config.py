@@ -38,14 +38,14 @@ class Settings(BaseModel):
     # Retrieval and add-ons (ADR-004 v2); lexical-only is the ADR-004 rollback
     retrieval_mode: Literal["hybrid", "lexical"] = "hybrid"
     rrf_k: int = 60
-    dish_pool: int = 15
+    dish_pool: int = 25  # ADR-004 v4 (C53)
     variant_pool: int = 10
     ambiguity_margin: float = 0.15
     addon_courses: list[str] = ["side", "beverage", "dessert"]
     addon_weights: dict[str, float] = {"curated": 2.0, "vector": 1.0}
-    addon_pool: int = 8
+    addon_pool: int = 12  # ADR-004 v4 (C53)
     # Scoring (ADR-008)
-    value_weight: float = 0.30
+    value_weight: float = 0.20  # ADR-008 v2 (C53, E12)
     # Timeouts (NFR-10)
     timeout_llm_s: float = 30
     timeout_vision_s: float = 60  # ADR-003 v3: above the 10 to 20 s target, by owner decision
