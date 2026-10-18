@@ -4,6 +4,8 @@ key in the local .env only) and `samples` (labelled sample photos, always availa
 Every provider takes already-prepared image bytes (EXIF stripped, see image.py) and
 returns a schema-validated DetectionResult. The Gemini key travels only in the
 `x-goog-api-key` header, never in a URL, a log line or an error message.
+Each detection is traced as one `llm_call` with `call=vision` and its outcome (C61); a timeout
+is not retried, and Gemini retries once on 429 or 5xx (C62).
 """
 from __future__ import annotations
 
@@ -23,6 +25,32 @@ from backend.llm.schemas import DetectedItem, DetectionResult
 GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 
 
+class _Traced:
+    tracer = None
+    session_id = "-"
+
+    def _trace(self, t0: float, outcome: str, retry: bool = False) -> None:
+        if self.tracer is not None:
+            self.tracer.emit("llm_call", self.session_id, model=self.model, call="vision", outcome=outcome,
+                             latency_ms=round((time.perf_counter() - t0) * 1000, 1), schema_valid=outcome == "ok",
+                             retry=retry)
+
+    def _traced(self, t0: float, fn, retry=lambda: False):
+        try:
+            result = fn()
+        except LLMTimeout:
+            self._trace(t0, "timeout", retry())
+            raise
+        except LLMInvalid:
+            self._trace(t0, "invalid", retry())
+            raise
+        except LLMError:
+            self._trace(t0, "error", retry())
+            raise
+        self._trace(t0, "ok", retry())
+        return result
+
+
 def _parse(content: str) -> DetectionResult:
     try:
         return DetectionResult.model_validate(json.loads(content))
@@ -30,15 +58,19 @@ def _parse(content: str) -> DetectionResult:
         raise LLMInvalid(str(e).splitlines()[0][:200]) from e
 
 
-class OllamaVision:
+class OllamaVision(_Traced):
     def __init__(self, base_url: str, model: str, timeout_s: float = 60, transport=None, keep_alive: str = "10m",
-                 num_ctx: int | None = None):
+                 num_ctx: int | None = None, tracer=None, session_id: str = "-"):
         self.base_url, self.model, self.keep_alive, self.num_ctx = base_url.rstrip("/"), model, keep_alive, num_ctx
         self._http = httpx.Client(transport=transport, timeout=timeout_s)
         self.name = f"ollama:{model}"
         self.last_served_model: str | None = None
+        self.tracer, self.session_id = tracer, session_id
 
     def detect(self, image: bytes) -> DetectionResult:
+        return self._traced(time.perf_counter(), lambda: self._detect(image))
+
+    def _detect(self, image: bytes) -> DetectionResult:
         body = {"model": self.model, "stream": False, "format": "json", "keep_alive": self.keep_alive,
                 "options": {"temperature": 0, "seed": 0, **({"num_ctx": self.num_ctx} if self.num_ctx else {})},
                 "messages": [{"role": "user", "content": text("photo_detect"), "images": [base64.b64encode(image).decode()]}]}
@@ -54,17 +86,24 @@ class OllamaVision:
         return _parse(data.get("message", {}).get("content", ""))
 
 
-class GeminiVision:
-    def __init__(self, api_key: str, model: str, timeout_s: float = 20, transport=None, retry_wait_s: float = 2.0):
+class GeminiVision(_Traced):
+    def __init__(self, api_key: str, model: str, timeout_s: float = 20, transport=None, retry_wait_s: float = 2.0,
+                 tracer=None, session_id: str = "-"):
         self._key, self.model, self.retry_wait_s = api_key, model, retry_wait_s
         self._http = httpx.Client(transport=transport, timeout=timeout_s)
         self.name = f"gemini:{model}"
         self.last_served_model: str | None = None
+        self.tracer, self.session_id = tracer, session_id
+        self._retried = False
 
     def _scrub(self, s: str) -> str:
         return s.replace(self._key, "[key]") if self._key else s
 
     def detect(self, image: bytes) -> DetectionResult:
+        self._retried = False
+        return self._traced(time.perf_counter(), lambda: self._detect(image), lambda: self._retried)
+
+    def _detect(self, image: bytes) -> DetectionResult:
         body = {"contents": [{"parts": [{"text": text("photo_detect")},
                                         {"inline_data": {"mime_type": "image/jpeg", "data": base64.b64encode(image).decode()}}]}],
                 "generationConfig": {"temperature": 0, "responseMimeType": "application/json"}}
@@ -77,6 +116,7 @@ class GeminiVision:
                 raise LLMError(self._scrub(f"Gemini call failed: {type(e).__name__}")) from None
             if r.status_code == 200 or not (r.status_code == 429 or r.status_code >= 500) or attempt == 1:
                 break
+            self._retried = True
             time.sleep(self.retry_wait_s)
         if r.status_code != 200:
             raise LLMError(self._scrub(f"Gemini returned HTTP {r.status_code}"))

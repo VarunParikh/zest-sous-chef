@@ -29,7 +29,7 @@ def title(name: str | None) -> str:
 def extract(deps, text: str) -> ExtractionResult:
     """A3 `recipe_extract` on spotlighted, capped text. Raises LLMInvalid after one retry, LLMError if unreachable."""
     system, user = prompts.render("recipe_extract", text[: deps.settings.max_recipe_chars])
-    return deps.llm.generate(system, user, ExtractionResult)
+    return deps.llm.generate(system, user, ExtractionResult, call="extract")
 
 
 def stored_dish(store, name: str | None):

@@ -83,7 +83,7 @@ def reason_line(deps, dish, drivers: list[str]) -> str:
     tags = [*dish.flavour, *dish.mood_tags][:5]
     facts = f"Suggestion: {dish.name} | Tags: {', '.join(tags)} | Drivers: {', '.join(drivers)}"
     try:
-        out = deps.llm.generate(prompts.text("reason_line"), facts, ReasonResult)
+        out = deps.llm.generate(prompts.text("reason_line"), facts, ReasonResult, call="reason")
     except LLMError:  # A4 has no retry budget beyond the client's; the template reason is the fallback
         return TEMPLATE_REASON
     reason = out.reason.strip().rstrip(".")

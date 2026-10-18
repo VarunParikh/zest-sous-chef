@@ -86,7 +86,7 @@ def main():
             system, user = render("recipe_extract", r["text"])
             t0 = time.perf_counter()
             try:
-                out = client.generate(system, user, ExtractionResult)
+                out = client.generate(system, user, ExtractionResult, call="extract")
                 ok = True
             except LLMError as e:
                 out, ok = None, False

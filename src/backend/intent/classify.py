@@ -9,4 +9,4 @@ from backend.llm.schemas import IntentResult
 def classify(client: OllamaClient, message: str) -> IntentResult:
     """Raises LLMInvalid after one retry, or LLMError when the model is unreachable."""
     system, user = prompts.render("intent_classify", message)
-    return client.generate(system, user, IntentResult)
+    return client.generate(system, user, IntentResult, call="intent")

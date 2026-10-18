@@ -54,7 +54,7 @@ def main():
                 tags = [*dish.flavour, *dish.mood_tags][:5]
                 facts = f"Suggestion: {dish.name} | Tags: {', '.join(tags)} | Drivers: {', '.join(drivers)}"
                 try:
-                    raw = llm.generate(prompts.text("reason_line"), facts, ReasonResult).reason.strip().rstrip(".")
+                    raw = llm.generate(prompts.text("reason_line"), facts, ReasonResult, call="reason").reason.strip().rstrip(".")
                 except LLMError as e:
                     raw = f"<{type(e).__name__}>"
                 valid = not raw.startswith("<") and valid_reason(raw, facts)

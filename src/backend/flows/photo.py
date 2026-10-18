@@ -34,13 +34,13 @@ def samples_card() -> SamplePhotos:
     return SamplePhotos(photos=[SamplePhoto(id=p["id"], caption=p["caption"]) for p in demo])
 
 
-def make_vision(settings, transport=None):
+def make_vision(settings, transport=None, tracer=None, session_id: str = "-"):
     if settings.vision_provider == "ollama":
         return OllamaVision(settings.ollama_base_url, settings.vision_model, settings.timeout_vision_s, transport=transport,
-                            num_ctx=settings.vision_num_ctx)
+                            num_ctx=settings.vision_num_ctx, tracer=tracer, session_id=session_id)
     if settings.vision_provider == "gemini" and settings.gemini_enabled:
         return GeminiVision(settings.gemini_api_key.get_secret_value(), settings.vision_model, settings.timeout_vision_s,
-                            transport=transport)
+                            transport=transport, tracer=tracer, session_id=session_id)
     return None
 
 
@@ -54,7 +54,7 @@ def upload_turn(session, image: bytes, consent: bool, deps, out) -> None:
     """`image` is already validated and stripped (llm.image.prepare_image); it lives only in this call."""
     if consent:
         session.photo_consent = True
-    provider = make_vision(deps.settings, deps.vision_transport)
+    provider = make_vision(deps.settings, deps.vision_transport, deps.tracer, session.session_id)
     if provider is None:
         _offer_samples(session, deps, out, "provider_off")
         return
