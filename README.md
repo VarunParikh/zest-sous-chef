@@ -18,6 +18,28 @@ The screen is split in two. On the left are **recommendation levers**: weights, 
 
 This is a prototype: a working, documented, local demo with its evidence. It runs entirely on one Mac with local models;
 
+## Why Zest exists
+**The problem.** In quick commerce, "what should I cook tonight" and "what should I buy" are two separate steps. A cooking assistant that builds the cart from a recipe video, a typed recipe, a mood or a photo of the fridge collapses them into one. But such an assistant is only useful if it can be trusted with what you eat.
+
+**The brief's key requirement.** The owner's brief said it plainly: *changes to the recommendation engine must visibly change what the bot recommends.* That one sentence shaped the project:
+- The levers had to be real, inspectable and measurable. So there is a lever panel, a "Why this?" explanation on every suggestion, an inspector, and an evaluation that measures how much each lever moves the results, reporting honestly where it moves little.
+- It had to be reviewable, so the screen is split: levers on the left, chat on the right.
+
+**Trust is the product, not the demo.** For food, a wrong suggestion is not a small bug. It is a Jain user offered garlic bread, or a vegan offered paneer. That led to the central design decision: **hard guardrails are code, never prompts.** The model proposes and the code checks. This is why retrieval returns only IDs, why the model never sees prices, and why a safety layer sits in front of everything.
+
+**Who it is for.** Eleven personas (for example a Jain homemaker, a keto fitness user, a student on a budget, a reviewer) with different diets, faiths and budgets. The same words, "I am feeling indulgent", must give different, correct answers to each, and the project shows that.
+
+**Choices that were product choices, not technical ones:**
+- **Suggest, never act silently.** Add-ons and photo detections need a tap. A wrong guess costs a tap, not a wrong order.
+- **Label estimates as estimates,** and never claim to know about allergies or health. Dietary labels are described as simplified.
+- **Mock data, clearly labelled,** with no real store data or payments, so the prototype can be public.
+- **Local and private by default,** with cloud only as an opt-in behind a consent notice.
+- **Cut scope honestly** (chat cart edits, servings scaling, live stock-outs) rather than half-build it, and say so.
+
+**How success was defined.** The business requirements set eight measurable objectives: lever responsiveness, constraint compliance, data integrity, intent-to-cart accuracy, resilience, speed, traceability and responsible-AI posture. Each became a pre-registered evaluation with a pass rule. The [evidence report](docs/epics/zest/verify/report/report.md) shows where the project meets them and where it does not.
+
+More: [product vision](docs/core/product-vision.md), [product strategy](docs/core/product-strategy.md), [product research](docs/epics/zest/discovery/product-research.md), [personas](docs/epics/zest/discovery/personas.md), [business requirements](docs/epics/zest/requirements/business-requirements.md). How it was built and planned: [How Zest was built with Claude](docs/epics/zest/release/how-it-was-built.md).
+
 ## Status at a glance
 The evidence report lists every evaluation, its pass rule, its result file and any post-hoc change. Every number in it is generated from `eval/results/`, none typed by hand:
 **[docs/epics/zest/verify/report/report.md](docs/epics/zest/verify/report/report.md)**.
@@ -276,6 +298,25 @@ flowchart TD
   reval -- "ok" --> order["One order per key<br/>a second press returns the same order"]
   order --> done["Order screen 10 s,<br/>then an empty cart"]
 ```
+
+## Keeping Zest on topic
+**First, what it is not.** The bot was **not trained or fine-tuned**. No model was modified. Staying on topic is done by layers of ordinary code around the models, plus fixed replies.
+
+**The layers, in the order a message meets them:**
+1. **Code rules.** Patterns for injection ("ignore previous instructions"), hazardous requests and clearly off-topic questions are matched in code. A match gets a templated redirect: "I'm here to help with cooking and groceries." No model is called and nothing is added to the cart.
+2. **A safety classifier.** Text the rules pass goes to `llama-guard3:1b`. An "unsafe" verdict gets the same redirect. Two of its categories are ignored on purpose, because they blocked normal use (for example "what should I eat?").
+3. **Intent classification.** The text model labels each message with an intent (mood, recipe, named dish, and so on). Off-topic intents get a redirect. Unsupported requests get a fixed "I can't do that here" reply.
+4. **Fixed replies.** Almost everything the bot says is a template. The model writes exactly one sentence, the reason line for a suggestion. A validator rejects it if it is too short or too long, or contains a price, an ingredient the dish does not have, or a health-claim word, and a template replaces it.
+5. **Data is never an instruction.** Transcripts, photo detections and pasted text are treated as data and guarded separately. A transcript that contains instructions is ignored.
+6. **Code owns the facts.** Prices, stock and SKUs come only from the catalogue. Diet, faith and allergy rules are filters in code. Even if a model were tricked, it cannot add an item or change a price.
+7. **A user tap for every cart change.** Nothing enters the cart without the user's confirmation, and removals can be undone.
+
+**How well it works.** The guard is the weakest layer, and the project says so:
+- On attack phrasings nobody had written rules for, it blocks 11 of 20 (0.55, against a 0.90 goal) and wrongly redirects 1 of 10 benign messages. This is an accepted limitation.
+- The code layers limit the harm: none of 36 injection attacks changed a cart end to end, and no ineligible item reached any persona.
+- It also redirects some harmless phrases, such as an unknown dish name ("make me ratatouille") or "switch off the oven".
+
+More: [guard decision record](docs/epics/zest/design/adr/ADR-006-guard-design.md), [agent design](docs/epics/zest/design/agent-design.md), [security note](docs/epics/zest/design/security-privacy-note.md). How retrieval, the vector database and the levers work: [Retrieval explained](docs/epics/zest/design/retrieval-explained.md).
 
 ## Why these models
 Every model was chosen by a benchmark that was written and pre-registered before any model ran (`eval/thresholds.yaml`, datasets hashed in `eval/datasets/MANIFEST.json`). The ADRs record each decision and its caveats. All numbers below are read from the result files in [`eval/results/`](eval/results/), measured on the demo Mac (Apple M5 MacBook Air, 16 GB).
