@@ -1,6 +1,6 @@
 # Architecture: Zest AI Sous-Chef
 
-Status: **APPROVED v0.7 (owner, 2026-10-18, with the block 2.6 lever plan): §5 β0 from config, §6 `DISH_POOL` 25, `ADDON_POOL` 12, `VALUE_WEIGHT` 0.20 (C53).** v0.6 was **APPROVED (owner, 2026-10-18, with its plan): §4.1 adds open requests and the no-repeat rule (ADR-004 v3, C45).** v0.5 was APPROVED (owner re-approved 2026-10-18): §6 adds `GUARD_IGNORE_CATEGORIES` (ADR-006 v2, C40). v0.4 was APPROVED (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.3 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2: add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4, Data Model v0.2, Constitution v0.2, ADR-001 to ADR-010
+Status: **APPROVED v0.8 (owner, 2026-10-18, with the block 2.6 safety plan): §4 code routing between guard and intent (C54).** v0.7 was **APPROVED (owner, 2026-10-18, with the block 2.6 lever plan): §5 β0 from config, §6 `DISH_POOL` 25, `ADDON_POOL` 12, `VALUE_WEIGHT` 0.20 (C53).** v0.6 was **APPROVED (owner, 2026-10-18, with its plan): §4.1 adds open requests and the no-repeat rule (ADR-004 v3, C45).** v0.5 was APPROVED (owner re-approved 2026-10-18): §6 adds `GUARD_IGNORE_CATEGORIES` (ADR-006 v2, C40). v0.4 was APPROVED (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.3 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2: add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4, Data Model v0.2, Constitution v0.2, ADR-001 to ADR-010
 Scope: components, boundaries, data flows, failure handling and quality attributes. Field definitions are in the Data Model; endpoints will be detailed in the API Spec; prompts and tool contracts in the Agent Design.
 
 ## 1. Architectural stance
@@ -76,7 +76,7 @@ Rule: `guard`, `engine` and `cart` contain no LLM calls and can be fully unit-te
 
 ## 4. The core pipeline (one chat turn)
 1. **Lock** the session input (FR-102) and screen the message with `guard`.
-2. **Classify** intent (`intent` + `llm`, temperature 0).
+2. **Classify** intent: guard → code routing (named dish, cart clear; Agent Design §6.1) → intent model (`intent` + `llm`, temperature 0) → flow.
 3. **Route** to a flow. Each flow does: understand, retrieve a wide pool, apply hard guardrails in code, rank survivors with the snapshot levers, act (cart change or reply), explain.
 4. **Validate** every number in the reply against the catalogue (FR-79) before sending.
 5. **Trace** the turn; **unlock**.
