@@ -11,6 +11,7 @@ setup: ## create the venv and install pinned dependencies; create .env from the 
 	$(PY) -m pip install -q --upgrade pip
 	$(PY) -m pip install -q -r requirements.lock.txt
 	@test -f .env || (cp .env.example .env && echo "Created .env from .env.example")
+	cd src/frontend && npm ci --no-audit --no-fund
 
 dev: ## run the backend on 127.0.0.1:8000 (health page at /health)
 	$(PY) -m uvicorn backend.api.app:create_app --factory --app-dir src --host 127.0.0.1 --port 8000 --reload
