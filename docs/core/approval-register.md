@@ -24,9 +24,9 @@ Approving a document means: you have read it or the parts you care about, you ac
 | Product spec (PRD) | `docs/epics/zest/requirements/product-spec.md` | v0.6 | A | **Approved v0.6** (C37: FR-50, FR-55, AC-11 synced to ADR-003 v3) | Owner, 2026-10-18 (re-approved after the C37 sync) |
 | Data Model | `docs/epics/zest/design/data-model.md` | v0.3 | A | **Approved v0.3** (C33 allocation, C34 quoted prices, C35 quantity) | Owner, 2026-10-18 (approved with the block 2.2 plan) |
 | Architecture | `docs/epics/zest/design/architecture.md` | v0.5 | A | **Approved v0.5** (C40: `GUARD_IGNORE_CATEGORIES` row) | Owner, 2026-10-18 (re-approved after C40) |
-| API Spec | `docs/epics/zest/design/api-spec.md` | v0.5 | A | **Approved v0.5** (C37: §6.2 vision provider contract) | Owner, 2026-10-18 (re-approved after the C37 sync) |
+| API Spec | `docs/epics/zest/design/api-spec.md` | v0.6 | A | **Approved v0.6** (C41: cart line `icon`, dish `course`) | Owner, 2026-10-18 (approved with the block 2.5 plan) |
 | Agent Design | `docs/epics/zest/design/agent-design.md` | v0.3 | A | **Approved v0.3** (C37: A6 provider) | Owner, 2026-10-18 (re-approved after the C37 sync) |
-| Build Plan | `docs/epics/zest/build-plan.md` | v0.3 | A | **Approved v0.3** (C39: §4 adds `python-multipart`) | Owner, 2026-10-18 (re-approved after the C37 sync) |
+| Build Plan | `docs/epics/zest/build-plan.md` | v0.4 | A | **Approved v0.4** (C42: React type packages) | Owner, 2026-10-18 (approved with the block 2.5 plan) |
 | User Stories and Traceability | `docs/epics/zest/requirements/user-stories.md` | v0.5 | B | **Approved v0.5** (C37: US-14, US-16) | Owner, 2026-10-18 (re-approved after the C37 sync) |
 | Conversation Design | `docs/epics/zest/design/conversation-design.md` | v0.3 | B | **Approved v0.3** (C37 MSG-PHOTO-SAMPLES trigger; C38 MSG-PHOTO-CONFIRM, MSG-TXT-STORED servings) | Owner, 2026-10-18 (re-approved after the C37 sync) |
 | Security and Privacy Note | `docs/epics/zest/design/security-privacy-note.md` | v0.3 | B | **Approved v0.3** (C37: photo data flow) | Owner, 2026-10-18 (re-approved after the C37 sync) |
@@ -95,3 +95,4 @@ Approving a document means: you have read it or the parts you care about, you ac
 | 2026-10-18 | Owner re-approved the 11 documents amended in the C37 sync as written: ADR-003 v3, PRD v0.6, User Stories v0.5, Architecture v0.4, API Spec v0.5, Security Note v0.3, Agent Design v0.3, Conversation Design v0.3, Test Plan v0.4 with Test Cases, Product Platforms v0.3, Build Plan v0.3. The photo flow (block 2.4) is no longer blocked | this register, `open-conflicts.md` C37 |
 | 2026-10-18 | Block 2.4 live check found `llama-guard3:1b` rating bare YouTube links unsafe (S8). Owner decided C40: ignore S8 everywhere (`GUARD_IGNORE_CATEGORIES=S8`). ADR-006 v2 and Architecture v0.5 return to Draft (amended); the code waits for re-approval | this register, `open-conflicts.md` C40 |
 | 2026-10-18 | Owner re-approved ADR-006 v2 and Architecture v0.5 (C40, S8 ignored) | this register |
+| 2026-10-18 | Block 2.5 planning: owner resolved C41 (cart `icon` and `course`) and C42 (`@types/react`, `@types/react-dom`); approved the Chromium download for Playwright and `make app` as two dev servers (backend :8000, Vite :5173). The approved plan re-approved exactly API Spec v0.6 and Build Plan v0.4 | this register, `open-conflicts.md` C41, C42 |

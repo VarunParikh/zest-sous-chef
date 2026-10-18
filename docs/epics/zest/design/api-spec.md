@@ -1,6 +1,6 @@
 # API Spec: Zest AI Sous-Chef
 
-Status: **APPROVED v0.5 (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.4 was APPROVED (owner, 2026-10-18): §3 endpoints 7 to 10 return the cart and endpoint 8 has a defined body; §4.6 lines gain `in_stock` and `quantity`; §4.7 OUT_OF_STOCK details carry substitutions (C34, C35). v0.3: §4.2 to §4.4 add the optional current `levers` and `levers_changed_since_snapshot` (C31). v0.2 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, Data Model v0.1, Conversation Design v0.1
+Status: **APPROVED v0.6 (owner, 2026-10-18, with the block 2.5 plan): §4.6 adds `icon` on each line and `course` on each dish (C41).** v0.5 was APPROVED (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.4 was APPROVED (owner, 2026-10-18): §3 endpoints 7 to 10 return the cart and endpoint 8 has a defined body; §4.6 lines gain `in_stock` and `quantity`; §4.7 OUT_OF_STOCK details carry substitutions (C34, C35). v0.3: §4.2 to §4.4 add the optional current `levers` and `levers_changed_since_snapshot` (C31). v0.2 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, Data Model v0.1, Conversation Design v0.1
 Scope: the browser-to-backend REST contract, the response card types, errors, and the outbound contracts to the model, the opt-in Gemini photo provider and the transcript source. **Webhooks:** none. The app is a browser client with no inbound callbacks; there are no outbound webhooks. The live contract is the OpenAPI document that FastAPI generates from the Pydantic models in the Data Model; this document is the design that those models must satisfy.
 
 ## 1. Design decisions (owner delegated the API style, 2026-10-17)
@@ -143,19 +143,19 @@ The dish total and prices are examples; real values come from the catalogue. `ca
 ```json
 {
   "dishes": [{
-    "cart_dish_id": "cd_1", "dish_id": "paneer_butter_masala", "name": "Paneer Butter Masala", "dish_total_inr": 331,
+    "cart_dish_id": "cd_1", "dish_id": "paneer_butter_masala", "name": "Paneer Butter Masala", "course": "main", "dish_total_inr": 331,
     "lines": [{
       "line_id": "l_1", "ingredient_name": "butter", "variant_id": "butter-salted-100",
       "variant_name": "Salted Butter", "packs": [{"sku_id": "butter-salted-100-100g", "count": 1, "pack": "100 g"}],
       "price_inr": 58, "priced": true, "shared_from_line_id": null, "estimated": false,
       "reason": "Chosen for your history preference", "alternative_variant_ids": ["butter-unsalted-100"],
-      "in_stock": true, "quantity": 1
+      "in_stock": true, "quantity": 1, "icon": "dairy"
     }]
   }],
   "item_count": 11, "subtotal_inr": 331
 }
 ```
-Dimmed shared lines carry `"priced": false` and `"shared_from_line_id"`. `in_stock` is false for a line kept with the stock filter off, or one that went out of stock after carting; Buy Now is then blocked (FR-83). `quantity` multiplies the packs a priced line owns (1 to 9, C35) (v0.4, C34). Prices and totals are always catalogue values (FR-79).
+Dimmed shared lines carry `"priced": false` and `"shared_from_line_id"`. `in_stock` is false for a line kept with the stock filter off, or one that went out of stock after carting; Buy Now is then blocked (FR-83). `quantity` multiplies the packs a priced line owns (1 to 9, C35) (v0.4, C34). `icon` is the variant's category icon key and `course` the stored dish's course, null for a free-text dish; the UI shows category icons, not photos (Mock Data Plan; v0.6, C41). Prices and totals are always catalogue values (FR-79).
 
 ### 4.7 `POST /sessions/{id}/checkout`
 Header: `Idempotency-Key: <uuid>`. Response `200`:

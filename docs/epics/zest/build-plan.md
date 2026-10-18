@@ -1,6 +1,6 @@
 # Build Plan and Handover: Zest AI Sous-Chef
 
-Status: **APPROVED v0.3 (owner re-approved 2026-10-18) (2026-10-18): §4 adds `python-multipart` (owner approved 2026-10-18, C39).** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2: larger dish pool and add-on retrieval) · Date: 2026-10-17 · Audience: the owner (VJP) and Claude Code
+Status: **APPROVED v0.4 (owner, 2026-10-18, with the block 2.5 plan): §4 adds `@types/react` and `@types/react-dom` (C42).** v0.3 was APPROVED (owner re-approved 2026-10-18) (2026-10-18): §4 adds `python-multipart` (owner approved 2026-10-18, C39).** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2: larger dish pool and add-on retrieval) · Date: 2026-10-17 · Audience: the owner (VJP) and Claude Code
 This is the bridge from documents to code. It is not one of the 25 documents; it exists because Claude Code works far better with a clear build order, gates and a first prompt.
 **Honest sizing:** 40 user stories in three days is aggressive. The plan protects the demo by ordering work so the highest-value path works first and by naming what to cut. Nothing below has been built or measured.
 
@@ -42,6 +42,7 @@ Versions are pinned at install. Package names marked * must be confirmed on the 
 | Testing | `pytest`, `pytest-playwright`, `coverage` | Tests, E2E, coverage | Test Plan |
 | Frontend | `react`, `react-dom`, `vite`, `tailwindcss` | UI | ADR-010 |
 | Frontend | `typescript` | Typed cards and API types | Owner approved 2026-10-17 |
+| Frontend | `@types/react`, `@types/react-dom` | Type definitions for the TypeScript check (dev only) | 19.3.0; owner approved 2026-10-18 (C42) |
 Anything else needs a separate ask.
 
 ## 5. Build order
