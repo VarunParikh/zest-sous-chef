@@ -26,6 +26,7 @@ class Settings(BaseModel):
     # Input guard (ADR-006): rules first, then this classifier on text the rules pass
     guard_classifier: bool = True
     guard_model: str = "llama-guard3:1b"
+    guard_ignore_categories: list[str] = ["S8"]  # ADR-006 v2 (C40): classifier categories that do not block
     # Intent (Agent Design §6.1): below this confidence the bot asks to rephrase, never acts
     intent_confidence_min: float = 0.5
     vision_provider: Literal["ollama", "gemini", "samples"] = "ollama"  # ADR-003 v3 (owner decision, C37)
@@ -62,6 +63,13 @@ class Settings(BaseModel):
     # Local, git-ignored storage
     trace_path: str = "logs/trace.jsonl"
     chroma_path: str = "data/chroma"
+
+    @field_validator("guard_ignore_categories", mode="before")
+    @classmethod
+    def _split_categories(cls, v):
+        if isinstance(v, str):
+            return [part.strip().upper() for part in v.split(",") if part.strip()]
+        return v
 
     @field_validator("addon_courses", mode="before")
     @classmethod

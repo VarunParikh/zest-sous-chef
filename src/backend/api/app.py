@@ -53,7 +53,8 @@ def create_app(settings: Settings | None = None, http_transport: httpx.AsyncBase
     app.state.presets = load_presets()
     app.state.store = default_store()  # the catalogue service; tests and stock scenarios swap it
     app.state.llm_transport = llm_transport  # None: real Ollama; tests pass a fake
-    classifier = (LlamaGuard(settings.ollama_base_url, settings.guard_model, settings.timeout_llm_s, transport=llm_transport)
+    classifier = (LlamaGuard(settings.ollama_base_url, settings.guard_model, settings.timeout_llm_s, transport=llm_transport,
+                             ignore=frozenset(settings.guard_ignore_categories))
                   if settings.guard_classifier else None)
     app.state.guard = InputGuard(default_guard(), classifier, app.state.tracer)
     app.state.retriever = None  # built on the first chat turn (index load); tests set it

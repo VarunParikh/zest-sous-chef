@@ -7,6 +7,7 @@ change. If the classifier fails, the rules result stands and `fallback_used` is 
 """
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 
 import httpx
@@ -26,8 +27,11 @@ class Verdict:
 
 
 class LlamaGuard:
-    def __init__(self, base_url: str, model: str, timeout_s: float, transport: httpx.BaseTransport | None = None):
-        self.base_url, self.model = base_url.rstrip("/"), model
+    """`ignore`: categories that do not block (ADR-006 v2, C40: S8 Intellectual Property flagged every bare video link)."""
+
+    def __init__(self, base_url: str, model: str, timeout_s: float, transport: httpx.BaseTransport | None = None,
+                 ignore: frozenset[str] = frozenset({"S8"})):
+        self.base_url, self.model, self.ignore = base_url.rstrip("/"), model, frozenset(c.upper() for c in ignore)
         self._http = httpx.Client(transport=transport, timeout=timeout_s)
 
     def unsafe(self, text: str) -> bool:
@@ -35,7 +39,11 @@ class LlamaGuard:
             "model": self.model, "stream": False, "options": {"temperature": 0},
             "messages": [{"role": "user", "content": text}]})
         r.raise_for_status()
-        return r.json()["message"]["content"].strip().lower().startswith("unsafe")
+        reply = r.json()["message"]["content"].strip()
+        if not reply.lower().startswith("unsafe"):
+            return False
+        categories = {c.strip().upper() for c in re.split(r"[,\s]+", reply[len("unsafe"):]) if c.strip()}
+        return not categories or bool(categories - self.ignore)  # no category given: block
 
 
 class InputGuard:

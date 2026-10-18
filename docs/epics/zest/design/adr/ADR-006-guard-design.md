@@ -1,5 +1,5 @@
 # ADR-006: Design of the input guard: rules first, optional classifier
-- **Status:** **Draft (amended) v2, 2026-10-18 (owner decision, C40): the classifier's S8 (Intellectual Property) verdicts are ignored; awaits owner re-approval.** v1 was **Accepted (owner, 2026-10-18):** rules plus the `llama-guard3:1b` classifier, chosen by the Day-1 benchmark E4
+- **Status:** **Accepted v2, 2026-10-18 (owner decision, C40; owner re-approved the same day): the classifier's S8 (Intellectual Property) verdicts are ignored.** v1 was **Accepted (owner, 2026-10-18):** rules plus the `llama-guard3:1b` classifier, chosen by the Day-1 benchmark E4
 - **Date:** 2026-10-17
 - **Decision owner:** VJP (product owner); drafted by Claude
 - **Authorisation:** Owner direction: guardrails must be robust; the guard design itself is not decided.
