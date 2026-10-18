@@ -1,0 +1,930 @@
+{
+ "id": "E7",
+ "system": "persona-compliance-adversarial-sensitivity",
+ "dataset": {
+  "name": "persona_prompts_v1.jsonl",
+  "sha256": "c0699a8628659a8105ade4a8665de56fd0be2ee12fe5a124ee45b0fdb9fd4ee3",
+  "split": "all"
+ },
+ "environment": {
+  "commit": "9b403fb",
+  "dirty": false,
+  "date": "2026-10-18T13:09:37+00:00",
+  "python": "3.12.15",
+  "machine": "arm64",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "packages": {
+   "chromadb": "1.5.9",
+   "rank-bm25": "0.2.2",
+   "pydantic": "2.14.1",
+   "httpx": "0.28.1",
+   "fastapi": "0.143.3"
+  }
+ },
+ "metrics": {
+  "prompts": 22,
+  "surfaces_checked": 665,
+  "violations": 443,
+  "by_kind": {
+   "named": 253,
+   "ingredients": 322,
+   "transcript": 90
+  },
+  "errors": []
+ },
+ "critical_failures": [
+  {
+   "id": "P1-07",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "dish_chip",
+   "item": "D104 Berry Panna Cotta (international)",
+   "rule": "no_compliant_variant:gelatin"
+  },
+  {
+   "id": "P1-07",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D05 Chicken Tikka Masala",
+   "rule": "no_compliant_variant:chicken"
+  },
+  {
+   "id": "P1-07",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D05 Chicken Tikka Masala",
+   "rule": "no_compliant_variant:onion"
+  },
+  {
+   "id": "P1-07",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D05 Chicken Tikka Masala",
+   "rule": "no_compliant_variant:ginger"
+  },
+  {
+   "id": "P1-07",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D05 Chicken Tikka Masala",
+   "rule": "no_compliant_variant:garlic"
+  },
+  {
+   "id": "P1-07",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D07 Palak Paneer",
+   "rule": "no_compliant_variant:onion"
+  },
+  {
+   "id": "P1-07",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D07 Palak Paneer",
+   "rule": "no_compliant_variant:garlic"
+  },
+  {
+   "id": "P1-07",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "dish_chip",
+   "item": "D07 Palak Paneer",
+   "rule": "no_compliant_variant:onion"
+  },
+  {
+   "id": "P1-07",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "dish_chip",
+   "item": "D07 Palak Paneer",
+   "rule": "no_compliant_variant:garlic"
+  },
+  {
+   "id": "P1-07",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D104 Berry Panna Cotta (international)",
+   "rule": "no_compliant_variant:gelatin"
+  },
+  {
+   "id": "P1-07",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "dish_chip",
+   "item": "D06 Paneer Butter Masala",
+   "rule": "no_compliant_variant:onion"
+  },
+  {
+   "id": "P1-07",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "dish_chip",
+   "item": "D06 Paneer Butter Masala",
+   "rule": "no_compliant_variant:ginger"
+  },
+  {
+   "id": "P1-07",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D07 Palak Paneer",
+   "rule": "no_compliant_variant:onion"
+  },
+  {
+   "id": "P1-07",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D07 Palak Paneer",
+   "rule": "no_compliant_variant:garlic"
+  },
+  {
+   "id": "P1-07",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D06 Paneer Butter Masala",
+   "rule": "no_compliant_variant:onion"
+  },
+  {
+   "id": "P1-07",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D06 Paneer Butter Masala",
+   "rule": "no_compliant_variant:ginger"
+  },
+  {
+   "id": "P1-07",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D07 Palak Paneer",
+   "rule": "no_compliant_variant:onion"
+  },
+  {
+   "id": "P1-07",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D07 Palak Paneer",
+   "rule": "no_compliant_variant:garlic"
+  },
+  {
+   "id": "P1-07",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "addon",
+   "item": "D45 Masala Chaas",
+   "rule": "no_compliant_variant:ginger"
+  },
+  {
+   "id": "P1-07",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D28 Masala Chai",
+   "rule": "no_compliant_variant:ginger"
+  },
+  {
+   "id": "P1-08",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D06 Paneer Butter Masala",
+   "rule": "no_compliant_variant:onion"
+  },
+  {
+   "id": "P1-08",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D06 Paneer Butter Masala",
+   "rule": "no_compliant_variant:ginger"
+  },
+  {
+   "id": "P1-08",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D07 Palak Paneer",
+   "rule": "no_compliant_variant:onion"
+  },
+  {
+   "id": "P1-08",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D07 Palak Paneer",
+   "rule": "no_compliant_variant:garlic"
+  },
+  {
+   "id": "P1-08",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "addon",
+   "item": "D45 Masala Chaas",
+   "rule": "no_compliant_variant:ginger"
+  },
+  {
+   "id": "P1-08",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D28 Masala Chai",
+   "rule": "no_compliant_variant:ginger"
+  },
+  {
+   "id": "P1-09",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "dish_chip",
+   "item": "D14 Aloo Paratha",
+   "rule": "no_compliant_variant:potato"
+  },
+  {
+   "id": "P1-09",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D60 Aloo Gobi",
+   "rule": "no_compliant_variant:potato"
+  },
+  {
+   "id": "P1-09",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D60 Aloo Gobi",
+   "rule": "no_compliant_variant:onion"
+  },
+  {
+   "id": "P1-09",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "dish_chip",
+   "item": "D14 Aloo Paratha",
+   "rule": "no_compliant_variant:potato"
+  },
+  {
+   "id": "P1-09",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D60 Aloo Gobi",
+   "rule": "no_compliant_variant:potato"
+  },
+  {
+   "id": "P1-09",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D60 Aloo Gobi",
+   "rule": "no_compliant_variant:onion"
+  },
+  {
+   "id": "P1-09",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "dish_chip",
+   "item": "D14 Aloo Paratha",
+   "rule": "no_compliant_variant:potato"
+  },
+  {
+   "id": "P1-09",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D60 Aloo Gobi",
+   "rule": "no_compliant_variant:potato"
+  },
+  {
+   "id": "P1-09",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D60 Aloo Gobi",
+   "rule": "no_compliant_variant:onion"
+  },
+  {
+   "id": "P1-09",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "dish_chip",
+   "item": "D14 Aloo Paratha",
+   "rule": "no_compliant_variant:potato"
+  },
+  {
+   "id": "P1-09",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D60 Aloo Gobi",
+   "rule": "no_compliant_variant:potato"
+  },
+  {
+   "id": "P1-09",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D60 Aloo Gobi",
+   "rule": "no_compliant_variant:onion"
+  },
+  {
+   "id": "P1-09",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "dish_chip",
+   "item": "D14 Aloo Paratha",
+   "rule": "no_compliant_variant:potato"
+  },
+  {
+   "id": "P1-09",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D60 Aloo Gobi",
+   "rule": "no_compliant_variant:potato"
+  },
+  {
+   "id": "P1-09",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D60 Aloo Gobi",
+   "rule": "no_compliant_variant:onion"
+  },
+  {
+   "id": "P1-10",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D103 Chocolate Mousse (international)",
+   "rule": "no_compliant_variant:egg"
+  },
+  {
+   "id": "P1-10",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D22 Pav Bhaji",
+   "rule": "no_compliant_variant:potato"
+  },
+  {
+   "id": "P1-10",
+   "persona": "P1",
+   "kind": "named",
+   "surface": "runner_up",
+   "item": "D22 Pav Bhaji",
+   "rule": "no_compliant_variant:onion"
+  },
+  {
+   "id": "P1-11",
+   "persona": "P1",
+   "kind": "ingredients",
+   "surface": "runner_up",
+   "item": "D06 Paneer Butter Masala",
+   "rule": "no_compliant_variant:onion"
+  },
+  {
+   "id": "P1-11",
+   "persona": "P1",
+   "kind": "ingredients",
+   "surface": "runner_up",
+   "item": "D06 Paneer Butter Masala",
+   "rule": "no_compliant_variant:ginger"
+  },
+  {
+   "id": "P1-11",
+   "persona": "P1",
+   "kind": "ingredients",
+   "surface": "runner_up",
+   "item": "D126 Bread Pudding (international)",
+   "rule": "no_compliant_variant:egg"
+  },
+  {
+   "id": "P1-12",
+   "persona": "P1",
+   "kind": "ingredients",
+   "surface": "dish_chip",
+   "item": "D113 Tandoori Prawns",
+   "rule": "no_compliant_variant:prawns"
+  },
+  {
+   "id": "P1-12",
+   "persona": "P1",
+   "kind": "ingredients",
+   "surface": "dish_chip",
+   "item": "D113 Tandoori Prawns",
+   "rule": "no_compliant_variant:garlic"
+  },
+  {
+   "id": "P1-12",
+   "persona": "P1",
+   "kind": "ingredients",
+   "surface": "runner_up",
+   "item": "D67 Rava Fish Fry",
+   "rule": "no_compliant_variant:fish"
+  }
+ ],
+ "per_example": [
+  {
+   "id": "P1-07",
+   "persona": "P1",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    200,
+    200,
+    200,
+    400
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON"
+   ],
+   "cart_lines": 8,
+   "surfaces_checked": 65,
+   "violations": 20
+  },
+  {
+   "id": "P1-08",
+   "persona": "P1",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    400
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON"
+   ],
+   "cart_lines": 8,
+   "surfaces_checked": 56,
+   "violations": 6
+  },
+  {
+   "id": "P1-09",
+   "persona": "P1",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    200,
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK"
+   ],
+   "cart_lines": 0,
+   "surfaces_checked": 15,
+   "violations": 15
+  },
+  {
+   "id": "P1-10",
+   "persona": "P1",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 6,
+   "surfaces_checked": 50,
+   "violations": 3
+  },
+  {
+   "id": "P1-11",
+   "persona": "P1",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 9,
+   "surfaces_checked": 77,
+   "violations": 3
+  },
+  {
+   "id": "P1-12",
+   "persona": "P1",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 8,
+   "surfaces_checked": 82,
+   "violations": 5
+  },
+  {
+   "id": "P1-13",
+   "persona": "P1",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200,
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK"
+   ],
+   "cart_lines": 0,
+   "surfaces_checked": 15,
+   "violations": 14
+  },
+  {
+   "id": "P1-14",
+   "persona": "P1",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 88,
+   "violations": 1
+  },
+  {
+   "id": "P1-15",
+   "persona": "P1",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200,
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK"
+   ],
+   "cart_lines": 0,
+   "surfaces_checked": 15,
+   "violations": 19
+  },
+  {
+   "id": "P1-16",
+   "persona": "P1",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200,
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK"
+   ],
+   "cart_lines": 0,
+   "surfaces_checked": 15,
+   "violations": 19
+  },
+  {
+   "id": "P1-17",
+   "persona": "P1",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200,
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK"
+   ],
+   "cart_lines": 0,
+   "surfaces_checked": 15,
+   "violations": 19
+  },
+  {
+   "id": "P6-07",
+   "persona": "P6",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    200,
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK"
+   ],
+   "cart_lines": 0,
+   "surfaces_checked": 15,
+   "violations": 25
+  },
+  {
+   "id": "P6-08",
+   "persona": "P6",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    200,
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK"
+   ],
+   "cart_lines": 0,
+   "surfaces_checked": 15,
+   "violations": 35
+  },
+  {
+   "id": "P6-09",
+   "persona": "P6",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    200,
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK"
+   ],
+   "cart_lines": 0,
+   "surfaces_checked": 15,
+   "violations": 30
+  },
+  {
+   "id": "P6-10",
+   "persona": "P6",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    400
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON"
+   ],
+   "cart_lines": 3,
+   "surfaces_checked": 22,
+   "violations": 6
+  },
+  {
+   "id": "P6-11",
+   "persona": "P6",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200,
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK"
+   ],
+   "cart_lines": 0,
+   "surfaces_checked": 15,
+   "violations": 44
+  },
+  {
+   "id": "P6-12",
+   "persona": "P6",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200,
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK"
+   ],
+   "cart_lines": 0,
+   "surfaces_checked": 15,
+   "violations": 26
+  },
+  {
+   "id": "P6-13",
+   "persona": "P6",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200,
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK"
+   ],
+   "cart_lines": 0,
+   "surfaces_checked": 15,
+   "violations": 32
+  },
+  {
+   "id": "P6-14",
+   "persona": "P6",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200,
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK"
+   ],
+   "cart_lines": 0,
+   "surfaces_checked": 15,
+   "violations": 25
+  },
+  {
+   "id": "P6-15",
+   "persona": "P6",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200,
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK"
+   ],
+   "cart_lines": 0,
+   "surfaces_checked": 15,
+   "violations": 32
+  },
+  {
+   "id": "P6-16",
+   "persona": "P6",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200,
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK"
+   ],
+   "cart_lines": 0,
+   "surfaces_checked": 15,
+   "violations": 32
+  },
+  {
+   "id": "P6-17",
+   "persona": "P6",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200,
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK",
+    "MSG-PERSONA-BLOCK"
+   ],
+   "cart_lines": 0,
+   "surfaces_checked": 15,
+   "violations": 32
+  }
+ ],
+ "status": "PASS",
+ "notes": "eligibility switched off on purpose: PASS means the checker found violations (sensitivity check, not E7)"
+}
