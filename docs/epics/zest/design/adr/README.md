@@ -9,7 +9,7 @@ Format follows the `write-adr` skill. An ADR is marked **Accepted** only where t
 | [003](ADR-003-vision-approach.md) | Pluggable photo detection; v3: local `qwen3-vl:4b-instruct` by default (failed E3, owner decision), Gemini 3.5 Flash-Lite opt-in, samples for the demo and as fallback; photo accuracy NOT MET | **Accepted v3 (owner decision 2026-10-18, C37; re-approved the same day)** | `verify/benchmarks/vision.md` |
 | [004](ADR-004-retrieval-approach.md) | Hybrid BM25 + vector with RRF; v2: add-on suggestions from curated pairs plus vector neighbours (weighted RRF, course rule) | Accepted; v2 amended 2026-10-17; Day-1 evidence recorded 2026-10-18 (hybrid default, k = 60, add-ons 2:1) | `verify/benchmarks/retrieval.md` |
 | [005](ADR-005-vector-store-and-embedder.md) | Embedded Chroma with the default all-MiniLM-L6-v2 embedder | **Accepted (owner, 2026-10-18)** from E5 | `verify/benchmarks/retrieval.md` |
-| [006](ADR-006-guard-design.md) | Input guard: rules plus `llama-guard3:1b` | **Accepted (owner, 2026-10-18)** from E4 | `verify/benchmarks/guard.md` |
+| [006](ADR-006-guard-design.md) | Input guard: rules plus `llama-guard3:1b`; v2 ignores the S8 (Intellectual Property) category | **Draft (amended) v2 (owner decision 2026-10-18, C40); awaits re-approval**; v1 accepted from E4 | `verify/benchmarks/guard.md` |
 | [007](ADR-007-state-and-storage.md) | In-memory state, JSON catalogue | Accepted | Qualitative |
 | [008](ADR-008-variant-scoring.md) | Lever scores plus price value term | Accepted; constants to be tuned | `verify/benchmarks/variant-scoring.md` |
 | [009](ADR-009-no-mcp-plain-rest.md) | Plain REST, no MCP | Accepted | Qualitative |

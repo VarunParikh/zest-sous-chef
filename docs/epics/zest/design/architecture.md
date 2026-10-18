@@ -1,6 +1,6 @@
 # Architecture: Zest AI Sous-Chef
 
-Status: **APPROVED v0.4 (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.3 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2: add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4, Data Model v0.2, Constitution v0.2, ADR-001 to ADR-010
+Status: **DRAFT (amended) v0.5 (2026-10-18): §6 adds `GUARD_IGNORE_CATEGORIES` (ADR-006 v2, C40); awaits owner re-approval.** v0.4 was APPROVED (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.3 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2: add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4, Data Model v0.2, Constitution v0.2, ADR-001 to ADR-010
 Scope: components, boundaries, data flows, failure handling and quality attributes. Field definitions are in the Data Model; endpoints will be detailed in the API Spec; prompts and tool contracts in the Agent Design.
 
 ## 1. Architectural stance
@@ -136,7 +136,7 @@ The pool must be larger than the display set, otherwise the levers cannot reorde
 | `TIMEOUT_LLM_S`, `TIMEOUT_VISION_S`, `TIMEOUT_TRANSCRIPT_S` | NFR-10 | 30, 60 (ADR-003 v3), 10 |
 | `LIVE_TRANSCRIPTS`, `MAX_RECIPE_CHARS` | Live YouTube transcript fetch on or off; transcript and recipe text cap for the 4k context (C39) | `true`, 6000 |
 | `CONFIDENCE_THRESHOLD` | Photo detection | 0.6 |
-| `GUARD_CLASSIFIER`, `GUARD_MODEL` | Second guard layer on text the rules pass (ADR-006; C36 doc-sync) | `true`, `llama-guard3:1b` |
+| `GUARD_CLASSIFIER`, `GUARD_MODEL`, `GUARD_IGNORE_CATEGORIES` | Second guard layer on text the rules pass; classifier categories that do not block (ADR-006 v2; C36, C40) | `true`, `llama-guard3:1b`, `S8` |
 | `INTENT_CONFIDENCE_MIN` | Below it, the intent result triggers MSG-REPHRASE, never an action (Agent Design §6.1; C36 doc-sync) | 0.5 |
 | `CONTEXT_NOW`, `CONTEXT_WEATHER` | Reproducible trend context | system clock, mock label |
 

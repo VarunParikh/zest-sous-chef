@@ -1,8 +1,15 @@
 # ADR-006: Design of the input guard: rules first, optional classifier
-- **Status:** **Accepted (owner, 2026-10-18):** rules plus the `llama-guard3:1b` classifier, chosen by the Day-1 benchmark E4
+- **Status:** **Draft (amended) v2, 2026-10-18 (owner decision, C40): the classifier's S8 (Intellectual Property) verdicts are ignored; awaits owner re-approval.** v1 was **Accepted (owner, 2026-10-18):** rules plus the `llama-guard3:1b` classifier, chosen by the Day-1 benchmark E4
 - **Date:** 2026-10-17
 - **Decision owner:** VJP (product owner); drafted by Claude
 - **Authorisation:** Owner direction: guardrails must be robust; the guard design itself is not decided.
+
+## v2 amendment (2026-10-18, owner decision, C40)
+**Found in the block 2.4 live check:** `llama-guard3:1b` rates every bare YouTube link (all four demo videos, as `youtube.com/watch` and `youtu.be`) `unsafe` with category **S8, Intellectual Property**, so the main "paste a link" path was redirected. The same links inside a sentence ("Make this recipe: <link>") and all four transcript fixtures are rated `safe`; the rules pass all of them.
+
+**Decision.** The classifier result is read as `unsafe` plus its category list. Categories in `GUARD_IGNORE_CATEGORIES` (default `S8`) do not block; any other category still blocks. This applies to all text the classifier screens (user messages and fetched transcripts). The rules arm is unchanged.
+
+**Why.** S8 concerns intellectual property, not the safety risks this guard exists for (injection, hazard, off-topic); recipes and links to public cooking videos are the product's normal input. **Cost.** A message the classifier rates S8 only is no longer blocked by it; the rules still run first. **Evidence gap:** E4 measured the classifier with all categories; this change has not been re-measured. An E4 rerun with S8 ignored is recorded as NOT RUN until done. Rollback: `GUARD_IGNORE_CATEGORIES=` (empty).
 
 ## Context
 Every user message and every fetched text (transcripts, descriptions) must be screened for off-topic, hazardous and prompt-injection content (FR-10, 12), without blocking ordinary cooking language such as "attack the onions". The guard must not depend on the main model behaving well.
