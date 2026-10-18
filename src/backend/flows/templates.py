@@ -10,6 +10,8 @@ TEMPLATES = {
     "MSG-CHAT-CLEAR-CONFIRM": "Clearing the chat will also empty your cart. Continue?",
     "MSG-CLEAR-CONFIRM": "Replace the {dish} cart, or add to it?",
     "MSG-CLEAR-DONE": "Replaced. You can Undo if you change your mind.",
+    "MSG-MOOD-ADD": "Feeling {mood}? Let's go with {dish}: {reason}. I've added the ingredients. ✅",
+    "MSG-MOOD-NONE": "I couldn't find a dish that fits your {constraint} settings for that mood. Try another mood, or tell me what you'd like to cook.",
     "MSG-MOOD-SWAP": "Swapped to {dish}. Your earlier items are untouched.",
     "MSG-UNDO": "Done. Removed {dish}.",
     "MSG-EMPTY-CART": "Your cart is empty. Pick a recipe or paste a YouTube link to get started!",

@@ -1,0 +1,7 @@
+Write one short reason (at most 18 words) why a suggestion fits the user.
+Use only the facts provided. Do not mention prices, quantities, stock or product codes.
+Do not mention the user's diet, religion, gender or health. Return JSON: {"reason": "..."}.
+
+Examples
+Suggestion: Butter Chicken | Tags: rich, creamy, weekend | Drivers: weekend trend high
+{"reason":"Rich, creamy and a weekend favourite."}
