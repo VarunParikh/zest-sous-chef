@@ -1,0 +1,5849 @@
+{
+ "id": "E6",
+ "system": "lever-sensitivity-test",
+ "dataset": {
+  "name": "levers_v1.jsonl",
+  "sha256": "72fbd3db01ad81b8afe74cccca3e3fe18b59884a6fc8e3c84a78cd663febb55a",
+  "split": "test"
+ },
+ "environment": {
+  "commit": "c53cfb2",
+  "dirty": false,
+  "date": "2026-10-18T13:52:00+00:00",
+  "python": "3.12.15",
+  "machine": "arm64",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "packages": {
+   "chromadb": "1.5.9",
+   "rank-bm25": "0.2.2",
+   "pydantic": "2.14.1",
+   "httpx": "0.28.1",
+   "fastapi": "0.143.3"
+  }
+ },
+ "metrics": {
+  "groups": {
+   "w_pairing": {
+    "rdi": 0.2157,
+    "applicable": 17,
+    "changed": 11,
+    "status": "FAIL",
+    "by_type": {
+     "mood": 0.2381,
+     "stock": 0.2,
+     "addon": 0.2
+    },
+    "random_rdi_expected": 0.81,
+    "random_rdi_simulated": 0.8105,
+    "kendall_mean": 0.1696,
+    "excluded_prompts": [
+     "L01",
+     "L02",
+     "L03"
+    ],
+    "zero_prompts": [
+     "L05",
+     "L06",
+     "L12",
+     "L14",
+     "L17",
+     "L18"
+    ]
+   },
+   "w_history": {
+    "rdi": 0.1,
+    "applicable": 20,
+    "changed": 6,
+    "status": "FAIL",
+    "by_type": {
+     "open": 0.2222,
+     "mood": 0.0476,
+     "stock": 0.1333,
+     "addon": 0.0667
+    },
+    "random_rdi_expected": 0.8028,
+    "random_rdi_simulated": 0.8028,
+    "kendall_mean": 0.0535,
+    "excluded_prompts": [],
+    "zero_prompts": [
+     "L02",
+     "L04",
+     "L05",
+     "L06",
+     "L08",
+     "L09",
+     "L10",
+     "L11",
+     "L12",
+     "L14",
+     "L16",
+     "L17",
+     "L18",
+     "L19"
+    ]
+   },
+   "w_trend": {
+    "rdi": 0.3167,
+    "applicable": 20,
+    "changed": 13,
+    "status": "FAIL",
+    "by_type": {
+     "open": 0.1111,
+     "mood": 0.4762,
+     "stock": 0.3333,
+     "addon": 0.2
+    },
+    "random_rdi_expected": 0.8028,
+    "random_rdi_simulated": 0.8028,
+    "kendall_mean": 0.1244,
+    "excluded_prompts": [],
+    "zero_prompts": [
+     "L01",
+     "L03",
+     "L07",
+     "L12",
+     "L15",
+     "L16",
+     "L17"
+    ]
+   },
+   "w_gourmet": {
+    "rdi": 0.2667,
+    "applicable": 20,
+    "changed": 15,
+    "status": "FAIL",
+    "by_type": {
+     "open": 0.3333,
+     "mood": 0.2857,
+     "stock": 0.2667,
+     "addon": 0.2
+    },
+    "random_rdi_expected": 0.8028,
+    "random_rdi_simulated": 0.8028,
+    "kendall_mean": 0.1877,
+    "excluded_prompts": [],
+    "zero_prompts": [
+     "L06",
+     "L08",
+     "L12",
+     "L16",
+     "L20"
+    ]
+   },
+   "gourmet": {
+    "rdi": 0.0667,
+    "applicable": 20,
+    "changed": 4,
+    "status": "FAIL",
+    "by_type": {
+     "open": 0.2222,
+     "mood": 0.0476,
+     "stock": 0.0667,
+     "addon": 0.0
+    },
+    "random_rdi_expected": 0.8028,
+    "random_rdi_simulated": 0.8028,
+    "kendall_mean": 0.0471,
+    "excluded_prompts": [],
+    "zero_prompts": [
+     "L02",
+     "L04",
+     "L05",
+     "L06",
+     "L08",
+     "L09",
+     "L10",
+     "L11",
+     "L13",
+     "L14",
+     "L15",
+     "L16",
+     "L17",
+     "L18",
+     "L19",
+     "L20"
+    ]
+   },
+   "organic": {
+    "rdi": null,
+    "applicable": 0,
+    "changed": 0,
+    "status": "INCONCLUSIVE",
+    "by_type": {},
+    "random_rdi_expected": null,
+    "random_rdi_simulated": null,
+    "kendall_mean": null,
+    "excluded_prompts": [
+     "L01",
+     "L02",
+     "L03",
+     "L04",
+     "L05",
+     "L06",
+     "L07",
+     "L08",
+     "L09",
+     "L10",
+     "L11",
+     "L12",
+     "L13",
+     "L14",
+     "L15",
+     "L16",
+     "L17",
+     "L18",
+     "L19",
+     "L20"
+    ],
+    "zero_prompts": []
+   },
+   "h_bakery": {
+    "rdi": 0.3889,
+    "applicable": 12,
+    "changed": 9,
+    "status": "PASS",
+    "by_type": {
+     "open": 0.3333,
+     "mood": 0.3333,
+     "stock": 0.4167,
+     "addon": 0.5
+    },
+    "random_rdi_expected": 0.8219,
+    "random_rdi_simulated": 0.8231,
+    "kendall_mean": 0.219,
+    "excluded_prompts": [
+     "L01",
+     "L03",
+     "L06",
+     "L10",
+     "L14",
+     "L16",
+     "L17",
+     "L19"
+    ],
+    "zero_prompts": [
+     "L05",
+     "L07",
+     "L15"
+    ]
+   },
+   "h_dairy": {
+    "rdi": 0.3704,
+    "applicable": 18,
+    "changed": 13,
+    "status": "PASS",
+    "by_type": {
+     "open": 0.3333,
+     "mood": 0.4762,
+     "stock": 0.2,
+     "addon": 0.4167
+    },
+    "random_rdi_expected": 0.8199,
+    "random_rdi_simulated": 0.8184,
+    "kendall_mean": 0.2506,
+    "excluded_prompts": [
+     "L02",
+     "L19"
+    ],
+    "zero_prompts": [
+     "L05",
+     "L07",
+     "L12",
+     "L15",
+     "L18"
+    ]
+   },
+   "h_desserts": {
+    "rdi": 0.0952,
+    "applicable": 14,
+    "changed": 4,
+    "status": "FAIL",
+    "by_type": {
+     "mood": 0.0556,
+     "stock": 0.0833,
+     "addon": 0.1667
+    },
+    "random_rdi_expected": 0.8115,
+    "random_rdi_simulated": 0.8126,
+    "kendall_mean": 0.158,
+    "excluded_prompts": [
+     "L01",
+     "L02",
+     "L03",
+     "L08",
+     "L13",
+     "L17"
+    ],
+    "zero_prompts": [
+     "L04",
+     "L05",
+     "L06",
+     "L07",
+     "L10",
+     "L11",
+     "L12",
+     "L15",
+     "L16",
+     "L18"
+    ]
+   },
+   "h_salads": {
+    "rdi": 0.1333,
+    "applicable": 10,
+    "changed": 4,
+    "status": "FAIL",
+    "by_type": {
+     "open": 0.3333,
+     "mood": 0.0833,
+     "stock": 0.0,
+     "addon": 0.3333
+    },
+    "random_rdi_expected": 0.8542,
+    "random_rdi_simulated": 0.8508,
+    "kendall_mean": 0.1563,
+    "excluded_prompts": [
+     "L02",
+     "L05",
+     "L09",
+     "L10",
+     "L12",
+     "L14",
+     "L16",
+     "L17",
+     "L18",
+     "L19"
+    ],
+    "zero_prompts": [
+     "L04",
+     "L06",
+     "L07",
+     "L11",
+     "L13",
+     "L15"
+    ]
+   },
+   "h_kebabs": {
+    "rdi": 0.3333,
+    "applicable": 19,
+    "changed": 13,
+    "status": "PASS",
+    "by_type": {
+     "open": 0.7778,
+     "mood": 0.1905,
+     "stock": 0.2,
+     "addon": 0.4167
+    },
+    "random_rdi_expected": 0.81,
+    "random_rdi_simulated": 0.8101,
+    "kendall_mean": 0.2048,
+    "excluded_prompts": [
+     "L17"
+    ],
+    "zero_prompts": [
+     "L04",
+     "L06",
+     "L07",
+     "L10",
+     "L11",
+     "L15"
+    ]
+   },
+   "t_weekend": {
+    "rdi": 0.1296,
+    "applicable": 18,
+    "changed": 6,
+    "status": "FAIL",
+    "by_type": {
+     "open": 0.0,
+     "mood": 0.2381,
+     "stock": 0.0667,
+     "addon": 0.0833
+    },
+    "random_rdi_expected": 0.8232,
+    "random_rdi_simulated": 0.8227,
+    "kendall_mean": 0.0573,
+    "excluded_prompts": [
+     "L02",
+     "L17"
+    ],
+    "zero_prompts": [
+     "L01",
+     "L03",
+     "L04",
+     "L05",
+     "L09",
+     "L11",
+     "L12",
+     "L13",
+     "L14",
+     "L16",
+     "L18",
+     "L19"
+    ]
+   },
+   "t_cooling": {
+    "rdi": 0.0513,
+    "applicable": 13,
+    "changed": 2,
+    "status": "FAIL",
+    "by_type": {
+     "mood": 0.0,
+     "stock": 0.0833,
+     "addon": 0.0833
+    },
+    "random_rdi_expected": 0.802,
+    "random_rdi_simulated": 0.8016,
+    "kendall_mean": 0.0793,
+    "excluded_prompts": [
+     "L01",
+     "L02",
+     "L03",
+     "L05",
+     "L09",
+     "L12",
+     "L18"
+    ],
+    "zero_prompts": [
+     "L04",
+     "L06",
+     "L07",
+     "L08",
+     "L10",
+     "L11",
+     "L14",
+     "L15",
+     "L16",
+     "L17",
+     "L19"
+    ]
+   },
+   "diet": {
+    "rdi": 0.3958,
+    "applicable": 16,
+    "changed": 12,
+    "status": "PASS",
+    "by_type": {
+     "open": 0.7778,
+     "mood": 0.2222,
+     "stock": 0.25,
+     "addon": 0.5556
+    },
+    "random_rdi_expected": 0.8223,
+    "random_rdi_simulated": 0.8222,
+    "kendall_mean": 0.0066,
+    "excluded_prompts": [
+     "L10",
+     "L14",
+     "L17",
+     "L18"
+    ],
+    "zero_prompts": [
+     "L04",
+     "L06",
+     "L09",
+     "L11"
+    ]
+   },
+   "faith": {
+    "rdi": 0.7368,
+    "applicable": 19,
+    "changed": 17,
+    "status": "PASS",
+    "by_type": {
+     "open": 1.0,
+     "mood": 0.4762,
+     "stock": 0.6667,
+     "addon": 1.0
+    },
+    "random_rdi_expected": 0.8122,
+    "random_rdi_simulated": 0.8125,
+    "kendall_mean": 0.0277,
+    "excluded_prompts": [
+     "L14"
+    ],
+    "zero_prompts": [
+     "L06",
+     "L10"
+    ]
+   },
+   "specialised": {
+    "rdi": 0.9333,
+    "applicable": 20,
+    "changed": 20,
+    "status": "PASS",
+    "by_type": {
+     "open": 0.8889,
+     "mood": 1.0,
+     "stock": 0.8667,
+     "addon": 0.9333
+    },
+    "random_rdi_expected": 0.8028,
+    "random_rdi_simulated": 0.8028,
+    "kendall_mean": 0.0541,
+    "excluded_prompts": [],
+    "zero_prompts": []
+   },
+   "addon_cap": {
+    "rdi": 0.7333,
+    "applicable": 5,
+    "changed": 5,
+    "status": "PASS",
+    "by_type": {
+     "addon": 0.7333
+    },
+    "random_rdi_expected": 0.7042,
+    "random_rdi_simulated": 0.7103,
+    "kendall_mean": 0.125,
+    "excluded_prompts": [
+     "L01",
+     "L02",
+     "L03",
+     "L04",
+     "L05",
+     "L06",
+     "L07",
+     "L08",
+     "L09",
+     "L10",
+     "L11",
+     "L12",
+     "L13",
+     "L14",
+     "L15"
+    ],
+    "zero_prompts": []
+   },
+   "stock_filter": {
+    "rdi": 0.4167,
+    "applicable": 4,
+    "changed": 3,
+    "status": "INCONCLUSIVE",
+    "by_type": {
+     "stock": 0.4167
+    },
+    "random_rdi_expected": 0.8024,
+    "random_rdi_simulated": 0.8008,
+    "kendall_mean": 0.0113,
+    "excluded_prompts": [
+     "L01",
+     "L02",
+     "L03",
+     "L04",
+     "L05",
+     "L06",
+     "L07",
+     "L08",
+     "L09",
+     "L10",
+     "L11",
+     "L16",
+     "L17",
+     "L18",
+     "L19",
+     "L20"
+    ],
+    "zero_prompts": [
+     "L15"
+    ]
+   }
+  },
+  "persona_overlap_top3": {
+   "Meera Shah | Rohan Deshmukh": 0.3,
+   "Meera Shah | Imran Qureshi": 0.2,
+   "Meera Shah | Ananya Iyer": 0.4667,
+   "Meera Shah | Karan Malhotra": 0.0333,
+   "Meera Shah | Priya Nair": 0.1,
+   "Meera Shah | Alex (Reviewer)": 0.25,
+   "Meera Shah | Lakshmi Pillai": 0.0167,
+   "Meera Shah | Jordan Fernandes (control)": 0.25,
+   "Meera Shah | Rahul Verma": 0.2,
+   "Meera Shah | Vikram Rao": 0.2,
+   "Rohan Deshmukh | Imran Qureshi": 0.6167,
+   "Rohan Deshmukh | Ananya Iyer": 0.5167,
+   "Rohan Deshmukh | Karan Malhotra": 0.0833,
+   "Rohan Deshmukh | Priya Nair": 0.1167,
+   "Rohan Deshmukh | Alex (Reviewer)": 0.6667,
+   "Rohan Deshmukh | Lakshmi Pillai": 0.15,
+   "Rohan Deshmukh | Jordan Fernandes (control)": 0.6667,
+   "Rohan Deshmukh | Rahul Verma": 0.4667,
+   "Rohan Deshmukh | Vikram Rao": 0.5,
+   "Imran Qureshi | Ananya Iyer": 0.3333,
+   "Imran Qureshi | Karan Malhotra": 0.2833,
+   "Imran Qureshi | Priya Nair": 0.0333,
+   "Imran Qureshi | Alex (Reviewer)": 0.8333,
+   "Imran Qureshi | Lakshmi Pillai": 0.1,
+   "Imran Qureshi | Jordan Fernandes (control)": 0.8333,
+   "Imran Qureshi | Rahul Verma": 0.6667,
+   "Imran Qureshi | Vikram Rao": 0.75,
+   "Ananya Iyer | Karan Malhotra": 0.0333,
+   "Ananya Iyer | Priya Nair": 0.1167,
+   "Ananya Iyer | Alex (Reviewer)": 0.45,
+   "Ananya Iyer | Lakshmi Pillai": 0.0333,
+   "Ananya Iyer | Jordan Fernandes (control)": 0.45,
+   "Ananya Iyer | Rahul Verma": 0.3167,
+   "Ananya Iyer | Vikram Rao": 0.2333,
+   "Karan Malhotra | Priya Nair": 0.1833,
+   "Karan Malhotra | Alex (Reviewer)": 0.1833,
+   "Karan Malhotra | Lakshmi Pillai": 0.35,
+   "Karan Malhotra | Jordan Fernandes (control)": 0.1833,
+   "Karan Malhotra | Rahul Verma": 0.2,
+   "Karan Malhotra | Vikram Rao": 0.3,
+   "Priya Nair | Alex (Reviewer)": 0.0667,
+   "Priya Nair | Lakshmi Pillai": 0.2,
+   "Priya Nair | Jordan Fernandes (control)": 0.0667,
+   "Priya Nair | Rahul Verma": 0.1333,
+   "Priya Nair | Vikram Rao": 0.1,
+   "Alex (Reviewer) | Lakshmi Pillai": 0.0333,
+   "Alex (Reviewer) | Jordan Fernandes (control)": 1.0,
+   "Alex (Reviewer) | Rahul Verma": 0.6333,
+   "Alex (Reviewer) | Vikram Rao": 0.7167,
+   "Lakshmi Pillai | Jordan Fernandes (control)": 0.0333,
+   "Lakshmi Pillai | Rahul Verma": 0.0667,
+   "Lakshmi Pillai | Vikram Rao": 0.1333,
+   "Jordan Fernandes (control) | Rahul Verma": 0.6333,
+   "Jordan Fernandes (control) | Vikram Rao": 0.7167,
+   "Rahul Verma | Vikram Rao": 0.5333
+  },
+  "personas": [
+   "Meera Shah",
+   "Rohan Deshmukh",
+   "Imran Qureshi",
+   "Ananya Iyer",
+   "Karan Malhotra",
+   "Priya Nair",
+   "Alex (Reviewer)",
+   "Lakshmi Pillai",
+   "Jordan Fernandes (control)",
+   "Rahul Verma",
+   "Vikram Rao"
+  ],
+  "under_exercised": [
+   "organic",
+   "stock_filter"
+  ]
+ },
+ "critical_failures": [],
+ "per_example": [
+  {
+   "id": "L01",
+   "type": "open",
+   "base_top3": [
+    "D04",
+    "D05",
+    "D03"
+   ],
+   "eligible_pool": 21,
+   "random_rdi_expected": 0.8571428571428572,
+   "random_rdi_simulated": 0.8487,
+   "groups": {
+    "w_pairing": {
+     "applicable": false,
+     "top3": [
+      "D04",
+      "D05",
+      "D03"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "w_history": {
+     "applicable": true,
+     "top3": [
+      "D04",
+      "D03",
+      "D25"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.023809523809523808,
+     "pool_removed": 0
+    },
+    "w_trend": {
+     "applicable": true,
+     "top3": [
+      "D04",
+      "D05",
+      "D03"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.05714285714285714,
+     "pool_removed": 0
+    },
+    "w_gourmet": {
+     "applicable": true,
+     "top3": [
+      "D04",
+      "D130",
+      "D05"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.1619047619047619,
+     "pool_removed": 0
+    },
+    "gourmet": {
+     "applicable": true,
+     "top3": [
+      "D33",
+      "D04",
+      "D03"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.06190476190476191,
+     "pool_removed": 0
+    },
+    "organic": {
+     "applicable": false,
+     "top3": [
+      "D04",
+      "D05",
+      "D03"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_bakery": {
+     "applicable": false,
+     "top3": [
+      "D04",
+      "D05",
+      "D03"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_dairy": {
+     "applicable": true,
+     "top3": [
+      "D04",
+      "D03",
+      "D25"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.24761904761904763,
+     "pool_removed": 0
+    },
+    "h_desserts": {
+     "applicable": false,
+     "top3": [
+      "D04",
+      "D05",
+      "D03"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_salads": {
+     "applicable": true,
+     "top3": [
+      "D04",
+      "D05",
+      "D130"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.1,
+     "pool_removed": 0
+    },
+    "h_kebabs": {
+     "applicable": true,
+     "top3": [
+      "D130",
+      "D06",
+      "D34"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.40476190476190477,
+     "pool_removed": 0
+    },
+    "t_weekend": {
+     "applicable": true,
+     "top3": [
+      "D04",
+      "D05",
+      "D03"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.11904761904761904,
+     "pool_removed": 0
+    },
+    "t_cooling": {
+     "applicable": false,
+     "top3": [
+      "D04",
+      "D05",
+      "D03"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "diet": {
+     "applicable": true,
+     "top3": [
+      "D130",
+      "D06",
+      "D07"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.0,
+     "pool_removed": 7
+    },
+    "faith": {
+     "applicable": true,
+     "top3": [
+      "D130",
+      "D128",
+      "D129"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.0,
+     "pool_removed": 18
+    },
+    "specialised": {
+     "applicable": true,
+     "top3": [
+      "D08",
+      "D09",
+      "D20"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.0,
+     "pool_removed": 18
+    },
+    "addon_cap": {
+     "applicable": false,
+     "top3": [
+      "D04",
+      "D05",
+      "D03"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "stock_filter": {
+     "applicable": false,
+     "top3": [
+      "D04",
+      "D05",
+      "D03"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    }
+   }
+  },
+  {
+   "id": "L02",
+   "type": "open",
+   "base_top3": [
+    "D23",
+    "D14",
+    "D12"
+   ],
+   "eligible_pool": 7,
+   "random_rdi_expected": 0.5714285714285714,
+   "random_rdi_simulated": 0.5823,
+   "groups": {
+    "w_pairing": {
+     "applicable": false,
+     "top3": [
+      "D23",
+      "D14",
+      "D12"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "w_history": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D23",
+      "D12"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.047619047619047616,
+     "pool_removed": 0
+    },
+    "w_trend": {
+     "applicable": true,
+     "top3": [
+      "D23",
+      "D12",
+      "D13"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.09523809523809523,
+     "pool_removed": 0
+    },
+    "w_gourmet": {
+     "applicable": true,
+     "top3": [
+      "D23",
+      "D14",
+      "D10"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.19047619047619047,
+     "pool_removed": 0
+    },
+    "gourmet": {
+     "applicable": true,
+     "top3": [
+      "D23",
+      "D14",
+      "D12"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "organic": {
+     "applicable": false,
+     "top3": [
+      "D23",
+      "D14",
+      "D12"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_bakery": {
+     "applicable": true,
+     "top3": [
+      "D23",
+      "D12",
+      "D13"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.23809523809523808,
+     "pool_removed": 0
+    },
+    "h_dairy": {
+     "applicable": false,
+     "top3": [
+      "D23",
+      "D14",
+      "D12"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_desserts": {
+     "applicable": false,
+     "top3": [
+      "D23",
+      "D14",
+      "D12"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_salads": {
+     "applicable": false,
+     "top3": [
+      "D23",
+      "D14",
+      "D12"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_kebabs": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D12",
+      "D13"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.14285714285714285,
+     "pool_removed": 0
+    },
+    "t_weekend": {
+     "applicable": false,
+     "top3": [
+      "D23",
+      "D14",
+      "D12"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "t_cooling": {
+     "applicable": false,
+     "top3": [
+      "D23",
+      "D14",
+      "D12"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "diet": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D12",
+      "D13"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.0,
+     "pool_removed": 1
+    },
+    "faith": {
+     "applicable": true,
+     "top3": [
+      "D11"
+     ],
+     "divergence": 1.0,
+     "kendall": null,
+     "pool_removed": 6
+    },
+    "specialised": {
+     "applicable": true,
+     "top3": [
+      "D12",
+      "D13",
+      "D10"
+     ],
+     "divergence": 0.6667,
+     "kendall": 0.0,
+     "pool_removed": 2
+    },
+    "addon_cap": {
+     "applicable": false,
+     "top3": [
+      "D23",
+      "D14",
+      "D12"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "stock_filter": {
+     "applicable": false,
+     "top3": [
+      "D23",
+      "D14",
+      "D12"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    }
+   }
+  },
+  {
+   "id": "L03",
+   "type": "open",
+   "base_top3": [
+    "D04",
+    "D05",
+    "D03"
+   ],
+   "eligible_pool": 21,
+   "random_rdi_expected": 0.8571428571428572,
+   "random_rdi_simulated": 0.8463,
+   "groups": {
+    "w_pairing": {
+     "applicable": false,
+     "top3": [
+      "D04",
+      "D05",
+      "D03"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "w_history": {
+     "applicable": true,
+     "top3": [
+      "D04",
+      "D03",
+      "D25"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.023809523809523808,
+     "pool_removed": 0
+    },
+    "w_trend": {
+     "applicable": true,
+     "top3": [
+      "D04",
+      "D05",
+      "D03"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.05714285714285714,
+     "pool_removed": 0
+    },
+    "w_gourmet": {
+     "applicable": true,
+     "top3": [
+      "D04",
+      "D130",
+      "D05"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.1619047619047619,
+     "pool_removed": 0
+    },
+    "gourmet": {
+     "applicable": true,
+     "top3": [
+      "D33",
+      "D04",
+      "D03"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.06190476190476191,
+     "pool_removed": 0
+    },
+    "organic": {
+     "applicable": false,
+     "top3": [
+      "D04",
+      "D05",
+      "D03"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_bakery": {
+     "applicable": false,
+     "top3": [
+      "D04",
+      "D05",
+      "D03"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_dairy": {
+     "applicable": true,
+     "top3": [
+      "D04",
+      "D03",
+      "D25"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.24761904761904763,
+     "pool_removed": 0
+    },
+    "h_desserts": {
+     "applicable": false,
+     "top3": [
+      "D04",
+      "D05",
+      "D03"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_salads": {
+     "applicable": true,
+     "top3": [
+      "D04",
+      "D05",
+      "D130"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.1,
+     "pool_removed": 0
+    },
+    "h_kebabs": {
+     "applicable": true,
+     "top3": [
+      "D130",
+      "D06",
+      "D34"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.40476190476190477,
+     "pool_removed": 0
+    },
+    "t_weekend": {
+     "applicable": true,
+     "top3": [
+      "D04",
+      "D05",
+      "D03"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.11904761904761904,
+     "pool_removed": 0
+    },
+    "t_cooling": {
+     "applicable": false,
+     "top3": [
+      "D04",
+      "D05",
+      "D03"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "diet": {
+     "applicable": true,
+     "top3": [
+      "D130",
+      "D06",
+      "D07"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.0,
+     "pool_removed": 7
+    },
+    "faith": {
+     "applicable": true,
+     "top3": [
+      "D130",
+      "D128",
+      "D129"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.0,
+     "pool_removed": 18
+    },
+    "specialised": {
+     "applicable": true,
+     "top3": [
+      "D08",
+      "D09",
+      "D20"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.0,
+     "pool_removed": 18
+    },
+    "addon_cap": {
+     "applicable": false,
+     "top3": [
+      "D04",
+      "D05",
+      "D03"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "stock_filter": {
+     "applicable": false,
+     "top3": [
+      "D04",
+      "D05",
+      "D03"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    }
+   }
+  },
+  {
+   "id": "L04",
+   "type": "mood",
+   "base_top3": [
+    "D41",
+    "D14",
+    "D40"
+   ],
+   "eligible_pool": 25,
+   "random_rdi_expected": 0.88,
+   "random_rdi_simulated": 0.885,
+   "groups": {
+    "w_pairing": {
+     "applicable": true,
+     "top3": [
+      "D41",
+      "D40",
+      "D116"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.16,
+     "pool_removed": 0
+    },
+    "w_history": {
+     "applicable": true,
+     "top3": [
+      "D41",
+      "D14",
+      "D40"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.05,
+     "pool_removed": 0
+    },
+    "w_trend": {
+     "applicable": true,
+     "top3": [
+      "D29",
+      "D51",
+      "D94"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.18,
+     "pool_removed": 0
+    },
+    "w_gourmet": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D76",
+      "D41"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.19333333333333333,
+     "pool_removed": 0
+    },
+    "gourmet": {
+     "applicable": true,
+     "top3": [
+      "D41",
+      "D40",
+      "D14"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.06666666666666667,
+     "pool_removed": 0
+    },
+    "organic": {
+     "applicable": false,
+     "top3": [
+      "D41",
+      "D14",
+      "D40"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_bakery": {
+     "applicable": true,
+     "top3": [
+      "D25",
+      "D116",
+      "D101"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.23,
+     "pool_removed": 0
+    },
+    "h_dairy": {
+     "applicable": true,
+     "top3": [
+      "D41",
+      "D14",
+      "D25"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.30666666666666664,
+     "pool_removed": 0
+    },
+    "h_desserts": {
+     "applicable": true,
+     "top3": [
+      "D41",
+      "D40",
+      "D14"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.13333333333333333,
+     "pool_removed": 0
+    },
+    "h_salads": {
+     "applicable": true,
+     "top3": [
+      "D41",
+      "D40",
+      "D14"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.08333333333333333,
+     "pool_removed": 0
+    },
+    "h_kebabs": {
+     "applicable": true,
+     "top3": [
+      "D41",
+      "D40",
+      "D14"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.15333333333333332,
+     "pool_removed": 0
+    },
+    "t_weekend": {
+     "applicable": true,
+     "top3": [
+      "D41",
+      "D14",
+      "D40"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.06333333333333334,
+     "pool_removed": 0
+    },
+    "t_cooling": {
+     "applicable": true,
+     "top3": [
+      "D41",
+      "D14",
+      "D40"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.08666666666666667,
+     "pool_removed": 0
+    },
+    "diet": {
+     "applicable": true,
+     "top3": [
+      "D41",
+      "D14",
+      "D40"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.012987012987012988,
+     "pool_removed": 3
+    },
+    "faith": {
+     "applicable": true,
+     "top3": [
+      "D41",
+      "D40",
+      "D51"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.058823529411764705,
+     "pool_removed": 7
+    },
+    "specialised": {
+     "applicable": true,
+     "top3": [
+      "D39",
+      "D124",
+      "D114"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.13333333333333333,
+     "pool_removed": 19
+    },
+    "addon_cap": {
+     "applicable": false,
+     "top3": [
+      "D41",
+      "D14",
+      "D40"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "stock_filter": {
+     "applicable": false,
+     "top3": [
+      "D41",
+      "D14",
+      "D40"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    }
+   }
+  },
+  {
+   "id": "L05",
+   "type": "mood",
+   "base_top3": [
+    "D33",
+    "D17",
+    "D21"
+   ],
+   "eligible_pool": 25,
+   "random_rdi_expected": 0.88,
+   "random_rdi_simulated": 0.872,
+   "groups": {
+    "w_pairing": {
+     "applicable": true,
+     "top3": [
+      "D17",
+      "D33",
+      "D21"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.23,
+     "pool_removed": 0
+    },
+    "w_history": {
+     "applicable": true,
+     "top3": [
+      "D33",
+      "D17",
+      "D21"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.05,
+     "pool_removed": 0
+    },
+    "w_trend": {
+     "applicable": true,
+     "top3": [
+      "D33",
+      "D17",
+      "D14"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.08,
+     "pool_removed": 0
+    },
+    "w_gourmet": {
+     "applicable": true,
+     "top3": [
+      "D17",
+      "D33",
+      "D01"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.16,
+     "pool_removed": 0
+    },
+    "gourmet": {
+     "applicable": true,
+     "top3": [
+      "D33",
+      "D17",
+      "D21"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.08666666666666667,
+     "pool_removed": 0
+    },
+    "organic": {
+     "applicable": false,
+     "top3": [
+      "D33",
+      "D17",
+      "D21"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_bakery": {
+     "applicable": true,
+     "top3": [
+      "D33",
+      "D17",
+      "D21"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.33666666666666667,
+     "pool_removed": 0
+    },
+    "h_dairy": {
+     "applicable": true,
+     "top3": [
+      "D33",
+      "D17",
+      "D21"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.21333333333333335,
+     "pool_removed": 0
+    },
+    "h_desserts": {
+     "applicable": true,
+     "top3": [
+      "D33",
+      "D17",
+      "D21"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.11,
+     "pool_removed": 0
+    },
+    "h_salads": {
+     "applicable": false,
+     "top3": [
+      "D33",
+      "D17",
+      "D21"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_kebabs": {
+     "applicable": true,
+     "top3": [
+      "D17",
+      "D21",
+      "D14"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.21333333333333335,
+     "pool_removed": 0
+    },
+    "t_weekend": {
+     "applicable": true,
+     "top3": [
+      "D33",
+      "D17",
+      "D21"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.07,
+     "pool_removed": 0
+    },
+    "t_cooling": {
+     "applicable": false,
+     "top3": [
+      "D33",
+      "D17",
+      "D21"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "diet": {
+     "applicable": true,
+     "top3": [
+      "D17",
+      "D21",
+      "D14"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.003952569169960474,
+     "pool_removed": 2
+    },
+    "faith": {
+     "applicable": true,
+     "top3": [
+      "D129",
+      "D41",
+      "D40"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.03296703296703297,
+     "pool_removed": 11
+    },
+    "specialised": {
+     "applicable": true,
+     "top3": [
+      "D92",
+      "D62",
+      "D69"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.044444444444444446,
+     "pool_removed": 15
+    },
+    "addon_cap": {
+     "applicable": false,
+     "top3": [
+      "D33",
+      "D17",
+      "D21"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "stock_filter": {
+     "applicable": false,
+     "top3": [
+      "D33",
+      "D17",
+      "D21"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    }
+   }
+  },
+  {
+   "id": "L06",
+   "type": "mood",
+   "base_top3": [
+    "D51",
+    "D76",
+    "D94"
+   ],
+   "eligible_pool": 25,
+   "random_rdi_expected": 0.88,
+   "random_rdi_simulated": 0.8777,
+   "groups": {
+    "w_pairing": {
+     "applicable": true,
+     "top3": [
+      "D51",
+      "D76",
+      "D94"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.22,
+     "pool_removed": 0
+    },
+    "w_history": {
+     "applicable": true,
+     "top3": [
+      "D51",
+      "D76",
+      "D94"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.09,
+     "pool_removed": 0
+    },
+    "w_trend": {
+     "applicable": true,
+     "top3": [
+      "D51",
+      "D70",
+      "D94"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.19333333333333333,
+     "pool_removed": 0
+    },
+    "w_gourmet": {
+     "applicable": true,
+     "top3": [
+      "D76",
+      "D51",
+      "D94"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.24,
+     "pool_removed": 0
+    },
+    "gourmet": {
+     "applicable": true,
+     "top3": [
+      "D51",
+      "D94",
+      "D76"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.043333333333333335,
+     "pool_removed": 0
+    },
+    "organic": {
+     "applicable": false,
+     "top3": [
+      "D51",
+      "D76",
+      "D94"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_bakery": {
+     "applicable": false,
+     "top3": [
+      "D51",
+      "D76",
+      "D94"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_dairy": {
+     "applicable": true,
+     "top3": [
+      "D72",
+      "D52",
+      "D115"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.4533333333333333,
+     "pool_removed": 0
+    },
+    "h_desserts": {
+     "applicable": true,
+     "top3": [
+      "D51",
+      "D76",
+      "D94"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.20666666666666667,
+     "pool_removed": 0
+    },
+    "h_salads": {
+     "applicable": true,
+     "top3": [
+      "D51",
+      "D76",
+      "D94"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.18666666666666668,
+     "pool_removed": 0
+    },
+    "h_kebabs": {
+     "applicable": true,
+     "top3": [
+      "D51",
+      "D76",
+      "D94"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.21,
+     "pool_removed": 0
+    },
+    "t_weekend": {
+     "applicable": true,
+     "top3": [
+      "D51",
+      "D76",
+      "D70"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.06666666666666667,
+     "pool_removed": 0
+    },
+    "t_cooling": {
+     "applicable": true,
+     "top3": [
+      "D76",
+      "D51",
+      "D94"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.07666666666666666,
+     "pool_removed": 0
+    },
+    "diet": {
+     "applicable": true,
+     "top3": [
+      "D51",
+      "D76",
+      "D94"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.019762845849802372,
+     "pool_removed": 2
+    },
+    "faith": {
+     "applicable": true,
+     "top3": [
+      "D51",
+      "D76",
+      "D94"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.023391812865497075,
+     "pool_removed": 6
+    },
+    "specialised": {
+     "applicable": true,
+     "top3": [
+      "D74",
+      "D72",
+      "D98"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.1111111111111111,
+     "pool_removed": 15
+    },
+    "addon_cap": {
+     "applicable": false,
+     "top3": [
+      "D51",
+      "D76",
+      "D94"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "stock_filter": {
+     "applicable": false,
+     "top3": [
+      "D51",
+      "D76",
+      "D94"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    }
+   }
+  },
+  {
+   "id": "L07",
+   "type": "mood",
+   "base_top3": [
+    "D19",
+    "D34",
+    "D128"
+   ],
+   "eligible_pool": 25,
+   "random_rdi_expected": 0.88,
+   "random_rdi_simulated": 0.8707,
+   "groups": {
+    "w_pairing": {
+     "applicable": true,
+     "top3": [
+      "D19",
+      "D34",
+      "D43"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.15666666666666668,
+     "pool_removed": 0
+    },
+    "w_history": {
+     "applicable": true,
+     "top3": [
+      "D19",
+      "D18",
+      "D34"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.11666666666666667,
+     "pool_removed": 0
+    },
+    "w_trend": {
+     "applicable": true,
+     "top3": [
+      "D34",
+      "D128",
+      "D19"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.07333333333333333,
+     "pool_removed": 0
+    },
+    "w_gourmet": {
+     "applicable": true,
+     "top3": [
+      "D19",
+      "D17",
+      "D18"
+     ],
+     "divergence": 0.6667,
+     "kendall": 0.17,
+     "pool_removed": 0
+    },
+    "gourmet": {
+     "applicable": true,
+     "top3": [
+      "D19",
+      "D34",
+      "D43"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.08,
+     "pool_removed": 0
+    },
+    "organic": {
+     "applicable": false,
+     "top3": [
+      "D19",
+      "D34",
+      "D128"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_bakery": {
+     "applicable": true,
+     "top3": [
+      "D19",
+      "D34",
+      "D128"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.13666666666666666,
+     "pool_removed": 0
+    },
+    "h_dairy": {
+     "applicable": true,
+     "top3": [
+      "D19",
+      "D34",
+      "D128"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.12333333333333334,
+     "pool_removed": 0
+    },
+    "h_desserts": {
+     "applicable": true,
+     "top3": [
+      "D19",
+      "D34",
+      "D128"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.11333333333333333,
+     "pool_removed": 0
+    },
+    "h_salads": {
+     "applicable": true,
+     "top3": [
+      "D34",
+      "D19",
+      "D128"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.23333333333333334,
+     "pool_removed": 0
+    },
+    "h_kebabs": {
+     "applicable": true,
+     "top3": [
+      "D34",
+      "D19",
+      "D128"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.14666666666666667,
+     "pool_removed": 0
+    },
+    "t_weekend": {
+     "applicable": true,
+     "top3": [
+      "D19",
+      "D18",
+      "D109"
+     ],
+     "divergence": 0.6667,
+     "kendall": 0.06666666666666667,
+     "pool_removed": 0
+    },
+    "t_cooling": {
+     "applicable": true,
+     "top3": [
+      "D19",
+      "D34",
+      "D128"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.08,
+     "pool_removed": 0
+    },
+    "diet": {
+     "applicable": true,
+     "top3": [
+      "D34",
+      "D128",
+      "D109"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.011857707509881422,
+     "pool_removed": 2
+    },
+    "faith": {
+     "applicable": true,
+     "top3": [
+      "D128",
+      "D109",
+      "D43"
+     ],
+     "divergence": 0.6667,
+     "kendall": 0.02564102564102564,
+     "pool_removed": 12
+    },
+    "specialised": {
+     "applicable": true,
+     "top3": [
+      "D109",
+      "D43",
+      "D89"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.0,
+     "pool_removed": 11
+    },
+    "addon_cap": {
+     "applicable": false,
+     "top3": [
+      "D19",
+      "D34",
+      "D128"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "stock_filter": {
+     "applicable": false,
+     "top3": [
+      "D19",
+      "D34",
+      "D128"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    }
+   }
+  },
+  {
+   "id": "L08",
+   "type": "mood",
+   "base_top3": [
+    "D14",
+    "D66",
+    "D113"
+   ],
+   "eligible_pool": 25,
+   "random_rdi_expected": 0.88,
+   "random_rdi_simulated": 0.8727,
+   "groups": {
+    "w_pairing": {
+     "applicable": true,
+     "top3": [
+      "D115",
+      "D66",
+      "D113"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.19666666666666666,
+     "pool_removed": 0
+    },
+    "w_history": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D66",
+      "D113"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.05,
+     "pool_removed": 0
+    },
+    "w_trend": {
+     "applicable": true,
+     "top3": [
+      "D115",
+      "D47",
+      "D14"
+     ],
+     "divergence": 0.6667,
+     "kendall": 0.13333333333333333,
+     "pool_removed": 0
+    },
+    "w_gourmet": {
+     "applicable": true,
+     "top3": [
+      "D113",
+      "D14",
+      "D66"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.14666666666666667,
+     "pool_removed": 0
+    },
+    "gourmet": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D66",
+      "D113"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "organic": {
+     "applicable": false,
+     "top3": [
+      "D14",
+      "D66",
+      "D113"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_bakery": {
+     "applicable": true,
+     "top3": [
+      "D115",
+      "D66",
+      "D113"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.14666666666666667,
+     "pool_removed": 0
+    },
+    "h_dairy": {
+     "applicable": true,
+     "top3": [
+      "D115",
+      "D66",
+      "D14"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.13333333333333333,
+     "pool_removed": 0
+    },
+    "h_desserts": {
+     "applicable": false,
+     "top3": [
+      "D14",
+      "D66",
+      "D113"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_salads": {
+     "applicable": true,
+     "top3": [
+      "D115",
+      "D66",
+      "D113"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.12333333333333334,
+     "pool_removed": 0
+    },
+    "h_kebabs": {
+     "applicable": true,
+     "top3": [
+      "D115",
+      "D14",
+      "D08"
+     ],
+     "divergence": 0.6667,
+     "kendall": 0.34,
+     "pool_removed": 0
+    },
+    "t_weekend": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D115",
+      "D66"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.023333333333333334,
+     "pool_removed": 0
+    },
+    "t_cooling": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D66",
+      "D113"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.06666666666666667,
+     "pool_removed": 0
+    },
+    "diet": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D115",
+      "D108"
+     ],
+     "divergence": 0.6667,
+     "kendall": 0.006535947712418301,
+     "pool_removed": 7
+    },
+    "faith": {
+     "applicable": true,
+     "top3": [
+      "D115",
+      "D88",
+      "D86"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.047619047619047616,
+     "pool_removed": 18
+    },
+    "specialised": {
+     "applicable": true,
+     "top3": [
+      "D115",
+      "D85",
+      "D08"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.06593406593406594,
+     "pool_removed": 11
+    },
+    "addon_cap": {
+     "applicable": false,
+     "top3": [
+      "D14",
+      "D66",
+      "D113"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "stock_filter": {
+     "applicable": false,
+     "top3": [
+      "D14",
+      "D66",
+      "D113"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    }
+   }
+  },
+  {
+   "id": "L09",
+   "type": "mood",
+   "base_top3": [
+    "D101",
+    "D14",
+    "D78"
+   ],
+   "eligible_pool": 25,
+   "random_rdi_expected": 0.88,
+   "random_rdi_simulated": 0.893,
+   "groups": {
+    "w_pairing": {
+     "applicable": true,
+     "top3": [
+      "D101",
+      "D80",
+      "D78"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.13,
+     "pool_removed": 0
+    },
+    "w_history": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D101",
+      "D78"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.056666666666666664,
+     "pool_removed": 0
+    },
+    "w_trend": {
+     "applicable": true,
+     "top3": [
+      "D101",
+      "D106",
+      "D27"
+     ],
+     "divergence": 0.6667,
+     "kendall": 0.10666666666666667,
+     "pool_removed": 0
+    },
+    "w_gourmet": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D101",
+      "D106"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.23666666666666666,
+     "pool_removed": 0
+    },
+    "gourmet": {
+     "applicable": true,
+     "top3": [
+      "D101",
+      "D14",
+      "D78"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.03333333333333333,
+     "pool_removed": 0
+    },
+    "organic": {
+     "applicable": false,
+     "top3": [
+      "D101",
+      "D14",
+      "D78"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_bakery": {
+     "applicable": true,
+     "top3": [
+      "D101",
+      "D78",
+      "D80"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.11333333333333333,
+     "pool_removed": 0
+    },
+    "h_dairy": {
+     "applicable": true,
+     "top3": [
+      "D80",
+      "D101",
+      "D105"
+     ],
+     "divergence": 0.6667,
+     "kendall": 0.17666666666666667,
+     "pool_removed": 0
+    },
+    "h_desserts": {
+     "applicable": true,
+     "top3": [
+      "D101",
+      "D14",
+      "D75"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.30333333333333334,
+     "pool_removed": 0
+    },
+    "h_salads": {
+     "applicable": false,
+     "top3": [
+      "D101",
+      "D14",
+      "D78"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_kebabs": {
+     "applicable": true,
+     "top3": [
+      "D101",
+      "D78",
+      "D80"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.05333333333333334,
+     "pool_removed": 0
+    },
+    "t_weekend": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D101",
+      "D78"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.06333333333333334,
+     "pool_removed": 0
+    },
+    "t_cooling": {
+     "applicable": false,
+     "top3": [
+      "D101",
+      "D14",
+      "D78"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "diet": {
+     "applicable": true,
+     "top3": [
+      "D101",
+      "D14",
+      "D78"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0036231884057971015,
+     "pool_removed": 1
+    },
+    "faith": {
+     "applicable": true,
+     "top3": [
+      "D101",
+      "D78",
+      "D80"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.031578947368421054,
+     "pool_removed": 5
+    },
+    "specialised": {
+     "applicable": true,
+     "top3": [
+      "D127",
+      "D121",
+      "D75"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.0,
+     "pool_removed": 19
+    },
+    "addon_cap": {
+     "applicable": false,
+     "top3": [
+      "D101",
+      "D14",
+      "D78"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "stock_filter": {
+     "applicable": false,
+     "top3": [
+      "D101",
+      "D14",
+      "D78"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    }
+   }
+  },
+  {
+   "id": "L10",
+   "type": "mood",
+   "base_top3": [
+    "D29",
+    "D46",
+    "D76"
+   ],
+   "eligible_pool": 25,
+   "random_rdi_expected": 0.88,
+   "random_rdi_simulated": 0.8783,
+   "groups": {
+    "w_pairing": {
+     "applicable": true,
+     "top3": [
+      "D46",
+      "D29",
+      "D78"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.14,
+     "pool_removed": 0
+    },
+    "w_history": {
+     "applicable": true,
+     "top3": [
+      "D29",
+      "D46",
+      "D76"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.09,
+     "pool_removed": 0
+    },
+    "w_trend": {
+     "applicable": true,
+     "top3": [
+      "D29",
+      "D46",
+      "D51"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.10666666666666667,
+     "pool_removed": 0
+    },
+    "w_gourmet": {
+     "applicable": true,
+     "top3": [
+      "D29",
+      "D76",
+      "D79"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.20666666666666667,
+     "pool_removed": 0
+    },
+    "gourmet": {
+     "applicable": true,
+     "top3": [
+      "D29",
+      "D46",
+      "D76"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.03333333333333333,
+     "pool_removed": 0
+    },
+    "organic": {
+     "applicable": false,
+     "top3": [
+      "D29",
+      "D46",
+      "D76"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_bakery": {
+     "applicable": false,
+     "top3": [
+      "D29",
+      "D46",
+      "D76"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_dairy": {
+     "applicable": true,
+     "top3": [
+      "D106",
+      "D80",
+      "D125"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.4066666666666667,
+     "pool_removed": 0
+    },
+    "h_desserts": {
+     "applicable": true,
+     "top3": [
+      "D29",
+      "D46",
+      "D76"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.16333333333333333,
+     "pool_removed": 0
+    },
+    "h_salads": {
+     "applicable": false,
+     "top3": [
+      "D29",
+      "D46",
+      "D76"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_kebabs": {
+     "applicable": true,
+     "top3": [
+      "D29",
+      "D46",
+      "D76"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.08333333333333333,
+     "pool_removed": 0
+    },
+    "t_weekend": {
+     "applicable": true,
+     "top3": [
+      "D29",
+      "D46",
+      "D78"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.06333333333333334,
+     "pool_removed": 0
+    },
+    "t_cooling": {
+     "applicable": true,
+     "top3": [
+      "D46",
+      "D76",
+      "D29"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.11666666666666667,
+     "pool_removed": 0
+    },
+    "diet": {
+     "applicable": false,
+     "top3": [
+      "D29",
+      "D46",
+      "D76"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "faith": {
+     "applicable": true,
+     "top3": [
+      "D29",
+      "D46",
+      "D76"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0036231884057971015,
+     "pool_removed": 1
+    },
+    "specialised": {
+     "applicable": true,
+     "top3": [
+      "D125",
+      "D127",
+      "D121"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.0,
+     "pool_removed": 22
+    },
+    "addon_cap": {
+     "applicable": false,
+     "top3": [
+      "D29",
+      "D46",
+      "D76"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "stock_filter": {
+     "applicable": false,
+     "top3": [
+      "D29",
+      "D46",
+      "D76"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    }
+   }
+  },
+  {
+   "id": "L11",
+   "type": "stock",
+   "base_top3": [
+    "D41",
+    "D14",
+    "D40"
+   ],
+   "eligible_pool": 25,
+   "random_rdi_expected": 0.88,
+   "random_rdi_simulated": 0.8747,
+   "groups": {
+    "w_pairing": {
+     "applicable": true,
+     "top3": [
+      "D41",
+      "D40",
+      "D116"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.16,
+     "pool_removed": 0
+    },
+    "w_history": {
+     "applicable": true,
+     "top3": [
+      "D41",
+      "D14",
+      "D40"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.05,
+     "pool_removed": 0
+    },
+    "w_trend": {
+     "applicable": true,
+     "top3": [
+      "D29",
+      "D51",
+      "D94"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.18,
+     "pool_removed": 0
+    },
+    "w_gourmet": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D76",
+      "D41"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.19333333333333333,
+     "pool_removed": 0
+    },
+    "gourmet": {
+     "applicable": true,
+     "top3": [
+      "D41",
+      "D40",
+      "D14"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.06666666666666667,
+     "pool_removed": 0
+    },
+    "organic": {
+     "applicable": false,
+     "top3": [
+      "D41",
+      "D14",
+      "D40"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_bakery": {
+     "applicable": true,
+     "top3": [
+      "D25",
+      "D116",
+      "D101"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.23,
+     "pool_removed": 0
+    },
+    "h_dairy": {
+     "applicable": true,
+     "top3": [
+      "D41",
+      "D14",
+      "D25"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.30666666666666664,
+     "pool_removed": 0
+    },
+    "h_desserts": {
+     "applicable": true,
+     "top3": [
+      "D41",
+      "D40",
+      "D14"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.13333333333333333,
+     "pool_removed": 0
+    },
+    "h_salads": {
+     "applicable": true,
+     "top3": [
+      "D41",
+      "D40",
+      "D14"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.08333333333333333,
+     "pool_removed": 0
+    },
+    "h_kebabs": {
+     "applicable": true,
+     "top3": [
+      "D41",
+      "D40",
+      "D14"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.15333333333333332,
+     "pool_removed": 0
+    },
+    "t_weekend": {
+     "applicable": true,
+     "top3": [
+      "D41",
+      "D14",
+      "D40"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.06333333333333334,
+     "pool_removed": 0
+    },
+    "t_cooling": {
+     "applicable": true,
+     "top3": [
+      "D41",
+      "D14",
+      "D40"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.08666666666666667,
+     "pool_removed": 0
+    },
+    "diet": {
+     "applicable": true,
+     "top3": [
+      "D41",
+      "D14",
+      "D40"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.012987012987012988,
+     "pool_removed": 3
+    },
+    "faith": {
+     "applicable": true,
+     "top3": [
+      "D41",
+      "D40",
+      "D51"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.058823529411764705,
+     "pool_removed": 7
+    },
+    "specialised": {
+     "applicable": true,
+     "top3": [
+      "D39",
+      "D124",
+      "D114"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.13333333333333333,
+     "pool_removed": 19
+    },
+    "addon_cap": {
+     "applicable": false,
+     "top3": [
+      "D41",
+      "D14",
+      "D40"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "stock_filter": {
+     "applicable": false,
+     "top3": [
+      "D41",
+      "D14",
+      "D40"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    }
+   }
+  },
+  {
+   "id": "L12",
+   "type": "stock",
+   "base_top3": [
+    "D33",
+    "D21",
+    "D14"
+   ],
+   "eligible_pool": 21,
+   "random_rdi_expected": 0.8571428571428572,
+   "random_rdi_simulated": 0.853,
+   "groups": {
+    "w_pairing": {
+     "applicable": true,
+     "top3": [
+      "D33",
+      "D21",
+      "D14"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.20952380952380953,
+     "pool_removed": 0
+    },
+    "w_history": {
+     "applicable": true,
+     "top3": [
+      "D33",
+      "D21",
+      "D14"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.047619047619047616,
+     "pool_removed": 0
+    },
+    "w_trend": {
+     "applicable": true,
+     "top3": [
+      "D33",
+      "D21",
+      "D14"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.10476190476190476,
+     "pool_removed": 0
+    },
+    "w_gourmet": {
+     "applicable": true,
+     "top3": [
+      "D33",
+      "D21",
+      "D14"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.1523809523809524,
+     "pool_removed": 0
+    },
+    "gourmet": {
+     "applicable": true,
+     "top3": [
+      "D33",
+      "D21",
+      "D41"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.0761904761904762,
+     "pool_removed": 0
+    },
+    "organic": {
+     "applicable": false,
+     "top3": [
+      "D33",
+      "D21",
+      "D14"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_bakery": {
+     "applicable": true,
+     "top3": [
+      "D33",
+      "D21",
+      "D76"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.3761904761904762,
+     "pool_removed": 0
+    },
+    "h_dairy": {
+     "applicable": true,
+     "top3": [
+      "D33",
+      "D21",
+      "D14"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.23333333333333334,
+     "pool_removed": 0
+    },
+    "h_desserts": {
+     "applicable": true,
+     "top3": [
+      "D33",
+      "D21",
+      "D14"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.12380952380952381,
+     "pool_removed": 0
+    },
+    "h_salads": {
+     "applicable": false,
+     "top3": [
+      "D33",
+      "D21",
+      "D14"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_kebabs": {
+     "applicable": true,
+     "top3": [
+      "D21",
+      "D14",
+      "D41"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.22380952380952382,
+     "pool_removed": 0
+    },
+    "t_weekend": {
+     "applicable": true,
+     "top3": [
+      "D33",
+      "D21",
+      "D14"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.05238095238095238,
+     "pool_removed": 0
+    },
+    "t_cooling": {
+     "applicable": false,
+     "top3": [
+      "D33",
+      "D21",
+      "D14"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "diet": {
+     "applicable": true,
+     "top3": [
+      "D21",
+      "D14",
+      "D41"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.011695906432748537,
+     "pool_removed": 2
+    },
+    "faith": {
+     "applicable": true,
+     "top3": [
+      "D41",
+      "D40",
+      "D76"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.015151515151515152,
+     "pool_removed": 9
+    },
+    "specialised": {
+     "applicable": true,
+     "top3": [
+      "D92",
+      "D69",
+      "D10"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.1388888888888889,
+     "pool_removed": 12
+    },
+    "addon_cap": {
+     "applicable": false,
+     "top3": [
+      "D33",
+      "D21",
+      "D14"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "stock_filter": {
+     "applicable": true,
+     "top3": [
+      "D33",
+      "D17",
+      "D21"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.01904761904761905,
+     "pool_removed": 0
+    }
+   }
+  },
+  {
+   "id": "L13",
+   "type": "stock",
+   "base_top3": [
+    "D14",
+    "D113",
+    "D115"
+   ],
+   "eligible_pool": 22,
+   "random_rdi_expected": 0.8636363636363636,
+   "random_rdi_simulated": 0.865,
+   "groups": {
+    "w_pairing": {
+     "applicable": true,
+     "top3": [
+      "D115",
+      "D113",
+      "D61"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.18614718614718614,
+     "pool_removed": 0
+    },
+    "w_history": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D113",
+      "D67"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.06060606060606061,
+     "pool_removed": 0
+    },
+    "w_trend": {
+     "applicable": true,
+     "top3": [
+      "D115",
+      "D47",
+      "D14"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.14285714285714285,
+     "pool_removed": 0
+    },
+    "w_gourmet": {
+     "applicable": true,
+     "top3": [
+      "D113",
+      "D14",
+      "D67"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.1471861471861472,
+     "pool_removed": 0
+    },
+    "gourmet": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D113",
+      "D115"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "organic": {
+     "applicable": false,
+     "top3": [
+      "D14",
+      "D113",
+      "D115"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_bakery": {
+     "applicable": true,
+     "top3": [
+      "D115",
+      "D113",
+      "D108"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.15151515151515152,
+     "pool_removed": 0
+    },
+    "h_dairy": {
+     "applicable": true,
+     "top3": [
+      "D115",
+      "D14",
+      "D67"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.1341991341991342,
+     "pool_removed": 0
+    },
+    "h_desserts": {
+     "applicable": false,
+     "top3": [
+      "D14",
+      "D113",
+      "D115"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_salads": {
+     "applicable": true,
+     "top3": [
+      "D115",
+      "D113",
+      "D14"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.11255411255411256,
+     "pool_removed": 0
+    },
+    "h_kebabs": {
+     "applicable": true,
+     "top3": [
+      "D115",
+      "D14",
+      "D08"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.2554112554112554,
+     "pool_removed": 0
+    },
+    "t_weekend": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D115",
+      "D113"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.017316017316017316,
+     "pool_removed": 0
+    },
+    "t_cooling": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D113",
+      "D108"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.0735930735930736,
+     "pool_removed": 0
+    },
+    "diet": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D115",
+      "D108"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.0,
+     "pool_removed": 4
+    },
+    "faith": {
+     "applicable": true,
+     "top3": [
+      "D115",
+      "D88",
+      "D86"
+     ],
+     "divergence": 0.6667,
+     "kendall": 0.047619047619047616,
+     "pool_removed": 15
+    },
+    "specialised": {
+     "applicable": true,
+     "top3": [
+      "D115",
+      "D85",
+      "D08"
+     ],
+     "divergence": 0.6667,
+     "kendall": 0.07692307692307693,
+     "pool_removed": 8
+    },
+    "addon_cap": {
+     "applicable": false,
+     "top3": [
+      "D14",
+      "D113",
+      "D115"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "stock_filter": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D66",
+      "D113"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.004329004329004329,
+     "pool_removed": 0
+    }
+   }
+  },
+  {
+   "id": "L14",
+   "type": "stock",
+   "base_top3": [
+    "D54",
+    "D106",
+    "D125"
+   ],
+   "eligible_pool": 8,
+   "random_rdi_expected": 0.625,
+   "random_rdi_simulated": 0.618,
+   "groups": {
+    "w_pairing": {
+     "applicable": true,
+     "top3": [
+      "D54",
+      "D125",
+      "D106"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.10714285714285714,
+     "pool_removed": 0
+    },
+    "w_history": {
+     "applicable": true,
+     "top3": [
+      "D54",
+      "D125",
+      "D106"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.03571428571428571,
+     "pool_removed": 0
+    },
+    "w_trend": {
+     "applicable": true,
+     "top3": [
+      "D54",
+      "D106",
+      "D90"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.17857142857142858,
+     "pool_removed": 0
+    },
+    "w_gourmet": {
+     "applicable": true,
+     "top3": [
+      "D106",
+      "D127",
+      "D54"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.32142857142857145,
+     "pool_removed": 0
+    },
+    "gourmet": {
+     "applicable": true,
+     "top3": [
+      "D54",
+      "D106",
+      "D125"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "organic": {
+     "applicable": false,
+     "top3": [
+      "D54",
+      "D106",
+      "D125"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_bakery": {
+     "applicable": false,
+     "top3": [
+      "D54",
+      "D106",
+      "D125"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_dairy": {
+     "applicable": true,
+     "top3": [
+      "D106",
+      "D125",
+      "D127"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.21428571428571427,
+     "pool_removed": 0
+    },
+    "h_desserts": {
+     "applicable": true,
+     "top3": [
+      "D54",
+      "D90",
+      "D125"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.25,
+     "pool_removed": 0
+    },
+    "h_salads": {
+     "applicable": false,
+     "top3": [
+      "D54",
+      "D106",
+      "D125"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_kebabs": {
+     "applicable": true,
+     "top3": [
+      "D54",
+      "D106",
+      "D127"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.21428571428571427,
+     "pool_removed": 0
+    },
+    "t_weekend": {
+     "applicable": true,
+     "top3": [
+      "D54",
+      "D125",
+      "D106"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.03571428571428571,
+     "pool_removed": 0
+    },
+    "t_cooling": {
+     "applicable": true,
+     "top3": [
+      "D106",
+      "D125",
+      "D54"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.07142857142857142,
+     "pool_removed": 0
+    },
+    "diet": {
+     "applicable": false,
+     "top3": [
+      "D54",
+      "D106",
+      "D125"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "faith": {
+     "applicable": false,
+     "top3": [
+      "D54",
+      "D106",
+      "D125"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "specialised": {
+     "applicable": true,
+     "top3": [
+      "D125",
+      "D127",
+      "D121"
+     ],
+     "divergence": 0.6667,
+     "kendall": 0.0,
+     "pool_removed": 5
+    },
+    "addon_cap": {
+     "applicable": false,
+     "top3": [
+      "D54",
+      "D106",
+      "D125"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "stock_filter": {
+     "applicable": true,
+     "top3": [
+      "D29",
+      "D46",
+      "D76"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    }
+   }
+  },
+  {
+   "id": "L15",
+   "type": "stock",
+   "base_top3": [
+    "D19",
+    "D34",
+    "D128"
+   ],
+   "eligible_pool": 22,
+   "random_rdi_expected": 0.8636363636363636,
+   "random_rdi_simulated": 0.8673,
+   "groups": {
+    "w_pairing": {
+     "applicable": true,
+     "top3": [
+      "D19",
+      "D34",
+      "D43"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.16883116883116883,
+     "pool_removed": 0
+    },
+    "w_history": {
+     "applicable": true,
+     "top3": [
+      "D19",
+      "D18",
+      "D34"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.1341991341991342,
+     "pool_removed": 0
+    },
+    "w_trend": {
+     "applicable": true,
+     "top3": [
+      "D34",
+      "D128",
+      "D19"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.06493506493506493,
+     "pool_removed": 0
+    },
+    "w_gourmet": {
+     "applicable": true,
+     "top3": [
+      "D19",
+      "D18",
+      "D34"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.13852813852813853,
+     "pool_removed": 0
+    },
+    "gourmet": {
+     "applicable": true,
+     "top3": [
+      "D19",
+      "D34",
+      "D128"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.07792207792207792,
+     "pool_removed": 0
+    },
+    "organic": {
+     "applicable": false,
+     "top3": [
+      "D19",
+      "D34",
+      "D128"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_bakery": {
+     "applicable": true,
+     "top3": [
+      "D19",
+      "D34",
+      "D128"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.1471861471861472,
+     "pool_removed": 0
+    },
+    "h_dairy": {
+     "applicable": true,
+     "top3": [
+      "D19",
+      "D34",
+      "D128"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.14285714285714285,
+     "pool_removed": 0
+    },
+    "h_desserts": {
+     "applicable": true,
+     "top3": [
+      "D19",
+      "D34",
+      "D128"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.12121212121212122,
+     "pool_removed": 0
+    },
+    "h_salads": {
+     "applicable": true,
+     "top3": [
+      "D34",
+      "D19",
+      "D128"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.22943722943722944,
+     "pool_removed": 0
+    },
+    "h_kebabs": {
+     "applicable": true,
+     "top3": [
+      "D34",
+      "D128",
+      "D19"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.11688311688311688,
+     "pool_removed": 0
+    },
+    "t_weekend": {
+     "applicable": true,
+     "top3": [
+      "D19",
+      "D18",
+      "D34"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.09090909090909091,
+     "pool_removed": 0
+    },
+    "t_cooling": {
+     "applicable": true,
+     "top3": [
+      "D19",
+      "D34",
+      "D128"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.03896103896103896,
+     "pool_removed": 0
+    },
+    "diet": {
+     "applicable": true,
+     "top3": [
+      "D34",
+      "D128",
+      "D18"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.015789473684210527,
+     "pool_removed": 2
+    },
+    "faith": {
+     "applicable": true,
+     "top3": [
+      "D128",
+      "D109",
+      "D43"
+     ],
+     "divergence": 0.6667,
+     "kendall": 0.015151515151515152,
+     "pool_removed": 10
+    },
+    "specialised": {
+     "applicable": true,
+     "top3": [
+      "D109",
+      "D43",
+      "D62"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.015151515151515152,
+     "pool_removed": 10
+    },
+    "addon_cap": {
+     "applicable": false,
+     "top3": [
+      "D19",
+      "D34",
+      "D128"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "stock_filter": {
+     "applicable": true,
+     "top3": [
+      "D19",
+      "D34",
+      "D128"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.021645021645021644,
+     "pool_removed": 0
+    }
+   }
+  },
+  {
+   "id": "L16",
+   "type": "addon",
+   "base_top3": [
+    "D66",
+    "D29",
+    "D36"
+   ],
+   "eligible_pool": 10,
+   "random_rdi_expected": 0.7,
+   "random_rdi_simulated": 0.7027,
+   "groups": {
+    "w_pairing": {
+     "applicable": true,
+     "top3": [
+      "D66",
+      "D36",
+      "D102"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.1111111111111111,
+     "pool_removed": 0
+    },
+    "w_history": {
+     "applicable": true,
+     "top3": [
+      "D66",
+      "D29",
+      "D36"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "w_trend": {
+     "applicable": true,
+     "top3": [
+      "D29",
+      "D66",
+      "D36"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.1111111111111111,
+     "pool_removed": 0
+    },
+    "w_gourmet": {
+     "applicable": true,
+     "top3": [
+      "D66",
+      "D29",
+      "D36"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.08888888888888889,
+     "pool_removed": 0
+    },
+    "gourmet": {
+     "applicable": true,
+     "top3": [
+      "D66",
+      "D29",
+      "D36"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.044444444444444446,
+     "pool_removed": 0
+    },
+    "organic": {
+     "applicable": false,
+     "top3": [
+      "D66",
+      "D29",
+      "D36"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_bakery": {
+     "applicable": false,
+     "top3": [
+      "D66",
+      "D29",
+      "D36"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_dairy": {
+     "applicable": true,
+     "top3": [
+      "D66",
+      "D29",
+      "D102"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.26666666666666666,
+     "pool_removed": 0
+    },
+    "h_desserts": {
+     "applicable": true,
+     "top3": [
+      "D66",
+      "D29",
+      "D36"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.13333333333333333,
+     "pool_removed": 0
+    },
+    "h_salads": {
+     "applicable": false,
+     "top3": [
+      "D66",
+      "D29",
+      "D36"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_kebabs": {
+     "applicable": true,
+     "top3": [
+      "D29",
+      "D36",
+      "D38"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.17777777777777778,
+     "pool_removed": 0
+    },
+    "t_weekend": {
+     "applicable": true,
+     "top3": [
+      "D66",
+      "D29",
+      "D36"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "t_cooling": {
+     "applicable": true,
+     "top3": [
+      "D66",
+      "D29",
+      "D36"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "diet": {
+     "applicable": true,
+     "top3": [],
+     "divergence": 1.0,
+     "kendall": null,
+     "pool_removed": 10
+    },
+    "faith": {
+     "applicable": true,
+     "top3": [],
+     "divergence": 1.0,
+     "kendall": null,
+     "pool_removed": 10
+    },
+    "specialised": {
+     "applicable": true,
+     "top3": [],
+     "divergence": 1.0,
+     "kendall": null,
+     "pool_removed": 10
+    },
+    "addon_cap": {
+     "applicable": true,
+     "top3": [
+      "D66",
+      "D38"
+     ],
+     "divergence": 0.6667,
+     "kendall": 0.0,
+     "pool_removed": 8
+    },
+    "stock_filter": {
+     "applicable": false,
+     "top3": [
+      "D66",
+      "D29",
+      "D36"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    }
+   }
+  },
+  {
+   "id": "L17",
+   "type": "addon",
+   "base_top3": [
+    "D28",
+    "D48",
+    "D45"
+   ],
+   "eligible_pool": 9,
+   "random_rdi_expected": 0.6666666666666667,
+   "random_rdi_simulated": 0.665,
+   "groups": {
+    "w_pairing": {
+     "applicable": true,
+     "top3": [
+      "D28",
+      "D48",
+      "D45"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.08333333333333333,
+     "pool_removed": 0
+    },
+    "w_history": {
+     "applicable": true,
+     "top3": [
+      "D28",
+      "D48",
+      "D45"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "w_trend": {
+     "applicable": true,
+     "top3": [
+      "D45",
+      "D28",
+      "D48"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.19444444444444445,
+     "pool_removed": 0
+    },
+    "w_gourmet": {
+     "applicable": true,
+     "top3": [
+      "D28",
+      "D48",
+      "D42"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.2222222222222222,
+     "pool_removed": 0
+    },
+    "gourmet": {
+     "applicable": true,
+     "top3": [
+      "D48",
+      "D28",
+      "D45"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.08333333333333333,
+     "pool_removed": 0
+    },
+    "organic": {
+     "applicable": false,
+     "top3": [
+      "D28",
+      "D48",
+      "D45"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_bakery": {
+     "applicable": false,
+     "top3": [
+      "D28",
+      "D48",
+      "D45"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_dairy": {
+     "applicable": true,
+     "top3": [
+      "D87",
+      "D42",
+      "D16"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.5,
+     "pool_removed": 0
+    },
+    "h_desserts": {
+     "applicable": false,
+     "top3": [
+      "D28",
+      "D48",
+      "D45"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_salads": {
+     "applicable": false,
+     "top3": [
+      "D28",
+      "D48",
+      "D45"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_kebabs": {
+     "applicable": false,
+     "top3": [
+      "D28",
+      "D48",
+      "D45"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "t_weekend": {
+     "applicable": false,
+     "top3": [
+      "D28",
+      "D48",
+      "D45"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "t_cooling": {
+     "applicable": true,
+     "top3": [
+      "D28",
+      "D48",
+      "D45"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.08333333333333333,
+     "pool_removed": 0
+    },
+    "diet": {
+     "applicable": false,
+     "top3": [
+      "D28",
+      "D48",
+      "D45"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "faith": {
+     "applicable": true,
+     "top3": [],
+     "divergence": 1.0,
+     "kendall": null,
+     "pool_removed": 9
+    },
+    "specialised": {
+     "applicable": true,
+     "top3": [
+      "D87",
+      "D16",
+      "D42"
+     ],
+     "divergence": 1.0,
+     "kendall": 0.2,
+     "pool_removed": 4
+    },
+    "addon_cap": {
+     "applicable": true,
+     "top3": [
+      "D45",
+      "D42"
+     ],
+     "divergence": 0.6667,
+     "kendall": 0.0,
+     "pool_removed": 7
+    },
+    "stock_filter": {
+     "applicable": false,
+     "top3": [
+      "D28",
+      "D48",
+      "D45"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    }
+   }
+  },
+  {
+   "id": "L18",
+   "type": "addon",
+   "base_top3": [
+    "D40",
+    "D108",
+    "D15"
+   ],
+   "eligible_pool": 11,
+   "random_rdi_expected": 0.7272727272727273,
+   "random_rdi_simulated": 0.7407,
+   "groups": {
+    "w_pairing": {
+     "applicable": true,
+     "top3": [
+      "D40",
+      "D108",
+      "D15"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.07272727272727272,
+     "pool_removed": 0
+    },
+    "w_history": {
+     "applicable": true,
+     "top3": [
+      "D15",
+      "D40",
+      "D108"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.05454545454545454,
+     "pool_removed": 0
+    },
+    "w_trend": {
+     "applicable": true,
+     "top3": [
+      "D53",
+      "D40",
+      "D108"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.16363636363636364,
+     "pool_removed": 0
+    },
+    "w_gourmet": {
+     "applicable": true,
+     "top3": [
+      "D108",
+      "D40",
+      "D79"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.2,
+     "pool_removed": 0
+    },
+    "gourmet": {
+     "applicable": true,
+     "top3": [
+      "D15",
+      "D40",
+      "D108"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.09090909090909091,
+     "pool_removed": 0
+    },
+    "organic": {
+     "applicable": false,
+     "top3": [
+      "D40",
+      "D108",
+      "D15"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_bakery": {
+     "applicable": true,
+     "top3": [
+      "D108",
+      "D53",
+      "D79"
+     ],
+     "divergence": 0.6667,
+     "kendall": 0.2545454545454545,
+     "pool_removed": 0
+    },
+    "h_dairy": {
+     "applicable": true,
+     "top3": [
+      "D15",
+      "D40",
+      "D108"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.18181818181818182,
+     "pool_removed": 0
+    },
+    "h_desserts": {
+     "applicable": true,
+     "top3": [
+      "D40",
+      "D108",
+      "D15"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.14545454545454545,
+     "pool_removed": 0
+    },
+    "h_salads": {
+     "applicable": false,
+     "top3": [
+      "D40",
+      "D108",
+      "D15"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_kebabs": {
+     "applicable": true,
+     "top3": [
+      "D40",
+      "D15",
+      "D53"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.09090909090909091,
+     "pool_removed": 0
+    },
+    "t_weekend": {
+     "applicable": true,
+     "top3": [
+      "D40",
+      "D15",
+      "D108"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.05454545454545454,
+     "pool_removed": 0
+    },
+    "t_cooling": {
+     "applicable": false,
+     "top3": [
+      "D40",
+      "D108",
+      "D15"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "diet": {
+     "applicable": false,
+     "top3": [
+      "D40",
+      "D108",
+      "D15"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "faith": {
+     "applicable": true,
+     "top3": [],
+     "divergence": 1.0,
+     "kendall": null,
+     "pool_removed": 11
+    },
+    "specialised": {
+     "applicable": true,
+     "top3": [],
+     "divergence": 1.0,
+     "kendall": null,
+     "pool_removed": 11
+    },
+    "addon_cap": {
+     "applicable": true,
+     "top3": [
+      "D15",
+      "D121",
+      "D45"
+     ],
+     "divergence": 0.6667,
+     "kendall": 0.0,
+     "pool_removed": 7
+    },
+    "stock_filter": {
+     "applicable": false,
+     "top3": [
+      "D40",
+      "D108",
+      "D15"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.01818181818181818,
+     "pool_removed": 0
+    }
+   }
+  },
+  {
+   "id": "L19",
+   "type": "addon",
+   "base_top3": [
+    "D23",
+    "D82",
+    "D16"
+   ],
+   "eligible_pool": 11,
+   "random_rdi_expected": 0.7272727272727273,
+   "random_rdi_simulated": 0.743,
+   "groups": {
+    "w_pairing": {
+     "applicable": true,
+     "top3": [
+      "D23",
+      "D16",
+      "D107"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.21818181818181817,
+     "pool_removed": 0
+    },
+    "w_history": {
+     "applicable": true,
+     "top3": [
+      "D23",
+      "D82",
+      "D16"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "w_trend": {
+     "applicable": true,
+     "top3": [
+      "D50",
+      "D82",
+      "D23"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.10909090909090909,
+     "pool_removed": 0
+    },
+    "w_gourmet": {
+     "applicable": true,
+     "top3": [
+      "D23",
+      "D42",
+      "D16"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.2,
+     "pool_removed": 0
+    },
+    "gourmet": {
+     "applicable": true,
+     "top3": [
+      "D23",
+      "D82",
+      "D16"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.03636363636363636,
+     "pool_removed": 0
+    },
+    "organic": {
+     "applicable": false,
+     "top3": [
+      "D23",
+      "D82",
+      "D16"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_bakery": {
+     "applicable": false,
+     "top3": [
+      "D23",
+      "D82",
+      "D16"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_dairy": {
+     "applicable": false,
+     "top3": [
+      "D23",
+      "D82",
+      "D16"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_desserts": {
+     "applicable": true,
+     "top3": [
+      "D23",
+      "D16",
+      "D42"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.16363636363636364,
+     "pool_removed": 0
+    },
+    "h_salads": {
+     "applicable": false,
+     "top3": [
+      "D23",
+      "D82",
+      "D16"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_kebabs": {
+     "applicable": true,
+     "top3": [
+      "D16",
+      "D42",
+      "D60"
+     ],
+     "divergence": 0.6667,
+     "kendall": 0.21818181818181817,
+     "pool_removed": 0
+    },
+    "t_weekend": {
+     "applicable": true,
+     "top3": [
+      "D23",
+      "D16",
+      "D82"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.01818181818181818,
+     "pool_removed": 0
+    },
+    "t_cooling": {
+     "applicable": true,
+     "top3": [
+      "D23",
+      "D82",
+      "D16"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.07272727272727272,
+     "pool_removed": 0
+    },
+    "diet": {
+     "applicable": true,
+     "top3": [
+      "D82",
+      "D16",
+      "D42"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.0,
+     "pool_removed": 1
+    },
+    "faith": {
+     "applicable": true,
+     "top3": [],
+     "divergence": 1.0,
+     "kendall": null,
+     "pool_removed": 11
+    },
+    "specialised": {
+     "applicable": true,
+     "top3": [],
+     "divergence": 1.0,
+     "kendall": null,
+     "pool_removed": 11
+    },
+    "addon_cap": {
+     "applicable": true,
+     "top3": [
+      "D50"
+     ],
+     "divergence": 1.0,
+     "kendall": null,
+     "pool_removed": 10
+    },
+    "stock_filter": {
+     "applicable": false,
+     "top3": [
+      "D23",
+      "D82",
+      "D16"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    }
+   }
+  },
+  {
+   "id": "L20",
+   "type": "addon",
+   "base_top3": [
+    "D14",
+    "D39",
+    "D66"
+   ],
+   "eligible_pool": 10,
+   "random_rdi_expected": 0.7,
+   "random_rdi_simulated": 0.7003,
+   "groups": {
+    "w_pairing": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D85",
+      "D39"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.3333333333333333,
+     "pool_removed": 0
+    },
+    "w_history": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D66",
+      "D45"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.08888888888888889,
+     "pool_removed": 0
+    },
+    "w_trend": {
+     "applicable": true,
+     "top3": [
+      "D45",
+      "D14",
+      "D39"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.15555555555555556,
+     "pool_removed": 0
+    },
+    "w_gourmet": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D66",
+      "D39"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.2222222222222222,
+     "pool_removed": 0
+    },
+    "gourmet": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D39",
+      "D66"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "organic": {
+     "applicable": false,
+     "top3": [
+      "D14",
+      "D39",
+      "D66"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    },
+    "h_bakery": {
+     "applicable": true,
+     "top3": [
+      "D39",
+      "D85",
+      "D66"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.26666666666666666,
+     "pool_removed": 0
+    },
+    "h_dairy": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D39",
+      "D85"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.2222222222222222,
+     "pool_removed": 0
+    },
+    "h_desserts": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D39",
+      "D85"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.1111111111111111,
+     "pool_removed": 0
+    },
+    "h_salads": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D45",
+      "D66"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.3111111111111111,
+     "pool_removed": 0
+    },
+    "h_kebabs": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D39",
+      "D85"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.28888888888888886,
+     "pool_removed": 0
+    },
+    "t_weekend": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D39",
+      "D45"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.044444444444444446,
+     "pool_removed": 0
+    },
+    "t_cooling": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D66",
+      "D85"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.17777777777777778,
+     "pool_removed": 0
+    },
+    "diet": {
+     "applicable": true,
+     "top3": [
+      "D14",
+      "D39",
+      "D45"
+     ],
+     "divergence": 0.3333,
+     "kendall": 0.0,
+     "pool_removed": 1
+    },
+    "faith": {
+     "applicable": true,
+     "top3": [],
+     "divergence": 1.0,
+     "kendall": null,
+     "pool_removed": 10
+    },
+    "specialised": {
+     "applicable": true,
+     "top3": [
+      "D39",
+      "D85",
+      "D89"
+     ],
+     "divergence": 0.6667,
+     "kendall": 0.0,
+     "pool_removed": 4
+    },
+    "addon_cap": {
+     "applicable": true,
+     "top3": [
+      "D45",
+      "D125",
+      "D39"
+     ],
+     "divergence": 0.6667,
+     "kendall": 0.5,
+     "pool_removed": 6
+    },
+    "stock_filter": {
+     "applicable": false,
+     "top3": [
+      "D14",
+      "D39",
+      "D66"
+     ],
+     "divergence": 0.0,
+     "kendall": 0.0,
+     "pool_removed": 0
+    }
+   }
+  },
+  {
+   "id": "persona_top3",
+   "top3": {
+    "Meera Shah": {
+     "L01": [
+      "D130",
+      "D128",
+      "D129"
+     ],
+     "L02": [
+      "D11"
+     ],
+     "L03": [
+      "D130",
+      "D128",
+      "D129"
+     ],
+     "L04": [
+      "D40",
+      "D51",
+      "D94"
+     ],
+     "L05": [
+      "D129",
+      "D76",
+      "D41"
+     ],
+     "L06": [
+      "D51",
+      "D76",
+      "D94"
+     ],
+     "L07": [
+      "D128",
+      "D43",
+      "D84"
+     ],
+     "L08": [
+      "D115",
+      "D88",
+      "D86"
+     ],
+     "L09": [
+      "D101",
+      "D78",
+      "D80"
+     ],
+     "L10": [
+      "D29",
+      "D46",
+      "D76"
+     ],
+     "L11": [
+      "D40",
+      "D51",
+      "D94"
+     ],
+     "L12": [
+      "D76",
+      "D41",
+      "D40"
+     ],
+     "L13": [
+      "D115",
+      "D88",
+      "D86"
+     ],
+     "L14": [
+      "D54",
+      "D106",
+      "D127"
+     ],
+     "L15": [
+      "D128",
+      "D109",
+      "D84"
+     ],
+     "L16": [],
+     "L17": [],
+     "L18": [],
+     "L19": [],
+     "L20": []
+    },
+    "Rohan Deshmukh": {
+     "L01": [
+      "D130",
+      "D06",
+      "D07"
+     ],
+     "L02": [
+      "D14",
+      "D12",
+      "D13"
+     ],
+     "L03": [
+      "D130",
+      "D06",
+      "D07"
+     ],
+     "L04": [
+      "D41",
+      "D14",
+      "D40"
+     ],
+     "L05": [
+      "D17",
+      "D21",
+      "D14"
+     ],
+     "L06": [
+      "D51",
+      "D76",
+      "D94"
+     ],
+     "L07": [
+      "D34",
+      "D18",
+      "D109"
+     ],
+     "L08": [
+      "D14",
+      "D115",
+      "D108"
+     ],
+     "L09": [
+      "D101",
+      "D14",
+      "D78"
+     ],
+     "L10": [
+      "D29",
+      "D46",
+      "D76"
+     ],
+     "L11": [
+      "D41",
+      "D14",
+      "D40"
+     ],
+     "L12": [
+      "D21",
+      "D14",
+      "D41"
+     ],
+     "L13": [
+      "D14",
+      "D115",
+      "D108"
+     ],
+     "L14": [
+      "D54",
+      "D106",
+      "D125"
+     ],
+     "L15": [
+      "D34",
+      "D18",
+      "D128"
+     ],
+     "L16": [],
+     "L17": [
+      "D28",
+      "D48",
+      "D45"
+     ],
+     "L18": [
+      "D40",
+      "D108",
+      "D15"
+     ],
+     "L19": [
+      "D82",
+      "D16",
+      "D42"
+     ],
+     "L20": [
+      "D14",
+      "D39",
+      "D85"
+     ]
+    },
+    "Imran Qureshi": {
+     "L01": [
+      "D04",
+      "D03",
+      "D25"
+     ],
+     "L02": [
+      "D23",
+      "D14",
+      "D12"
+     ],
+     "L03": [
+      "D04",
+      "D03",
+      "D25"
+     ],
+     "L04": [
+      "D25",
+      "D41",
+      "D40"
+     ],
+     "L05": [
+      "D33",
+      "D17",
+      "D21"
+     ],
+     "L06": [
+      "D51",
+      "D76",
+      "D94"
+     ],
+     "L07": [
+      "D19",
+      "D34",
+      "D18"
+     ],
+     "L08": [
+      "D66",
+      "D113",
+      "D108"
+     ],
+     "L09": [
+      "D101",
+      "D78",
+      "D14"
+     ],
+     "L10": [
+      "D29",
+      "D46",
+      "D76"
+     ],
+     "L11": [
+      "D25",
+      "D41",
+      "D40"
+     ],
+     "L12": [
+      "D33",
+      "D21",
+      "D14"
+     ],
+     "L13": [
+      "D113",
+      "D108",
+      "D67"
+     ],
+     "L14": [
+      "D54",
+      "D106",
+      "D125"
+     ],
+     "L15": [
+      "D19",
+      "D34",
+      "D18"
+     ],
+     "L16": [
+      "D66",
+      "D29",
+      "D36"
+     ],
+     "L17": [
+      "D28",
+      "D48",
+      "D45"
+     ],
+     "L18": [
+      "D108",
+      "D40",
+      "D15"
+     ],
+     "L19": [
+      "D23",
+      "D82",
+      "D16"
+     ],
+     "L20": [
+      "D14",
+      "D66",
+      "D45"
+     ]
+    },
+    "Ananya Iyer": {
+     "L01": [
+      "D130",
+      "D128",
+      "D129"
+     ],
+     "L02": [
+      "D14",
+      "D31",
+      "D11"
+     ],
+     "L03": [
+      "D130",
+      "D128",
+      "D129"
+     ],
+     "L04": [
+      "D41",
+      "D14",
+      "D40"
+     ],
+     "L05": [
+      "D21",
+      "D129",
+      "D14"
+     ],
+     "L06": [
+      "D51",
+      "D76",
+      "D94"
+     ],
+     "L07": [
+      "D128",
+      "D43",
+      "D117"
+     ],
+     "L08": [
+      "D14",
+      "D115",
+      "D86"
+     ],
+     "L09": [
+      "D101",
+      "D14",
+      "D78"
+     ],
+     "L10": [
+      "D29",
+      "D46",
+      "D76"
+     ],
+     "L11": [
+      "D41",
+      "D14",
+      "D40"
+     ],
+     "L12": [
+      "D21",
+      "D14",
+      "D41"
+     ],
+     "L13": [
+      "D14",
+      "D115",
+      "D86"
+     ],
+     "L14": [
+      "D54",
+      "D106",
+      "D125"
+     ],
+     "L15": [
+      "D128",
+      "D43",
+      "D117"
+     ],
+     "L16": [],
+     "L17": [],
+     "L18": [],
+     "L19": [],
+     "L20": []
+    },
+    "Karan Malhotra": {
+     "L01": [
+      "D03",
+      "D25",
+      "D05"
+     ],
+     "L02": [
+      "D23"
+     ],
+     "L03": [
+      "D03",
+      "D25",
+      "D05"
+     ],
+     "L04": [
+      "D25",
+      "D39",
+      "D107"
+     ],
+     "L05": [
+      "D62",
+      "D69",
+      "D75"
+     ],
+     "L06": [
+      "D23",
+      "D74",
+      "D45"
+     ],
+     "L07": [
+      "D19",
+      "D18",
+      "D43"
+     ],
+     "L08": [
+      "D66",
+      "D113",
+      "D108"
+     ],
+     "L09": [
+      "D127",
+      "D75",
+      "D45"
+     ],
+     "L10": [
+      "D127",
+      "D90"
+     ],
+     "L11": [
+      "D25",
+      "D39",
+      "D107"
+     ],
+     "L12": [
+      "D62",
+      "D69",
+      "D75"
+     ],
+     "L13": [
+      "D113",
+      "D108",
+      "D24"
+     ],
+     "L14": [
+      "D127",
+      "D90"
+     ],
+     "L15": [
+      "D19",
+      "D18",
+      "D43"
+     ],
+     "L16": [],
+     "L17": [],
+     "L18": [
+      "D108",
+      "D45",
+      "D90"
+     ],
+     "L19": [],
+     "L20": []
+    },
+    "Priya Nair": {
+     "L01": [
+      "D20",
+      "D09",
+      "D08"
+     ],
+     "L02": [
+      "D12",
+      "D11",
+      "D31"
+     ],
+     "L03": [
+      "D20",
+      "D09",
+      "D08"
+     ],
+     "L04": [
+      "D83",
+      "D39",
+      "D114"
+     ],
+     "L05": [
+      "D62",
+      "D10",
+      "D92"
+     ],
+     "L06": [
+      "D74",
+      "D98",
+      "D52"
+     ],
+     "L07": [
+      "D109",
+      "D43",
+      "D89"
+     ],
+     "L08": [
+      "D85",
+      "D115",
+      "D61"
+     ],
+     "L09": [
+      "D127",
+      "D121",
+      "D75"
+     ],
+     "L10": [
+      "D125",
+      "D127",
+      "D121"
+     ],
+     "L11": [
+      "D83",
+      "D39",
+      "D114"
+     ],
+     "L12": [
+      "D10",
+      "D62",
+      "D92"
+     ],
+     "L13": [
+      "D85",
+      "D115",
+      "D61"
+     ],
+     "L14": [
+      "D125",
+      "D127",
+      "D121"
+     ],
+     "L15": [
+      "D109",
+      "D43",
+      "D62"
+     ],
+     "L16": [],
+     "L17": [
+      "D65",
+      "D16",
+      "D42"
+     ],
+     "L18": [],
+     "L19": [],
+     "L20": [
+      "D39",
+      "D85",
+      "D125"
+     ]
+    },
+    "Alex (Reviewer)": {
+     "L01": [
+      "D04",
+      "D05",
+      "D03"
+     ],
+     "L02": [
+      "D23",
+      "D14",
+      "D12"
+     ],
+     "L03": [
+      "D04",
+      "D05",
+      "D03"
+     ],
+     "L04": [
+      "D41",
+      "D14",
+      "D40"
+     ],
+     "L05": [
+      "D33",
+      "D17",
+      "D21"
+     ],
+     "L06": [
+      "D51",
+      "D76",
+      "D94"
+     ],
+     "L07": [
+      "D19",
+      "D34",
+      "D128"
+     ],
+     "L08": [
+      "D14",
+      "D66",
+      "D113"
+     ],
+     "L09": [
+      "D101",
+      "D14",
+      "D78"
+     ],
+     "L10": [
+      "D29",
+      "D46",
+      "D76"
+     ],
+     "L11": [
+      "D41",
+      "D14",
+      "D40"
+     ],
+     "L12": [
+      "D33",
+      "D21",
+      "D14"
+     ],
+     "L13": [
+      "D14",
+      "D113",
+      "D115"
+     ],
+     "L14": [
+      "D54",
+      "D106",
+      "D125"
+     ],
+     "L15": [
+      "D19",
+      "D34",
+      "D128"
+     ],
+     "L16": [
+      "D66",
+      "D29",
+      "D36"
+     ],
+     "L17": [
+      "D28",
+      "D48",
+      "D45"
+     ],
+     "L18": [
+      "D40",
+      "D108",
+      "D15"
+     ],
+     "L19": [
+      "D23",
+      "D82",
+      "D16"
+     ],
+     "L20": [
+      "D14",
+      "D39",
+      "D66"
+     ]
+    },
+    "Lakshmi Pillai": {
+     "L01": [
+      "D18",
+      "D07",
+      "D17"
+     ],
+     "L02": [],
+     "L03": [
+      "D18",
+      "D07",
+      "D17"
+     ],
+     "L04": [
+      "D39",
+      "D107",
+      "D86"
+     ],
+     "L05": [
+      "D17",
+      "D75",
+      "D62"
+     ],
+     "L06": [
+      "D45",
+      "D74",
+      "D73"
+     ],
+     "L07": [
+      "D18",
+      "D17",
+      "D43"
+     ],
+     "L08": [
+      "D108",
+      "D18",
+      "D85"
+     ],
+     "L09": [
+      "D75",
+      "D45",
+      "D08"
+     ],
+     "L10": [
+      "D90"
+     ],
+     "L11": [
+      "D39",
+      "D107",
+      "D86"
+     ],
+     "L12": [
+      "D62",
+      "D75",
+      "D69"
+     ],
+     "L13": [
+      "D108",
+      "D18",
+      "D85"
+     ],
+     "L14": [
+      "D90"
+     ],
+     "L15": [
+      "D18",
+      "D43",
+      "D95"
+     ],
+     "L16": [],
+     "L17": [],
+     "L18": [],
+     "L19": [],
+     "L20": [
+      "D39",
+      "D85",
+      "D45"
+     ]
+    },
+    "Jordan Fernandes (control)": {
+     "L01": [
+      "D04",
+      "D05",
+      "D03"
+     ],
+     "L02": [
+      "D23",
+      "D14",
+      "D12"
+     ],
+     "L03": [
+      "D04",
+      "D05",
+      "D03"
+     ],
+     "L04": [
+      "D41",
+      "D14",
+      "D40"
+     ],
+     "L05": [
+      "D33",
+      "D17",
+      "D21"
+     ],
+     "L06": [
+      "D51",
+      "D76",
+      "D94"
+     ],
+     "L07": [
+      "D19",
+      "D34",
+      "D128"
+     ],
+     "L08": [
+      "D14",
+      "D66",
+      "D113"
+     ],
+     "L09": [
+      "D101",
+      "D14",
+      "D78"
+     ],
+     "L10": [
+      "D29",
+      "D46",
+      "D76"
+     ],
+     "L11": [
+      "D41",
+      "D14",
+      "D40"
+     ],
+     "L12": [
+      "D33",
+      "D21",
+      "D14"
+     ],
+     "L13": [
+      "D14",
+      "D113",
+      "D115"
+     ],
+     "L14": [
+      "D54",
+      "D106",
+      "D125"
+     ],
+     "L15": [
+      "D19",
+      "D34",
+      "D128"
+     ],
+     "L16": [
+      "D66",
+      "D29",
+      "D36"
+     ],
+     "L17": [
+      "D28",
+      "D48",
+      "D45"
+     ],
+     "L18": [
+      "D40",
+      "D108",
+      "D15"
+     ],
+     "L19": [
+      "D23",
+      "D82",
+      "D16"
+     ],
+     "L20": [
+      "D14",
+      "D39",
+      "D66"
+     ]
+    },
+    "Rahul Verma": {
+     "L01": [
+      "D25",
+      "D03",
+      "D04"
+     ],
+     "L02": [
+      "D23",
+      "D14",
+      "D12"
+     ],
+     "L03": [
+      "D25",
+      "D03",
+      "D04"
+     ],
+     "L04": [
+      "D41",
+      "D40",
+      "D116"
+     ],
+     "L05": [
+      "D33",
+      "D21",
+      "D17"
+     ],
+     "L06": [
+      "D51",
+      "D46",
+      "D76"
+     ],
+     "L07": [
+      "D19",
+      "D34",
+      "D109"
+     ],
+     "L08": [
+      "D66",
+      "D14",
+      "D113"
+     ],
+     "L09": [
+      "D101",
+      "D80",
+      "D78"
+     ],
+     "L10": [
+      "D46",
+      "D29",
+      "D125"
+     ],
+     "L11": [
+      "D41",
+      "D40",
+      "D116"
+     ],
+     "L12": [
+      "D33",
+      "D21",
+      "D14"
+     ],
+     "L13": [
+      "D14",
+      "D113",
+      "D108"
+     ],
+     "L14": [
+      "D54",
+      "D125",
+      "D106"
+     ],
+     "L15": [
+      "D19",
+      "D34",
+      "D109"
+     ],
+     "L16": [
+      "D66",
+      "D38"
+     ],
+     "L17": [
+      "D45",
+      "D42"
+     ],
+     "L18": [
+      "D121",
+      "D15",
+      "D45"
+     ],
+     "L19": [
+      "D50"
+     ],
+     "L20": [
+      "D125",
+      "D45",
+      "D85"
+     ]
+    },
+    "Vikram Rao": {
+     "L01": [
+      "D04",
+      "D03",
+      "D05"
+     ],
+     "L02": [
+      "D23",
+      "D12",
+      "D13"
+     ],
+     "L03": [
+      "D04",
+      "D03",
+      "D05"
+     ],
+     "L04": [
+      "D25",
+      "D116",
+      "D29"
+     ],
+     "L05": [
+      "D33",
+      "D17",
+      "D21"
+     ],
+     "L06": [
+      "D51",
+      "D76",
+      "D94"
+     ],
+     "L07": [
+      "D19",
+      "D34",
+      "D18"
+     ],
+     "L08": [
+      "D66",
+      "D113",
+      "D115"
+     ],
+     "L09": [
+      "D101",
+      "D78",
+      "D75"
+     ],
+     "L10": [
+      "D29",
+      "D46",
+      "D76"
+     ],
+     "L11": [
+      "D25",
+      "D116",
+      "D29"
+     ],
+     "L12": [
+      "D33",
+      "D21",
+      "D76"
+     ],
+     "L13": [
+      "D113",
+      "D115",
+      "D108"
+     ],
+     "L14": [
+      "D54",
+      "D125",
+      "D90"
+     ],
+     "L15": [
+      "D19",
+      "D34",
+      "D18"
+     ],
+     "L16": [
+      "D66",
+      "D29",
+      "D36"
+     ],
+     "L17": [
+      "D28",
+      "D48",
+      "D45"
+     ],
+     "L18": [
+      "D108",
+      "D40",
+      "D53"
+     ],
+     "L19": [
+      "D23",
+      "D16",
+      "D42"
+     ],
+     "L20": [
+      "D66",
+      "D39",
+      "D45"
+     ]
+    }
+   }
+  }
+ ],
+ "status": "FAIL",
+ "notes": "scripted intent, real hybrid retrieval and engine through the API; fresh session per run; applicability computed on the baseline pool before comparison (C47)"
+}
