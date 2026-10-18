@@ -73,3 +73,30 @@ def delete_line(session_id: str, line_id: str, request: Request) -> CartView:
 @router.delete("/cart/dishes/{cart_dish_id}")
 def delete_dish(session_id: str, cart_dish_id: str, request: Request) -> CartView:
     return _mutate(request, session_id, lambda s: service.remove_dish(s, cart_dish_id, request.app.state.store))
+
+
+@router.post("/checkout")
+def checkout(session_id: str, request: Request) -> dict:
+    """API Spec v0.4 §4.7. Buy Now is the only way an order is placed (FR-80)."""
+    from backend.cart.checkout import COLLAPSE_AFTER_S, CheckoutBlocked, place_order
+    from backend.flows.templates import TEMPLATES, render
+
+    session = request.app.state.sessions.get(session_id)
+    store = request.app.state.store
+    with session.busy():
+        try:
+            order = place_order(session, request.headers.get("Idempotency-Key"), context(request), store,
+                                request.app.state.tracer)
+        except CheckoutBlocked as e:
+            if e.code == "BAD_REQUEST":
+                raise ApiError(400, "BAD_REQUEST", "An Idempotency-Key header is required.") from None
+            if e.code == "EMPTY_CART":
+                raise ApiError(400, "EMPTY_CART", render("MSG-EMPTY-CART"), "MSG-EMPTY-CART") from None
+            if e.code == "OUT_OF_STOCK":
+                raise ApiError(409, "OUT_OF_STOCK", render("MSG-BLOCKED-ORDER", item=e.details["item"]), "MSG-BLOCKED-ORDER",
+                               details={"line_ids": e.details["line_ids"],
+                                        "substitutions": [c.model_dump(mode="json") for c in e.details["substitutions"]]}) from None
+            raise ApiError(409, "PRICE_CHANGED", render("MSG-PRICE-CHANGED"), "MSG-PRICE-CHANGED",
+                           details={"cart": _view(request, session).model_dump(mode="json")}) from None
+    return {"order_id": order.order_id, "subtotal_inr": order.subtotal_inr, "placed_at": order.placed_at,
+            "message": {"template_id": "MSG-ORDER", "text": TEMPLATES["MSG-ORDER"]}, "collapse_after_s": COLLAPSE_AFTER_S}

@@ -11,6 +11,10 @@ TEMPLATES = {
     "MSG-CLEAR-CONFIRM": "Replace the {dish} cart, or add to it?",
     "MSG-CLEAR-DONE": "Replaced. You can Undo if you change your mind.",
     "MSG-UNDO": "Done. Removed {dish}.",
+    "MSG-EMPTY-CART": "Your cart is empty. Pick a recipe or paste a YouTube link to get started!",
+    "MSG-ORDER": "Order is placed, the rider will see you in 10 mins",
+    "MSG-BLOCKED-ORDER": "{item} is no longer available. Swap or remove it to place your order.",
+    "MSG-PRICE-CHANGED": "A price changed since you added it. The updated total is shown.",
     "MSG-EDIT-OK": "Done. {change}. ✅",
     "MSG-SERVER": "Your food will be ready but seems like our servers are struggling. We will be back shortly",
 }
