@@ -24,6 +24,7 @@ The overall evaluation status is **FAIL** under the Evaluation Plan §7 rule (C7
 - **Retrieval quirk.** "Something cooling for a hot day" can suggest Hot Chocolate, because the keyword half of hybrid search matches "hot" (re-checked on 2026-10-19).
 - **Vector similarity is about meaning, not shopping.** The add-on suggestions come from curated pairs plus similar dishes. "Similar" means similar descriptions, not "people who bought X also bought Y" (C17). There is no purchase data.
 - **Reason lines may echo catalogue tags** such as "high protein". These come from the dish's tags, not from nutrition analysis (C68).
+- **Typing immediately after "Start new chat".** A message sent before the new session exists goes to the old, deleted session. The app shows "This chat session has ended. Starting a new one." and recovers, but that message is lost and has to be sent again (seen in the 2026-10-19 reviewer check). The input is not locked while a session starts, and each page load in development creates two sessions (React StrictMode).
 - **Chat cart edits are not supported.** "Remove the oil" replies MSG-UNSUPPORTED; edit in the cart window instead (FR-78 cut).
 
 ### A3. Data

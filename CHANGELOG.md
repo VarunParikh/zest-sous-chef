@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- Reviewer-path check from a fresh clone on 2026-10-19: `make setup`, `make index`, `make app`, the health endpoint and a real chat through the frontend all succeed; screenshot added to the README (`docs/assets/zest-screenshot.png`). The check found a start-new-chat race, now listed in Known Limitations.
 - README prerequisites for a fresh Mac: Apple command-line tools, Node 22 or newer, starting the Ollama server, free ports, the one-time Playwright browser install for `make test-e2e`, untested platforms.
 - T-075 (S-06, Security Note release blocker 5): an E2E test that markup and script strings in messages render as inert text; it covers existing behaviour and passed on its first run.
 - Block 3.3 done: release documents written from results; handover points to block 3.4 (rehearsals, owner at the laptop).
