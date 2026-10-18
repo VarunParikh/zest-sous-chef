@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- E7 persona compliance harness `scripts/benchmark/compliance.py` with an independent checker `backend.evaluation.compliance` (Evaluation Plan §4 E7; Data Model §9): stored tags plus ingredient keywords (stricter wins; exemptions calibrated on the catalogue before any run), every surface of every turn and follow-up, a real-model arm, an adversarial arm and an eligibility-off sensitivity check. A test proves the checker never imports the engine's eligibility code.
 - E6 lever sensitivity harness `scripts/benchmark/levers.py` with `backend.evaluation.lever_sensitivity` (Evaluation Plan §4 E6, §4.15 C47, C48): 18 lever groups moved to their far-end contrast in fresh API sessions, RDI per group and prompt type, Kendall distance, a random re-ranker baseline and the 11-persona top-3 overlap matrix.
 - E12 variant scoring sweep `scripts/benchmark/variants.py` with the gate in `backend.evaluation.variant_sweep` (Evaluation Plan §4 E12; ADR-008): the 6 lever-test ingredients over β0 {0.15, 0.30, 0.45} × gourmet × organic.
 - E8 price and data integrity harness `scripts/benchmark/integrity.py` (Evaluation Plan §4 E8): 200 seeded carts through the API; totals recomputed from `skus.json`, packs re-derived by brute force (`backend.evaluation.integrity`), add-on card prices, substitution deltas, checkout totals and idempotency checked. `scripts/benchmark/_app.py` runs evaluations in-process.
