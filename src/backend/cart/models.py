@@ -26,6 +26,8 @@ class CartLine(BaseModel):
     shared_from_line_id: Optional[str] = None
     reason: str = ""
     alternative_variant_ids: list[str] = []
+    quantity: int = Field(1, ge=1, le=9)  # C35: multiplies the packs this line owns
+    in_stock: bool = True  # false: kept with the stock filter off, or stock fell after carting (FR-83)
 
 
 class CartDish(BaseModel):
@@ -40,7 +42,11 @@ class CartDish(BaseModel):
 
 class Cart(BaseModel):
     dishes: list[CartDish] = []
+    quotes: dict[str, int] = {}  # C34: sku_id -> price when first carted; never sent to the client
 
     @property
     def is_empty(self) -> bool:
         return not self.dishes
+
+    def lines(self) -> list[CartLine]:
+        return [ln for d in self.dishes for ln in d.lines]

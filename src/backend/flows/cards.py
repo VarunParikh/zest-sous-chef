@@ -154,6 +154,8 @@ class CartLineView(BaseModel):
     estimated: bool = False
     reason: str = ""
     alternative_variant_ids: list[str] = []
+    in_stock: bool = True  # API Spec v0.4, C34
+    quantity: int = 1  # C35
 
 
 class CartDishView(BaseModel):

@@ -34,6 +34,7 @@ class Store:
     pairings: list[Pairing] = field(default_factory=list)
     synonyms: list[dict] = field(default_factory=list)
     stock_override: dict[str, int] = field(default_factory=dict)
+    price_override: dict[str, int] = field(default_factory=dict)
 
     @cached_property
     def _by_id(self) -> dict[str, Variant]:
@@ -80,6 +81,16 @@ class Store:
     def stock(self, sku: Sku) -> int:
         return self.stock_override.get(sku.sku_id, sku.stock_count)
 
+    def price(self, sku: Sku) -> int:
+        return self.price_override.get(sku.sku_id, sku.price_inr)
+
+    def sku(self, sku_id: str) -> Sku:
+        return self._sku_by_id[sku_id]
+
+    @cached_property
+    def _sku_by_id(self) -> dict[str, Sku]:
+        return {s.sku_id: s for s in self.skus}
+
     def in_stock(self, variant_id: str) -> bool:
         return any(self.stock(s) > 0 and s.dark_store_ok for s in self.skus_for(variant_id))
 
@@ -106,6 +117,10 @@ class Store:
         """A copy with scripted stock levels (stock scenarios, tests)."""
         new = replace(self, stock_override={**self.stock_override, **overrides})
         return new
+
+    def with_prices(self, overrides: dict[str, int]) -> "Store":
+        """A copy with scripted prices (price-change scenarios, tests)."""
+        return replace(self, price_override={**self.price_override, **overrides})
 
 
 def load_store(generated_dir: Path = GENERATED) -> Store:
