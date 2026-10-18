@@ -129,3 +129,20 @@ def test_c43_hunger_and_suggestion_requests_pass_the_rules(text):
 @pytest.mark.parametrize("text", ["Who won the cricket match yesterday?", "What is the capital of France?"])
 def test_plain_off_topic_still_redirected_by_the_rules(text):
     assert default_guard().screen(text).label == "off_topic"
+
+
+def test_verdict_reports_the_classifier_categories():
+    """E4 rerun (C46) records the category for every row; `unsafe` keeps its meaning."""
+    import httpx
+
+    from backend.guard.pipeline import LlamaGuard
+
+    def reply(text):
+        return httpx.MockTransport(lambda r: httpx.Response(200, json={"message": {"content": text}}))
+
+    g = LlamaGuard("http://x", "llama-guard3:1b", 5, transport=reply("unsafe\nS6"))
+    assert g.verdict("what should I eat") == (False, ("S6",))
+    g = LlamaGuard("http://x", "llama-guard3:1b", 5, transport=reply("unsafe\nS1,S8"))
+    assert g.verdict("x") == (True, ("S1", "S8")) and g.unsafe("x")
+    g = LlamaGuard("http://x", "llama-guard3:1b", 5, transport=reply("safe"))
+    assert g.verdict("x") == (False, ())

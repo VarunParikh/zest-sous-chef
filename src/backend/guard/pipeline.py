@@ -35,16 +35,20 @@ class LlamaGuard:
         self.base_url, self.model, self.ignore = base_url.rstrip("/"), model, frozenset(c.upper() for c in ignore)
         self._http = httpx.Client(transport=transport, timeout=timeout_s)
 
-    def unsafe(self, text: str) -> bool:
+    def verdict(self, text: str) -> tuple[bool, tuple[str, ...]]:
+        """(blocks, categories the classifier gave); the categories are recorded by E4 (C46)."""
         r = self._http.post(f"{self.base_url}/api/chat", json={
             "model": self.model, "stream": False, "options": {"temperature": 0},
             "messages": [{"role": "user", "content": text}]})
         r.raise_for_status()
         reply = r.json()["message"]["content"].strip()
         if not reply.lower().startswith("unsafe"):
-            return False
-        categories = {c.strip().upper() for c in re.split(r"[,\s]+", reply[len("unsafe"):]) if c.strip()}
-        return not categories or bool(categories - self.ignore)  # no category given: block
+            return False, ()
+        categories = tuple(sorted({c.strip().upper() for c in re.split(r"[,\s]+", reply[len("unsafe"):]) if c.strip()}))
+        return (not categories or bool(set(categories) - self.ignore)), categories  # no category given: block
+
+    def unsafe(self, text: str) -> bool:
+        return self.verdict(text)[0]
 
 
 class InputGuard:
