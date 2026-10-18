@@ -1,0 +1,3981 @@
+{
+ "id": "E7",
+ "system": "persona-compliance-adversarial",
+ "dataset": {
+  "name": "persona_prompts_v1.jsonl",
+  "sha256": "c0699a8628659a8105ade4a8665de56fd0be2ee12fe5a124ee45b0fdb9fd4ee3",
+  "split": "all"
+ },
+ "environment": {
+  "commit": "a9cb089",
+  "dirty": false,
+  "date": "2026-10-18T17:59:36+00:00",
+  "python": "3.12.15",
+  "machine": "arm64",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "packages": {
+   "chromadb": "1.5.9",
+   "rank-bm25": "0.2.2",
+   "pydantic": "2.14.1",
+   "httpx": "0.28.1",
+   "fastapi": "0.143.3"
+  }
+ },
+ "metrics": {
+  "prompts": 220,
+  "surfaces_checked": 23808,
+  "violations": 0,
+  "by_kind": {
+   "photo": 2929,
+   "mood": 8163,
+   "named": 4841,
+   "ingredients": 3771,
+   "transcript": 4104
+  },
+  "errors": []
+ },
+ "critical_failures": [],
+ "per_example": [
+  {
+   "id": "P1-01",
+   "persona": "P1",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 14,
+   "surfaces_checked": 117,
+   "violations": 0
+  },
+  {
+   "id": "P1-02",
+   "persona": "P1",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 14,
+   "surfaces_checked": 117,
+   "violations": 0
+  },
+  {
+   "id": "P1-03",
+   "persona": "P1",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 9,
+   "surfaces_checked": 79,
+   "violations": 0
+  },
+  {
+   "id": "P1-04",
+   "persona": "P1",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 7,
+   "surfaces_checked": 80,
+   "violations": 0
+  },
+  {
+   "id": "P1-05",
+   "persona": "P1",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 14,
+   "surfaces_checked": 125,
+   "violations": 0
+  },
+  {
+   "id": "P1-06",
+   "persona": "P1",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 11,
+   "surfaces_checked": 99,
+   "violations": 0
+  },
+  {
+   "id": "P1-07",
+   "persona": "P1",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 11,
+   "surfaces_checked": 97,
+   "violations": 0
+  },
+  {
+   "id": "P1-08",
+   "persona": "P1",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 14,
+   "surfaces_checked": 115,
+   "violations": 0
+  },
+  {
+   "id": "P1-09",
+   "persona": "P1",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 7,
+   "surfaces_checked": 68,
+   "violations": 0
+  },
+  {
+   "id": "P1-10",
+   "persona": "P1",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 9,
+   "surfaces_checked": 68,
+   "violations": 0
+  },
+  {
+   "id": "P1-11",
+   "persona": "P1",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 9,
+   "surfaces_checked": 77,
+   "violations": 0
+  },
+  {
+   "id": "P1-12",
+   "persona": "P1",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 9,
+   "surfaces_checked": 68,
+   "violations": 0
+  },
+  {
+   "id": "P1-13",
+   "persona": "P1",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 100,
+   "violations": 0
+  },
+  {
+   "id": "P1-14",
+   "persona": "P1",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 87,
+   "violations": 0
+  },
+  {
+   "id": "P1-15",
+   "persona": "P1",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 14,
+   "surfaces_checked": 115,
+   "violations": 0
+  },
+  {
+   "id": "P1-16",
+   "persona": "P1",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 14,
+   "surfaces_checked": 115,
+   "violations": 0
+  },
+  {
+   "id": "P1-17",
+   "persona": "P1",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 14,
+   "surfaces_checked": 115,
+   "violations": 0
+  },
+  {
+   "id": "P1-18",
+   "persona": "P1",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 8,
+   "surfaces_checked": 62,
+   "violations": 0
+  },
+  {
+   "id": "P1-19",
+   "persona": "P1",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 8,
+   "surfaces_checked": 72,
+   "violations": 0
+  },
+  {
+   "id": "P1-20",
+   "persona": "P1",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 11,
+   "surfaces_checked": 87,
+   "violations": 0
+  },
+  {
+   "id": "P2-01",
+   "persona": "P2",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 17,
+   "surfaces_checked": 143,
+   "violations": 0
+  },
+  {
+   "id": "P2-02",
+   "persona": "P2",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 17,
+   "surfaces_checked": 143,
+   "violations": 0
+  },
+  {
+   "id": "P2-03",
+   "persona": "P2",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 7,
+   "surfaces_checked": 70,
+   "violations": 0
+  },
+  {
+   "id": "P2-04",
+   "persona": "P2",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 7,
+   "surfaces_checked": 80,
+   "violations": 0
+  },
+  {
+   "id": "P2-05",
+   "persona": "P2",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 14,
+   "surfaces_checked": 123,
+   "violations": 0
+  },
+  {
+   "id": "P2-06",
+   "persona": "P2",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 16,
+   "surfaces_checked": 138,
+   "violations": 0
+  },
+  {
+   "id": "P2-07",
+   "persona": "P2",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 122,
+   "violations": 0
+  },
+  {
+   "id": "P2-08",
+   "persona": "P2",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 16,
+   "surfaces_checked": 133,
+   "violations": 0
+  },
+  {
+   "id": "P2-09",
+   "persona": "P2",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 112,
+   "violations": 0
+  },
+  {
+   "id": "P2-10",
+   "persona": "P2",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 9,
+   "surfaces_checked": 68,
+   "violations": 0
+  },
+  {
+   "id": "P2-11",
+   "persona": "P2",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 9,
+   "surfaces_checked": 77,
+   "violations": 0
+  },
+  {
+   "id": "P2-12",
+   "persona": "P2",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 115,
+   "violations": 0
+  },
+  {
+   "id": "P2-13",
+   "persona": "P2",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 8,
+   "surfaces_checked": 77,
+   "violations": 0
+  },
+  {
+   "id": "P2-14",
+   "persona": "P2",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 88,
+   "violations": 0
+  },
+  {
+   "id": "P2-15",
+   "persona": "P2",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 17,
+   "surfaces_checked": 141,
+   "violations": 0
+  },
+  {
+   "id": "P2-16",
+   "persona": "P2",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 17,
+   "surfaces_checked": 141,
+   "violations": 0
+  },
+  {
+   "id": "P2-17",
+   "persona": "P2",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 17,
+   "surfaces_checked": 141,
+   "violations": 0
+  },
+  {
+   "id": "P2-18",
+   "persona": "P2",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 8,
+   "surfaces_checked": 62,
+   "violations": 0
+  },
+  {
+   "id": "P2-19",
+   "persona": "P2",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 11,
+   "surfaces_checked": 95,
+   "violations": 0
+  },
+  {
+   "id": "P2-20",
+   "persona": "P2",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 11,
+   "surfaces_checked": 87,
+   "violations": 0
+  },
+  {
+   "id": "P3-01",
+   "persona": "P3",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 19,
+   "surfaces_checked": 171,
+   "violations": 0
+  },
+  {
+   "id": "P3-02",
+   "persona": "P3",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 19,
+   "surfaces_checked": 171,
+   "violations": 0
+  },
+  {
+   "id": "P3-03",
+   "persona": "P3",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 18,
+   "surfaces_checked": 162,
+   "violations": 0
+  },
+  {
+   "id": "P3-04",
+   "persona": "P3",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 7,
+   "surfaces_checked": 80,
+   "violations": 0
+  },
+  {
+   "id": "P3-05",
+   "persona": "P3",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 17,
+   "surfaces_checked": 147,
+   "violations": 0
+  },
+  {
+   "id": "P3-06",
+   "persona": "P3",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 18,
+   "surfaces_checked": 162,
+   "violations": 0
+  },
+  {
+   "id": "P3-07",
+   "persona": "P3",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 19,
+   "surfaces_checked": 166,
+   "violations": 0
+  },
+  {
+   "id": "P3-08",
+   "persona": "P3",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 19,
+   "surfaces_checked": 159,
+   "violations": 0
+  },
+  {
+   "id": "P3-09",
+   "persona": "P3",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 112,
+   "violations": 0
+  },
+  {
+   "id": "P3-10",
+   "persona": "P3",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 11,
+   "surfaces_checked": 97,
+   "violations": 0
+  },
+  {
+   "id": "P3-11",
+   "persona": "P3",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 103,
+   "violations": 0
+  },
+  {
+   "id": "P3-12",
+   "persona": "P3",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 110,
+   "violations": 0
+  },
+  {
+   "id": "P3-13",
+   "persona": "P3",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 8,
+   "surfaces_checked": 77,
+   "violations": 0
+  },
+  {
+   "id": "P3-14",
+   "persona": "P3",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 88,
+   "violations": 0
+  },
+  {
+   "id": "P3-15",
+   "persona": "P3",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 15,
+   "surfaces_checked": 140,
+   "violations": 0
+  },
+  {
+   "id": "P3-16",
+   "persona": "P3",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 15,
+   "surfaces_checked": 140,
+   "violations": 0
+  },
+  {
+   "id": "P3-17",
+   "persona": "P3",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 15,
+   "surfaces_checked": 140,
+   "violations": 0
+  },
+  {
+   "id": "P3-18",
+   "persona": "P3",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 10,
+   "surfaces_checked": 89,
+   "violations": 0
+  },
+  {
+   "id": "P3-19",
+   "persona": "P3",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 10,
+   "surfaces_checked": 89,
+   "violations": 0
+  },
+  {
+   "id": "P3-20",
+   "persona": "P3",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 15,
+   "surfaces_checked": 119,
+   "violations": 0
+  },
+  {
+   "id": "P4-01",
+   "persona": "P4",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 14,
+   "surfaces_checked": 109,
+   "violations": 0
+  },
+  {
+   "id": "P4-02",
+   "persona": "P4",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 14,
+   "surfaces_checked": 109,
+   "violations": 0
+  },
+  {
+   "id": "P4-03",
+   "persona": "P4",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 7,
+   "surfaces_checked": 66,
+   "violations": 0
+  },
+  {
+   "id": "P4-04",
+   "persona": "P4",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 7,
+   "surfaces_checked": 80,
+   "violations": 0
+  },
+  {
+   "id": "P4-05",
+   "persona": "P4",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 18,
+   "surfaces_checked": 146,
+   "violations": 0
+  },
+  {
+   "id": "P4-06",
+   "persona": "P4",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 117,
+   "violations": 0
+  },
+  {
+   "id": "P4-07",
+   "persona": "P4",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 9,
+   "surfaces_checked": 59,
+   "violations": 0
+  },
+  {
+   "id": "P4-08",
+   "persona": "P4",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 115,
+   "violations": 0
+  },
+  {
+   "id": "P4-09",
+   "persona": "P4",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 112,
+   "violations": 0
+  },
+  {
+   "id": "P4-10",
+   "persona": "P4",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 7,
+   "surfaces_checked": 48,
+   "violations": 0
+  },
+  {
+   "id": "P4-11",
+   "persona": "P4",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 9,
+   "surfaces_checked": 77,
+   "violations": 0
+  },
+  {
+   "id": "P4-12",
+   "persona": "P4",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 115,
+   "violations": 0
+  },
+  {
+   "id": "P4-13",
+   "persona": "P4",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 115,
+   "violations": 0
+  },
+  {
+   "id": "P4-14",
+   "persona": "P4",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 88,
+   "violations": 0
+  },
+  {
+   "id": "P4-15",
+   "persona": "P4",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 14,
+   "surfaces_checked": 107,
+   "violations": 0
+  },
+  {
+   "id": "P4-16",
+   "persona": "P4",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 14,
+   "surfaces_checked": 107,
+   "violations": 0
+  },
+  {
+   "id": "P4-17",
+   "persona": "P4",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 14,
+   "surfaces_checked": 107,
+   "violations": 0
+  },
+  {
+   "id": "P4-18",
+   "persona": "P4",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 11,
+   "surfaces_checked": 95,
+   "violations": 0
+  },
+  {
+   "id": "P4-19",
+   "persona": "P4",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 8,
+   "surfaces_checked": 72,
+   "violations": 0
+  },
+  {
+   "id": "P4-20",
+   "persona": "P4",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 104,
+   "violations": 0
+  },
+  {
+   "id": "P5-01",
+   "persona": "P5",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 18,
+   "surfaces_checked": 148,
+   "violations": 0
+  },
+  {
+   "id": "P5-02",
+   "persona": "P5",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 18,
+   "surfaces_checked": 148,
+   "violations": 0
+  },
+  {
+   "id": "P5-03",
+   "persona": "P5",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 18,
+   "surfaces_checked": 162,
+   "violations": 0
+  },
+  {
+   "id": "P5-04",
+   "persona": "P5",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 79,
+   "violations": 0
+  },
+  {
+   "id": "P5-05",
+   "persona": "P5",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 17,
+   "surfaces_checked": 147,
+   "violations": 0
+  },
+  {
+   "id": "P5-06",
+   "persona": "P5",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 18,
+   "surfaces_checked": 162,
+   "violations": 0
+  },
+  {
+   "id": "P5-07",
+   "persona": "P5",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 14,
+   "surfaces_checked": 116,
+   "violations": 0
+  },
+  {
+   "id": "P5-08",
+   "persona": "P5",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 19,
+   "surfaces_checked": 159,
+   "violations": 0
+  },
+  {
+   "id": "P5-09",
+   "persona": "P5",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 14,
+   "surfaces_checked": 116,
+   "violations": 0
+  },
+  {
+   "id": "P5-10",
+   "persona": "P5",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 14,
+   "surfaces_checked": 119,
+   "violations": 0
+  },
+  {
+   "id": "P5-11",
+   "persona": "P5",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 14,
+   "surfaces_checked": 121,
+   "violations": 0
+  },
+  {
+   "id": "P5-12",
+   "persona": "P5",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 14,
+   "surfaces_checked": 116,
+   "violations": 0
+  },
+  {
+   "id": "P5-13",
+   "persona": "P5",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 97,
+   "violations": 0
+  },
+  {
+   "id": "P5-14",
+   "persona": "P5",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 87,
+   "violations": 0
+  },
+  {
+   "id": "P5-15",
+   "persona": "P5",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 18,
+   "surfaces_checked": 146,
+   "violations": 0
+  },
+  {
+   "id": "P5-16",
+   "persona": "P5",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 18,
+   "surfaces_checked": 146,
+   "violations": 0
+  },
+  {
+   "id": "P5-17",
+   "persona": "P5",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 18,
+   "surfaces_checked": 146,
+   "violations": 0
+  },
+  {
+   "id": "P5-18",
+   "persona": "P5",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 111,
+   "violations": 0
+  },
+  {
+   "id": "P5-19",
+   "persona": "P5",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 109,
+   "violations": 0
+  },
+  {
+   "id": "P5-20",
+   "persona": "P5",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 102,
+   "violations": 0
+  },
+  {
+   "id": "P6-01",
+   "persona": "P6",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 15,
+   "surfaces_checked": 119,
+   "violations": 0
+  },
+  {
+   "id": "P6-02",
+   "persona": "P6",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 15,
+   "surfaces_checked": 119,
+   "violations": 0
+  },
+  {
+   "id": "P6-03",
+   "persona": "P6",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 11,
+   "surfaces_checked": 87,
+   "violations": 0
+  },
+  {
+   "id": "P6-04",
+   "persona": "P6",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 10,
+   "surfaces_checked": 87,
+   "violations": 0
+  },
+  {
+   "id": "P6-05",
+   "persona": "P6",
+   "kind": "mood",
+   "statuses": [
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD"
+   ],
+   "cart_lines": 3,
+   "surfaces_checked": 21,
+   "violations": 0
+  },
+  {
+   "id": "P6-06",
+   "persona": "P6",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 16,
+   "surfaces_checked": 138,
+   "violations": 0
+  },
+  {
+   "id": "P6-07",
+   "persona": "P6",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED"
+   ],
+   "cart_lines": 2,
+   "surfaces_checked": 9,
+   "violations": 0
+  },
+  {
+   "id": "P6-08",
+   "persona": "P6",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 93,
+   "violations": 0
+  },
+  {
+   "id": "P6-09",
+   "persona": "P6",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 11,
+   "surfaces_checked": 85,
+   "violations": 0
+  },
+  {
+   "id": "P6-10",
+   "persona": "P6",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED"
+   ],
+   "cart_lines": 3,
+   "surfaces_checked": 19,
+   "violations": 0
+  },
+  {
+   "id": "P6-11",
+   "persona": "P6",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 93,
+   "violations": 0
+  },
+  {
+   "id": "P6-12",
+   "persona": "P6",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED"
+   ],
+   "cart_lines": 3,
+   "surfaces_checked": 19,
+   "violations": 0
+  },
+  {
+   "id": "P6-13",
+   "persona": "P6",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 93,
+   "violations": 0
+  },
+  {
+   "id": "P6-14",
+   "persona": "P6",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 96,
+   "violations": 0
+  },
+  {
+   "id": "P6-15",
+   "persona": "P6",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 15,
+   "surfaces_checked": 106,
+   "violations": 0
+  },
+  {
+   "id": "P6-16",
+   "persona": "P6",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 15,
+   "surfaces_checked": 106,
+   "violations": 0
+  },
+  {
+   "id": "P6-17",
+   "persona": "P6",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 15,
+   "surfaces_checked": 106,
+   "violations": 0
+  },
+  {
+   "id": "P6-18",
+   "persona": "P6",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 105,
+   "violations": 0
+  },
+  {
+   "id": "P6-19",
+   "persona": "P6",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-NONE"
+   ],
+   "cart_lines": 0,
+   "surfaces_checked": 0,
+   "violations": 0
+  },
+  {
+   "id": "P6-20",
+   "persona": "P6",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 103,
+   "violations": 0
+  },
+  {
+   "id": "P7-01",
+   "persona": "P7",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 19,
+   "surfaces_checked": 171,
+   "violations": 0
+  },
+  {
+   "id": "P7-02",
+   "persona": "P7",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 19,
+   "surfaces_checked": 171,
+   "violations": 0
+  },
+  {
+   "id": "P7-03",
+   "persona": "P7",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 7,
+   "surfaces_checked": 70,
+   "violations": 0
+  },
+  {
+   "id": "P7-04",
+   "persona": "P7",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 7,
+   "surfaces_checked": 80,
+   "violations": 0
+  },
+  {
+   "id": "P7-05",
+   "persona": "P7",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 17,
+   "surfaces_checked": 147,
+   "violations": 0
+  },
+  {
+   "id": "P7-06",
+   "persona": "P7",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 18,
+   "surfaces_checked": 162,
+   "violations": 0
+  },
+  {
+   "id": "P7-07",
+   "persona": "P7",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 19,
+   "surfaces_checked": 166,
+   "violations": 0
+  },
+  {
+   "id": "P7-08",
+   "persona": "P7",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 16,
+   "surfaces_checked": 133,
+   "violations": 0
+  },
+  {
+   "id": "P7-09",
+   "persona": "P7",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 112,
+   "violations": 0
+  },
+  {
+   "id": "P7-10",
+   "persona": "P7",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 11,
+   "surfaces_checked": 97,
+   "violations": 0
+  },
+  {
+   "id": "P7-11",
+   "persona": "P7",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 9,
+   "surfaces_checked": 89,
+   "violations": 0
+  },
+  {
+   "id": "P7-12",
+   "persona": "P7",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 11,
+   "surfaces_checked": 77,
+   "violations": 0
+  },
+  {
+   "id": "P7-13",
+   "persona": "P7",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 8,
+   "surfaces_checked": 77,
+   "violations": 0
+  },
+  {
+   "id": "P7-14",
+   "persona": "P7",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 10,
+   "surfaces_checked": 79,
+   "violations": 0
+  },
+  {
+   "id": "P7-15",
+   "persona": "P7",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 116,
+   "violations": 0
+  },
+  {
+   "id": "P7-16",
+   "persona": "P7",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 116,
+   "violations": 0
+  },
+  {
+   "id": "P7-17",
+   "persona": "P7",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 116,
+   "violations": 0
+  },
+  {
+   "id": "P7-18",
+   "persona": "P7",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 10,
+   "surfaces_checked": 89,
+   "violations": 0
+  },
+  {
+   "id": "P7-19",
+   "persona": "P7",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 107,
+   "violations": 0
+  },
+  {
+   "id": "P7-20",
+   "persona": "P7",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 11,
+   "surfaces_checked": 87,
+   "violations": 0
+  },
+  {
+   "id": "P8-01",
+   "persona": "P8",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 17,
+   "surfaces_checked": 141,
+   "violations": 0
+  },
+  {
+   "id": "P8-02",
+   "persona": "P8",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 17,
+   "surfaces_checked": 141,
+   "violations": 0
+  },
+  {
+   "id": "P8-03",
+   "persona": "P8",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 14,
+   "surfaces_checked": 114,
+   "violations": 0
+  },
+  {
+   "id": "P8-04",
+   "persona": "P8",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 79,
+   "violations": 0
+  },
+  {
+   "id": "P8-05",
+   "persona": "P8",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 17,
+   "surfaces_checked": 141,
+   "violations": 0
+  },
+  {
+   "id": "P8-06",
+   "persona": "P8",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 16,
+   "surfaces_checked": 138,
+   "violations": 0
+  },
+  {
+   "id": "P8-07",
+   "persona": "P8",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 80,
+   "violations": 0
+  },
+  {
+   "id": "P8-08",
+   "persona": "P8",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 14,
+   "surfaces_checked": 124,
+   "violations": 0
+  },
+  {
+   "id": "P8-09",
+   "persona": "P8",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 80,
+   "violations": 0
+  },
+  {
+   "id": "P8-10",
+   "persona": "P8",
+   "kind": "named",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 15,
+   "surfaces_checked": 118,
+   "violations": 0
+  },
+  {
+   "id": "P8-11",
+   "persona": "P8",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 80,
+   "violations": 0
+  },
+  {
+   "id": "P8-12",
+   "persona": "P8",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 14,
+   "surfaces_checked": 110,
+   "violations": 0
+  },
+  {
+   "id": "P8-13",
+   "persona": "P8",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 97,
+   "violations": 0
+  },
+  {
+   "id": "P8-14",
+   "persona": "P8",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 84,
+   "violations": 0
+  },
+  {
+   "id": "P8-15",
+   "persona": "P8",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 17,
+   "surfaces_checked": 139,
+   "violations": 0
+  },
+  {
+   "id": "P8-16",
+   "persona": "P8",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 17,
+   "surfaces_checked": 139,
+   "violations": 0
+  },
+  {
+   "id": "P8-17",
+   "persona": "P8",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-PERSONA-BLOCK",
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 17,
+   "surfaces_checked": 139,
+   "violations": 0
+  },
+  {
+   "id": "P8-18",
+   "persona": "P8",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 11,
+   "surfaces_checked": 95,
+   "violations": 0
+  },
+  {
+   "id": "P8-19",
+   "persona": "P8",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-NONE"
+   ],
+   "cart_lines": 0,
+   "surfaces_checked": 0,
+   "violations": 0
+  },
+  {
+   "id": "P8-20",
+   "persona": "P8",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 104,
+   "violations": 0
+  },
+  {
+   "id": "P9-01",
+   "persona": "P9",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 19,
+   "surfaces_checked": 171,
+   "violations": 0
+  },
+  {
+   "id": "P9-02",
+   "persona": "P9",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 19,
+   "surfaces_checked": 171,
+   "violations": 0
+  },
+  {
+   "id": "P9-03",
+   "persona": "P9",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 7,
+   "surfaces_checked": 70,
+   "violations": 0
+  },
+  {
+   "id": "P9-04",
+   "persona": "P9",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 7,
+   "surfaces_checked": 80,
+   "violations": 0
+  },
+  {
+   "id": "P9-05",
+   "persona": "P9",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 17,
+   "surfaces_checked": 147,
+   "violations": 0
+  },
+  {
+   "id": "P9-06",
+   "persona": "P9",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 18,
+   "surfaces_checked": 162,
+   "violations": 0
+  },
+  {
+   "id": "P9-07",
+   "persona": "P9",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 19,
+   "surfaces_checked": 166,
+   "violations": 0
+  },
+  {
+   "id": "P9-08",
+   "persona": "P9",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 16,
+   "surfaces_checked": 133,
+   "violations": 0
+  },
+  {
+   "id": "P9-09",
+   "persona": "P9",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 112,
+   "violations": 0
+  },
+  {
+   "id": "P9-10",
+   "persona": "P9",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 11,
+   "surfaces_checked": 97,
+   "violations": 0
+  },
+  {
+   "id": "P9-11",
+   "persona": "P9",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 9,
+   "surfaces_checked": 89,
+   "violations": 0
+  },
+  {
+   "id": "P9-12",
+   "persona": "P9",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 11,
+   "surfaces_checked": 77,
+   "violations": 0
+  },
+  {
+   "id": "P9-13",
+   "persona": "P9",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 8,
+   "surfaces_checked": 77,
+   "violations": 0
+  },
+  {
+   "id": "P9-14",
+   "persona": "P9",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 10,
+   "surfaces_checked": 79,
+   "violations": 0
+  },
+  {
+   "id": "P9-15",
+   "persona": "P9",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 116,
+   "violations": 0
+  },
+  {
+   "id": "P9-16",
+   "persona": "P9",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 116,
+   "violations": 0
+  },
+  {
+   "id": "P9-17",
+   "persona": "P9",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 116,
+   "violations": 0
+  },
+  {
+   "id": "P9-18",
+   "persona": "P9",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 10,
+   "surfaces_checked": 89,
+   "violations": 0
+  },
+  {
+   "id": "P9-19",
+   "persona": "P9",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 107,
+   "violations": 0
+  },
+  {
+   "id": "P9-20",
+   "persona": "P9",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 11,
+   "surfaces_checked": 87,
+   "violations": 0
+  },
+  {
+   "id": "P10-01",
+   "persona": "P10",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 128,
+   "violations": 0
+  },
+  {
+   "id": "P10-02",
+   "persona": "P10",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 128,
+   "violations": 0
+  },
+  {
+   "id": "P10-03",
+   "persona": "P10",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 7,
+   "surfaces_checked": 70,
+   "violations": 0
+  },
+  {
+   "id": "P10-04",
+   "persona": "P10",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 7,
+   "surfaces_checked": 80,
+   "violations": 0
+  },
+  {
+   "id": "P10-05",
+   "persona": "P10",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 15,
+   "surfaces_checked": 129,
+   "violations": 0
+  },
+  {
+   "id": "P10-06",
+   "persona": "P10",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 128,
+   "violations": 0
+  },
+  {
+   "id": "P10-07",
+   "persona": "P10",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 19,
+   "surfaces_checked": 165,
+   "violations": 0
+  },
+  {
+   "id": "P10-08",
+   "persona": "P10",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 119,
+   "violations": 0
+  },
+  {
+   "id": "P10-09",
+   "persona": "P10",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 106,
+   "violations": 0
+  },
+  {
+   "id": "P10-10",
+   "persona": "P10",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 11,
+   "surfaces_checked": 96,
+   "violations": 0
+  },
+  {
+   "id": "P10-11",
+   "persona": "P10",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 93,
+   "violations": 0
+  },
+  {
+   "id": "P10-12",
+   "persona": "P10",
+   "kind": "ingredients",
+   "statuses": [
+    200
+   ],
+   "templates": [
+    "MSG-TXT-DRAFT"
+   ],
+   "cart_lines": 5,
+   "surfaces_checked": 24,
+   "violations": 0
+  },
+  {
+   "id": "P10-13",
+   "persona": "P10",
+   "kind": "ingredients",
+   "statuses": [
+    200
+   ],
+   "templates": [
+    "MSG-TXT-DRAFT"
+   ],
+   "cart_lines": 5,
+   "surfaces_checked": 36,
+   "violations": 0
+  },
+  {
+   "id": "P10-14",
+   "persona": "P10",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 8,
+   "surfaces_checked": 71,
+   "violations": 0
+  },
+  {
+   "id": "P10-15",
+   "persona": "P10",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 16,
+   "surfaces_checked": 120,
+   "violations": 0
+  },
+  {
+   "id": "P10-16",
+   "persona": "P10",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 16,
+   "surfaces_checked": 120,
+   "violations": 0
+  },
+  {
+   "id": "P10-17",
+   "persona": "P10",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 16,
+   "surfaces_checked": 120,
+   "violations": 0
+  },
+  {
+   "id": "P10-18",
+   "persona": "P10",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 8,
+   "surfaces_checked": 67,
+   "violations": 0
+  },
+  {
+   "id": "P10-19",
+   "persona": "P10",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 8,
+   "surfaces_checked": 79,
+   "violations": 0
+  },
+  {
+   "id": "P10-20",
+   "persona": "P10",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 11,
+   "surfaces_checked": 86,
+   "violations": 0
+  },
+  {
+   "id": "P11-01",
+   "persona": "P11",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 19,
+   "surfaces_checked": 171,
+   "violations": 0
+  },
+  {
+   "id": "P11-02",
+   "persona": "P11",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 19,
+   "surfaces_checked": 171,
+   "violations": 0
+  },
+  {
+   "id": "P11-03",
+   "persona": "P11",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 18,
+   "surfaces_checked": 162,
+   "violations": 0
+  },
+  {
+   "id": "P11-04",
+   "persona": "P11",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 7,
+   "surfaces_checked": 80,
+   "violations": 0
+  },
+  {
+   "id": "P11-05",
+   "persona": "P11",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 17,
+   "surfaces_checked": 147,
+   "violations": 0
+  },
+  {
+   "id": "P11-06",
+   "persona": "P11",
+   "kind": "mood",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 18,
+   "surfaces_checked": 162,
+   "violations": 0
+  },
+  {
+   "id": "P11-07",
+   "persona": "P11",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 19,
+   "surfaces_checked": 166,
+   "violations": 0
+  },
+  {
+   "id": "P11-08",
+   "persona": "P11",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 19,
+   "surfaces_checked": 159,
+   "violations": 0
+  },
+  {
+   "id": "P11-09",
+   "persona": "P11",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 13,
+   "surfaces_checked": 112,
+   "violations": 0
+  },
+  {
+   "id": "P11-10",
+   "persona": "P11",
+   "kind": "named",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-STORED",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 16,
+   "surfaces_checked": 133,
+   "violations": 0
+  },
+  {
+   "id": "P11-11",
+   "persona": "P11",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 95,
+   "violations": 0
+  },
+  {
+   "id": "P11-12",
+   "persona": "P11",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 11,
+   "surfaces_checked": 77,
+   "violations": 0
+  },
+  {
+   "id": "P11-13",
+   "persona": "P11",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 12,
+   "surfaces_checked": 97,
+   "violations": 0
+  },
+  {
+   "id": "P11-14",
+   "persona": "P11",
+   "kind": "ingredients",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 10,
+   "surfaces_checked": 79,
+   "violations": 0
+  },
+  {
+   "id": "P11-15",
+   "persona": "P11",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 16,
+   "surfaces_checked": 122,
+   "violations": 0
+  },
+  {
+   "id": "P11-16",
+   "persona": "P11",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 16,
+   "surfaces_checked": 122,
+   "violations": 0
+  },
+  {
+   "id": "P11-17",
+   "persona": "P11",
+   "kind": "transcript",
+   "statuses": [
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 16,
+   "surfaces_checked": 122,
+   "violations": 0
+  },
+  {
+   "id": "P11-18",
+   "persona": "P11",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 15,
+   "surfaces_checked": 125,
+   "violations": 0
+  },
+  {
+   "id": "P11-19",
+   "persona": "P11",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 15,
+   "surfaces_checked": 125,
+   "violations": 0
+  },
+  {
+   "id": "P11-20",
+   "persona": "P11",
+   "kind": "photo",
+   "statuses": [
+    200,
+    200,
+    200
+   ],
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON",
+    "MSG-EDIT-OK"
+   ],
+   "cart_lines": 15,
+   "surfaces_checked": 119,
+   "violations": 0
+  }
+ ],
+ "status": "PASS",
+ "notes": "POST-HOC rerun: C68: catalogue fixed by rule (V15 to V17) and Jain excludes fungi; datasets, harnesses and thresholds unchanged; first result kept in eval/results/. independent checker; zero tolerance; photo prompts use the labelled samples (C52)"
+}

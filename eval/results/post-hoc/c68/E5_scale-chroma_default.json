@@ -1,0 +1,48 @@
+{
+ "id": "E5_scale",
+ "system": "chroma_default",
+ "dataset": {
+  "name": "retrieval_v1.jsonl",
+  "sha256": "fb5f9a1ee875dea17316cf1b0bcf02a012c7e2490be06311c289a4efdf5a671c",
+  "split": "test"
+ },
+ "environment": {
+  "commit": "a9cb089",
+  "dirty": false,
+  "date": "2026-10-18T18:16:07+00:00",
+  "python": "3.12.15",
+  "machine": "arm64",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "packages": {
+   "chromadb": "1.5.9",
+   "rank-bm25": "0.2.2",
+   "pydantic": "2.14.1",
+   "httpx": "0.28.1",
+   "fastapi": "0.143.3"
+  }
+ },
+ "metrics": {
+  "1000": {
+   "variants": 1027,
+   "embedder": "chroma_default:all-MiniLM-L6-v2",
+   "index_rebuilt": true,
+   "index_ready_s": 12.8,
+   "peak_rss_mb": 1129.5,
+   "query_ms_median": 20.2,
+   "query_ms_p95": 21.3
+  },
+  "5000": {
+   "variants": 5135,
+   "embedder": "chroma_default:all-MiniLM-L6-v2",
+   "index_rebuilt": true,
+   "index_ready_s": 58.0,
+   "peak_rss_mb": 1797.3,
+   "query_ms_median": 15.9,
+   "query_ms_p95": 22.3
+  }
+ },
+ "critical_failures": [],
+ "per_example": [],
+ "status": "PASS",
+ "notes": "POST-HOC rerun: C68: catalogue fixed by rule (V15 to V17) and Jain excludes fungi; datasets, harnesses and thresholds unchanged; first results kept in eval/results/; latency is reported, not gated (targets come from E11)"
+}

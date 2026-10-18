@@ -3,18 +3,19 @@
 # Comparison arms (losing candidates, rules-only, single-arm add-on systems), contaminated re-scores
 # (guard_v1, guard_v2 after C54 and C55) and E12-variant-sweep-harness-error.json are reported, not gated.
 # `accepted`: the Resolved conflict recording the owner's acceptance of a FAIL as a known limitation (C58).
+# C68 (2026-10-18): E5, E6, E7, E8, E9, E12, E13 point to the post-hoc reruns after the catalogue fix; statuses unchanged.
 # E14 itself is not listed (it cannot be its own evidence).
 E1:  {files: [post-hoc/E1-llama3.2_3b.json], note: "llama3.2:3b at 4k, owner-approved post-hoc rerun"}
 E2:  {files: [post-hoc/c54/E2-intent-llama3.2_3b.json], accepted: C55}
 E3:  {files: [E3-ollama_qwen3-vl_4b-instruct.json], accepted: C37,
       not_run_by_owner: {E3-ollama_qwen3-vl_8b-instruct.json: "owner decision 2026-10-18 (block 1.5)"}}
 E4:  {files: ["post-hoc/c55/E4-rules+llama-guard3_1b-adr006v3-guard_v3.json"], accepted: C56}
-E5:  {files: [E5-hybrid_k60-chroma_default_all-MiniLM-L6-v2.json, E5_addons-2_1.json]}
-E6:  {files: [post-hoc/c53/E6-lever-sensitivity-test.json], accepted: C57}
-E7:  {files: [post-hoc/c55/E7-persona-compliance-adversarial.json, post-hoc/c55/E7-persona-compliance-real.json]}
-E8:  {files: [post-hoc/c53/E8-api-integrity.json]}
-E9:  {files: [post-hoc/c55/E9-intent-to-cart-real.json]}
+E5:  {files: [post-hoc/c68/E5-hybrid_k60-chroma_default_all-MiniLM-L6-v2.json, post-hoc/c68/E5_addons-2_1.json]}
+E6:  {files: [post-hoc/c68/E6-lever-sensitivity-test.json], accepted: C57}
+E7:  {files: [post-hoc/c68/E7-persona-compliance-adversarial.json, post-hoc/c68/E7-persona-compliance-real.json]}
+E8:  {files: [post-hoc/c68/E8-api-integrity.json]}
+E9:  {files: [post-hoc/c68/E9-intent-to-cart-real.json]}
 E10: {files: [E10-resilience-real-stack.json]}
 E11: {files: [E11-latency-real-stack.json]}
-E12: {files: [post-hoc/c53/E12-variant-sweep.json]}
-E13: {files: [post-hoc/c54/E13-reason-line-llama3.2_3b.json]}
+E12: {files: [post-hoc/c68/E12-variant-sweep.json]}
+E13: {files: [post-hoc/c68/E13-reason-line-llama3.2_3b.json]}

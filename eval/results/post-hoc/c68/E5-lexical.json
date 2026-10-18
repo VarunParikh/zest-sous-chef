@@ -1,0 +1,530 @@
+{
+ "id": "E5",
+ "system": "lexical",
+ "dataset": {
+  "name": "retrieval_v1.jsonl",
+  "sha256": "fb5f9a1ee875dea17316cf1b0bcf02a012c7e2490be06311c289a4efdf5a671c",
+  "split": "test"
+ },
+ "environment": {
+  "commit": "a9cb089",
+  "dirty": false,
+  "date": "2026-10-18T18:14:53+00:00",
+  "python": "3.12.15",
+  "machine": "arm64",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "packages": {
+   "chromadb": "1.5.9",
+   "rank-bm25": "0.2.2",
+   "pydantic": "2.14.1",
+   "httpx": "0.28.1",
+   "fastapi": "0.143.3"
+  },
+  "peak_rss_mb": 59.9
+ },
+ "metrics": {
+  "overall": {
+   "recall_at_5": {
+    "k": 27,
+    "n": 30,
+    "rate": 0.9,
+    "ci95": [
+     0.7437891726682571,
+     0.9654001115225814
+    ]
+   },
+   "recall_at_pool": {
+    "k": 28,
+    "n": 30,
+    "rate": 0.9333333333333333,
+    "ci95": [
+     0.7867654148312584,
+     0.9815229763754831
+    ]
+   },
+   "mrr": 0.9024,
+   "latency_ms_median": 0.1
+  },
+  "mood": {
+   "recall_at_5": {
+    "k": 4,
+    "n": 7,
+    "rate": 0.5714285714285714,
+    "ci95": [
+     0.25045836275303557,
+     0.8417801460075546
+    ]
+   },
+   "recall_at_pool": {
+    "k": 5,
+    "n": 7,
+    "rate": 0.7142857142857143,
+    "ci95": [
+     0.3589344495310541,
+     0.9177810767507166
+    ]
+   },
+   "mrr": 0.5816,
+   "latency_ms_median": 0.1
+  },
+  "ingredient": {
+   "recall_at_5": {
+    "k": 10,
+    "n": 10,
+    "rate": 1.0,
+    "ci95": [
+     0.7224671969739421,
+     0.9999999999999999
+    ]
+   },
+   "recall_at_pool": {
+    "k": 10,
+    "n": 10,
+    "rate": 1.0,
+    "ci95": [
+     0.7224671969739421,
+     0.9999999999999999
+    ]
+   },
+   "mrr": 1.0,
+   "latency_ms_median": 0.1
+  },
+  "regional": {
+   "recall_at_5": {
+    "k": 8,
+    "n": 8,
+    "rate": 1.0,
+    "ci95": [
+     0.6755924316585924,
+     1.0
+    ]
+   },
+   "recall_at_pool": {
+    "k": 8,
+    "n": 8,
+    "rate": 1.0,
+    "ci95": [
+     0.6755924316585924,
+     1.0
+    ]
+   },
+   "mrr": 1.0,
+   "latency_ms_median": 0.1
+  },
+  "variant": {
+   "recall_at_5": {
+    "k": 5,
+    "n": 5,
+    "rate": 1.0,
+    "ci95": [
+     0.5655175313406071,
+     1.0
+    ]
+   },
+   "recall_at_pool": {
+    "k": 5,
+    "n": 5,
+    "rate": 1.0,
+    "ci95": [
+     0.5655175313406071,
+     1.0
+    ]
+   },
+   "mrr": 1.0,
+   "latency_ms_median": 0.2
+  }
+ },
+ "critical_failures": [],
+ "per_example": [
+  {
+   "query_id": "M02",
+   "kind": "mood",
+   "top": [],
+   "hit_at_5": 0.0,
+   "hit_at_pool": 0.0,
+   "rr": 0.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "M04",
+   "kind": "mood",
+   "top": [
+    "D118",
+    "D41",
+    "D76",
+    "D40",
+    "D71"
+   ],
+   "hit_at_5": 0.0,
+   "hit_at_pool": 1.0,
+   "rr": 0.07142857142857142,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "M06",
+   "kind": "mood",
+   "top": [
+    "D08",
+    "D113",
+    "D86",
+    "D107",
+    "D16"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "M08",
+   "kind": "mood",
+   "top": [
+    "D97"
+   ],
+   "hit_at_5": 0.0,
+   "hit_at_pool": 0.0,
+   "rr": 0.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "M10",
+   "kind": "mood",
+   "top": [
+    "D23",
+    "D13",
+    "D12",
+    "D31",
+    "D10"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "M12",
+   "kind": "mood",
+   "top": [
+    "D78",
+    "D57",
+    "D100",
+    "D119",
+    "D96"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "M14",
+   "kind": "mood",
+   "top": [
+    "D43",
+    "D89",
+    "D19",
+    "D110",
+    "D18"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "I01",
+   "kind": "ingredient",
+   "top": [
+    "term:coriander leaves",
+    "term:coriander powder",
+    "term:fenugreek leaves",
+    "term:lettuce",
+    "term:amaranth"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "I03",
+   "kind": "ingredient",
+   "top": [
+    "term:paneer"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "I05",
+   "kind": "ingredient",
+   "top": [
+    "term:basmati rice",
+    "term:arborio rice",
+    "term:sushi rice",
+    "term:brown rice",
+    "term:rice"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "I07",
+   "kind": "ingredient",
+   "top": [
+    "term:mustard seeds",
+    "term:mustard greens",
+    "term:pumpkin seeds",
+    "term:mustard oil",
+    "term:carom seeds"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "I09",
+   "kind": "ingredient",
+   "top": [
+    "term:green chilli",
+    "term:chilli flakes",
+    "term:green peas",
+    "term:red chilli powder"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "I11",
+   "kind": "ingredient",
+   "top": [
+    "term:curd"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "I13",
+   "kind": "ingredient",
+   "top": [
+    "term:capsicum",
+    "term:black pepper"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "I15",
+   "kind": "ingredient",
+   "top": [
+    "term:chickpeas"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "I17",
+   "kind": "ingredient",
+   "top": [
+    "term:ghee",
+    "term:butter"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "I19",
+   "kind": "ingredient",
+   "top": [
+    "term:mosambi",
+    "term:sweet potato",
+    "term:corn"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "R01",
+   "kind": "regional",
+   "top": [
+    "term:coriander leaves"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "R03",
+   "kind": "regional",
+   "top": [
+    "term:potato"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "R05",
+   "kind": "regional",
+   "top": [
+    "term:fenugreek leaves",
+    "term:fenugreek seeds"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "R07",
+   "kind": "regional",
+   "top": [
+    "term:turmeric"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "R09",
+   "kind": "regional",
+   "top": [
+    "term:okra"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "R11",
+   "kind": "regional",
+   "top": [
+    "term:refined flour"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "R13",
+   "kind": "regional",
+   "top": [
+    "term:kidney beans"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "R15",
+   "kind": "regional",
+   "top": [
+    "term:garlic"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.1
+  },
+  {
+   "query_id": "V01",
+   "kind": "variant",
+   "top": [
+    "b051-8bf6581e",
+    "b064-201e558d",
+    "b270-84d3626b",
+    "b063-7b5814eb",
+    "b065-9fdb0732"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 7.6
+  },
+  {
+   "query_id": "V03",
+   "kind": "variant",
+   "top": [
+    "b069-3fb5198e",
+    "b062-9f88bdc5",
+    "b137-1a08a9a6",
+    "b079-d1250814",
+    "b078-e4595306"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.2
+  },
+  {
+   "query_id": "V05",
+   "kind": "variant",
+   "top": [
+    "b056-7d3cfb92",
+    "b051-ba3baa31",
+    "b269-96998f05",
+    "b266-fb35c115",
+    "b266-2bdfd9c8"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.2
+  },
+  {
+   "query_id": "V07",
+   "kind": "variant",
+   "top": [
+    "b131-a17a897a",
+    "b131-ab4ab0e3",
+    "b131-65aaee2f",
+    "b131-ef8f75d1",
+    "b314-3b05ede4"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.3
+  },
+  {
+   "query_id": "V09",
+   "kind": "variant",
+   "top": [
+    "b105-f827b878",
+    "b115-1e92b153",
+    "b105-0e04cfc6",
+    "b105-31c21862",
+    "b125-563349d3"
+   ],
+   "hit_at_5": 1.0,
+   "hit_at_pool": 1.0,
+   "rr": 1.0,
+   "latency_ms": 0.2
+  }
+ ],
+ "status": "PASS",
+ "notes": "POST-HOC rerun: C68: catalogue fixed by rule (V15 to V17) and Jain excludes fungi; datasets, harnesses and thresholds unchanged; first results kept in eval/results/"
+}

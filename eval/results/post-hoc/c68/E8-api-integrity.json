@@ -1,0 +1,2355 @@
+{
+ "id": "E8",
+ "system": "api-integrity",
+ "dataset": {
+  "name": "integrity_v1.json",
+  "sha256": "8cba655512f4172c6d9edd813183c02de8e52d857b2074c5e640b1e30d2fa3d8",
+  "split": "all"
+ },
+ "environment": {
+  "commit": "a9cb089",
+  "dirty": false,
+  "date": "2026-10-18T17:59:07+00:00",
+  "python": "3.12.15",
+  "machine": "arm64",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "packages": {
+   "chromadb": "1.5.9",
+   "rank-bm25": "0.2.2",
+   "pydantic": "2.14.1",
+   "httpx": "0.28.1",
+   "fastapi": "0.143.3"
+  }
+ },
+ "metrics": {
+  "carts": 200,
+  "mismatches": 0,
+  "checks": {
+   "cart_views": 1102,
+   "pack_groups": 6120,
+   "addon_prices": 404,
+   "orders": 68,
+   "packs_not_rederivable": 234
+  },
+  "actions": {
+   "mood_add": 257,
+   "checkout": 78,
+   "swap_variant": 72,
+   "addon_add": 66,
+   "named_add": 249,
+   "undo": 85,
+   "substitute": 65,
+   "remove_dish": 66,
+   "swap_dish": 55,
+   "remove_line": 58,
+   "quantity": 51
+  }
+ },
+ "critical_failures": [],
+ "per_example": [
+  {
+   "id": "cart000",
+   "actions": [
+    "mood_add",
+    "checkout",
+    "mood_add",
+    "mood_add",
+    "swap_variant"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart001",
+   "actions": [
+    "mood_add",
+    "addon_add",
+    "named_add",
+    "undo",
+    "swap_variant",
+    "undo",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart002",
+   "actions": [
+    "named_add",
+    "named_add",
+    "addon_add",
+    "named_add",
+    "undo",
+    "mood_add",
+    "checkout",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart003",
+   "actions": [
+    "mood_add",
+    "substitute",
+    "substitute",
+    "checkout",
+    "remove_dish",
+    "mood_add",
+    "swap_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart004",
+   "actions": [
+    "mood_add",
+    "checkout",
+    "mood_add",
+    "remove_dish",
+    "mood_add",
+    "remove_line",
+    "substitute",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart005",
+   "actions": [
+    "mood_add",
+    "checkout",
+    "mood_add",
+    "swap_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart006",
+   "actions": [
+    "named_add",
+    "undo",
+    "named_add",
+    "quantity",
+    "remove_dish",
+    "addon_add",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart007",
+   "actions": [
+    "mood_add",
+    "addon_add",
+    "remove_line",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart008",
+   "actions": [
+    "named_add",
+    "checkout",
+    "mood_add",
+    "named_add",
+    "quantity",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart009",
+   "actions": [
+    "mood_add",
+    "swap_dish",
+    "undo",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart010",
+   "actions": [
+    "named_add",
+    "named_add",
+    "named_add",
+    "mood_add",
+    "swap_dish",
+    "undo",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart011",
+   "actions": [
+    "named_add",
+    "substitute",
+    "quantity",
+    "undo",
+    "named_add",
+    "mood_add",
+    "swap_variant",
+    "swap_variant"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart012",
+   "actions": [
+    "mood_add",
+    "addon_add",
+    "undo",
+    "mood_add",
+    "swap_dish",
+    "mood_add",
+    "swap_variant"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart013",
+   "actions": [
+    "named_add",
+    "mood_add",
+    "quantity",
+    "checkout",
+    "named_add",
+    "mood_add",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart014",
+   "actions": [
+    "named_add",
+    "addon_add",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart015",
+   "actions": [
+    "mood_add",
+    "checkout",
+    "addon_add",
+    "mood_add",
+    "remove_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart016",
+   "actions": [
+    "mood_add",
+    "swap_variant",
+    "swap_variant",
+    "addon_add",
+    "quantity",
+    "substitute",
+    "quantity",
+    "undo"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart017",
+   "actions": [
+    "mood_add",
+    "substitute",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart018",
+   "actions": [
+    "mood_add",
+    "substitute",
+    "swap_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart019",
+   "actions": [
+    "mood_add",
+    "checkout",
+    "swap_dish",
+    "named_add",
+    "mood_add",
+    "swap_variant",
+    "swap_variant",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart020",
+   "actions": [
+    "named_add",
+    "named_add",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart021",
+   "actions": [
+    "named_add",
+    "addon_add",
+    "swap_variant",
+    "substitute",
+    "quantity",
+    "swap_variant",
+    "undo"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart022",
+   "actions": [
+    "mood_add",
+    "remove_dish",
+    "named_add",
+    "undo",
+    "mood_add",
+    "substitute",
+    "remove_line"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart023",
+   "actions": [
+    "mood_add",
+    "remove_dish",
+    "swap_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart024",
+   "actions": [
+    "named_add",
+    "substitute",
+    "quantity",
+    "swap_variant",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart025",
+   "actions": [
+    "mood_add",
+    "remove_line",
+    "checkout",
+    "addon_add",
+    "named_add",
+    "mood_add",
+    "mood_add",
+    "quantity"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart026",
+   "actions": [
+    "named_add",
+    "named_add",
+    "quantity",
+    "addon_add",
+    "undo",
+    "swap_variant",
+    "undo"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart027",
+   "actions": [
+    "named_add",
+    "remove_line",
+    "swap_variant",
+    "addon_add",
+    "swap_variant",
+    "quantity"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart028",
+   "actions": [
+    "mood_add",
+    "named_add",
+    "remove_line"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart029",
+   "actions": [
+    "mood_add",
+    "undo",
+    "named_add",
+    "remove_line",
+    "addon_add",
+    "checkout",
+    "mood_add",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart030",
+   "actions": [
+    "mood_add",
+    "substitute",
+    "substitute",
+    "remove_line"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart031",
+   "actions": [
+    "mood_add",
+    "swap_dish",
+    "swap_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart032",
+   "actions": [
+    "named_add",
+    "mood_add",
+    "undo",
+    "named_add",
+    "named_add",
+    "named_add",
+    "addon_add",
+    "swap_variant"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart033",
+   "actions": [
+    "named_add",
+    "swap_variant",
+    "swap_variant",
+    "substitute"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart034",
+   "actions": [
+    "named_add",
+    "mood_add",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart035",
+   "actions": [
+    "named_add",
+    "named_add",
+    "named_add",
+    "remove_line",
+    "swap_variant",
+    "checkout",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart036",
+   "actions": [
+    "named_add",
+    "addon_add",
+    "remove_line",
+    "substitute",
+    "quantity",
+    "remove_dish",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart037",
+   "actions": [
+    "mood_add",
+    "swap_variant",
+    "remove_line",
+    "remove_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart038",
+   "actions": [
+    "mood_add",
+    "undo",
+    "mood_add",
+    "named_add",
+    "checkout",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart039",
+   "actions": [
+    "named_add",
+    "remove_line",
+    "swap_variant",
+    "named_add",
+    "named_add",
+    "remove_line"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart040",
+   "actions": [
+    "named_add",
+    "swap_variant",
+    "addon_add",
+    "quantity",
+    "substitute",
+    "swap_variant"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart041",
+   "actions": [
+    "mood_add",
+    "swap_dish",
+    "remove_line"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart042",
+   "actions": [
+    "mood_add",
+    "substitute",
+    "mood_add",
+    "checkout",
+    "swap_dish",
+    "undo",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart043",
+   "actions": [
+    "named_add",
+    "remove_dish",
+    "addon_add",
+    "undo"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart044",
+   "actions": [
+    "named_add",
+    "mood_add",
+    "substitute"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart045",
+   "actions": [
+    "named_add",
+    "named_add",
+    "named_add",
+    "named_add",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart046",
+   "actions": [
+    "mood_add",
+    "undo",
+    "named_add",
+    "named_add",
+    "checkout",
+    "addon_add",
+    "named_add",
+    "substitute"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart047",
+   "actions": [
+    "mood_add",
+    "named_add",
+    "remove_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart048",
+   "actions": [
+    "named_add",
+    "remove_line",
+    "substitute",
+    "remove_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart049",
+   "actions": [
+    "mood_add",
+    "named_add",
+    "quantity",
+    "named_add",
+    "addon_add",
+    "checkout",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart050",
+   "actions": [
+    "mood_add",
+    "quantity",
+    "substitute",
+    "quantity"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart051",
+   "actions": [
+    "mood_add",
+    "undo",
+    "named_add",
+    "addon_add",
+    "checkout",
+    "named_add",
+    "checkout"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart052",
+   "actions": [
+    "named_add",
+    "mood_add",
+    "substitute",
+    "quantity",
+    "swap_variant",
+    "checkout",
+    "remove_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart053",
+   "actions": [
+    "mood_add",
+    "swap_variant",
+    "remove_dish",
+    "named_add",
+    "mood_add",
+    "substitute"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart054",
+   "actions": [
+    "named_add",
+    "substitute",
+    "undo",
+    "mood_add",
+    "mood_add",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart055",
+   "actions": [
+    "named_add",
+    "checkout",
+    "named_add",
+    "quantity",
+    "checkout",
+    "named_add",
+    "remove_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart056",
+   "actions": [
+    "named_add",
+    "swap_variant",
+    "undo",
+    "named_add",
+    "named_add",
+    "swap_variant",
+    "remove_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart057",
+   "actions": [
+    "named_add",
+    "named_add",
+    "mood_add",
+    "addon_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart058",
+   "actions": [
+    "mood_add",
+    "undo",
+    "mood_add",
+    "checkout",
+    "addon_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart059",
+   "actions": [
+    "mood_add",
+    "addon_add",
+    "mood_add",
+    "remove_dish",
+    "undo",
+    "substitute"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart060",
+   "actions": [
+    "named_add",
+    "checkout",
+    "named_add",
+    "mood_add",
+    "mood_add",
+    "checkout",
+    "swap_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart061",
+   "actions": [
+    "named_add",
+    "remove_line",
+    "checkout"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart062",
+   "actions": [
+    "named_add",
+    "mood_add",
+    "remove_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart063",
+   "actions": [
+    "named_add",
+    "checkout",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart064",
+   "actions": [
+    "mood_add",
+    "remove_dish",
+    "swap_dish",
+    "swap_dish",
+    "undo"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart065",
+   "actions": [
+    "mood_add",
+    "remove_dish",
+    "undo",
+    "named_add",
+    "addon_add",
+    "remove_dish",
+    "remove_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart066",
+   "actions": [
+    "named_add",
+    "mood_add",
+    "quantity",
+    "named_add",
+    "remove_dish",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart067",
+   "actions": [
+    "named_add",
+    "checkout",
+    "addon_add",
+    "mood_add",
+    "mood_add",
+    "checkout"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart068",
+   "actions": [
+    "named_add",
+    "named_add",
+    "addon_add",
+    "substitute",
+    "undo",
+    "remove_line",
+    "named_add",
+    "swap_variant"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart069",
+   "actions": [
+    "mood_add",
+    "swap_variant",
+    "substitute",
+    "addon_add",
+    "mood_add",
+    "checkout"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart070",
+   "actions": [
+    "named_add",
+    "named_add",
+    "quantity",
+    "remove_line",
+    "addon_add",
+    "remove_line",
+    "undo"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart071",
+   "actions": [
+    "mood_add",
+    "remove_line",
+    "remove_dish",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart072",
+   "actions": [
+    "mood_add",
+    "mood_add",
+    "swap_variant",
+    "addon_add",
+    "swap_variant",
+    "mood_add",
+    "swap_variant"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart073",
+   "actions": [
+    "named_add",
+    "mood_add",
+    "remove_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart074",
+   "actions": [
+    "named_add",
+    "named_add",
+    "quantity",
+    "named_add",
+    "mood_add",
+    "remove_dish",
+    "checkout",
+    "undo"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart075",
+   "actions": [
+    "mood_add",
+    "swap_dish",
+    "undo",
+    "mood_add",
+    "checkout",
+    "named_add",
+    "remove_line",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart076",
+   "actions": [
+    "named_add",
+    "named_add",
+    "remove_dish",
+    "undo",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart077",
+   "actions": [
+    "named_add",
+    "swap_variant",
+    "quantity",
+    "addon_add",
+    "quantity",
+    "remove_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart078",
+   "actions": [
+    "mood_add",
+    "quantity",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart079",
+   "actions": [
+    "named_add",
+    "swap_variant",
+    "remove_line",
+    "checkout"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart080",
+   "actions": [
+    "named_add",
+    "remove_line",
+    "undo",
+    "named_add",
+    "swap_variant"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart081",
+   "actions": [
+    "mood_add",
+    "remove_dish",
+    "undo",
+    "named_add",
+    "remove_line",
+    "remove_dish",
+    "undo",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart082",
+   "actions": [
+    "mood_add",
+    "swap_variant",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart083",
+   "actions": [
+    "mood_add",
+    "addon_add",
+    "remove_line",
+    "remove_dish",
+    "undo"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart084",
+   "actions": [
+    "mood_add",
+    "undo",
+    "mood_add",
+    "swap_dish",
+    "checkout",
+    "swap_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart085",
+   "actions": [
+    "named_add",
+    "checkout",
+    "addon_add",
+    "mood_add",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart086",
+   "actions": [
+    "named_add",
+    "named_add",
+    "remove_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart087",
+   "actions": [
+    "mood_add",
+    "quantity",
+    "mood_add",
+    "remove_dish",
+    "undo",
+    "swap_variant"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart088",
+   "actions": [
+    "mood_add",
+    "substitute",
+    "named_add",
+    "quantity"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart089",
+   "actions": [
+    "mood_add",
+    "mood_add",
+    "remove_dish",
+    "swap_variant",
+    "remove_line",
+    "quantity"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart090",
+   "actions": [
+    "mood_add",
+    "mood_add",
+    "checkout",
+    "swap_dish",
+    "swap_dish",
+    "mood_add",
+    "swap_dish",
+    "remove_line"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart091",
+   "actions": [
+    "mood_add",
+    "remove_dish",
+    "undo"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart092",
+   "actions": [
+    "mood_add",
+    "substitute",
+    "remove_line",
+    "swap_variant"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart093",
+   "actions": [
+    "named_add",
+    "checkout",
+    "mood_add",
+    "swap_variant",
+    "substitute",
+    "addon_add",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart094",
+   "actions": [
+    "mood_add",
+    "undo",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart095",
+   "actions": [
+    "mood_add",
+    "checkout",
+    "addon_add",
+    "mood_add",
+    "swap_variant",
+    "undo",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart096",
+   "actions": [
+    "mood_add",
+    "named_add",
+    "undo"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart097",
+   "actions": [
+    "mood_add",
+    "checkout",
+    "swap_dish",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart098",
+   "actions": [
+    "named_add",
+    "addon_add",
+    "swap_variant",
+    "checkout",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart099",
+   "actions": [
+    "mood_add",
+    "substitute",
+    "undo",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart100",
+   "actions": [
+    "named_add",
+    "substitute",
+    "remove_dish",
+    "mood_add",
+    "remove_line"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart101",
+   "actions": [
+    "named_add",
+    "substitute",
+    "remove_line",
+    "quantity",
+    "mood_add",
+    "addon_add",
+    "named_add",
+    "swap_variant"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart102",
+   "actions": [
+    "mood_add",
+    "mood_add",
+    "remove_dish",
+    "checkout",
+    "swap_dish",
+    "addon_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart103",
+   "actions": [
+    "named_add",
+    "named_add",
+    "named_add",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart104",
+   "actions": [
+    "named_add",
+    "mood_add",
+    "swap_variant",
+    "named_add",
+    "named_add",
+    "named_add",
+    "checkout"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart105",
+   "actions": [
+    "mood_add",
+    "remove_dish",
+    "swap_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart106",
+   "actions": [
+    "named_add",
+    "checkout",
+    "mood_add",
+    "substitute"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart107",
+   "actions": [
+    "named_add",
+    "checkout",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart108",
+   "actions": [
+    "named_add",
+    "substitute",
+    "addon_add",
+    "swap_variant",
+    "checkout",
+    "swap_variant",
+    "substitute",
+    "remove_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart109",
+   "actions": [
+    "named_add",
+    "mood_add",
+    "swap_dish",
+    "remove_dish",
+    "mood_add",
+    "undo",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart110",
+   "actions": [
+    "named_add",
+    "mood_add",
+    "swap_dish",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart111",
+   "actions": [
+    "mood_add",
+    "remove_dish",
+    "addon_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart112",
+   "actions": [
+    "named_add",
+    "swap_variant",
+    "named_add",
+    "quantity",
+    "checkout"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart113",
+   "actions": [
+    "mood_add",
+    "substitute",
+    "swap_variant",
+    "substitute",
+    "swap_dish",
+    "substitute",
+    "swap_variant",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart114",
+   "actions": [
+    "mood_add",
+    "named_add",
+    "remove_line",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart115",
+   "actions": [
+    "mood_add",
+    "remove_line",
+    "swap_dish",
+    "remove_line",
+    "checkout",
+    "named_add",
+    "mood_add",
+    "addon_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart116",
+   "actions": [
+    "named_add",
+    "undo",
+    "mood_add",
+    "checkout",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart117",
+   "actions": [
+    "named_add",
+    "named_add",
+    "undo",
+    "named_add",
+    "mood_add",
+    "substitute",
+    "undo",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart118",
+   "actions": [
+    "mood_add",
+    "swap_dish",
+    "swap_variant",
+    "swap_variant",
+    "checkout",
+    "swap_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart119",
+   "actions": [
+    "mood_add",
+    "remove_dish",
+    "addon_add",
+    "remove_line",
+    "mood_add",
+    "remove_line",
+    "checkout"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart120",
+   "actions": [
+    "named_add",
+    "undo",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart121",
+   "actions": [
+    "named_add",
+    "swap_variant",
+    "mood_add",
+    "checkout",
+    "addon_add",
+    "mood_add",
+    "quantity"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart122",
+   "actions": [
+    "mood_add",
+    "swap_dish",
+    "checkout",
+    "swap_dish",
+    "mood_add",
+    "undo",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart123",
+   "actions": [
+    "mood_add",
+    "swap_variant",
+    "undo",
+    "named_add",
+    "named_add",
+    "substitute",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart124",
+   "actions": [
+    "named_add",
+    "mood_add",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart125",
+   "actions": [
+    "named_add",
+    "remove_dish",
+    "mood_add",
+    "named_add",
+    "swap_variant",
+    "quantity",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart126",
+   "actions": [
+    "mood_add",
+    "addon_add",
+    "quantity",
+    "named_add",
+    "swap_variant",
+    "named_add",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart127",
+   "actions": [
+    "named_add",
+    "mood_add",
+    "substitute",
+    "swap_dish",
+    "remove_dish",
+    "quantity"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart128",
+   "actions": [
+    "named_add",
+    "checkout",
+    "addon_add",
+    "addon_add",
+    "addon_add",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart129",
+   "actions": [
+    "named_add",
+    "named_add",
+    "named_add",
+    "remove_dish",
+    "mood_add",
+    "swap_variant",
+    "mood_add",
+    "remove_line"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart130",
+   "actions": [
+    "named_add",
+    "substitute",
+    "checkout",
+    "addon_add",
+    "remove_line",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart131",
+   "actions": [
+    "mood_add",
+    "mood_add",
+    "swap_dish",
+    "swap_variant",
+    "remove_line",
+    "substitute"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart132",
+   "actions": [
+    "mood_add",
+    "swap_dish",
+    "remove_line"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart133",
+   "actions": [
+    "named_add",
+    "remove_dish",
+    "mood_add",
+    "substitute",
+    "swap_variant"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart134",
+   "actions": [
+    "mood_add",
+    "undo",
+    "mood_add",
+    "swap_dish",
+    "named_add",
+    "remove_dish",
+    "undo"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart135",
+   "actions": [
+    "named_add",
+    "remove_line",
+    "remove_line",
+    "substitute"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart136",
+   "actions": [
+    "mood_add",
+    "remove_dish",
+    "mood_add",
+    "quantity",
+    "mood_add",
+    "checkout"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart137",
+   "actions": [
+    "named_add",
+    "named_add",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart138",
+   "actions": [
+    "mood_add",
+    "named_add",
+    "undo",
+    "quantity",
+    "remove_dish",
+    "mood_add",
+    "quantity",
+    "swap_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart139",
+   "actions": [
+    "named_add",
+    "quantity",
+    "substitute",
+    "named_add",
+    "quantity"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart140",
+   "actions": [
+    "mood_add",
+    "quantity",
+    "undo",
+    "mood_add",
+    "checkout",
+    "named_add",
+    "addon_add",
+    "undo"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart141",
+   "actions": [
+    "named_add",
+    "named_add",
+    "mood_add",
+    "remove_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart142",
+   "actions": [
+    "mood_add",
+    "substitute",
+    "swap_variant",
+    "named_add",
+    "quantity"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart143",
+   "actions": [
+    "mood_add",
+    "mood_add",
+    "checkout",
+    "named_add",
+    "substitute"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart144",
+   "actions": [
+    "named_add",
+    "checkout",
+    "named_add",
+    "named_add",
+    "undo",
+    "named_add",
+    "undo"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart145",
+   "actions": [
+    "mood_add",
+    "mood_add",
+    "checkout",
+    "mood_add",
+    "remove_line"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart146",
+   "actions": [
+    "mood_add",
+    "quantity",
+    "checkout",
+    "addon_add",
+    "addon_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart147",
+   "actions": [
+    "named_add",
+    "mood_add",
+    "addon_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart148",
+   "actions": [
+    "named_add",
+    "mood_add",
+    "swap_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart149",
+   "actions": [
+    "mood_add",
+    "addon_add",
+    "mood_add",
+    "swap_variant",
+    "remove_dish",
+    "checkout",
+    "mood_add",
+    "swap_variant"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart150",
+   "actions": [
+    "named_add",
+    "mood_add",
+    "checkout",
+    "named_add",
+    "named_add",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart151",
+   "actions": [
+    "named_add",
+    "quantity",
+    "mood_add",
+    "swap_dish",
+    "swap_dish",
+    "undo",
+    "undo",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart152",
+   "actions": [
+    "named_add",
+    "mood_add",
+    "substitute",
+    "swap_variant",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart153",
+   "actions": [
+    "named_add",
+    "swap_variant",
+    "checkout"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart154",
+   "actions": [
+    "mood_add",
+    "remove_line",
+    "swap_variant"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart155",
+   "actions": [
+    "mood_add",
+    "checkout",
+    "swap_dish",
+    "swap_dish",
+    "addon_add",
+    "mood_add",
+    "undo",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart156",
+   "actions": [
+    "named_add",
+    "remove_line",
+    "undo",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart157",
+   "actions": [
+    "mood_add",
+    "addon_add",
+    "remove_line",
+    "quantity",
+    "undo",
+    "checkout",
+    "mood_add",
+    "remove_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart158",
+   "actions": [
+    "named_add",
+    "remove_dish",
+    "named_add",
+    "checkout",
+    "mood_add",
+    "substitute",
+    "swap_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart159",
+   "actions": [
+    "mood_add",
+    "named_add",
+    "named_add",
+    "undo",
+    "mood_add",
+    "swap_dish",
+    "swap_dish",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart160",
+   "actions": [
+    "mood_add",
+    "addon_add",
+    "remove_line",
+    "quantity"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart161",
+   "actions": [
+    "named_add",
+    "mood_add",
+    "swap_dish",
+    "undo",
+    "mood_add",
+    "checkout",
+    "swap_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart162",
+   "actions": [
+    "named_add",
+    "addon_add",
+    "named_add",
+    "quantity"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart163",
+   "actions": [
+    "mood_add",
+    "mood_add",
+    "undo",
+    "substitute",
+    "remove_dish",
+    "undo"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart164",
+   "actions": [
+    "mood_add",
+    "addon_add",
+    "undo",
+    "checkout",
+    "mood_add",
+    "remove_dish",
+    "mood_add",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart165",
+   "actions": [
+    "mood_add",
+    "remove_line",
+    "undo",
+    "named_add",
+    "named_add",
+    "undo"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart166",
+   "actions": [
+    "mood_add",
+    "mood_add",
+    "swap_dish",
+    "undo",
+    "named_add",
+    "remove_line"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart167",
+   "actions": [
+    "named_add",
+    "checkout",
+    "mood_add",
+    "substitute"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart168",
+   "actions": [
+    "named_add",
+    "mood_add",
+    "named_add",
+    "remove_dish",
+    "undo",
+    "named_add",
+    "mood_add",
+    "undo"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart169",
+   "actions": [
+    "named_add",
+    "addon_add",
+    "substitute",
+    "named_add",
+    "mood_add",
+    "substitute",
+    "swap_dish",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart170",
+   "actions": [
+    "named_add",
+    "mood_add",
+    "remove_dish",
+    "named_add",
+    "mood_add",
+    "remove_line",
+    "substitute"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart171",
+   "actions": [
+    "mood_add",
+    "addon_add",
+    "quantity",
+    "swap_variant",
+    "remove_dish",
+    "named_add",
+    "swap_variant"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart172",
+   "actions": [
+    "named_add",
+    "substitute",
+    "checkout"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart173",
+   "actions": [
+    "mood_add",
+    "swap_variant",
+    "undo"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart174",
+   "actions": [
+    "mood_add",
+    "remove_dish",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart175",
+   "actions": [
+    "named_add",
+    "quantity",
+    "substitute"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart176",
+   "actions": [
+    "named_add",
+    "mood_add",
+    "undo"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart177",
+   "actions": [
+    "named_add",
+    "remove_dish",
+    "mood_add",
+    "swap_dish",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart178",
+   "actions": [
+    "named_add",
+    "quantity",
+    "named_add",
+    "named_add",
+    "swap_variant",
+    "named_add",
+    "undo",
+    "substitute"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart179",
+   "actions": [
+    "mood_add",
+    "addon_add",
+    "remove_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart180",
+   "actions": [
+    "named_add",
+    "checkout",
+    "mood_add",
+    "undo",
+    "mood_add",
+    "checkout"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart181",
+   "actions": [
+    "named_add",
+    "remove_line",
+    "addon_add",
+    "undo",
+    "remove_line",
+    "substitute",
+    "remove_dish",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart182",
+   "actions": [
+    "named_add",
+    "substitute",
+    "undo",
+    "mood_add",
+    "substitute",
+    "undo"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart183",
+   "actions": [
+    "named_add",
+    "named_add",
+    "named_add",
+    "named_add",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart184",
+   "actions": [
+    "mood_add",
+    "remove_line",
+    "mood_add",
+    "mood_add",
+    "remove_line",
+    "swap_dish",
+    "checkout"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart185",
+   "actions": [
+    "mood_add",
+    "substitute",
+    "remove_dish",
+    "mood_add",
+    "swap_variant",
+    "named_add",
+    "addon_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart186",
+   "actions": [
+    "named_add",
+    "undo",
+    "named_add",
+    "checkout",
+    "mood_add",
+    "swap_variant",
+    "remove_line"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart187",
+   "actions": [
+    "mood_add",
+    "named_add",
+    "swap_variant",
+    "checkout",
+    "named_add",
+    "undo",
+    "named_add",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart188",
+   "actions": [
+    "mood_add",
+    "undo",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart189",
+   "actions": [
+    "mood_add",
+    "substitute",
+    "remove_dish",
+    "undo",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart190",
+   "actions": [
+    "mood_add",
+    "mood_add",
+    "undo",
+    "mood_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart191",
+   "actions": [
+    "named_add",
+    "substitute",
+    "named_add",
+    "checkout",
+    "remove_line",
+    "substitute"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart192",
+   "actions": [
+    "named_add",
+    "named_add",
+    "named_add"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart193",
+   "actions": [
+    "named_add",
+    "remove_line",
+    "remove_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart194",
+   "actions": [
+    "mood_add",
+    "addon_add",
+    "checkout"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart195",
+   "actions": [
+    "mood_add",
+    "remove_dish",
+    "undo",
+    "named_add",
+    "named_add",
+    "addon_add",
+    "checkout"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart196",
+   "actions": [
+    "named_add",
+    "remove_dish",
+    "named_add",
+    "undo",
+    "mood_add",
+    "swap_dish",
+    "remove_line"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart197",
+   "actions": [
+    "named_add",
+    "mood_add",
+    "quantity",
+    "addon_add",
+    "remove_line"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart198",
+   "actions": [
+    "mood_add",
+    "swap_dish",
+    "checkout",
+    "swap_dish",
+    "swap_dish"
+   ],
+   "mismatches": 0
+  },
+  {
+   "id": "cart199",
+   "actions": [
+    "named_add",
+    "named_add",
+    "quantity",
+    "swap_variant",
+    "addon_add",
+    "quantity"
+   ],
+   "mismatches": 0
+  }
+ ],
+ "status": "PASS",
+ "notes": "POST-HOC rerun: C68: catalogue fixed by rule (V15 to V17) and Jain excludes fungi; datasets, harnesses and thresholds unchanged; first result kept in eval/results/. scripted model; packs re-derived by brute force; validators V1 to V14 reported from `make data` separately"
+}
