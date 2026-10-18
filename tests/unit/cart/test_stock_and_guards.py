@@ -102,3 +102,20 @@ def test_no_substitution_when_nothing_eligible_is_in_stock(store):
     service.add_dish(s, "D06", "text", CTX, store)
     none_left = _zero(store, [v.variant_id for v in store.variants_for("paneer")])
     assert service.propose_substitution(s, _paneer(s).line_id, CTX, none_left) is None
+
+
+def test_f1_substitution_delta_matches_the_cart_as_shown(store):
+    """F1 (block 2.6): the quoted price change is measured against the cart the user sees, so accepting it moves
+    the shown total by exactly the quoted amount, even when re-allocation also re-prices another line."""
+    s = _session()
+    service.add_dish(s, "D06", "text", CTX, store)
+    paneer = _paneer(s)
+    other = next(ln for ln in s.cart.lines() if ln.priced and ln.packs and ln.variant_id != paneer.variant_id
+                 and len(store.skus_for(ln.variant_id)) > 1)
+    # the paneer variant runs out, and so does the pack the other line holds (it re-allocates to another pack size)
+    out = store.with_stock({**{k.sku_id: 0 for k in store.skus_for(paneer.variant_id)}, other.packs[0].sku_id: 0})
+    shown = view(s.cart, out).subtotal_inr
+    card = service.propose_substitution(s, paneer.line_id, CTX, out)
+    assert card is not None
+    service.answer_substitution(s, card.substitution_id, "accept", CTX, out)
+    assert view(s.cart, out).subtotal_inr - shown == card.price_delta_inr

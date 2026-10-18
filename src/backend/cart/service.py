@@ -164,7 +164,8 @@ def propose_substitution(session, line_id: str, ctx, store: Store):
         return None
     trial = session.cart.model_copy(deep=True)
     _find_line(trial, line_id).variant_id = pick
-    delta = view(allocate(trial, store), store).subtotal_inr - view(allocate(session.cart, store), store).subtotal_inr
+    # F1: measured against the cart as the user sees it; accepting re-allocates the whole cart (FR-76, FR-79)
+    delta = view(allocate(trial, store), store).subtotal_inr - view(session.cart, store).subtotal_inr
     old, new = store.variant(ln.variant_id), store.variant(pick)
     sub_id = session.next_id("sb")
     session.pending[sub_id] = {"kind": "substitution", "line_id": line_id, "variant_id": pick}
