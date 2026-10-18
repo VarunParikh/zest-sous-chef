@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- E6 lever sensitivity harness `scripts/benchmark/levers.py` with `backend.evaluation.lever_sensitivity` (Evaluation Plan §4 E6, §4.15 C47, C48): 18 lever groups moved to their far-end contrast in fresh API sessions, RDI per group and prompt type, Kendall distance, a random re-ranker baseline and the 11-persona top-3 overlap matrix.
 - E12 variant scoring sweep `scripts/benchmark/variants.py` with the gate in `backend.evaluation.variant_sweep` (Evaluation Plan §4 E12; ADR-008): the 6 lever-test ingredients over β0 {0.15, 0.30, 0.45} × gourmet × organic.
 - E8 price and data integrity harness `scripts/benchmark/integrity.py` (Evaluation Plan §4 E8): 200 seeded carts through the API; totals recomputed from `skus.json`, packs re-derived by brute force (`backend.evaluation.integrity`), add-on card prices, substitution deltas, checkout totals and idempotency checked. `scripts/benchmark/_app.py` runs evaluations in-process.
 - Block 2.6 evaluation datasets, pre-registered in `eval/datasets/MANIFEST.json` before any run: `levers_v1` (E6, 26 prompts), `persona_prompts_v1` (E7, 220 prompts), `reasons_v1` (E13, 30 suggestions) and `integrity_v1.json` (E8, 200 seeded carts).
