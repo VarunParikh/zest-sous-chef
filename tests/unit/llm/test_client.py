@@ -94,3 +94,19 @@ def test_context_window_is_sent():
     c = OllamaClient("http://127.0.0.1:11434", "fake:1b", timeout_s=5, transport=httpx.MockTransport(handler), num_ctx=4096)
     c.generate("sys", "user", ExtractionResult)
     assert seen[0]["options"]["num_ctx"] == 4096
+
+
+def test_extraction_units_are_normalised_and_unknown_units_become_estimates():
+    """Found live (block 2.4): llama3.2:3b wrote "tesps"; one bad unit rejected a whole 20-line video recipe."""
+    from backend.llm.schemas import ExtractionResult
+
+    raw = {"dish_name": "rasam", "servings": None, "ingredients": [
+        {"name": "coriander seeds", "qty": 2, "unit": "tesps", "estimated": False},
+        {"name": "ghee", "qty": 1, "unit": "Tablespoon", "estimated": False},
+        {"name": "toor dal", "qty": 60, "unit": "grams", "estimated": False},
+        {"name": "water", "qty": 2, "unit": "cups", "estimated": False},
+        {"name": "curry leaves", "qty": 1, "unit": "handful", "estimated": False},
+    ]}
+    ex = ExtractionResult.model_validate(raw)
+    assert [(i.unit, i.estimated) for i in ex.ingredients] == [
+        ("tsp", False), ("tbsp", False), ("g", False), ("cup", False), (None, True)]

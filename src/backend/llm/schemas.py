@@ -4,16 +4,40 @@ from __future__ import annotations
 import re
 from typing import Literal, Optional
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 _IMPLAUSIBLE = re.compile(r"https?://|www\.|<|>|\{|\}")
+
+
+UNITS = ("g", "kg", "ml", "l", "piece", "bunch", "tsp", "tbsp", "cup", "pinch")
+UNIT_SPELLINGS = {
+    "gram": "g", "grams": "g", "gm": "g", "gms": "g", "gr": "g", "kilogram": "kg", "kilograms": "kg", "kgs": "kg",
+    "millilitre": "ml", "milliliter": "ml", "millilitres": "ml", "milliliters": "ml", "litre": "l", "liter": "l",
+    "litres": "l", "liters": "l", "ltr": "l", "pieces": "piece", "pc": "piece", "pcs": "piece", "nos": "piece",
+    "no": "piece", "bunches": "bunch", "teaspoon": "tsp", "teaspoons": "tsp", "tsps": "tsp", "tesp": "tsp",
+    "tesps": "tsp", "tablespoon": "tbsp", "tablespoons": "tbsp", "tbsps": "tbsp", "tbs": "tbsp", "tbl": "tbsp",
+    "cups": "cup", "pinches": "pinch",
+}
 
 
 class IngredientLine(BaseModel):
     name: str = Field(min_length=1, max_length=60)
     qty: Optional[float] = Field(default=None, gt=0, le=10000)
-    unit: Optional[Literal["g", "kg", "ml", "l", "piece", "bunch", "tsp", "tbsp", "cup", "pinch"]] = None
+    unit: Optional[Literal[UNITS]] = None  # type: ignore[valid-type]
     estimated: bool = False
+
+    @model_validator(mode="before")
+    @classmethod
+    def _normalise_unit(cls, data):
+        """Common spellings map to the allowed units; an unknown unit becomes no unit and the line an estimate.
+        Found live in block 2.4: one "tesps" rejected a whole video recipe."""
+        if isinstance(data, dict) and isinstance(data.get("unit"), str):
+            raw = data["unit"].strip().lower().rstrip(".")
+            unit = raw if raw in UNITS else UNIT_SPELLINGS.get(raw)
+            data = {**data, "unit": unit}
+            if unit is None and raw:
+                data["estimated"] = True
+        return data
 
     @field_validator("name")
     @classmethod
