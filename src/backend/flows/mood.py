@@ -32,6 +32,14 @@ PART_OF_DAY_MEAL = {"morning": "breakfast", "lunch": "lunch", "afternoon": "snac
 GENERIC = {"hungry", "hunger", "starving", "food", "anything"}
 
 
+ALL_COURSES = {"main", "side", "beverage", "dessert", "breakfast", "soup", "snack"}
+
+
+def is_open(result) -> bool:
+    """An open request: no dish named and no mood words beyond generic ones (ADR-004 v3)."""
+    return not result.dish_name and not (set(t.lower() for t in result.mood_tags) - GENERIC)
+
+
 def meal_for(text: str, mood_tags: list[str], ctx) -> str | None:
     """A meal named in the message steers the course; plain hunger with no mood uses the time of day (C43)."""
     words = set(re.findall(r"[a-z]+", text.lower()))
@@ -82,13 +90,18 @@ def reason_line(deps, dish, drivers: list[str]) -> str:
 def mood_turn(session, text: str, result, deps, out) -> None:
     from backend.flows.chat import say
 
-    retriever = deps.retriever_factory()
     meal = meal_for(text, result.mood_tags, deps.ctx)
-    query = " ".join([text, *result.mood_tags, *([meal] if meal else [])])
-    rec = session.recommend_dishes(query, deps.ctx, deps.store, retriever, deps.tracer, display=15)
-    if rec.fallback_used:
-        out.fallbacks.append("vector")
-    rec.shown = steer(rec.shown, meal, deps.store)[:3]
+    if is_open(result):  # ADR-004 v3: the whole course, ranked by the levers
+        courses = MEAL_COURSES[meal] if meal else ALL_COURSES
+        rec = session.recommend_open(courses, deps.ctx, deps.store, deps.tracer, display=200)
+    else:
+        query = " ".join([text, *result.mood_tags, *([meal] if meal else [])])
+        rec = session.recommend_dishes(query, deps.ctx, deps.store, deps.retriever_factory(), deps.tracer, display=15)
+        if rec.fallback_used:
+            out.fallbacks.append("vector")
+    ordered = steer(rec.shown, meal, deps.store)
+    fresh = [s for s in ordered if s.candidate_id not in session.suggested]  # no repeats in a session (C45)
+    rec.shown = (fresh or ordered)[:3]
     session.last_recommendation = rec
     shown = list(rec.shown)
     top, added = None, None
@@ -102,6 +115,7 @@ def mood_turn(session, text: str, result, deps, out) -> None:
     if added is None:
         out.messages.append(say(session, "MSG-MOOD-NONE", constraint=_constraint(session.snapshot)))
         return
+    session.suggested.update([top.candidate_id, *session.suggestions[sid]["alternatives"]])
     dish = deps.store.dish(top.candidate_id).dish
     b = top.breakdown
     drivers = [DRIVERS[k] for k, v in sorted(b.contributions.items(), key=lambda kv: -kv[1]) if v > 0][:3]

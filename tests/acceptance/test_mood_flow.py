@@ -93,12 +93,16 @@ def test_invalid_reason_line_falls_back_to_the_template(chat_app, fake):
 
 
 def test_fr02_levers_sent_mid_session_flag_the_banner_but_do_not_change_the_dish(chat_app, fake):
+    # Two sessions with the same snapshot and history; only one sends edited levers on its second turn. The second
+    # pick must match (FR-02). Comparing within one session would see the no-repeat rule (ADR-004 v3, C45) instead.
     _, client = chat_app
     _setup(fake)
-    sid = start(client)
-    first = say(client, sid, MOOD).json()
     edited = LeverSet(diet="Pure Veg (Strict)", gourmet_affinity=1.0).model_dump(mode="json")
-    second = say(client, sid, MOOD, levers=edited).json()
+    a, b = start(client), start(client)
+    first = say(client, a, MOOD).json()
+    say(client, b, MOOD)
+    with_edit = say(client, a, MOOD, levers=edited).json()
+    without = say(client, b, MOOD).json()
     pick = lambda t: _cards(find(t, "MSG-MOOD-ADD"))["dish_added"]["dish_id"]
-    assert pick(second) == pick(first) and second["levers_changed_since_snapshot"] is True
-    assert first["levers_changed_since_snapshot"] is False
+    assert pick(with_edit) == pick(without)
+    assert with_edit["levers_changed_since_snapshot"] is True and first["levers_changed_since_snapshot"] is False

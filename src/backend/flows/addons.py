@@ -42,13 +42,15 @@ def offer_addon(session, cart_dish, deps, out) -> None:
     terms = frozenset(ln.ingredient_name for ln in lines)
     in_cart = tuple(d.dish_id for d in session.cart.dishes if d.dish_id)
     rec = recommend_addons(anchor, session.snapshot, deps.ctx, deps.store, deps.retriever_factory(), deps.tracer,
-                           session.session_id, cart_dish_ids=in_cart, cart_terms=terms)
+                           session.session_id, cart_dish_ids=in_cart, cart_terms=terms, display=8)
     if rec.fallback_used and "vector" not in out.fallbacks:
         out.fallbacks.append("vector")
     session.last_addon = {"anchor": anchor, "rec": rec}
-    if not rec.shown:
+    fresh = [s for s in rec.shown if s.candidate_id not in session.suggested]  # no repeats in a session (C45)
+    if not fresh:
         return
-    top = rec.shown[0]
+    top = fresh[0]
+    session.suggested.add(top.candidate_id)
     companion = deps.store.dish(top.candidate_id)
     price = check_dish(companion, session.snapshot, deps.store, kind="addon", cart_terms=terms).basket_cost_inr or 0
     sid = session.next_id("sg")

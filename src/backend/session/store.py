@@ -42,6 +42,7 @@ class Session:
     videos: dict = field(default_factory=dict)  # youtube id -> cart_dish_id (FR-24 duplicates)
     photo_consent: bool = False  # opt-in Gemini notice accepted (FR-50)
     open_dish_id: str | None = None  # the text recipe dish still taking ingredients (FR-30)
+    suggested: set = field(default_factory=set)  # dish ids already suggested this session (ADR-004 v3 variety)
     last_addon: object = None  # {anchor, rec} of the latest add-on suggestion (FR-119)
     last_recommendation: object = None  # pool, scores and inspector rows of the latest suggestion (FR-115)
     _turns: int = 0
@@ -81,6 +82,12 @@ class Session:
         from backend.engine.recommend import recommend_dishes
 
         return recommend_dishes(query, self.snapshot, ctx, store, retriever, tracer, self.session_id, display)
+
+    def recommend_open(self, courses: set[str], ctx, store, tracer=None, display: int = 3):
+        """Open requests (ADR-004 v3): the snapshot only, as with every recommendation (FR-02)."""
+        from backend.engine.recommend import recommend_open
+
+        return recommend_open(courses, self.snapshot, ctx, store, tracer, self.session_id, display)
 
 
 class SessionStore:

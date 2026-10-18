@@ -64,3 +64,14 @@ def recommend_addons(dish_id: str, levers: LeverSet, ctx: Context, store: Store,
     res = retriever.addons(dish_id, cart_dish_ids, session_id)
     scored, shown = _rank(res.hits, levers, ctx, store, tracer, session_id, display, "addon", cart_terms)
     return Recommendation(res.hits, scored, shown, _inspector(res.hits, scored), res.fallback_used)
+
+
+def recommend_open(courses: set[str], levers: LeverSet, ctx: Context, store: Store, tracer=None, session_id: str = "-",
+                   display: int = 3) -> Recommendation:
+    """Open requests (ADR-004 v3, C45): every dish of the meal course, equal `s_p`, so the levers decide after eligibility."""
+    dishes = [d for d in store.dishes if d.dish.course in courses] or list(store.dishes)
+    hits = [Hit(id=d.dish.dish_id, fused_score=0.0, fused_rank=1) for d in dishes]  # no lexical or vector ranks
+    scored, shown = _rank(hits, levers, ctx, store, tracer, session_id, display, "dish")
+    order = {s.candidate_id: i + 1 for i, s in enumerate(scored)}
+    hits = sorted((Hit(id=h.id, fused_score=0.0, fused_rank=order[h.id]) for h in hits), key=lambda h: h.fused_rank)
+    return Recommendation(hits, scored, shown, _inspector(hits, scored), False)
