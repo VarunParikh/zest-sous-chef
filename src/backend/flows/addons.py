@@ -9,6 +9,7 @@ from __future__ import annotations
 from backend.engine.eligibility import check_dish
 from backend.engine.recommend import recommend_addons
 from backend.flows.cards import AddonItem, AddonSuggestion
+from backend.flows.why import why_card
 
 DRIVERS = {"s_h": "your purchase history", "s_t": "the current trend", "s_g": "your gourmet and organic settings",
            "s_p": "how well it pairs"}
@@ -57,6 +58,14 @@ def offer_addon(session, cart_dish, deps, out) -> None:
     session.pending[sid] = {"kind": "addon", "dish_id": top.candidate_id, "source": cart_dish.source}
     card = AddonSuggestion(suggestion_id=sid, item=AddonItem(name=companion.dish.name, price_inr=price),
                            reason=_reason(top.breakdown.contributions))
-    out.messages.append(say(session, "MSG-ADDON", cards=[card], companion=companion.dish.name, dish=cart_dish.name))
+    hit = next(h for h in rec.pool if h.id == top.candidate_id)
+    retrieval = {"curated_strength": hit.curated_strength, "curated_rank": hit.curated_rank, "vector_rank": hit.vector_rank,
+                 "fused_rank": hit.fused_rank}
+    source = ("a curated pairing" if hit.curated_rank else "") + (" and " if hit.curated_rank and hit.vector_rank else "") + \
+             ("a close match by flavour and style" if hit.vector_rank else "")
+    why = why_card(sid, "addon", f"{card.reason}. It is {source or 'a companion'} for {deps.store.dish(anchor).dish.name}, "
+                                 f"and fits your settings and the add-on price cap.", top, fresh[1:3], deps.store,
+                   anchor=deps.store.dish(anchor).dish.name, retrieval=retrieval)
+    out.messages.append(say(session, "MSG-ADDON", cards=[card, why], companion=companion.dish.name, dish=cart_dish.name))
     deps.tracer.emit("suggestion_shown", session.session_id, suggestion_id=sid, candidate_id=top.candidate_id,
                      kind="addon", anchor=anchor, final=round(top.breakdown.final, 4))

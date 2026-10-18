@@ -8,6 +8,7 @@ from backend.cart.service import CartRuleError
 from backend.engine.eligibility import check_dish
 from backend.flows.addons import offer_addon
 from backend.flows.cards import Undo
+from backend.flows.why import why_card
 from backend.flows.recipe import DEFAULT_NAME, dish_choice, item_question, prepare, setting_label
 from backend.llm import prompts
 from backend.llm.schemas import ExtractionResult
@@ -42,18 +43,21 @@ def stored_dish(store, name: str | None):
     return None
 
 
-def _alternative(session, query: str, deps) -> tuple[str, str] | None:
-    rec = session.recommend_dishes(query, deps.ctx, deps.store, deps.retriever_factory(), deps.tracer)
-    return (rec.shown[0].candidate_id, deps.store.dish(rec.shown[0].candidate_id).dish.name) if rec.shown else None
-
-
 def block(session, item: str, rules, query: str, deps, out) -> None:
     """Nothing from the recipe is carted; the top eligible similar dish is offered as one chip (FR-90)."""
-    alt = _alternative(session, query, deps)
-    cards = [dish_choice(session, [alt])] if alt else []
-    out.messages.append(say(session, "MSG-PERSONA-BLOCK", cards=cards, item=item[:1].upper() + item[1:],
-                            setting=setting_label(tuple(rules), session.snapshot),
-                            alternative=alt[1] if alt else "another dish"))
+    rec = session.recommend_dishes(query, deps.ctx, deps.store, deps.retriever_factory(), deps.tracer)
+    setting = setting_label(tuple(rules), session.snapshot)
+    name = item[:1].upper() + item[1:]
+    cards = []
+    if rec.shown:
+        top = rec.shown[0]
+        alt = (top.candidate_id, deps.store.dish(top.candidate_id).dish.name)
+        chip = dish_choice(session, [alt])
+        reason = (f"{name} was removed by your {setting} setting, which the guardrails apply in code. {alt[1]} is the "
+                  f"best-scoring similar dish that fits all your settings.")
+        cards = [chip, why_card(chip.question_id, "alternative", reason, top, rec.shown[1:3], deps.store)]
+    out.messages.append(say(session, "MSG-PERSONA-BLOCK", cards=cards, item=name, setting=setting,
+                            alternative=deps.store.dish(rec.shown[0].candidate_id).dish.name if rec.shown else "another dish"))
 
 
 def cart_recipe(session, dish_name: str | None, lines, source: str, deps, out, keep_open: bool, headline=None,
@@ -151,5 +155,10 @@ def named_dish_turn(session, dish_name: str | None, deps, out) -> None:
     query = dish_name or ""
     shown = session.recommend_dishes(query, deps.ctx, deps.store, deps.retriever_factory(), deps.tracer).shown[:3]
     options = [(s.candidate_id, deps.store.dish(s.candidate_id).dish.name) for s in shown]
-    cards = [dish_choice(session, options)] if options else []
+    cards = []
+    if options:
+        chip = dish_choice(session, options)
+        reason = (f"These are the closest stored dishes to \"{title(dish_name)}\" that fit your settings, "
+                  f"in the order your levers ranked them.")
+        cards = [chip, why_card(chip.question_id, "nearest", reason, None, shown, deps.store)]
     out.messages.append(say(session, "MSG-TXT-UNKNOWN", cards=cards, dish=title(dish_name)))

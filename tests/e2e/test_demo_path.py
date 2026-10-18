@@ -1,4 +1,5 @@
 """E2E-001 demo path in a real browser (Test Plan §4.9; AC-12, 13, 32; FR-81, 100 to 104). Fake model, real backend."""
+import os
 import re
 
 import pytest
@@ -31,6 +32,16 @@ def test_e2e_001_demo_path(page: Page, app_url: str):
     expect(page.get_by_text(re.compile("Let's go with"))).to_be_visible(timeout=15000)
     badge = page.locator("button[aria-label^='Open cart']")
     expect(badge).to_be_enabled()
+
+    # The ⓘ icon explains the suggestion (FR-63): reason, biggest factors, score breakdown, runners-up.
+    info = page.get_by_role("button", name="Why was this suggested?").first
+    info.click()
+    expect(info).to_have_attribute("aria-expanded", "true")
+    expect(page.get_by_text("Biggest factors:").first).to_be_visible()
+    expect(page.get_by_text("Also considered:").first).to_be_visible()
+    if os.environ.get("ZEST_SHOTS"):
+        page.screenshot(path=os.path.join(os.environ["ZEST_SHOTS"], "why.png"))
+    info.click()
 
     # Tap a swap.
     page.get_by_role("button", name=re.compile("^Swap to")).first.click()

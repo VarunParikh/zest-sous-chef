@@ -37,12 +37,23 @@ export interface Breakdown {
   final: number;
 }
 
+/** The "Why this?" payload (FR-63): a reason always; scores when the suggestion has one. */
+export interface WhyInfo extends Partial<Breakdown> {
+  kind?: "dish" | "addon" | "photo" | "alternative" | "nearest";
+  reason?: string;
+  drivers?: string[];
+  alternatives?: { dish_id: string; name: string; final: number }[];
+  anchor?: string;
+  retrieval?: { curated_strength: number | null; curated_rank: number | null; vector_rank: number | null; fused_rank: number };
+  used?: string[];
+}
+
 export type Card =
   | { type: "starter_chips"; chips: string[] }
   | { type: "dish_added"; suggestion_id: string; dish_id: string; dish_name: string; reason: string; line_count: number; dish_total_inr: number }
   | { type: "swap_options"; suggestion_id: string; options: SwapOption[] }
   | { type: "undo"; suggestion_id: string }
-  | { type: "why_this"; suggestion_id: string; breakdown: Breakdown | null }
+  | { type: "why_this"; suggestion_id: string; breakdown: WhyInfo | null }
   | { type: "clarify"; question_id: string; prompt: string; options: ChoiceOption[] }
   | { type: "confirm"; confirm_id: string; prompt: string; options: ChoiceOption[] }
   | { type: "addon_suggestion"; suggestion_id: string; item: { name: string; variant: string | null; price_inr: number }; reason: string }

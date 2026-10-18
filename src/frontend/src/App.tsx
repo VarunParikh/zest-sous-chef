@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ApiFailure, api } from "./api/client";
 import { EMPTY_CART, type Breakdown, type CartView, type Inspector, type LeverConfig, type LeverSet, type Message, type TurnResponse } from "./api/types";
 import { CartWindow } from "./components/CartWindow";
-import { ChatPanel } from "./components/ChatPanel";
+import { ChatPanel, type BusyKind } from "./components/ChatPanel";
 import { LeverPanel } from "./components/LeverPanel";
 import { clone, sameLevers } from "./levers";
 
@@ -21,6 +21,7 @@ export default function App() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [cart, setCart] = useState<CartView>(EMPTY_CART);
   const [busy, setBusy] = useState(false);
+  const [busyKind, setBusyKind] = useState<BusyKind>("text");
   const [error, setError] = useState<string | null>(null);
   const [draft, setDraft] = useState("");
   const [cartOpen, setCartOpen] = useState(false);
@@ -49,13 +50,13 @@ export default function App() {
     setMessages((m) => [...m, ...turn.messages, ...noticeMessages(turn)]);
     setCart(turn.cart);
     setServerFlag(turn.levers_changed_since_snapshot);
-    for (const msg of turn.messages) for (const c of msg.cards) if (c.type === "why_this" && c.breakdown) setBreakdown(c.breakdown);
+    for (const msg of turn.messages) for (const c of msg.cards) if (c.type === "why_this" && c.breakdown?.contributions && c.breakdown.kind !== "addon") setBreakdown(c.breakdown as Breakdown);
     if (turn.suggestions.length && session) setInspector(await api.inspector(session.id).catch(() => null));
   }, [session]);
 
-  const guarded = useCallback(async (fn: () => Promise<TurnResponse>) => {
+  const guarded = useCallback(async (fn: () => Promise<TurnResponse>, kind: BusyKind = "text") => {
     if (busy || !session) return;
-    setBusy(true); setError(null);
+    setBusyKind(kind); setBusy(true); setError(null);
     try { await absorb(await fn()); }
     catch (e) {
       if (e instanceof ApiFailure && e.body.code !== "SESSION_BUSY") setError(e.body.user_message);
@@ -63,7 +64,11 @@ export default function App() {
   }, [busy, session, absorb]);
 
   const userSays = (text: string) => setMessages((m) => [...m, { message_id: `local_${++localId}`, role: "user", template_id: null, text, cards: [] }]);
-  const send = (text: string) => { if (!session || !levers) return; userSays(text); setDraft(""); void guarded(() => api.chat(session.id, text, levers)); };
+  const send = (text: string) => {
+    if (!session || !levers) return;
+    userSays(text); setDraft("");
+    void guarded(() => api.chat(session.id, text, levers), /youtu\.?be/i.test(text) ? "video" : "text");
+  };
   const act = async (type: string, payload: Record<string, unknown>) => { if (session && levers) await guarded(() => api.action(session.id, type, payload, levers)); };
 
   const newChat = async () => {
@@ -83,7 +88,7 @@ export default function App() {
       else if (chip === "Upload photo") window.dispatchEvent(new Event("zest:upload"));
       else send("I am feeling indulgent");
     },
-    onSample: (id: string) => { if (session && levers) { userSays(`Sample photo ${id}`); void guarded(() => api.samplePhoto(session.id, id, levers)); } },
+    onSample: (id: string) => { if (session && levers) { userSays(`Sample photo ${id}`); void guarded(() => api.samplePhoto(session.id, id, levers), "sample"); } },
     onOpenCart: () => setCartOpen(true),
     onBreakdown: setBreakdown,
   };
@@ -134,8 +139,8 @@ export default function App() {
           <LeverPanel config={config} levers={levers} onChange={setLevers} breakdown={breakdown} inspector={inspector} />
         </section>
         <div className={`${tab === "chat" ? "block" : "hidden"} min-h-0 lg:block`}>
-          <ChatPanel messages={messages} busy={busy} error={error} draft={draft} setDraft={setDraft} onSend={send}
-            onUpload={(f) => { userSays(`📷 ${f.name}`); void guarded(() => api.upload(session.id, f, false, levers)); }}
+          <ChatPanel messages={messages} busy={busy} busyKind={busyKind} error={error} draft={draft} setDraft={setDraft} onSend={send}
+            onUpload={(f) => { userSays(`📷 ${f.name}`); void guarded(() => api.upload(session.id, f, false, levers), "photo"); }}
             handlers={handlers} cartCount={cart.item_count} onOpenCart={() => setCartOpen(true)} cartButton={cartButton}
             onClearChat={clearChat} banner={banner} onNewChat={() => void newChat()} />
         </div>

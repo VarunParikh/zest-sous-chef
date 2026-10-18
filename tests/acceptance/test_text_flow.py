@@ -65,8 +65,8 @@ def test_t084_unknown_dish_offers_nearest_dishes_then_carts_the_choice(chat_app,
     r = say(client, sid, "I want to cook ratatouille")
     msg = _msg(r)
     assert msg["template_id"] == "MSG-TXT-UNKNOWN" and r.json()["cart"]["item_count"] == 0
-    (card,) = msg["cards"]
-    assert card["type"] == "clarify" and len(card["options"]) == 3
+    card = next(c for c in msg["cards"] if c["type"] == "clarify")  # a why_this card follows (FR-63)
+    assert len(card["options"]) == 3
     choice = card["options"][0]
     r = client.post(f"/api/v1/sessions/{sid}/action",
                     json={"type": "answer", "payload": {"question_id": card["question_id"], "choice": choice["value"]}})
@@ -111,8 +111,8 @@ def test_t012_text_part_blocked_item_carts_nothing_and_offers_an_alternative(cha
     msg = _msg(r)
     assert msg["template_id"] == "MSG-PERSONA-BLOCK" and r.json()["cart"]["item_count"] == 0
     assert "chicken" in msg["text"].lower() and "Pure Veg (Strict)" in msg["text"]
-    (chip,) = msg["cards"]
-    assert chip["type"] == "clarify" and len(chip["options"]) == 1
+    chip = next(c for c in msg["cards"] if c["type"] == "clarify")  # a why_this card follows (FR-63)
+    assert len(chip["options"]) == 1
     r = client.post(f"/api/v1/sessions/{sid}/action",
                     json={"type": "answer", "payload": {"question_id": chip["question_id"], "choice": chip["options"][0]["value"]}})
     assert r.json()["cart"]["item_count"] > 0  # the veg alternative, carted only on the tap

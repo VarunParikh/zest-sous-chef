@@ -12,7 +12,8 @@ import re
 from backend.cart import service
 from backend.flows.addons import offer_addon
 from backend.cart.service import CartRuleError
-from backend.flows.cards import DishAdded, SuggestionRef, SwapOption, SwapOptions, Undo, WhyThis
+from backend.flows.cards import DishAdded, SuggestionRef, SwapOption, SwapOptions, Undo
+from backend.flows.why import drivers as why_drivers, why_card
 from backend.llm import prompts
 from backend.llm.client import LLMError
 from backend.llm.schemas import ReasonResult
@@ -128,9 +129,8 @@ def mood_turn(session, text: str, result, deps, out) -> None:
                   line_count=len(dish_view.lines), dish_total_inr=dish_view.dish_total_inr),
         SwapOptions(suggestion_id=sid, options=[SwapOption(dish_id=a, name=deps.store.dish(a).dish.name) for a in alternatives]),
         Undo(suggestion_id=sid),
-        WhyThis(suggestion_id=sid, breakdown={
-            "components": {"s_p": b.s_p, "s_h": b.s_h, "s_t": b.s_t, "s_g": b.s_g},
-            "contributions": dict(b.contributions), "weights_effective": dict(b.weights_effective), "final": b.final}),
+        why_card(sid, "dish", f"{dish.name} scored highest for this request, driven by {' and '.join(why_drivers(b)[:2]) or 'your settings'}.",
+                 top, [s for s in rec.scored if s.candidate_id in alternatives], deps.store),
     ]
     tags = [t for t in result.mood_tags if t.lower() not in GENERIC]
     mood = tags[0] if tags else "hungry"

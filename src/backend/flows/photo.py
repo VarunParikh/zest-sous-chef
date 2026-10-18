@@ -16,6 +16,7 @@ from backend.flows.cards import ChoiceOption, Confirm, PhotoConsent, SamplePhoto
 from backend.flows.addons import offer_addon
 from backend.flows.recipe import resolve
 from backend.flows.text import say
+from backend.flows.why import drivers, why_card
 from backend.llm.client import LLMError
 from backend.llm.vision import GeminiVision, OllamaVision, SampleVision
 
@@ -162,7 +163,11 @@ def _cart(session, terms: list[str], deps, out) -> None:
         return
     store = deps.store
     options = [SwapOption(dish_id=a, name=f"{store.dish(a).dish.name} ({_missing(store.dish(a), have, store)} missing)") for a in alts]
-    out.messages.append(say(session, "MSG-PHOTO-OK", cards=[SwapOptions(suggestion_id=sid, options=options), Undo(suggestion_id=sid)],
+    used = sorted(_uses(store.dish(top.candidate_id), have, store))
+    reason = (f"{added.name} uses {len(used)} of the items you have ({', '.join(used)}) and needs {len(added.lines)} more; "
+              f"among dishes that use your items it scored highest on {' and '.join(drivers(top.breakdown)[:2]) or 'your settings'}.")
+    why = why_card(sid, "photo", reason, top, ranked[1:3], store, used=used)
+    out.messages.append(say(session, "MSG-PHOTO-OK", cards=[SwapOptions(suggestion_id=sid, options=options), Undo(suggestion_id=sid), why],
                             items=", ".join(terms), dish=added.name, n=len(added.lines)))
     out.cart_changed = True
     out.suggestions.append(SuggestionRef(suggestion_id=sid, type="dish", candidate_id=top.candidate_id, rank=1))

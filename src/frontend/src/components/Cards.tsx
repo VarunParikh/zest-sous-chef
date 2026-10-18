@@ -1,6 +1,6 @@
 // Renderers for the 13 card types (API Spec §4.5). Taps go to `onAction`; nothing here changes the cart directly.
 import { useState, type ReactElement } from "react";
-import type { Breakdown, Card } from "../api/types";
+import type { Breakdown, Card, WhyInfo } from "../api/types";
 import { Camera, Play, Sparkle, Utensils, rupees } from "../icons";
 import { ScoreChart } from "./ScoreChart";
 
@@ -65,7 +65,7 @@ export function CardView({ card, h }: { card: Card; h: CardHandlers }) {
       return <button type="button" className={`${pill} mt-2`} disabled={h.busy || used}
         onClick={once(() => h.onAction("undo", { suggestion_id: card.suggestion_id }))}>↶ Undo</button>;
     case "why_this":
-      return <WhyThis breakdown={card.breakdown} onShow={h.onBreakdown} />;
+      return null;  // shown as the ⓘ icon on the message (ChatPanel)
     case "clarify":
       return <Choices options={card.options} disabled={h.busy}
         onPick={(v) => h.onAction("answer", { question_id: card.question_id, choice: v })} />;
@@ -127,13 +127,30 @@ export function SubstitutionCard({ card, onAction, busy }: {
   );
 }
 
-function WhyThis({ breakdown, onShow }: { breakdown: Breakdown | null; onShow: (b: Breakdown) => void }) {
-  const [open, setOpen] = useState(false);
-  if (!breakdown) return null;
+/** The ⓘ "Why this?" panel (FR-63, US-18): reason, drivers, score breakdown and runners-up. */
+export function WhyPanel({ why }: { why: WhyInfo }) {
+  const hasScores = why.contributions && typeof why.final === "number";
   return (
-    <div className="mt-2">
-      <button type="button" className={pill} aria-expanded={open} onClick={() => { setOpen(!open); onShow(breakdown); }}>Why this?</button>
-      {open && <div className="mt-2 rounded-md border border-line bg-white p-3"><ScoreChart breakdown={breakdown} /></div>}
+    <div className="mt-2 space-y-2 rounded-md border border-line bg-white p-3 text-sm text-secondary shadow-card">
+      {why.reason && <p className="text-ink">{why.reason}</p>}
+      {why.drivers && why.drivers.length > 0 && (
+        <p><span className="font-semibold">Biggest factors:</span> {why.drivers.join(", ")}.</p>
+      )}
+      {why.retrieval && (
+        <p className="text-xs text-muted">
+          Found as {why.retrieval.curated_rank ? `curated pairing #${why.retrieval.curated_rank}` : "not a curated pairing"}
+          {why.retrieval.vector_rank ? `, similarity match #${why.retrieval.vector_rank}` : ""}; fused rank #{why.retrieval.fused_rank}
+          {why.anchor ? ` for ${why.anchor}` : ""}.
+        </p>
+      )}
+      {hasScores && <ScoreChart breakdown={why as Breakdown} />}
+      {why.alternatives && why.alternatives.length > 0 && (
+        <p className="text-xs text-muted">
+          {why.kind === "nearest" ? "Ranked: " : "Also considered: "}
+          {why.alternatives.map((a) => `${a.name} (${a.final.toFixed(2)})`).join(", ")}
+        </p>
+      )}
+      <p className="text-xs text-muted">Scores come from your session's lever snapshot; guardrails are applied in code first.</p>
     </div>
   );
 }
