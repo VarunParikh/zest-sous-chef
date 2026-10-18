@@ -4,7 +4,8 @@ from __future__ import annotations
 from pathlib import Path
 
 HERE = Path(__file__).parent
-VERSIONS = {"recipe_extract": "recipe_extract_v1.txt", "photo_detect": "photo_detect_v1.txt"}
+VERSIONS = {"recipe_extract": "recipe_extract_v1.txt", "photo_detect": "photo_detect_v1.txt",
+            "intent_classify": "intent_classify_v1.txt"}
 
 
 def spotlight(text: str) -> str:

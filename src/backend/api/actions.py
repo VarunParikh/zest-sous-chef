@@ -47,6 +47,10 @@ def _confirm(session, p: dict, request: Request) -> tuple[list[Message], bool]:
                                    request.app.state.store)
     if added is None:
         return [], False
+    if isinstance(added, str):  # "do something else": the cart was cleared under this undo id
+        msg = reply(session, "MSG-CLEAR-DONE")
+        msg.cards = [Undo(suggestion_id=added)]
+        return [msg], True
     if p.get("choice") == "replace":
         msg = reply(session, "MSG-CLEAR-DONE")
     else:
@@ -57,6 +61,8 @@ def _confirm(session, p: dict, request: Request) -> tuple[list[Message], bool]:
 
 def _undo(session, p: dict, request: Request) -> tuple[list[Message], bool]:
     name = service.undo(session, p.get("suggestion_id", ""), request.app.state.store)
+    if name is None:
+        return [reply(session, "MSG-EDIT-OK", change="Restored your cart")], True
     return [reply(session, "MSG-UNDO", dish=name)], True
 
 

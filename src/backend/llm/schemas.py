@@ -50,3 +50,22 @@ class DetectionResult(BaseModel):
     items: list[DetectedItem] = Field(max_length=40)
     scene_is_food: bool
     quality: Literal["ok", "dark", "blurry"]
+
+
+Intent = Literal["youtube_recipe", "recipe_text", "named_dish", "mood_intent", "cart_edit",
+                 "cart_clear_or_replace", "staples_answer", "variant_request", "question_cooking",
+                 "declare_allergy", "smalltalk", "off_topic", "unsafe", "unsupported"]
+
+
+class IntentResult(BaseModel):
+    """A2 `intent_classify` output (Agent Design §5)."""
+    intent: Intent
+    confidence: float = Field(ge=0, le=1)
+    mood_tags: list[str] = Field(default_factory=list, max_length=4)
+    dish_name: Optional[str] = Field(default=None, max_length=80)
+    servings: Optional[int] = Field(default=None, ge=1, le=12)
+
+
+class ReasonResult(BaseModel):
+    """A4 `reason_line` output (Agent Design §5); the business validator lives in `flows.mood`."""
+    reason: str = Field(min_length=3, max_length=140)

@@ -17,6 +17,13 @@ TEMPLATES = {
     "MSG-BLOCKED-ORDER": "{item} is no longer available. Swap or remove it to place your order.",
     "MSG-PRICE-CHANGED": "A price changed since you added it. The updated total is shown.",
     "MSG-EDIT-OK": "Done. {change}. ✅",
+    "MSG-REDIRECT": "I'm here to help with cooking and groceries. Tell me what you'd like to cook.",
+    "MSG-HAZARD": "I can't help with that. If you'd like to cook something, I'm happy to help.",
+    "MSG-INJECT-DATA": "That content contained instructions, so I ignored them.",
+    "MSG-REPHRASE": "I didn't quite catch that. Could you rephrase it?",
+    "MSG-THANKS": "Anytime. What shall we cook next?",
+    "MSG-UNSUPPORTED": "I can't do that here. I can build your cart and you can place the order with Buy Now.",
+    "MSG-ALLERGY": "I can't confirm that an item is safe for an allergy. Dietary labels here are simplified, so please check the product label.",
     "MSG-SERVER": "Your food will be ready but seems like our servers are struggling. We will be back shortly",
 }
 

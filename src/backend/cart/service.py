@@ -184,8 +184,11 @@ def answer_substitution(session, substitution_id: str, choice: str, ctx, store: 
 REPLACE_OPTIONS = (("replace", "Replace"), ("add", "Add to it"), ("cancel", "Cancel"))
 
 
-def offer_replace(session, dish_id: str, source: str):
-    """FR-77: a non-empty cart is never cleared or replaced without a confirmation (MSG-CLEAR-CONFIRM)."""
+def offer_replace(session, dish_id: str | None, source: str):
+    """FR-77: a non-empty cart is never cleared or replaced without a confirmation (MSG-CLEAR-CONFIRM).
+
+    With no dish ("do something else"), Replace clears the cart (Undo restores it) and Add keeps it.
+    """
     from backend.flows.cards import ChoiceOption, Confirm
     from backend.flows.templates import render
 
@@ -206,6 +209,13 @@ def answer_confirm(session, confirm_id: str, choice: str, ctx, store: Store):
     if choice == "cancel":
         return None
     prior = session.cart.model_copy(deep=True)
+    if pending["dish_id"] is None:
+        if choice == "add":
+            return None
+        sid = session.next_id("sg")
+        session.cart = type(prior)()
+        session.undo_stack.append({"suggestion_id": sid, "kind": "replace", "prior": prior, "dish_name": None})
+        return sid
     sid = session.next_id("sg")
     if choice == "replace":
         session.cart = type(prior)()
@@ -223,8 +233,9 @@ def record_add(session, suggestion_id: str, dish_name: str) -> None:
     session.undo_stack.append({"suggestion_id": suggestion_id, "kind": "add", "prior": None, "dish_name": dish_name})
 
 
-def undo(session, suggestion_id: str, store: Store) -> str:
-    """Reverse one suggestion's cart change: remove the dishes it added, or restore the cart it replaced."""
+def undo(session, suggestion_id: str, store: Store) -> str | None:
+    """Reverse one suggestion's cart change: remove the dishes it added, or restore the cart it replaced.
+    Returns the removed dish name, or None when a cleared cart was restored."""
     entry = next((e for e in reversed(session.undo_stack) if e["suggestion_id"] == suggestion_id), None)
     if entry is None:
         raise CartRuleError("STALE", "There's nothing to undo for that.")
