@@ -21,6 +21,8 @@ from backend.session.levers import LeverSet
 
 TEMPLATE_REASON = "Matches your mood and fits your settings"
 BANNED = re.compile(r"\d|₹|\b(rs|price|prices|rupees?|stock|sku|cost|cheap|discount)\b", re.I)
+# C54 (Agent Design v0.4 §6.3): health or medical claim words, the C50 list
+CLAIMS = re.compile(r"\b(healthy|healthier|cure|cures|heal|immunity|detox|weight loss|low[- ]calorie|nutritious|medicinal|diabetic)\b", re.I)
 DRIVERS = {"s_p": "strong match for the mood", "s_h": "purchase history preference high",
            "s_t": "trend high right now", "s_g": "gourmet and organic match"}
 DEFAULTS = LeverSet()
@@ -68,9 +70,9 @@ def _constraint(levers: LeverSet) -> str:
 
 
 def valid_reason(reason: str, allowed_text: str) -> bool:
-    """Agent Design §6.3: 3 to 18 words, no digits, currency or banned words, no names not in the input."""
+    """Agent Design §6.3: 3 to 18 words, no digits, currency, banned or health-claim words, no names not in the input."""
     words = reason.split()
-    if not 3 <= len(words) <= 18 or BANNED.search(reason):
+    if not 3 <= len(words) <= 18 or BANNED.search(reason) or CLAIMS.search(reason):
         return False
     allowed = allowed_text.lower()
     names = [w.strip(".,!?;:'\"") for w in words[1:] if w[:1].isupper()]

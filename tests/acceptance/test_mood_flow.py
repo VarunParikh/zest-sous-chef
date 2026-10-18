@@ -1,4 +1,6 @@
 """Mood flow end to end with a fake Ollama (US-13; FR-40, 41, 42, 63; AC-09, 29, 30; T-085, T-086)."""
+import pytest
+
 from backend.engine.context import build_context
 from backend.flows.templates import TEMPLATES
 from backend.retrieval.retriever import Retriever
@@ -109,3 +111,13 @@ def test_fr02_levers_sent_mid_session_flag_the_banner_but_do_not_change_the_dish
     pick = lambda t: _cards(find(t, "MSG-MOOD-ADD"))["dish_added"]["dish_id"]
     assert pick(with_edit) == pick(without)
     assert with_edit["levers_changed_since_snapshot"] is True and first["levers_changed_since_snapshot"] is False
+
+
+@pytest.mark.parametrize("line", ["Fresh, tangy and healthy for tonight", "Boosts immunity on a cold day",
+                                  "A nutritious pick for the week", "Light and low-calorie comfort"])
+def test_c54_health_claim_words_fail_the_reason_validator(line):
+    """C54 (Agent Design v0.4 §6.3): the C50 claim words make the template reason show instead."""
+    from backend.flows.mood import valid_reason
+
+    assert not valid_reason(line, "Suggestion: Garden Salad | Tags: fresh, healthy, light | Drivers: x")
+    assert valid_reason("Fresh, tangy and light for tonight", "Suggestion: Garden Salad | Tags: fresh, light | Drivers: x")
