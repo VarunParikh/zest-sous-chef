@@ -148,11 +148,18 @@ Report: `docs/epics/zest/verify/benchmarks/block31.md`.
 
 **Report:** the committed evidence report shows HEAD `b657d04`. Rebuild it with `make report` at release (block 3.5); only its HEAD and staleness counts change.
 
-## Next: Day 3, block 3.4 (build-plan section 5): needs the owner at the laptop
-Do this:
-1. Run the Test Plan §9 rehearsal checklist twice on the demo laptop, using `docs/epics/zest/release/demo-script.md`. Step 6, the stock-out, is NOT RUN (C72).
-2. Do the network-off test: YouTube falls back to the fixture, photo samples work, and nothing calls out.
-3. Record a backup screen recording.
-4. Write the results into `prototyping-feedback.md` section 5.
+## Block 3.5 status (2026-10-19)
+**Done:**
+- Security Note §7 blockers 1a and 2 to 7 PASS, with evidence in `docs/epics/zest/release/release-checklist.md`.
+  - New tests: T-075 (markup renders inert, E2E) and the image-text injection test, alongside T-103 and T-104. Each covers existing behaviour and passed on its first run.
+- E14 rerun post-hoc (`eval/results/post-hoc/block35/`): PASS. The Test Plan parser now reads annotated priorities ("P0 (E2E)").
+- Evidence report rebuilt.
+- Reviewer path checked from a fresh clone: setup, index, tests, `make app`, health, and a real chat through the frontend. The README now lists the fresh-Mac prerequisites and has a screenshot.
+- Found and disclosed: a message sent immediately after "Start new chat" goes to the deleted session; the app recovers, but the message is lost (Known Limitations).
 
-Then block 3.5: close the security release blockers (Security Note §7), scan the full history for secrets (must print 0), rebuild the report, do a last doc-sync, then tag `v0.1.0` and push. **Owner approval is needed for the tag and the push.**
+**Owner items:**
+- **1b:** confirm the Day-0 Gemini key is revoked.
+- **Block 3.4 rehearsals: TO DO (deferred by the owner on 2026-10-19).** Run the Test Plan §9 checklist twice with `docs/epics/zest/release/demo-script.md`, skipping step 6 (C72). Then the network-off test and a backup screen recording. Write the results into `prototyping-feedback.md` §5.
+- **Tag `v0.1.0` and push:** waiting for the owner's go-ahead. At tagging, move `[Unreleased]` to `[0.1.0] - <date>` in the CHANGELOG, in the same commit.
+
+**Possible follow-up, not asked for:** lock the chat input while a new session starts. A ref guard in `App.tsx` for the duplicate development sessions also needs owner approval.

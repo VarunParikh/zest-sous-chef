@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- E14 rerun post-hoc after the parser fix (`eval/results/post-hoc/block35/`): PASS; evidence report rebuilt. Handover: block 3.4 rehearsals TO DO (owner deferred); tag and push wait for the owner.
 - Release checklist (`docs/epics/zest/release/release-checklist.md`): the seven Security Note §7 blockers with evidence (one needs the owner: confirm the Day-0 key is revoked), the reviewer-path check, and what is still to do (block 3.4 rehearsals, tag and push). Image-text injection test added (S-02); it covers existing behaviour and passed on its first run.
 - Reviewer-path check from a fresh clone on 2026-10-19: `make setup`, `make index`, `make app`, the health endpoint and a real chat through the frontend all succeed; screenshot added to the README (`docs/assets/zest-screenshot.png`). The check found a start-new-chat race, now listed in Known Limitations.
 - README prerequisites for a fresh Mac: Apple command-line tools, Node 22 or newer, starting the Ollama server, free ports, the one-time Playwright browser install for `make test-e2e`, untested platforms.
