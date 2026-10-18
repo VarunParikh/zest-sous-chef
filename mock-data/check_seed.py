@@ -26,7 +26,7 @@ for f in glob.glob(str(here/"taxonomy"/"0*.txt")):
         b = line.strip().split("|"); cat.add(alias.get(b[3], b[3]))
         for v in b[7].split(";"):
             for e in v.split("~")[1].split(","):
-                e = e.strip()
+                e = e.strip().lstrip("!")  # `!term` replaces the base term (C68)
                 if e and not e.startswith("="): cat.add(alias.get(e, e))
 UNAVAILABLE_BY_DESIGN = {"D35": {"sushi rice", "nori", "wasabi"}}
 uncovered = []

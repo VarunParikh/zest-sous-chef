@@ -124,6 +124,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 - `dishes.csv` gains `aliases`, `flavour` and `description` columns, back-filled for D01 to D35 (C20); ingredient lines accept a fourth field `opt` for non-essential garnish lines. `check_seed.py` reads the new format.
 
 ### Fixed
+- `mock-data/check_seed.py` and `check_taxonomy.py` had their own taxonomy parsers that did not learn the C68 `!term` and `|carrier` markers, so `make data` exited with an error from commit `a9cb089` until this fix, although validators V1 to V17 passed and the generated data was correct. The C68 records said `make data` passed; that was wrong (the check grepped for FAIL lines and missed the make error). A test now runs both scripts as `make data` does.
 - `levers.py`, `variants.py`, `retrieval.py`, `text_models.py` and `vision.py` dropped `--post-hoc`, so the E6 and E12 reruns (C53, C68) were filed under `post-hoc/` without the marker; every save now passes it (test guards all scripts), and the report treats any file under `post-hoc/` as post-hoc. Existing result files are unchanged.
 - Real-embedder test still expected the old 15-dish pool (missed in the C53 change because embedder tests run only under `make test-embedder`); with no keyword match the pool is the vector top 20, capped by `DISH_POOL` 25.
 - E12 harness read the shipped β0 as a hard-coded 0.30; it now reads `VALUE_WEIGHT` from settings and adds it to the sweep. The C53 post-hoc E12 file made with the old script is kept as `E12-variant-sweep-harness-error.json`.

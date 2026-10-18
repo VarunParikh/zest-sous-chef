@@ -19,13 +19,15 @@ for f in sorted(glob.glob(str(here/"taxonomy"/"0*.txt"))):
     for line in open(f):
         line = line.strip()
         if not line: continue
-        bid, cat, name, term, unit, packs, ppu, variants = line.split("|")
+        bid, cat, name, term, unit, packs, ppu, variants, *_marks = line.split("|")  # optional `carrier` mark (C68)
         if bid in ids: print("duplicate base id", bid)
         ids.add(bid); nb += 1
         seen = {}
         for v in variants.split(";"):
             vn, extras, mult, flags = v.split("~"); nv += 1
-            items = [term] + [e.strip() for e in extras.split(",") if e.strip()]
+            raw = [e.strip() for e in extras.split(",") if e.strip()]
+            head = next((e[1:].strip() for e in raw if e.startswith("!")), term)  # `!term` replaces the base term (C68)
+            items = [head] + [e for e in raw if not e.startswith("!")]
             for t in items:
                 if t.startswith("=") or t == "-": continue
                 t2 = alias.get(t, t)
