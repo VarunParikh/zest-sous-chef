@@ -279,3 +279,26 @@ def swap(session, suggestion_id: str, alt_dish_id: str, ctx, store: Store) -> Ca
         if e["suggestion_id"] == suggestion_id:
             e["dish_name"] = added.name
     return added
+
+
+def add_custom_dish(session, name: str, items: list, source: str, store: Store, cart_dish_id: str | None = None) -> CartDish:
+    """Cart extracted items (text recipe, video) whose variants were chosen in code; every one is re-checked here.
+
+    `items`: objects with term, qty, unit, estimated, variant_id, reason, alternatives. With `cart_dish_id` of a dish
+    still in the cart, the lines join it (FR-30's open dish); otherwise a new dish is created.
+    """
+    levers = session.snapshot
+    for it in items:
+        if not check_variant(store.variant(it.variant_id), levers, store).eligible:
+            raise CartRuleError("NOT_ELIGIBLE", f"{it.term} isn't available with your settings.", ingredient=it.term)
+    cart = session.cart.model_copy(deep=True)
+    dish = next((d for d in cart.dishes if d.cart_dish_id == cart_dish_id), None) if cart_dish_id else None
+    if dish is None:
+        dish = CartDish(cart_dish_id=session.next_id("cd"), dish_id=None, name=name, source=source)
+        cart.dishes.append(dish)
+    for it in items:
+        dish.lines.append(CartLine(line_id=session.next_id("l"), cart_dish_id=dish.cart_dish_id, ingredient_name=it.term,
+                                   need_qty=it.qty, need_unit=it.unit, estimated=it.estimated, variant_id=it.variant_id,
+                                   reason=it.reason, alternative_variant_ids=list(it.alternatives)))
+    session.cart = allocate(cart, store)
+    return next(d for d in session.cart.dishes if d.cart_dish_id == dish.cart_dish_id)

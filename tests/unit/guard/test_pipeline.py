@@ -61,6 +61,13 @@ def test_known_false_positive_kill_the_heat():
     assert not _guard(FakeGuardModel()).check("kill the heat after five minutes").blocked
 
 
+@pytest.mark.xfail(strict=True, reason="Known false positive found in block 2.4: a bare unknown dish name carries no "
+                   "food word, so 'make me ratatouille' is called off-topic before FR-33 can offer near dishes. "
+                   "Same owner decision as the stove-words case.")
+def test_known_false_positive_unknown_dish_name():
+    assert not _guard(FakeGuardModel()).check("make me ratatouille").blocked
+
+
 def test_classifier_catches_what_the_rules_pass():
     assert default_guard().screen(SNEAKY).label == "ok"  # the rules alone let it through
     v = _guard(FakeGuardModel(unsafe={SNEAKY})).check(SNEAKY)

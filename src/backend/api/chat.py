@@ -32,6 +32,12 @@ def _llm(request: Request, session_id: str) -> OllamaClient:
                         tracer=request.app.state.tracer, session_id=session_id, num_ctx=s.llm_num_ctx)
 
 
+def chat_deps(request: Request, session_id: str) -> Deps:
+    state = request.app.state
+    return Deps(guard=state.guard, llm=_llm(request, session_id), store=state.store, retriever_factory=state.get_retriever,
+                ctx=context(request), tracer=state.tracer, settings=state.settings)
+
+
 @router.post("/chat")
 def chat(session_id: str, body: ChatRequest, request: Request) -> TurnResponse:
     session = request.app.state.sessions.get(session_id)
@@ -40,9 +46,7 @@ def chat(session_id: str, body: ChatRequest, request: Request) -> TurnResponse:
     state = request.app.state
     with session.busy():
         session.messages.append(Message(message_id=session.next_message_id(), role="user", text=body.text))
-        deps = Deps(guard=state.guard, llm=_llm(request, session_id), store=state.store,
-                    retriever_factory=state.get_retriever, ctx=context(request), tracer=state.tracer,
-                    settings=state.settings)
+        deps = chat_deps(request, session_id)
         try:
             out = handle(session, body.text, deps)
         except LLMInvalid:  # an invalid reply after the retry with no template fallback left

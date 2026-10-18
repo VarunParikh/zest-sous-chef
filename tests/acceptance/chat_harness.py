@@ -21,6 +21,7 @@ class FakeOllama:
         self.reason: object = {"reason": "Rich, creamy and a weekend favourite."}
         self.calls: list[str] = []  # "guard", "intent", "reason"
         self.down = False
+        self.extractions: dict[str, object] = {}  # recipe text (substring) -> ExtractionResult dict, raw string, or Exception
 
     def __call__(self, request: httpx.Request) -> httpx.Response:
         if self.down:
@@ -34,7 +35,12 @@ class FakeOllama:
             return httpx.Response(200, json={"message": {"content": "unsafe\nS1" if text in self.unsafe else "safe"}})
         system = body["messages"][0]["content"]
         user = body["messages"][1]["content"]
-        if "intent classifier" in system:
+        if system.startswith("You extract a recipe"):
+            self.calls.append("extract")
+            content_text = user.split("<content>", 1)[1].split("</content>", 1)[0]
+            out = next((v for k, v in self.extractions.items() if k in content_text),
+                       {"dish_name": None, "servings": None, "ingredients": []})
+        elif "intent classifier" in system:
             self.calls.append("intent")
             msg = user.split("<content>", 1)[1].split("</content>", 1)[0]
             out = self.intents.get(msg, intent("smalltalk"))
@@ -73,3 +79,11 @@ def say(client, sid, text, **extra):
 def trace(app):
     path = app.state.tracer.path
     return [json.loads(x) for x in path.read_text().splitlines()] if path.exists() else []
+
+
+def line(name, qty=None, unit=None, estimated=False):
+    return {"name": name, "qty": qty, "unit": unit, "estimated": estimated}
+
+
+def extraction(dish=None, *lines, servings=None):
+    return {"dish_name": dish, "servings": servings, "ingredients": list(lines)}

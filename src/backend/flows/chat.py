@@ -6,14 +6,14 @@ from dataclasses import dataclass, field
 from backend.cart import service
 from backend.flows.cards import Message, SuggestionRef
 from backend.flows.templates import render
+from backend.flows.text import CLOSE_WORDS, named_dish_turn, recipe_text_turn
 from backend.intent.classify import classify
 from backend.llm.client import LLMInvalid
 
 REDIRECT_INTENTS = {"off_topic": "MSG-REDIRECT", "unsafe": "MSG-REDIRECT"}
 TEMPLATE_INTENTS = {"smalltalk": "MSG-THANKS", "unsupported": "MSG-UNSUPPORTED", "declare_allergy": "MSG-ALLERGY"}
 # Flows built in block 2.4; until then the honest reply is MSG-UNSUPPORTED.
-LATER_INTENTS = {"youtube_recipe", "recipe_text", "named_dish", "cart_edit", "staples_answer", "variant_request",
-                 "question_cooking"}
+LATER_INTENTS = {"youtube_recipe", "cart_edit", "staples_answer", "variant_request", "question_cooking"}
 
 
 @dataclass
@@ -50,6 +50,10 @@ def handle(session, text: str, deps: Deps) -> Outcome:
         deps.tracer.emit("intent_classified", session.session_id, intent=verdict.label, layer=verdict.layer)
         out.messages.append(say(session, verdict.template_id))
         return out
+    if text.strip().lower() in CLOSE_WORDS:  # FR-30: closes the open dish; rules, no model call
+        session.open_dish_id = None
+        out.messages.append(say(session, "MSG-THANKS"))
+        return out
     try:
         result = classify(deps.llm, text)
     except LLMInvalid:
@@ -70,6 +74,10 @@ def handle(session, text: str, deps: Deps) -> Outcome:
         else:
             card = service.offer_replace(session, None, "text")
             out.messages.append(say(session, "MSG-CLEAR-CONFIRM", cards=[card], dish=_cart_label(session)))
+    elif result.intent == "recipe_text":
+        recipe_text_turn(session, text, deps, out)
+    elif result.intent == "named_dish":
+        named_dish_turn(session, result.dish_name, deps, out)
     elif result.intent == "mood_intent":
         from backend.flows.mood import mood_turn
 

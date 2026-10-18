@@ -49,6 +49,9 @@ class Settings(BaseModel):
     timeout_llm_s: float = 30
     timeout_vision_s: float = 20
     timeout_transcript_s: float = 10
+    # Transcripts and recipe text (C39): live YouTube fetch switch; text cap for the 4k context (Agent Design §4)
+    live_transcripts: bool = True
+    max_recipe_chars: int = 6000
     # Photo detection
     confidence_threshold: float = 0.6
     # Reproducible context: empty means system clock / mock label

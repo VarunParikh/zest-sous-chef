@@ -39,6 +39,7 @@ class Session:
     undo_stack: list = field(default_factory=list)
     suggestions: dict = field(default_factory=dict)  # suggestion_id -> record
     orders: dict = field(default_factory=dict)  # idempotency key -> Order
+    open_dish_id: str | None = None  # the text recipe dish still taking ingredients (FR-30)
     last_recommendation: object = None  # pool, scores and inspector rows of the latest suggestion (FR-115)
     _turns: int = 0
     _messages: int = 0

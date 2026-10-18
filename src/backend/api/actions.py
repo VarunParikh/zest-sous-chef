@@ -76,7 +76,37 @@ def _swap(session, p: dict, request: Request) -> tuple[list[Message], bool]:
     return [msg], True
 
 
-HANDLERS = {"substitute": _substitute, "confirm": _confirm, "undo": _undo, "swap": _swap}
+def _deps(request: Request, session_id: str):
+    from backend.api.chat import chat_deps
+
+    return chat_deps(request, session_id)
+
+
+def _answer(session, p: dict, request: Request) -> tuple[list[Message], bool]:
+    """A clarifying question: a dish chip (FR-33, FR-90 alternative) or an ambiguous ingredient (FR-13, FR-30)."""
+    from backend.flows.chat import Outcome
+    from backend.flows.recipe import Item, item_for
+    from backend.flows.text import add_stored
+
+    q = session.pending.get(p.get("question_id", ""))
+    choice = p.get("choice", "")
+    if not q or choice not in q["options"]:
+        raise CartRuleError("STALE", "That question has expired.")
+    del session.pending[p["question_id"]]
+    deps, out = _deps(request, session.session_id), Outcome()
+    if q["kind"] == "dish_choice":
+        add_stored(session, choice, deps, out)
+        return out.messages, out.cart_changed
+    got = item_for(choice, q["qty"], q["unit"], q["estimated"], session.snapshot, deps.ctx, deps.store)
+    if not isinstance(got, Item):
+        raise CartRuleError("NOT_ELIGIBLE", f"{choice} isn't available with your settings.")
+    dish = service.add_custom_dish(session, q["dish_name"], [got], "text", deps.store, cart_dish_id=q["cart_dish_id"])
+    if session.open_dish_id is None and q["cart_dish_id"] is None:
+        session.open_dish_id = dish.cart_dish_id
+    return [reply(session, "MSG-EDIT-OK", change=f"Added {choice}")], True
+
+
+HANDLERS = {"substitute": _substitute, "confirm": _confirm, "undo": _undo, "swap": _swap, "answer": _answer}
 
 
 @router.post("/action")
