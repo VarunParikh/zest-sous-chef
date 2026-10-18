@@ -200,7 +200,7 @@ def main():
     notes = ("eligibility switched off on purpose: PASS means the checker found violations (sensitivity check, not E7)"
              if args.sensitivity else "independent checker; zero tolerance; photo prompts use the labelled samples (C52)")
     save(make_result("E7", system, "persona_prompts_v1.jsonl", "all", metrics, per, found if not args.sensitivity else found[:50],
-                     status, notes=notes), args.out)
+                     status, notes=notes), args.out, args.post_hoc)
     print(metrics, status)
 
 

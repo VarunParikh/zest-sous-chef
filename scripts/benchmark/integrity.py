@@ -239,7 +239,7 @@ def main():
     status = "PASS" if not run.mismatches else "FAIL"
     save(make_result("E8", "api-integrity", "integrity_v1.json", "all", metrics, per, run.mismatches[:200], status,
                      notes="scripted model; packs re-derived by brute force; validators V1 to V14 reported from `make data` "
-                           "separately"), args.out)
+                           "separately"), args.out, args.post_hoc)
     print(json.dumps(metrics, indent=1))
 
 
