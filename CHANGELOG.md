@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- Evidence report built (`docs/epics/zest/verify/report/`): overall FAIL per §7 with no open FAIL, no critical failure and four accepted FAILs; no required evaluation without a result. Five numbers recomputed by hand in `verify/benchmarks/block32.md`; owner review pending.
 - Evidence report builder (Evaluation Plan §9, v0.7 §4.17): `backend.evaluation.report` (unit-tested first), `scripts/eval_report.py`, `make report` (exits 1 if a required evaluation has no result) and `make eval` (reruns every headline harness). Deterministic output; inline SVG charts.
 - Block 3.2 amendments (owner-approved): Evaluation Plan v0.7 §4.17 (C69 to C71) and `eval/thresholds.yaml` v4 with the approved NFR-01 targets.
 - E14 rerun after C68 (`eval/results/post-hoc/c68/E14-traceability.json`): PASS. Spot-check report, handover and register updated.
