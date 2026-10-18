@@ -27,6 +27,7 @@ PLAN = """## 4. Test catalogue
 | T-091 | Timeout fallback | NFR-02 | P0 |
 | T-099 | Never written | FR-77 | P0 |
 | T-110 | Responsive | FR-100 | P1 |
+| T-075 | Markup inert | S-06 | P0 (E2E) |
 ## 5. Acceptance criteria to test map
 | AC | Test(s) | AC | Test(s) |
 |---|---|---|---|
@@ -117,3 +118,10 @@ def test_open_fail_rules():
 
 def test_p0_ids_without_a_test_are_listed():
     assert "T-099" in _evaluate()["p0_unreferenced"]
+
+
+def test_annotated_priority_cells_are_parsed():
+    """Block 3.5 finding: a row whose priority reads "P0 (E2E)" was skipped, hiding an unimplemented P0 test."""
+    tests, _ = parse_test_plan(PLAN)
+    assert tests["T-075"]["priority"] == "P0"
+    assert "T-075" in _evaluate()["p0_unreferenced"]

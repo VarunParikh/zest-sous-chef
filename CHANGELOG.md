@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- T-075 (S-06, Security Note release blocker 5): an E2E test that markup and script strings in messages render as inert text; it covers existing behaviour and passed on its first run.
 - Block 3.3 done: release documents written from results; handover points to block 3.4 (rehearsals, owner at the laptop).
 - README (setup guide, status at a glance, usage, how it works, tests and evaluations, repository map, limitations, licence). Checked from a clean clone on 2026-10-19: `make setup`, `make index` (one transient download failure, retry succeeded), `make test`, `make test-e2e`, `make test-embedder`, `make data` and the health endpoint all succeed. `.env.example`: stale vision comment fixed.
 - Prototyping Feedback (`docs/epics/zest/release/prototyping-feedback.md`): how the prototype was tested, eleven findings with evidence and the decision each led to, what worked and what did not, recommendations; the rehearsal section is filled in during block 3.4.
@@ -126,6 +127,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 - `dishes.csv` gains `aliases`, `flavour` and `description` columns, back-filled for D01 to D35 (C20); ingredient lines accept a fourth field `opt` for non-essential garnish lines. `check_seed.py` reads the new format.
 
 ### Fixed
+- E14's Test Plan parser skipped rows whose priority cell is annotated ("P0 (E2E)"), so the unimplemented P0 test T-075 was not listed among P0 IDs without a test; fixed test-first.
 - `mock-data/check_seed.py` and `check_taxonomy.py` had their own taxonomy parsers that did not learn the C68 `!term` and `|carrier` markers, so `make data` exited with an error from commit `a9cb089` until this fix, although validators V1 to V17 passed and the generated data was correct. The C68 records said `make data` passed; that was wrong (the check grepped for FAIL lines and missed the make error). A test now runs both scripts as `make data` does.
 - `levers.py`, `variants.py`, `retrieval.py`, `text_models.py` and `vision.py` dropped `--post-hoc`, so the E6 and E12 reruns (C53, C68) were filed under `post-hoc/` without the marker; every save now passes it (test guards all scripts), and the report treats any file under `post-hoc/` as post-hoc. Existing result files are unchanged.
 - Real-embedder test still expected the old 15-dish pool (missed in the C53 change because embedder tests run only under `make test-embedder`); with no keyword match the pool is the vector top 20, capped by `DISH_POOL` 25.

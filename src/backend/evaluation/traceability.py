@@ -51,7 +51,7 @@ def parse_ac_table(prd: str) -> dict:
 
 def parse_test_plan(md: str) -> tuple[dict, dict]:
     tests = {}
-    for m in re.finditer(r"^\| ((?:T|E2E)-\d{3}) \| .*? \| ([^|]*) \| (P\d) \|\s*$", md, re.M):
+    for m in re.finditer(r"^\| ((?:T|E2E)-\d{3}) \| .*? \| ([^|]*) \| (P\d)(?: \([^)|]*\))? \|\s*$", md, re.M):
         cov = m.group(2)
         tests[m.group(1)] = {"covers": expand_ids(cov, "FR") | expand_ids(cov, "NFR") | expand_ids(cov, "AC"), "priority": m.group(3)}
     section = md.split("## 5.", 1)[1].split("\n## ", 1)[0] if "## 5." in md else ""
