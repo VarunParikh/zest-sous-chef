@@ -36,3 +36,7 @@ def test_unknown_make_target_is_reported(tmp_path):
 def test_unknown_ids_are_reported(tmp_path):
     problems = _check("C99 and E15 and ADR-099 and C72 and E14 and ADR-003.", tmp_path)
     assert sorted(problems) == ["unknown ADR: ADR-099", "unknown conflict: C99", "unknown evaluation: E15"]
+
+
+def test_separate_code_spans_are_not_joined_into_a_command(tmp_path):
+    assert _check("The tools provide `make` and `git`.", tmp_path) == []

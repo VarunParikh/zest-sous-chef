@@ -21,7 +21,7 @@ def check_document(path: Path, root: Path, makefile: str, conflicts_md: str, eva
             continue
         if not (path.parent / target.split("#", 1)[0]).resolve().exists():
             problems.append(f"broken link: {target}")
-    code = " ".join(re.findall(r"`([^`]+)`", text)) + "\n" + "\n".join(re.findall(r"```.*?\n(.*?)```", text, re.S))
+    code = "\n".join(re.findall(r"`([^`]+)`", text)) + "\n" + "\n".join(re.findall(r"```.*?\n(.*?)```", text, re.S))
     targets = _targets(makefile)
     for t in sorted(set(re.findall(r"(?:^|[\s`&;])make ([a-z][a-z0-9-]*)", code, re.M))):
         if t not in targets:
