@@ -1,6 +1,6 @@
 # API Spec: Zest AI Sous-Chef
 
-Status: **APPROVED v0.6 (owner, 2026-10-18, with the block 2.5 plan): §4.6 adds `icon` on each line and `course` on each dish (C41).** v0.5 was APPROVED (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.4 was APPROVED (owner, 2026-10-18): §3 endpoints 7 to 10 return the cart and endpoint 8 has a defined body; §4.6 lines gain `in_stock` and `quantity`; §4.7 OUT_OF_STOCK details carry substitutions (C34, C35). v0.3: §4.2 to §4.4 add the optional current `levers` and `levers_changed_since_snapshot` (C31). v0.2 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, Data Model v0.1, Conversation Design v0.1
+Status: **APPROVED v0.7 (owner, 2026-10-19, with the block 3.3 plan): endpoints 14 and 15 not built, cut with UJ22 (C72).** v0.6 was **APPROVED (owner, 2026-10-18, with the block 2.5 plan): §4.6 adds `icon` on each line and `course` on each dish (C41).** v0.5 was APPROVED (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.4 was APPROVED (owner, 2026-10-18): §3 endpoints 7 to 10 return the cart and endpoint 8 has a defined body; §4.6 lines gain `in_stock` and `quantity`; §4.7 OUT_OF_STOCK details carry substitutions (C34, C35). v0.3: §4.2 to §4.4 add the optional current `levers` and `levers_changed_since_snapshot` (C31). v0.2 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, Data Model v0.1, Conversation Design v0.1
 Scope: the browser-to-backend REST contract, the response card types, errors, and the outbound contracts to the model, the opt-in Gemini photo provider and the transcript source. **Webhooks:** none. The app is a browser client with no inbound callbacks; there are no outbound webhooks. The live contract is the OpenAPI document that FastAPI generates from the Pydantic models in the Data Model; this document is the design that those models must satisfy.
 
 ## 1. Design decisions (owner delegated the API style, 2026-10-17)
@@ -37,8 +37,8 @@ Scope: the browser-to-backend REST contract, the response card types, errors, an
 | 11 | `POST /api/v1/sessions/{id}/checkout` | Buy Now (requires `Idempotency-Key` header) | FR-80, 81, 83 |
 | 12 | `GET /api/v1/sessions/{id}/inspector` | Retrieval and scoring detail for the latest suggestions | FR-63, 115 |
 | 13 | `GET /api/v1/samples/photos` | Bundled sample photos with labels | FR-55 |
-| 14 | `POST /api/v1/demo/stock-scenario/{scenario_id}` | Apply a scripted stock change | UJ10, UJ22 |
-| 15 | `PUT /api/v1/demo/context` | Override time and weather label | FR-67 |
+| 14 | `POST /api/v1/demo/stock-scenario/{scenario_id}` | Apply a scripted stock change (not built: cut with UJ22, C72) | UJ10, UJ22 |
+| 15 | `PUT /api/v1/demo/context` | Override time and weather label (not built: cut with UJ22, C72) | FR-67 |
 Endpoints 7 to 10 return the cart (section 4.6) (v0.4). Endpoints 14 and 15 exist only when `DEMO_CONTROLS=true` (default false) and return `404` otherwise.
 
 ## 4. Key request and response shapes

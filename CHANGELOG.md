@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- Block 3.3 amendments: Test Plan v0.6 and API Spec v0.7 record demo endpoints 14 and 15 as cut with UJ22 (C72); C73 places the release documents in `docs/epics/zest/release/`.
 - Block 3.2 closed: the owner reviewed the evidence report and confirmed the numbers.
 - Evidence report built (`docs/epics/zest/verify/report/`): overall FAIL per §7 with no open FAIL, no critical failure and four accepted FAILs; no required evaluation without a result. Five numbers recomputed by hand in `verify/benchmarks/block32.md`; owner review pending.
 - Evidence report builder (Evaluation Plan §9, v0.7 §4.17): `backend.evaluation.report` (unit-tested first), `scripts/eval_report.py`, `make report` (exits 1 if a required evaluation has no result) and `make eval` (reruns every headline harness). Deterministic output; inline SVG charts.

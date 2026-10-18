@@ -1,6 +1,6 @@
 # Test Plan: Zest AI Sous-Chef
 
-Status: **APPROVED v0.5 (owner, 2026-10-18, C68): T-100 covers V1 to V17.** v0.4 was **APPROVED (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.3 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 adds T-047 to T-049 for ADR-004 v2 add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4 (AC-01 to AC-45), User Stories, Architecture, API Spec, Agent Design, Security and Privacy Note
+Status: **APPROVED v0.6 (owner, 2026-10-19, with the block 3.3 plan): §9 step 6 and T-105 NOT RUN, demo endpoints cut (C72).** v0.5 was **APPROVED (owner, 2026-10-18, C68): T-100 covers V1 to V17.** v0.4 was **APPROVED (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.3 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 adds T-047 to T-049 for ADR-004 v2 add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4 (AC-01 to AC-45), User Stories, Architecture, API Spec, Agent Design, Security and Privacy Note
 Owner decision (2026-10-17): **lean test set.** Full coverage of the engine, cart and guardrails; acceptance tests for the Must stories; one Playwright demo-path test. Dependency Pillow approved.
 **Status of every test in this plan: NOT RUN.** No code exists. Nothing here is a result.
 
@@ -149,7 +149,7 @@ IDs are stable. Priority P0 = must pass before any demo; P1 = should pass.
 | T-102 | EXIF stripped (GPS tag absent after processing) using a fixture image with metadata | FR-51, S-03 | P0 |
 | T-103 | Image bytes never written to disk or logs | NFR-06, AC-34 | P0 |
 | T-104 | Crafted URLs (file://, internal IPs, look-alike domains) rejected with no fetch | S-05 | P0 |
-| T-105 | Demo endpoints return 404 unless `DEMO_CONTROLS=true` | S-09 | P1 |
+| T-105 | Demo endpoints return 404 unless `DEMO_CONTROLS=true` (NOT RUN: demo endpoints cut, C72) | S-09 | P1 |
 | T-106 | Repo secret scan finds nothing in tree and history | S-01 | P0 |
 | T-107 | `.gitignore` covers `.env`, logs, Chroma folder, uploads | S-07 | P0 |
 | T-108 | Session IDs are random and unknown IDs return 404 | S-12 | P1 |
@@ -217,7 +217,7 @@ Result statuses: PASS, FAIL, BLOCKED, NOT RUN. A skipped or disabled test is a d
 3. Photo: a sample photo (the demo path); a live upload to the local `qwen3-vl:4b-instruct` (may take up to 60 s); if the opt-in is enabled, a Gemini upload with the consent notice; and the provider stopped (sample photos offered).
 4. Mood message under three personas (Default, Jain, Keto): different results visible.
 5. Lever change, Clear chat, same prompt: different results; inspector shows why.
-6. Stock-out scenario via demo controls; substitution accepted.
+6. Stock-out scenario via demo controls: NOT RUN, because demo endpoints 14 and 15 were cut with UJ22 (C72). Substitution is covered by T-058 and T-059.
 7. Buy Now; 10 second collapse; refresh resets everything.
 8. Responsive width check at 1024 px and narrower.
 
