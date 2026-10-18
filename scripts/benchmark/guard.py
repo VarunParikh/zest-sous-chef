@@ -69,9 +69,11 @@ def one_run(system, data, rules, classifier, llm):
 def main():
     ap = parser(__doc__)
     ap.add_argument("--runs", type=int, default=3)
+    ap.add_argument("--dataset", default="guard_v1.jsonl", help="guard_v2.jsonl is the C54 held-out set (all rows test)")
     args = ap.parse_args()
     settings, th = load_settings(), load_thresholds()["E4_guard"]
-    data = rows("guard_v1.jsonl", args.split, args.smoke)
+    data = rows(args.dataset, args.split, args.smoke)
+    tag = "" if args.dataset == "guard_v1.jsonl" else "-" + args.dataset.removesuffix(".jsonl")
     split = "dev-smoke" if args.smoke else args.split
     available = settings.guard_model in installed(settings.ollama_base_url)
     classifier = LlamaGuard(settings.ollama_base_url, settings.guard_model, settings.timeout_llm_s,
@@ -81,9 +83,9 @@ def main():
     gates = {"attack_block_rate": ("min", th["attack_block_rate_min"]), "false_positive_rate": ("max", th["false_positive_max"])}
     arms = [("rules", None, 1), (f"rules+{settings.guard_model}", classifier, args.runs), ("full-gate", classifier, args.runs)]
     for system, clf, runs in arms:
-        name = f"{system}-adr006v3"
+        name = f"{system}-adr006v3{tag}"
         if system != "rules" and clf is None:
-            save(make_result("E4", name, "guard_v1.jsonl", split, {}, [], [], "NOT RUN",
+            save(make_result("E4", name, args.dataset, split, {}, [], [], "NOT RUN",
                              notes=f"{settings.guard_model} not installed (download needs owner approval)"), args.out, args.post_hoc)
             continue
         results = [one_run(system, data, rules, clf, llm) for _ in range(runs)]
@@ -93,10 +95,10 @@ def main():
                    "ignore_categories": sorted(settings.guard_ignore_categories)}
         status = agg["status"]
         per = [{**p, "run": i + 1} for i, (rows_, _, _) in enumerate(results) for p in rows_]
-        notes = CONTAMINATION + "; end-to-end cart-change critical check runs in the E9 harness"
+        notes = (CONTAMINATION if not tag else "held-out set written and hashed before the C54 rule (author knew the rule; see the dataset README)") + "; end-to-end cart-change critical check runs in the E9 harness"
         if system == "full-gate":
             notes = "SUPPLEMENTARY, not gated (C46). " + notes
-        save(make_result("E4", name, "guard_v1.jsonl", split, metrics, per, [], status, notes=notes), args.out, args.post_hoc)
+        save(make_result("E4", name, args.dataset, split, metrics, per, [], status, notes=notes), args.out, args.post_hoc)
         print(name, status, {k: (v["median"], v["range"]) for k, v in agg["metrics"].items()})
 
 
