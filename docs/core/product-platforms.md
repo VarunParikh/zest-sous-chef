@@ -1,6 +1,6 @@
 # Product Platforms: Zest AI Sous-Chef
 
-Status: **DRAFT (amended) v0.3 (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback); awaits owner re-approval (Approval Register Rule 2). ** v0.2 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-16
+Status: **APPROVED v0.3 (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.2 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-16
 Model names and limits change quickly. Everything model-specific is configuration (`.env`), never hard-coded. Choices here are provisional until ratified in ADR-001 to ADR-004.
 
 ## 1. Platform map

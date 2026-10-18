@@ -1,6 +1,6 @@
 # Test Plan: Zest AI Sous-Chef
 
-Status: **DRAFT (amended) v0.4 (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback); awaits owner re-approval (Approval Register Rule 2). ** v0.3 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 adds T-047 to T-049 for ADR-004 v2 add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4 (AC-01 to AC-45), User Stories, Architecture, API Spec, Agent Design, Security and Privacy Note
+Status: **APPROVED v0.4 (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.3 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 adds T-047 to T-049 for ADR-004 v2 add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4 (AC-01 to AC-45), User Stories, Architecture, API Spec, Agent Design, Security and Privacy Note
 Owner decision (2026-10-17): **lean test set.** Full coverage of the engine, cart and guardrails; acceptance tests for the Must stories; one Playwright demo-path test. Dependency Pillow approved.
 **Status of every test in this plan: NOT RUN.** No code exists. Nothing here is a result.
 

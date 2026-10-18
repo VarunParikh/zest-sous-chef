@@ -21,19 +21,19 @@ Approving a document means: you have read it or the parts you care about, you ac
 ## Register
 | Doc | Path | Version | Tier | Status | Approved by / date |
 |---|---|---|---|---|---|
-| Product spec (PRD) | `docs/epics/zest/requirements/product-spec.md` | v0.6 | A | **Draft (amended) v0.6** (C37: FR-50, FR-55, AC-11 synced to ADR-003 v3) | Awaiting owner re-approval (v0.5: owner, 2026-10-18) |
+| Product spec (PRD) | `docs/epics/zest/requirements/product-spec.md` | v0.6 | A | **Approved v0.6** (C37: FR-50, FR-55, AC-11 synced to ADR-003 v3) | Owner, 2026-10-18 (re-approved after the C37 sync) |
 | Data Model | `docs/epics/zest/design/data-model.md` | v0.3 | A | **Approved v0.3** (C33 allocation, C34 quoted prices, C35 quantity) | Owner, 2026-10-18 (approved with the block 2.2 plan) |
-| Architecture | `docs/epics/zest/design/architecture.md` | v0.4 | A | **Draft (amended) v0.4** (C37 photo flow and vision default; C39 config rows) | Awaiting owner re-approval (v0.3: owner, 2026-10-18) |
-| API Spec | `docs/epics/zest/design/api-spec.md` | v0.5 | A | **Draft (amended) v0.5** (C37: §6.2 vision provider contract) | Awaiting owner re-approval (v0.4: owner, 2026-10-18) |
-| Agent Design | `docs/epics/zest/design/agent-design.md` | v0.3 | A | **Draft (amended) v0.3** (C37: A6 provider) | Awaiting owner re-approval (v0.2: owner, 2026-10-18) |
-| Build Plan | `docs/epics/zest/build-plan.md` | v0.3 | A | **Draft (amended) v0.3** (C39: §4 adds `python-multipart`) | Awaiting owner re-approval (v0.2: owner, 2026-10-17) |
-| User Stories and Traceability | `docs/epics/zest/requirements/user-stories.md` | v0.5 | B | **Draft (amended) v0.5** (C37: US-14, US-16) | Awaiting owner re-approval (v0.4: owner, 2026-10-18) |
-| Conversation Design | `docs/epics/zest/design/conversation-design.md` | v0.3 | B | **Draft (amended) v0.3** (C37 MSG-PHOTO-SAMPLES trigger; C38 MSG-PHOTO-CONFIRM, MSG-TXT-STORED servings) | Awaiting owner re-approval (v0.2: owner, 2026-10-18) |
-| Security and Privacy Note | `docs/epics/zest/design/security-privacy-note.md` | v0.3 | B | **Draft (amended) v0.3** (C37: photo data flow) | Awaiting owner re-approval (v0.2: owner, 2026-10-18) |
-| Test Plan | `docs/epics/zest/verify/test-plan.md` | v0.4 | B | **Draft (amended) v0.4** with Test Cases (C37: T-088, rehearsal) | Awaiting owner re-approval (v0.3: owner, 2026-10-18) |
+| Architecture | `docs/epics/zest/design/architecture.md` | v0.4 | A | **Approved v0.4** (C37 photo flow and vision default; C39 config rows) | Owner, 2026-10-18 (re-approved after the C37 sync) |
+| API Spec | `docs/epics/zest/design/api-spec.md` | v0.5 | A | **Approved v0.5** (C37: §6.2 vision provider contract) | Owner, 2026-10-18 (re-approved after the C37 sync) |
+| Agent Design | `docs/epics/zest/design/agent-design.md` | v0.3 | A | **Approved v0.3** (C37: A6 provider) | Owner, 2026-10-18 (re-approved after the C37 sync) |
+| Build Plan | `docs/epics/zest/build-plan.md` | v0.3 | A | **Approved v0.3** (C39: §4 adds `python-multipart`) | Owner, 2026-10-18 (re-approved after the C37 sync) |
+| User Stories and Traceability | `docs/epics/zest/requirements/user-stories.md` | v0.5 | B | **Approved v0.5** (C37: US-14, US-16) | Owner, 2026-10-18 (re-approved after the C37 sync) |
+| Conversation Design | `docs/epics/zest/design/conversation-design.md` | v0.3 | B | **Approved v0.3** (C37 MSG-PHOTO-SAMPLES trigger; C38 MSG-PHOTO-CONFIRM, MSG-TXT-STORED servings) | Owner, 2026-10-18 (re-approved after the C37 sync) |
+| Security and Privacy Note | `docs/epics/zest/design/security-privacy-note.md` | v0.3 | B | **Approved v0.3** (C37: photo data flow) | Owner, 2026-10-18 (re-approved after the C37 sync) |
+| Test Plan | `docs/epics/zest/verify/test-plan.md` | v0.4 | B | **Approved v0.4** with Test Cases (C37: T-088, rehearsal) | Owner, 2026-10-18 (re-approved after the C37 sync) |
 | Evaluation Plan | `docs/epics/zest/verify/evaluation-plan.md` | v0.2 | B | **Approved** (ADR-004 v2 sync, C16); thresholds v3 approved as proposed | Owner, 2026-10-17 (re-approved after ADR-004 v2 sync) |
 | ADR-001 Backend framework | `design/adr/ADR-001-...` | | B | **Accepted** | Owner, 2026-10-17 |
-| ADR-003 Vision approach | `design/adr/ADR-003-...` | v3 | B | **Draft (amended) v3** (C37: local `qwen3-vl:4b-instruct` default despite failing E3, Gemini opt-in, samples for the demo and fallback, 60 s timeout; photo accuracy NOT MET) | Awaiting owner re-approval (v2 decision: owner, 2026-10-18) |
+| ADR-003 Vision approach | `design/adr/ADR-003-...` | v3 | B | **Approved v3** (C37: local `qwen3-vl:4b-instruct` default despite failing E3, Gemini opt-in, samples for the demo and fallback, 60 s timeout; photo accuracy NOT MET) | Owner, 2026-10-18 (re-approved after the C37 sync) |
 | ADR-004 Retrieval approach | `design/adr/ADR-004-...` | v2 | B | **Accepted, amended v2**; Day-1 evidence recorded (hybrid default, k = 60, add-ons 2:1) | Owner, 2026-10-17; evidence approved 2026-10-18 |
 | ADR-005 Vector store | `design/adr/ADR-005-...` | | B | **Accepted**: store and default all-MiniLM-L6-v2 embedder (E5) | Owner, 2026-10-17 (store); 2026-10-18 (embedder) |
 | ADR-007 State and storage | `design/adr/ADR-007-...` | | B | **Accepted** | Owner brief |
@@ -44,7 +44,7 @@ Approving a document means: you have read it or the parts you care about, you ac
 | ADR-006 Guard design | `design/adr/ADR-006-...` | | B | **Accepted**: rules plus `llama-guard3:1b` (E4) | Owner, 2026-10-18 |
 | Constitution | `docs/core/constitution.md` | v0.2 | C | **Approved** | Owner, 2026-10-17 |
 | Product Strategy | `docs/core/product-strategy.md` | v0.1 | C | **Approved** | Owner, 2026-10-17 |
-| Product Platforms | `docs/core/product-platforms.md` | v0.3 | C | **Draft (amended) v0.3** (C37: vision rows) | Awaiting owner re-approval (v0.2: owner, 2026-10-18) |
+| Product Platforms | `docs/core/product-platforms.md` | v0.3 | C | **Approved v0.3** (C37: vision rows) | Owner, 2026-10-18 (re-approved after the C37 sync) |
 | References and Glossary | `docs/core/references-and-glossary.md` | v0.1 | C | **Approved** | Owner, 2026-10-17 |
 | BRD | `docs/epics/zest/requirements/business-requirements.md` | v0.1 | C | **Approved** (has its own approval table) | Owner, 2026-10-17 |
 | Personas | `docs/epics/zest/discovery/personas.md` | v0.1 | C | **Approved** | Owner, 2026-10-17 |
@@ -92,3 +92,4 @@ Approving a document means: you have read it or the parts you care about, you ac
 | 2026-10-18 | Owner re-approved API Spec v0.3 as written (C31: optional current `levers` in chat and action requests; `levers_changed_since_snapshot` in `TurnResponse`). The T-002 banner-flag code is no longer blocked | this register, `api-spec.md` v0.3, `open-conflicts.md` C31 |
 | 2026-10-18 | Block 2.2 planning: owner resolved C33 (combined-need pack allocation, FR-71 over Data Model §8.4), C34 (`in_stock` and `quantity` on cart lines, internal quoted prices, substitutions in OUT_OF_STOCK) and C35 (quantity multiplies a line's packs). The owner approved the block 2.2 plan, which stated that its approval re-approves exactly the amendment text: Data Model v0.3 and API Spec v0.4 are Approved. Servings scaling (FR-32, Could) is cut per build plan §8: dishes are carted at their stored servings | this register, `open-conflicts.md` C33 to C35, `data-model.md` v0.3, `api-spec.md` v0.4 |
 | 2026-10-18 | Block 2.4 planning: owner decided C37 (local `qwen3-vl:4b-instruct` as the default vision provider although it failed E3; Gemini opt-in; samples for the demo and as fallback; `TIMEOUT_VISION_S=60`), C38 (MSG-PHOTO-CONFIRM; MSG-TXT-STORED servings) and C39 (`python-multipart==0.0.32` approved, `youtube-transcript-api==1.2.4` installed, `LIVE_TRANSCRIPTS`, `MAX_RECIPE_CHARS`). Amended and returned to Draft (amended) (Rule 2): ADR-003 v3, PRD v0.6, User Stories v0.5, Architecture v0.4, API Spec v0.5, Security Note v0.3, Agent Design v0.3, Conversation Design v0.3, Test Plan v0.4 with Test Cases, Product Platforms v0.3, Build Plan v0.3. Wording only: Risk Register (living), Day-0 walkthrough note, ADR index. **The photo flow is not built until the owner re-approves these documents; the text and YouTube flows use unchanged sections only** | this register, `open-conflicts.md` C37 to C39 |
+| 2026-10-18 | Owner re-approved the 11 documents amended in the C37 sync as written: ADR-003 v3, PRD v0.6, User Stories v0.5, Architecture v0.4, API Spec v0.5, Security Note v0.3, Agent Design v0.3, Conversation Design v0.3, Test Plan v0.4 with Test Cases, Product Platforms v0.3, Build Plan v0.3. The photo flow (block 2.4) is no longer blocked | this register, `open-conflicts.md` C37 |

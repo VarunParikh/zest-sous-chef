@@ -1,5 +1,5 @@
 # ADR-003 (v3): Local `qwen3-vl:4b-instruct` by default; Gemini opt-in; labelled sample photos for the demo and as fallback
-- **Status:** **Draft (amended) v3, 2026-10-18 (owner decision, C37); awaits owner re-approval.** v2 was Accepted, **amended 2026-10-17 (v2)** by owner decision: local-first, Gemini optional, pluggable. v1 (Gemini primary) is superseded; the original text is kept below under "v1 record". **Day-1 decision 2026-10-18 (owner approved): default `VISION_PROVIDER=samples`; photo accuracy NOT MET; Gemini 3.5 Flash-Lite available as an opt-in for demos only.**
+- **Status:** **Accepted v3, 2026-10-18 (owner decision, C37; owner re-approved the same day).** v2 was Accepted, **amended 2026-10-17 (v2)** by owner decision: local-first, Gemini optional, pluggable. v1 (Gemini primary) is superseded; the original text is kept below under "v1 record". **Day-1 decision 2026-10-18 (owner approved): default `VISION_PROVIDER=samples`; photo accuracy NOT MET; Gemini 3.5 Flash-Lite available as an opt-in for demos only.**
 - **Date:** 2026-10-17
 - **Decision owner:** VJP (product owner); drafted by Claude
 - **Authorisation:** Owner chose Gemini with user-uploaded photos and Constitution P9 was amended.

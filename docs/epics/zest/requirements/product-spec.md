@@ -1,6 +1,6 @@
 # Specification (PRD): Zest AI Sous-Chef
 
-- **Status:** **DRAFT (amended) v0.6 (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback); awaits owner re-approval (Approval Register Rule 2). ** v0.5 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.4 was approved by the owner 2026-10-17 after the ADR-004 v2 sync (Approval Register Rule 2). v0.3 was approved by the owner 2026-10-17 (OQ-8 to OQ-10 accepted at their defaults); v0.2 reviewed (see `spec-review-v0.1.md`); v0.3 and v0.4 changes not independently re-reviewed
+- **Status:** **APPROVED v0.6 (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.5 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.4 was approved by the owner 2026-10-17 after the ADR-004 v2 sync (Approval Register Rule 2). v0.3 was approved by the owner 2026-10-17 (OQ-8 to OQ-10 accepted at their defaults); v0.2 reviewed (see `spec-review-v0.1.md`); v0.3 and v0.4 changes not independently re-reviewed
 - **Owner:** VJP (product owner) · **Date:** 2026-10-17
 - **Inputs:** BRD, Strategy, Platforms, Personas, Risk Register, Settings Panel, DESIGN.md, User Journeys, mockups
 - **Convention:** "shall" marks a testable requirement. Priority: M = Must, S = Should, C = Could. Items needing an owner decision are in section 15.

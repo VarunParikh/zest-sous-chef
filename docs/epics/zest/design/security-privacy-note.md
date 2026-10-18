@@ -1,6 +1,6 @@
 # Security and Privacy Note: Zest AI Sous-Chef
 
-Status: **DRAFT (amended) v0.3 (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback); awaits owner re-approval (Approval Register Rule 2). ** v0.2 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Method: design-stage review (`security-privacy-reviewer` procedure) of PRD v0.3, Architecture v0.1, Data Model v0.1, API Spec v0.1, Agent Design v0.1
+Status: **APPROVED v0.3 (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.2 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Method: design-stage review (`security-privacy-reviewer` procedure) of PRD v0.3, Architecture v0.1, Data Model v0.1, API Spec v0.1, Agent Design v0.1
 This note supplements, and does not replace, a specialist security or compliance review. No code exists yet, so findings are tied to documented data flows and design gaps. Nothing here is a statement that the system is secure or compliant.
 
 ## 1. Scope and assumptions

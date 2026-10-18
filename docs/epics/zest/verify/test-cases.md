@@ -1,6 +1,6 @@
 # Test Cases (Given / When / Then)
 
-Status: **DRAFT (amended) with Test Plan v0.4 (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback); awaits owner re-approval (Approval Register Rule 2). ** Was APPROVED with Test Plan v0.3 (owner, 2026-10-18), re-approved after the C15 sync; was APPROVED with Test Plan v0.2 (owner, 2026-10-17); content mirrors Test Plan v0.2 (v0.1 was approved earlier the same day; T-047 to T-049 are new) · Date: 2026-10-17
+Status: **APPROVED with Test Plan v0.4 (owner re-approved 2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** Was APPROVED with Test Plan v0.3 (owner, 2026-10-18), re-approved after the C15 sync; was APPROVED with Test Plan v0.2 (owner, 2026-10-17); content mirrors Test Plan v0.2 (v0.1 was approved earlier the same day; T-047 to T-049 are new) · Date: 2026-10-17
 **Status of every test: NOT RUN.** No code exists. This file expresses each test in the plan's catalogue (`test-plan.md` section 4) as Given / When / Then without changing its ID, coverage or priority. If this file and `test-plan.md` ever disagree on what a test proves, log it in `docs/core/open-conflicts.md`. Tests assert structure (message IDs, slot values, SKU IDs, quantities, totals), not wording (NFR-11). "Fake" doubles are those in test-plan section 3.
 
 ## 4.1 Session and levers
