@@ -6,7 +6,7 @@ This is what testing the prototype taught us, what we changed because of it, and
 | Method | When | What it covered |
 |---|---|---|
 | **Owner hand tests** in the browser, real models | Blocks 2.4 and 2.5 | YouTube links, open requests ("I am hungry", "surprise me"), personas, levers, the cart |
-| **Automated tests** (`make test`, `make test-e2e`, `make test-embedder`) | Every story | 615 unit, contract and acceptance tests with fake models, plus 1 browser demo-path test and 1 embedder test |
+| **Automated tests** (`make test`, `make test-e2e`, `make test-embedder`) | Every story | Over 600 unit, contract and acceptance tests with fake models, plus 1 browser demo-path test and 1 embedder test |
 | **Evaluations E1 to E14** with the real local models | Blocks 1.5, 2.6, 3.1 | Model choice, intent, vision, guard, retrieval, lever sensitivity, persona compliance, integrity, resilience, latency, traceability |
 | **Spot checks**, assistant-made at the owner's direction (C67) | Block 3.1 | 20 reason lines, 103 catalogue variants |
 | **Rehearsals** on the demo laptop | Block 3.4 | Pending: see section 5 |
