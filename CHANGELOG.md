@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- E11 latency result (`eval/results/E11-latency-real-stack.json`): **PASS**, every flow 10 of 10 normal runs. Medians / p95 (server side): mood 1.2 / 1.3 s, text 5.1 / 5.5 s, YouTube fixture 5.6 / 11.0 s, photo upload 7.6 / 12.5 s, sample photo 0.27 / 0.33 s, cart edits ≤ 16 ms.
 - E14 traceability: `backend.evaluation.traceability` (unit-tested first) and `scripts/benchmark/traceability.py`; `eval/headline.yaml` names each evaluation's verdict file and accepting conflict (C58, C64, for owner review); `make test-e2e` and `make test-embedder` now write JUnit files; tag-only docstrings link T-074 and FR-14 to their existing tests (US-07).
 - E11 latency: `backend.evaluation.latency` (percentile, summary, per-kind model breakdown, flow status; unit-tested first) and `scripts/benchmark/latency.py` (six flows, warm-up plus 10 runs, `llm_call` breakdown, 3 GB free-RAM floor).
 - P0 tests T-103 (image bytes never written to disk during an upload) and T-104 (`file://`, internal-IP and look-alike URLs rejected with no fetch) in `tests/acceptance/test_security_p0.py`; they cover existing behaviour and passed on their first run. T-050 to T-052 already exist as `test_t050…` to `test_t052…` in `tests/unit/cart/test_allocation.py`.

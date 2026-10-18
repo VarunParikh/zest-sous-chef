@@ -1,0 +1,2395 @@
+{
+ "id": "E11",
+ "system": "latency-real-stack",
+ "dataset": {
+  "name": "levers_v1.jsonl",
+  "sha256": "72fbd3db01ad81b8afe74cccca3e3fe18b59884a6fc8e3c84a78cd663febb55a",
+  "split": "all"
+ },
+ "environment": {
+  "commit": "31f4bc5",
+  "dirty": false,
+  "date": "2026-10-18T16:02:20+00:00",
+  "python": "3.12.15",
+  "machine": "arm64",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "packages": {
+   "chromadb": "1.5.9",
+   "rank-bm25": "0.2.2",
+   "pydantic": "2.14.1",
+   "httpx": "0.28.1",
+   "fastapi": "0.143.3"
+  },
+  "ollama_ps": "NAME                    ID              SIZE      PROCESSOR    CONTEXT    RUNNER      UNTIL              \nqwen3-vl:4b-instruct    ee4b975b58c1    3.7 GB    100% GPU     4096       llamacpp    9 minutes from now    \nllama-guard3:1b         494147e06bf9    1.7 GB    100% GPU     16384      llamacpp    4 minutes from now    \nllama3.2:3b             a80c4f17acd5    2.6 GB    100% GPU     4096       llamacpp    3 minutes from now    \n",
+  "llm_model": "llama3.2:3b",
+  "llm_num_ctx": 4096,
+  "guard_model": "llama-guard3:1b",
+  "vision_model": "qwen3-vl:4b-instruct",
+  "trace_dir": "/var/folders/fm/rl6y16xj7x3fmkyqg6x48wxh0000gn/T/zest-eval-db182rsg"
+ },
+ "metrics": {
+  "flows": {
+   "mood": {
+    "status": "PASS",
+    "normal_runs": 10,
+    "end_to_end": {
+     "n": 10,
+     "median_ms": 1197.8,
+     "p95_ms": 1252.0,
+     "min_ms": 1112.0,
+     "max_ms": 1266.9
+    },
+    "cold_start_ms": [
+     3911.9
+    ],
+    "model_breakdown": {
+     "guard": {
+      "n": 10,
+      "median_ms": 48.6,
+      "p95_ms": 53.0,
+      "min_ms": 46.0,
+      "max_ms": 54.7
+     },
+     "intent": {
+      "n": 10,
+      "median_ms": 620.1,
+      "p95_ms": 659.1,
+      "min_ms": 586.6,
+      "max_ms": 665.4
+     },
+     "reason": {
+      "n": 10,
+      "median_ms": 471.9,
+      "p95_ms": 529.7,
+      "min_ms": 380.4,
+      "max_ms": 535.2
+     },
+     "other": {
+      "n": 10,
+      "median_ms": 53.6,
+      "p95_ms": 70.2,
+      "min_ms": 39.4,
+      "max_ms": 74.5
+     }
+    },
+    "wall_clock_s": 15.9
+   },
+   "text": {
+    "status": "PASS",
+    "normal_runs": 10,
+    "end_to_end": {
+     "n": 10,
+     "median_ms": 5055.3,
+     "p95_ms": 5518.7,
+     "min_ms": 4399.6,
+     "max_ms": 5585.5
+    },
+    "cold_start_ms": [
+     6361.7
+    ],
+    "model_breakdown": {
+     "extract": {
+      "n": 10,
+      "median_ms": 4122.7,
+      "p95_ms": 4593.8,
+      "min_ms": 3558.4,
+      "max_ms": 4638.2
+     },
+     "guard": {
+      "n": 10,
+      "median_ms": 67.3,
+      "p95_ms": 70.6,
+      "min_ms": 57.1,
+      "max_ms": 72.1
+     },
+     "intent": {
+      "n": 10,
+      "median_ms": 707.8,
+      "p95_ms": 735.1,
+      "min_ms": 656.9,
+      "max_ms": 735.8
+     },
+     "other": {
+      "n": 10,
+      "median_ms": 129.5,
+      "p95_ms": 154.4,
+      "min_ms": 93.9,
+      "max_ms": 160.3
+     }
+    },
+    "wall_clock_s": 57.1
+   },
+   "youtube": {
+    "status": "PASS",
+    "normal_runs": 10,
+    "end_to_end": {
+     "n": 10,
+     "median_ms": 5618.6,
+     "p95_ms": 11025.1,
+     "min_ms": 3843.2,
+     "max_ms": 11779.5
+    },
+    "cold_start_ms": [
+     5429.0
+    ],
+    "model_breakdown": {
+     "extract": {
+      "n": 10,
+      "median_ms": 5266.6,
+      "p95_ms": 10363.9,
+      "min_ms": 3522.9,
+      "max_ms": 11109.4
+     },
+     "guard": {
+      "n": 10,
+      "median_ms": 204.9,
+      "p95_ms": 253.4,
+      "min_ms": 178.1,
+      "max_ms": 254.5
+     },
+     "other": {
+      "n": 10,
+      "median_ms": 166.3,
+      "p95_ms": 433.4,
+      "min_ms": 130.5,
+      "max_ms": 446.0
+     }
+    },
+    "wall_clock_s": 71.7
+   },
+   "sample_photo": {
+    "status": "PASS",
+    "normal_runs": 10,
+    "end_to_end": {
+     "n": 10,
+     "median_ms": 273.1,
+     "p95_ms": 325.0,
+     "min_ms": 206.7,
+     "max_ms": 332.8
+    },
+    "cold_start_ms": [
+     223.1
+    ],
+    "model_breakdown": {
+     "guard": {
+      "n": 10,
+      "median_ms": 74.2,
+      "p95_ms": 86.5,
+      "min_ms": 60.8,
+      "max_ms": 87.7
+     },
+     "other": {
+      "n": 10,
+      "median_ms": 202.3,
+      "p95_ms": 240.8,
+      "min_ms": 127.5,
+      "max_ms": 245.1
+     }
+    },
+    "wall_clock_s": 3.0
+   },
+   "cart_edit": {
+    "status": "PASS",
+    "cold_start_ms": [
+     3.5,
+     3.2,
+     15.7,
+     2.3
+    ],
+    "per_op": {
+     "quantity": {
+      "n": 10,
+      "median_ms": 4.0,
+      "p95_ms": 5.0,
+      "min_ms": 3.5,
+      "max_ms": 5.1,
+      "ok": 10
+     },
+     "remove_line": {
+      "n": 10,
+      "median_ms": 2.0,
+      "p95_ms": 2.3,
+      "min_ms": 1.9,
+      "max_ms": 2.3,
+      "ok": 10
+     },
+     "swap": {
+      "n": 10,
+      "median_ms": 15.4,
+      "p95_ms": 15.9,
+      "min_ms": 12.1,
+      "max_ms": 16.0,
+      "ok": 10
+     },
+     "undo": {
+      "n": 10,
+      "median_ms": 2.0,
+      "p95_ms": 2.2,
+      "min_ms": 1.5,
+      "max_ms": 2.3,
+      "ok": 10
+     }
+    }
+   },
+   "photo_upload": {
+    "status": "PASS",
+    "normal_runs": 10,
+    "end_to_end": {
+     "n": 10,
+     "median_ms": 7583.1,
+     "p95_ms": 12547.9,
+     "min_ms": 5199.2,
+     "max_ms": 13408.7
+    },
+    "cold_start_ms": [
+     7959.9
+    ],
+    "model_breakdown": {
+     "guard": {
+      "n": 10,
+      "median_ms": 84.8,
+      "p95_ms": 92.8,
+      "min_ms": 79.3,
+      "max_ms": 96.0
+     },
+     "vision": {
+      "n": 10,
+      "median_ms": 7305.7,
+      "p95_ms": 12182.0,
+      "min_ms": 4949.4,
+      "max_ms": 13023.1
+     },
+     "other": {
+      "n": 10,
+      "median_ms": 195.8,
+      "p95_ms": 273.0,
+      "min_ms": 157.7,
+      "max_ms": 289.6
+     }
+    },
+    "wall_clock_s": 89.2
+   }
+  },
+  "runs_per_flow": 10,
+  "free_ram_gb_before": 5.92,
+  "free_ram_gb_after": 1.39,
+  "comparisons_not_gated": {
+   "E1_extraction_ms": {
+    "median": 4219.0,
+    "p95": 5384.5,
+    "source": "eval/results/post-hoc/E1-llama3.2_3b.json"
+   },
+   "E3_vision_gate_p95_ms": 20000,
+   "timeouts_s": {
+    "llm": 30.0,
+    "vision": 60.0,
+    "transcript": 10.0
+   }
+  },
+  "chat_cart_edit": "NOT RUN (FR-78 cut, C59)",
+  "live_youtube": "NOT RUN (network)"
+ },
+ "critical_failures": [],
+ "per_example": [
+  {
+   "flow": "mood",
+   "warm_up": true,
+   "session_id": "s_2eb4664af282df4e",
+   "input": "something refreshing",
+   "steps_ms": [
+    3911.9
+   ],
+   "total_ms": 3911.9,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     116.1
+    ],
+    [
+     "intent",
+     2699.7
+    ],
+    [
+     "reason",
+     516.8
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "mood",
+   "warm_up": false,
+   "session_id": "s_98ba70b1d477994e",
+   "input": "I am hungry",
+   "steps_ms": [
+    1211.8
+   ],
+   "total_ms": 1211.8,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     54.7
+    ],
+    [
+     "intent",
+     586.6
+    ],
+    [
+     "reason",
+     523.0
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "mood",
+   "warm_up": false,
+   "session_id": "s_444158cb66e3cf56",
+   "input": "surprise me",
+   "steps_ms": [
+    1151.9
+   ],
+   "total_ms": 1151.9,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     49.9
+    ],
+    [
+     "intent",
+     587.9
+    ],
+    [
+     "reason",
+     474.7
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "mood",
+   "warm_up": false,
+   "session_id": "s_082c50777d98a79c",
+   "input": "what should I have for lunch",
+   "steps_ms": [
+    1177.8
+   ],
+   "total_ms": 1177.8,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     47.1
+    ],
+    [
+     "intent",
+     592.7
+    ],
+    [
+     "reason",
+     496.6
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "mood",
+   "warm_up": false,
+   "session_id": "s_6c104bbea9db16ce",
+   "input": "I am feeling indulgent",
+   "steps_ms": [
+    1266.9
+   ],
+   "total_ms": 1266.9,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     46.0
+    ],
+    [
+     "intent",
+     642.4
+    ],
+    [
+     "reason",
+     519.9
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "mood",
+   "warm_up": false,
+   "session_id": "s_fe33e1abddd9cb12",
+   "input": "something comforting tonight",
+   "steps_ms": [
+    1233.8
+   ],
+   "total_ms": 1233.8,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     48.5
+    ],
+    [
+     "intent",
+     651.3
+    ],
+    [
+     "reason",
+     469.1
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "mood",
+   "warm_up": false,
+   "session_id": "s_d55444f5c1a356c8",
+   "input": "something cooling for a hot day",
+   "steps_ms": [
+    1220.5
+   ],
+   "total_ms": 1220.5,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     51.0
+    ],
+    [
+     "intent",
+     665.4
+    ],
+    [
+     "reason",
+     450.6
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "mood",
+   "warm_up": false,
+   "session_id": "s_5193eba152a97856",
+   "input": "a light and healthy dinner",
+   "steps_ms": [
+    1230.0
+   ],
+   "total_ms": 1230.0,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     49.7
+    ],
+    [
+     "intent",
+     599.4
+    ],
+    [
+     "reason",
+     535.2
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "mood",
+   "warm_up": false,
+   "session_id": "s_93abe2b0d14267f3",
+   "input": "I want something spicy",
+   "steps_ms": [
+    1183.9
+   ],
+   "total_ms": 1183.9,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     48.1
+    ],
+    [
+     "intent",
+     636.2
+    ],
+    [
+     "reason",
+     425.1
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "mood",
+   "warm_up": false,
+   "session_id": "s_c07eeb3dcd4390e5",
+   "input": "something festive for the family",
+   "steps_ms": [
+    1114.9
+   ],
+   "total_ms": 1114.9,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     47.5
+    ],
+    [
+     "intent",
+     633.4
+    ],
+    [
+     "reason",
+     380.4
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "mood",
+   "warm_up": false,
+   "session_id": "s_a6ad4b432330dcc3",
+   "input": "I am craving something sweet",
+   "steps_ms": [
+    1112.0
+   ],
+   "total_ms": 1112.0,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     48.7
+    ],
+    [
+     "intent",
+     606.8
+    ],
+    [
+     "reason",
+     400.9
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "text",
+   "warm_up": true,
+   "session_id": "s_e8e0038eea8a87d6",
+   "input": "Here is my recipe for Mysore Rasam: 60 g toor dal, 15 g tamarind, 150 g tomato, 40 g coconut, 3 g black pepper, 3 g cumin, 10 g ghee, 3 g mustard seeds, 5 g curry leaves, 4 g salt",
+   "steps_ms": [
+    6361.7
+   ],
+   "total_ms": 6361.7,
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     56.6
+    ],
+    [
+     "intent",
+     707.9
+    ],
+    [
+     "extract",
+     5428.1
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "text",
+   "warm_up": false,
+   "session_id": "s_2b28a7f5c0ad8a4e",
+   "input": "Here is my recipe for Kheer: 1000 ml milk, 60 g rice, 100 g sugar, 2 g cardamom, 20 g almond, 20 g cashew, 1 g saffron",
+   "steps_ms": [
+    4509.1
+   ],
+   "total_ms": 4509.1,
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     57.1
+    ],
+    [
+     "intent",
+     674.1
+    ],
+    [
+     "extract",
+     3684.0
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "text",
+   "warm_up": false,
+   "session_id": "s_e5378a82be01d04d",
+   "input": "Here is my recipe for Sabudana Khichdi: 200 g tapioca pearls, 60 g peanut, 100 g potato, 5 g green chilli, 3 g cumin, 1 piece lemon, 20 ml coconut oil, 3 g salt",
+   "steps_ms": [
+    5090.8
+   ],
+   "total_ms": 5090.8,
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     72.1
+    ],
+    [
+     "intent",
+     729.2
+    ],
+    [
+     "extract",
+     4166.1
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "text",
+   "warm_up": false,
+   "session_id": "s_358993aa2325280f",
+   "input": "Here is my recipe for Moong Dal Khichdi: 150 g rice, 100 g moong dal, 20 g ghee, 3 g cumin, 2 g turmeric, 10 g ginger, 1 g asafoetida, 4 g salt",
+   "steps_ms": [
+    5019.8
+   ],
+   "total_ms": 5019.8,
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     68.5
+    ],
+    [
+     "intent",
+     735.8
+    ],
+    [
+     "extract",
+     4079.3
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "text",
+   "warm_up": false,
+   "session_id": "s_20388782ca60bbe4",
+   "input": "Here is my recipe for Coastal Fish Curry: 500 g fish, 100 g coconut, 15 g tamarind, 100 g onion, 6 g red chilli powder, 2 g turmeric, 25 ml coconut oil, 5 g curry leaves, 5 g salt",
+   "steps_ms": [
+    5585.5
+   ],
+   "total_ms": 5585.5,
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     65.9
+    ],
+    [
+     "intent",
+     734.2
+    ],
+    [
+     "extract",
+     4638.2
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "text",
+   "warm_up": false,
+   "session_id": "s_71637ec5ed167da8",
+   "input": "Here is my recipe for Idli Sambar: 200 g rice, 70 g urad dal, 100 g toor dal, 15 g tamarind, 100 g tomato, 100 g drumstick, 3 g mustard seeds, 5 g curry leaves, 6 g salt",
+   "steps_ms": [
+    5437.0
+   ],
+   "total_ms": 5437.0,
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     68.7
+    ],
+    [
+     "intent",
+     697.0
+    ],
+    [
+     "extract",
+     4539.6
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "text",
+   "warm_up": false,
+   "session_id": "s_91285e21c409ccda",
+   "input": "Here is my recipe for Kheer: 1000 ml milk, 60 g rice, 100 g sugar, 2 g cardamom, 20 g almond, 20 g cashew, 1 g saffron",
+   "steps_ms": [
+    4399.6
+   ],
+   "total_ms": 4399.6,
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     65.4
+    ],
+    [
+     "intent",
+     656.9
+    ],
+    [
+     "extract",
+     3558.4
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "text",
+   "warm_up": false,
+   "session_id": "s_38b56cd70a3a5d29",
+   "input": "Here is my recipe for Sabudana Khichdi: 200 g tapioca pearls, 60 g peanut, 100 g potato, 5 g green chilli, 3 g cumin, 1 piece lemon, 20 ml coconut oil, 3 g salt",
+   "steps_ms": [
+    4981.4
+   ],
+   "total_ms": 4981.4,
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     67.2
+    ],
+    [
+     "intent",
+     720.1
+    ],
+    [
+     "extract",
+     4068.4
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "text",
+   "warm_up": false,
+   "session_id": "s_fb04b3d808bff971",
+   "input": "Here is my recipe for Moong Dal Khichdi: 150 g rice, 100 g moong dal, 20 g ghee, 3 g cumin, 2 g turmeric, 10 g ginger, 1 g asafoetida, 4 g salt",
+   "steps_ms": [
+    4945.3
+   ],
+   "total_ms": 4945.3,
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     66.9
+    ],
+    [
+     "intent",
+     716.7
+    ],
+    [
+     "extract",
+     4034.3
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "text",
+   "warm_up": false,
+   "session_id": "s_0c7a309632661991",
+   "input": "Here is my recipe for Coastal Fish Curry: 500 g fish, 100 g coconut, 15 g tamarind, 100 g onion, 6 g red chilli powder, 2 g turmeric, 25 ml coconut oil, 5 g curry leaves, 5 g salt",
+   "steps_ms": [
+    5418.4
+   ],
+   "total_ms": 5418.4,
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     67.4
+    ],
+    [
+     "intent",
+     698.8
+    ],
+    [
+     "extract",
+     4491.9
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "text",
+   "warm_up": false,
+   "session_id": "s_96dc92359423eb01",
+   "input": "Here is my recipe for Idli Sambar: 200 g rice, 70 g urad dal, 100 g toor dal, 15 g tamarind, 100 g tomato, 100 g drumstick, 3 g mustard seeds, 5 g curry leaves, 6 g salt",
+   "steps_ms": [
+    5354.4
+   ],
+   "total_ms": 5354.4,
+   "templates": [
+    "MSG-TXT-DRAFT",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     67.9
+    ],
+    [
+     "intent",
+     679.6
+    ],
+    [
+     "extract",
+     4466.4
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "youtube",
+   "warm_up": true,
+   "session_id": "s_02e9e6c676cdf0ff",
+   "input": "https://www.youtube.com/watch?v=6YVx0i_hrZ0",
+   "steps_ms": [
+    5429.0
+   ],
+   "total_ms": 5429.0,
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-EDIT-UNCLEAR",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     100.5
+    ],
+    [
+     "guard",
+     91.6
+    ],
+    [
+     "extract",
+     5091.0
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "youtube",
+   "warm_up": false,
+   "session_id": "s_a55cf8d99827ef04",
+   "input": "https://www.youtube.com/watch?v=6YVx0i_hrZ0",
+   "steps_ms": [
+    5277.3
+   ],
+   "total_ms": 5277.3,
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-EDIT-UNCLEAR",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     96.0
+    ],
+    [
+     "guard",
+     82.5
+    ],
+    [
+     "extract",
+     4924.7
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "youtube",
+   "warm_up": false,
+   "session_id": "s_14e4a641dedb9e9c",
+   "input": "https://www.youtube.com/watch?v=fRPDabc-Oh0",
+   "steps_ms": [
+    5401.3
+   ],
+   "total_ms": 5401.3,
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     97.4
+    ],
+    [
+     "guard",
+     83.7
+    ],
+    [
+     "extract",
+     5062.3
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "youtube",
+   "warm_up": false,
+   "session_id": "s_8e2c0bf7319e6194",
+   "input": "https://www.youtube.com/watch?v=xed2EfO9BRc",
+   "steps_ms": [
+    3843.2
+   ],
+   "total_ms": 3843.2,
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     101.3
+    ],
+    [
+     "guard",
+     76.8
+    ],
+    [
+     "extract",
+     3522.9
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "youtube",
+   "warm_up": false,
+   "session_id": "s_521ca3bc473701e2",
+   "input": "https://www.youtube.com/watch?v=l0Hylzi8v9Y",
+   "steps_ms": [
+    10103.1
+   ],
+   "total_ms": 10103.1,
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     93.1
+    ],
+    [
+     "guard",
+     111.3
+    ],
+    [
+     "extract",
+     9452.7
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "youtube",
+   "warm_up": false,
+   "session_id": "s_ef99e9b84d16d7cf",
+   "input": "https://www.youtube.com/watch?v=6YVx0i_hrZ0",
+   "steps_ms": [
+    5500.6
+   ],
+   "total_ms": 5500.6,
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-EDIT-UNCLEAR",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     101.6
+    ],
+    [
+     "guard",
+     80.0
+    ],
+    [
+     "extract",
+     5144.7
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "youtube",
+   "warm_up": false,
+   "session_id": "s_eda6c540e37d8ed1",
+   "input": "https://www.youtube.com/watch?v=fRPDabc-Oh0",
+   "steps_ms": [
+    5736.7
+   ],
+   "total_ms": 5736.7,
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     107.7
+    ],
+    [
+     "guard",
+     97.7
+    ],
+    [
+     "extract",
+     5388.6
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "youtube",
+   "warm_up": false,
+   "session_id": "s_54c312c13a00cadd",
+   "input": "https://www.youtube.com/watch?v=xed2EfO9BRc",
+   "steps_ms": [
+    4193.3
+   ],
+   "total_ms": 4193.3,
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     109.0
+    ],
+    [
+     "guard",
+     97.7
+    ],
+    [
+     "extract",
+     3856.1
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "youtube",
+   "warm_up": false,
+   "session_id": "s_cc5d584bf2b80041",
+   "input": "https://www.youtube.com/watch?v=l0Hylzi8v9Y",
+   "steps_ms": [
+    11779.5
+   ],
+   "total_ms": 11779.5,
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     111.7
+    ],
+    [
+     "guard",
+     140.4
+    ],
+    [
+     "extract",
+     11109.4
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "youtube",
+   "warm_up": false,
+   "session_id": "s_983260cf9d0261ae",
+   "input": "https://www.youtube.com/watch?v=6YVx0i_hrZ0",
+   "steps_ms": [
+    7005.5
+   ],
+   "total_ms": 7005.5,
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-EDIT-UNCLEAR",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     114.8
+    ],
+    [
+     "guard",
+     117.5
+    ],
+    [
+     "extract",
+     6599.0
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "youtube",
+   "warm_up": false,
+   "session_id": "s_346b70c1d23f1da8",
+   "input": "https://www.youtube.com/watch?v=fRPDabc-Oh0",
+   "steps_ms": [
+    7379.6
+   ],
+   "total_ms": 7379.6,
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     126.7
+    ],
+    [
+     "guard",
+     127.8
+    ],
+    [
+     "extract",
+     6966.6
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "sample_photo",
+   "warm_up": true,
+   "session_id": "s_94273585210d8c1e",
+   "input": "RF07",
+   "steps_ms": [
+    194.2,
+    28.9
+   ],
+   "total_ms": 223.1,
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     86.7
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "sample_photo",
+   "warm_up": false,
+   "session_id": "s_0af7427aa0f1e9f9",
+   "input": "RF01",
+   "steps_ms": [
+    179.3,
+    32.3
+   ],
+   "total_ms": 211.6,
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     84.1
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "sample_photo",
+   "warm_up": false,
+   "session_id": "s_95b2054d1a730c2e",
+   "input": "RF02",
+   "steps_ms": [
+    280.6,
+    34.9
+   ],
+   "total_ms": 315.5,
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     85.0
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "sample_photo",
+   "warm_up": false,
+   "session_id": "s_ca2045cd42c9ae50",
+   "input": "RF03",
+   "steps_ms": [
+    277.6,
+    55.2
+   ],
+   "total_ms": 332.8,
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     87.7
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "sample_photo",
+   "warm_up": false,
+   "session_id": "s_de52150769e454d0",
+   "input": "RF07",
+   "steps_ms": [
+    265.2,
+    48.0
+   ],
+   "total_ms": 313.2,
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     79.9
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "sample_photo",
+   "warm_up": false,
+   "session_id": "s_92f2cfdb010705dd",
+   "input": "RF01",
+   "steps_ms": [
+    227.1,
+    45.2
+   ],
+   "total_ms": 272.3,
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     75.5
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "sample_photo",
+   "warm_up": false,
+   "session_id": "s_2e8d7ee500d1579c",
+   "input": "RF02",
+   "steps_ms": [
+    272.3,
+    36.1
+   ],
+   "total_ms": 308.4,
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     72.8
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "sample_photo",
+   "warm_up": false,
+   "session_id": "s_2c348ca334392354",
+   "input": "RF03",
+   "steps_ms": [
+    229.0,
+    44.9
+   ],
+   "total_ms": 273.9,
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     69.4
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "sample_photo",
+   "warm_up": false,
+   "session_id": "s_595e2d34460f901e",
+   "input": "RF07",
+   "steps_ms": [
+    212.2,
+    41.1
+   ],
+   "total_ms": 253.3,
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     63.4
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "sample_photo",
+   "warm_up": false,
+   "session_id": "s_bc460924231eef9d",
+   "input": "RF01",
+   "steps_ms": [
+    169.8,
+    36.9
+   ],
+   "total_ms": 206.7,
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     60.9
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "sample_photo",
+   "warm_up": false,
+   "session_id": "s_68807949e91c4428",
+   "input": "RF02",
+   "steps_ms": [
+    228.5,
+    32.4
+   ],
+   "total_ms": 260.9,
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "guard",
+     60.8
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "warm_up": true,
+   "session_id": "s_9b26e9f767191324",
+   "op": "quantity",
+   "ms": 3.5,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "warm_up": true,
+   "session_id": "s_9b26e9f767191324",
+   "op": "remove_line",
+   "ms": 3.2,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "warm_up": true,
+   "session_id": "s_9b26e9f767191324",
+   "op": "swap",
+   "ms": 15.7,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "warm_up": true,
+   "session_id": "s_9b26e9f767191324",
+   "op": "undo",
+   "ms": 2.3,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_a353ba7e7ffad1a4",
+   "op": "quantity",
+   "ms": 4.0,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_a353ba7e7ffad1a4",
+   "op": "remove_line",
+   "ms": 2.0,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_a353ba7e7ffad1a4",
+   "op": "swap",
+   "ms": 16.0,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_a353ba7e7ffad1a4",
+   "op": "undo",
+   "ms": 2.3,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_d32f2476c2ea12fe",
+   "op": "quantity",
+   "ms": 4.0,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_d32f2476c2ea12fe",
+   "op": "remove_line",
+   "ms": 1.9,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_d32f2476c2ea12fe",
+   "op": "swap",
+   "ms": 15.4,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_d32f2476c2ea12fe",
+   "op": "undo",
+   "ms": 2.1,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_5192cf52690c797b",
+   "op": "quantity",
+   "ms": 3.9,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_5192cf52690c797b",
+   "op": "remove_line",
+   "ms": 2.0,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_5192cf52690c797b",
+   "op": "swap",
+   "ms": 15.4,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_5192cf52690c797b",
+   "op": "undo",
+   "ms": 2.0,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_195234a2ab74eb7d",
+   "op": "quantity",
+   "ms": 4.0,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_195234a2ab74eb7d",
+   "op": "remove_line",
+   "ms": 2.0,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_195234a2ab74eb7d",
+   "op": "swap",
+   "ms": 15.6,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_195234a2ab74eb7d",
+   "op": "undo",
+   "ms": 2.0,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_fd3d84c78f87fec5",
+   "op": "quantity",
+   "ms": 3.5,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_fd3d84c78f87fec5",
+   "op": "remove_line",
+   "ms": 2.1,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_fd3d84c78f87fec5",
+   "op": "swap",
+   "ms": 12.1,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_fd3d84c78f87fec5",
+   "op": "undo",
+   "ms": 1.5,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_374129364f08c0ca",
+   "op": "quantity",
+   "ms": 4.0,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_374129364f08c0ca",
+   "op": "remove_line",
+   "ms": 2.2,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_374129364f08c0ca",
+   "op": "swap",
+   "ms": 15.3,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_374129364f08c0ca",
+   "op": "undo",
+   "ms": 2.0,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_198a575ed882adec",
+   "op": "quantity",
+   "ms": 5.1,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_198a575ed882adec",
+   "op": "remove_line",
+   "ms": 2.3,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_198a575ed882adec",
+   "op": "swap",
+   "ms": 15.7,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_198a575ed882adec",
+   "op": "undo",
+   "ms": 2.1,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_227f06598665bf4f",
+   "op": "quantity",
+   "ms": 4.2,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_227f06598665bf4f",
+   "op": "remove_line",
+   "ms": 2.0,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_227f06598665bf4f",
+   "op": "swap",
+   "ms": 15.5,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_227f06598665bf4f",
+   "op": "undo",
+   "ms": 2.1,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_5af32157db4a4a90",
+   "op": "quantity",
+   "ms": 4.1,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_5af32157db4a4a90",
+   "op": "remove_line",
+   "ms": 1.9,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_5af32157db4a4a90",
+   "op": "swap",
+   "ms": 15.5,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_5af32157db4a4a90",
+   "op": "undo",
+   "ms": 2.0,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_c007e988dad95374",
+   "op": "quantity",
+   "ms": 4.9,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_c007e988dad95374",
+   "op": "remove_line",
+   "ms": 2.2,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_c007e988dad95374",
+   "op": "swap",
+   "ms": 15.3,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "cart_edit",
+   "session_id": "s_c007e988dad95374",
+   "op": "undo",
+   "ms": 2.0,
+   "status": 200,
+   "normal": true
+  },
+  {
+   "flow": "photo_upload",
+   "warm_up": true,
+   "session_id": "s_4455e1cddcda90a9",
+   "input": "RF05",
+   "steps_ms": [
+    7931.7,
+    28.2
+   ],
+   "total_ms": 7959.9,
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "vision",
+     7698.9
+    ],
+    [
+     "guard",
+     89.6
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "photo_upload",
+   "warm_up": false,
+   "session_id": "s_a35d6848487f43b0",
+   "input": "RF01",
+   "steps_ms": [
+    5683.9,
+    28.1
+   ],
+   "total_ms": 5712.0,
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "vision",
+     5453.3
+    ],
+    [
+     "guard",
+     85.5
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "photo_upload",
+   "warm_up": false,
+   "session_id": "s_5e485093e14eac8e",
+   "input": "RF02",
+   "steps_ms": [
+    13366.2,
+    42.5
+   ],
+   "total_ms": 13408.7,
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "vision",
+     13023.1
+    ],
+    [
+     "guard",
+     96.0
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "photo_upload",
+   "warm_up": false,
+   "session_id": "s_e31ea82910274cd6",
+   "input": "RF03",
+   "steps_ms": [
+    11455.7,
+    40.1
+   ],
+   "total_ms": 11495.8,
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "vision",
+     11154.0
+    ],
+    [
+     "guard",
+     89.0
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "photo_upload",
+   "warm_up": false,
+   "session_id": "s_4d5ead05752abadc",
+   "input": "RF07",
+   "steps_ms": [
+    10355.1,
+    41.0
+   ],
+   "total_ms": 10396.1,
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "vision",
+     10125.4
+    ],
+    [
+     "guard",
+     85.4
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "photo_upload",
+   "warm_up": false,
+   "session_id": "s_f67c744b821ce41f",
+   "input": "RF01",
+   "steps_ms": [
+    5275.3,
+    29.8
+   ],
+   "total_ms": 5305.1,
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "vision",
+     5014.6
+    ],
+    [
+     "guard",
+     84.2
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "photo_upload",
+   "warm_up": false,
+   "session_id": "s_fc3426f2c143967a",
+   "input": "RF02",
+   "steps_ms": [
+    8340.6,
+    28.4
+   ],
+   "total_ms": 8369.0,
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "vision",
+     8041.1
+    ],
+    [
+     "guard",
+     83.7
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "photo_upload",
+   "warm_up": false,
+   "session_id": "s_69ab71fcaa2a23ee",
+   "input": "RF03",
+   "steps_ms": [
+    6880.6,
+    26.4
+   ],
+   "total_ms": 6907.0,
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "vision",
+     6650.6
+    ],
+    [
+     "guard",
+     84.3
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "photo_upload",
+   "warm_up": false,
+   "session_id": "s_94f5acc79cd69495",
+   "input": "RF07",
+   "steps_ms": [
+    6097.4,
+    24.5
+   ],
+   "total_ms": 6121.9,
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "vision",
+     5877.9
+    ],
+    [
+     "guard",
+     86.3
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "photo_upload",
+   "warm_up": false,
+   "session_id": "s_2882b3e4f2ea5c98",
+   "input": "RF01",
+   "steps_ms": [
+    5174.9,
+    24.3
+   ],
+   "total_ms": 5199.2,
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "vision",
+     4949.4
+    ],
+    [
+     "guard",
+     80.2
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  },
+  {
+   "flow": "photo_upload",
+   "warm_up": false,
+   "session_id": "s_1a191834d89a6b5e",
+   "input": "RF02",
+   "steps_ms": [
+    8233.5,
+    25.7
+   ],
+   "total_ms": 8259.2,
+   "templates": [
+    "MSG-PHOTO-CONFIRM",
+    "MSG-PHOTO-OK",
+    "MSG-ADDON"
+   ],
+   "fallbacks_used": [],
+   "llm": [
+    [
+     "vision",
+     7960.8
+    ],
+    [
+     "guard",
+     79.3
+    ]
+   ],
+   "llm_outcomes": [
+    "ok"
+   ],
+   "normal": true
+  }
+ ],
+ "status": "PASS",
+ "notes": "server-side wall clock per API call (browser rendering excluded); p95 by linear interpolation, n = 10 so p95 sits near the maximum; inputs: levers_v1 L01-L10, carts_v1 text rows, the 4 fixture videos, demo photos; one set of runs; targets are proposed to the owner from these numbers (C60)"
+}
