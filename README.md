@@ -6,7 +6,6 @@ The repository holds hundreds of files because every decision, test and result i
 | If you want to… | Open |
 |---|---|
 | **Run it** | [Setup from a clean clone](#setup-from-a-clean-clone), then [Using Zest](#using-zest) |
-| **See it in 8 minutes** | [Demo Script](docs/epics/zest/release/demo-script.md) |
 | **Know what it is and why** | [Why Zest exists](#why-zest-exists), the [product vision](docs/core/product-vision.md) (the owner's brief) and the [PRD](docs/epics/zest/requirements/product-spec.md) |
 | **See the evidence** | [Evidence report](docs/epics/zest/verify/report/report.md) (every number generated from `eval/results/`) |
 | **Understand the design** | [Diagrams](#diagrams), [architecture](docs/epics/zest/design/architecture.md), [retrieval, vector database and levers explained](docs/epics/zest/design/retrieval-explained.md) |
