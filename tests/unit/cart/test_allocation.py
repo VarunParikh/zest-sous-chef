@@ -42,6 +42,21 @@ def test_unit_mismatch_takes_one_smallest_pack_and_is_estimated(store):
     assert [(s.pack.qty, n) for s, n in chosen] == [(100.0, 1)] and estimated
 
 
+def test_unit_mismatch_prefers_the_smallest_in_stock_pack(store):
+    # E7 adversarial arm, 2026-10-18: "1 piece" of bread sold by weight took the 400 g pack with stock 0
+    # although the 700 g pack was in stock, so the line was carted out of stock with the stock filter on.
+    smallest = min(store.skus_for(BUTTER), key=lambda s: s.pack.qty)
+    low = store.with_stock({smallest.sku_id: 0})
+    chosen, in_stock, estimated = smallest_pack_set(2, "piece", low.skus_for(BUTTER), low)
+    assert [(s.pack.qty, n) for s, n in chosen] == [(200.0, 1)] and in_stock and estimated
+
+
+def test_unit_mismatch_with_nothing_in_stock_is_flagged(store):
+    low = store.with_stock({s.sku_id: 0 for s in store.skus_for(BUTTER)})
+    chosen, in_stock, _ = smallest_pack_set(2, "piece", low.skus_for(BUTTER), low)
+    assert [(s.pack.qty, n) for s, n in chosen] == [(100.0, 1)] and not in_stock
+
+
 def test_t051_second_shared_line_is_dimmed_and_unpriced(store):
     c = allocate(cart(("cd_1", [line("l_1", "cd_1", BUTTER, 50)]), ("cd_2", [line("l_2", "cd_2", BUTTER, 30)])), store)
     ls = lines(c)

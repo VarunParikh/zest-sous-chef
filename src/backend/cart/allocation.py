@@ -33,8 +33,8 @@ def smallest_pack_set(need: float, need_unit: str, skus: list[Sku], store: Store
         return [], False, False
     unit, amount = _base(need, need_unit)
     usable = [s for s in skus if _base(s.pack.qty, s.pack.unit.value)[0] == unit]
-    if not usable:  # e.g. "2 piece" of something sold by weight: one smallest pack
-        s = min(skus, key=lambda s: (s.pack.qty, store.price(s)))
+    if not usable:  # e.g. "2 piece" of something sold by weight: one smallest pack, in stock if any is
+        s = min(skus, key=lambda s: (_available(store, s) <= 0, s.pack.qty, store.price(s)))
         return [(s, 1)], _available(store, s) > 0, True
 
     def best(limit_by_stock: bool):
