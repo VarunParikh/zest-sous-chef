@@ -46,9 +46,10 @@ export function ChatPanel({ messages, busy, error, draft, setDraft, onSend, onUp
       </header>
 
       {banner && (
-        <div role="status" className="flex shrink-0 items-center justify-between gap-3 border-b border-warn bg-warn-surface px-5 py-2 text-sm text-secondary">
-          <span>Changes apply from your next chat session.</span>
-          <button type="button" onClick={onNewChat} className="rounded-md border border-strong bg-white px-2 py-1 text-xs font-medium">Start new chat</button>
+        <div role="status" className="flex shrink-0 items-center justify-between gap-3 border-b-2 border-warn bg-warn-surface px-5 py-3 text-sm font-semibold text-ink">
+          <span className="flex items-center gap-2"><span aria-hidden="true">⚠️</span>Changes apply from your next chat session.</span>
+          <button type="button" onClick={onNewChat}
+            className="rounded-[10px] bg-brand px-3 py-1.5 text-xs font-semibold text-white hover:bg-brand-hover">Start new chat</button>
         </div>
       )}
 

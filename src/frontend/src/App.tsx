@@ -127,7 +127,10 @@ export default function App() {
       <main className="mx-auto grid min-h-0 w-full max-w-[1600px] flex-1 gap-6 px-6 pb-4 pt-4 lg:grid-cols-2">
         <section aria-label="Recommendation levers"
           className={`${tab === "levers" ? "block" : "hidden"} min-h-0 overflow-y-auto rounded-xl border border-line bg-white shadow-sm lg:block`}>
-          <h2 className="flex h-12 items-center border-b border-line px-5 text-base font-semibold">Recommendation Levers</h2>
+          <h2 className="flex h-12 items-center justify-between border-b border-line px-5 text-base font-semibold">
+            Recommendation Levers
+            {banner && <span className="rounded-full border border-warn bg-warn-surface px-2 py-0.5 text-xs font-medium text-secondary">Not applied yet: start a new chat</span>}
+          </h2>
           <LeverPanel config={config} levers={levers} onChange={setLevers} breakdown={breakdown} inspector={inspector} />
         </section>
         <div className={`${tab === "chat" ? "block" : "hidden"} min-h-0 lg:block`}>
