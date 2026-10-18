@@ -29,3 +29,12 @@ AI software development lifecycle · documentation · engine affects recommendat
 
 ## System
 Local LLMs allowed · MacBook M5, 16 GB RAM, 1 TB SSD · bot may access the internet · Claude Code for development.
+
+## Project future features
+1. Voice chat.
+2. Ability of the bot to upsell sponsored ingredients. 
+3. Increase in accuracy of object identification.
+4. Allow the user to converse in multiple indian languages 
+5. The message tone of the bot must be friendlier 
+6. An MCP that can be integrated with existing chatbots (Example: Claude / ChatGPT / Gemini etc)
+7. A WhatsApp variant for the bot.
