@@ -1,6 +1,6 @@
 # API Spec: Zest AI Sous-Chef
 
-Status: **APPROVED v0.3 (owner, 2026-10-18)**: §4.2 to §4.4 add the optional current `levers` and `levers_changed_since_snapshot` (C31). v0.2 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, Data Model v0.1, Conversation Design v0.1
+Status: **APPROVED v0.4 (owner, 2026-10-18)**: §3 endpoints 7 to 10 return the cart and endpoint 8 has a defined body; §4.6 lines gain `in_stock` and `quantity`; §4.7 OUT_OF_STOCK details carry substitutions (C34, C35). v0.3: §4.2 to §4.4 add the optional current `levers` and `levers_changed_since_snapshot` (C31). v0.2 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, Data Model v0.1, Conversation Design v0.1
 Scope: the browser-to-backend REST contract, the response card types, errors, and the outbound contracts to the model, the opt-in Gemini photo provider and the transcript source. **Webhooks:** none. The app is a browser client with no inbound callbacks; there are no outbound webhooks. The live contract is the OpenAPI document that FastAPI generates from the Pydantic models in the Data Model; this document is the design that those models must satisfy.
 
 ## 1. Design decisions (owner delegated the API style, 2026-10-17)
@@ -31,7 +31,7 @@ Scope: the browser-to-backend REST contract, the response card types, errors, an
 | 5 | `POST /api/v1/sessions/{id}/chat` | Send a user message (text, or text plus image, or a sample photo id) | FR-10 to 57 |
 | 6 | `POST /api/v1/sessions/{id}/action` | Send a button tap (swap, undo, answer, confirm, add-on, variant) | FR-41, 64, 76, 77, 114 |
 | 7 | `GET /api/v1/sessions/{id}/cart` | Read the cart | FR-72 |
-| 8 | `PATCH /api/v1/sessions/{id}/cart/lines/{line_id}` | Change quantity (1 to 9) or switch variant | FR-74, 114 |
+| 8 | `PATCH /api/v1/sessions/{id}/cart/lines/{line_id}` | Change quantity (1 to 9) or switch variant: body `{"quantity": n}` or `{"variant_id": id}` (v0.4) | FR-74, 114 |
 | 9 | `DELETE /api/v1/sessions/{id}/cart/lines/{line_id}` | Remove a line | FR-74 |
 | 10 | `DELETE /api/v1/sessions/{id}/cart/dishes/{cart_dish_id}` | Remove a dish | FR-74 |
 | 11 | `POST /api/v1/sessions/{id}/checkout` | Buy Now (requires `Idempotency-Key` header) | FR-80, 81, 83 |
@@ -39,7 +39,7 @@ Scope: the browser-to-backend REST contract, the response card types, errors, an
 | 13 | `GET /api/v1/samples/photos` | Bundled sample photos with labels | FR-55 |
 | 14 | `POST /api/v1/demo/stock-scenario/{scenario_id}` | Apply a scripted stock change | UJ10, UJ22 |
 | 15 | `PUT /api/v1/demo/context` | Override time and weather label | FR-67 |
-Endpoints 14 and 15 exist only when `DEMO_CONTROLS=true` (default false) and return `404` otherwise.
+Endpoints 7 to 10 return the cart (section 4.6) (v0.4). Endpoints 14 and 15 exist only when `DEMO_CONTROLS=true` (default false) and return `404` otherwise.
 
 ## 4. Key request and response shapes
 
@@ -148,13 +148,14 @@ The dish total and prices are examples; real values come from the catalogue. `ca
       "line_id": "l_1", "ingredient_name": "butter", "variant_id": "butter-salted-100",
       "variant_name": "Salted Butter", "packs": [{"sku_id": "butter-salted-100-100g", "count": 1, "pack": "100 g"}],
       "price_inr": 58, "priced": true, "shared_from_line_id": null, "estimated": false,
-      "reason": "Chosen for your history preference", "alternative_variant_ids": ["butter-unsalted-100"]
+      "reason": "Chosen for your history preference", "alternative_variant_ids": ["butter-unsalted-100"],
+      "in_stock": true, "quantity": 1
     }]
   }],
   "item_count": 11, "subtotal_inr": 331
 }
 ```
-Dimmed shared lines carry `"priced": false` and `"shared_from_line_id"`. Prices and totals are always catalogue values (FR-79).
+Dimmed shared lines carry `"priced": false` and `"shared_from_line_id"`. `in_stock` is false for a line kept with the stock filter off, or one that went out of stock after carting; Buy Now is then blocked (FR-83). `quantity` multiplies the packs a priced line owns (1 to 9, C35) (v0.4, C34). Prices and totals are always catalogue values (FR-79).
 
 ### 4.7 `POST /sessions/{id}/checkout`
 Header: `Idempotency-Key: <uuid>`. Response `200`:
@@ -163,7 +164,7 @@ Header: `Idempotency-Key: <uuid>`. Response `200`:
   "message": {"template_id": "MSG-ORDER", "text": "Order is placed, the rider will see you in 10 mins"},
   "collapse_after_s": 10 }
 ```
-A repeated key returns the same order (no second order, FR-80). Errors: `409 OUT_OF_STOCK` (with the blocking `line_ids`, FR-83), `409 PRICE_CHANGED` (updated cart returned), `400 EMPTY_CART`.
+A repeated key returns the same order (no second order, FR-80). Errors: `409 OUT_OF_STOCK` (details `{"line_ids": [...], "substitutions": [substitution cards]}`, one card per blocked line that has an in-stock alternative, accepted with the `substitute` action; v0.4, C34; FR-76, 83), `409 PRICE_CHANGED` (updated cart returned), `400 EMPTY_CART`.
 
 ### 4.8 `GET /sessions/{id}/inspector`
 For each of the latest suggestions: the pool with `lexical_rank`, `vector_rank`, `vector_distance`, `fused_rank`, `eligible`, `filtered_by`, the four component scores, `weights_effective`, `value_term` (variants) and `final` (FR-115).

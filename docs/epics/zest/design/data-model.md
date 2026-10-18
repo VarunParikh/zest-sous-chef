@@ -1,6 +1,6 @@
 # Data Model: Zest AI Sous-Chef
 
-Status: **APPROVED v0.2 (owner, 2026-10-17)** (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2 and PRD v0.4: add-on retrieval, larger dish pool) · Date: 2026-10-17 · Source: PRD v0.4, Settings Panel, mock-data plan, Constitution G9, ADR-004 v2
+Status: **APPROVED v0.3 (owner, 2026-10-18)**: §8.4 pack allocation follows FR-71 (combined need per variant, C33) and defines line quantity (C35); §14 adds `CartLine.quantity` and `Cart.quotes` (C34). v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2 and PRD v0.4: add-on retrieval, larger dish pool) · Date: 2026-10-17 · Source: PRD v0.4, Settings Panel, mock-data plan, Constitution G9, ADR-004 v2
 Scope: field-level schema for the structured catalogue, recipe base, engine inputs, session state, the retrieval documents embedded in Chroma, trace events and test fixtures. The Pydantic sketches are the contract the generator, validators, API and tests share. Field values in the mock data are illustrative and are not nutritional or medical data.
 
 ## 1. Principles
@@ -227,7 +227,11 @@ A `LeverSnapshot` is an immutable deep copy taken at session start (FR-01). Effe
 | `CartDish` | `cart_dish_id`, `dish_id` (or free-text name), `source` (Source), `servings`, `lines`, `added_by_suggestion_id` (for swap and Undo, FR-41) |
 | `CartLine` | `line_id`, `cart_dish_id`, `ingredient_name`, `need_qty`, `need_unit`, `estimated` (bool), `variant_id`, `packs: list[PackItem(sku_id, count)]`, `priced` (bool), `shared_from_line_id`, `reason` (why this variant), `alternative_variant_ids` |
 
-Pack allocation rule (FR-71, 73): process dishes in cart order. For each line, first draw on leftover quantity from packs already bought for the same variant; if that covers the need, the line is unpriced and `shared_from_line_id` points to the dish that bought the pack. Otherwise add the smallest set of in-stock packs that covers the remainder, and price them to this line. Removing the owning line re-runs allocation, which transfers ownership.
+Pack allocation rule (FR-71, 73; v0.3, C33): for each variant, add up the need of every line that uses it, in cart order. Choose the pack set that covers the combined need with the least total quantity, then the fewest packs, then the lowest price, from in-stock SKUs within their stock counts (with the stock filter off and nothing in stock, the smallest pack is used and the line is marked out of stock). Lay the packs end to end and the line needs end to end: a pack belongs to the line whose need covers the pack's starting point, and that line is priced with it. A line that owns no pack is unpriced and dimmed, and `shared_from_line_id` points to the line that owns the pack covering the start of its need. Removing a line re-runs allocation, which transfers ownership. Examples: butter 100 g + 100 g → one 200 g pack, owned by the first line; paneer 200 g + 200 g → two 200 g packs, one per line. A need in a unit the packs do not use takes one smallest pack and the line is `estimated`.
+
+Line quantity (FR-74; v0.3, C35): `quantity` (1 to 9, default 1) multiplies the packs the line owns, after allocation. A shared, unpriced line has no packs and takes no quantity. No pack count may exceed 9.
+
+Quoted prices (FR-83; v0.3, C34): `Cart.quotes` keeps, per SKU, the price shown when the SKU first entered the cart. Buy Now compares it with the catalogue; it is never sent to the client.
 
 ### 8.5 Order
 `order_id`, `lines` (snapshot of priced lines), `subtotal_inr`, `placed_at`, `idempotency_key`. Eligible only after stock and price revalidation (FR-83).
@@ -474,6 +478,12 @@ class CartLine(BaseModel):
     shared_from_line_id: Optional[str] = None
     reason: str = ""
     alternative_variant_ids: list[str] = []
+    quantity: int = Field(1, ge=1, le=9)  # v0.3, C35: multiplies the packs this line owns
+
+
+class Cart(BaseModel):
+    dishes: list[CartDish] = []
+    quotes: dict[str, int] = {}  # v0.3, C34: sku_id -> price when first carted; internal only
 ```
 
 ## 15. Traceability to requirements
