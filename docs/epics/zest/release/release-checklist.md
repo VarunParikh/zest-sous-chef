@@ -6,7 +6,7 @@ Block 3.5 (build plan §5): close the security release blockers (Security Note �
 | # | Blocker | Evidence | Status |
 |---|---|---|---|
 | 1a | No secrets in the working tree or the full git history (S-01) | `make scan`: `findings: 0` on tree and history; T-106 | PASS |
-| 1b | The Gemini key that was pasted in chat on Day 0 has been rotated (S-01) | Cannot be checked from the repository: the key lives only in the owner's git-ignored `.env`, and it is never printed | **OWNER**: confirm the old key is revoked in Google AI Studio |
+| 1b | The Gemini key that was pasted in chat on Day 0 has been rotated (S-01) | Cannot be checked from the repository: the key lives only in the owner's git-ignored `.env`, and it is never printed | PASS: owner confirmed on 2026-10-19 that the Day-0 key is revoked |
 | 2 | Photo notice, EXIF stripping and no-persistence tests pass (S-03) | T-102 (GPS removed); T-103 (no image written to disk); T-109 (no image in the trace); the consent test (`test_gemini_opt_in_asks_consent_before_any_upload_leaves`). The 11 committed sample photos carry no GPS, device or date EXIF data | PASS |
 | 3 | Injection tests pass for chat, transcript and image text (S-02) | Chat: T-070 to T-072, guard rule tests. Transcript: MSG-INJECT-DATA tests in the YouTube flow; E9 injection check, 0 cart changes in 36 attacks. Image text: `test_s02_text_read_from_a_photo_is_data_not_instructions` (added 2026-10-19; it covers existing behaviour and passed on its first run) | PASS |
 | 4 | Upload validation and URL-handling tests pass (S-04, S-05) | T-089 (wrong type, oversize, spoofed, two images); T-104 (`file://`, internal IPs, look-alike domains, no fetch) | PASS |
@@ -28,5 +28,5 @@ The README lists the prerequisites a fresh Mac needs: command-line tools, Python
 | Item | Owner | Status |
 |---|---|---|
 | Block 3.4: two rehearsals on the demo laptop (Test Plan §9), the network-off test and a backup screen recording, with the results written into `prototyping-feedback.md` §5 | Owner | **TO DO** (deferred by the owner on 2026-10-19; the release can go ahead without it) |
-| Confirm the Day-0 Gemini key is revoked (1b) | Owner | **OWNER** |
-| Tag `v0.1.0` and push to the public repository | Owner approval | **TO DO**: waiting for the owner's go-ahead |
+| Confirm the Day-0 Gemini key is revoked (1b) | Owner | Done (2026-10-19) |
+| Tag `v0.1.0` and push to the public repository | Owner approval | Done (owner approved 2026-10-19) |

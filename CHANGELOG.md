@@ -4,6 +4,9 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-10-19
+First public release of the prototype. Evidence report: `docs/epics/zest/verify/report/report.md`; release checklist: `docs/epics/zest/release/release-checklist.md`. Block 3.4 rehearsals are still to do (owner deferred).
+
 ### Added
 - E14 rerun post-hoc after the parser fix (`eval/results/post-hoc/block35/`): PASS; evidence report rebuilt. Handover: block 3.4 rehearsals TO DO (owner deferred); tag and push wait for the owner.
 - Release checklist (`docs/epics/zest/release/release-checklist.md`): the seven Security Note §7 blockers with evidence (one needs the owner: confirm the Day-0 key is revoked), the reviewer-path check, and what is still to do (block 3.4 rehearsals, tag and push). Image-text injection test added (S-02); it covers existing behaviour and passed on its first run.

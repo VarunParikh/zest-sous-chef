@@ -158,8 +158,8 @@ Report: `docs/epics/zest/verify/benchmarks/block31.md`.
 - Found and disclosed: a message sent immediately after "Start new chat" goes to the deleted session; the app recovers, but the message is lost (Known Limitations).
 
 **Owner items:**
-- **1b:** confirm the Day-0 Gemini key is revoked.
+- **1b:** done; the owner confirmed on 2026-10-19 that the Day-0 Gemini key is revoked.
 - **Block 3.4 rehearsals: TO DO (deferred by the owner on 2026-10-19).** Run the Test Plan §9 checklist twice with `docs/epics/zest/release/demo-script.md`, skipping step 6 (C72). Then the network-off test and a backup screen recording. Write the results into `prototyping-feedback.md` §5.
-- **Tag `v0.1.0` and push:** waiting for the owner's go-ahead. At tagging, move `[Unreleased]` to `[0.1.0] - <date>` in the CHANGELOG, in the same commit.
+- **Tag `v0.1.0` and push:** done 2026-10-19 with owner approval. The CHANGELOG `[0.1.0]` section was cut in the tagged commit.
 
 **Possible follow-up, not asked for:** lock the chat input while a new session starts. A ref guard in `App.tsx` for the duplicate development sessions also needs owner approval.
