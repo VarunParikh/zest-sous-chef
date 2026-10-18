@@ -1,0 +1,1154 @@
+{
+ "id": "E13",
+ "system": "reason-line-llama3.2:3b",
+ "dataset": {
+  "name": "reasons_v1.jsonl",
+  "sha256": "2cf2ffeab964357a8137c407b6879963a286f1b3a2f9ef1f8deadca84e930573",
+  "split": "all"
+ },
+ "environment": {
+  "commit": "af87c6d",
+  "dirty": false,
+  "date": "2026-10-18T13:40:09+00:00",
+  "python": "3.12.15",
+  "machine": "arm64",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "packages": {
+   "chromadb": "1.5.9",
+   "rank-bm25": "0.2.2",
+   "pydantic": "2.14.1",
+   "httpx": "0.28.1",
+   "fastapi": "0.143.3"
+  }
+ },
+ "metrics": {
+  "runs": [
+   {
+    "validator_pass_rate": {
+     "k": 30,
+     "n": 30,
+     "rate": 1.0,
+     "ci95": [
+      0.886486605238548,
+      1.0
+     ]
+    },
+    "template_fallback_rate": {
+     "k": 0,
+     "n": 30,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.11351339476145204
+     ]
+    }
+   },
+   {
+    "validator_pass_rate": {
+     "k": 30,
+     "n": 30,
+     "rate": 1.0,
+     "ci95": [
+      0.886486605238548,
+      1.0
+     ]
+    },
+    "template_fallback_rate": {
+     "k": 0,
+     "n": 30,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.11351339476145204
+     ]
+    }
+   },
+   {
+    "validator_pass_rate": {
+     "k": 30,
+     "n": 30,
+     "rate": 1.0,
+     "ci95": [
+      0.886486605238548,
+      1.0
+     ]
+    },
+    "template_fallback_rate": {
+     "k": 0,
+     "n": 30,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.11351339476145204
+     ]
+    }
+   }
+  ],
+  "aggregate": {
+   "validator_pass_rate": {
+    "median": 1.0,
+    "range": [
+     1.0,
+     1.0
+    ],
+    "min": 0.8,
+    "status": "PASS",
+    "runs": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  }
+ },
+ "critical_failures": [
+  {
+   "id": "RP7-3-1",
+   "run": 1,
+   "shown": "Fresh, savoury, and healthy, matching current mood and preferences",
+   "problems": [
+    "claim:healthy"
+   ]
+  },
+  {
+   "id": "RP7-3-3",
+   "run": 1,
+   "shown": "Fresh, tangy, and healthy, matching current mood and gourmet trends",
+   "problems": [
+    "claim:healthy"
+   ]
+  },
+  {
+   "id": "RP6-3-1",
+   "run": 1,
+   "shown": "Earthy and healthy, matching purchase history and mood preferences",
+   "problems": [
+    "claim:healthy"
+   ]
+  },
+  {
+   "id": "RP6-3-3",
+   "run": 1,
+   "shown": "Fresh, healthy, and gourmet options match the mood and purchase history preferences",
+   "problems": [
+    "claim:healthy"
+   ]
+  },
+  {
+   "id": "RP7-3-1",
+   "run": 2,
+   "shown": "Fresh, savoury, and healthy, matching current mood and preferences",
+   "problems": [
+    "claim:healthy"
+   ]
+  },
+  {
+   "id": "RP7-3-3",
+   "run": 2,
+   "shown": "Fresh, tangy, and healthy, matching current mood and gourmet trends",
+   "problems": [
+    "claim:healthy"
+   ]
+  },
+  {
+   "id": "RP6-3-1",
+   "run": 2,
+   "shown": "Earthy and healthy, matching purchase history and mood preferences",
+   "problems": [
+    "claim:healthy"
+   ]
+  },
+  {
+   "id": "RP6-3-3",
+   "run": 2,
+   "shown": "Fresh, healthy, and gourmet options match the mood and purchase history preferences",
+   "problems": [
+    "claim:healthy"
+   ]
+  },
+  {
+   "id": "RP7-3-1",
+   "run": 3,
+   "shown": "Fresh, savoury, and healthy, matching current mood and preferences",
+   "problems": [
+    "claim:healthy"
+   ]
+  },
+  {
+   "id": "RP7-3-3",
+   "run": 3,
+   "shown": "Fresh, tangy, and healthy, matching current mood and gourmet trends",
+   "problems": [
+    "claim:healthy"
+   ]
+  },
+  {
+   "id": "RP6-3-1",
+   "run": 3,
+   "shown": "Earthy and healthy, matching purchase history and mood preferences",
+   "problems": [
+    "claim:healthy"
+   ]
+  },
+  {
+   "id": "RP6-3-3",
+   "run": 3,
+   "shown": "Fresh, healthy, and gourmet options match the mood and purchase history preferences",
+   "problems": [
+    "claim:healthy"
+   ]
+  }
+ ],
+ "per_example": [
+  {
+   "id": "RP7-1-1",
+   "run": 1,
+   "dish": "Lachha Paratha",
+   "raw": "Flaky, buttery, and indulgent, matching purchase history and mood preferences",
+   "valid": true,
+   "shown": "Flaky, buttery, and indulgent, matching purchase history and mood preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-1-2",
+   "run": 1,
+   "dish": "Butter Naan",
+   "raw": "Buttery, soft, and a current trend, matching the user's mood and purchase history",
+   "valid": true,
+   "shown": "Buttery, soft, and a current trend, matching the user's mood and purchase history",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-1-3",
+   "run": 1,
+   "dish": "Cold Coffee",
+   "raw": "Matches current trend and user's preference for gourmet and organic options",
+   "valid": true,
+   "shown": "Matches current trend and user's preference for gourmet and organic options",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-2-1",
+   "run": 1,
+   "dish": "Cold Coffee",
+   "raw": "A sweet and cooling treat that matches current mood and trends",
+   "valid": true,
+   "shown": "A sweet and cooling treat that matches current mood and trends",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-2-2",
+   "run": 1,
+   "dish": "Mango Milkshake",
+   "raw": "Fruity, creamy, and sweet, matching current mood and trend, with high purchase history preference",
+   "valid": true,
+   "shown": "Fruity, creamy, and sweet, matching current mood and trend, with high purchase history preference",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-2-3",
+   "run": 1,
+   "dish": "Sweet Lassi",
+   "raw": "Sweet and creamy, matching current mood and trend, with high purchase history preference",
+   "valid": true,
+   "shown": "Sweet and creamy, matching current mood and trend, with high purchase history preference",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-3-1",
+   "run": 1,
+   "dish": "Keto Chicken Salad",
+   "raw": "Fresh, savoury, and healthy, matching current mood and preferences",
+   "valid": true,
+   "shown": "Fresh, savoury, and healthy, matching current mood and preferences",
+   "problems_shown": [
+    "claim:healthy"
+   ],
+   "problems_raw": [
+    "claim:healthy"
+   ]
+  },
+  {
+   "id": "RP7-3-2",
+   "run": 1,
+   "dish": "Creamy Pasta (international)",
+   "raw": "Comfort food that matches current trend and mood, with gourmet and organic appeal",
+   "valid": true,
+   "shown": "Comfort food that matches current trend and mood, with gourmet and organic appeal",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-3-3",
+   "run": 1,
+   "dish": "Garden Salad with Lemon Dressing (international)",
+   "raw": "Fresh, tangy, and healthy, matching current mood and gourmet trends",
+   "valid": true,
+   "shown": "Fresh, tangy, and healthy, matching current mood and gourmet trends",
+   "problems_shown": [
+    "claim:healthy"
+   ],
+   "problems_raw": [
+    "claim:healthy"
+   ]
+  },
+  {
+   "id": "RP7-4-1",
+   "run": 1,
+   "dish": "Tandoori Prawns",
+   "raw": "High protein, gourmet, and organic options match user's preference for indulgent and gourmet dishes",
+   "valid": true,
+   "shown": "High protein, gourmet, and organic options match user's preference for indulgent and gourmet dishes",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-4-2",
+   "run": 1,
+   "dish": "Chicken Seekh Kebab",
+   "raw": "High protein and gourmet match for the mood and preference",
+   "valid": true,
+   "shown": "High protein and gourmet match for the mood and preference",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-4-3",
+   "run": 1,
+   "dish": "Aloo Paratha",
+   "raw": "A match for high preference, gourmet, and organic preferences, trending right now",
+   "valid": true,
+   "shown": "A match for high preference, gourmet, and organic preferences, trending right now",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-5-1",
+   "run": 1,
+   "dish": "Sweet Lassi",
+   "raw": "Sweet and creamy, matching current mood and trend, with high purchase history preference",
+   "valid": true,
+   "shown": "Sweet and creamy, matching current mood and trend, with high purchase history preference",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-5-2",
+   "run": 1,
+   "dish": "Mango Lassi",
+   "raw": "Sweet, creamy, and refreshing, matching current mood and trend",
+   "valid": true,
+   "shown": "Sweet, creamy, and refreshing, matching current mood and trend",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-5-3",
+   "run": 1,
+   "dish": "Strawberry Milkshake",
+   "raw": "Fits the user's preference for sweet and indulgent treats",
+   "valid": true,
+   "shown": "Fits the user's preference for sweet and indulgent treats",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-1-1",
+   "run": 1,
+   "dish": "Gajar Mirch Achar",
+   "raw": "Pungent and tangy, matching the mood and gourmet preferences",
+   "valid": true,
+   "shown": "Pungent and tangy, matching the mood and gourmet preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-1-2",
+   "run": 1,
+   "dish": "Kachumber Salad",
+   "raw": "Fresh, tangy, and crunchy, a current trend with high purchase history preference",
+   "valid": true,
+   "shown": "Fresh, tangy, and crunchy, a current trend with high purchase history preference",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-1-3",
+   "run": 1,
+   "dish": "Virgin Mint Mojito (international)",
+   "raw": "Minty, tangy, and refreshing, matching current mood and gourmet preferences",
+   "valid": true,
+   "shown": "Minty, tangy, and refreshing, matching current mood and gourmet preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-2-1",
+   "run": 1,
+   "dish": "Pineapple Mint Cooler (international)",
+   "raw": "Tangy, sweet, and refreshing, matching mood and preferences for a gourmet treat",
+   "valid": true,
+   "shown": "Tangy, sweet, and refreshing, matching mood and preferences for a gourmet treat",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-2-2",
+   "run": 1,
+   "dish": "Watermelon Cooler",
+   "raw": "Fresh, sweet, and refreshing, matching the user's current mood and preferences",
+   "valid": true,
+   "shown": "Fresh, sweet, and refreshing, matching the user's current mood and preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-2-3",
+   "run": 1,
+   "dish": "Kokum Sharbat",
+   "raw": "Tangy, sweet and refreshing, matching current mood and trend preferences",
+   "valid": true,
+   "shown": "Tangy, sweet and refreshing, matching current mood and trend preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-3-1",
+   "run": 1,
+   "dish": "Jowar Bhakri",
+   "raw": "Earthy and healthy, matching purchase history and mood preferences",
+   "valid": true,
+   "shown": "Earthy and healthy, matching purchase history and mood preferences",
+   "problems_shown": [
+    "claim:healthy"
+   ],
+   "problems_raw": [
+    "claim:healthy"
+   ]
+  },
+  {
+   "id": "RP6-3-2",
+   "run": 1,
+   "dish": "Garden Salad with Lemon Dressing (international)",
+   "raw": "Fresh, tangy, and aligns with current mood and purchase history preferences",
+   "valid": true,
+   "shown": "Fresh, tangy, and aligns with current mood and purchase history preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-3-3",
+   "run": 1,
+   "dish": "Sprouted Moong Salad",
+   "raw": "Fresh, healthy, and gourmet options match the mood and purchase history preferences",
+   "valid": true,
+   "shown": "Fresh, healthy, and gourmet options match the mood and purchase history preferences",
+   "problems_shown": [
+    "claim:healthy"
+   ],
+   "problems_raw": [
+    "claim:healthy"
+   ]
+  },
+  {
+   "id": "RP6-4-1",
+   "run": 1,
+   "dish": "Gajar Mirch Achar",
+   "raw": "Pungent and tangy, matching mood and preferences for gourmet and organic options",
+   "valid": true,
+   "shown": "Pungent and tangy, matching mood and preferences for gourmet and organic options",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-4-2",
+   "run": 1,
+   "dish": "Spicy Guava Cooler",
+   "raw": "Tangy, spicy, and sweet, matching current mood and preferences",
+   "valid": true,
+   "shown": "Tangy, spicy, and sweet, matching current mood and preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-4-3",
+   "run": 1,
+   "dish": "Baingan Bharta",
+   "raw": "Savoury and spicy, matching mood and preferences for a gourmet and organic option",
+   "valid": true,
+   "shown": "Savoury and spicy, matching mood and preferences for a gourmet and organic option",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-5-1",
+   "run": 1,
+   "dish": "Peanut Chikki",
+   "raw": "A sweet and crunchy treat that matches your mood and preferences",
+   "valid": true,
+   "shown": "A sweet and crunchy treat that matches your mood and preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-5-2",
+   "run": 1,
+   "dish": "Date and Nut Ladoo",
+   "raw": "Nutty, sweet, and festive, matching the current mood and trend",
+   "valid": true,
+   "shown": "Nutty, sweet, and festive, matching the current mood and trend",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-5-3",
+   "run": 1,
+   "dish": "Kaju Katli",
+   "raw": "Nutty, sweet, and rich, perfect for a festive gourmet and organic treat",
+   "valid": true,
+   "shown": "Nutty, sweet, and rich, perfect for a festive gourmet and organic treat",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-1-1",
+   "run": 2,
+   "dish": "Lachha Paratha",
+   "raw": "Flaky, buttery, and indulgent, matching purchase history and mood preferences",
+   "valid": true,
+   "shown": "Flaky, buttery, and indulgent, matching purchase history and mood preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-1-2",
+   "run": 2,
+   "dish": "Butter Naan",
+   "raw": "Buttery, soft, and a current trend, matching the user's mood and purchase history",
+   "valid": true,
+   "shown": "Buttery, soft, and a current trend, matching the user's mood and purchase history",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-1-3",
+   "run": 2,
+   "dish": "Cold Coffee",
+   "raw": "Matches current trend and user's preference for gourmet and organic options",
+   "valid": true,
+   "shown": "Matches current trend and user's preference for gourmet and organic options",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-2-1",
+   "run": 2,
+   "dish": "Cold Coffee",
+   "raw": "A sweet and cooling treat that matches current mood and trends",
+   "valid": true,
+   "shown": "A sweet and cooling treat that matches current mood and trends",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-2-2",
+   "run": 2,
+   "dish": "Mango Milkshake",
+   "raw": "Fruity, creamy, and sweet, matching current mood and trend, with high purchase history preference",
+   "valid": true,
+   "shown": "Fruity, creamy, and sweet, matching current mood and trend, with high purchase history preference",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-2-3",
+   "run": 2,
+   "dish": "Sweet Lassi",
+   "raw": "Sweet and creamy, matching current mood and trend, with high purchase history preference",
+   "valid": true,
+   "shown": "Sweet and creamy, matching current mood and trend, with high purchase history preference",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-3-1",
+   "run": 2,
+   "dish": "Keto Chicken Salad",
+   "raw": "Fresh, savoury, and healthy, matching current mood and preferences",
+   "valid": true,
+   "shown": "Fresh, savoury, and healthy, matching current mood and preferences",
+   "problems_shown": [
+    "claim:healthy"
+   ],
+   "problems_raw": [
+    "claim:healthy"
+   ]
+  },
+  {
+   "id": "RP7-3-2",
+   "run": 2,
+   "dish": "Creamy Pasta (international)",
+   "raw": "Comfort food that matches current trend and mood, with gourmet and organic appeal",
+   "valid": true,
+   "shown": "Comfort food that matches current trend and mood, with gourmet and organic appeal",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-3-3",
+   "run": 2,
+   "dish": "Garden Salad with Lemon Dressing (international)",
+   "raw": "Fresh, tangy, and healthy, matching current mood and gourmet trends",
+   "valid": true,
+   "shown": "Fresh, tangy, and healthy, matching current mood and gourmet trends",
+   "problems_shown": [
+    "claim:healthy"
+   ],
+   "problems_raw": [
+    "claim:healthy"
+   ]
+  },
+  {
+   "id": "RP7-4-1",
+   "run": 2,
+   "dish": "Tandoori Prawns",
+   "raw": "High protein, gourmet, and organic options match user's preference for indulgent and gourmet dishes",
+   "valid": true,
+   "shown": "High protein, gourmet, and organic options match user's preference for indulgent and gourmet dishes",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-4-2",
+   "run": 2,
+   "dish": "Chicken Seekh Kebab",
+   "raw": "High protein and gourmet match for the mood and preference",
+   "valid": true,
+   "shown": "High protein and gourmet match for the mood and preference",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-4-3",
+   "run": 2,
+   "dish": "Aloo Paratha",
+   "raw": "A match for high preference, gourmet, and organic preferences, trending right now",
+   "valid": true,
+   "shown": "A match for high preference, gourmet, and organic preferences, trending right now",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-5-1",
+   "run": 2,
+   "dish": "Sweet Lassi",
+   "raw": "Sweet and creamy, matching current mood and trend, with high purchase history preference",
+   "valid": true,
+   "shown": "Sweet and creamy, matching current mood and trend, with high purchase history preference",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-5-2",
+   "run": 2,
+   "dish": "Mango Lassi",
+   "raw": "Sweet, creamy, and refreshing, matching current mood and trend",
+   "valid": true,
+   "shown": "Sweet, creamy, and refreshing, matching current mood and trend",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-5-3",
+   "run": 2,
+   "dish": "Strawberry Milkshake",
+   "raw": "Fits the user's preference for sweet and indulgent treats",
+   "valid": true,
+   "shown": "Fits the user's preference for sweet and indulgent treats",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-1-1",
+   "run": 2,
+   "dish": "Gajar Mirch Achar",
+   "raw": "Pungent and tangy, matching the mood and gourmet preferences",
+   "valid": true,
+   "shown": "Pungent and tangy, matching the mood and gourmet preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-1-2",
+   "run": 2,
+   "dish": "Kachumber Salad",
+   "raw": "Fresh, tangy, and crunchy, a current trend with high purchase history preference",
+   "valid": true,
+   "shown": "Fresh, tangy, and crunchy, a current trend with high purchase history preference",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-1-3",
+   "run": 2,
+   "dish": "Virgin Mint Mojito (international)",
+   "raw": "Minty, tangy, and refreshing, matching current mood and gourmet preferences",
+   "valid": true,
+   "shown": "Minty, tangy, and refreshing, matching current mood and gourmet preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-2-1",
+   "run": 2,
+   "dish": "Pineapple Mint Cooler (international)",
+   "raw": "Tangy, sweet, and refreshing, matching mood and preferences for a gourmet treat",
+   "valid": true,
+   "shown": "Tangy, sweet, and refreshing, matching mood and preferences for a gourmet treat",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-2-2",
+   "run": 2,
+   "dish": "Watermelon Cooler",
+   "raw": "Fresh, sweet, and refreshing, matching the user's current mood and preferences",
+   "valid": true,
+   "shown": "Fresh, sweet, and refreshing, matching the user's current mood and preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-2-3",
+   "run": 2,
+   "dish": "Kokum Sharbat",
+   "raw": "Tangy, sweet and refreshing, matching current mood and trend preferences",
+   "valid": true,
+   "shown": "Tangy, sweet and refreshing, matching current mood and trend preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-3-1",
+   "run": 2,
+   "dish": "Jowar Bhakri",
+   "raw": "Earthy and healthy, matching purchase history and mood preferences",
+   "valid": true,
+   "shown": "Earthy and healthy, matching purchase history and mood preferences",
+   "problems_shown": [
+    "claim:healthy"
+   ],
+   "problems_raw": [
+    "claim:healthy"
+   ]
+  },
+  {
+   "id": "RP6-3-2",
+   "run": 2,
+   "dish": "Garden Salad with Lemon Dressing (international)",
+   "raw": "Fresh, tangy, and aligns with current mood and purchase history preferences",
+   "valid": true,
+   "shown": "Fresh, tangy, and aligns with current mood and purchase history preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-3-3",
+   "run": 2,
+   "dish": "Sprouted Moong Salad",
+   "raw": "Fresh, healthy, and gourmet options match the mood and purchase history preferences",
+   "valid": true,
+   "shown": "Fresh, healthy, and gourmet options match the mood and purchase history preferences",
+   "problems_shown": [
+    "claim:healthy"
+   ],
+   "problems_raw": [
+    "claim:healthy"
+   ]
+  },
+  {
+   "id": "RP6-4-1",
+   "run": 2,
+   "dish": "Gajar Mirch Achar",
+   "raw": "Pungent and tangy, matching mood and preferences for gourmet and organic options",
+   "valid": true,
+   "shown": "Pungent and tangy, matching mood and preferences for gourmet and organic options",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-4-2",
+   "run": 2,
+   "dish": "Spicy Guava Cooler",
+   "raw": "Tangy, spicy, and sweet, matching current mood and preferences",
+   "valid": true,
+   "shown": "Tangy, spicy, and sweet, matching current mood and preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-4-3",
+   "run": 2,
+   "dish": "Baingan Bharta",
+   "raw": "Savoury and spicy, matching mood and preferences for a gourmet and organic option",
+   "valid": true,
+   "shown": "Savoury and spicy, matching mood and preferences for a gourmet and organic option",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-5-1",
+   "run": 2,
+   "dish": "Peanut Chikki",
+   "raw": "A sweet and crunchy treat that matches your mood and preferences",
+   "valid": true,
+   "shown": "A sweet and crunchy treat that matches your mood and preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-5-2",
+   "run": 2,
+   "dish": "Date and Nut Ladoo",
+   "raw": "Nutty, sweet, and festive, matching the current mood and trend",
+   "valid": true,
+   "shown": "Nutty, sweet, and festive, matching the current mood and trend",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-5-3",
+   "run": 2,
+   "dish": "Kaju Katli",
+   "raw": "Nutty, sweet, and rich, perfect for a festive gourmet and organic treat",
+   "valid": true,
+   "shown": "Nutty, sweet, and rich, perfect for a festive gourmet and organic treat",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-1-1",
+   "run": 3,
+   "dish": "Lachha Paratha",
+   "raw": "Flaky, buttery, and indulgent, matching purchase history and mood preferences",
+   "valid": true,
+   "shown": "Flaky, buttery, and indulgent, matching purchase history and mood preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-1-2",
+   "run": 3,
+   "dish": "Butter Naan",
+   "raw": "Buttery, soft, and a current trend, matching the user's mood and purchase history",
+   "valid": true,
+   "shown": "Buttery, soft, and a current trend, matching the user's mood and purchase history",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-1-3",
+   "run": 3,
+   "dish": "Cold Coffee",
+   "raw": "Matches current trend and user's preference for gourmet and organic options",
+   "valid": true,
+   "shown": "Matches current trend and user's preference for gourmet and organic options",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-2-1",
+   "run": 3,
+   "dish": "Cold Coffee",
+   "raw": "A sweet and cooling treat that matches current mood and trends",
+   "valid": true,
+   "shown": "A sweet and cooling treat that matches current mood and trends",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-2-2",
+   "run": 3,
+   "dish": "Mango Milkshake",
+   "raw": "Fruity, creamy, and sweet, matching current mood and trend, with high purchase history preference",
+   "valid": true,
+   "shown": "Fruity, creamy, and sweet, matching current mood and trend, with high purchase history preference",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-2-3",
+   "run": 3,
+   "dish": "Sweet Lassi",
+   "raw": "Sweet and creamy, matching current mood and trend, with high purchase history preference",
+   "valid": true,
+   "shown": "Sweet and creamy, matching current mood and trend, with high purchase history preference",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-3-1",
+   "run": 3,
+   "dish": "Keto Chicken Salad",
+   "raw": "Fresh, savoury, and healthy, matching current mood and preferences",
+   "valid": true,
+   "shown": "Fresh, savoury, and healthy, matching current mood and preferences",
+   "problems_shown": [
+    "claim:healthy"
+   ],
+   "problems_raw": [
+    "claim:healthy"
+   ]
+  },
+  {
+   "id": "RP7-3-2",
+   "run": 3,
+   "dish": "Creamy Pasta (international)",
+   "raw": "Comfort food that matches current trend and mood, with gourmet and organic appeal",
+   "valid": true,
+   "shown": "Comfort food that matches current trend and mood, with gourmet and organic appeal",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-3-3",
+   "run": 3,
+   "dish": "Garden Salad with Lemon Dressing (international)",
+   "raw": "Fresh, tangy, and healthy, matching current mood and gourmet trends",
+   "valid": true,
+   "shown": "Fresh, tangy, and healthy, matching current mood and gourmet trends",
+   "problems_shown": [
+    "claim:healthy"
+   ],
+   "problems_raw": [
+    "claim:healthy"
+   ]
+  },
+  {
+   "id": "RP7-4-1",
+   "run": 3,
+   "dish": "Tandoori Prawns",
+   "raw": "High protein, gourmet, and organic options match user's preference for indulgent and gourmet dishes",
+   "valid": true,
+   "shown": "High protein, gourmet, and organic options match user's preference for indulgent and gourmet dishes",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-4-2",
+   "run": 3,
+   "dish": "Chicken Seekh Kebab",
+   "raw": "High protein and gourmet match for the mood and preference",
+   "valid": true,
+   "shown": "High protein and gourmet match for the mood and preference",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-4-3",
+   "run": 3,
+   "dish": "Aloo Paratha",
+   "raw": "A match for high preference, gourmet, and organic preferences, trending right now",
+   "valid": true,
+   "shown": "A match for high preference, gourmet, and organic preferences, trending right now",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-5-1",
+   "run": 3,
+   "dish": "Sweet Lassi",
+   "raw": "Sweet and creamy, matching current mood and trend, with high purchase history preference",
+   "valid": true,
+   "shown": "Sweet and creamy, matching current mood and trend, with high purchase history preference",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-5-2",
+   "run": 3,
+   "dish": "Mango Lassi",
+   "raw": "Sweet, creamy, and refreshing, matching current mood and trend",
+   "valid": true,
+   "shown": "Sweet, creamy, and refreshing, matching current mood and trend",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP7-5-3",
+   "run": 3,
+   "dish": "Strawberry Milkshake",
+   "raw": "Fits the user's preference for sweet and indulgent treats",
+   "valid": true,
+   "shown": "Fits the user's preference for sweet and indulgent treats",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-1-1",
+   "run": 3,
+   "dish": "Gajar Mirch Achar",
+   "raw": "Pungent and tangy, matching the mood and gourmet preferences",
+   "valid": true,
+   "shown": "Pungent and tangy, matching the mood and gourmet preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-1-2",
+   "run": 3,
+   "dish": "Kachumber Salad",
+   "raw": "Fresh, tangy, and crunchy, a current trend with high purchase history preference",
+   "valid": true,
+   "shown": "Fresh, tangy, and crunchy, a current trend with high purchase history preference",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-1-3",
+   "run": 3,
+   "dish": "Virgin Mint Mojito (international)",
+   "raw": "Minty, tangy, and refreshing, matching current mood and gourmet preferences",
+   "valid": true,
+   "shown": "Minty, tangy, and refreshing, matching current mood and gourmet preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-2-1",
+   "run": 3,
+   "dish": "Pineapple Mint Cooler (international)",
+   "raw": "Tangy, sweet, and refreshing, matching mood and preferences for a gourmet treat",
+   "valid": true,
+   "shown": "Tangy, sweet, and refreshing, matching mood and preferences for a gourmet treat",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-2-2",
+   "run": 3,
+   "dish": "Watermelon Cooler",
+   "raw": "Fresh, sweet, and refreshing, matching the user's current mood and preferences",
+   "valid": true,
+   "shown": "Fresh, sweet, and refreshing, matching the user's current mood and preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-2-3",
+   "run": 3,
+   "dish": "Kokum Sharbat",
+   "raw": "Tangy, sweet and refreshing, matching current mood and trend preferences",
+   "valid": true,
+   "shown": "Tangy, sweet and refreshing, matching current mood and trend preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-3-1",
+   "run": 3,
+   "dish": "Jowar Bhakri",
+   "raw": "Earthy and healthy, matching purchase history and mood preferences",
+   "valid": true,
+   "shown": "Earthy and healthy, matching purchase history and mood preferences",
+   "problems_shown": [
+    "claim:healthy"
+   ],
+   "problems_raw": [
+    "claim:healthy"
+   ]
+  },
+  {
+   "id": "RP6-3-2",
+   "run": 3,
+   "dish": "Garden Salad with Lemon Dressing (international)",
+   "raw": "Fresh, tangy, and aligns with current mood and purchase history preferences",
+   "valid": true,
+   "shown": "Fresh, tangy, and aligns with current mood and purchase history preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-3-3",
+   "run": 3,
+   "dish": "Sprouted Moong Salad",
+   "raw": "Fresh, healthy, and gourmet options match the mood and purchase history preferences",
+   "valid": true,
+   "shown": "Fresh, healthy, and gourmet options match the mood and purchase history preferences",
+   "problems_shown": [
+    "claim:healthy"
+   ],
+   "problems_raw": [
+    "claim:healthy"
+   ]
+  },
+  {
+   "id": "RP6-4-1",
+   "run": 3,
+   "dish": "Gajar Mirch Achar",
+   "raw": "Pungent and tangy, matching mood and preferences for gourmet and organic options",
+   "valid": true,
+   "shown": "Pungent and tangy, matching mood and preferences for gourmet and organic options",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-4-2",
+   "run": 3,
+   "dish": "Spicy Guava Cooler",
+   "raw": "Tangy, spicy, and sweet, matching current mood and preferences",
+   "valid": true,
+   "shown": "Tangy, spicy, and sweet, matching current mood and preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-4-3",
+   "run": 3,
+   "dish": "Baingan Bharta",
+   "raw": "Savoury and spicy, matching mood and preferences for a gourmet and organic option",
+   "valid": true,
+   "shown": "Savoury and spicy, matching mood and preferences for a gourmet and organic option",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-5-1",
+   "run": 3,
+   "dish": "Peanut Chikki",
+   "raw": "A sweet and crunchy treat that matches your mood and preferences",
+   "valid": true,
+   "shown": "A sweet and crunchy treat that matches your mood and preferences",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-5-2",
+   "run": 3,
+   "dish": "Date and Nut Ladoo",
+   "raw": "Nutty, sweet, and festive, matching the current mood and trend",
+   "valid": true,
+   "shown": "Nutty, sweet, and festive, matching the current mood and trend",
+   "problems_shown": [],
+   "problems_raw": []
+  },
+  {
+   "id": "RP6-5-3",
+   "run": 3,
+   "dish": "Kaju Katli",
+   "raw": "Nutty, sweet, and rich, perfect for a festive gourmet and organic treat",
+   "valid": true,
+   "shown": "Nutty, sweet, and rich, perfect for a festive gourmet and organic treat",
+   "problems_shown": [],
+   "problems_raw": []
+  }
+ ],
+ "status": "FAIL",
+ "notes": "facts and validator as in flows.mood; unsupported-claim check per C50; owner spot check of 20 lines (Plan §8) still owed; 3 runs (C51)"
+}
