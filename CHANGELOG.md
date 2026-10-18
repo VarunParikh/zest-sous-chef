@@ -4,6 +4,9 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 
 ## [Unreleased]
 
+### Added
+- README: a Diagrams section with seven Mermaid diagrams (system architecture, one chat turn, the recommendation pipeline, the photo flow, the YouTube fallback chain, levers and sessions, cart and checkout). Each was checked against the code and parsed with Mermaid 11.4.1. No existing README text changed.
+
 ## [0.1.0] - 2026-10-19
 First public release of the prototype. Evidence report: `docs/epics/zest/verify/report/report.md`; release checklist: `docs/epics/zest/release/release-checklist.md`. Block 3.4 rehearsals are still to do (owner deferred).
 

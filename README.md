@@ -108,6 +108,175 @@ The model never sets a price, a SKU or eligibility, and text from videos, photos
 
 Details: [architecture](docs/epics/zest/design/architecture.md) and the [ADRs](docs/epics/zest/design/adr/README.md).
 
+## Diagrams
+GitHub renders these Mermaid diagrams directly. They describe what is built; cut features are marked as such.
+
+### System architecture
+```mermaid
+flowchart LR
+  user(["Reviewer in a browser"])
+  subgraph laptop["One Mac, everything local"]
+    subgraph fe["Frontend: React + Vite (localhost:5173)"]
+      levers["Lever panel<br/>weights, sliders, personas"]
+      chat["Chat with Zest<br/>cards, Why this?, inspector"]
+      cartw["Cart window<br/>edits, Undo, Buy Now"]
+    end
+    subgraph be["Backend: FastAPI (127.0.0.1:8000)"]
+      api["REST API /api/v1"]
+      sess["Sessions in memory<br/>lever snapshot per session"]
+      guard["Input guard<br/>rules, then classifier"]
+      intent["Intent<br/>code routing, then model"]
+      flows["Flows<br/>mood, text, YouTube, photo, add-ons"]
+      retr["Hybrid retrieval<br/>BM25 + vectors, RRF, IDs only"]
+      engine["Engine<br/>guardrails, lever scoring, variants"]
+      cart["Cart service<br/>allocation, shared lines, checkout"]
+      trace["Trace log<br/>logs/trace.jsonl"]
+    end
+    ollama[("Ollama<br/>llama3.2:3b, llama-guard3:1b,<br/>qwen3-vl:4b-instruct")]
+    chroma[("Chroma index<br/>data/chroma")]
+    catalog[("Mock catalogue<br/>mock-data/generated")]
+    fixtures[("Transcript fixtures<br/>and sample photos")]
+  end
+  yt["YouTube transcripts<br/>(live, optional)"]
+  gem["Google Gemini<br/>(opt-in photos only)"]
+  user --> fe
+  fe -- "/api proxy" --> api
+  api --> sess --> guard --> intent --> flows
+  flows --> retr --> engine --> cart
+  retr --> chroma
+  engine --> catalog
+  cart --> catalog
+  guard -.-> ollama
+  intent -.-> ollama
+  flows -.-> ollama
+  flows --> fixtures
+  flows -.-> yt
+  flows -.-> gem
+  api --> trace
+```
+
+### One chat turn
+```mermaid
+flowchart TD
+  msg["User message"] --> rules{"Rules guard:<br/>injection, hazard, off-topic?"}
+  rules -- "yes" --> redirect["Templated redirect<br/>MSG-REDIRECT / MSG-HAZARD<br/>no cart change"]
+  rules -- "no" --> clf{"llama-guard3:1b<br/>unsafe?"}
+  clf -- "unsafe" --> redirect
+  clf -- "safe, or unreachable:<br/>rules verdict stands" --> link{"YouTube link?"}
+  link -- "yes" --> ytflow["YouTube flow"]
+  link -- "no" --> route{"Code routing:<br/>named dish or clear cart?"}
+  route -- "no" --> model["Intent model<br/>llama3.2:3b, JSON"]
+  route -- "yes" --> dispatch
+  model --> dispatch{"Intent"}
+  dispatch -- "mood" --> mood["Mood flow"]
+  dispatch -- "recipe text" --> text["Text recipe flow"]
+  dispatch -- "named dish" --> named["Stored recipe"]
+  dispatch -- "clear cart" --> confirm["Confirm card<br/>MSG-CLEAR-CONFIRM"]
+  dispatch -- "smalltalk, allergy" --> tmpl["Template reply"]
+  dispatch -- "chat cart edit (FR-78 cut)" --> unsup["MSG-UNSUPPORTED"]
+  mood --> reply["Turn response:<br/>messages, cards, cart"]
+  text --> reply
+  named --> reply
+  ytflow --> reply
+  confirm --> reply
+  tmpl --> reply
+  unsup --> reply
+  redirect --> reply
+```
+
+### Recommendation pipeline (mood requests)
+```mermaid
+flowchart LR
+  q["Mood words<br/>and mood tags"] --> open{"Open request?<br/>e.g. I am hungry"}
+  open -- "yes" --> course["Whole course pool<br/>(ADR-004 v3)"]
+  open -- "no" --> hybrid["Hybrid retrieval<br/>BM25 + Chroma, RRF k 60<br/>pool of 25 dish IDs"]
+  hybrid -. "vector store down" .-> lexical["Lexical only<br/>(FR-117)"]
+  course --> filt
+  hybrid --> filt
+  lexical --> filt
+  filt["Guardrails in code<br/>diet, faith, allergy, stock"] --> score["Lever scoring<br/>4 weights, history, trends,<br/>gourmet, organic, price cap"]
+  score --> top["Top 3, no repeats<br/>in the session"]
+  top --> variants["Variant choice per ingredient<br/>lever scores + price value term"]
+  variants --> alloc["Pack allocation<br/>from the catalogue"]
+  alloc --> reason["Reason line<br/>model writes, validator checks,<br/>template if it fails"]
+  reason --> cards["Dish card, 2 swaps, Undo,<br/>Why this?, one add-on offer"]
+```
+
+### Photo flow
+```mermaid
+sequenceDiagram
+  actor U as User
+  participant FE as Frontend
+  participant BE as Backend
+  participant V as Vision model
+  U->>FE: Upload a photo (or pick a Sample)
+  FE->>BE: POST /chat (image)
+  BE->>BE: Check type and size, strip EXIF/GPS, keep in memory only
+  alt Local qwen3-vl (default) or Gemini (opt-in, after consent)
+    BE->>V: Detect ingredients
+    V-->>BE: Items with confidence (schema-validated)
+  else Provider off, slow or failing
+    BE-->>FE: MSG-PHOTO-SAMPLES (labelled sample photos)
+  end
+  BE-->>FE: MSG-PHOTO-CONFIRM "I think I can see … (estimates)"
+  U->>FE: Tap Yes
+  FE->>BE: POST /action confirm
+  BE->>BE: Pick a dish, cart only the missing items
+  BE-->>FE: MSG-PHOTO-OK + add-on offer
+```
+
+### YouTube transcript fallback chain
+```mermaid
+flowchart LR
+  link["YouTube link"] --> live{"Live transcript<br/>(10 s timeout)"}
+  live -- "ok" --> g
+  live -- "blocked or off" --> fix{"Saved fixture<br/>for this video?"}
+  fix -- "yes" --> g
+  fix -- "no" --> title{"Video title<br/>matches a stored dish?"}
+  title -- "yes" --> stored["Stored recipe<br/>MSG-YT-TITLE"]
+  title -- "no" --> paste["Ask the user to paste<br/>MSG-YT-PASTE"]
+  g["Guard the transcript as data"] -- "instructions found" --> inj["MSG-INJECT-DATA<br/>nothing carted"]
+  g -- "clean" --> ext["Extract ingredients<br/>llama3.2:3b, JSON"]
+  ext --> cartit["Cart the dish<br/>MSG-YT-OK"]
+```
+
+### Levers and sessions
+```mermaid
+sequenceDiagram
+  actor R as Reviewer
+  participant P as Lever panel
+  participant S as Session
+  R->>S: Start new chat
+  S->>S: Snapshot the current levers
+  R->>P: Change a lever or pick a persona
+  P-->>R: Banner "Changes apply from your next chat session"
+  R->>S: Same prompt again
+  S-->>R: Still ranked with the old snapshot (C4)
+  R->>S: Start new chat
+  S->>S: New snapshot with the changed levers
+  R->>S: Same prompt again
+  S-->>R: New ranking, and the inspector shows why
+```
+
+### Cart and checkout
+```mermaid
+flowchart TD
+  add["Dish or add-on added<br/>(only after a tap)"] --> lines["Lines per dish<br/>packs from the catalogue"]
+  lines --> shared{"Ingredient already<br/>covered by another dish?"}
+  shared -- "yes" --> dim["Dimmed, unpriced line<br/>(never charged twice)"]
+  shared -- "no" --> priced["Active, priced line"]
+  priced --> edits["Quantity, remove, swap,<br/>Undo"]
+  dim --> edits
+  edits --> buy["Buy Now<br/>with an idempotency key"]
+  buy --> reval{"Revalidate stock<br/>and prices"}
+  reval -- "item out of stock" --> blocked["MSG-BLOCKED-ORDER<br/>substitute or remove"]
+  blocked --> edits
+  reval -- "price changed" --> changed["MSG-PRICE-CHANGED<br/>new total shown, no order yet"]
+  changed -- "press again" --> buy
+  reval -- "ok" --> order["One order per key<br/>a second press returns the same order"]
+  order --> done["Order screen 10 s,<br/>then an empty cart"]
+```
+
 ## Tests and evaluations
 | Command | What it proves | Time (measured on the demo Mac) |
 |---|---|---|
