@@ -45,3 +45,29 @@ No row has a tag error that would let an ineligible item reach a persona: diet c
 
 ### Not fixed
 The catalogue is seeded and its validators pass; changing generated data would alter the inputs of E7, E8 and E9. The defects are listed for the owner to decide.
+
+## 3. Owner decisions and what was done (C68, 2026-10-18)
+- **"High protein" (1A):** left as it is, and disclosed. It goes into Known Limitations in block 3.3. No code change and no rerun.
+- **Jain excludes fungi (2A):**
+  - Data Model v0.6 §9.
+  - Lexicon flag `fungi` on mushroom and truffle oil.
+  - The independent E7 checker gains a `fungi` class.
+  - Result: 6 variants are no longer `jain_ok`, and Grilled Vegetables (D111) is no longer offered to Jain personas.
+- **Data-quality defects fixed by rule (3B):**
+  - **New validators:** V15 (a variant named after an ingredient lists it first, unless its base is a carrier), V16 (names agree with tags and units) and V17 (bulk packs at most ₹20 a piece).
+  - **Before the fix:** V15 89 failures, V16 9, V17 1.
+  - **Fixed by rule:**
+    - 34 variants now list their own main ingredient first (`!term`). The sugar-free dark chocolate uses cocoa, a disclosed deviation from "stevia".
+    - 35 bases were reviewed and marked `carrier`.
+    - "Egg alternatives" was renamed "Speciality eggs".
+    - The stock cube is sold by the piece.
+    - Garbage bags cost ₹1.3 a piece.
+  - **Fixed by hand:** baby corn is now sold by weight.
+  - **After the fix:** V1 to V17 PASS on both sets.
+  - **IDs:** 39 variant IDs changed, none of them referenced. The plan had said renaming a base keeps IDs; that was wrong, because the base name is part of the ingredient list, so the 4 egg variants changed ID too.
+- **Post-hoc reruns** (`eval/results/post-hoc/c68/`, first results kept):
+  - E5 PASS
+  - E7 PASS (both arms; 0 violations in 24,854 real-arm checks, with the stricter checker)
+  - E8, E9, E12 and E13 PASS
+  - E6 FAIL as before (accepted, C57; no critical failure; no lever crossed the 0.33 gate either way)
+  - E14 PASS, now pointing at these files

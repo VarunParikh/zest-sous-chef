@@ -1,0 +1,2105 @@
+{
+ "id": "E14",
+ "system": "traceability",
+ "dataset": {
+  "name": "docs/epics/zest/requirements/user-stories.md",
+  "sha256": "7a2ca830a4ff0fa6e61d8defc85267844716f70a1b9f6dd2efb16a0b2ab9b84b",
+  "split": "all"
+ },
+ "environment": {
+  "commit": "79c2283",
+  "dirty": false,
+  "date": "2026-10-18T18:17:22+00:00",
+  "python": "3.12.15",
+  "machine": "arm64",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "packages": {
+   "chromadb": "1.5.9",
+   "rank-bm25": "0.2.2",
+   "pydantic": "2.14.1",
+   "httpx": "0.28.1",
+   "fastapi": "0.143.3"
+  }
+ },
+ "metrics": {
+  "must_stories": 33,
+  "must_stories_with_passing_test": 33,
+  "acs": 45,
+  "acs_mapped_and_passing": 45,
+  "open_fails": [],
+  "accepted_fails": [
+   {
+    "eval": "E2",
+    "file": "post-hoc/c54/E2-intent-llama3.2_3b.json",
+    "conflict": "C55"
+   },
+   {
+    "eval": "E3",
+    "file": "E3-ollama_qwen3-vl_4b-instruct.json",
+    "conflict": "C37"
+   },
+   {
+    "eval": "E4",
+    "file": "post-hoc/c55/E4-rules+llama-guard3_1b-adr006v3-guard_v3.json",
+    "conflict": "C56"
+   },
+   {
+    "eval": "E6",
+    "file": "post-hoc/c68/E6-lever-sensitivity-test.json",
+    "conflict": "C57"
+   }
+  ],
+  "xfails": [
+   "tests/unit/guard/test_pipeline.py::test_known_false_positive_unknown_dish_name"
+  ],
+  "not_run_by_owner": {
+   "E3": {
+    "E3-ollama_qwen3-vl_8b-instruct.json": "owner decision 2026-10-18 (block 1.5)"
+   }
+  },
+  "headline_status": {
+   "E1": {
+    "post-hoc/E1-llama3.2_3b.json": "PASS"
+   },
+   "E2": {
+    "post-hoc/c54/E2-intent-llama3.2_3b.json": "FAIL"
+   },
+   "E3": {
+    "E3-ollama_qwen3-vl_4b-instruct.json": "FAIL"
+   },
+   "E4": {
+    "post-hoc/c55/E4-rules+llama-guard3_1b-adr006v3-guard_v3.json": "FAIL"
+   },
+   "E5": {
+    "post-hoc/c68/E5-hybrid_k60-chroma_default_all-MiniLM-L6-v2.json": "PASS",
+    "post-hoc/c68/E5_addons-2_1.json": "PASS"
+   },
+   "E6": {
+    "post-hoc/c68/E6-lever-sensitivity-test.json": "FAIL"
+   },
+   "E7": {
+    "post-hoc/c68/E7-persona-compliance-adversarial.json": "PASS",
+    "post-hoc/c68/E7-persona-compliance-real.json": "PASS"
+   },
+   "E8": {
+    "post-hoc/c68/E8-api-integrity.json": "PASS"
+   },
+   "E9": {
+    "post-hoc/c68/E9-intent-to-cart-real.json": "PASS"
+   },
+   "E10": {
+    "E10-resilience-real-stack.json": "PASS"
+   },
+   "E11": {
+    "E11-latency-real-stack.json": "PASS"
+   },
+   "E12": {
+    "post-hoc/c68/E12-variant-sweep.json": "PASS"
+   },
+   "E13": {
+    "post-hoc/c68/E13-reason-line-llama3.2_3b.json": "PASS"
+   }
+  },
+  "missing_headline_files": [],
+  "missing_junit": [],
+  "p0_ids_no_test_references": [],
+  "junit_cases": 451,
+  "mapping_note": "module docstrings map to every test in the module; function names and docstrings map to one function; each passing link records its level"
+ },
+ "critical_failures": [],
+ "per_example": [
+  {
+   "kind": "story",
+   "id": "US-01",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_sessions.py::test_config_levers_lists_defaults_options_ranges_presets",
+    "tests/acceptance/test_sessions.py::test_create_session_returns_greeting_turn",
+    "tests/acceptance/test_sessions.py::test_non_preset_levers_are_labelled_custom",
+    "tests/acceptance/test_sessions.py::test_omitted_body_takes_defaults",
+    "tests/acceptance/test_sessions.py::test_t003_new_session_after_end_uses_new_levers",
+    "tests/acceptance/test_sessions.py::test_t005_invalid_levers_rejected_and_no_session_created",
+    "tests/acceptance/test_sessions.py::test_unhandled_error_uses_the_envelope",
+    "tests/unit/engine/test_scoring.py::test_dish_features_respond_to_history_lever",
+    "tests/unit/engine/test_scoring.py::test_effective_weights_normalised_and_all_zero_restores_defaults",
+    "tests/unit/engine/test_scoring.py::test_t030_normalisation",
+    "tests/unit/engine/test_scoring.py::test_t031_final_is_sum_of_contributions",
+    "tests/unit/engine/test_scoring.py::test_t032_ties_break_by_s_p_then_id_reproducibly",
+    "tests/unit/engine/test_scoring.py::test_t033_each_weight_reorders_towards_its_component",
+    "tests/unit/engine/test_scoring.py::test_t034_pool_wider_than_display_shows_exactly_3",
+    "tests/unit/engine/test_scoring.py::test_t037_frozen_context_is_reproducible",
+    "tests/unit/engine/test_scoring.py::test_t038_gender_boost_capped_and_never_filters",
+    "tests/unit/engine/test_scoring.py::test_trend_slider_scales_effect",
+    "tests/unit/session/test_banner.py::test_create_session_returns_flag_false",
+    "tests/unit/session/test_banner.py::test_flag_ignores_specialised_diet_order",
+    "tests/unit/session/test_banner.py::test_flag_never_changes_the_snapshot",
+    "tests/unit/session/test_banner.py::test_t002_flag_false_when_levers_match_or_are_omitted",
+    "tests/unit/session/test_banner.py::test_t002_flag_true_when_current_levers_differ",
+    "tests/unit/session/test_banner.py::test_turn_ids_advance_and_default_is_false",
+    "tests/unit/session/test_snapshot.py::test_persona_label_custom_unless_a_preset_matches",
+    "tests/unit/session/test_snapshot.py::test_snapshot_hash_is_stable_and_ignores_diet_order",
+    "tests/unit/session/test_snapshot.py::test_snapshot_is_a_deep_copy_and_reads_return_copies",
+    "tests/unit/session/test_snapshot.py::test_store_create_get_delete_and_trace",
+    "tests/unit/session/test_snapshot.py::test_t001_lever_edit_after_start_does_not_change_the_session",
+    "tests/unit/session/test_snapshot.py::test_turn_and_message_ids_increase"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-02",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_sessions.py::test_config_levers_lists_defaults_options_ranges_presets",
+    "tests/acceptance/test_sessions.py::test_create_session_returns_greeting_turn",
+    "tests/acceptance/test_sessions.py::test_non_preset_levers_are_labelled_custom",
+    "tests/acceptance/test_sessions.py::test_omitted_body_takes_defaults",
+    "tests/acceptance/test_sessions.py::test_t003_new_session_after_end_uses_new_levers",
+    "tests/acceptance/test_sessions.py::test_t005_invalid_levers_rejected_and_no_session_created",
+    "tests/acceptance/test_sessions.py::test_unhandled_error_uses_the_envelope",
+    "tests/acceptance/test_weights.py::test_config_levers_shows_default_shares",
+    "tests/acceptance/test_weights.py::test_no_notice_when_any_weight_is_set",
+    "tests/acceptance/test_weights.py::test_t004_all_zero_restores_defaults_and_sets_the_notice",
+    "tests/acceptance/test_weights.py::test_t004_shares_for_80_80_40_0",
+    "tests/e2e/test_demo_path.py::test_e2e_001_demo_path"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-03",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_clear_and_reset.py::test_t007_cancel_changes_nothing_confirm_empties_cart_levers_untouched",
+    "tests/acceptance/test_clear_and_reset.py::test_t008_reset_defaults_leave_chat_and_snapshot_untouched"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-05",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_chat_routing.py::test_c54_code_routing_skips_the_intent_model",
+    "tests/acceptance/test_chat_routing.py::test_classifier_block_and_model_off_topic_also_redirect",
+    "tests/acceptance/test_chat_routing.py::test_do_something_else_with_an_empty_cart",
+    "tests/acceptance/test_chat_routing.py::test_empty_long_and_busy_messages",
+    "tests/acceptance/test_chat_routing.py::test_low_confidence_and_invalid_reply_ask_to_rephrase",
+    "tests/acceptance/test_chat_routing.py::test_ollama_down_is_503_with_the_server_message",
+    "tests/acceptance/test_chat_routing.py::test_t060_chat_part_do_something_else_asks_then_replace_and_undo",
+    "tests/acceptance/test_chat_routing.py::test_t070_off_topic_and_injection_redirect_and_leave_the_cart",
+    "tests/acceptance/test_chat_routing.py::test_t071_benign_phrase_reaches_the_intent_classifier",
+    "tests/acceptance/test_chat_routing.py::test_templates_for_unsupported_and_allergy",
+    "tests/acceptance/test_chat_routing.py::test_user_message_is_stored_and_reply_is_a_turn",
+    "tests/acceptance/test_youtube_flow.py::test_non_recipe_video_gets_the_nonfood_reply",
+    "tests/acceptance/test_youtube_flow.py::test_t012_flow_part_chicken_video_with_pure_veg_flags_and_carts_no_meat",
+    "tests/acceptance/test_youtube_flow.py::test_t072_flow_part_instruction_in_a_transcript_is_ignored_and_nothing_carted",
+    "tests/acceptance/test_youtube_flow.py::test_t080_demo_link_fixture_extracted_mapped_and_carted_at_catalogue_prices",
+    "tests/acceptance/test_youtube_flow.py::test_t081_live_failure_uses_the_fixture_then_everything_failing_asks_to_paste",
+    "tests/acceptance/test_youtube_flow.py::test_t082_non_youtube_url_rejected_without_a_fetch_and_same_video_asks_first",
+    "tests/acceptance/test_youtube_flow.py::test_t091_extraction_timeout_asks_to_paste_never_a_success",
+    "tests/acceptance/test_youtube_flow.py::test_t092_second_link_shares_packs_and_asks_about_staples",
+    "tests/acceptance/test_youtube_flow.py::test_title_step_carts_the_stored_dish_as_estimates",
+    "tests/unit/guard/test_pipeline.py::test_adr006_v2_s8_only_verdicts_do_not_block",
+    "tests/unit/guard/test_pipeline.py::test_c43_hunger_and_suggestion_requests_pass_the_rules",
+    "tests/unit/guard/test_pipeline.py::test_c55_config_defaults",
+    "tests/unit/guard/test_pipeline.py::test_c55_s8_is_ignored_only_with_a_youtube_link",
+    "tests/unit/guard/test_pipeline.py::test_classifier_catches_what_the_rules_pass",
+    "tests/unit/guard/test_pipeline.py::test_classifier_down_rules_stand_and_fallback_is_traced",
+    "tests/unit/guard/test_pipeline.py::test_classifier_off_by_config",
+    "tests/unit/guard/test_pipeline.py::test_hazard_gets_the_hazard_template",
+    "tests/unit/guard/test_pipeline.py::test_ignore_list_is_configurable",
+    "tests/unit/guard/test_pipeline.py::test_plain_off_topic_still_redirected_by_the_rules",
+    "tests/unit/guard/test_pipeline.py::test_stove_words_pass_the_rules",
+    "tests/unit/guard/test_pipeline.py::test_t070_rules_block_with_the_redirect_and_skip_the_classifier",
+    "tests/unit/guard/test_pipeline.py::test_t071_cooking_language_passes_both_layers",
+    "tests/unit/guard/test_pipeline.py::test_t072_guard_part_instruction_inside_a_transcript_is_data",
+    "tests/unit/guard/test_pipeline.py::test_verdict_reports_the_classifier_categories",
+    "tests/unit/guard/test_rules.py::test_c54_guardrail_targeting_instructions_are_injections",
+    "tests/unit/guard/test_rules.py::test_c54_ordinary_cooking_with_those_words_passes",
+    "tests/unit/guard/test_rules.py::test_c55_attacks_on_the_settings_are_still_injections",
+    "tests/unit/guard/test_rules.py::test_c55_dietary_requests_are_not_injections",
+    "tests/unit/guard/test_rules.py::test_cooking_language_passes",
+    "tests/unit/guard/test_rules.py::test_hazard_refused",
+    "tests/unit/guard/test_rules.py::test_injection_blocked_with_redirect",
+    "tests/unit/guard/test_rules.py::test_instruction_inside_transcript_is_flagged",
+    "tests/unit/guard/test_rules.py::test_off_topic_redirected",
+    "tests/unit/guard/test_rules.py::test_plain_transcript_passes"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-06",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_text_flow.py::test_ambiguous_item_asks_then_the_answer_carts_it",
+    "tests/acceptance/test_text_flow.py::test_fr31_named_dish_uses_the_stored_recipe",
+    "tests/acceptance/test_text_flow.py::test_named_dish_blocked_by_persona_says_why_and_offers_an_alternative",
+    "tests/acceptance/test_text_flow.py::test_named_dish_matches_by_word",
+    "tests/acceptance/test_text_flow.py::test_no_word_match_still_offers_nearest_dishes",
+    "tests/acceptance/test_text_flow.py::test_plural_names_resolve_to_the_singular_term",
+    "tests/acceptance/test_text_flow.py::test_t012_text_part_blocked_item_carts_nothing_and_offers_an_alternative",
+    "tests/acceptance/test_text_flow.py::test_t083_three_messages_cart_immediately_under_one_open_dish",
+    "tests/acceptance/test_text_flow.py::test_t084_unknown_dish_offers_nearest_dishes_then_carts_the_choice",
+    "tests/acceptance/test_text_flow.py::test_t090_invalid_extraction_is_retried_once_then_rephrase",
+    "tests/acceptance/test_text_flow.py::test_unknown_ingredient_is_never_carted_and_asked_about",
+    "tests/unit/retrieval/test_ingredients.py::test_plain_names_are_not_ambiguous",
+    "tests/unit/retrieval/test_ingredients.py::test_t041_regional_names_resolve",
+    "tests/unit/retrieval/test_ingredients.py::test_t043_ambiguous_name_asks_and_resolves_nothing",
+    "tests/unit/retrieval/test_ingredients.py::test_unknown_name",
+    "tests/unit/retrieval/test_ingredients.py::test_variant_lookup_ranks_named_variant_first"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-07",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_chat_routing.py::test_templates_for_unsupported_and_allergy",
+    "tests/acceptance/test_photo_flow.py::test_no_unsure_items_still_needs_one_confirming_tap",
+    "tests/acceptance/test_text_flow.py::test_t083_three_messages_cart_immediately_under_one_open_dish"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-08",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_youtube_flow.py::test_non_recipe_video_gets_the_nonfood_reply",
+    "tests/acceptance/test_youtube_flow.py::test_t012_flow_part_chicken_video_with_pure_veg_flags_and_carts_no_meat",
+    "tests/acceptance/test_youtube_flow.py::test_t072_flow_part_instruction_in_a_transcript_is_ignored_and_nothing_carted",
+    "tests/acceptance/test_youtube_flow.py::test_t080_demo_link_fixture_extracted_mapped_and_carted_at_catalogue_prices",
+    "tests/acceptance/test_youtube_flow.py::test_t081_live_failure_uses_the_fixture_then_everything_failing_asks_to_paste",
+    "tests/acceptance/test_youtube_flow.py::test_t082_non_youtube_url_rejected_without_a_fetch_and_same_video_asks_first",
+    "tests/acceptance/test_youtube_flow.py::test_t091_extraction_timeout_asks_to_paste_never_a_success",
+    "tests/acceptance/test_youtube_flow.py::test_t092_second_link_shares_packs_and_asks_about_staples",
+    "tests/acceptance/test_youtube_flow.py::test_title_step_carts_the_stored_dish_as_estimates",
+    "tests/unit/transcripts/test_chain.py::test_clean_caps_and_strips",
+    "tests/unit/transcripts/test_chain.py::test_live_fetch_off_by_config_goes_to_the_fixture",
+    "tests/unit/transcripts/test_chain.py::test_live_first_then_fixture_then_title_then_unavailable",
+    "tests/unit/transcripts/test_chain.py::test_live_timeout_falls_through",
+    "tests/unit/transcripts/test_chain.py::test_no_url",
+    "tests/unit/transcripts/test_chain.py::test_other_urls_are_not_youtube",
+    "tests/unit/transcripts/test_chain.py::test_youtube_links_give_the_video_id"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-10",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_youtube_flow.py::test_non_recipe_video_gets_the_nonfood_reply",
+    "tests/acceptance/test_youtube_flow.py::test_t012_flow_part_chicken_video_with_pure_veg_flags_and_carts_no_meat",
+    "tests/acceptance/test_youtube_flow.py::test_t072_flow_part_instruction_in_a_transcript_is_ignored_and_nothing_carted",
+    "tests/acceptance/test_youtube_flow.py::test_t080_demo_link_fixture_extracted_mapped_and_carted_at_catalogue_prices",
+    "tests/acceptance/test_youtube_flow.py::test_t081_live_failure_uses_the_fixture_then_everything_failing_asks_to_paste",
+    "tests/acceptance/test_youtube_flow.py::test_t082_non_youtube_url_rejected_without_a_fetch_and_same_video_asks_first",
+    "tests/acceptance/test_youtube_flow.py::test_t091_extraction_timeout_asks_to_paste_never_a_success",
+    "tests/acceptance/test_youtube_flow.py::test_t092_second_link_shares_packs_and_asks_about_staples",
+    "tests/acceptance/test_youtube_flow.py::test_title_step_carts_the_stored_dish_as_estimates",
+    "tests/unit/cart/test_allocation.py::test_fr71_shared_butter_takes_one_200g_pack",
+    "tests/unit/cart/test_allocation.py::test_prices_and_quotes_come_from_the_catalogue",
+    "tests/unit/cart/test_allocation.py::test_smallest_set_prefers_least_quantity_then_fewest_packs",
+    "tests/unit/cart/test_allocation.py::test_smallest_set_respects_stock_counts",
+    "tests/unit/cart/test_allocation.py::test_t050_two_200g_paneer_needs_take_two_200g_packs",
+    "tests/unit/cart/test_allocation.py::test_t051_second_shared_line_is_dimmed_and_unpriced",
+    "tests/unit/cart/test_allocation.py::test_t052_removing_the_owner_transfers_ownership_and_totals_hold",
+    "tests/unit/cart/test_allocation.py::test_unit_mismatch_prefers_the_smallest_in_stock_pack",
+    "tests/unit/cart/test_allocation.py::test_unit_mismatch_takes_one_smallest_pack_and_is_estimated",
+    "tests/unit/cart/test_allocation.py::test_unit_mismatch_with_nothing_in_stock_is_flagged",
+    "tests/unit/cart/test_service.py::test_ac08_butter_shared_between_two_real_dishes",
+    "tests/unit/cart/test_service.py::test_add_dish_carts_every_line_from_the_catalogue",
+    "tests/unit/cart/test_service.py::test_quantity_multiplies_owned_packs_and_shared_lines_refuse",
+    "tests/unit/cart/test_service.py::test_switch_variant_only_to_an_eligible_variant_of_the_same_ingredient",
+    "tests/unit/cart/test_service.py::test_t053_dish_totals_and_subtotal",
+    "tests/unit/cart/test_service.py::test_t055_remove_line_then_dish_removes_only_the_target"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-11",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_text_flow.py::test_ambiguous_item_asks_then_the_answer_carts_it",
+    "tests/acceptance/test_text_flow.py::test_fr31_named_dish_uses_the_stored_recipe",
+    "tests/acceptance/test_text_flow.py::test_named_dish_blocked_by_persona_says_why_and_offers_an_alternative",
+    "tests/acceptance/test_text_flow.py::test_named_dish_matches_by_word",
+    "tests/acceptance/test_text_flow.py::test_no_word_match_still_offers_nearest_dishes",
+    "tests/acceptance/test_text_flow.py::test_plural_names_resolve_to_the_singular_term",
+    "tests/acceptance/test_text_flow.py::test_t012_text_part_blocked_item_carts_nothing_and_offers_an_alternative",
+    "tests/acceptance/test_text_flow.py::test_t083_three_messages_cart_immediately_under_one_open_dish",
+    "tests/acceptance/test_text_flow.py::test_t084_unknown_dish_offers_nearest_dishes_then_carts_the_choice",
+    "tests/acceptance/test_text_flow.py::test_t090_invalid_extraction_is_retried_once_then_rephrase",
+    "tests/acceptance/test_text_flow.py::test_unknown_ingredient_is_never_carted_and_asked_about"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-13",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_hunger_flow.py::test_a_stated_mood_is_not_forced_to_a_main",
+    "tests/acceptance/test_hunger_flow.py::test_generic_hunger_in_the_evening_carts_a_main_course",
+    "tests/acceptance/test_hunger_flow.py::test_intent_prompt_names_hunger_and_suggestions",
+    "tests/acceptance/test_hunger_flow.py::test_meal_word_steers_the_course",
+    "tests/acceptance/test_hunger_flow.py::test_off_topic_suggestion_still_redirected_by_the_model",
+    "tests/acceptance/test_hunger_flow.py::test_surprise_me_reaches_the_mood_flow",
+    "tests/acceptance/test_hunger_flow.py::test_tonight_means_dinner",
+    "tests/acceptance/test_mood_flow.py::test_c54_health_claim_words_fail_the_reason_validator",
+    "tests/acceptance/test_mood_flow.py::test_fr02_levers_sent_mid_session_flag_the_banner_but_do_not_change_the_dish",
+    "tests/acceptance/test_mood_flow.py::test_invalid_reason_line_falls_back_to_the_template",
+    "tests/acceptance/test_mood_flow.py::test_mood_add_keeps_earlier_items",
+    "tests/acceptance/test_mood_flow.py::test_t085_top_dish_carted_two_swaps_and_undo",
+    "tests/acceptance/test_mood_flow.py::test_t086_no_eligible_dish_adds_nothing_and_says_why",
+    "tests/acceptance/test_swap_undo.py::test_swap_to_a_dish_not_offered_or_after_undo_is_stale",
+    "tests/acceptance/test_swap_undo.py::test_t062_swap_replaces_only_the_suggested_dish_and_undo_restores"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-14",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_photo_flow.py::test_consent_action_records_consent",
+    "tests/acceptance/test_photo_flow.py::test_exif_and_gps_are_stripped_before_the_model_and_no_image_is_traced",
+    "tests/acceptance/test_photo_flow.py::test_gemini_opt_in_asks_consent_before_any_upload_leaves",
+    "tests/acceptance/test_photo_flow.py::test_no_unsure_items_still_needs_one_confirming_tap",
+    "tests/acceptance/test_photo_flow.py::test_non_food_photo",
+    "tests/acceptance/test_photo_flow.py::test_sample_photo_pick_uses_precomputed_detections",
+    "tests/acceptance/test_photo_flow.py::test_samples_list_endpoint",
+    "tests/acceptance/test_photo_flow.py::test_t087_detect_confirm_unsure_items_then_cart_only_the_top_dish_missing_items",
+    "tests/acceptance/test_photo_flow.py::test_t088_local_model_failing_or_timing_out_offers_labelled_samples",
+    "tests/acceptance/test_photo_flow.py::test_t088_samples_provider_offers_samples_without_any_model_call",
+    "tests/acceptance/test_photo_flow.py::test_t089_wrong_type_oversize_spoofed_and_two_images_are_rejected",
+    "tests/acceptance/test_photo_flow.py::test_unsure_item_declined_is_left_out",
+    "tests/acceptance/test_security_p0.py::test_t103_image_bytes_are_never_written_to_disk",
+    "tests/acceptance/test_security_p0.py::test_t104_crafted_urls_are_rejected_with_no_fetch",
+    "tests/unit/llm/test_vision.py::test_gemini_key_in_header_never_in_url_or_errors",
+    "tests/unit/llm/test_vision.py::test_gemini_retries_once_on_busy_then_gives_up",
+    "tests/unit/llm/test_vision.py::test_image_downscaled_and_jpeg",
+    "tests/unit/llm/test_vision.py::test_ollama_vision_sends_context_window",
+    "tests/unit/llm/test_vision.py::test_ollama_vision_sends_image_and_parses",
+    "tests/unit/llm/test_vision.py::test_oversize_rejected",
+    "tests/unit/llm/test_vision.py::test_sample_vision_is_labelled_and_needs_no_network",
+    "tests/unit/llm/test_vision.py::test_t102_exif_and_gps_removed",
+    "tests/unit/llm/test_vision.py::test_wrong_or_spoofed_type_rejected",
+    "tests/unit/test_trace.py::test_appends_one_line_per_event",
+    "tests/unit/test_trace.py::test_event_names_match_data_model_section_11",
+    "tests/unit/test_trace.py::test_line_shape",
+    "tests/unit/test_trace.py::test_t109_long_text_truncated_to_120",
+    "tests/unit/test_trace.py::test_t109_no_image_data_written",
+    "tests/unit/test_trace.py::test_unknown_event_rejected"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-15",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_photo_flow.py::test_consent_action_records_consent",
+    "tests/acceptance/test_photo_flow.py::test_exif_and_gps_are_stripped_before_the_model_and_no_image_is_traced",
+    "tests/acceptance/test_photo_flow.py::test_gemini_opt_in_asks_consent_before_any_upload_leaves",
+    "tests/acceptance/test_photo_flow.py::test_no_unsure_items_still_needs_one_confirming_tap",
+    "tests/acceptance/test_photo_flow.py::test_non_food_photo",
+    "tests/acceptance/test_photo_flow.py::test_sample_photo_pick_uses_precomputed_detections",
+    "tests/acceptance/test_photo_flow.py::test_samples_list_endpoint",
+    "tests/acceptance/test_photo_flow.py::test_t087_detect_confirm_unsure_items_then_cart_only_the_top_dish_missing_items",
+    "tests/acceptance/test_photo_flow.py::test_t088_local_model_failing_or_timing_out_offers_labelled_samples",
+    "tests/acceptance/test_photo_flow.py::test_t088_samples_provider_offers_samples_without_any_model_call",
+    "tests/acceptance/test_photo_flow.py::test_t089_wrong_type_oversize_spoofed_and_two_images_are_rejected",
+    "tests/acceptance/test_photo_flow.py::test_unsure_item_declined_is_left_out",
+    "tests/unit/llm/test_vision.py::test_gemini_key_in_header_never_in_url_or_errors",
+    "tests/unit/llm/test_vision.py::test_gemini_retries_once_on_busy_then_gives_up",
+    "tests/unit/llm/test_vision.py::test_image_downscaled_and_jpeg",
+    "tests/unit/llm/test_vision.py::test_ollama_vision_sends_context_window",
+    "tests/unit/llm/test_vision.py::test_ollama_vision_sends_image_and_parses",
+    "tests/unit/llm/test_vision.py::test_oversize_rejected",
+    "tests/unit/llm/test_vision.py::test_sample_vision_is_labelled_and_needs_no_network",
+    "tests/unit/llm/test_vision.py::test_t102_exif_and_gps_removed",
+    "tests/unit/llm/test_vision.py::test_wrong_or_spoofed_type_rejected"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-16",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_photo_flow.py::test_consent_action_records_consent",
+    "tests/acceptance/test_photo_flow.py::test_exif_and_gps_are_stripped_before_the_model_and_no_image_is_traced",
+    "tests/acceptance/test_photo_flow.py::test_gemini_opt_in_asks_consent_before_any_upload_leaves",
+    "tests/acceptance/test_photo_flow.py::test_no_unsure_items_still_needs_one_confirming_tap",
+    "tests/acceptance/test_photo_flow.py::test_non_food_photo",
+    "tests/acceptance/test_photo_flow.py::test_sample_photo_pick_uses_precomputed_detections",
+    "tests/acceptance/test_photo_flow.py::test_samples_list_endpoint",
+    "tests/acceptance/test_photo_flow.py::test_t087_detect_confirm_unsure_items_then_cart_only_the_top_dish_missing_items",
+    "tests/acceptance/test_photo_flow.py::test_t088_local_model_failing_or_timing_out_offers_labelled_samples",
+    "tests/acceptance/test_photo_flow.py::test_t088_samples_provider_offers_samples_without_any_model_call",
+    "tests/acceptance/test_photo_flow.py::test_t089_wrong_type_oversize_spoofed_and_two_images_are_rejected",
+    "tests/acceptance/test_photo_flow.py::test_unsure_item_declined_is_left_out"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-17",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_addon_flow.py::test_addon_never_breaks_the_persona",
+    "tests/acceptance/test_addon_flow.py::test_decline_changes_nothing",
+    "tests/acceptance/test_addon_flow.py::test_inspector_shows_the_addon_pool",
+    "tests/acceptance/test_addon_flow.py::test_mood_cart_offers_one_addon_and_nothing_is_added_without_a_tap",
+    "tests/acceptance/test_addon_flow.py::test_no_addon_after_a_swap",
+    "tests/acceptance/test_addon_flow.py::test_photo_cart_offers_an_addon",
+    "tests/acceptance/test_addon_flow.py::test_vector_store_down_still_offers_curated_addons",
+    "tests/acceptance/test_addon_flow.py::test_youtube_text_and_named_dish_carts_offer_an_addon",
+    "tests/unit/engine/test_eligibility.py::test_c68_jain_never_gets_fungi",
+    "tests/unit/engine/test_eligibility.py::test_declared_allergen",
+    "tests/unit/engine/test_eligibility.py::test_masks_intersect_for_contradictory_persona",
+    "tests/unit/engine/test_eligibility.py::test_t010_eligible_dishes_have_only_eligible_essentials",
+    "tests/unit/engine/test_eligibility.py::test_t010_no_ineligible_variant_passes_any_persona",
+    "tests/unit/engine/test_eligibility.py::test_t011_jain_garlic_bread_blocked_with_alternative",
+    "tests/unit/engine/test_eligibility.py::test_t012_engine_part_pure_veg_blocks_chicken_curry",
+    "tests/unit/engine/test_eligibility.py::test_t013_halal_excludes_not_halal_and_alcohol",
+    "tests/unit/engine/test_eligibility.py::test_t014_shravan_excludes_non_satvik",
+    "tests/unit/engine/test_eligibility.py::test_t015_keto_filters_and_flags_carb_staples",
+    "tests/unit/engine/test_eligibility.py::test_t016_vegan_gluten_free_low_gi_exact",
+    "tests/unit/engine/test_eligibility.py::test_t017_stock_filter_on_and_off",
+    "tests/unit/engine/test_eligibility.py::test_t018_price_cap_applies_to_add_ons_only",
+    "tests/unit/engine/test_eligibility.py::test_t019_hidden_animal_ingredient_excluded_via_ingredient_list",
+    "tests/unit/engine/test_scoring.py::test_dish_features_respond_to_history_lever",
+    "tests/unit/engine/test_scoring.py::test_effective_weights_normalised_and_all_zero_restores_defaults",
+    "tests/unit/engine/test_scoring.py::test_t030_normalisation",
+    "tests/unit/engine/test_scoring.py::test_t031_final_is_sum_of_contributions",
+    "tests/unit/engine/test_scoring.py::test_t032_ties_break_by_s_p_then_id_reproducibly",
+    "tests/unit/engine/test_scoring.py::test_t033_each_weight_reorders_towards_its_component",
+    "tests/unit/engine/test_scoring.py::test_t034_pool_wider_than_display_shows_exactly_3",
+    "tests/unit/engine/test_scoring.py::test_t037_frozen_context_is_reproducible",
+    "tests/unit/engine/test_scoring.py::test_t038_gender_boost_capped_and_never_filters",
+    "tests/unit/engine/test_scoring.py::test_trend_slider_scales_effect"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-18",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_mood_flow.py::test_c54_health_claim_words_fail_the_reason_validator",
+    "tests/acceptance/test_mood_flow.py::test_fr02_levers_sent_mid_session_flag_the_banner_but_do_not_change_the_dish",
+    "tests/acceptance/test_mood_flow.py::test_invalid_reason_line_falls_back_to_the_template",
+    "tests/acceptance/test_mood_flow.py::test_mood_add_keeps_earlier_items",
+    "tests/acceptance/test_mood_flow.py::test_t085_top_dish_carted_two_swaps_and_undo",
+    "tests/acceptance/test_mood_flow.py::test_t086_no_eligible_dish_adds_nothing_and_says_why",
+    "tests/acceptance/test_why_cards.py::test_addon_explains_why",
+    "tests/acceptance/test_why_cards.py::test_mood_pick_explains_reason_drivers_and_runners_up",
+    "tests/acceptance/test_why_cards.py::test_persona_block_explains_the_alternative",
+    "tests/acceptance/test_why_cards.py::test_photo_pick_explains_why",
+    "tests/acceptance/test_why_cards.py::test_unknown_dish_chips_explain_the_ranking",
+    "tests/e2e/test_demo_path.py::test_e2e_001_demo_path",
+    "tests/unit/engine/test_scoring.py::test_dish_features_respond_to_history_lever",
+    "tests/unit/engine/test_scoring.py::test_effective_weights_normalised_and_all_zero_restores_defaults",
+    "tests/unit/engine/test_scoring.py::test_t030_normalisation",
+    "tests/unit/engine/test_scoring.py::test_t031_final_is_sum_of_contributions",
+    "tests/unit/engine/test_scoring.py::test_t032_ties_break_by_s_p_then_id_reproducibly",
+    "tests/unit/engine/test_scoring.py::test_t033_each_weight_reorders_towards_its_component",
+    "tests/unit/engine/test_scoring.py::test_t034_pool_wider_than_display_shows_exactly_3",
+    "tests/unit/engine/test_scoring.py::test_t037_frozen_context_is_reproducible",
+    "tests/unit/engine/test_scoring.py::test_t038_gender_boost_capped_and_never_filters",
+    "tests/unit/engine/test_scoring.py::test_trend_slider_scales_effect"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-19",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_addon_flow.py::test_addon_never_breaks_the_persona",
+    "tests/acceptance/test_addon_flow.py::test_decline_changes_nothing",
+    "tests/acceptance/test_addon_flow.py::test_inspector_shows_the_addon_pool",
+    "tests/acceptance/test_addon_flow.py::test_mood_cart_offers_one_addon_and_nothing_is_added_without_a_tap",
+    "tests/acceptance/test_addon_flow.py::test_no_addon_after_a_swap",
+    "tests/acceptance/test_addon_flow.py::test_photo_cart_offers_an_addon",
+    "tests/acceptance/test_addon_flow.py::test_vector_store_down_still_offers_curated_addons",
+    "tests/acceptance/test_addon_flow.py::test_youtube_text_and_named_dish_carts_offer_an_addon",
+    "tests/unit/retrieval/test_addons.py::test_cart_dishes_excluded_from_add_ons",
+    "tests/unit/retrieval/test_addons.py::test_t047_weighted_rrf_hand_calculation",
+    "tests/unit/retrieval/test_addons.py::test_t048_course_rule_then_guardrails_after_fusion",
+    "tests/unit/retrieval/test_addons.py::test_t049_no_curated_pair_still_gets_vector_add_on",
+    "tests/unit/retrieval/test_addons.py::test_t049_vector_down_uses_curated_only"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-21",
+   "priority": "M",
+   "tests": [
+    "tests/unit/cart/test_allocation.py::test_fr71_shared_butter_takes_one_200g_pack",
+    "tests/unit/cart/test_allocation.py::test_prices_and_quotes_come_from_the_catalogue",
+    "tests/unit/cart/test_allocation.py::test_smallest_set_prefers_least_quantity_then_fewest_packs",
+    "tests/unit/cart/test_allocation.py::test_smallest_set_respects_stock_counts",
+    "tests/unit/cart/test_allocation.py::test_t050_two_200g_paneer_needs_take_two_200g_packs",
+    "tests/unit/cart/test_allocation.py::test_t051_second_shared_line_is_dimmed_and_unpriced",
+    "tests/unit/cart/test_allocation.py::test_t052_removing_the_owner_transfers_ownership_and_totals_hold",
+    "tests/unit/cart/test_allocation.py::test_unit_mismatch_prefers_the_smallest_in_stock_pack",
+    "tests/unit/cart/test_allocation.py::test_unit_mismatch_takes_one_smallest_pack_and_is_estimated",
+    "tests/unit/cart/test_allocation.py::test_unit_mismatch_with_nothing_in_stock_is_flagged",
+    "tests/unit/cart/test_service.py::test_ac08_butter_shared_between_two_real_dishes",
+    "tests/unit/cart/test_service.py::test_add_dish_carts_every_line_from_the_catalogue",
+    "tests/unit/cart/test_service.py::test_quantity_multiplies_owned_packs_and_shared_lines_refuse",
+    "tests/unit/cart/test_service.py::test_switch_variant_only_to_an_eligible_variant_of_the_same_ingredient",
+    "tests/unit/cart/test_service.py::test_t053_dish_totals_and_subtotal",
+    "tests/unit/cart/test_service.py::test_t055_remove_line_then_dish_removes_only_the_target",
+    "tests/unit/test_prices.py::test_build_turn_applies_the_gate_to_assistant_messages",
+    "tests/unit/test_prices.py::test_rupee_amount_without_a_known_item_is_removed",
+    "tests/unit/test_prices.py::test_t061_wrong_price_corrected_and_right_one_kept",
+    "tests/unit/test_prices.py::test_text_without_prices_is_unchanged"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-22",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_cart_api.py::test_busy_session_rejects_cart_mutations",
+    "tests/acceptance/test_cart_api.py::test_get_cart_returns_the_view",
+    "tests/acceptance/test_cart_api.py::test_t054_quantity_only_1_to_9",
+    "tests/acceptance/test_cart_api.py::test_t055_delete_line_and_dish_through_the_api",
+    "tests/acceptance/test_cart_api.py::test_unknown_session_cart_is_404",
+    "tests/unit/cart/test_allocation.py::test_fr71_shared_butter_takes_one_200g_pack",
+    "tests/unit/cart/test_allocation.py::test_prices_and_quotes_come_from_the_catalogue",
+    "tests/unit/cart/test_allocation.py::test_smallest_set_prefers_least_quantity_then_fewest_packs",
+    "tests/unit/cart/test_allocation.py::test_smallest_set_respects_stock_counts",
+    "tests/unit/cart/test_allocation.py::test_t050_two_200g_paneer_needs_take_two_200g_packs",
+    "tests/unit/cart/test_allocation.py::test_t051_second_shared_line_is_dimmed_and_unpriced",
+    "tests/unit/cart/test_allocation.py::test_t052_removing_the_owner_transfers_ownership_and_totals_hold",
+    "tests/unit/cart/test_allocation.py::test_unit_mismatch_prefers_the_smallest_in_stock_pack",
+    "tests/unit/cart/test_allocation.py::test_unit_mismatch_takes_one_smallest_pack_and_is_estimated",
+    "tests/unit/cart/test_allocation.py::test_unit_mismatch_with_nothing_in_stock_is_flagged",
+    "tests/unit/cart/test_service.py::test_ac08_butter_shared_between_two_real_dishes",
+    "tests/unit/cart/test_service.py::test_add_dish_carts_every_line_from_the_catalogue",
+    "tests/unit/cart/test_service.py::test_quantity_multiplies_owned_packs_and_shared_lines_refuse",
+    "tests/unit/cart/test_service.py::test_switch_variant_only_to_an_eligible_variant_of_the_same_ingredient",
+    "tests/unit/cart/test_service.py::test_t053_dish_totals_and_subtotal",
+    "tests/unit/cart/test_service.py::test_t055_remove_line_then_dish_removes_only_the_target"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-23",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_cart_count.py::test_t056_count_matches_the_lines_and_drops_to_zero",
+    "tests/acceptance/test_cart_count.py::test_t056_empty_cart_has_zero_items",
+    "tests/e2e/test_demo_path.py::test_e2e_001_demo_path"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-24",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_action_substitute.py::test_t059_substitute_action_accept",
+    "tests/acceptance/test_action_substitute.py::test_unknown_action_type_is_a_validation_error",
+    "tests/acceptance/test_checkout.py::test_checkout_respects_the_session_lock",
+    "tests/acceptance/test_checkout.py::test_missing_key_and_empty_cart",
+    "tests/acceptance/test_checkout.py::test_t017_buy_now_blocked_for_a_kept_out_of_stock_line",
+    "tests/acceptance/test_checkout.py::test_t057_same_key_twice_places_one_order",
+    "tests/acceptance/test_checkout.py::test_t058_stock_out_blocks_then_price_change_is_shown",
+    "tests/unit/cart/test_stock_and_guards.py::test_f1_substitution_delta_matches_the_cart_as_shown",
+    "tests/unit/cart/test_stock_and_guards.py::test_no_substitution_when_nothing_eligible_is_in_stock",
+    "tests/unit/cart/test_stock_and_guards.py::test_switch_variant_cannot_bring_in_a_blocked_item",
+    "tests/unit/cart/test_stock_and_guards.py::test_t011_cart_part_jain_garlic_bread_refused_and_no_garlic",
+    "tests/unit/cart/test_stock_and_guards.py::test_t012_cart_part_pure_veg_chicken_refused",
+    "tests/unit/cart/test_stock_and_guards.py::test_t017_cart_part_filter_off_keeps_and_flags",
+    "tests/unit/cart/test_stock_and_guards.py::test_t017_cart_part_filter_on_never_carts_an_out_of_stock_variant",
+    "tests/unit/cart/test_stock_and_guards.py::test_t059_substitution_changes_the_cart_only_on_accept",
+    "tests/unit/engine/test_eligibility.py::test_c68_jain_never_gets_fungi",
+    "tests/unit/engine/test_eligibility.py::test_declared_allergen",
+    "tests/unit/engine/test_eligibility.py::test_masks_intersect_for_contradictory_persona",
+    "tests/unit/engine/test_eligibility.py::test_t010_eligible_dishes_have_only_eligible_essentials",
+    "tests/unit/engine/test_eligibility.py::test_t010_no_ineligible_variant_passes_any_persona",
+    "tests/unit/engine/test_eligibility.py::test_t011_jain_garlic_bread_blocked_with_alternative",
+    "tests/unit/engine/test_eligibility.py::test_t012_engine_part_pure_veg_blocks_chicken_curry",
+    "tests/unit/engine/test_eligibility.py::test_t013_halal_excludes_not_halal_and_alcohol",
+    "tests/unit/engine/test_eligibility.py::test_t014_shravan_excludes_non_satvik",
+    "tests/unit/engine/test_eligibility.py::test_t015_keto_filters_and_flags_carb_staples",
+    "tests/unit/engine/test_eligibility.py::test_t016_vegan_gluten_free_low_gi_exact",
+    "tests/unit/engine/test_eligibility.py::test_t017_stock_filter_on_and_off",
+    "tests/unit/engine/test_eligibility.py::test_t018_price_cap_applies_to_add_ons_only",
+    "tests/unit/engine/test_eligibility.py::test_t019_hidden_animal_ingredient_excluded_via_ingredient_list"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-25",
+   "priority": "S/M",
+   "tests": [
+    "tests/acceptance/test_action_confirm_undo.py::test_cancel_through_the_action_changes_nothing",
+    "tests/acceptance/test_action_confirm_undo.py::test_t060_replace_and_undo_through_actions",
+    "tests/acceptance/test_chat_routing.py::test_c54_code_routing_skips_the_intent_model",
+    "tests/acceptance/test_chat_routing.py::test_classifier_block_and_model_off_topic_also_redirect",
+    "tests/acceptance/test_chat_routing.py::test_do_something_else_with_an_empty_cart",
+    "tests/acceptance/test_chat_routing.py::test_empty_long_and_busy_messages",
+    "tests/acceptance/test_chat_routing.py::test_low_confidence_and_invalid_reply_ask_to_rephrase",
+    "tests/acceptance/test_chat_routing.py::test_ollama_down_is_503_with_the_server_message",
+    "tests/acceptance/test_chat_routing.py::test_t060_chat_part_do_something_else_asks_then_replace_and_undo",
+    "tests/acceptance/test_chat_routing.py::test_t070_off_topic_and_injection_redirect_and_leave_the_cart",
+    "tests/acceptance/test_chat_routing.py::test_t071_benign_phrase_reaches_the_intent_classifier",
+    "tests/acceptance/test_chat_routing.py::test_templates_for_unsupported_and_allergy",
+    "tests/acceptance/test_chat_routing.py::test_user_message_is_stored_and_reply_is_a_turn",
+    "tests/unit/cart/test_replace_undo.py::test_add_keeps_the_cart_and_undo_removes_only_the_new_dish",
+    "tests/unit/cart/test_replace_undo.py::test_stale_confirm_rejected",
+    "tests/unit/cart/test_replace_undo.py::test_t060_cancel_changes_nothing",
+    "tests/unit/cart/test_replace_undo.py::test_t060_replace_or_add_is_asked_and_nothing_cleared_before_confirm",
+    "tests/unit/cart/test_replace_undo.py::test_t060_replace_then_undo_restores_the_cart"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-26",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_checkout.py::test_checkout_respects_the_session_lock",
+    "tests/acceptance/test_checkout.py::test_missing_key_and_empty_cart",
+    "tests/acceptance/test_checkout.py::test_t017_buy_now_blocked_for_a_kept_out_of_stock_line",
+    "tests/acceptance/test_checkout.py::test_t057_same_key_twice_places_one_order",
+    "tests/acceptance/test_checkout.py::test_t058_stock_out_blocks_then_price_change_is_shown",
+    "tests/e2e/test_demo_path.py::test_e2e_001_demo_path"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-28",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_text_flow.py::test_ambiguous_item_asks_then_the_answer_carts_it",
+    "tests/acceptance/test_text_flow.py::test_fr31_named_dish_uses_the_stored_recipe",
+    "tests/acceptance/test_text_flow.py::test_named_dish_blocked_by_persona_says_why_and_offers_an_alternative",
+    "tests/acceptance/test_text_flow.py::test_named_dish_matches_by_word",
+    "tests/acceptance/test_text_flow.py::test_no_word_match_still_offers_nearest_dishes",
+    "tests/acceptance/test_text_flow.py::test_plural_names_resolve_to_the_singular_term",
+    "tests/acceptance/test_text_flow.py::test_t012_text_part_blocked_item_carts_nothing_and_offers_an_alternative",
+    "tests/acceptance/test_text_flow.py::test_t083_three_messages_cart_immediately_under_one_open_dish",
+    "tests/acceptance/test_text_flow.py::test_t084_unknown_dish_offers_nearest_dishes_then_carts_the_choice",
+    "tests/acceptance/test_text_flow.py::test_t090_invalid_extraction_is_retried_once_then_rephrase",
+    "tests/acceptance/test_text_flow.py::test_unknown_ingredient_is_never_carted_and_asked_about",
+    "tests/acceptance/test_youtube_flow.py::test_non_recipe_video_gets_the_nonfood_reply",
+    "tests/acceptance/test_youtube_flow.py::test_t012_flow_part_chicken_video_with_pure_veg_flags_and_carts_no_meat",
+    "tests/acceptance/test_youtube_flow.py::test_t072_flow_part_instruction_in_a_transcript_is_ignored_and_nothing_carted",
+    "tests/acceptance/test_youtube_flow.py::test_t080_demo_link_fixture_extracted_mapped_and_carted_at_catalogue_prices",
+    "tests/acceptance/test_youtube_flow.py::test_t081_live_failure_uses_the_fixture_then_everything_failing_asks_to_paste",
+    "tests/acceptance/test_youtube_flow.py::test_t082_non_youtube_url_rejected_without_a_fetch_and_same_video_asks_first",
+    "tests/acceptance/test_youtube_flow.py::test_t091_extraction_timeout_asks_to_paste_never_a_success",
+    "tests/acceptance/test_youtube_flow.py::test_t092_second_link_shares_packs_and_asks_about_staples",
+    "tests/acceptance/test_youtube_flow.py::test_title_step_carts_the_stored_dish_as_estimates",
+    "tests/unit/cart/test_stock_and_guards.py::test_f1_substitution_delta_matches_the_cart_as_shown",
+    "tests/unit/cart/test_stock_and_guards.py::test_no_substitution_when_nothing_eligible_is_in_stock",
+    "tests/unit/cart/test_stock_and_guards.py::test_switch_variant_cannot_bring_in_a_blocked_item",
+    "tests/unit/cart/test_stock_and_guards.py::test_t011_cart_part_jain_garlic_bread_refused_and_no_garlic",
+    "tests/unit/cart/test_stock_and_guards.py::test_t012_cart_part_pure_veg_chicken_refused",
+    "tests/unit/cart/test_stock_and_guards.py::test_t017_cart_part_filter_off_keeps_and_flags",
+    "tests/unit/cart/test_stock_and_guards.py::test_t017_cart_part_filter_on_never_carts_an_out_of_stock_variant",
+    "tests/unit/cart/test_stock_and_guards.py::test_t059_substitution_changes_the_cart_only_on_accept",
+    "tests/unit/engine/test_eligibility.py::test_c68_jain_never_gets_fungi",
+    "tests/unit/engine/test_eligibility.py::test_declared_allergen",
+    "tests/unit/engine/test_eligibility.py::test_masks_intersect_for_contradictory_persona",
+    "tests/unit/engine/test_eligibility.py::test_t010_eligible_dishes_have_only_eligible_essentials",
+    "tests/unit/engine/test_eligibility.py::test_t010_no_ineligible_variant_passes_any_persona",
+    "tests/unit/engine/test_eligibility.py::test_t011_jain_garlic_bread_blocked_with_alternative",
+    "tests/unit/engine/test_eligibility.py::test_t012_engine_part_pure_veg_blocks_chicken_curry",
+    "tests/unit/engine/test_eligibility.py::test_t013_halal_excludes_not_halal_and_alcohol",
+    "tests/unit/engine/test_eligibility.py::test_t014_shravan_excludes_non_satvik",
+    "tests/unit/engine/test_eligibility.py::test_t015_keto_filters_and_flags_carb_staples",
+    "tests/unit/engine/test_eligibility.py::test_t016_vegan_gluten_free_low_gi_exact",
+    "tests/unit/engine/test_eligibility.py::test_t017_stock_filter_on_and_off",
+    "tests/unit/engine/test_eligibility.py::test_t018_price_cap_applies_to_add_ons_only",
+    "tests/unit/engine/test_eligibility.py::test_t019_hidden_animal_ingredient_excluded_via_ingredient_list"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-31",
+   "priority": "M",
+   "tests": [
+    "tests/e2e/test_demo_path.py::test_e2e_001_demo_path"
+   ],
+   "level": "module",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-32",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_chat_routing.py::test_c54_code_routing_skips_the_intent_model",
+    "tests/acceptance/test_chat_routing.py::test_classifier_block_and_model_off_topic_also_redirect",
+    "tests/acceptance/test_chat_routing.py::test_do_something_else_with_an_empty_cart",
+    "tests/acceptance/test_chat_routing.py::test_empty_long_and_busy_messages",
+    "tests/acceptance/test_chat_routing.py::test_low_confidence_and_invalid_reply_ask_to_rephrase",
+    "tests/acceptance/test_chat_routing.py::test_ollama_down_is_503_with_the_server_message",
+    "tests/acceptance/test_chat_routing.py::test_t060_chat_part_do_something_else_asks_then_replace_and_undo",
+    "tests/acceptance/test_chat_routing.py::test_t070_off_topic_and_injection_redirect_and_leave_the_cart",
+    "tests/acceptance/test_chat_routing.py::test_t071_benign_phrase_reaches_the_intent_classifier",
+    "tests/acceptance/test_chat_routing.py::test_templates_for_unsupported_and_allergy",
+    "tests/acceptance/test_chat_routing.py::test_user_message_is_stored_and_reply_is_a_turn",
+    "tests/acceptance/test_lock_and_stale.py::test_t093_a_second_message_while_one_is_processing_is_session_busy",
+    "tests/acceptance/test_lock_and_stale.py::test_t094_a_tap_from_an_earlier_turn_after_the_cart_changed_is_stale",
+    "tests/e2e/test_demo_path.py::test_e2e_001_demo_path"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-33",
+   "priority": "M",
+   "tests": [
+    "tests/e2e/test_demo_path.py::test_e2e_001_demo_path"
+   ],
+   "level": "module",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-34",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_health.py::test_all_ok_when_index_present",
+    "tests/acceptance/test_health.py::test_cors_allows_localhost_only",
+    "tests/acceptance/test_health.py::test_fixture_counts_match_files_on_disk",
+    "tests/acceptance/test_health.py::test_gemini_is_never_called_by_health",
+    "tests/acceptance/test_health.py::test_health_page_lists_components",
+    "tests/acceptance/test_health.py::test_health_shape_with_model_served",
+    "tests/acceptance/test_health.py::test_model_not_configured_is_reported",
+    "tests/acceptance/test_health.py::test_model_not_served_is_reported",
+    "tests/acceptance/test_health.py::test_ollama_down_degrades_without_failing",
+    "tests/acceptance/test_health.py::test_request_id_header",
+    "tests/acceptance/test_health.py::test_unhandled_error_hides_stack_trace",
+    "tests/acceptance/test_text_flow.py::test_ambiguous_item_asks_then_the_answer_carts_it",
+    "tests/acceptance/test_text_flow.py::test_fr31_named_dish_uses_the_stored_recipe",
+    "tests/acceptance/test_text_flow.py::test_named_dish_blocked_by_persona_says_why_and_offers_an_alternative",
+    "tests/acceptance/test_text_flow.py::test_named_dish_matches_by_word",
+    "tests/acceptance/test_text_flow.py::test_no_word_match_still_offers_nearest_dishes",
+    "tests/acceptance/test_text_flow.py::test_plural_names_resolve_to_the_singular_term",
+    "tests/acceptance/test_text_flow.py::test_t012_text_part_blocked_item_carts_nothing_and_offers_an_alternative",
+    "tests/acceptance/test_text_flow.py::test_t083_three_messages_cart_immediately_under_one_open_dish",
+    "tests/acceptance/test_text_flow.py::test_t084_unknown_dish_offers_nearest_dishes_then_carts_the_choice",
+    "tests/acceptance/test_text_flow.py::test_t090_invalid_extraction_is_retried_once_then_rephrase",
+    "tests/acceptance/test_text_flow.py::test_unknown_ingredient_is_never_carted_and_asked_about",
+    "tests/acceptance/test_youtube_flow.py::test_non_recipe_video_gets_the_nonfood_reply",
+    "tests/acceptance/test_youtube_flow.py::test_t012_flow_part_chicken_video_with_pure_veg_flags_and_carts_no_meat",
+    "tests/acceptance/test_youtube_flow.py::test_t072_flow_part_instruction_in_a_transcript_is_ignored_and_nothing_carted",
+    "tests/acceptance/test_youtube_flow.py::test_t080_demo_link_fixture_extracted_mapped_and_carted_at_catalogue_prices",
+    "tests/acceptance/test_youtube_flow.py::test_t081_live_failure_uses_the_fixture_then_everything_failing_asks_to_paste",
+    "tests/acceptance/test_youtube_flow.py::test_t082_non_youtube_url_rejected_without_a_fetch_and_same_video_asks_first",
+    "tests/acceptance/test_youtube_flow.py::test_t091_extraction_timeout_asks_to_paste_never_a_success",
+    "tests/acceptance/test_youtube_flow.py::test_t092_second_link_shares_packs_and_asks_about_staples",
+    "tests/acceptance/test_youtube_flow.py::test_title_step_carts_the_stored_dish_as_estimates",
+    "tests/unit/llm/test_client.py::test_business_validator_rejects_too_many_ingredients",
+    "tests/unit/llm/test_client.py::test_context_window_is_sent",
+    "tests/unit/llm/test_client.py::test_extraction_units_are_normalised_and_unknown_units_become_estimates",
+    "tests/unit/llm/test_client.py::test_invalid_then_valid_retries_once_with_error",
+    "tests/unit/llm/test_client.py::test_invalid_twice_raises",
+    "tests/unit/llm/test_client.py::test_names_must_be_plausible",
+    "tests/unit/llm/test_client.py::test_recipe_extract_prompt_renders",
+    "tests/unit/llm/test_client.py::test_spotlight_escapes_delimiters",
+    "tests/unit/llm/test_client.py::test_timeout_raises_llm_timeout",
+    "tests/unit/llm/test_client.py::test_valid_json_parsed_and_temperature_zero"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-35",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_security_p0.py::test_t103_image_bytes_are_never_written_to_disk",
+    "tests/acceptance/test_security_p0.py::test_t104_crafted_urls_are_rejected_with_no_fetch",
+    "tests/unit/test_trace.py::test_appends_one_line_per_event",
+    "tests/unit/test_trace.py::test_event_names_match_data_model_section_11",
+    "tests/unit/test_trace.py::test_line_shape",
+    "tests/unit/test_trace.py::test_t109_long_text_truncated_to_120",
+    "tests/unit/test_trace.py::test_t109_no_image_data_written",
+    "tests/unit/test_trace.py::test_unknown_event_rejected"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-36",
+   "priority": "M",
+   "tests": [
+    "tests/unit/catalogue/test_generator.py::test_brands_are_clearly_mock",
+    "tests/unit/catalogue/test_generator.py::test_c68_carrier_marker_is_parsed",
+    "tests/unit/catalogue/test_generator.py::test_c68_replace_marker_puts_the_named_term_first",
+    "tests/unit/catalogue/test_generator.py::test_catalogue_bytes_is_json",
+    "tests/unit/catalogue/test_generator.py::test_counts",
+    "tests/unit/catalogue/test_generator.py::test_deterministic_for_same_seed",
+    "tests/unit/catalogue/test_generator.py::test_different_seed_changes_output",
+    "tests/unit/catalogue/test_generator.py::test_embedding_text_has_no_price_or_stock",
+    "tests/unit/catalogue/test_generator.py::test_halal_status",
+    "tests/unit/catalogue/test_generator.py::test_ids_unique",
+    "tests/unit/catalogue/test_generator.py::test_ingredient_lists_unique",
+    "tests/unit/catalogue/test_generator.py::test_milk_variants_differ_where_levers_act",
+    "tests/unit/catalogue/test_generator.py::test_scale_set_reaches_5000_unique",
+    "tests/unit/catalogue/test_generator.py::test_sku_prices_and_per_unit_order",
+    "tests/unit/catalogue/test_generator.py::test_variant_names_agree_with_derived_tags",
+    "tests/unit/catalogue/test_validators.py::test_c68_v15_named_ingredient_not_first_fails_unless_carrier",
+    "tests/unit/catalogue/test_validators.py::test_c68_v16_cube_sold_in_ml_fails",
+    "tests/unit/catalogue/test_validators.py::test_c68_v16_juice_not_in_ml_fails",
+    "tests/unit/catalogue/test_validators.py::test_c68_v16_negating_name_contradicting_tags_fails",
+    "tests/unit/catalogue/test_validators.py::test_c68_v17_bulk_pack_over_20_per_piece_fails",
+    "tests/unit/catalogue/test_validators.py::test_shipped_data_passes",
+    "tests/unit/catalogue/test_validators.py::test_t020_canary_mis_tagged_variant_fails_v3",
+    "tests/unit/catalogue/test_validators.py::test_t101_sushi_gap_is_by_design",
+    "tests/unit/catalogue/test_validators.py::test_v10_alias_collision",
+    "tests/unit/catalogue/test_validators.py::test_v10_synonym_without_target",
+    "tests/unit/catalogue/test_validators.py::test_v11_price_in_embedding_text",
+    "tests/unit/catalogue/test_validators.py::test_v12_unknown_expected_id",
+    "tests/unit/catalogue/test_validators.py::test_v13_committed_file_stale",
+    "tests/unit/catalogue/test_validators.py::test_v14_persona_out_of_range",
+    "tests/unit/catalogue/test_validators.py::test_v14_unknown_option_string",
+    "tests/unit/catalogue/test_validators.py::test_v1_missing_field",
+    "tests/unit/catalogue/test_validators.py::test_v2_duplicate_ingredient_list",
+    "tests/unit/catalogue/test_validators.py::test_v3_dish_claimed_diet",
+    "tests/unit/catalogue/test_validators.py::test_v3_mis_tagged_jain_flag",
+    "tests/unit/catalogue/test_validators.py::test_v3_optional_line_must_not_break_claimed_diet",
+    "tests/unit/catalogue/test_validators.py::test_v4_unknown_term",
+    "tests/unit/catalogue/test_validators.py::test_v5_meat_without_halal_status",
+    "tests/unit/catalogue/test_validators.py::test_v6_larger_pack_dearer",
+    "tests/unit/catalogue/test_validators.py::test_v6_price_out_of_range",
+    "tests/unit/catalogue/test_validators.py::test_v7_negative_stock",
+    "tests/unit/catalogue/test_validators.py::test_v8_unresolved_dish_ingredient",
+    "tests/unit/catalogue/test_validators.py::test_v9_fails_when_a_persona_has_nothing_eligible",
+    "tests/unit/retrieval/test_dishes.py::test_levers_reorder_the_shown_set",
+    "tests/unit/retrieval/test_dishes.py::test_lexical_mode_never_queries_vector",
+    "tests/unit/retrieval/test_dishes.py::test_mood_query_gives_the_configured_pool",
+    "tests/unit/retrieval/test_dishes.py::test_ollama_embedder_batches_large_inputs",
+    "tests/unit/retrieval/test_dishes.py::test_ollama_embedder_calls_embed_api",
+    "tests/unit/retrieval/test_dishes.py::test_t021_vector_candidate_breaking_persona_removed_and_traced",
+    "tests/unit/retrieval/test_dishes.py::test_t040_rrf_matches_hand_calculation",
+    "tests/unit/retrieval/test_dishes.py::test_t042_vector_down_falls_back_to_lexical",
+    "tests/unit/retrieval/test_dishes.py::test_t044_index_rebuilds_on_catalogue_or_embedder_change",
+    "tests/unit/retrieval/test_dishes.py::test_t044_interrupted_build_is_rebuilt",
+    "tests/unit/retrieval/test_dishes.py::test_t045_embedding_texts_have_no_price_or_stock",
+    "tests/unit/retrieval/test_dishes.py::test_t046_inspector_lists_retrieval_and_scores",
+    "tests/unit/retrieval/test_dishes.py::test_vector_returns_ids_only"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-37",
+   "priority": "M",
+   "tests": [
+    "tests/unit/engine/test_scoring.py::test_dish_features_respond_to_history_lever",
+    "tests/unit/engine/test_scoring.py::test_effective_weights_normalised_and_all_zero_restores_defaults",
+    "tests/unit/engine/test_scoring.py::test_t030_normalisation",
+    "tests/unit/engine/test_scoring.py::test_t031_final_is_sum_of_contributions",
+    "tests/unit/engine/test_scoring.py::test_t032_ties_break_by_s_p_then_id_reproducibly",
+    "tests/unit/engine/test_scoring.py::test_t033_each_weight_reorders_towards_its_component",
+    "tests/unit/engine/test_scoring.py::test_t034_pool_wider_than_display_shows_exactly_3",
+    "tests/unit/engine/test_scoring.py::test_t037_frozen_context_is_reproducible",
+    "tests/unit/engine/test_scoring.py::test_t038_gender_boost_capped_and_never_filters",
+    "tests/unit/engine/test_scoring.py::test_trend_slider_scales_effect",
+    "tests/unit/retrieval/test_dishes.py::test_levers_reorder_the_shown_set",
+    "tests/unit/retrieval/test_dishes.py::test_lexical_mode_never_queries_vector",
+    "tests/unit/retrieval/test_dishes.py::test_mood_query_gives_the_configured_pool",
+    "tests/unit/retrieval/test_dishes.py::test_ollama_embedder_batches_large_inputs",
+    "tests/unit/retrieval/test_dishes.py::test_ollama_embedder_calls_embed_api",
+    "tests/unit/retrieval/test_dishes.py::test_t021_vector_candidate_breaking_persona_removed_and_traced",
+    "tests/unit/retrieval/test_dishes.py::test_t040_rrf_matches_hand_calculation",
+    "tests/unit/retrieval/test_dishes.py::test_t042_vector_down_falls_back_to_lexical",
+    "tests/unit/retrieval/test_dishes.py::test_t044_index_rebuilds_on_catalogue_or_embedder_change",
+    "tests/unit/retrieval/test_dishes.py::test_t044_interrupted_build_is_rebuilt",
+    "tests/unit/retrieval/test_dishes.py::test_t045_embedding_texts_have_no_price_or_stock",
+    "tests/unit/retrieval/test_dishes.py::test_t046_inspector_lists_retrieval_and_scores",
+    "tests/unit/retrieval/test_dishes.py::test_vector_returns_ids_only"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-38",
+   "priority": "M",
+   "tests": [
+    "tests/unit/cart/test_service.py::test_ac08_butter_shared_between_two_real_dishes",
+    "tests/unit/cart/test_service.py::test_add_dish_carts_every_line_from_the_catalogue",
+    "tests/unit/cart/test_service.py::test_quantity_multiplies_owned_packs_and_shared_lines_refuse",
+    "tests/unit/cart/test_service.py::test_switch_variant_only_to_an_eligible_variant_of_the_same_ingredient",
+    "tests/unit/cart/test_service.py::test_t053_dish_totals_and_subtotal",
+    "tests/unit/cart/test_service.py::test_t055_remove_line_then_dish_removes_only_the_target",
+    "tests/unit/engine/test_eligibility.py::test_c68_jain_never_gets_fungi",
+    "tests/unit/engine/test_eligibility.py::test_declared_allergen",
+    "tests/unit/engine/test_eligibility.py::test_masks_intersect_for_contradictory_persona",
+    "tests/unit/engine/test_eligibility.py::test_t010_eligible_dishes_have_only_eligible_essentials",
+    "tests/unit/engine/test_eligibility.py::test_t010_no_ineligible_variant_passes_any_persona",
+    "tests/unit/engine/test_eligibility.py::test_t011_jain_garlic_bread_blocked_with_alternative",
+    "tests/unit/engine/test_eligibility.py::test_t012_engine_part_pure_veg_blocks_chicken_curry",
+    "tests/unit/engine/test_eligibility.py::test_t013_halal_excludes_not_halal_and_alcohol",
+    "tests/unit/engine/test_eligibility.py::test_t014_shravan_excludes_non_satvik",
+    "tests/unit/engine/test_eligibility.py::test_t015_keto_filters_and_flags_carb_staples",
+    "tests/unit/engine/test_eligibility.py::test_t016_vegan_gluten_free_low_gi_exact",
+    "tests/unit/engine/test_eligibility.py::test_t017_stock_filter_on_and_off",
+    "tests/unit/engine/test_eligibility.py::test_t018_price_cap_applies_to_add_ons_only",
+    "tests/unit/engine/test_eligibility.py::test_t019_hidden_animal_ingredient_excluded_via_ingredient_list",
+    "tests/unit/engine/test_variants.py::test_choice_carries_reason_and_alternatives",
+    "tests/unit/engine/test_variants.py::test_resolution_prefers_plain_products",
+    "tests/unit/engine/test_variants.py::test_t035_gourmet_slider_changes_choice_via_value_term",
+    "tests/unit/engine/test_variants.py::test_t035_organic_slider_changes_choice",
+    "tests/unit/engine/test_variants.py::test_t036_named_attribute_restricts_eligible_set",
+    "tests/unit/engine/test_variants.py::test_variant_choice_respects_persona"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-39",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_inspector_and_icons.py::test_cart_view_carries_category_icons_and_course",
+    "tests/acceptance/test_inspector_and_icons.py::test_inspector_is_empty_before_any_suggestion",
+    "tests/acceptance/test_inspector_and_icons.py::test_inspector_lists_the_pool_after_a_mood_suggestion",
+    "tests/unit/retrieval/test_dishes.py::test_levers_reorder_the_shown_set",
+    "tests/unit/retrieval/test_dishes.py::test_lexical_mode_never_queries_vector",
+    "tests/unit/retrieval/test_dishes.py::test_mood_query_gives_the_configured_pool",
+    "tests/unit/retrieval/test_dishes.py::test_ollama_embedder_batches_large_inputs",
+    "tests/unit/retrieval/test_dishes.py::test_ollama_embedder_calls_embed_api",
+    "tests/unit/retrieval/test_dishes.py::test_t021_vector_candidate_breaking_persona_removed_and_traced",
+    "tests/unit/retrieval/test_dishes.py::test_t040_rrf_matches_hand_calculation",
+    "tests/unit/retrieval/test_dishes.py::test_t042_vector_down_falls_back_to_lexical",
+    "tests/unit/retrieval/test_dishes.py::test_t044_index_rebuilds_on_catalogue_or_embedder_change",
+    "tests/unit/retrieval/test_dishes.py::test_t044_interrupted_build_is_rebuilt",
+    "tests/unit/retrieval/test_dishes.py::test_t045_embedding_texts_have_no_price_or_stock",
+    "tests/unit/retrieval/test_dishes.py::test_t046_inspector_lists_retrieval_and_scores",
+    "tests/unit/retrieval/test_dishes.py::test_vector_returns_ids_only"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "story",
+   "id": "US-40",
+   "priority": "M",
+   "tests": [
+    "tests/acceptance/test_addon_flow.py::test_addon_never_breaks_the_persona",
+    "tests/acceptance/test_addon_flow.py::test_decline_changes_nothing",
+    "tests/acceptance/test_addon_flow.py::test_inspector_shows_the_addon_pool",
+    "tests/acceptance/test_addon_flow.py::test_mood_cart_offers_one_addon_and_nothing_is_added_without_a_tap",
+    "tests/acceptance/test_addon_flow.py::test_no_addon_after_a_swap",
+    "tests/acceptance/test_addon_flow.py::test_photo_cart_offers_an_addon",
+    "tests/acceptance/test_addon_flow.py::test_vector_store_down_still_offers_curated_addons",
+    "tests/acceptance/test_addon_flow.py::test_youtube_text_and_named_dish_carts_offer_an_addon",
+    "tests/unit/retrieval/test_addons.py::test_cart_dishes_excluded_from_add_ons",
+    "tests/unit/retrieval/test_addons.py::test_t047_weighted_rrf_hand_calculation",
+    "tests/unit/retrieval/test_addons.py::test_t048_course_rule_then_guardrails_after_fusion",
+    "tests/unit/retrieval/test_addons.py::test_t049_no_curated_pair_still_gets_vector_add_on",
+    "tests/unit/retrieval/test_addons.py::test_t049_vector_down_uses_curated_only",
+    "tests/unit/retrieval/test_dishes.py::test_levers_reorder_the_shown_set",
+    "tests/unit/retrieval/test_dishes.py::test_lexical_mode_never_queries_vector",
+    "tests/unit/retrieval/test_dishes.py::test_mood_query_gives_the_configured_pool",
+    "tests/unit/retrieval/test_dishes.py::test_ollama_embedder_batches_large_inputs",
+    "tests/unit/retrieval/test_dishes.py::test_ollama_embedder_calls_embed_api",
+    "tests/unit/retrieval/test_dishes.py::test_t021_vector_candidate_breaking_persona_removed_and_traced",
+    "tests/unit/retrieval/test_dishes.py::test_t040_rrf_matches_hand_calculation",
+    "tests/unit/retrieval/test_dishes.py::test_t042_vector_down_falls_back_to_lexical",
+    "tests/unit/retrieval/test_dishes.py::test_t044_index_rebuilds_on_catalogue_or_embedder_change",
+    "tests/unit/retrieval/test_dishes.py::test_t044_interrupted_build_is_rebuilt",
+    "tests/unit/retrieval/test_dishes.py::test_t045_embedding_texts_have_no_price_or_stock",
+    "tests/unit/retrieval/test_dishes.py::test_t046_inspector_lists_retrieval_and_scores",
+    "tests/unit/retrieval/test_dishes.py::test_vector_returns_ids_only",
+    "tests/unit/retrieval/test_ingredients.py::test_plain_names_are_not_ambiguous",
+    "tests/unit/retrieval/test_ingredients.py::test_t041_regional_names_resolve",
+    "tests/unit/retrieval/test_ingredients.py::test_t043_ambiguous_name_asks_and_resolves_nothing",
+    "tests/unit/retrieval/test_ingredients.py::test_unknown_name",
+    "tests/unit/retrieval/test_ingredients.py::test_variant_lookup_ranks_named_variant_first"
+   ],
+   "level": "function",
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-01",
+   "mapped": [
+    "T-001"
+   ],
+   "tests": [
+    "tests/unit/session/test_snapshot.py::test_persona_label_custom_unless_a_preset_matches",
+    "tests/unit/session/test_snapshot.py::test_snapshot_hash_is_stable_and_ignores_diet_order",
+    "tests/unit/session/test_snapshot.py::test_snapshot_is_a_deep_copy_and_reads_return_copies",
+    "tests/unit/session/test_snapshot.py::test_store_create_get_delete_and_trace",
+    "tests/unit/session/test_snapshot.py::test_t001_lever_edit_after_start_does_not_change_the_session",
+    "tests/unit/session/test_snapshot.py::test_turn_and_message_ids_increase"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-02",
+   "mapped": [
+    "E6"
+   ],
+   "tests": [],
+   "level": null,
+   "evidence": [
+    "E6"
+   ],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-03",
+   "mapped": [
+    "T-004"
+   ],
+   "tests": [
+    "tests/acceptance/test_weights.py::test_config_levers_shows_default_shares",
+    "tests/acceptance/test_weights.py::test_no_notice_when_any_weight_is_set",
+    "tests/acceptance/test_weights.py::test_t004_all_zero_restores_defaults_and_sets_the_notice",
+    "tests/acceptance/test_weights.py::test_t004_shares_for_80_80_40_0"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-04",
+   "mapped": [
+    "T-011"
+   ],
+   "tests": [
+    "tests/unit/cart/test_stock_and_guards.py::test_f1_substitution_delta_matches_the_cart_as_shown",
+    "tests/unit/cart/test_stock_and_guards.py::test_no_substitution_when_nothing_eligible_is_in_stock",
+    "tests/unit/cart/test_stock_and_guards.py::test_switch_variant_cannot_bring_in_a_blocked_item",
+    "tests/unit/cart/test_stock_and_guards.py::test_t011_cart_part_jain_garlic_bread_refused_and_no_garlic",
+    "tests/unit/cart/test_stock_and_guards.py::test_t012_cart_part_pure_veg_chicken_refused",
+    "tests/unit/cart/test_stock_and_guards.py::test_t017_cart_part_filter_off_keeps_and_flags",
+    "tests/unit/cart/test_stock_and_guards.py::test_t017_cart_part_filter_on_never_carts_an_out_of_stock_variant",
+    "tests/unit/cart/test_stock_and_guards.py::test_t059_substitution_changes_the_cart_only_on_accept",
+    "tests/unit/engine/test_eligibility.py::test_c68_jain_never_gets_fungi",
+    "tests/unit/engine/test_eligibility.py::test_declared_allergen",
+    "tests/unit/engine/test_eligibility.py::test_masks_intersect_for_contradictory_persona",
+    "tests/unit/engine/test_eligibility.py::test_t010_eligible_dishes_have_only_eligible_essentials",
+    "tests/unit/engine/test_eligibility.py::test_t010_no_ineligible_variant_passes_any_persona",
+    "tests/unit/engine/test_eligibility.py::test_t011_jain_garlic_bread_blocked_with_alternative",
+    "tests/unit/engine/test_eligibility.py::test_t012_engine_part_pure_veg_blocks_chicken_curry",
+    "tests/unit/engine/test_eligibility.py::test_t013_halal_excludes_not_halal_and_alcohol",
+    "tests/unit/engine/test_eligibility.py::test_t014_shravan_excludes_non_satvik",
+    "tests/unit/engine/test_eligibility.py::test_t015_keto_filters_and_flags_carb_staples",
+    "tests/unit/engine/test_eligibility.py::test_t016_vegan_gluten_free_low_gi_exact",
+    "tests/unit/engine/test_eligibility.py::test_t017_stock_filter_on_and_off",
+    "tests/unit/engine/test_eligibility.py::test_t018_price_cap_applies_to_add_ons_only",
+    "tests/unit/engine/test_eligibility.py::test_t019_hidden_animal_ingredient_excluded_via_ingredient_list"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-05",
+   "mapped": [
+    "T-012"
+   ],
+   "tests": [
+    "tests/acceptance/test_text_flow.py::test_ambiguous_item_asks_then_the_answer_carts_it",
+    "tests/acceptance/test_text_flow.py::test_fr31_named_dish_uses_the_stored_recipe",
+    "tests/acceptance/test_text_flow.py::test_named_dish_blocked_by_persona_says_why_and_offers_an_alternative",
+    "tests/acceptance/test_text_flow.py::test_named_dish_matches_by_word",
+    "tests/acceptance/test_text_flow.py::test_no_word_match_still_offers_nearest_dishes",
+    "tests/acceptance/test_text_flow.py::test_plural_names_resolve_to_the_singular_term",
+    "tests/acceptance/test_text_flow.py::test_t012_text_part_blocked_item_carts_nothing_and_offers_an_alternative",
+    "tests/acceptance/test_text_flow.py::test_t083_three_messages_cart_immediately_under_one_open_dish",
+    "tests/acceptance/test_text_flow.py::test_t084_unknown_dish_offers_nearest_dishes_then_carts_the_choice",
+    "tests/acceptance/test_text_flow.py::test_t090_invalid_extraction_is_retried_once_then_rephrase",
+    "tests/acceptance/test_text_flow.py::test_unknown_ingredient_is_never_carted_and_asked_about",
+    "tests/acceptance/test_youtube_flow.py::test_non_recipe_video_gets_the_nonfood_reply",
+    "tests/acceptance/test_youtube_flow.py::test_t012_flow_part_chicken_video_with_pure_veg_flags_and_carts_no_meat",
+    "tests/acceptance/test_youtube_flow.py::test_t072_flow_part_instruction_in_a_transcript_is_ignored_and_nothing_carted",
+    "tests/acceptance/test_youtube_flow.py::test_t080_demo_link_fixture_extracted_mapped_and_carted_at_catalogue_prices",
+    "tests/acceptance/test_youtube_flow.py::test_t081_live_failure_uses_the_fixture_then_everything_failing_asks_to_paste",
+    "tests/acceptance/test_youtube_flow.py::test_t082_non_youtube_url_rejected_without_a_fetch_and_same_video_asks_first",
+    "tests/acceptance/test_youtube_flow.py::test_t091_extraction_timeout_asks_to_paste_never_a_success",
+    "tests/acceptance/test_youtube_flow.py::test_t092_second_link_shares_packs_and_asks_about_staples",
+    "tests/acceptance/test_youtube_flow.py::test_title_step_carts_the_stored_dish_as_estimates",
+    "tests/unit/cart/test_stock_and_guards.py::test_f1_substitution_delta_matches_the_cart_as_shown",
+    "tests/unit/cart/test_stock_and_guards.py::test_no_substitution_when_nothing_eligible_is_in_stock",
+    "tests/unit/cart/test_stock_and_guards.py::test_switch_variant_cannot_bring_in_a_blocked_item",
+    "tests/unit/cart/test_stock_and_guards.py::test_t011_cart_part_jain_garlic_bread_refused_and_no_garlic",
+    "tests/unit/cart/test_stock_and_guards.py::test_t012_cart_part_pure_veg_chicken_refused",
+    "tests/unit/cart/test_stock_and_guards.py::test_t017_cart_part_filter_off_keeps_and_flags",
+    "tests/unit/cart/test_stock_and_guards.py::test_t017_cart_part_filter_on_never_carts_an_out_of_stock_variant",
+    "tests/unit/cart/test_stock_and_guards.py::test_t059_substitution_changes_the_cart_only_on_accept",
+    "tests/unit/engine/test_eligibility.py::test_c68_jain_never_gets_fungi",
+    "tests/unit/engine/test_eligibility.py::test_declared_allergen",
+    "tests/unit/engine/test_eligibility.py::test_masks_intersect_for_contradictory_persona",
+    "tests/unit/engine/test_eligibility.py::test_t010_eligible_dishes_have_only_eligible_essentials",
+    "tests/unit/engine/test_eligibility.py::test_t010_no_ineligible_variant_passes_any_persona",
+    "tests/unit/engine/test_eligibility.py::test_t011_jain_garlic_bread_blocked_with_alternative",
+    "tests/unit/engine/test_eligibility.py::test_t012_engine_part_pure_veg_blocks_chicken_curry",
+    "tests/unit/engine/test_eligibility.py::test_t013_halal_excludes_not_halal_and_alcohol",
+    "tests/unit/engine/test_eligibility.py::test_t014_shravan_excludes_non_satvik",
+    "tests/unit/engine/test_eligibility.py::test_t015_keto_filters_and_flags_carb_staples",
+    "tests/unit/engine/test_eligibility.py::test_t016_vegan_gluten_free_low_gi_exact",
+    "tests/unit/engine/test_eligibility.py::test_t017_stock_filter_on_and_off",
+    "tests/unit/engine/test_eligibility.py::test_t018_price_cap_applies_to_add_ons_only",
+    "tests/unit/engine/test_eligibility.py::test_t019_hidden_animal_ingredient_excluded_via_ingredient_list"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-06",
+   "mapped": [
+    "T-015"
+   ],
+   "tests": [
+    "tests/unit/engine/test_eligibility.py::test_c68_jain_never_gets_fungi",
+    "tests/unit/engine/test_eligibility.py::test_declared_allergen",
+    "tests/unit/engine/test_eligibility.py::test_masks_intersect_for_contradictory_persona",
+    "tests/unit/engine/test_eligibility.py::test_t010_eligible_dishes_have_only_eligible_essentials",
+    "tests/unit/engine/test_eligibility.py::test_t010_no_ineligible_variant_passes_any_persona",
+    "tests/unit/engine/test_eligibility.py::test_t011_jain_garlic_bread_blocked_with_alternative",
+    "tests/unit/engine/test_eligibility.py::test_t012_engine_part_pure_veg_blocks_chicken_curry",
+    "tests/unit/engine/test_eligibility.py::test_t013_halal_excludes_not_halal_and_alcohol",
+    "tests/unit/engine/test_eligibility.py::test_t014_shravan_excludes_non_satvik",
+    "tests/unit/engine/test_eligibility.py::test_t015_keto_filters_and_flags_carb_staples",
+    "tests/unit/engine/test_eligibility.py::test_t016_vegan_gluten_free_low_gi_exact",
+    "tests/unit/engine/test_eligibility.py::test_t017_stock_filter_on_and_off",
+    "tests/unit/engine/test_eligibility.py::test_t018_price_cap_applies_to_add_ons_only",
+    "tests/unit/engine/test_eligibility.py::test_t019_hidden_animal_ingredient_excluded_via_ingredient_list"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-07",
+   "mapped": [
+    "T-080"
+   ],
+   "tests": [
+    "tests/acceptance/test_youtube_flow.py::test_non_recipe_video_gets_the_nonfood_reply",
+    "tests/acceptance/test_youtube_flow.py::test_t012_flow_part_chicken_video_with_pure_veg_flags_and_carts_no_meat",
+    "tests/acceptance/test_youtube_flow.py::test_t072_flow_part_instruction_in_a_transcript_is_ignored_and_nothing_carted",
+    "tests/acceptance/test_youtube_flow.py::test_t080_demo_link_fixture_extracted_mapped_and_carted_at_catalogue_prices",
+    "tests/acceptance/test_youtube_flow.py::test_t081_live_failure_uses_the_fixture_then_everything_failing_asks_to_paste",
+    "tests/acceptance/test_youtube_flow.py::test_t082_non_youtube_url_rejected_without_a_fetch_and_same_video_asks_first",
+    "tests/acceptance/test_youtube_flow.py::test_t091_extraction_timeout_asks_to_paste_never_a_success",
+    "tests/acceptance/test_youtube_flow.py::test_t092_second_link_shares_packs_and_asks_about_staples",
+    "tests/acceptance/test_youtube_flow.py::test_title_step_carts_the_stored_dish_as_estimates"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-08",
+   "mapped": [
+    "T-051",
+    "T-052"
+   ],
+   "tests": [
+    "tests/unit/cart/test_allocation.py::test_fr71_shared_butter_takes_one_200g_pack",
+    "tests/unit/cart/test_allocation.py::test_prices_and_quotes_come_from_the_catalogue",
+    "tests/unit/cart/test_allocation.py::test_smallest_set_prefers_least_quantity_then_fewest_packs",
+    "tests/unit/cart/test_allocation.py::test_smallest_set_respects_stock_counts",
+    "tests/unit/cart/test_allocation.py::test_t050_two_200g_paneer_needs_take_two_200g_packs",
+    "tests/unit/cart/test_allocation.py::test_t051_second_shared_line_is_dimmed_and_unpriced",
+    "tests/unit/cart/test_allocation.py::test_t052_removing_the_owner_transfers_ownership_and_totals_hold",
+    "tests/unit/cart/test_allocation.py::test_unit_mismatch_prefers_the_smallest_in_stock_pack",
+    "tests/unit/cart/test_allocation.py::test_unit_mismatch_takes_one_smallest_pack_and_is_estimated",
+    "tests/unit/cart/test_allocation.py::test_unit_mismatch_with_nothing_in_stock_is_flagged",
+    "tests/unit/cart/test_service.py::test_ac08_butter_shared_between_two_real_dishes",
+    "tests/unit/cart/test_service.py::test_add_dish_carts_every_line_from_the_catalogue",
+    "tests/unit/cart/test_service.py::test_quantity_multiplies_owned_packs_and_shared_lines_refuse",
+    "tests/unit/cart/test_service.py::test_switch_variant_only_to_an_eligible_variant_of_the_same_ingredient",
+    "tests/unit/cart/test_service.py::test_t053_dish_totals_and_subtotal",
+    "tests/unit/cart/test_service.py::test_t055_remove_line_then_dish_removes_only_the_target"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-09",
+   "mapped": [
+    "T-085"
+   ],
+   "tests": [
+    "tests/acceptance/test_mood_flow.py::test_c54_health_claim_words_fail_the_reason_validator",
+    "tests/acceptance/test_mood_flow.py::test_fr02_levers_sent_mid_session_flag_the_banner_but_do_not_change_the_dish",
+    "tests/acceptance/test_mood_flow.py::test_invalid_reason_line_falls_back_to_the_template",
+    "tests/acceptance/test_mood_flow.py::test_mood_add_keeps_earlier_items",
+    "tests/acceptance/test_mood_flow.py::test_t085_top_dish_carted_two_swaps_and_undo",
+    "tests/acceptance/test_mood_flow.py::test_t086_no_eligible_dish_adds_nothing_and_says_why"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-10",
+   "mapped": [
+    "T-087"
+   ],
+   "tests": [
+    "tests/acceptance/test_photo_flow.py::test_consent_action_records_consent",
+    "tests/acceptance/test_photo_flow.py::test_exif_and_gps_are_stripped_before_the_model_and_no_image_is_traced",
+    "tests/acceptance/test_photo_flow.py::test_gemini_opt_in_asks_consent_before_any_upload_leaves",
+    "tests/acceptance/test_photo_flow.py::test_no_unsure_items_still_needs_one_confirming_tap",
+    "tests/acceptance/test_photo_flow.py::test_non_food_photo",
+    "tests/acceptance/test_photo_flow.py::test_sample_photo_pick_uses_precomputed_detections",
+    "tests/acceptance/test_photo_flow.py::test_samples_list_endpoint",
+    "tests/acceptance/test_photo_flow.py::test_t087_detect_confirm_unsure_items_then_cart_only_the_top_dish_missing_items",
+    "tests/acceptance/test_photo_flow.py::test_t088_local_model_failing_or_timing_out_offers_labelled_samples",
+    "tests/acceptance/test_photo_flow.py::test_t088_samples_provider_offers_samples_without_any_model_call",
+    "tests/acceptance/test_photo_flow.py::test_t089_wrong_type_oversize_spoofed_and_two_images_are_rejected",
+    "tests/acceptance/test_photo_flow.py::test_unsure_item_declined_is_left_out"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-11",
+   "mapped": [
+    "T-088"
+   ],
+   "tests": [
+    "tests/acceptance/test_photo_flow.py::test_consent_action_records_consent",
+    "tests/acceptance/test_photo_flow.py::test_exif_and_gps_are_stripped_before_the_model_and_no_image_is_traced",
+    "tests/acceptance/test_photo_flow.py::test_gemini_opt_in_asks_consent_before_any_upload_leaves",
+    "tests/acceptance/test_photo_flow.py::test_no_unsure_items_still_needs_one_confirming_tap",
+    "tests/acceptance/test_photo_flow.py::test_non_food_photo",
+    "tests/acceptance/test_photo_flow.py::test_sample_photo_pick_uses_precomputed_detections",
+    "tests/acceptance/test_photo_flow.py::test_samples_list_endpoint",
+    "tests/acceptance/test_photo_flow.py::test_t087_detect_confirm_unsure_items_then_cart_only_the_top_dish_missing_items",
+    "tests/acceptance/test_photo_flow.py::test_t088_local_model_failing_or_timing_out_offers_labelled_samples",
+    "tests/acceptance/test_photo_flow.py::test_t088_samples_provider_offers_samples_without_any_model_call",
+    "tests/acceptance/test_photo_flow.py::test_t089_wrong_type_oversize_spoofed_and_two_images_are_rejected",
+    "tests/acceptance/test_photo_flow.py::test_unsure_item_declined_is_left_out"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-12",
+   "mapped": [
+    "E2E-001",
+    "T-056"
+   ],
+   "tests": [
+    "tests/acceptance/test_cart_count.py::test_t056_count_matches_the_lines_and_drops_to_zero",
+    "tests/acceptance/test_cart_count.py::test_t056_empty_cart_has_zero_items",
+    "tests/e2e/test_demo_path.py::test_e2e_001_demo_path"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-13",
+   "mapped": [
+    "E2E-001",
+    "T-057"
+   ],
+   "tests": [
+    "tests/acceptance/test_checkout.py::test_checkout_respects_the_session_lock",
+    "tests/acceptance/test_checkout.py::test_missing_key_and_empty_cart",
+    "tests/acceptance/test_checkout.py::test_t017_buy_now_blocked_for_a_kept_out_of_stock_line",
+    "tests/acceptance/test_checkout.py::test_t057_same_key_twice_places_one_order",
+    "tests/acceptance/test_checkout.py::test_t058_stock_out_blocks_then_price_change_is_shown",
+    "tests/e2e/test_demo_path.py::test_e2e_001_demo_path"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-14",
+   "mapped": [
+    "T-061"
+   ],
+   "tests": [
+    "tests/unit/test_prices.py::test_build_turn_applies_the_gate_to_assistant_messages",
+    "tests/unit/test_prices.py::test_rupee_amount_without_a_known_item_is_removed",
+    "tests/unit/test_prices.py::test_t061_wrong_price_corrected_and_right_one_kept",
+    "tests/unit/test_prices.py::test_text_without_prices_is_unchanged"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-15",
+   "mapped": [
+    "T-070"
+   ],
+   "tests": [
+    "tests/acceptance/test_chat_routing.py::test_c54_code_routing_skips_the_intent_model",
+    "tests/acceptance/test_chat_routing.py::test_classifier_block_and_model_off_topic_also_redirect",
+    "tests/acceptance/test_chat_routing.py::test_do_something_else_with_an_empty_cart",
+    "tests/acceptance/test_chat_routing.py::test_empty_long_and_busy_messages",
+    "tests/acceptance/test_chat_routing.py::test_low_confidence_and_invalid_reply_ask_to_rephrase",
+    "tests/acceptance/test_chat_routing.py::test_ollama_down_is_503_with_the_server_message",
+    "tests/acceptance/test_chat_routing.py::test_t060_chat_part_do_something_else_asks_then_replace_and_undo",
+    "tests/acceptance/test_chat_routing.py::test_t070_off_topic_and_injection_redirect_and_leave_the_cart",
+    "tests/acceptance/test_chat_routing.py::test_t071_benign_phrase_reaches_the_intent_classifier",
+    "tests/acceptance/test_chat_routing.py::test_templates_for_unsupported_and_allergy",
+    "tests/acceptance/test_chat_routing.py::test_user_message_is_stored_and_reply_is_a_turn",
+    "tests/unit/guard/test_pipeline.py::test_adr006_v2_s8_only_verdicts_do_not_block",
+    "tests/unit/guard/test_pipeline.py::test_c43_hunger_and_suggestion_requests_pass_the_rules",
+    "tests/unit/guard/test_pipeline.py::test_c55_config_defaults",
+    "tests/unit/guard/test_pipeline.py::test_c55_s8_is_ignored_only_with_a_youtube_link",
+    "tests/unit/guard/test_pipeline.py::test_classifier_catches_what_the_rules_pass",
+    "tests/unit/guard/test_pipeline.py::test_classifier_down_rules_stand_and_fallback_is_traced",
+    "tests/unit/guard/test_pipeline.py::test_classifier_off_by_config",
+    "tests/unit/guard/test_pipeline.py::test_hazard_gets_the_hazard_template",
+    "tests/unit/guard/test_pipeline.py::test_ignore_list_is_configurable",
+    "tests/unit/guard/test_pipeline.py::test_plain_off_topic_still_redirected_by_the_rules",
+    "tests/unit/guard/test_pipeline.py::test_stove_words_pass_the_rules",
+    "tests/unit/guard/test_pipeline.py::test_t070_rules_block_with_the_redirect_and_skip_the_classifier",
+    "tests/unit/guard/test_pipeline.py::test_t071_cooking_language_passes_both_layers",
+    "tests/unit/guard/test_pipeline.py::test_t072_guard_part_instruction_inside_a_transcript_is_data",
+    "tests/unit/guard/test_pipeline.py::test_verdict_reports_the_classifier_categories"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-16",
+   "mapped": [
+    "T-081"
+   ],
+   "tests": [
+    "tests/acceptance/test_youtube_flow.py::test_non_recipe_video_gets_the_nonfood_reply",
+    "tests/acceptance/test_youtube_flow.py::test_t012_flow_part_chicken_video_with_pure_veg_flags_and_carts_no_meat",
+    "tests/acceptance/test_youtube_flow.py::test_t072_flow_part_instruction_in_a_transcript_is_ignored_and_nothing_carted",
+    "tests/acceptance/test_youtube_flow.py::test_t080_demo_link_fixture_extracted_mapped_and_carted_at_catalogue_prices",
+    "tests/acceptance/test_youtube_flow.py::test_t081_live_failure_uses_the_fixture_then_everything_failing_asks_to_paste",
+    "tests/acceptance/test_youtube_flow.py::test_t082_non_youtube_url_rejected_without_a_fetch_and_same_video_asks_first",
+    "tests/acceptance/test_youtube_flow.py::test_t091_extraction_timeout_asks_to_paste_never_a_success",
+    "tests/acceptance/test_youtube_flow.py::test_t092_second_link_shares_packs_and_asks_about_staples",
+    "tests/acceptance/test_youtube_flow.py::test_title_step_carts_the_stored_dish_as_estimates",
+    "tests/unit/transcripts/test_chain.py::test_clean_caps_and_strips",
+    "tests/unit/transcripts/test_chain.py::test_live_fetch_off_by_config_goes_to_the_fixture",
+    "tests/unit/transcripts/test_chain.py::test_live_first_then_fixture_then_title_then_unavailable",
+    "tests/unit/transcripts/test_chain.py::test_live_timeout_falls_through",
+    "tests/unit/transcripts/test_chain.py::test_no_url",
+    "tests/unit/transcripts/test_chain.py::test_other_urls_are_not_youtube",
+    "tests/unit/transcripts/test_chain.py::test_youtube_links_give_the_video_id"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-17",
+   "mapped": [
+    "T-041"
+   ],
+   "tests": [
+    "tests/unit/retrieval/test_ingredients.py::test_plain_names_are_not_ambiguous",
+    "tests/unit/retrieval/test_ingredients.py::test_t041_regional_names_resolve",
+    "tests/unit/retrieval/test_ingredients.py::test_t043_ambiguous_name_asks_and_resolves_nothing",
+    "tests/unit/retrieval/test_ingredients.py::test_unknown_name",
+    "tests/unit/retrieval/test_ingredients.py::test_variant_lookup_ranks_named_variant_first"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-18",
+   "mapped": [
+    "T-007"
+   ],
+   "tests": [
+    "tests/acceptance/test_clear_and_reset.py::test_t007_cancel_changes_nothing_confirm_empties_cart_levers_untouched",
+    "tests/acceptance/test_clear_and_reset.py::test_t008_reset_defaults_leave_chat_and_snapshot_untouched"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-19",
+   "mapped": [
+    "T-008"
+   ],
+   "tests": [
+    "tests/acceptance/test_clear_and_reset.py::test_t007_cancel_changes_nothing_confirm_empties_cart_levers_untouched",
+    "tests/acceptance/test_clear_and_reset.py::test_t008_reset_defaults_leave_chat_and_snapshot_untouched"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-20",
+   "mapped": [
+    "T-031"
+   ],
+   "tests": [
+    "tests/acceptance/test_why_cards.py::test_addon_explains_why",
+    "tests/acceptance/test_why_cards.py::test_mood_pick_explains_reason_drivers_and_runners_up",
+    "tests/acceptance/test_why_cards.py::test_persona_block_explains_the_alternative",
+    "tests/acceptance/test_why_cards.py::test_photo_pick_explains_why",
+    "tests/acceptance/test_why_cards.py::test_unknown_dish_chips_explain_the_ranking",
+    "tests/unit/engine/test_scoring.py::test_dish_features_respond_to_history_lever",
+    "tests/unit/engine/test_scoring.py::test_effective_weights_normalised_and_all_zero_restores_defaults",
+    "tests/unit/engine/test_scoring.py::test_t030_normalisation",
+    "tests/unit/engine/test_scoring.py::test_t031_final_is_sum_of_contributions",
+    "tests/unit/engine/test_scoring.py::test_t032_ties_break_by_s_p_then_id_reproducibly",
+    "tests/unit/engine/test_scoring.py::test_t033_each_weight_reorders_towards_its_component",
+    "tests/unit/engine/test_scoring.py::test_t034_pool_wider_than_display_shows_exactly_3",
+    "tests/unit/engine/test_scoring.py::test_t037_frozen_context_is_reproducible",
+    "tests/unit/engine/test_scoring.py::test_t038_gender_boost_capped_and_never_filters",
+    "tests/unit/engine/test_scoring.py::test_trend_slider_scales_effect"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-21",
+   "mapped": [
+    "T-072"
+   ],
+   "tests": [
+    "tests/acceptance/test_youtube_flow.py::test_non_recipe_video_gets_the_nonfood_reply",
+    "tests/acceptance/test_youtube_flow.py::test_t012_flow_part_chicken_video_with_pure_veg_flags_and_carts_no_meat",
+    "tests/acceptance/test_youtube_flow.py::test_t072_flow_part_instruction_in_a_transcript_is_ignored_and_nothing_carted",
+    "tests/acceptance/test_youtube_flow.py::test_t080_demo_link_fixture_extracted_mapped_and_carted_at_catalogue_prices",
+    "tests/acceptance/test_youtube_flow.py::test_t081_live_failure_uses_the_fixture_then_everything_failing_asks_to_paste",
+    "tests/acceptance/test_youtube_flow.py::test_t082_non_youtube_url_rejected_without_a_fetch_and_same_video_asks_first",
+    "tests/acceptance/test_youtube_flow.py::test_t091_extraction_timeout_asks_to_paste_never_a_success",
+    "tests/acceptance/test_youtube_flow.py::test_t092_second_link_shares_packs_and_asks_about_staples",
+    "tests/acceptance/test_youtube_flow.py::test_title_step_carts_the_stored_dish_as_estimates",
+    "tests/unit/guard/test_pipeline.py::test_adr006_v2_s8_only_verdicts_do_not_block",
+    "tests/unit/guard/test_pipeline.py::test_c43_hunger_and_suggestion_requests_pass_the_rules",
+    "tests/unit/guard/test_pipeline.py::test_c55_config_defaults",
+    "tests/unit/guard/test_pipeline.py::test_c55_s8_is_ignored_only_with_a_youtube_link",
+    "tests/unit/guard/test_pipeline.py::test_classifier_catches_what_the_rules_pass",
+    "tests/unit/guard/test_pipeline.py::test_classifier_down_rules_stand_and_fallback_is_traced",
+    "tests/unit/guard/test_pipeline.py::test_classifier_off_by_config",
+    "tests/unit/guard/test_pipeline.py::test_hazard_gets_the_hazard_template",
+    "tests/unit/guard/test_pipeline.py::test_ignore_list_is_configurable",
+    "tests/unit/guard/test_pipeline.py::test_plain_off_topic_still_redirected_by_the_rules",
+    "tests/unit/guard/test_pipeline.py::test_stove_words_pass_the_rules",
+    "tests/unit/guard/test_pipeline.py::test_t070_rules_block_with_the_redirect_and_skip_the_classifier",
+    "tests/unit/guard/test_pipeline.py::test_t071_cooking_language_passes_both_layers",
+    "tests/unit/guard/test_pipeline.py::test_t072_guard_part_instruction_inside_a_transcript_is_data",
+    "tests/unit/guard/test_pipeline.py::test_verdict_reports_the_classifier_categories"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-22",
+   "mapped": [
+    "T-071"
+   ],
+   "tests": [
+    "tests/acceptance/test_chat_routing.py::test_c54_code_routing_skips_the_intent_model",
+    "tests/acceptance/test_chat_routing.py::test_classifier_block_and_model_off_topic_also_redirect",
+    "tests/acceptance/test_chat_routing.py::test_do_something_else_with_an_empty_cart",
+    "tests/acceptance/test_chat_routing.py::test_empty_long_and_busy_messages",
+    "tests/acceptance/test_chat_routing.py::test_low_confidence_and_invalid_reply_ask_to_rephrase",
+    "tests/acceptance/test_chat_routing.py::test_ollama_down_is_503_with_the_server_message",
+    "tests/acceptance/test_chat_routing.py::test_t060_chat_part_do_something_else_asks_then_replace_and_undo",
+    "tests/acceptance/test_chat_routing.py::test_t070_off_topic_and_injection_redirect_and_leave_the_cart",
+    "tests/acceptance/test_chat_routing.py::test_t071_benign_phrase_reaches_the_intent_classifier",
+    "tests/acceptance/test_chat_routing.py::test_templates_for_unsupported_and_allergy",
+    "tests/acceptance/test_chat_routing.py::test_user_message_is_stored_and_reply_is_a_turn",
+    "tests/unit/guard/test_pipeline.py::test_adr006_v2_s8_only_verdicts_do_not_block",
+    "tests/unit/guard/test_pipeline.py::test_c43_hunger_and_suggestion_requests_pass_the_rules",
+    "tests/unit/guard/test_pipeline.py::test_c55_config_defaults",
+    "tests/unit/guard/test_pipeline.py::test_c55_s8_is_ignored_only_with_a_youtube_link",
+    "tests/unit/guard/test_pipeline.py::test_classifier_catches_what_the_rules_pass",
+    "tests/unit/guard/test_pipeline.py::test_classifier_down_rules_stand_and_fallback_is_traced",
+    "tests/unit/guard/test_pipeline.py::test_classifier_off_by_config",
+    "tests/unit/guard/test_pipeline.py::test_hazard_gets_the_hazard_template",
+    "tests/unit/guard/test_pipeline.py::test_ignore_list_is_configurable",
+    "tests/unit/guard/test_pipeline.py::test_plain_off_topic_still_redirected_by_the_rules",
+    "tests/unit/guard/test_pipeline.py::test_stove_words_pass_the_rules",
+    "tests/unit/guard/test_pipeline.py::test_t070_rules_block_with_the_redirect_and_skip_the_classifier",
+    "tests/unit/guard/test_pipeline.py::test_t071_cooking_language_passes_both_layers",
+    "tests/unit/guard/test_pipeline.py::test_t072_guard_part_instruction_inside_a_transcript_is_data",
+    "tests/unit/guard/test_pipeline.py::test_verdict_reports_the_classifier_categories"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-23",
+   "mapped": [
+    "T-089"
+   ],
+   "tests": [
+    "tests/acceptance/test_photo_flow.py::test_consent_action_records_consent",
+    "tests/acceptance/test_photo_flow.py::test_exif_and_gps_are_stripped_before_the_model_and_no_image_is_traced",
+    "tests/acceptance/test_photo_flow.py::test_gemini_opt_in_asks_consent_before_any_upload_leaves",
+    "tests/acceptance/test_photo_flow.py::test_no_unsure_items_still_needs_one_confirming_tap",
+    "tests/acceptance/test_photo_flow.py::test_non_food_photo",
+    "tests/acceptance/test_photo_flow.py::test_sample_photo_pick_uses_precomputed_detections",
+    "tests/acceptance/test_photo_flow.py::test_samples_list_endpoint",
+    "tests/acceptance/test_photo_flow.py::test_t087_detect_confirm_unsure_items_then_cart_only_the_top_dish_missing_items",
+    "tests/acceptance/test_photo_flow.py::test_t088_local_model_failing_or_timing_out_offers_labelled_samples",
+    "tests/acceptance/test_photo_flow.py::test_t088_samples_provider_offers_samples_without_any_model_call",
+    "tests/acceptance/test_photo_flow.py::test_t089_wrong_type_oversize_spoofed_and_two_images_are_rejected",
+    "tests/acceptance/test_photo_flow.py::test_unsure_item_declined_is_left_out"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-24",
+   "mapped": [
+    "T-050"
+   ],
+   "tests": [
+    "tests/unit/cart/test_allocation.py::test_fr71_shared_butter_takes_one_200g_pack",
+    "tests/unit/cart/test_allocation.py::test_prices_and_quotes_come_from_the_catalogue",
+    "tests/unit/cart/test_allocation.py::test_smallest_set_prefers_least_quantity_then_fewest_packs",
+    "tests/unit/cart/test_allocation.py::test_smallest_set_respects_stock_counts",
+    "tests/unit/cart/test_allocation.py::test_t050_two_200g_paneer_needs_take_two_200g_packs",
+    "tests/unit/cart/test_allocation.py::test_t051_second_shared_line_is_dimmed_and_unpriced",
+    "tests/unit/cart/test_allocation.py::test_t052_removing_the_owner_transfers_ownership_and_totals_hold",
+    "tests/unit/cart/test_allocation.py::test_unit_mismatch_prefers_the_smallest_in_stock_pack",
+    "tests/unit/cart/test_allocation.py::test_unit_mismatch_takes_one_smallest_pack_and_is_estimated",
+    "tests/unit/cart/test_allocation.py::test_unit_mismatch_with_nothing_in_stock_is_flagged"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-25",
+   "mapped": [
+    "T-006"
+   ],
+   "tests": [
+    "tests/unit/session/test_persona.py::test_conflict_rule",
+    "tests/unit/session/test_persona.py::test_gender_not_set_gives_no_cohort_boost",
+    "tests/unit/session/test_persona.py::test_no_warning_without_a_conflict",
+    "tests/unit/session/test_persona.py::test_t006_jain_faith_with_non_veg_warns_and_masks_intersect"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-26",
+   "mapped": [
+    "T-084"
+   ],
+   "tests": [
+    "tests/acceptance/test_text_flow.py::test_ambiguous_item_asks_then_the_answer_carts_it",
+    "tests/acceptance/test_text_flow.py::test_fr31_named_dish_uses_the_stored_recipe",
+    "tests/acceptance/test_text_flow.py::test_named_dish_blocked_by_persona_says_why_and_offers_an_alternative",
+    "tests/acceptance/test_text_flow.py::test_named_dish_matches_by_word",
+    "tests/acceptance/test_text_flow.py::test_no_word_match_still_offers_nearest_dishes",
+    "tests/acceptance/test_text_flow.py::test_plural_names_resolve_to_the_singular_term",
+    "tests/acceptance/test_text_flow.py::test_t012_text_part_blocked_item_carts_nothing_and_offers_an_alternative",
+    "tests/acceptance/test_text_flow.py::test_t083_three_messages_cart_immediately_under_one_open_dish",
+    "tests/acceptance/test_text_flow.py::test_t084_unknown_dish_offers_nearest_dishes_then_carts_the_choice",
+    "tests/acceptance/test_text_flow.py::test_t090_invalid_extraction_is_retried_once_then_rephrase",
+    "tests/acceptance/test_text_flow.py::test_unknown_ingredient_is_never_carted_and_asked_about"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-27",
+   "mapped": [
+    "T-093"
+   ],
+   "tests": [
+    "tests/acceptance/test_lock_and_stale.py::test_t093_a_second_message_while_one_is_processing_is_session_busy",
+    "tests/acceptance/test_lock_and_stale.py::test_t094_a_tap_from_an_earlier_turn_after_the_cart_changed_is_stale"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-28",
+   "mapped": [
+    "T-058"
+   ],
+   "tests": [
+    "tests/acceptance/test_checkout.py::test_checkout_respects_the_session_lock",
+    "tests/acceptance/test_checkout.py::test_missing_key_and_empty_cart",
+    "tests/acceptance/test_checkout.py::test_t017_buy_now_blocked_for_a_kept_out_of_stock_line",
+    "tests/acceptance/test_checkout.py::test_t057_same_key_twice_places_one_order",
+    "tests/acceptance/test_checkout.py::test_t058_stock_out_blocks_then_price_change_is_shown",
+    "tests/unit/cart/test_stock_and_guards.py::test_f1_substitution_delta_matches_the_cart_as_shown",
+    "tests/unit/cart/test_stock_and_guards.py::test_no_substitution_when_nothing_eligible_is_in_stock",
+    "tests/unit/cart/test_stock_and_guards.py::test_switch_variant_cannot_bring_in_a_blocked_item",
+    "tests/unit/cart/test_stock_and_guards.py::test_t011_cart_part_jain_garlic_bread_refused_and_no_garlic",
+    "tests/unit/cart/test_stock_and_guards.py::test_t012_cart_part_pure_veg_chicken_refused",
+    "tests/unit/cart/test_stock_and_guards.py::test_t017_cart_part_filter_off_keeps_and_flags",
+    "tests/unit/cart/test_stock_and_guards.py::test_t017_cart_part_filter_on_never_carts_an_out_of_stock_variant",
+    "tests/unit/cart/test_stock_and_guards.py::test_t059_substitution_changes_the_cart_only_on_accept"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-29",
+   "mapped": [
+    "T-086"
+   ],
+   "tests": [
+    "tests/acceptance/test_mood_flow.py::test_c54_health_claim_words_fail_the_reason_validator",
+    "tests/acceptance/test_mood_flow.py::test_fr02_levers_sent_mid_session_flag_the_banner_but_do_not_change_the_dish",
+    "tests/acceptance/test_mood_flow.py::test_invalid_reason_line_falls_back_to_the_template",
+    "tests/acceptance/test_mood_flow.py::test_mood_add_keeps_earlier_items",
+    "tests/acceptance/test_mood_flow.py::test_t085_top_dish_carted_two_swaps_and_undo",
+    "tests/acceptance/test_mood_flow.py::test_t086_no_eligible_dish_adds_nothing_and_says_why"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-30",
+   "mapped": [
+    "T-062"
+   ],
+   "tests": [
+    "tests/acceptance/test_mood_flow.py::test_c54_health_claim_words_fail_the_reason_validator",
+    "tests/acceptance/test_mood_flow.py::test_fr02_levers_sent_mid_session_flag_the_banner_but_do_not_change_the_dish",
+    "tests/acceptance/test_mood_flow.py::test_invalid_reason_line_falls_back_to_the_template",
+    "tests/acceptance/test_mood_flow.py::test_mood_add_keeps_earlier_items",
+    "tests/acceptance/test_mood_flow.py::test_t085_top_dish_carted_two_swaps_and_undo",
+    "tests/acceptance/test_mood_flow.py::test_t086_no_eligible_dish_adds_nothing_and_says_why",
+    "tests/acceptance/test_swap_undo.py::test_swap_to_a_dish_not_offered_or_after_undo_is_stale",
+    "tests/acceptance/test_swap_undo.py::test_t062_swap_replaces_only_the_suggested_dish_and_undo_restores"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-31",
+   "mapped": [
+    "T-082"
+   ],
+   "tests": [
+    "tests/acceptance/test_youtube_flow.py::test_non_recipe_video_gets_the_nonfood_reply",
+    "tests/acceptance/test_youtube_flow.py::test_t012_flow_part_chicken_video_with_pure_veg_flags_and_carts_no_meat",
+    "tests/acceptance/test_youtube_flow.py::test_t072_flow_part_instruction_in_a_transcript_is_ignored_and_nothing_carted",
+    "tests/acceptance/test_youtube_flow.py::test_t080_demo_link_fixture_extracted_mapped_and_carted_at_catalogue_prices",
+    "tests/acceptance/test_youtube_flow.py::test_t081_live_failure_uses_the_fixture_then_everything_failing_asks_to_paste",
+    "tests/acceptance/test_youtube_flow.py::test_t082_non_youtube_url_rejected_without_a_fetch_and_same_video_asks_first",
+    "tests/acceptance/test_youtube_flow.py::test_t091_extraction_timeout_asks_to_paste_never_a_success",
+    "tests/acceptance/test_youtube_flow.py::test_t092_second_link_shares_packs_and_asks_about_staples",
+    "tests/acceptance/test_youtube_flow.py::test_title_step_carts_the_stored_dish_as_estimates",
+    "tests/unit/transcripts/test_chain.py::test_clean_caps_and_strips",
+    "tests/unit/transcripts/test_chain.py::test_live_fetch_off_by_config_goes_to_the_fixture",
+    "tests/unit/transcripts/test_chain.py::test_live_first_then_fixture_then_title_then_unavailable",
+    "tests/unit/transcripts/test_chain.py::test_live_timeout_falls_through",
+    "tests/unit/transcripts/test_chain.py::test_no_url",
+    "tests/unit/transcripts/test_chain.py::test_other_urls_are_not_youtube",
+    "tests/unit/transcripts/test_chain.py::test_youtube_links_give_the_video_id"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-32",
+   "mapped": [
+    "E2E-001"
+   ],
+   "tests": [
+    "tests/e2e/test_demo_path.py::test_e2e_001_demo_path"
+   ],
+   "level": "module",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-33",
+   "mapped": [
+    "T-059"
+   ],
+   "tests": [
+    "tests/acceptance/test_action_substitute.py::test_t059_substitute_action_accept",
+    "tests/acceptance/test_action_substitute.py::test_unknown_action_type_is_a_validation_error",
+    "tests/unit/cart/test_stock_and_guards.py::test_f1_substitution_delta_matches_the_cart_as_shown",
+    "tests/unit/cart/test_stock_and_guards.py::test_no_substitution_when_nothing_eligible_is_in_stock",
+    "tests/unit/cart/test_stock_and_guards.py::test_switch_variant_cannot_bring_in_a_blocked_item",
+    "tests/unit/cart/test_stock_and_guards.py::test_t011_cart_part_jain_garlic_bread_refused_and_no_garlic",
+    "tests/unit/cart/test_stock_and_guards.py::test_t012_cart_part_pure_veg_chicken_refused",
+    "tests/unit/cart/test_stock_and_guards.py::test_t017_cart_part_filter_off_keeps_and_flags",
+    "tests/unit/cart/test_stock_and_guards.py::test_t017_cart_part_filter_on_never_carts_an_out_of_stock_variant",
+    "tests/unit/cart/test_stock_and_guards.py::test_t059_substitution_changes_the_cart_only_on_accept"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-34",
+   "mapped": [
+    "T-103",
+    "T-109"
+   ],
+   "tests": [
+    "tests/acceptance/test_security_p0.py::test_t103_image_bytes_are_never_written_to_disk",
+    "tests/acceptance/test_security_p0.py::test_t104_crafted_urls_are_rejected_with_no_fetch",
+    "tests/unit/test_trace.py::test_appends_one_line_per_event",
+    "tests/unit/test_trace.py::test_event_names_match_data_model_section_11",
+    "tests/unit/test_trace.py::test_line_shape",
+    "tests/unit/test_trace.py::test_t109_long_text_truncated_to_120",
+    "tests/unit/test_trace.py::test_t109_no_image_data_written",
+    "tests/unit/test_trace.py::test_unknown_event_rejected"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-35",
+   "mapped": [
+    "E5"
+   ],
+   "tests": [],
+   "level": null,
+   "evidence": [
+    "E5"
+   ],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-36",
+   "mapped": [
+    "E6",
+    "T-034"
+   ],
+   "tests": [
+    "tests/unit/engine/test_scoring.py::test_dish_features_respond_to_history_lever",
+    "tests/unit/engine/test_scoring.py::test_effective_weights_normalised_and_all_zero_restores_defaults",
+    "tests/unit/engine/test_scoring.py::test_t030_normalisation",
+    "tests/unit/engine/test_scoring.py::test_t031_final_is_sum_of_contributions",
+    "tests/unit/engine/test_scoring.py::test_t032_ties_break_by_s_p_then_id_reproducibly",
+    "tests/unit/engine/test_scoring.py::test_t033_each_weight_reorders_towards_its_component",
+    "tests/unit/engine/test_scoring.py::test_t034_pool_wider_than_display_shows_exactly_3",
+    "tests/unit/engine/test_scoring.py::test_t037_frozen_context_is_reproducible",
+    "tests/unit/engine/test_scoring.py::test_t038_gender_boost_capped_and_never_filters",
+    "tests/unit/engine/test_scoring.py::test_trend_slider_scales_effect"
+   ],
+   "level": "function",
+   "evidence": [
+    "E6"
+   ],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-37",
+   "mapped": [
+    "T-021"
+   ],
+   "tests": [
+    "tests/unit/retrieval/test_dishes.py::test_levers_reorder_the_shown_set",
+    "tests/unit/retrieval/test_dishes.py::test_lexical_mode_never_queries_vector",
+    "tests/unit/retrieval/test_dishes.py::test_mood_query_gives_the_configured_pool",
+    "tests/unit/retrieval/test_dishes.py::test_ollama_embedder_batches_large_inputs",
+    "tests/unit/retrieval/test_dishes.py::test_ollama_embedder_calls_embed_api",
+    "tests/unit/retrieval/test_dishes.py::test_t021_vector_candidate_breaking_persona_removed_and_traced",
+    "tests/unit/retrieval/test_dishes.py::test_t040_rrf_matches_hand_calculation",
+    "tests/unit/retrieval/test_dishes.py::test_t042_vector_down_falls_back_to_lexical",
+    "tests/unit/retrieval/test_dishes.py::test_t044_index_rebuilds_on_catalogue_or_embedder_change",
+    "tests/unit/retrieval/test_dishes.py::test_t044_interrupted_build_is_rebuilt",
+    "tests/unit/retrieval/test_dishes.py::test_t045_embedding_texts_have_no_price_or_stock",
+    "tests/unit/retrieval/test_dishes.py::test_t046_inspector_lists_retrieval_and_scores",
+    "tests/unit/retrieval/test_dishes.py::test_vector_returns_ids_only"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-38",
+   "mapped": [
+    "T-035"
+   ],
+   "tests": [
+    "tests/unit/engine/test_variants.py::test_choice_carries_reason_and_alternatives",
+    "tests/unit/engine/test_variants.py::test_resolution_prefers_plain_products",
+    "tests/unit/engine/test_variants.py::test_t035_gourmet_slider_changes_choice_via_value_term",
+    "tests/unit/engine/test_variants.py::test_t035_organic_slider_changes_choice",
+    "tests/unit/engine/test_variants.py::test_t036_named_attribute_restricts_eligible_set",
+    "tests/unit/engine/test_variants.py::test_variant_choice_respects_persona"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-39",
+   "mapped": [
+    "T-036"
+   ],
+   "tests": [
+    "tests/unit/engine/test_variants.py::test_choice_carries_reason_and_alternatives",
+    "tests/unit/engine/test_variants.py::test_resolution_prefers_plain_products",
+    "tests/unit/engine/test_variants.py::test_t035_gourmet_slider_changes_choice_via_value_term",
+    "tests/unit/engine/test_variants.py::test_t035_organic_slider_changes_choice",
+    "tests/unit/engine/test_variants.py::test_t036_named_attribute_restricts_eligible_set",
+    "tests/unit/engine/test_variants.py::test_variant_choice_respects_persona"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-40",
+   "mapped": [
+    "T-042"
+   ],
+   "tests": [
+    "tests/unit/retrieval/test_dishes.py::test_levers_reorder_the_shown_set",
+    "tests/unit/retrieval/test_dishes.py::test_lexical_mode_never_queries_vector",
+    "tests/unit/retrieval/test_dishes.py::test_mood_query_gives_the_configured_pool",
+    "tests/unit/retrieval/test_dishes.py::test_ollama_embedder_batches_large_inputs",
+    "tests/unit/retrieval/test_dishes.py::test_ollama_embedder_calls_embed_api",
+    "tests/unit/retrieval/test_dishes.py::test_t021_vector_candidate_breaking_persona_removed_and_traced",
+    "tests/unit/retrieval/test_dishes.py::test_t040_rrf_matches_hand_calculation",
+    "tests/unit/retrieval/test_dishes.py::test_t042_vector_down_falls_back_to_lexical",
+    "tests/unit/retrieval/test_dishes.py::test_t044_index_rebuilds_on_catalogue_or_embedder_change",
+    "tests/unit/retrieval/test_dishes.py::test_t044_interrupted_build_is_rebuilt",
+    "tests/unit/retrieval/test_dishes.py::test_t045_embedding_texts_have_no_price_or_stock",
+    "tests/unit/retrieval/test_dishes.py::test_t046_inspector_lists_retrieval_and_scores",
+    "tests/unit/retrieval/test_dishes.py::test_vector_returns_ids_only",
+    "tests/unit/retrieval/test_ingredients.py::test_plain_names_are_not_ambiguous",
+    "tests/unit/retrieval/test_ingredients.py::test_t041_regional_names_resolve",
+    "tests/unit/retrieval/test_ingredients.py::test_t043_ambiguous_name_asks_and_resolves_nothing",
+    "tests/unit/retrieval/test_ingredients.py::test_unknown_name",
+    "tests/unit/retrieval/test_ingredients.py::test_variant_lookup_ranks_named_variant_first"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-41",
+   "mapped": [
+    "T-046"
+   ],
+   "tests": [
+    "tests/acceptance/test_inspector_and_icons.py::test_cart_view_carries_category_icons_and_course",
+    "tests/acceptance/test_inspector_and_icons.py::test_inspector_is_empty_before_any_suggestion",
+    "tests/acceptance/test_inspector_and_icons.py::test_inspector_lists_the_pool_after_a_mood_suggestion",
+    "tests/unit/retrieval/test_dishes.py::test_levers_reorder_the_shown_set",
+    "tests/unit/retrieval/test_dishes.py::test_lexical_mode_never_queries_vector",
+    "tests/unit/retrieval/test_dishes.py::test_mood_query_gives_the_configured_pool",
+    "tests/unit/retrieval/test_dishes.py::test_ollama_embedder_batches_large_inputs",
+    "tests/unit/retrieval/test_dishes.py::test_ollama_embedder_calls_embed_api",
+    "tests/unit/retrieval/test_dishes.py::test_t021_vector_candidate_breaking_persona_removed_and_traced",
+    "tests/unit/retrieval/test_dishes.py::test_t040_rrf_matches_hand_calculation",
+    "tests/unit/retrieval/test_dishes.py::test_t042_vector_down_falls_back_to_lexical",
+    "tests/unit/retrieval/test_dishes.py::test_t044_index_rebuilds_on_catalogue_or_embedder_change",
+    "tests/unit/retrieval/test_dishes.py::test_t044_interrupted_build_is_rebuilt",
+    "tests/unit/retrieval/test_dishes.py::test_t045_embedding_texts_have_no_price_or_stock",
+    "tests/unit/retrieval/test_dishes.py::test_t046_inspector_lists_retrieval_and_scores",
+    "tests/unit/retrieval/test_dishes.py::test_vector_returns_ids_only"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-42",
+   "mapped": [
+    "T-035"
+   ],
+   "tests": [
+    "tests/unit/engine/test_variants.py::test_choice_carries_reason_and_alternatives",
+    "tests/unit/engine/test_variants.py::test_resolution_prefers_plain_products",
+    "tests/unit/engine/test_variants.py::test_t035_gourmet_slider_changes_choice_via_value_term",
+    "tests/unit/engine/test_variants.py::test_t035_organic_slider_changes_choice",
+    "tests/unit/engine/test_variants.py::test_t036_named_attribute_restricts_eligible_set",
+    "tests/unit/engine/test_variants.py::test_variant_choice_respects_persona"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-43",
+   "mapped": [
+    "T-049"
+   ],
+   "tests": [
+    "tests/acceptance/test_addon_flow.py::test_addon_never_breaks_the_persona",
+    "tests/acceptance/test_addon_flow.py::test_decline_changes_nothing",
+    "tests/acceptance/test_addon_flow.py::test_inspector_shows_the_addon_pool",
+    "tests/acceptance/test_addon_flow.py::test_mood_cart_offers_one_addon_and_nothing_is_added_without_a_tap",
+    "tests/acceptance/test_addon_flow.py::test_no_addon_after_a_swap",
+    "tests/acceptance/test_addon_flow.py::test_photo_cart_offers_an_addon",
+    "tests/acceptance/test_addon_flow.py::test_vector_store_down_still_offers_curated_addons",
+    "tests/acceptance/test_addon_flow.py::test_youtube_text_and_named_dish_carts_offer_an_addon",
+    "tests/unit/retrieval/test_addons.py::test_cart_dishes_excluded_from_add_ons",
+    "tests/unit/retrieval/test_addons.py::test_t047_weighted_rrf_hand_calculation",
+    "tests/unit/retrieval/test_addons.py::test_t048_course_rule_then_guardrails_after_fusion",
+    "tests/unit/retrieval/test_addons.py::test_t049_no_curated_pair_still_gets_vector_add_on",
+    "tests/unit/retrieval/test_addons.py::test_t049_vector_down_uses_curated_only"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-44",
+   "mapped": [
+    "T-048"
+   ],
+   "tests": [
+    "tests/acceptance/test_addon_flow.py::test_addon_never_breaks_the_persona",
+    "tests/acceptance/test_addon_flow.py::test_decline_changes_nothing",
+    "tests/acceptance/test_addon_flow.py::test_inspector_shows_the_addon_pool",
+    "tests/acceptance/test_addon_flow.py::test_mood_cart_offers_one_addon_and_nothing_is_added_without_a_tap",
+    "tests/acceptance/test_addon_flow.py::test_no_addon_after_a_swap",
+    "tests/acceptance/test_addon_flow.py::test_photo_cart_offers_an_addon",
+    "tests/acceptance/test_addon_flow.py::test_vector_store_down_still_offers_curated_addons",
+    "tests/acceptance/test_addon_flow.py::test_youtube_text_and_named_dish_carts_offer_an_addon",
+    "tests/unit/retrieval/test_addons.py::test_cart_dishes_excluded_from_add_ons",
+    "tests/unit/retrieval/test_addons.py::test_t047_weighted_rrf_hand_calculation",
+    "tests/unit/retrieval/test_addons.py::test_t048_course_rule_then_guardrails_after_fusion",
+    "tests/unit/retrieval/test_addons.py::test_t049_no_curated_pair_still_gets_vector_add_on",
+    "tests/unit/retrieval/test_addons.py::test_t049_vector_down_uses_curated_only"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  },
+  {
+   "kind": "ac",
+   "id": "AC-45",
+   "mapped": [
+    "T-049"
+   ],
+   "tests": [
+    "tests/acceptance/test_addon_flow.py::test_addon_never_breaks_the_persona",
+    "tests/acceptance/test_addon_flow.py::test_decline_changes_nothing",
+    "tests/acceptance/test_addon_flow.py::test_inspector_shows_the_addon_pool",
+    "tests/acceptance/test_addon_flow.py::test_mood_cart_offers_one_addon_and_nothing_is_added_without_a_tap",
+    "tests/acceptance/test_addon_flow.py::test_no_addon_after_a_swap",
+    "tests/acceptance/test_addon_flow.py::test_photo_cart_offers_an_addon",
+    "tests/acceptance/test_addon_flow.py::test_vector_store_down_still_offers_curated_addons",
+    "tests/acceptance/test_addon_flow.py::test_youtube_text_and_named_dish_carts_offer_an_addon",
+    "tests/unit/retrieval/test_addons.py::test_cart_dishes_excluded_from_add_ons",
+    "tests/unit/retrieval/test_addons.py::test_t047_weighted_rrf_hand_calculation",
+    "tests/unit/retrieval/test_addons.py::test_t048_course_rule_then_guardrails_after_fusion",
+    "tests/unit/retrieval/test_addons.py::test_t049_no_curated_pair_still_gets_vector_add_on",
+    "tests/unit/retrieval/test_addons.py::test_t049_vector_down_uses_curated_only"
+   ],
+   "level": "function",
+   "evidence": [],
+   "pass": true
+  }
+ ],
+ "status": "PASS",
+ "notes": "POST-HOC rerun: C68: headline points to the c68 reruns; tests after the catalogue fix; first result kept in eval/results/. "
+}

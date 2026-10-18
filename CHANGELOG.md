@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- E14 rerun after C68 (`eval/results/post-hoc/c68/E14-traceability.json`): PASS. Spot-check report, handover and register updated.
 - C68 post-hoc reruns (`eval/results/post-hoc/c68/`) after the catalogue fix and Jain fungi rule: E5, E7 (both arms), E8, E9, E12 and E13 PASS, E6 FAIL as before (accepted, C57; no critical); every status unchanged; `eval/headline.yaml` now points to them.
 - Validators V15 to V17 (C68, Data Model v0.6), each with a canary: V15 a variant named after an ingredient lists it first unless its base is a `carrier` (89 failures before the fix); V16 names agree with tags and units (9); V17 bulk packs at most ₹20 a piece (1). Seed markers `!term` (replace the base term) and `|carrier`. Fixed by rule: 34 variants now list their own main ingredient first (30 replacements and 4 sugar-free items; dark chocolate uses cocoa), 35 bases marked carrier, "Egg alternatives" renamed "Speciality eggs", the stock cube sold by piece, garbage bags at ₹1.3 a piece, baby corn sold by weight (hand fix). 39 variant IDs change (none referenced); V1 to V17 PASS on both sets; Chroma index rebuilt.
 - Jain excludes fungi (C68, Data Model v0.6 §9): lexicon flag `fungi` on mushroom and truffle oil, `NOT_JAIN` gains it, and the independent E7 checker gains a `fungi` keyword class; 6 variants (4 mushrooms, mushroom soup mix, truffle oil) are no longer `jain_ok`, so Grilled Vegetables (D111) is not offered to Jain personas.
