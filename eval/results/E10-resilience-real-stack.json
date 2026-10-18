@@ -1,0 +1,3181 @@
+{
+ "id": "E10",
+ "system": "resilience-real-stack",
+ "dataset": {
+  "name": "faults_v1.json",
+  "sha256": "ef5aeebbc382abe7df0c38596863dd84ebcd9aefcc5f7bec5c1ebf7f656fe1a5",
+  "split": "all"
+ },
+ "environment": {
+  "commit": "dae01e2",
+  "dirty": false,
+  "date": "2026-10-18T15:50:48+00:00",
+  "python": "3.12.15",
+  "machine": "arm64",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "packages": {
+   "chromadb": "1.5.9",
+   "rank-bm25": "0.2.2",
+   "pydantic": "2.14.1",
+   "httpx": "0.28.1",
+   "fastapi": "0.143.3"
+  },
+  "ollama_ps": "NAME               ID              SIZE      PROCESSOR    CONTEXT    RUNNER      UNTIL              \nllama3.2:3b        a80c4f17acd5    2.6 GB    100% GPU     4096       llamacpp    4 minutes from now    \nllama-guard3:1b    494147e06bf9    1.7 GB    100% GPU     16384      llamacpp    4 minutes from now    \n",
+  "llm_model": "llama3.2:3b",
+  "guard_model": "llama-guard3:1b",
+  "vision_model_local": "qwen3-vl:4b-instruct"
+ },
+ "metrics": {
+  "scenarios": 26,
+  "scenarios_passed": 26,
+  "runs_per_scenario": 3,
+  "per_scenario": {
+   "F01": "PASS",
+   "F02": "PASS",
+   "F03": "PASS",
+   "F04": "PASS",
+   "F05": "PASS",
+   "F06": "PASS",
+   "F07": "PASS",
+   "F08": "PASS",
+   "F09": "PASS",
+   "F10": "PASS",
+   "F11": "PASS",
+   "F12": "PASS",
+   "F13": "PASS",
+   "F14": "PASS",
+   "F15": "PASS",
+   "F16": "PASS",
+   "F17": "PASS",
+   "F18": "PASS",
+   "F19": "PASS",
+   "F20": "PASS",
+   "F21": "PASS",
+   "F22": "PASS",
+   "F23": "PASS",
+   "F24": "PASS",
+   "F25": "PASS",
+   "F26": "PASS"
+  },
+  "runs_failed": 0
+ },
+ "critical_failures": [],
+ "per_example": [
+  {
+   "id": "F01",
+   "run": 1,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-PHOTO-SAMPLES"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [
+    "vision"
+   ],
+   "trace_fallbacks": [
+    "vision"
+   ],
+   "attempts": {
+    "vision": 2
+   },
+   "llm_outcomes": [
+    [
+     "vision",
+     "error"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F01",
+   "run": 2,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-PHOTO-SAMPLES"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [
+    "vision"
+   ],
+   "trace_fallbacks": [
+    "vision"
+   ],
+   "attempts": {
+    "vision": 2
+   },
+   "llm_outcomes": [
+    [
+     "vision",
+     "error"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F01",
+   "run": 3,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-PHOTO-SAMPLES"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [
+    "vision"
+   ],
+   "trace_fallbacks": [
+    "vision"
+   ],
+   "attempts": {
+    "vision": 2
+   },
+   "llm_outcomes": [
+    [
+     "vision",
+     "error"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F02",
+   "run": 1,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-PHOTO-SAMPLES"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [
+    "vision"
+   ],
+   "trace_fallbacks": [
+    "vision"
+   ],
+   "attempts": {
+    "vision": 2
+   },
+   "llm_outcomes": [
+    [
+     "vision",
+     "error"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F02",
+   "run": 2,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-PHOTO-SAMPLES"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [
+    "vision"
+   ],
+   "trace_fallbacks": [
+    "vision"
+   ],
+   "attempts": {
+    "vision": 2
+   },
+   "llm_outcomes": [
+    [
+     "vision",
+     "error"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F02",
+   "run": 3,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-PHOTO-SAMPLES"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [
+    "vision"
+   ],
+   "trace_fallbacks": [
+    "vision"
+   ],
+   "attempts": {
+    "vision": 2
+   },
+   "llm_outcomes": [
+    [
+     "vision",
+     "error"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F03",
+   "run": 1,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-PHOTO-SAMPLES"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [
+    "vision"
+   ],
+   "trace_fallbacks": [
+    "vision"
+   ],
+   "attempts": {
+    "vision": 1
+   },
+   "llm_outcomes": [
+    [
+     "vision",
+     "timeout"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F03",
+   "run": 2,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-PHOTO-SAMPLES"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [
+    "vision"
+   ],
+   "trace_fallbacks": [
+    "vision"
+   ],
+   "attempts": {
+    "vision": 1
+   },
+   "llm_outcomes": [
+    [
+     "vision",
+     "timeout"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F03",
+   "run": 3,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-PHOTO-SAMPLES"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [
+    "vision"
+   ],
+   "trace_fallbacks": [
+    "vision"
+   ],
+   "attempts": {
+    "vision": 1
+   },
+   "llm_outcomes": [
+    [
+     "vision",
+     "timeout"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F04",
+   "run": 1,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-PHOTO-SAMPLES"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [
+    "vision"
+   ],
+   "trace_fallbacks": [
+    "vision"
+   ],
+   "attempts": {
+    "vision": 1
+   },
+   "llm_outcomes": [
+    [
+     "vision",
+     "error"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F04",
+   "run": 2,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-PHOTO-SAMPLES"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [
+    "vision"
+   ],
+   "trace_fallbacks": [
+    "vision"
+   ],
+   "attempts": {
+    "vision": 1
+   },
+   "llm_outcomes": [
+    [
+     "vision",
+     "error"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F04",
+   "run": 3,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-PHOTO-SAMPLES"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [
+    "vision"
+   ],
+   "trace_fallbacks": [
+    "vision"
+   ],
+   "attempts": {
+    "vision": 1
+   },
+   "llm_outcomes": [
+    [
+     "vision",
+     "error"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F05",
+   "run": 1,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-PHOTO-SAMPLES"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [
+    "vision"
+   ],
+   "trace_fallbacks": [
+    "vision"
+   ],
+   "attempts": {
+    "vision": 1
+   },
+   "llm_outcomes": [
+    [
+     "vision",
+     "timeout"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F05",
+   "run": 2,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-PHOTO-SAMPLES"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [
+    "vision"
+   ],
+   "trace_fallbacks": [
+    "vision"
+   ],
+   "attempts": {
+    "vision": 1
+   },
+   "llm_outcomes": [
+    [
+     "vision",
+     "timeout"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F05",
+   "run": 3,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-PHOTO-SAMPLES"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [
+    "vision"
+   ],
+   "trace_fallbacks": [
+    "vision"
+   ],
+   "attempts": {
+    "vision": 1
+   },
+   "llm_outcomes": [
+    [
+     "vision",
+     "timeout"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F06",
+   "run": 1,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-PHOTO-SAMPLES"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [
+    "vision"
+   ],
+   "trace_fallbacks": [
+    "vision"
+   ],
+   "attempts": {
+    "vision": 1
+   },
+   "llm_outcomes": [
+    [
+     "vision",
+     "invalid"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F06",
+   "run": 2,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-PHOTO-SAMPLES"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [
+    "vision"
+   ],
+   "trace_fallbacks": [
+    "vision"
+   ],
+   "attempts": {
+    "vision": 1
+   },
+   "llm_outcomes": [
+    [
+     "vision",
+     "invalid"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F06",
+   "run": 3,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-PHOTO-SAMPLES"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [
+    "vision"
+   ],
+   "trace_fallbacks": [
+    "vision"
+   ],
+   "attempts": {
+    "vision": 1
+   },
+   "llm_outcomes": [
+    [
+     "vision",
+     "invalid"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F07",
+   "run": 1,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-EDIT-UNCLEAR",
+    "MSG-ADDON"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 9,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 2,
+    "transcript_live": 1,
+    "extract": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "extract",
+     "ok"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F07",
+   "run": 2,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-EDIT-UNCLEAR",
+    "MSG-ADDON"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 9,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 2,
+    "transcript_live": 1,
+    "extract": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "extract",
+     "ok"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F07",
+   "run": 3,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-YT-FIXTURE",
+    "MSG-YT-OK",
+    "MSG-EDIT-UNCLEAR",
+    "MSG-ADDON"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 9,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 2,
+    "transcript_live": 1,
+    "extract": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "extract",
+     "ok"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F08",
+   "run": 1,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-YT-TITLE",
+    "MSG-TXT-STORED",
+    "MSG-ADDON"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 10,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 2,
+    "transcript_live": 1,
+    "extract": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "extract",
+     "ok"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F08",
+   "run": 2,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-YT-TITLE",
+    "MSG-TXT-STORED",
+    "MSG-ADDON"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 10,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 2,
+    "transcript_live": 1,
+    "extract": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "extract",
+     "ok"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F08",
+   "run": 3,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-YT-TITLE",
+    "MSG-TXT-STORED",
+    "MSG-ADDON"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 10,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 2,
+    "transcript_live": 1,
+    "extract": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "extract",
+     "ok"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F09",
+   "run": 1,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-YT-PASTE"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "transcript_live": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F09",
+   "run": 2,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-YT-PASTE"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "transcript_live": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F09",
+   "run": 3,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-YT-PASTE"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "transcript_live": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F10",
+   "run": 1,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-MOOD-ADD"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 4,
+   "fallbacks_used": [
+    "vector"
+   ],
+   "trace_fallbacks": [
+    "vector_index",
+    "vector_store",
+    "vector_store"
+   ],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "reason": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "reason",
+     "ok"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F10",
+   "run": 2,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-MOOD-ADD"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 4,
+   "fallbacks_used": [
+    "vector"
+   ],
+   "trace_fallbacks": [
+    "vector_index",
+    "vector_store",
+    "vector_store"
+   ],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "reason": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "reason",
+     "ok"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F10",
+   "run": 3,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-MOOD-ADD"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 4,
+   "fallbacks_used": [
+    "vector"
+   ],
+   "trace_fallbacks": [
+    "vector_index",
+    "vector_store",
+    "vector_store"
+   ],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "reason": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "reason",
+     "ok"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F11",
+   "run": 1,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-MOOD-ADD"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 4,
+   "fallbacks_used": [
+    "vector"
+   ],
+   "trace_fallbacks": [
+    "vector_store",
+    "vector_store"
+   ],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "reason": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "reason",
+     "ok"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F11",
+   "run": 2,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-MOOD-ADD"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 4,
+   "fallbacks_used": [
+    "vector"
+   ],
+   "trace_fallbacks": [
+    "vector_store",
+    "vector_store"
+   ],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "reason": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "reason",
+     "ok"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F11",
+   "run": 3,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-MOOD-ADD"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 4,
+   "fallbacks_used": [
+    "vector"
+   ],
+   "trace_fallbacks": [
+    "vector_store",
+    "vector_store"
+   ],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "reason": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "reason",
+     "ok"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F12",
+   "run": 1,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-REPHRASE"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 2
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "invalid"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F12",
+   "run": 2,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-REPHRASE"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 2
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "invalid"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F12",
+   "run": 3,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-REPHRASE"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 2
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "invalid"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F13",
+   "run": 1,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-REPHRASE"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "extract": 2
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "extract",
+     "invalid"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F13",
+   "run": 2,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-REPHRASE"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "extract": 2
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "extract",
+     "invalid"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F13",
+   "run": 3,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-REPHRASE"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "extract": 2
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "extract",
+     "invalid"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F14",
+   "run": 1,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-YT-PASTE"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 2,
+    "transcript_live": 1,
+    "extract": 2
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "extract",
+     "invalid"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F14",
+   "run": 2,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-YT-PASTE"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 2,
+    "transcript_live": 1,
+    "extract": 2
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "extract",
+     "invalid"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F14",
+   "run": 3,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-YT-PASTE"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 2,
+    "transcript_live": 1,
+    "extract": 2
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "extract",
+     "invalid"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F15",
+   "run": 1,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 4,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "reason": 2
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "reason",
+     "invalid"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F15",
+   "run": 2,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 4,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "reason": 2
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "reason",
+     "invalid"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F15",
+   "run": 3,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 4,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "reason": 2
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "reason",
+     "invalid"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F16",
+   "run": 1,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 4,
+   "fallbacks_used": [
+    "guard_classifier"
+   ],
+   "trace_fallbacks": [
+    "guard_classifier"
+   ],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "reason": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "invalid"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "reason",
+     "ok"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F16",
+   "run": 2,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 4,
+   "fallbacks_used": [
+    "guard_classifier"
+   ],
+   "trace_fallbacks": [
+    "guard_classifier"
+   ],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "reason": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "invalid"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "reason",
+     "ok"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F16",
+   "run": 3,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 4,
+   "fallbacks_used": [
+    "guard_classifier"
+   ],
+   "trace_fallbacks": [
+    "guard_classifier"
+   ],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "reason": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "invalid"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "reason",
+     "ok"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F17",
+   "run": 1,
+   "layer": "api",
+   "status_code": 503,
+   "error_code": "DEPENDENCY_UNAVAILABLE",
+   "templates": [
+    "MSG-SERVER"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "timeout"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F17",
+   "run": 2,
+   "layer": "api",
+   "status_code": 503,
+   "error_code": "DEPENDENCY_UNAVAILABLE",
+   "templates": [
+    "MSG-SERVER"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "timeout"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F17",
+   "run": 3,
+   "layer": "api",
+   "status_code": 503,
+   "error_code": "DEPENDENCY_UNAVAILABLE",
+   "templates": [
+    "MSG-SERVER"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "timeout"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F18",
+   "run": 1,
+   "layer": "api",
+   "status_code": 503,
+   "error_code": "DEPENDENCY_UNAVAILABLE",
+   "templates": [
+    "MSG-SERVER"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "extract": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "extract",
+     "timeout"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F18",
+   "run": 2,
+   "layer": "api",
+   "status_code": 503,
+   "error_code": "DEPENDENCY_UNAVAILABLE",
+   "templates": [
+    "MSG-SERVER"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "extract": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "extract",
+     "timeout"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F18",
+   "run": 3,
+   "layer": "api",
+   "status_code": 503,
+   "error_code": "DEPENDENCY_UNAVAILABLE",
+   "templates": [
+    "MSG-SERVER"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "extract": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "extract",
+     "timeout"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F19",
+   "run": 1,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-YT-PASTE"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 2,
+    "transcript_live": 1,
+    "extract": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "extract",
+     "timeout"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F19",
+   "run": 2,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-YT-PASTE"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 2,
+    "transcript_live": 1,
+    "extract": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "extract",
+     "timeout"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F19",
+   "run": 3,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-YT-PASTE"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 2,
+    "transcript_live": 1,
+    "extract": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "extract",
+     "timeout"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F20",
+   "run": 1,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 4,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "reason": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "reason",
+     "timeout"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F20",
+   "run": 2,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 4,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "reason": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "reason",
+     "timeout"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F20",
+   "run": 3,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 4,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "reason": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "reason",
+     "timeout"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F21",
+   "run": 1,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 4,
+   "fallbacks_used": [
+    "guard_classifier"
+   ],
+   "trace_fallbacks": [
+    "guard_classifier"
+   ],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "reason": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "timeout"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "reason",
+     "ok"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F21",
+   "run": 2,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 4,
+   "fallbacks_used": [
+    "guard_classifier"
+   ],
+   "trace_fallbacks": [
+    "guard_classifier"
+   ],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "reason": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "timeout"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "reason",
+     "ok"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F21",
+   "run": 3,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 4,
+   "fallbacks_used": [
+    "guard_classifier"
+   ],
+   "trace_fallbacks": [
+    "guard_classifier"
+   ],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "reason": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "timeout"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "reason",
+     "ok"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F22",
+   "run": 1,
+   "layer": "api",
+   "status_code": 503,
+   "error_code": "DEPENDENCY_UNAVAILABLE",
+   "templates": [
+    "MSG-SERVER"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "timeout"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F22",
+   "run": 2,
+   "layer": "api",
+   "status_code": 503,
+   "error_code": "DEPENDENCY_UNAVAILABLE",
+   "templates": [
+    "MSG-SERVER"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "timeout"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F22",
+   "run": 3,
+   "layer": "api",
+   "status_code": 503,
+   "error_code": "DEPENDENCY_UNAVAILABLE",
+   "templates": [
+    "MSG-SERVER"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "timeout"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F23",
+   "run": 1,
+   "layer": "api",
+   "status_code": 503,
+   "error_code": "DEPENDENCY_UNAVAILABLE",
+   "templates": [
+    "MSG-SERVER"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [
+    "guard_classifier"
+   ],
+   "attempts": {
+    "guard": 1,
+    "intent": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "error"
+    ],
+    [
+     "intent",
+     "error"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F23",
+   "run": 2,
+   "layer": "api",
+   "status_code": 503,
+   "error_code": "DEPENDENCY_UNAVAILABLE",
+   "templates": [
+    "MSG-SERVER"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [
+    "guard_classifier"
+   ],
+   "attempts": {
+    "guard": 1,
+    "intent": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "error"
+    ],
+    [
+     "intent",
+     "error"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F23",
+   "run": 3,
+   "layer": "api",
+   "status_code": 503,
+   "error_code": "DEPENDENCY_UNAVAILABLE",
+   "templates": [
+    "MSG-SERVER"
+   ],
+   "cart_changed": false,
+   "cart_lines_before": 0,
+   "cart_lines_after": 0,
+   "fallbacks_used": [],
+   "trace_fallbacks": [
+    "guard_classifier"
+   ],
+   "attempts": {
+    "guard": 1,
+    "intent": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "error"
+    ],
+    [
+     "intent",
+     "error"
+    ]
+   ],
+   "busy": null,
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F24",
+   "run": 1,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 4,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "reason": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "reason",
+     "ok"
+    ]
+   ],
+   "busy": {
+    "status": 409,
+    "code": "SESSION_BUSY",
+    "state_unchanged": true
+   },
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F24",
+   "run": 2,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 4,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "reason": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "reason",
+     "ok"
+    ]
+   ],
+   "busy": {
+    "status": 409,
+    "code": "SESSION_BUSY",
+    "state_unchanged": true
+   },
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F24",
+   "run": 3,
+   "layer": "api",
+   "status_code": 200,
+   "error_code": null,
+   "templates": [
+    "MSG-MOOD-ADD",
+    "MSG-ADDON"
+   ],
+   "cart_changed": true,
+   "cart_lines_before": 0,
+   "cart_lines_after": 4,
+   "fallbacks_used": [],
+   "trace_fallbacks": [],
+   "attempts": {
+    "guard": 1,
+    "intent": 1,
+    "reason": 1
+   },
+   "llm_outcomes": [
+    [
+     "guard",
+     "ok"
+    ],
+    [
+     "intent",
+     "ok"
+    ],
+    [
+     "reason",
+     "ok"
+    ]
+   ],
+   "busy": {
+    "status": 409,
+    "code": "SESSION_BUSY",
+    "state_unchanged": true
+   },
+   "follow_up": {
+    "status": 200,
+    "templates": [
+     "MSG-MOOD-ADD",
+     "MSG-ADDON"
+    ]
+   },
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F25",
+   "run": 1,
+   "layer": "browser",
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F25",
+   "run": 2,
+   "layer": "browser",
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F25",
+   "run": 3,
+   "layer": "browser",
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F26",
+   "run": 1,
+   "layer": "browser",
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F26",
+   "run": 2,
+   "layer": "browser",
+   "failures": [],
+   "pass": true
+  },
+  {
+   "id": "F26",
+   "run": 3,
+   "layer": "browser",
+   "failures": [],
+   "pass": true
+  }
+ ],
+ "status": "PASS",
+ "notes": "real llama3.2:3b, llama-guard3:1b and qwen3-vl:4b-instruct for unfaulted calls; faults injected at the transport, transcript chain and vector store; Gemini never contacted (placeholder key); F25 and F26 in Chromium with the fake model; 3 runs, a scenario passes only if all runs pass"
+}

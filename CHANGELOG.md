@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- E10 resilience result (`eval/results/E10-resilience-real-stack.json`): **PASS**, 26 of 26 pre-registered scenarios, every one in all 3 runs; no crash, no false success, attempt counts as C62 and C66 state.
 - E10 resilience harness: `backend.evaluation.resilience` (request kinds, `FaultProxy` that forwards only to local Ollama, per-run checks; unit-tested first), `scripts/benchmark/resilience.py` (26 pre-registered scenarios, 3 runs, in-process with the real models) and `resilience_ui.py` (F25, F26 in Chromium on free ports).
 - `eval/datasets/faults_v1.json` (E10, C63): 26 fault scenarios with injection methods, expected fallback IDs, attempt counts and checks, hashed in `MANIFEST.json` before the harness was written or run.
 - Agent Design v0.5 (C66, owner decision): the A4 and A6 retry columns now match the code; Evaluation Plan v0.6 §4.16 retry bullet reworded to match.
