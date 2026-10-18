@@ -26,6 +26,21 @@ Run 2026-10-18 on the target laptop (Apple M5, 16 GB), in-process, against the E
 - **E13.** The four lines say "healthy" where the dish carries the `healthy` mood tag, which the facts give the model. C50 lists "healthy" as a claim word, so this is a critical failure as pre-registered; whether an echoed catalogue tag should count is an owner decision.
 - **E9.** Misses are mostly staples the model did not extract (salt, black pepper, oil) and one oil variant family (olive for sunflower); the multi-dish video C04 loses 6 families.
 
+## Post-hoc reruns after C53 (2026-10-18, commit `c53cfb2`)
+Owner decisions C53: A2 dish premium rescaled across dishes, B2 `DISH_POOL` 25 and `ADDON_POOL` 12, C2 β0 0.20, plus fix F1 (substitution price change against the cart as shown). Datasets, harnesses (except the E12 fix below) and pass rules unchanged; first results kept. Files: `eval/results/post-hoc/c53/`.
+
+| Eval | Before C53 | After C53 (post-hoc) |
+|---|---|---|
+| E12 variant scoring | FAIL at 0.30 | **PASS at 0.20** (organic 5/6, gourmet 6/6, price 4/6, no override) |
+| E6 lever sensitivity | FAIL, critical (gourmet RDI 0) | **FAIL, no critical**. Gourmet 0.07. Pass: diet 0.40, faith 0.74, specialised 0.93, add-on cap 0.73, history bakery 0.39, dairy 0.37, kebabs 0.33. Fail: weights pairing 0.22, history 0.10, trend 0.32, gourmet 0.27; history desserts 0.10, salads 0.13; trends weekend 0.13, cooling 0.05 (was 0.19). INCONCLUSIVE: organic, stock filter (0.42, n = 4) |
+| E7 adversarial | PASS (after the allocation fix) | **PASS**, 0 violations |
+| E7 real model | PASS | **PASS**, 0 violations in 24,730 checks |
+| E8 integrity | PASS | **PASS**, 0 mismatches |
+
+E12 harness error, disclosed: the first C53 E12 rerun hard-coded 0.30 as the shipped β0, so its FAIL described 0.30 again. That file is kept as `E12-variant-sweep-harness-error.json`; the script now reads `VALUE_WEIGHT` from settings and the corrected file is `E12-variant-sweep.json`.
+
+As expected in C53, the soft levers still mostly sit below 0.33; the cooling-trend slider got weaker with the wider pool. E6 remains FAIL and is reported as such.
+
 ## Integrity notes
 - Pre-registration: datasets committed in `92374d8` before any run; definitions in Evaluation Plan v0.3 (`6c1d115`).
 - Seen before the scored run (disclosed): E12 and E6 smoke results (deterministic; the E6 smoke used dev rows only); E9 smoke used rows C01 to C03, which are also scored (no split). No harness, prompt, rule or setting was changed after any smoke result.

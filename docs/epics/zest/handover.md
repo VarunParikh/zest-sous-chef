@@ -81,7 +81,8 @@ Work in plan mode for each block.
 - **Interim reply:** cart edits by chat ("remove the oil"), staples answers, variant requests and cooking questions still reply MSG-UNSUPPORTED (FR-78 is a Should, first in the cut list).
 - **US-27** (post-order pairing, a Should) is not built.
 - **Block 2.6 done (2026-10-18), see `verify/benchmarks/block26.md`:** E8 PASS; E7 PASS (adversarial after the allocation fix `77f99ca`, post-hoc; real arm); E9 PASS; E12 FAIL at β0 0.30 (0.15 passes); E6 FAIL (gourmet inert; most soft levers below 0.33); E4 rerun FAIL 11/13 (G10 passes since S6 is ignored); E2 FAIL 22/30; E13 FAIL ("healthy" claim word in 4 shown lines).
-- **Owner decisions pending (do not tune before them):** E6 gourmet scaling and soft-lever strength (pool size, ADR-004); E12 β0 0.15 (ADR-008); E4 S6 handling for G10-type text; E2 intent prompt (dev-split work only); E13 whether an echoed `healthy` tag is a claim. Any change is rerun post-hoc with the first results kept. Owner spot check of 20 reason lines still owed.
+- **C53 done (post-hoc, `eval/results/post-hoc/c53/`):** dish premium rescaled, `DISH_POOL` 25, `ADDON_POOL` 12, β0 0.20, F1 substitution delta. E12 PASS; E6 still FAIL but no critical (most soft levers under 0.33; cooling trend 0.05); E7 and E8 PASS.
+- **Owner decisions pending (do not tune before them):** E6 remaining soft-lever gap (accept and report, or a further change); E4 S6 handling for G10-type text; E2 intent prompt (dev-split work only); E13 whether an echoed `healthy` tag is a claim. Any change is rerun post-hoc with the first results kept. Owner spot check of 20 reason lines still owed.
 - **NOT RUN:**
   - evaluations E10, E11, E14
   - V7 stock scenarios (no stock_scenarios.json)
