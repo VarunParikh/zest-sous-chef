@@ -18,7 +18,8 @@ The screen is split in two. On the left are **recommendation levers**: weights, 
 
 This is a prototype: a working, documented, local demo with its evidence. It runs entirely on one Mac with local models;
 
-###Watch the video ad for Zest, to know what is the product vision
+**###Watch the video ad for Zest, to know the product vision**
+
 [![Watch the video ad for Zest, to know what is the product vision](https://img.youtube.com/vi/Pp7ahW03ne8/hqdefault.jpg)](https://www.youtube.com/watch?v=Pp7ahW03ne8)
 
 ## Reviewer's map
