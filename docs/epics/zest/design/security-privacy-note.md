@@ -1,6 +1,6 @@
 # Security and Privacy Note: Zest AI Sous-Chef
 
-Status: APPROVED v0.2 (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Method: design-stage review (`security-privacy-reviewer` procedure) of PRD v0.3, Architecture v0.1, Data Model v0.1, API Spec v0.1, Agent Design v0.1
+Status: **DRAFT (amended) v0.3 (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback); awaits owner re-approval (Approval Register Rule 2). ** v0.2 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Method: design-stage review (`security-privacy-reviewer` procedure) of PRD v0.3, Architecture v0.1, Data Model v0.1, API Spec v0.1, Agent Design v0.1
 This note supplements, and does not replace, a specialist security or compliance review. No code exists yet, so findings are tied to documented data flows and design gaps. Nothing here is a statement that the system is secure or compliant.
 
 ## 1. Scope and assumptions
@@ -69,7 +69,7 @@ Mapping reference: OWASP Top 10 for LLM Applications (verify the current list an
 |---|---|---|---|---|---|
 | Lever settings | Browser form | Personalise recommendations | Browser, backend (snapshot) | In memory only | Lost on refresh or restart |
 | Chat text | Chat input | Understand requests | Backend, local model | In memory; truncated copies in local trace | Session end; trace file deleted by owner |
-| Uploaded photo | Upload (opt-in live analysis only) | Detect ingredients | Backend, then **Google Gemini** only when the opt-in demo is enabled; by default sample photos are used and nothing leaves the laptop | Never written to disk | Discarded after parsing |
+| Uploaded photo | Upload | Detect ingredients | Backend, then the **local** Ollama vision model by default (nothing leaves the laptop); **Google Gemini** only when the opt-in is enabled | Never written to disk | Discarded after parsing |
 | Cart and order | Actions | Mock checkout | Backend | In memory | Lost on refresh |
 | Trace log | System | Debugging, evaluation | Backend | Local file, git-ignored | Owner deletes; no images; text truncated |
 | API key | Owner | Gemini access | Backend | Local `.env` | Rotate on exposure |

@@ -1,8 +1,21 @@
-# ADR-003 (v2): Local-first photo ingredient detection with a pluggable provider; Gemini optional; labelled sample photos as last fallback
-- **Status:** Accepted, **amended 2026-10-17 (v2)** by owner decision: local-first, Gemini optional, pluggable. v1 (Gemini primary) is superseded; the original text is kept below under "v1 record". **Day-1 decision 2026-10-18 (owner approved): default `VISION_PROVIDER=samples`; photo accuracy NOT MET; Gemini 3.5 Flash-Lite available as an opt-in for demos only.**
+# ADR-003 (v3): Local `qwen3-vl:4b-instruct` by default; Gemini opt-in; labelled sample photos for the demo and as fallback
+- **Status:** **Draft (amended) v3, 2026-10-18 (owner decision, C37); awaits owner re-approval.** v2 was Accepted, **amended 2026-10-17 (v2)** by owner decision: local-first, Gemini optional, pluggable. v1 (Gemini primary) is superseded; the original text is kept below under "v1 record". **Day-1 decision 2026-10-18 (owner approved): default `VISION_PROVIDER=samples`; photo accuracy NOT MET; Gemini 3.5 Flash-Lite available as an opt-in for demos only.**
 - **Date:** 2026-10-17
 - **Decision owner:** VJP (product owner); drafted by Claude
 - **Authorisation:** Owner chose Gemini with user-uploaded photos and Constitution P9 was amended.
+
+## v3 amendment (2026-10-18, owner decision, C37)
+**Owner instruction (block 2.4 planning):** "Gemini as opt in and use qwen3-vl:4b as default. Make amendments to the ADR wherever needed. Photo samples will be used for the demo but use qwen3-vl:4b as default and Gemini as opt-in." Timeout: "Raise to 60 s".
+
+**Decision.** Default `VISION_PROVIDER=ollama` with `VISION_MODEL=qwen3-vl:4b-instruct` (installed, no download). Opt-in `VISION_PROVIDER=gemini` with `VISION_MODEL=gemini-3.5-flash-lite` (consent notice, FR-50). The bundled sample photos with pre-computed results stay available at all times: they are the demo path (the presenter picks a sample) and the fallback whenever the local model or Gemini fails, times out or returns nothing usable (MSG-PHOTO-SAMPLES). `TIMEOUT_VISION_S=60`.
+
+**This overrides the pre-registered selection rule by owner decision; it does not change the evidence.** `qwen3-vl:4b-instruct` FAILED E3: precision 108/159 = 0.68 (gate 0.80), recall 108/252 = 0.43 (gate 0.70), 6/33 failed calls (runaway JSON), median 7.1 s but p95 110 s (gate 20 s), and about 1.1 GB swapped with the text model resident. Photo accuracy stays reported as **NOT MET**; no claim of photo accuracy is made.
+
+**Consequences.**
+- Photos stay on the laptop by default (Constitution P9); the Gemini consent notice applies only when Gemini is opted into.
+- Detections are labelled as estimates and always confirmed with one tap before the cart changes (MSG-PHOTO-CONFIRM or MSG-PHOTO-LOW, C38), so a wrong detection costs a tap, not a wrong order.
+- Expect slow or failed analyses on the 16 GB laptop: a call may take up to 60 s (above the 10 to 20 s target; the chat stays locked with a progress bar), and memory pressure may evict the text model. Failures fall back to the samples.
+- Rollback: `VISION_PROVIDER=samples` in `.env`.
 
 ## v2 amendment (2026-10-17, owner decision)
 **Owner instruction:** "Local first with Gemini as optional. Can be pluggable." Accuracy bar "70-80%; 8 out of 10 ingredients must be identified". Latency "10 to 20 secs with a progress bar".

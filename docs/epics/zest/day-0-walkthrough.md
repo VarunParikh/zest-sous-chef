@@ -20,7 +20,7 @@ Audience: the owner, new to the terminal. Time: about 60 to 90 minutes. Commands
 | About 10 GB free disk space (local model, tools) | Apple menu, About This Mac, Storage |
 
 ## Step 2: Rotate the Gemini key (5 minutes)
-> Update 2026-10-18: Gemini is now an opt-in for photo demos only; the default photo path uses sample photos (ADR-003). A key is needed only for that demo.
+> Update 2026-10-18: Gemini is now an opt-in for photo demos only; the default photo path is the local `qwen3-vl:4b-instruct` with sample photos for the demo and as fallback (ADR-003 v3, 2026-10-18). A key is needed only for that demo.
 1. Open Google AI Studio, go to API keys.
 2. Delete the old key that was pasted in chat. Create a new one.
 3. Save the new key in a password manager or a private note. Do not paste it anywhere else yet.

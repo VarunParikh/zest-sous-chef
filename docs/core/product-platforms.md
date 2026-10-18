@@ -1,6 +1,6 @@
 # Product Platforms: Zest AI Sous-Chef
 
-Status: APPROVED v0.2 (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-16
+Status: **DRAFT (amended) v0.3 (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback); awaits owner re-approval (Approval Register Rule 2). ** v0.2 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-16
 Model names and limits change quickly. Everything model-specific is configuration (`.env`), never hard-coded. Choices here are provisional until ratified in ADR-001 to ADR-004.
 
 ## 1. Platform map
@@ -10,7 +10,7 @@ Model names and limits change quickly. Everything model-specific is configuratio
 | Backend | **Python 3.12 + FastAPI** | Chat orchestration, recommendation engine, catalogue and cart services | Best local-AI ecosystem; typed schemas; simple to test with `pytest` | Node/TypeScript | Free |
 | Frontend | **React + Vite + Tailwind** (design tokens from `DESIGN.md`) | Split screen, chat, cart window | Fast to build; maps cleanly to the design spec | Plain HTML/JS, Next.js | Free |
 | Text LLM (default) | **Local model via Ollama: `llama3.2:3b`, 4k context** (ADR-002, chosen by E1 on 2026-10-18) | Intent, recipe and ingredient extraction, dish suggestions, replies | Free, private, offline | Cloud LLM | Free |
-| Vision (default) | **Bundled sample photos** with pre-computed results, labelled as samples | Keeps the photo flow demonstrable | ADR-003, E3 on 2026-10-18: no provider met the accuracy gate; photo accuracy NOT MET | Local vision model through Ollama (failed E3 on 16 GB) | Free |
+| Vision (default) | **Local `qwen3-vl:4b-instruct` through Ollama**; bundled sample photos (labelled) for the demo and as fallback | Photos stay on the laptop | ADR-003 v3 (owner decision 2026-10-18): it failed E3 (precision 0.68, recall 0.43, p95 110 s); photo accuracy NOT MET | Sample photos only; opt-in Gemini | Free |
 | Vision (opt-in, demos) | **Gemini API free tier, `gemini-3.5-flash-lite`** | Live detection, labelled as estimates and confirmed before the cart changes | Closest to the E3 gate (precision 0.77, recall 0.63, p95 3.5 s); owner opt-in, 2026-10-18 | Off (default) | Free tier |
 | Guard / classifier | **Rules + `llama-guard3:1b`** (ADR-006, chosen by E4 on 2026-10-18) | Off-topic, injection and hazard screening (UJ9, UJ57, UJ59) | Guardrails must not depend on the main model's good behaviour | Prompt-only guard | Free |
 | Transcripts | **`youtube-transcript-api`** + **pre-saved fixtures** + paste-transcript fallback | YouTube recipes (UJ2, UJ20) | See section 4 | Official YouTube Data API (captions need owner auth) | Free |
@@ -25,7 +25,7 @@ Model names and limits change quickly. Everything model-specific is configuratio
 ## 2. Model routing
 A single provider interface with two implementations, chosen by `.env`:
 - `LLM_PROVIDER=ollama` (default) for text.
-- `VISION_PROVIDER=samples` by default (ADR-003, 2026-10-18). Opt-in for demos: `VISION_PROVIDER=gemini` with `VISION_MODEL=gemini-3.5-flash-lite`; if the Gemini call fails, times out or is rate-limited, the app offers the bundled sample photos with pre-computed results, clearly labelled as samples. No local vision model is configured.
+- `VISION_PROVIDER=ollama` with `VISION_MODEL=qwen3-vl:4b-instruct` by default, `TIMEOUT_VISION_S=60` (ADR-003 v3, 2026-10-18). Opt-in: `VISION_PROVIDER=gemini` with `VISION_MODEL=gemini-3.5-flash-lite`. If the provider fails, times out or is rate-limited, the app offers the bundled sample photos with pre-computed results, clearly labelled as samples; the samples are also the demo path.
 - No cloud fallback for text prompts (owner decision, 2026-10-17): text runs on the local model only.
 - Every LLM call returns schema-validated JSON. One retry, then fallback (Constitution G5).
 

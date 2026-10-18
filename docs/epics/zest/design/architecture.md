@@ -1,6 +1,6 @@
 # Architecture: Zest AI Sous-Chef
 
-Status: **APPROVED v0.3 (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2: add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4, Data Model v0.2, Constitution v0.2, ADR-001 to ADR-010
+Status: **DRAFT (amended) v0.4 (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback); awaits owner re-approval (Approval Register Rule 2). ** v0.3 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2: add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4, Data Model v0.2, Constitution v0.2, ADR-001 to ADR-010
 Scope: components, boundaries, data flows, failure handling and quality attributes. Field definitions are in the Data Model; endpoints will be detailed in the API Spec; prompts and tool contracts in the Agent Design.
 
 ## 1. Architectural stance
@@ -68,7 +68,7 @@ flowchart TB
 | `engine` | Eligibility mask, `S_final`, variant score, ties, context (FR-60 to 67, 113) | catalogue |
 | `catalogue` | Read-only SKU, variant, dish, recipe, synonym data; mutable stock; stock scenarios | files |
 | `cart` | Pack allocation, shared lines, edits, revalidation, checkout, idempotency (FR-71 to 83) | catalogue |
-| `llm` | Ollama text client; vision providers `samples` (default), `gemini` (opt-in) and `ollama` (kept for re-runs) behind one interface; timeouts, one retry, schema validation (G5, NFR-10) | config |
+| `llm` | Ollama text client; vision providers `ollama` with `qwen3-vl:4b-instruct` (default, ADR-003 v3), `gemini` (opt-in) and `samples` (demo path and fallback) behind one interface; timeouts, one retry, schema validation (G5, NFR-10) | config |
 | `transcripts` | Live fetch, then fixture, then title and description (FR-20) | network |
 | `trace` | JSONL events, no images, truncated text (NFR-06) | none |
 
@@ -105,7 +105,7 @@ sequenceDiagram
   A-->>U: cards: added dish, 2 swaps, Undo, Why this?
 ```
 ### 4.2 Photo flow (B4)
-Default (ADR-003, decided 2026-10-18): the flow offers labelled sample photos with pre-computed detections (FR-55), then continues from the detections below. Opt-in live analysis: consent notice (first upload) → upload validation (FR-57) → metadata stripped, bytes held in memory only → Gemini returns detections with confidence (schema-validated) → low-confidence items confirmed with the user → dish pool from detected items (BM25 + vector) → eligibility → rank → add the top dish's missing items → swaps and Undo → image discarded. If Gemini fails or times out, bundled labelled sample photos are offered (FR-55).
+Default (ADR-003 v3, 2026-10-18): upload validation (FR-57) → metadata stripped, bytes held in memory only → the local `qwen3-vl:4b-instruct` returns detections with confidence (schema-validated, 60 s timeout) → detections confirmed with one tap (MSG-PHOTO-LOW for unsure items, else MSG-PHOTO-CONFIRM) → dish pool from detected items (BM25 + vector) → eligibility → rank → add the top dish's missing items → swaps and Undo → image discarded. Opt-in Gemini adds the consent notice before the first upload. A sample photo skips the model and uses its pre-computed detections (the demo path). If the provider fails or times out, bundled labelled sample photos are offered (FR-55).
 
 ### 4.3 YouTube flow (B1)
 Validate URL (FR-24) → transcript chain (live, fixture, title and description, paste prompt) → guard on fetched text → LLM extracts dish and ingredient lines → retrieval maps each ingredient to variants → engine picks variants and persona-filters → cart allocation → pantry question for staples (FR-23).
@@ -128,12 +128,13 @@ The pool must be larger than the display set, otherwise the levers cannot reorde
 | Key | Purpose | Default |
 |---|---|---|
 | `LLM_PROVIDER`, `LLM_MODEL` | Local text model | `ollama`, chosen by benchmark |
-| `VISION_PROVIDER`, `VISION_MODEL`, `GEMINI_API_KEY` | Photo analysis (key only in local `.env`) | `samples`; opt-in `gemini` with `gemini-3.5-flash-lite` (ADR-003) |
+| `VISION_PROVIDER`, `VISION_MODEL`, `GEMINI_API_KEY` | Photo analysis (key only in local `.env`) | `ollama` with `qwen3-vl:4b-instruct` (ADR-003 v3); opt-in `gemini` with `gemini-3.5-flash-lite`; `samples` |
 | `EMBEDDING_PROVIDER`, `EMBEDDING_MODEL` | Vector embedder | Chroma default ONNX |
 | `RRF_K`, `DISH_POOL`, `VARIANT_POOL`, `AMBIGUITY_MARGIN` | Retrieval tuning | 60, 15, 10, 0.15 |
 | `ADDON_COURSES`, `ADDON_WEIGHTS`, `ADDON_POOL` | Add-on retrieval: companion courses for the vector list; curated and vector fusion weights; add-on pool size (proposed names and starting values, tuned by the ADR-004 v2 weight sweep) | `side,beverage,dessert`; curated 2, vector 1; 8 |
 | `VALUE_WEIGHT` | β0 for variant price term | 0.30 |
-| `TIMEOUT_LLM_S`, `TIMEOUT_VISION_S`, `TIMEOUT_TRANSCRIPT_S` | NFR-10 | 30, 20, 10 |
+| `TIMEOUT_LLM_S`, `TIMEOUT_VISION_S`, `TIMEOUT_TRANSCRIPT_S` | NFR-10 | 30, 60 (ADR-003 v3), 10 |
+| `LIVE_TRANSCRIPTS`, `MAX_RECIPE_CHARS` | Live YouTube transcript fetch on or off; transcript and recipe text cap for the 4k context (C39) | `true`, 6000 |
 | `CONFIDENCE_THRESHOLD` | Photo detection | 0.6 |
 | `GUARD_CLASSIFIER`, `GUARD_MODEL` | Second guard layer on text the rules pass (ADR-006; C36 doc-sync) | `true`, `llama-guard3:1b` |
 | `INTENT_CONFIDENCE_MIN` | Below it, the intent result triggers MSG-REPHRASE, never an action (Agent Design §6.1; C36 doc-sync) | 0.5 |

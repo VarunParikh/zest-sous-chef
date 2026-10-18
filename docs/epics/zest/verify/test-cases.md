@@ -1,6 +1,6 @@
 # Test Cases (Given / When / Then)
 
-Status: **APPROVED with Test Plan v0.3 (owner, 2026-10-18)**, re-approved after the C15 sync; was APPROVED with Test Plan v0.2 (owner, 2026-10-17); content mirrors Test Plan v0.2 (v0.1 was approved earlier the same day; T-047 to T-049 are new) · Date: 2026-10-17
+Status: **DRAFT (amended) with Test Plan v0.4 (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback); awaits owner re-approval (Approval Register Rule 2). ** Was APPROVED with Test Plan v0.3 (owner, 2026-10-18), re-approved after the C15 sync; was APPROVED with Test Plan v0.2 (owner, 2026-10-17); content mirrors Test Plan v0.2 (v0.1 was approved earlier the same day; T-047 to T-049 are new) · Date: 2026-10-17
 **Status of every test: NOT RUN.** No code exists. This file expresses each test in the plan's catalogue (`test-plan.md` section 4) as Given / When / Then without changing its ID, coverage or priority. If this file and `test-plan.md` ever disagree on what a test proves, log it in `docs/core/open-conflicts.md`. Tests assert structure (message IDs, slot values, SKU IDs, quantities, totals), not wording (NFR-11). "Fake" doubles are those in test-plan section 3.
 
 ## 4.1 Session and levers
@@ -98,7 +98,7 @@ Status: **APPROVED with Test Plan v0.3 (owner, 2026-10-18)**, re-approved after 
 | T-085 | A mood message and an eligible dish set | It is sent | The top dish is carted, two swaps are offered and Undo works | FR-40, 41, AC-09 | P0 |
 | T-086 | A mood message where no dish is eligible for the persona | It is sent | Nothing is added and the reply says why | FR-42, AC-29 | P0 |
 | T-087 | A photo upload | The photo flow runs | Consent is asked first, low-confidence items are confirmed, and only the top dish's missing items are carted | FR-50 to 54, AC-10 | P0 |
-| T-088 | Live analysis off (default), or the opt-in Gemini failing or timing out | A photo is submitted | Labelled sample photos are offered | FR-55, AC-11 | P0 |
+| T-088 | The local vision model (default) or the opt-in Gemini failing or timing out | A photo is submitted | Labelled sample photos are offered | FR-55, AC-11 | P0 |
 | T-089 | A wrong-type, an oversize and a spoofed-type upload | Each is uploaded | Each is rejected with the defined error | FR-57, AC-23 | P0 |
 | T-090 | The fake model returning invalid JSON | A message is processed | It is retried once and then MSG-REPHRASE is shown | NFR-10 | P0 |
 | T-091 | The fake model timing out | A message is processed | The defined fallback is used and a success message is never shown | NFR-02 | P0 |

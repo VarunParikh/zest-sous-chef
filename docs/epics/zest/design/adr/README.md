@@ -6,7 +6,7 @@ Format follows the `write-adr` skill. An ADR is marked **Accepted** only where t
 |---|---|---|---|
 | [001](ADR-001-backend-framework.md) | Python 3.12 and FastAPI | Accepted (owner, 2026-10-17) | Qualitative |
 | [002](ADR-002-text-model.md) | Local text model: `llama3.2:3b`, 4k context | **Accepted (owner, 2026-10-18)** from E1 | `verify/benchmarks/text-models.md` |
-| [003](ADR-003-vision-approach.md) | Pluggable photo detection (v2, local-first); Day 1: sample photos by default, Gemini 3.5 Flash-Lite opt-in for demos; photo accuracy NOT MET | **Accepted v2; Day-1 decision (owner, 2026-10-18)** from E3 | `verify/benchmarks/vision.md` |
+| [003](ADR-003-vision-approach.md) | Pluggable photo detection; v3: local `qwen3-vl:4b-instruct` by default (failed E3, owner decision), Gemini 3.5 Flash-Lite opt-in, samples for the demo and as fallback; photo accuracy NOT MET | **Draft (amended) v3 (owner decision 2026-10-18, C37); awaits re-approval** | `verify/benchmarks/vision.md` |
 | [004](ADR-004-retrieval-approach.md) | Hybrid BM25 + vector with RRF; v2: add-on suggestions from curated pairs plus vector neighbours (weighted RRF, course rule) | Accepted; v2 amended 2026-10-17; Day-1 evidence recorded 2026-10-18 (hybrid default, k = 60, add-ons 2:1) | `verify/benchmarks/retrieval.md` |
 | [005](ADR-005-vector-store-and-embedder.md) | Embedded Chroma with the default all-MiniLM-L6-v2 embedder | **Accepted (owner, 2026-10-18)** from E5 | `verify/benchmarks/retrieval.md` |
 | [006](ADR-006-guard-design.md) | Input guard: rules plus `llama-guard3:1b` | **Accepted (owner, 2026-10-18)** from E4 | `verify/benchmarks/guard.md` |

@@ -1,6 +1,6 @@
 # Conversation Design: Zest AI Sous-Chef
 
-Status: APPROVED v0.2 (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, DESIGN.md, UserJourneys.md, Constitution v0.2
+Status: **DRAFT (amended) v0.3 (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback); awaits owner re-approval (Approval Register Rule 2). Also C38: MSG-PHOTO-CONFIRM added and MSG-TXT-STORED names the stored servings.** v0.2 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, DESIGN.md, UserJourneys.md, Constitution v0.2
 Design stance: provisional where marked. The tools Zest can use are only the ones in the Architecture; this document promises no integration that does not exist (all commerce is mock).
 
 ## 1. Goals and measurable outcomes
@@ -114,7 +114,7 @@ Timeout: if the user is silent, nothing happens; the session persists until refr
 | MSG-YT-DUP | same video again | "You've already added {dish}. Add it again?" (Yes / No) |
 | MSG-PANTRY | second dish shares staples | "Both dishes use {staples}. Already have them at home?" (Yes, I have them / No, add them) |
 | MSG-TXT-DRAFT | text recipe understood | "Got it. Adding {n} ingredients for {dish}. Say 'new dish' when you start another." ✅ |
-| MSG-TXT-STORED | named dish, stored recipe | "I'll use my standard {dish} recipe for 2. Tell me if you cook it differently." |
+| MSG-TXT-STORED | named dish, stored recipe | "I'll use my standard {dish} recipe for {servings}. Tell me if you cook it differently." (C38: stored servings; FR-32 is cut) |
 | MSG-TXT-UNKNOWN | dish not in base | "I don't have a recipe for {dish} yet. Tell me its ingredients, or choose something close:" + dish chips |
 | MSG-SERVINGS | scaling applied | "Scaled for {n}. Spices go up a little less than quantities (estimate)." |
 
@@ -128,9 +128,10 @@ Timeout: if the user is silent, nothing happens; the session persists until refr
 | MSG-PHOTO-CONSENT | first upload, opt-in live analysis enabled | "Heads up: photos are sent to Google's Gemini free tier, which may use them to improve its products. Please don't upload personal photos. Continue?" |
 | MSG-PHOTO-OK | detection done | "I can see {items}. You can make {dish}! I've added {n} missing items. ✅" + swaps + Undo |
 | MSG-PHOTO-LOW | items below threshold | "I'm not sure about {items}. Are they in your photo?" (Yes / No per item) |
+| MSG-PHOTO-CONFIRM | detection done, no unsure items (C38) | "I think I can see {items} (estimates). Shall I find a dish with these?" (Yes / No) |
 | MSG-PHOTO-DARK | unusable image | "I can't make out much in that photo. Could you try better lighting, or type what you have?" |
 | MSG-PHOTO-NONE | no food | "I couldn't spot any ingredients there. Try a photo of your fridge or counter." |
-| MSG-PHOTO-SAMPLES | photo uploaded while live analysis is off (default), or the opt-in Gemini failed | "Live photo analysis isn't available right now. Try one of these sample photos instead." (labelled "Sample") |
+| MSG-PHOTO-SAMPLES | the local vision model (default) or the opt-in Gemini failed, timed out or is unavailable | "Live photo analysis isn't available right now. Try one of these sample photos instead." (labelled "Sample") |
 | MSG-UPLOAD-REJECT | wrong type or size | "I can take one JPEG, PNG or WebP image up to 5 MB. Could you try again?" |
 
 ### 6.4 Constraints, stock and variants

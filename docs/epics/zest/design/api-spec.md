@@ -1,6 +1,6 @@
 # API Spec: Zest AI Sous-Chef
 
-Status: **APPROVED v0.4 (owner, 2026-10-18)**: §3 endpoints 7 to 10 return the cart and endpoint 8 has a defined body; §4.6 lines gain `in_stock` and `quantity`; §4.7 OUT_OF_STOCK details carry substitutions (C34, C35). v0.3: §4.2 to §4.4 add the optional current `levers` and `levers_changed_since_snapshot` (C31). v0.2 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, Data Model v0.1, Conversation Design v0.1
+Status: **DRAFT (amended) v0.5 (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback); awaits owner re-approval (Approval Register Rule 2). ** v0.4 was APPROVED (owner, 2026-10-18): §3 endpoints 7 to 10 return the cart and endpoint 8 has a defined body; §4.6 lines gain `in_stock` and `quantity`; §4.7 OUT_OF_STOCK details carry substitutions (C34, C35). v0.3: §4.2 to §4.4 add the optional current `levers` and `levers_changed_since_snapshot` (C31). v0.2 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, Data Model v0.1, Conversation Design v0.1
 Scope: the browser-to-backend REST contract, the response card types, errors, and the outbound contracts to the model, the opt-in Gemini photo provider and the transcript source. **Webhooks:** none. The app is a browser client with no inbound callbacks; there are no outbound webhooks. The live contract is the OpenAPI document that FastAPI generates from the Pydantic models in the Data Model; this document is the design that those models must satisfy.
 
 ## 1. Design decisions (owner delegated the API style, 2026-10-17)
@@ -200,7 +200,7 @@ Chat call with `temperature: 0`, JSON mode or schema-constrained output, one ret
 The model never returns SKUs, prices or stock. Prompts and few-shot examples are specified in the Agent Design.
 
 ### 6.2 Vision provider (photos only)
-Default `samples` (ADR-003, 2026-10-18): returns the pre-computed `DetectionResult` of a bundled sample photo, labelled as a sample. Opt-in `gemini` (demos only): input is the stripped image bytes and a fixed instruction; the key travels only in the `x-goog-api-key` header. Output for both:
+Default `ollama` with `qwen3-vl:4b-instruct` (ADR-003 v3, 2026-10-18): input is the stripped image bytes and a fixed instruction, sent to the local Ollama only, timeout `TIMEOUT_VISION_S` (60 s). Opt-in `gemini`: the same input; the key travels only in the `x-goog-api-key` header. `samples`: returns the pre-computed `DetectionResult` of a bundled sample photo, labelled as a sample (the demo path and the fallback). Output for all three:
 ```json
 { "DetectionResult": {"items": [{"name": "paneer", "confidence": 0.93}, {"name": "capsicum", "confidence": 0.81}], "scene_is_food": true, "quality": "ok"} }
 ```

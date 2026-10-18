@@ -1,6 +1,6 @@
 # Specification (PRD): Zest AI Sous-Chef
 
-- **Status:** **APPROVED v0.5 (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.4 was approved by the owner 2026-10-17 after the ADR-004 v2 sync (Approval Register Rule 2). v0.3 was approved by the owner 2026-10-17 (OQ-8 to OQ-10 accepted at their defaults); v0.2 reviewed (see `spec-review-v0.1.md`); v0.3 and v0.4 changes not independently re-reviewed
+- **Status:** **DRAFT (amended) v0.6 (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback); awaits owner re-approval (Approval Register Rule 2). ** v0.5 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.4 was approved by the owner 2026-10-17 after the ADR-004 v2 sync (Approval Register Rule 2). v0.3 was approved by the owner 2026-10-17 (OQ-8 to OQ-10 accepted at their defaults); v0.2 reviewed (see `spec-review-v0.1.md`); v0.3 and v0.4 changes not independently re-reviewed
 - **Owner:** VJP (product owner) · **Date:** 2026-10-17
 - **Inputs:** BRD, Strategy, Platforms, Personas, Risk Register, Settings Panel, DESIGN.md, User Journeys, mockups
 - **Convention:** "shall" marks a testable requirement. Priority: M = Must, S = Should, C = Could. Items needing an owner decision are in section 15.
@@ -103,12 +103,12 @@ Below 1024 px, a segmented control switches between Levers and Chat.
 ### 6.6 Photo flow (B4)
 | ID | Requirement | Pri |
 |---|---|---|
-| FR-50 | When live photo analysis is enabled (the opt-in Gemini demo, ADR-003), before the first upload the UI shall show a notice that the photo goes to the Gemini API free tier, which Google may use to improve its products, and that personal photos should not be uploaded. With the default sample-photo path no photo leaves the laptop | M |
+| FR-50 | When live photo analysis is enabled (the opt-in Gemini demo, ADR-003), before the first upload the UI shall show a notice that the photo goes to the Gemini API free tier, which Google may use to improve its products, and that personal photos should not be uploaded. With the default local vision model (ADR-003 v3) and the sample photos no photo leaves the laptop | M |
 | FR-51 | The system shall strip photo metadata before any processing and delete the photo after parsing | M |
 | FR-52 | Detection output shall include a confidence per item; items below the threshold (initial 0.6, tuned by the benchmark) shall be confirmed with the user | M |
 | FR-53 | The system shall rank eligible dishes that use the detected items; the chat shall show three, each with its count of missing items | M |
 | FR-54 | The top dish's missing items only shall be added to the cart (OQ-9); the other two appear as one-tap swaps with Undo, as in FR-41 | M |
-| FR-55 | The default photo path (ADR-003, decided 2026-10-18 from E3) shall offer bundled sample photos with pre-computed results, labelled as samples. The same offer appears if the opt-in live analysis fails or is unavailable. Photo accuracy is reported as NOT MET; detections are labelled as estimates and confirmed before the cart changes | M |
+| FR-55 | Bundled sample photos with pre-computed results, labelled as samples, shall always be available: they are the demo path, and they are offered whenever the default local vision model (ADR-003 v3) or the opt-in Gemini fails, times out or is unavailable. Photo accuracy is reported as NOT MET; detections are labelled as estimates and confirmed before the cart changes | M |
 | FR-56 | A photo with no recognisable food shall receive the "couldn't spot any ingredients" reply | S |
 | FR-57 | Uploads shall be limited to JPEG, PNG or WebP, at most 5 MB, one image per message; others get a clear rejection | M |
 
@@ -245,7 +245,7 @@ No product analytics. A local trace log (no images, truncated text, no personal 
 | AC-08 | Paneer Butter Masala and Garlic Butter Naan in cart: butter active under the first dish, dimmed under the second; removing it from the first transfers it; total stays correct | FR-73 |
 | AC-09 | "I am feeling indulgent": the top eligible dish's ingredients are added, two swap options appear, Undo is available | FR-40, 41 |
 | AC-10 | Photo of paneer and capsicum: the top dish's missing items only are added; swap replaces only that dish | FR-53, 54 |
-| AC-11 | Live analysis off (default) or the opt-in Gemini unavailable, photo uploaded: labelled sample-photo option appears | FR-55 |
+| AC-11 | The local vision model or the opt-in Gemini failing, timing out or unavailable, photo uploaded: labelled sample-photo option appears | FR-55 |
 | AC-12 | Empty cart: icon greyed and not clickable; with items: badge shows count | FR-75 |
 | AC-13 | Buy Now: order-placed message with progress bar closes after 10 s; second press has no effect | FR-80, 81 |
 | AC-14 | Model reply with a price differing from the catalogue: displayed price equals the catalogue | FR-79 |

@@ -1,6 +1,6 @@
 # Agent Design: Zest AI Sous-Chef
 
-Status: APPROVED v0.2 (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, Conversation Design v0.1, API Spec v0.1, ADR-002, 003, 006
+Status: **DRAFT (amended) v0.3 (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback); awaits owner re-approval (Approval Register Rule 2). ** v0.2 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, Conversation Design v0.1, API Spec v0.1, ADR-002, 003, 006
 Owner decisions applied (2026-10-17): **single-shot model calls only** (no tool-calling loop); **English-only prompts and few-shot examples** for the MVP.
 
 ## 1. Principle
@@ -18,7 +18,7 @@ Consequences:
 | A3 | `recipe_extract` | Dish name and ingredient lines from text or transcript | Local text model | recipe text or transcript | `ExtractionResult` | 0 | 1 | MSG-REPHRASE, or paste prompt for videos |
 | A4 | `reason_line` | One-line reason for a suggestion | Local text model | structured facts only | `ReasonResult` | 0 | 0 | Template reason |
 | A5 | `cart_edit_parse` | Parse "remove the oil" into an operation | Rules first; local text model only if rules fail | user message, cart item names | `EditParse` | 0 | 1 | MSG-EDIT-UNCLEAR |
-| A6 | `photo_detect` | Visible ingredients with confidence | Opt-in Gemini `gemini-3.5-flash-lite` (ADR-003; default is pre-computed sample results, no model call) | image bytes | `DetectionResult` | 0 | 1 | Sample photos (FR-55) |
+| A6 | `photo_detect` | Visible ingredients with confidence | Local `qwen3-vl:4b-instruct` by default; opt-in Gemini `gemini-3.5-flash-lite` (ADR-003 v3; sample photos use pre-computed results, no model call) | image bytes | `DetectionResult` | 0 | 1 | Sample photos (FR-55) |
 The recipe-draft confirmation sentence is a template (MSG-TXT-DRAFT), not a model call. This narrows the Conversation Design, which allowed a model-written draft summary; the reason line (A4) is the only model-written sentence shown to users.
 
 ## 3. Prompt files and versioning

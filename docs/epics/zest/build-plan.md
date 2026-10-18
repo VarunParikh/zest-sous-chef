@@ -1,6 +1,6 @@
 # Build Plan and Handover: Zest AI Sous-Chef
 
-Status: **APPROVED v0.2 (owner, 2026-10-17)** (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2: larger dish pool and add-on retrieval) · Date: 2026-10-17 · Audience: the owner (VJP) and Claude Code
+Status: **DRAFT (amended) v0.3 (2026-10-18): §4 adds `python-multipart` (owner approved 2026-10-18, C39); awaits owner re-approval.** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2: larger dish pool and add-on retrieval) · Date: 2026-10-17 · Audience: the owner (VJP) and Claude Code
 This is the bridge from documents to code. It is not one of the 25 documents; it exists because Claude Code works far better with a clear build order, gates and a first prompt.
 **Honest sizing:** 40 user stories in three days is aggressive. The plan protects the demo by ordering work so the highest-value path works first and by naming what to cut. Nothing below has been built or measured.
 
@@ -36,7 +36,8 @@ Versions are pinned at install. Package names marked * must be confirmed on the 
 | Retrieval | `chromadb` | Embedded vector store | ADR-005 |
 | Retrieval | `rank-bm25`* | BM25 lexical scoring | ADR-004; owner approved in principle |
 | Images | `Pillow` | EXIF stripping, image validation | Owner approved 2026-10-17 |
-| Integrations | `youtube-transcript-api` | Transcripts | Version 1.2.4 noted in Platforms; verify |
+| Integrations | `youtube-transcript-api` | Transcripts | 1.2.4 (verified current on the index 2026-10-18) |
+| Backend | `python-multipart` | Multipart photo uploads (FastAPI form parser) | 0.0.32; owner approved 2026-10-18 (C39) |
 | Integrations | `google-genai`* | Gemini API client (now OPTIONAL, ADR-003 v2) | Confirm the current official package name; install only if the Gemini arm is used |
 | Testing | `pytest`, `pytest-playwright`, `coverage` | Tests, E2E, coverage | Test Plan |
 | Frontend | `react`, `react-dom`, `vite`, `tailwindcss` | UI | ADR-010 |

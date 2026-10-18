@@ -1,6 +1,6 @@
 # Test Plan: Zest AI Sous-Chef
 
-Status: **APPROVED v0.3 (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 adds T-047 to T-049 for ADR-004 v2 add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4 (AC-01 to AC-45), User Stories, Architecture, API Spec, Agent Design, Security and Privacy Note
+Status: **DRAFT (amended) v0.4 (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback); awaits owner re-approval (Approval Register Rule 2). ** v0.3 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 adds T-047 to T-049 for ADR-004 v2 add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4 (AC-01 to AC-45), User Stories, Architecture, API Spec, Agent Design, Security and Privacy Note
 Owner decision (2026-10-17): **lean test set.** Full coverage of the engine, cart and guardrails; acceptance tests for the Must stories; one Playwright demo-path test. Dependency Pillow approved.
 **Status of every test in this plan: NOT RUN.** No code exists. Nothing here is a result.
 
@@ -133,7 +133,7 @@ IDs are stable. Priority P0 = must pass before any demo; P1 = should pass.
 | T-085 | Mood message adds the top dish, offers two swaps, Undo | FR-40, 41, AC-09 | P0 |
 | T-086 | Mood with no eligible dish adds nothing and says why | FR-42, AC-29 | P0 |
 | T-087 | Photo flow: consent first, low-confidence confirmation, top dish's missing items only | FR-50 to 54, AC-10 | P0 |
-| T-088 | Live analysis off (default) or the opt-in Gemini failing offers labelled sample photos | FR-55, AC-11 | P0 |
+| T-088 | The local vision model (default) or the opt-in Gemini failing or timing out offers labelled sample photos | FR-55, AC-11 | P0 |
 | T-089 | Wrong type, oversize and spoofed upload rejected | FR-57, AC-23 | P0 |
 | T-090 | Invalid model JSON retried once, then MSG-REPHRASE | NFR-10 | P0 |
 | T-091 | Model timeout takes the defined fallback, never a success message | NFR-02 | P0 |
@@ -214,7 +214,7 @@ Result statuses: PASS, FAIL, BLOCKED, NOT RUN. A skipped or disabled test is a d
 ## 9. Manual rehearsal checklist (live dependencies)
 1. Warm-up script run; health page shows model loaded, vision provider status, fixtures present, index ready.
 2. YouTube demo link live, then with network blocked (fixture path).
-3. Photo: the default sample photos; then, if the opt-in demo is enabled, a live upload with the consent notice, and Gemini disabled (sample photos again).
+3. Photo: a sample photo (the demo path); a live upload to the local `qwen3-vl:4b-instruct` (may take up to 60 s); if the opt-in is enabled, a Gemini upload with the consent notice; and the provider stopped (sample photos offered).
 4. Mood message under three personas (Default, Jain, Keto): different results visible.
 5. Lever change, Clear chat, same prompt: different results; inspector shows why.
 6. Stock-out scenario via demo controls; substitution accepted.
