@@ -22,13 +22,16 @@ INJECTION = [
     r"[.!?]\s*(system|assistant|developer)\s*:",
     r"\b(reveal|print|show|repeat)\b.{0,30}\b(system prompt|hidden (prompt|instructions)|your instructions)\b",
     r"\b(jailbreak|dan mode|do anything now)\b",
-    r"\b(turn off|disable|remove|switch off)\b.{0,30}\b(diet|halal|jain|filters?|guardrails?|restrictions?|safety)\b",
     r"\bnew rule\b",
     r"\b(approve|place)\b.{0,30}\b(any|every|all)\b.{0,20}\b(order|orders)\b",
     r"\bfor free\b",
-    # C54 (ADR-006 v4): instructions aimed at the guardrails, within one sentence
-    r"\b(disable|turn off|switch off|bypass|ignore|override|skip|remove|lift)\b[^.!?\n]{0,40}\b(guards?|guardrails?|filters?|"
-    r"restrictions?|rules?|safety|allergy|allergens?|diet|dietary|faith|jain|halal|vegan|settings?)\b",
+    # C54, narrowed by C55 (ADR-006 v5): instructions aimed at the guardrails, within one sentence. A diet or faith
+    # word counts only next to a system word ("Jain restriction"), so "skip the egg, my sister is vegan" passes.
+    # It also replaces the older turn-off rule, which blocked "remove paneer, I'm trying a vegan diet".
+    r"\b(disable|turn off|switch off|bypass|ignore|override|skip|remove|lift)\b[^.!?\n]{0,40}\b("
+    r"(guards?|guardrails?|filters?|restrictions?|rules?|safety|checks?|settings?|screening|limits?)"
+    r"|(allergy|allergens?|diet|dietary|faith|jain|halal|vegan)\s+(\w+\s+)?"
+    r"(guards?|guardrails?|filters?|restrictions?|rules?|safety|checks?|settings?|screening|limits?))\b",
     r"\bpretend\b[^.!?\n]{0,60}\b(off|disabled|does not apply|doesn't apply)\b",
 ]
 HAZARD = [
