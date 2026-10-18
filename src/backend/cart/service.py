@@ -179,3 +179,60 @@ def answer_substitution(session, substitution_id: str, choice: str, ctx, store: 
         return False
     switch_variant(session, pending["line_id"], pending["variant_id"], ctx, store)
     return True
+
+
+REPLACE_OPTIONS = (("replace", "Replace"), ("add", "Add to it"), ("cancel", "Cancel"))
+
+
+def offer_replace(session, dish_id: str, source: str):
+    """FR-77: a non-empty cart is never cleared or replaced without a confirmation (MSG-CLEAR-CONFIRM)."""
+    from backend.flows.cards import ChoiceOption, Confirm
+    from backend.flows.templates import render
+
+    names = [d.name for d in session.cart.dishes]
+    current = names[0] if len(names) == 1 else "current"
+    confirm_id = session.next_id("c")
+    session.pending[confirm_id] = {"kind": "replace_or_add", "dish_id": dish_id, "source": source}
+    return Confirm(confirm_id=confirm_id, prompt=render("MSG-CLEAR-CONFIRM", dish=current),
+                   options=[ChoiceOption(value=v, label=label) for v, label in REPLACE_OPTIONS])
+
+
+def answer_confirm(session, confirm_id: str, choice: str, ctx, store: Store):
+    """replace: save the prior cart for Undo, then cart the dish; add: cart it alongside; cancel: nothing."""
+    pending = session.pending.get(confirm_id)
+    if not pending or pending["kind"] != "replace_or_add" or choice not in {"replace", "add", "cancel"}:
+        raise CartRuleError("STALE", "That question has expired.")
+    del session.pending[confirm_id]
+    if choice == "cancel":
+        return None
+    prior = session.cart.model_copy(deep=True)
+    sid = session.next_id("sg")
+    if choice == "replace":
+        session.cart = type(prior)()
+    try:
+        added = add_dish(session, pending["dish_id"], pending["source"], ctx, store, suggestion_id=sid)
+    except CartRuleError:
+        session.cart = prior
+        raise
+    session.undo_stack.append({"suggestion_id": sid, "kind": choice, "prior": prior if choice == "replace" else None,
+                               "dish_name": added.name})
+    return added
+
+
+def record_add(session, suggestion_id: str, dish_name: str) -> None:
+    session.undo_stack.append({"suggestion_id": suggestion_id, "kind": "add", "prior": None, "dish_name": dish_name})
+
+
+def undo(session, suggestion_id: str, store: Store) -> str:
+    """Reverse one suggestion's cart change: remove the dishes it added, or restore the cart it replaced."""
+    entry = next((e for e in reversed(session.undo_stack) if e["suggestion_id"] == suggestion_id), None)
+    if entry is None:
+        raise CartRuleError("STALE", "There's nothing to undo for that.")
+    session.undo_stack.remove(entry)
+    if entry["kind"] == "replace":
+        session.cart = allocate(entry["prior"], store)
+    else:
+        cart = session.cart.model_copy(deep=True)
+        cart.dishes = [d for d in cart.dishes if d.added_by_suggestion_id != suggestion_id]
+        session.cart = allocate(cart, store)
+    return entry["dish_name"]

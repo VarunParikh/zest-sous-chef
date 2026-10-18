@@ -9,7 +9,7 @@ from pydantic import BaseModel, ConfigDict
 from backend.api.cart import context, rule_error
 from backend.cart import service
 from backend.cart.service import CartRuleError
-from backend.flows.cards import Message, TurnResponse
+from backend.flows.cards import Message, TurnResponse, Undo
 from backend.flows.templates import render
 from backend.flows.turns import build_turn
 from backend.session.levers import LeverSet
@@ -42,7 +42,25 @@ def _substitute(session, p: dict, request: Request) -> tuple[list[Message], bool
     return [reply(session, "MSG-EDIT-OK", change=f"Swapped to {store.variant(line.variant_id).name}")], True
 
 
-HANDLERS = {"substitute": _substitute}
+def _confirm(session, p: dict, request: Request) -> tuple[list[Message], bool]:
+    added = service.answer_confirm(session, p.get("confirm_id", ""), p.get("choice", ""), context(request),
+                                   request.app.state.store)
+    if added is None:
+        return [], False
+    if p.get("choice") == "replace":
+        msg = reply(session, "MSG-CLEAR-DONE")
+    else:
+        msg = reply(session, "MSG-EDIT-OK", change=f"Added {added.name}")
+    msg.cards = [Undo(suggestion_id=added.added_by_suggestion_id)]
+    return [msg], True
+
+
+def _undo(session, p: dict, request: Request) -> tuple[list[Message], bool]:
+    name = service.undo(session, p.get("suggestion_id", ""), request.app.state.store)
+    return [reply(session, "MSG-UNDO", dish=name)], True
+
+
+HANDLERS = {"substitute": _substitute, "confirm": _confirm, "undo": _undo}
 
 
 @router.post("/action")
