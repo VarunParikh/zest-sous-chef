@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- README: a "Reviewer's map" under the title linking the files a reviewer should open first. Existing README text unchanged.
 - Explanatory documents: `docs/epics/zest/release/how-it-was-built.md` (what was built and how it was planned with Claude) and `docs/epics/zest/design/retrieval-explained.md` (the vector database, retrieval and how the levers fit in). README gains "Why Zest exists" and "Keeping Zest on topic" sections; existing README text unchanged.
 - README: a "Why these models" section comparing each chosen local model with the alternatives benchmarked (E1 text, E4 guard, E3 vision, E5 embedder), with numbers read from `eval/results/` and the ADR reasons. Existing README text unchanged.
 - README: a Diagrams section with seven Mermaid diagrams (system architecture, one chat turn, the recommendation pipeline, the photo flow, the YouTube fallback chain, levers and sessions, cart and checkout). Each was checked against the code and parsed with Mermaid 11.4.1. No existing README text changed.
