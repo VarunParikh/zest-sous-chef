@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- Block 3.3 done: release documents written from results; handover points to block 3.4 (rehearsals, owner at the laptop).
 - README (setup guide, status at a glance, usage, how it works, tests and evaluations, repository map, limitations, licence). Checked from a clean clone on 2026-10-19: `make setup`, `make index` (one transient download failure, retry succeeded), `make test`, `make test-e2e`, `make test-embedder`, `make data` and the health endpoint all succeed. `.env.example`: stale vision comment fixed.
 - Prototyping Feedback (`docs/epics/zest/release/prototyping-feedback.md`): how the prototype was tested, eleven findings with evidence and the decision each led to, what worked and what did not, recommendations; the rehearsal section is filled in during block 3.4.
 - Known Limitations and Responsible-AI Note (`docs/epics/zest/release/known-limitations.md`): accepted FAILs with their numbers from the report, behaviours re-checked on 2026-10-19 (the cooling quirk still occurs; the Shakshuka add-on quirk no longer applies, as Shakshuka is not a catalogue dish), data, cut scope, platform limits, and a model-card style note. C74 syncs one Security Note sentence to C37.

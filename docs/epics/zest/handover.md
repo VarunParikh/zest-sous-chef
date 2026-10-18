@@ -128,17 +128,31 @@ Report: `docs/epics/zest/verify/benchmarks/block31.md`.
 
 **Rebuild rule:** after any new result or headline change, rebuild with `make report`. `make eval` reruns every harness; it is long, and E11 needs other apps closed.
 
-## Next: Day 3, block 3.3 (build-plan section 5)
-**What to write, from actual results only:**
-- README (a setup guide that works from a clean clone)
-- Demo Script
-- Known Limitations and Responsible-AI Note. It must include:
-  - "high protein" (C68)
-  - vector similarity is semantic, not co-occurrence (C17)
-  - photos are mock
-  - labels are assistant-written
-  - the accepted FAILs
-- Prototyping Feedback
-- CHANGELOG
+## Block 3.3 in one paragraph (done 2026-10-19)
+**Written, from actual results:**
+- `README.md`, checked from a clean clone: setup, index (one transient download failure, retry succeeded), tests, e2e, embedder, data and health all succeed
+- `docs/epics/zest/release/demo-script.md`: 10 steps, each input dry-run in-process with the real models
+- `docs/epics/zest/release/known-limitations.md`: limitations plus a model-card style Responsible-AI note
+- `docs/epics/zest/release/prototyping-feedback.md`: its section 5, rehearsal feedback, is **pending block 3.4**
 
-**After that:** 3.4 rehearsals (owner at the laptop) and 3.5 release (tag `v0.1.0`, push; owner approval).
+**Decisions:**
+- C72: demo endpoints 14 and 15 cut; rehearsal step 6 and T-105 NOT RUN.
+- C73: release documents live in `release/`.
+- C74: Security Note wording synced to C37.
+
+**Found and fixed:**
+- The seed-check scripts did not know the C68 markers, so `make data` had failed since `a9cb089` (records corrected).
+- `doc_check` missed make targets that contain digits.
+
+**New tool:** `python -m scripts.doc_check` checks the release documents' links, make targets and cited IDs.
+
+**Report:** the committed evidence report shows HEAD `b657d04`. Rebuild it with `make report` at release (block 3.5); only its HEAD and staleness counts change.
+
+## Next: Day 3, block 3.4 (build-plan section 5): needs the owner at the laptop
+Do this:
+1. Run the Test Plan §9 rehearsal checklist twice on the demo laptop, using `docs/epics/zest/release/demo-script.md`. Step 6, the stock-out, is NOT RUN (C72).
+2. Do the network-off test: YouTube falls back to the fixture, photo samples work, and nothing calls out.
+3. Record a backup screen recording.
+4. Write the results into `prototyping-feedback.md` section 5.
+
+Then block 3.5: close the security release blockers (Security Note §7), scan the full history for secrets (must print 0), rebuild the report, do a last doc-sync, then tag `v0.1.0` and push. **Owner approval is needed for the tag and the push.**

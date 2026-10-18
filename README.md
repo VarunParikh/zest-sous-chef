@@ -59,7 +59,7 @@ What each step does:
 3. `make index` builds the local vector index in `data/chroma/`. The first run downloads Chroma's default embedder (all-MiniLM-L6-v2, about 80 MB) into `data/models/`.
 4. `make app` starts the backend on http://127.0.0.1:8000 (health page at `/health`) and the app on **http://localhost:5173**. Ctrl+C stops both.
 
-If `make index` stops with a connection error while downloading the embedder, run it again: it resumes from a clean state. This happened once in our clean-clone check, and the retry succeeded (81 s on a home connection).
+If `make index` stops with a connection error while downloading the embedder, run it again. This happened once in our clean-clone check, and the retry succeeded (81 s on a home connection).
 
 The generated catalogue (`mock-data/generated/`) is committed, so `make data` is only needed to regenerate it and run validators V1 to V17.
 
