@@ -16,7 +16,7 @@ The screen is split in two. On the left are **recommendation levers**: weights, 
 
 *The running app, captured on 2026-10-19 from a fresh clone with the real local models: Meera Shah (Jain) preset, "I am feeling indulgent".*
 
-This is an interview prototype: a working, documented, local demo with its evidence. It runs entirely on one Mac with local models; the only optional cloud call is an opt-in photo analysis through Google Gemini.
+This is a prototype: a working, documented, local demo with its evidence. It runs entirely on one Mac with local models;
 
 ## Status at a glance
 The evidence report lists every evaluation, its pass rule, its result file and any post-hoc change. Every number in it is generated from `eval/results/`, none typed by hand:
