@@ -42,6 +42,12 @@
    "sha256": "8cba655512f4172c6d9edd813183c02de8e52d857b2074c5e640b1e30d2fa3d8",
    "rows": 1,
    "added": "2026-10-18"
+  },
+  "guard_v2.jsonl": {
+   "sha256": "268995d07f3d938ef85f95ba3d95fb3fc3f78a30e07b704e742038008ba4abde",
+   "rows": 30,
+   "added": "2026-10-18",
+   "note": "held out; written before the C54 rule was implemented"
   }
  }
 }
