@@ -23,7 +23,7 @@ Approving a document means: you have read it or the parts you care about, you ac
 |---|---|---|---|---|---|
 | Product spec (PRD) | `docs/epics/zest/requirements/product-spec.md` | v0.7 | A | **Approved v0.7** (C53: FR-111 pool 25, β0 0.20, dish premium rescaled) | Owner, 2026-10-18 (approved with the block 2.6 lever plan) |
 | Data Model | `docs/epics/zest/design/data-model.md` | v0.4 | A | **Approved v0.4** (C53: pool 25, premium rescaled, β0 0.20) | Owner, 2026-10-18 (approved with the block 2.6 lever plan) |
-| Architecture | `docs/epics/zest/design/architecture.md` | v0.8 | A | **Approved v0.8** (C54: code routing between guard and intent) | Owner, 2026-10-18 (approved with the block 2.6 safety plan) |
+| Architecture | `docs/epics/zest/design/architecture.md` | v0.9 | A | **Approved v0.9** (C55: `GUARD_IGNORE_IF_LINK`); v0.8 C54 code routing | Owner, 2026-10-18 (approved with the block 2.6 safety plan) |
 | API Spec | `docs/epics/zest/design/api-spec.md` | v0.6 | A | **Approved v0.6** (C41: cart line `icon`, dish `course`) | Owner, 2026-10-18 (approved with the block 2.5 plan) |
 | Agent Design | `docs/epics/zest/design/agent-design.md` | v0.4 | A | **Approved v0.4** (C54: code routing, intent prompt v3, claim words in the reason validator) | Owner, 2026-10-18 (approved with the block 2.6 safety plan) |
 | Build Plan | `docs/epics/zest/build-plan.md` | v0.4 | A | **Approved v0.4** (C42: React type packages) | Owner, 2026-10-18 (approved with the block 2.5 plan) |
@@ -31,7 +31,7 @@ Approving a document means: you have read it or the parts you care about, you ac
 | Conversation Design | `docs/epics/zest/design/conversation-design.md` | v0.3 | B | **Approved v0.3** (C37 MSG-PHOTO-SAMPLES trigger; C38 MSG-PHOTO-CONFIRM, MSG-TXT-STORED servings) | Owner, 2026-10-18 (re-approved after the C37 sync) |
 | Security and Privacy Note | `docs/epics/zest/design/security-privacy-note.md` | v0.3 | B | **Approved v0.3** (C37: photo data flow) | Owner, 2026-10-18 (re-approved after the C37 sync) |
 | Test Plan | `docs/epics/zest/verify/test-plan.md` | v0.4 | B | **Approved v0.4** with Test Cases (C37: T-088, rehearsal) | Owner, 2026-10-18 (re-approved after the C37 sync) |
-| Evaluation Plan | `docs/epics/zest/verify/evaluation-plan.md` | v0.4 | B | **Approved v0.4** (C54: `guard_v2`, E2 prompt v3 protocol; C46 to C52 in §4.15); thresholds v3 unchanged | Owner, 2026-10-18 (approved with the block 2.6 safety plan) |
+| Evaluation Plan | `docs/epics/zest/verify/evaluation-plan.md` | v0.5 | B | **Approved v0.5** (C55: `guard_v3`, E2 accepted); v0.4 (C54: `guard_v2`, E2 prompt v3 protocol; C46 to C52 in §4.15); thresholds v3 unchanged | Owner, 2026-10-18 (approved with the block 2.6 safety plan) |
 | ADR-001 Backend framework | `design/adr/ADR-001-...` | | B | **Accepted** | Owner, 2026-10-17 |
 | ADR-003 Vision approach | `design/adr/ADR-003-...` | v3 | B | **Approved v3** (C37: local `qwen3-vl:4b-instruct` default despite failing E3, Gemini opt-in, samples for the demo and fallback, 60 s timeout; photo accuracy NOT MET) | Owner, 2026-10-18 (re-approved after the C37 sync) |
 | ADR-004 Retrieval approach | `design/adr/ADR-004-...` | v4 | B | **Accepted v4** (C53: pool 25, add-on pool 12); v3 (C45: open requests use a course-wide lever-ranked pool; no repeats in a session); v2 evidence recorded | Owner, 2026-10-18 (v3 approved with its plan) |
@@ -41,7 +41,7 @@ Approving a document means: you have read it or the parts you care about, you ac
 | ADR-009 No MCP | `design/adr/ADR-009-...` | | B | **Accepted** | Owner, 2026-10-17 |
 | ADR-010 Frontend stack | `design/adr/ADR-010-...` | | B | **Accepted** (with TypeScript) | Owner, 2026-10-17 |
 | ADR-002 Text model | `design/adr/ADR-002-...` | | B | **Accepted**: `llama3.2:3b`, 4k context (E1, post-hoc rerun) | Owner, 2026-10-18 |
-| ADR-006 Guard design | `design/adr/ADR-006-...` | v4 | B | **Approved v4** (C54: guardrail-targeting injection rule); v3 S6 and S8 ignored | Owner, 2026-10-18 (approved with the block 2.6 safety plan) |
+| ADR-006 Guard design | `design/adr/ADR-006-...` | v5 | B | **Approved v5** (C55: narrowed rule, S8 ignored only with a link); v4 C54 rule | Owner, 2026-10-18 (approved with the block 2.6 safety plan) |
 | Constitution | `docs/core/constitution.md` | v0.2 | C | **Approved** | Owner, 2026-10-17 |
 | Product Strategy | `docs/core/product-strategy.md` | v0.1 | C | **Approved** | Owner, 2026-10-17 |
 | Product Platforms | `docs/core/product-platforms.md` | v0.3 | C | **Approved v0.3** (C37: vision rows) | Owner, 2026-10-18 (re-approved after the C37 sync) |
@@ -104,3 +104,4 @@ Approving a document means: you have read it or the parts you care about, you ac
 | 2026-10-18 | C53 implemented (A2 `3b034fd`, F1 `c0737d0`, B2 and C2 `c53cfb2`) and rerun post-hoc: E12 PASS at β0 0.20; E6 FAIL without a critical (gourmet 0.07); E7 both arms PASS; E8 PASS. E12 harness hard-coded 0.30 in the first rerun; fixed and rerun (`1b7be14`) | `verify/benchmarks/block26.md`, `eval/results/post-hoc/c53/` |
 | 2026-10-18 | Block 2.6 safety decisions (C54): owner chose E4-2 (guardrail-targeting injection rule) with a new held-out `guard_v2`, E2-2 (intent prompt v3 on dev) with E2-3 (code routing for named dishes and cart clears), and E13-2 (claim words in the reason validator). The approved plan re-approved exactly the ADR-006 v4, Agent Design v0.4, Architecture v0.8 and Evaluation Plan v0.4 text | this register, `open-conflicts.md` C54 |
 | 2026-10-18 | C54 implemented (`a833823` guard_v2 before the rule, `a58ca26`, `fdbbfcc`, `0e56c4a`, `54a686b`) and rerun post-hoc: E4 on held-out guard_v2 FAIL (14/20, false positives 1/10); E4 on guard_v1 13/13 but contaminated; E2 FAIL 24/30; E13 PASS; E9 and E7 PASS. **Owner decisions pending** on the guard and intent gaps | `verify/benchmarks/block26.md`, `eval/results/post-hoc/c54/` |
+| 2026-10-18 | Owner approved the C55 text ("These look good … move ahead") with one change at the owner's direction: the assistant generates `guard_v3` (30 rows) instead of the owner writing it. The assistant added one sentence beyond the shown text, folding the older turn-off injection rule into the narrowed rule, and flagged it in chat | this register, `open-conflicts.md` C55 |
