@@ -53,7 +53,7 @@ The owner closed other apps. Free RAM was 5.92 GB before the run and 1.39 GB aft
 - The chat cart edit (FR-78 cut, C59).
 - Live YouTube fetch (network).
 
-### Proposed NFR-01 targets (for owner approval; not yet in ADR-002 or ADR-003)
+### NFR-01 targets (owner approved 2026-10-18; recorded in ADR-002 and ADR-003)
 These are the measured p95 values rounded up, as regression limits on this laptop:
 
 | Flow | Proposed p95 target |

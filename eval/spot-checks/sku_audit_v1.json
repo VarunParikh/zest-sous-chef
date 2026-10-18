@@ -1,0 +1,4287 @@
+{
+ "seed": 20261018,
+ "population": 1027,
+ "rows": [
+  {
+   "variant_id": "b001-83451ee0",
+   "name": "Onion (Red)",
+   "category": "vegetables",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "onion (red)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": false,
+   "satvik_ok": false,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [
+    "non_satvik",
+    "onion_garlic"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     500.0,
+     "g",
+     20,
+     49
+    ],
+    [
+     1000.0,
+     "g",
+     38,
+     38
+    ],
+    [
+     2000.0,
+     "g",
+     73,
+     11
+    ]
+   ],
+   "keyword_classes": [
+    "onion_garlic"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b010-0b3d19d7",
+   "name": "Capsicum (Red)",
+   "category": "vegetables",
+   "brand": "MockMart Gourmet",
+   "ingredients": [
+    "capsicum (red)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     250.0,
+     "g",
+     49,
+     23
+    ],
+    [
+     500.0,
+     "g",
+     94,
+     35
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b010-d4580972",
+   "name": "Capsicum (Mixed trio)",
+   "category": "vegetables",
+   "brand": "MockMart Reserve",
+   "ingredients": [
+    "capsicum (green, red, yellow)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     250.0,
+     "g",
+     44,
+     45
+    ],
+    [
+     500.0,
+     "g",
+     84,
+     6
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b014-f645e97c",
+   "name": "Cucumber (English seedless)",
+   "category": "vegetables",
+   "brand": "MockMart Reserve",
+   "ingredients": [
+    "cucumber (seedless)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     250.0,
+     "g",
+     23,
+     45
+    ],
+    [
+     500.0,
+     "g",
+     45,
+     45
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b016-cdf96421",
+   "name": "Beetroot (Organic)",
+   "category": "vegetables",
+   "brand": "MockMart Organic",
+   "ingredients": [
+    "beetroot (regular, organic)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": false,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [
+    "root_veg"
+   ],
+   "organic": "yes",
+   "premium": "no",
+   "packs": [
+    [
+     250.0,
+     "g",
+     23,
+     25
+    ],
+    [
+     500.0,
+     "g",
+     43,
+     8
+    ]
+   ],
+   "keyword_classes": [
+    "root_veg"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b019-4c575743",
+   "name": "Raw banana (Regular)",
+   "category": "vegetables",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "raw banana (regular)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     2.0,
+     "piece",
+     20,
+     13
+    ],
+    [
+     4.0,
+     "piece",
+     38,
+     32
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b020-8eaf954e",
+   "name": "Mushroom (Button)",
+   "category": "vegetables",
+   "brand": "MockMart Select",
+   "ingredients": [
+    "mushroom (button)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": false,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [
+    "non_satvik"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     200.0,
+     "g",
+     40,
+     49
+    ],
+    [
+     400.0,
+     "g",
+     77,
+     59
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b021-0da37d2a",
+   "name": "Okra (bhindi) (Tender small)",
+   "category": "vegetables",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "okra (small)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     250.0,
+     "g",
+     28,
+     59
+    ],
+    [
+     500.0,
+     "g",
+     53,
+     17
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b027-5960da94",
+   "name": "French beans (Cut)",
+   "category": "vegetables",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "french beans (cut)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     250.0,
+     "g",
+     31,
+     57
+    ],
+    [
+     500.0,
+     "g",
+     59,
+     31
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b028-19c49926",
+   "name": "Drumstick (Regular)",
+   "category": "vegetables",
+   "brand": "MockMart Select",
+   "ingredients": [
+    "drumstick (regular)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     250.0,
+     "g",
+     34,
+     28
+    ],
+    [
+     500.0,
+     "g",
+     65,
+     12
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b029-3b23a1df",
+   "name": "Spring onion (Bunch)",
+   "category": "vegetables",
+   "brand": "MockMart Select",
+   "ingredients": [
+    "spring onion (bunch)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": false,
+   "satvik_ok": false,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [
+    "non_satvik",
+    "onion_garlic"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     100.0,
+     "g",
+     10,
+     28
+    ],
+    [
+     250.0,
+     "g",
+     23,
+     3
+    ]
+   ],
+   "keyword_classes": [
+    "onion_garlic"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b033-136d3f62",
+   "name": "Avocado (Local green)",
+   "category": "vegetables",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "avocado (local)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     1.0,
+     "piece",
+     56,
+     46
+    ],
+    [
+     2.0,
+     "piece",
+     107,
+     11
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b036-032f40c1",
+   "name": "Corn (Baby corn)",
+   "category": "vegetables",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "corn (baby)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     2.0,
+     "piece",
+     47,
+     17
+    ],
+    [
+     4.0,
+     "piece",
+     91,
+     29
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b036-74af2373",
+   "name": "Corn (Sweet corn cob)",
+   "category": "vegetables",
+   "brand": "MockMart Select",
+   "ingredients": [
+    "corn (cob)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     2.0,
+     "piece",
+     25,
+     43
+    ],
+    [
+     4.0,
+     "piece",
+     47,
+     11
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b038-648b648d",
+   "name": "Apple (Shimla)",
+   "category": "fruits",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "apple (shimla)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     500.0,
+     "g",
+     101,
+     11
+    ],
+    [
+     1000.0,
+     "g",
+     193,
+     58
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b041-3b838021",
+   "name": "Pomegranate (Bhagwa)",
+   "category": "fruits",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "pomegranate (bhagwa)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     500.0,
+     "g",
+     89,
+     35
+    ],
+    [
+     1000.0,
+     "g",
+     171,
+     24
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b043-635a7911",
+   "name": "Watermelon (Seedless)",
+   "category": "fruits",
+   "brand": "MockMart Gourmet",
+   "ingredients": [
+    "watermelon (seedless)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     1000.0,
+     "g",
+     51,
+     45
+    ],
+    [
+     2000.0,
+     "g",
+     98,
+     41
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b043-b5071dcc",
+   "name": "Watermelon (Regular)",
+   "category": "fruits",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "watermelon (regular)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     1000.0,
+     "g",
+     29,
+     37
+    ],
+    [
+     2000.0,
+     "g",
+     56,
+     21
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b048-e3ea90da",
+   "name": "Coconut (Tender (water))",
+   "category": "fruits",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "coconut (tender)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     1.0,
+     "piece",
+     41,
+     42
+    ],
+    [
+     2.0,
+     "piece",
+     79,
+     24
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b048-f3fb5746",
+   "name": "Coconut (Fresh whole)",
+   "category": "fruits",
+   "brand": "MockMart Select",
+   "ingredients": [
+    "coconut (whole)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     1.0,
+     "piece",
+     29,
+     22
+    ],
+    [
+     2.0,
+     "piece",
+     57,
+     20
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b062-9f88bdc5",
+   "name": "Eggs (Brown)",
+   "category": "dairy",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "egg (brown)"
+   ],
+   "diet_class": "egg",
+   "vegan": false,
+   "jain_ok": false,
+   "satvik_ok": false,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [
+    "egg"
+   ],
+   "flags": [
+    "egg",
+    "non_satvik"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     6.0,
+     "piece",
+     53,
+     16
+    ],
+    [
+     12.0,
+     "piece",
+     102,
+     22
+    ],
+    [
+     30.0,
+     "piece",
+     244,
+     56
+    ]
+   ],
+   "keyword_classes": [
+    "egg"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b068-161b0c10",
+   "name": "Paneer cubes (ready) (Tikka marinated)",
+   "category": "dairy",
+   "brand": "MockMart Reserve",
+   "ingredients": [
+    "paneer (paneer cubes)",
+    "curd",
+    "red chilli powder",
+    "salt"
+   ],
+   "diet_class": "vegetarian",
+   "vegan": false,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [
+    "milk"
+   ],
+   "flags": [
+    "dairy"
+   ],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     200.0,
+     "g",
+     112,
+     39
+    ]
+   ],
+   "keyword_classes": [
+    "dairy"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b072-4785b289",
+   "name": "Rusk (Atta)",
+   "category": "bakery",
+   "brand": "MockMart Select",
+   "ingredients": [
+    "bread loaf (rusk)",
+    "wheat flour",
+    "sugar",
+    "yeast"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": false,
+   "halal": "not_applicable",
+   "allergens": [
+    "gluten"
+   ],
+   "flags": [
+    "gluten"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     200.0,
+     "g",
+     28,
+     49
+    ],
+    [
+     400.0,
+     "g",
+     54,
+     55
+    ]
+   ],
+   "keyword_classes": [
+    "gluten"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b072-800bec1b",
+   "name": "Rusk (Plain)",
+   "category": "bakery",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "bread loaf (rusk)",
+    "refined flour",
+    "sugar",
+    "yeast"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": false,
+   "halal": "not_applicable",
+   "allergens": [
+    "gluten"
+   ],
+   "flags": [
+    "gluten"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     200.0,
+     "g",
+     25,
+     23
+    ],
+    [
+     400.0,
+     "g",
+     47,
+     33
+    ]
+   ],
+   "keyword_classes": [
+    "gluten"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b077-52f52694",
+   "name": "Rice (everyday) (Parboiled)",
+   "category": "grains",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "rice (parboiled)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     1000.0,
+     "g",
+     72,
+     21
+    ],
+    [
+     5000.0,
+     "g",
+     346,
+     14
+    ],
+    [
+     10000.0,
+     "g",
+     662,
+     26
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b080-8c22e284",
+   "name": "Wheat flour (atta) (Multigrain)",
+   "category": "grains",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "wheat flour",
+    "oats",
+    "gram flour"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": false,
+   "halal": "not_applicable",
+   "allergens": [
+    "gluten"
+   ],
+   "flags": [
+    "gluten"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     1000.0,
+     "g",
+     78,
+     59
+    ],
+    [
+     5000.0,
+     "g",
+     376,
+     45
+    ]
+   ],
+   "keyword_classes": [
+    "gluten"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b080-bdf07297",
+   "name": "Wheat flour (atta) (Whole wheat)",
+   "category": "grains",
+   "brand": "MockMart Select",
+   "ingredients": [
+    "wheat flour (whole)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": false,
+   "halal": "not_applicable",
+   "allergens": [
+    "gluten"
+   ],
+   "flags": [
+    "gluten"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     1000.0,
+     "g",
+     56,
+     32
+    ],
+    [
+     5000.0,
+     "g",
+     270,
+     5
+    ]
+   ],
+   "keyword_classes": [
+    "gluten"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b082-669d4e26",
+   "name": "Semolina (rava) (Bombay)",
+   "category": "grains",
+   "brand": "MockMart Select",
+   "ingredients": [
+    "semolina (bombay)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": false,
+   "halal": "not_applicable",
+   "allergens": [
+    "gluten"
+   ],
+   "flags": [
+    "gluten"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     500.0,
+     "g",
+     26,
+     9
+    ],
+    [
+     1000.0,
+     "g",
+     50,
+     36
+    ]
+   ],
+   "keyword_classes": [
+    "gluten"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b086-315c726c",
+   "name": "Oats (Steel cut)",
+   "category": "grains",
+   "brand": "MockMart Gourmet",
+   "ingredients": [
+    "oats (steel)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": false,
+   "halal": "not_applicable",
+   "allergens": [
+    "gluten"
+   ],
+   "flags": [],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     500.0,
+     "g",
+     96,
+     13
+    ],
+    [
+     1000.0,
+     "g",
+     185,
+     58
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b091-b6832261",
+   "name": "Noodles (Rice noodles)",
+   "category": "grains",
+   "brand": "MockMart Select",
+   "ingredients": [
+    "refined flour (noodles)",
+    "rice"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": false,
+   "halal": "not_applicable",
+   "allergens": [
+    "gluten"
+   ],
+   "flags": [
+    "gluten"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     150.0,
+     "g",
+     22,
+     30
+    ],
+    [
+     400.0,
+     "g",
+     56,
+     16
+    ]
+   ],
+   "keyword_classes": [
+    "gluten"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b098-a766ffdc",
+   "name": "Chickpeas (chole) (Kabuli)",
+   "category": "pulses",
+   "brand": "MockMart Select",
+   "ingredients": [
+    "chickpeas (kabuli)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     500.0,
+     "g",
+     50,
+     12
+    ],
+    [
+     1000.0,
+     "g",
+     96,
+     60
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b107-25d6549d",
+   "name": "Black pepper (Powder)",
+   "category": "spices",
+   "brand": "MockMart Select",
+   "ingredients": [
+    "black pepper (powder)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     50.0,
+     "g",
+     44,
+     40
+    ],
+    [
+     100.0,
+     "g",
+     84,
+     57
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b134-746ffaf9",
+   "name": "Groundnut oil (Refined)",
+   "category": "oils",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "peanut (groundnut oil, refined)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [
+    "peanut"
+   ],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     500.0,
+     "ml",
+     91,
+     58
+    ],
+    [
+     1000.0,
+     "ml",
+     175,
+     37
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b158-a1efa71d",
+   "name": "Packaged juice (Mixed fruit)",
+   "category": "beverages",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "orange (packaged juice)",
+    "apple",
+    "mango",
+    "sugar"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     200.0,
+     "ml",
+     19,
+     44
+    ],
+    [
+     1000.0,
+     "ml",
+     90,
+     10
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b171-18b0d4c6",
+   "name": "Jam (Strawberry)",
+   "category": "breakfast",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "sugar (jam)",
+    "strawberry"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     200.0,
+     "g",
+     49,
+     56
+    ],
+    [
+     500.0,
+     "g",
+     117,
+     52
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b184-0909e6b0",
+   "name": "Khakhra (Plain)",
+   "category": "snacks",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "wheat flour (khakhra)",
+    "sunflower oil",
+    "salt"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": false,
+   "halal": "not_applicable",
+   "allergens": [
+    "gluten"
+   ],
+   "flags": [
+    "gluten"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     200.0,
+     "g",
+     43,
+     0
+    ],
+    [
+     400.0,
+     "g",
+     83,
+     16
+    ]
+   ],
+   "keyword_classes": [
+    "gluten"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b190-465cfbe8",
+   "name": "Tomato puree (Plain)",
+   "category": "sauces",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "tomato (tomato puree)",
+    "salt"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     200.0,
+     "g",
+     29,
+     0
+    ],
+    [
+     500.0,
+     "g",
+     69,
+     0
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b195-5b051d25",
+   "name": "Chicken stock (Cube)",
+   "category": "sauces",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "chicken (chicken stock)",
+    "salt"
+   ],
+   "diet_class": "non_veg",
+   "vegan": false,
+   "jain_ok": false,
+   "satvik_ok": false,
+   "gluten_free": true,
+   "halal": "halal",
+   "allergens": [],
+   "flags": [
+    "meat",
+    "non_satvik"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     250.0,
+     "ml",
+     141,
+     31
+    ],
+    [
+     500.0,
+     "ml",
+     271,
+     11
+    ]
+   ],
+   "keyword_classes": [
+    "meat"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b197-ce865315",
+   "name": "Cashew (Roasted salted)",
+   "category": "nuts",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "cashew",
+    "salt"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [
+    "tree_nut"
+   ],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     100.0,
+     "g",
+     97,
+     20
+    ],
+    [
+     250.0,
+     "g",
+     233,
+     16
+    ],
+    [
+     500.0,
+     "g",
+     446,
+     34
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b200-fcb4006e",
+   "name": "Walnuts (Halves)",
+   "category": "nuts",
+   "brand": "MockMart Gourmet",
+   "ingredients": [
+    "walnut (halves)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [
+    "tree_nut"
+   ],
+   "flags": [],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     100.0,
+     "g",
+     123,
+     14
+    ],
+    [
+     250.0,
+     "g",
+     296,
+     14
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b203-475918b9",
+   "name": "Pistachios (Raw)",
+   "category": "nuts",
+   "brand": "MockMart Reserve",
+   "ingredients": [
+    "pistachio (raw)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [
+    "tree_nut"
+   ],
+   "flags": [],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     100.0,
+     "g",
+     154,
+     46
+    ],
+    [
+     200.0,
+     "g",
+     296,
+     11
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b203-62ac01af",
+   "name": "Pistachios (Roasted salted)",
+   "category": "nuts",
+   "brand": "MockMart Gourmet",
+   "ingredients": [
+    "pistachio",
+    "salt"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [
+    "tree_nut"
+   ],
+   "flags": [],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     100.0,
+     "g",
+     163,
+     47
+    ],
+    [
+     200.0,
+     "g",
+     314,
+     47
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b205-9a5627c4",
+   "name": "Desiccated coconut (Chips)",
+   "category": "nuts",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "coconut (desiccated coconut, chips)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     100.0,
+     "g",
+     27,
+     52
+    ],
+    [
+     200.0,
+     "g",
+     51,
+     28
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b208-8600ea59",
+   "name": "Frozen parathas (Aloo)",
+   "category": "frozen",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "wheat flour (frozen parathas)",
+    "potato",
+    "sunflower oil",
+    "salt"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": false,
+   "satvik_ok": true,
+   "gluten_free": false,
+   "halal": "not_applicable",
+   "allergens": [
+    "gluten"
+   ],
+   "flags": [
+    "gluten",
+    "root_veg"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     4.0,
+     "piece",
+     44,
+     7
+    ],
+    [
+     8.0,
+     "piece",
+     84,
+     11
+    ]
+   ],
+   "keyword_classes": [
+    "gluten",
+    "root_veg"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b210-33846ec8",
+   "name": "Ice cream (Eggless chocolate)",
+   "category": "frozen",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "milk (ice cream)",
+    "cream",
+    "sugar",
+    "cocoa"
+   ],
+   "diet_class": "vegetarian",
+   "vegan": false,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [
+    "milk"
+   ],
+   "flags": [
+    "dairy"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     100.0,
+     "ml",
+     30,
+     27
+    ],
+    [
+     500.0,
+     "ml",
+     144,
+     42
+    ],
+    [
+     1000.0,
+     "ml",
+     276,
+     14
+    ]
+   ],
+   "keyword_classes": [
+    "dairy"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b211-7b7b93e6",
+   "name": "Frozen momos (Veg)",
+   "category": "frozen",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "refined flour (frozen momos)",
+    "cabbage",
+    "carrot",
+    "onion",
+    "garlic",
+    "sunflower oil"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": false,
+   "satvik_ok": false,
+   "gluten_free": false,
+   "halal": "not_applicable",
+   "allergens": [
+    "gluten"
+   ],
+   "flags": [
+    "gluten",
+    "non_satvik",
+    "onion_garlic",
+    "root_veg"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     8.0,
+     "piece",
+     98,
+     3
+    ],
+    [
+     12.0,
+     "piece",
+     141,
+     56
+    ]
+   ],
+   "keyword_classes": [
+    "gluten",
+    "onion_garlic",
+    "root_veg"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b223-846939e9",
+   "name": "Garbage bags (Medium)",
+   "category": "household",
+   "brand": "MockMart Select",
+   "ingredients": [
+    "non-food item (garbage bags, medium)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     30.0,
+     "piece",
+     1218,
+     34
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b226-3fe33e27",
+   "name": "Amaranth leaves (chaulai) (Green)",
+   "category": "vegetables",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "amaranth (amaranth leaves, green)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     250.0,
+     "g",
+     18,
+     26
+    ],
+    [
+     500.0,
+     "g",
+     34,
+     32
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b226-63aba3fd",
+   "name": "Amaranth leaves (chaulai) (Washed)",
+   "category": "vegetables",
+   "brand": "MockMart Select",
+   "ingredients": [
+    "amaranth (amaranth leaves, washed)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     250.0,
+     "g",
+     23,
+     0
+    ],
+    [
+     500.0,
+     "g",
+     44,
+     58
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b228-308af1e9",
+   "name": "Yam (suran) (Organic)",
+   "category": "vegetables",
+   "brand": "MockMart Organic",
+   "ingredients": [
+    "yam (whole, organic)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": false,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [
+    "root_veg"
+   ],
+   "organic": "yes",
+   "premium": "no",
+   "packs": [
+    [
+     250.0,
+     "g",
+     41,
+     54
+    ],
+    [
+     500.0,
+     "g",
+     79,
+     59
+    ]
+   ],
+   "keyword_classes": [
+    "root_veg"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b231-28ff790a",
+   "name": "Ash gourd (Whole)",
+   "category": "vegetables",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "ash gourd (whole)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     500.0,
+     "g",
+     21,
+     16
+    ],
+    [
+     1000.0,
+     "g",
+     39,
+     53
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b231-a6ff63f0",
+   "name": "Ash gourd (Peeled cubes)",
+   "category": "vegetables",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "ash gourd (cubes)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     500.0,
+     "g",
+     35,
+     59
+    ],
+    [
+     1000.0,
+     "g",
+     67,
+     6
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b232-aed94dbc",
+   "name": "Snake gourd (Organic)",
+   "category": "vegetables",
+   "brand": "MockMart Organic",
+   "ingredients": [
+    "snake gourd (regular, organic)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "yes",
+   "premium": "no",
+   "packs": [
+    [
+     250.0,
+     "g",
+     26,
+     32
+    ],
+    [
+     500.0,
+     "g",
+     51,
+     9
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b233-50a68b61",
+   "name": "Cluster beans (gavar) (Organic)",
+   "category": "vegetables",
+   "brand": "MockMart Organic",
+   "ingredients": [
+    "cluster beans (regular, organic)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "yes",
+   "premium": "no",
+   "packs": [
+    [
+     250.0,
+     "g",
+     40,
+     5
+    ],
+    [
+     500.0,
+     "g",
+     77,
+     34
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b235-e8a1154b",
+   "name": "Ivy gourd (tindora) (Cut)",
+   "category": "vegetables",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "ivy gourd (cut)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     250.0,
+     "g",
+     29,
+     49
+    ],
+    [
+     500.0,
+     "g",
+     55,
+     58
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b237-337bd9d6",
+   "name": "Raw jackfruit (Whole piece)",
+   "category": "vegetables",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "jackfruit (raw jackfruit, whole)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     500.0,
+     "g",
+     35,
+     29
+    ],
+    [
+     1000.0,
+     "g",
+     67,
+     7
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b241-aedd5078",
+   "name": "Garlic (specialty) (Peeled frozen)",
+   "category": "vegetables",
+   "brand": "MockMart Select",
+   "ingredients": [
+    "garlic (frozen)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": false,
+   "satvik_ok": false,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [
+    "non_satvik",
+    "onion_garlic"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     100.0,
+     "g",
+     40,
+     60
+    ],
+    [
+     250.0,
+     "g",
+     95,
+     54
+    ]
+   ],
+   "keyword_classes": [
+    "onion_garlic"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b244-2a06dfb7",
+   "name": "Beans sprouts and microgreens (Microgreens)",
+   "category": "vegetables",
+   "brand": "MockMart Gourmet",
+   "ingredients": [
+    "moong dal (beans sprouts and microgreens, microgreens)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     100.0,
+     "g",
+     41,
+     29
+    ],
+    [
+     200.0,
+     "g",
+     79,
+     32
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b246-77aca31c",
+   "name": "Pre-cut curry vegetables (Pulao mix)",
+   "category": "vegetables",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "potato (pre-cut curry vegetables)",
+    "carrot",
+    "green peas",
+    "cauliflower"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": false,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [
+    "root_veg"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     300.0,
+     "g",
+     34,
+     54
+    ],
+    [
+     500.0,
+     "g",
+     54,
+     14
+    ]
+   ],
+   "keyword_classes": [
+    "root_veg"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b250-02cd0d57",
+   "name": "Litchi (Peeled)",
+   "category": "fruits",
+   "brand": "MockMart Gourmet",
+   "ingredients": [
+    "litchi (peeled)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     250.0,
+     "g",
+     103,
+     53
+    ],
+    [
+     500.0,
+     "g",
+     197,
+     9
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b255-8895a0eb",
+   "name": "Custard apple (Regular)",
+   "category": "fruits",
+   "brand": "MockMart Reserve",
+   "ingredients": [
+    "custard apple (regular)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     500.0,
+     "g",
+     90,
+     34
+    ],
+    [
+     1000.0,
+     "g",
+     172,
+     0
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b259-970fd7cf",
+   "name": "Frozen fruit pulp (Chikoo)",
+   "category": "fruits",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "mango (frozen fruit pulp)",
+    "sapota"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     250.0,
+     "g",
+     54,
+     47
+    ],
+    [
+     500.0,
+     "g",
+     103,
+     31
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b260-d9d2a4fd",
+   "name": "Flavoured milk (Kesar)",
+   "category": "dairy",
+   "brand": "MockMart Reserve",
+   "ingredients": [
+    "milk (flavoured milk)",
+    "saffron",
+    "sugar"
+   ],
+   "diet_class": "vegetarian",
+   "vegan": false,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [
+    "milk"
+   ],
+   "flags": [
+    "dairy"
+   ],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     200.0,
+     "ml",
+     20,
+     54
+    ],
+    [
+     1000.0,
+     "ml",
+     97,
+     59
+    ]
+   ],
+   "keyword_classes": [
+    "dairy"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b262-4c6b5892",
+   "name": "Cheese spread (Plain)",
+   "category": "dairy",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "cheese (cheese spread, plain)"
+   ],
+   "diet_class": "vegetarian",
+   "vegan": false,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [
+    "milk"
+   ],
+   "flags": [
+    "dairy"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     180.0,
+     "g",
+     50,
+     7
+    ],
+    [
+     400.0,
+     "g",
+     107,
+     46
+    ]
+   ],
+   "keyword_classes": [
+    "dairy"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b262-5322c16d",
+   "name": "Cheese spread (Cream cheese)",
+   "category": "dairy",
+   "brand": "MockMart Reserve",
+   "ingredients": [
+    "cheese (cheese spread)",
+    "cream"
+   ],
+   "diet_class": "vegetarian",
+   "vegan": false,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [
+    "milk"
+   ],
+   "flags": [
+    "dairy"
+   ],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     180.0,
+     "g",
+     64,
+     59
+    ],
+    [
+     400.0,
+     "g",
+     136,
+     0
+    ]
+   ],
+   "keyword_classes": [
+    "dairy"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b267-e9c237f5",
+   "name": "Egg alternatives (Boiled peeled)",
+   "category": "dairy",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "egg (egg alternatives, boiled)"
+   ],
+   "diet_class": "egg",
+   "vegan": false,
+   "jain_ok": false,
+   "satvik_ok": false,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [
+    "egg"
+   ],
+   "flags": [
+    "egg",
+    "non_satvik"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     200.0,
+     "g",
+     120,
+     41
+    ],
+    [
+     400.0,
+     "g",
+     231,
+     34
+    ]
+   ],
+   "keyword_classes": [
+    "egg"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b268-bd1f6742",
+   "name": "Cottage cheese (cheese-style) (Ricotta)",
+   "category": "dairy",
+   "brand": "MockMart Gourmet",
+   "ingredients": [
+    "cheese (cottage cheese, ricotta)"
+   ],
+   "diet_class": "vegetarian",
+   "vegan": false,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [
+    "milk"
+   ],
+   "flags": [
+    "dairy"
+   ],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     200.0,
+     "g",
+     91,
+     16
+    ],
+    [
+     400.0,
+     "g",
+     174,
+     54
+    ]
+   ],
+   "keyword_classes": [
+    "dairy"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b269-19014104",
+   "name": "Plain yoghurt (specialty) (Goat)",
+   "category": "dairy",
+   "brand": "MockMart Gourmet",
+   "ingredients": [
+    "curd (plain yoghurt, goat)"
+   ],
+   "diet_class": "vegetarian",
+   "vegan": false,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [
+    "milk"
+   ],
+   "flags": [
+    "dairy"
+   ],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     200.0,
+     "g",
+     71,
+     6
+    ],
+    [
+     450.0,
+     "g",
+     154,
+     39
+    ]
+   ],
+   "keyword_classes": [
+    "dairy"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b273-008e8de9",
+   "name": "Muffins and brownies (Walnut brownie)",
+   "category": "bakery",
+   "brand": "MockMart Gourmet",
+   "ingredients": [
+    "refined flour (muffins and brownies)",
+    "egg",
+    "sugar",
+    "cocoa",
+    "walnut",
+    "butter"
+   ],
+   "diet_class": "egg",
+   "vegan": false,
+   "jain_ok": false,
+   "satvik_ok": false,
+   "gluten_free": false,
+   "halal": "not_applicable",
+   "allergens": [
+    "egg",
+    "gluten",
+    "milk",
+    "tree_nut"
+   ],
+   "flags": [
+    "dairy",
+    "egg",
+    "gluten",
+    "non_satvik"
+   ],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     2.0,
+     "piece",
+     65,
+     33
+    ],
+    [
+     4.0,
+     "piece",
+     126,
+     10
+    ]
+   ],
+   "keyword_classes": [
+    "egg",
+    "gluten"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b274-6771cb75",
+   "name": "Tortilla and wraps (Multigrain wrap)",
+   "category": "bakery",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "wheat flour (tortilla and wraps)",
+    "oats",
+    "sunflower oil",
+    "salt"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": false,
+   "halal": "not_applicable",
+   "allergens": [
+    "gluten"
+   ],
+   "flags": [
+    "gluten"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     4.0,
+     "piece",
+     39,
+     23
+    ],
+    [
+     8.0,
+     "piece",
+     75,
+     40
+    ]
+   ],
+   "keyword_classes": [
+    "gluten"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b278-a71f1f3f",
+   "name": "Khari and toast (Butter toast)",
+   "category": "bakery",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "refined flour (khari and toast)",
+    "butter",
+    "sugar"
+   ],
+   "diet_class": "vegetarian",
+   "vegan": false,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": false,
+   "halal": "not_applicable",
+   "allergens": [
+    "gluten",
+    "milk"
+   ],
+   "flags": [
+    "dairy",
+    "gluten"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     150.0,
+     "g",
+     21,
+     9
+    ],
+    [
+     300.0,
+     "g",
+     41,
+     8
+    ]
+   ],
+   "keyword_classes": [
+    "dairy",
+    "gluten"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b279-62fb2041",
+   "name": "Jowar atta (Organic)",
+   "category": "grains",
+   "brand": "MockMart Organic",
+   "ingredients": [
+    "jowar (jowar atta, plain, organic)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "yes",
+   "premium": "no",
+   "packs": [
+    [
+     500.0,
+     "g",
+     62,
+     11
+    ],
+    [
+     1000.0,
+     "g",
+     119,
+     34
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b284-bbb53b91",
+   "name": "Corn flour and meal (Cornmeal polenta)",
+   "category": "grains",
+   "brand": "MockMart Reserve",
+   "ingredients": [
+    "corn (corn flour and meal, polenta)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     200.0,
+     "g",
+     19,
+     52
+    ],
+    [
+     500.0,
+     "g",
+     46,
+     3
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b287-e1839f87",
+   "name": "Poha and puffed rice (Roasted poha chivda base)",
+   "category": "grains",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "flattened rice (poha and puffed rice, chivda)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     250.0,
+     "g",
+     20,
+     48
+    ],
+    [
+     500.0,
+     "g",
+     38,
+     59
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b288-5c4ceb75",
+   "name": "Couscous and bulgur (Bulgur)",
+   "category": "grains",
+   "brand": "MockMart Reserve",
+   "ingredients": [
+    "semolina (couscous and bulgur, bulgur)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": false,
+   "halal": "not_applicable",
+   "allergens": [
+    "gluten"
+   ],
+   "flags": [
+    "gluten"
+   ],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     250.0,
+     "g",
+     50,
+     9
+    ],
+    [
+     500.0,
+     "g",
+     95,
+     58
+    ]
+   ],
+   "keyword_classes": [
+    "gluten"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b289-ae4859e8",
+   "name": "Breakfast porridge mix (Apple cinnamon)",
+   "category": "grains",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "oats (breakfast porridge mix)",
+    "apple",
+    "cinnamon",
+    "sugar"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": false,
+   "halal": "not_applicable",
+   "allergens": [
+    "gluten"
+   ],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     200.0,
+     "g",
+     48,
+     50
+    ],
+    [
+     400.0,
+     "g",
+     92,
+     0
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b290-a4c5309f",
+   "name": "Fried rice and biryani kits (Jain pulao kit)",
+   "category": "grains",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "basmati rice (fried rice and biryani kits, jain)",
+    "cumin",
+    "bay leaf"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     200.0,
+     "g",
+     65,
+     7
+    ],
+    [
+     500.0,
+     "g",
+     156,
+     30
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b296-6f826675",
+   "name": "Dal mixes (Dal tadka mix)",
+   "category": "pulses",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "toor dal (dal mixes)",
+    "moong dal",
+    "turmeric",
+    "salt"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     500.0,
+     "g",
+     77,
+     35
+    ],
+    [
+     1000.0,
+     "g",
+     149,
+     32
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b296-e0bb1fe0",
+   "name": "Dal mixes (Khichdi mix)",
+   "category": "pulses",
+   "brand": "MockMart Select",
+   "ingredients": [
+    "toor dal (dal mixes)",
+    "rice",
+    "moong dal",
+    "turmeric"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     500.0,
+     "g",
+     63,
+     49
+    ],
+    [
+     1000.0,
+     "g",
+     121,
+     44
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b297-75ba5442",
+   "name": "Sattu (Spiced)",
+   "category": "pulses",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "gram flour (sattu, sattu)",
+    "cumin",
+    "black salt"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     250.0,
+     "g",
+     28,
+     23
+    ],
+    [
+     500.0,
+     "g",
+     54,
+     39
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b298-260a874a",
+   "name": "Besan (specialty) (Roasted)",
+   "category": "pulses",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "gram flour (besan, roasted)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     250.0,
+     "g",
+     33,
+     26
+    ],
+    [
+     500.0,
+     "g",
+     63,
+     44
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b300-5c14d94b",
+   "name": "Sabzi masala (Regular)",
+   "category": "spices",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "coriander powder (sabzi masala)",
+    "cumin",
+    "turmeric",
+    "red chilli powder"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     50.0,
+     "g",
+     20,
+     7
+    ],
+    [
+     100.0,
+     "g",
+     39,
+     3
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b302-55fbfc72",
+   "name": "Tandoori and kebab masala (Tikka)",
+   "category": "spices",
+   "brand": "MockMart Select",
+   "ingredients": [
+    "red chilli powder (tandoori and kebab masala)",
+    "cumin",
+    "fenugreek leaves",
+    "garam masala"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     50.0,
+     "g",
+     30,
+     22
+    ],
+    [
+     100.0,
+     "g",
+     57,
+     30
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b304-e5cbb72d",
+   "name": "Mixed herbs and oregano (Pizza seasoning)",
+   "category": "spices",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "oregano (mixed herbs and oregano)",
+    "oregano",
+    "garlic",
+    "chilli flakes"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": false,
+   "satvik_ok": false,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [
+    "non_satvik",
+    "onion_garlic"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     10.0,
+     "g",
+     6,
+     26
+    ],
+    [
+     25.0,
+     "g",
+     14,
+     13
+    ]
+   ],
+   "keyword_classes": [
+    "onion_garlic"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b308-c92e9e01",
+   "name": "Amchur and sour powders (Anardana)",
+   "category": "spices",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "amchur (amchur and sour powders, anardana)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     50.0,
+     "g",
+     24,
+     34
+    ],
+    [
+     100.0,
+     "g",
+     47,
+     60
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b309-e4079998",
+   "name": "Dry ginger and tonics (Kadha mix)",
+   "category": "spices",
+   "brand": "MockMart Select",
+   "ingredients": [
+    "ginger (dry ginger and tonics)",
+    "tulsi",
+    "black pepper",
+    "cinnamon"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": false,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [
+    "root_veg"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     50.0,
+     "g",
+     29,
+     39
+    ],
+    [
+     100.0,
+     "g",
+     56,
+     14
+    ]
+   ],
+   "keyword_classes": [
+    "root_veg"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b311-1ce89e46",
+   "name": "Cumin (specialty) (Roasted powder)",
+   "category": "spices",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "cumin (roasted)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     100.0,
+     "g",
+     56,
+     15
+    ],
+    [
+     200.0,
+     "g",
+     107,
+     54
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b311-fbf6fc46",
+   "name": "Cumin (specialty) (Kala jeera)",
+   "category": "spices",
+   "brand": "MockMart Reserve",
+   "ingredients": [
+    "cumin (black)"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     100.0,
+     "g",
+     71,
+     10
+    ],
+    [
+     200.0,
+     "g",
+     136,
+     16
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b312-c21f68a7",
+   "name": "Whole garam spices pack (Chai pack)",
+   "category": "spices",
+   "brand": "MockMart Select",
+   "ingredients": [
+    "cloves (whole garam spices pack)",
+    "cardamom",
+    "cinnamon"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     50.0,
+     "g",
+     39,
+     40
+    ],
+    [
+     100.0,
+     "g",
+     75,
+     18
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b317-00bf1221",
+   "name": "Chicken (specialty cuts) (Drumsticks)",
+   "category": "meat",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "chicken (drumstick)"
+   ],
+   "diet_class": "non_veg",
+   "vegan": false,
+   "jain_ok": false,
+   "satvik_ok": false,
+   "gluten_free": true,
+   "halal": "halal",
+   "allergens": [],
+   "flags": [
+    "meat",
+    "non_satvik"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     250.0,
+     "g",
+     88,
+     44
+    ],
+    [
+     500.0,
+     "g",
+     169,
+     22
+    ]
+   ],
+   "keyword_classes": [
+    "meat"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b318-866f5d57",
+   "name": "Mutton (specialty cuts) (Chops)",
+   "category": "meat",
+   "brand": "MockMart Gourmet",
+   "ingredients": [
+    "mutton (chops)"
+   ],
+   "diet_class": "non_veg",
+   "vegan": false,
+   "jain_ok": false,
+   "satvik_ok": false,
+   "gluten_free": true,
+   "halal": "halal",
+   "allergens": [],
+   "flags": [
+    "meat",
+    "non_satvik"
+   ],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     250.0,
+     "g",
+     239,
+     50
+    ],
+    [
+     500.0,
+     "g",
+     460,
+     0
+    ]
+   ],
+   "keyword_classes": [
+    "meat"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b318-9da404cb",
+   "name": "Mutton (specialty cuts) (Mince)",
+   "category": "meat",
+   "brand": "MockMart Select",
+   "ingredients": [
+    "mutton (mince)"
+   ],
+   "diet_class": "non_veg",
+   "vegan": false,
+   "jain_ok": false,
+   "satvik_ok": false,
+   "gluten_free": true,
+   "halal": "halal",
+   "allergens": [],
+   "flags": [
+    "meat",
+    "non_satvik"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     250.0,
+     "g",
+     214,
+     0
+    ],
+    [
+     500.0,
+     "g",
+     412,
+     12
+    ]
+   ],
+   "keyword_classes": [
+    "meat"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b319-8e119361",
+   "name": "Fish (specialty) (Tuna steak)",
+   "category": "meat",
+   "brand": "MockMart Gourmet",
+   "ingredients": [
+    "fish (tuna)"
+   ],
+   "diet_class": "non_veg",
+   "vegan": false,
+   "jain_ok": false,
+   "satvik_ok": false,
+   "gluten_free": true,
+   "halal": "halal",
+   "allergens": [
+    "fish"
+   ],
+   "flags": [
+    "fish",
+    "non_satvik"
+   ],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     250.0,
+     "g",
+     248,
+     45
+    ],
+    [
+     500.0,
+     "g",
+     476,
+     17
+    ]
+   ],
+   "keyword_classes": [
+    "fish"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b320-6aaa1a72",
+   "name": "Canned fish and meat (Tuna in water)",
+   "category": "meat",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "fish (canned fish and meat, tuna)",
+    "water"
+   ],
+   "diet_class": "non_veg",
+   "vegan": false,
+   "jain_ok": false,
+   "satvik_ok": false,
+   "gluten_free": true,
+   "halal": "halal",
+   "allergens": [
+    "fish"
+   ],
+   "flags": [
+    "fish",
+    "non_satvik"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     100.0,
+     "g",
+     50,
+     34
+    ],
+    [
+     200.0,
+     "g",
+     95,
+     27
+    ]
+   ],
+   "keyword_classes": [
+    "fish"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b321-cae426e4",
+   "name": "Sausages and bacon (Pork sausage)",
+   "category": "meat",
+   "brand": "MockMart Select",
+   "ingredients": [
+    "pork (sausages and bacon)",
+    "salt"
+   ],
+   "diet_class": "non_veg",
+   "vegan": false,
+   "jain_ok": false,
+   "satvik_ok": false,
+   "gluten_free": true,
+   "halal": "not_halal",
+   "allergens": [],
+   "flags": [
+    "meat",
+    "non_satvik"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     200.0,
+     "g",
+     118,
+     46
+    ],
+    [
+     400.0,
+     "g",
+     226,
+     11
+    ]
+   ],
+   "keyword_classes": [
+    "meat",
+    "pork"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b322-3e2c0c67",
+   "name": "Plant-based meat (Seitan strips)",
+   "category": "meat",
+   "brand": "MockMart Reserve",
+   "ingredients": [
+    "soy chunks (plant-based meat)",
+    "wheat flour",
+    "soy sauce"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": false,
+   "halal": "not_applicable",
+   "allergens": [
+    "gluten",
+    "soy"
+   ],
+   "flags": [
+    "gluten"
+   ],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     200.0,
+     "g",
+     136,
+     30
+    ],
+    [
+     400.0,
+     "g",
+     261,
+     50
+    ]
+   ],
+   "keyword_classes": [
+    "gluten"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b323-6fb6a9c9",
+   "name": "Kokum and sharbat syrups (Khus)",
+   "category": "beverages",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "sugar (kokum and sharbat syrups, syrup)",
+    "khus"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     500.0,
+     "ml",
+     101,
+     21
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b323-c8d59249",
+   "name": "Kokum and sharbat syrups (Orange squash)",
+   "category": "beverages",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "sugar (kokum and sharbat syrups)",
+    "orange"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     500.0,
+     "ml",
+     89,
+     13
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b324-e6bd1f22",
+   "name": "Iced tea and cold coffee (Green iced tea)",
+   "category": "beverages",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "tea leaves (iced tea and cold coffee, green)",
+    "sugar"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     200.0,
+     "ml",
+     21,
+     33
+    ],
+    [
+     1000.0,
+     "ml",
+     103,
+     7
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b331-c504d964",
+   "name": "Mithai and sweets (Rasgulla tin)",
+   "category": "snacks",
+   "brand": "MockMart Daily",
+   "ingredients": [
+    "sugar (mithai and sweets)",
+    "milk",
+    "sugar"
+   ],
+   "diet_class": "vegetarian",
+   "vegan": false,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [
+    "milk"
+   ],
+   "flags": [
+    "dairy"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     250.0,
+     "g",
+     147,
+     52
+    ],
+    [
+     500.0,
+     "g",
+     283,
+     0
+    ]
+   ],
+   "keyword_classes": [
+    "dairy"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b332-415272a9",
+   "name": "Chikki and energy bites (Makhana roasted bites)",
+   "category": "snacks",
+   "brand": "MockMart Gourmet",
+   "ingredients": [
+    "jaggery (chikki and energy bites)",
+    "makhana",
+    "jaggery"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [],
+   "flags": [],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     100.0,
+     "g",
+     53,
+     33
+    ],
+    [
+     250.0,
+     "g",
+     128,
+     19
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b338-6a93ce98",
+   "name": "Eggless mayonnaise (Garlic eggless)",
+   "category": "sauces",
+   "brand": "MockMart Basics",
+   "ingredients": [
+    "sunflower oil (eggless mayonnaise)",
+    "vinegar",
+    "salt",
+    "milk",
+    "garlic"
+   ],
+   "diet_class": "vegetarian",
+   "vegan": false,
+   "jain_ok": false,
+   "satvik_ok": false,
+   "gluten_free": true,
+   "halal": "not_applicable",
+   "allergens": [
+    "milk"
+   ],
+   "flags": [
+    "dairy",
+    "non_satvik",
+    "onion_garlic"
+   ],
+   "organic": "no",
+   "premium": "no",
+   "packs": [
+    [
+     100.0,
+     "g",
+     30,
+     46
+    ],
+    [
+     250.0,
+     "g",
+     72,
+     50
+    ]
+   ],
+   "keyword_classes": [
+    "dairy",
+    "onion_garlic"
+   ],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  },
+  {
+   "variant_id": "b339-4f2e3408",
+   "name": "Dairy-free ice cream (Oat)",
+   "category": "frozen",
+   "brand": "MockMart Reserve",
+   "ingredients": [
+    "coconut (dairy-free ice cream)",
+    "oats",
+    "sugar"
+   ],
+   "diet_class": "vegan",
+   "vegan": true,
+   "jain_ok": true,
+   "satvik_ok": true,
+   "gluten_free": false,
+   "halal": "not_applicable",
+   "allergens": [
+    "gluten"
+   ],
+   "flags": [],
+   "organic": "no",
+   "premium": "yes",
+   "packs": [
+    [
+     100.0,
+     "ml",
+     48,
+     16
+    ],
+    [
+     500.0,
+     "ml",
+     231,
+     32
+    ]
+   ],
+   "keyword_classes": [],
+   "tags_missing_keyword_class": [],
+   "price_rule_outliers": [],
+   "pack_count_ok": true,
+   "stock_ok": true
+  }
+ ]
+}

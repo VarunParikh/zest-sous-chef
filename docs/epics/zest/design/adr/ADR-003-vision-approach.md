@@ -1,5 +1,5 @@
 # ADR-003 (v3): Local `qwen3-vl:4b-instruct` by default; Gemini opt-in; labelled sample photos for the demo and as fallback
-- **Status:** **Accepted v3, 2026-10-18 (owner decision, C37; owner re-approved the same day).** v2 was Accepted, **amended 2026-10-17 (v2)** by owner decision: local-first, Gemini optional, pluggable. v1 (Gemini primary) is superseded; the original text is kept below under "v1 record". **Day-1 decision 2026-10-18 (owner approved): default `VISION_PROVIDER=samples`; photo accuracy NOT MET; Gemini 3.5 Flash-Lite available as an opt-in for demos only.**
+- **Status:** **Accepted v3, 2026-10-18 (owner decision, C37; owner re-approved the same day). NFR-01 photo-upload target recorded from E11 (owner approved 2026-10-18).** v2 was Accepted, **amended 2026-10-17 (v2)** by owner decision: local-first, Gemini optional, pluggable. v1 (Gemini primary) is superseded; the original text is kept below under "v1 record". **Day-1 decision 2026-10-18 (owner approved): default `VISION_PROVIDER=samples`; photo accuracy NOT MET; Gemini 3.5 Flash-Lite available as an opt-in for demos only.**
 - **Date:** 2026-10-17
 - **Decision owner:** VJP (product owner); drafted by Claude
 - **Authorisation:** Owner chose Gemini with user-uploaded photos and Constitution P9 was amended.
@@ -16,6 +16,9 @@
 - Detections are labelled as estimates and always confirmed with one tap before the cart changes (MSG-PHOTO-CONFIRM or MSG-PHOTO-LOW, C38), so a wrong detection costs a tap, not a wrong order.
 - Expect slow or failed analyses on the 16 GB laptop: a call may take up to 60 s (above the 10 to 20 s target; the chat stays locked with a progress bar), and memory pressure may evict the text model. Failures fall back to the samples.
 - Rollback: `VISION_PROVIDER=samples` in `.env`.
+
+### NFR-01 photo-upload target (owner approved 2026-10-18, from E11; C60)
+Photo upload through local `qwen3-vl:4b-instruct` (the upload turn plus the confirm tap), server side, demo photos RF01, RF02, RF03 and RF07: E11 median 7.58 s, p95 12.55 s (vision call p95 12.2 s). **Target p95: 15 s**, within the owner's 10 to 20 s range and the 60 s timeout. This does not change the E3 result: photo accuracy stays NOT MET, and the E3 latency set (p95 109.8 s) is not comparable with the 4 demo photos. Source: `eval/results/E11-latency-real-stack.json`.
 
 ## v2 amendment (2026-10-17, owner decision)
 **Owner instruction:** "Local first with Gemini as optional. Can be pluggable." Accuracy bar "70-80%; 8 out of 10 ingredients must be identified". Latency "10 to 20 secs with a progress bar".

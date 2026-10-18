@@ -1,5 +1,5 @@
 # ADR-002: Choose the local text model for intent and ingredient extraction
-- **Status:** **Accepted (owner, 2026-10-18):** `llama3.2:3b` with a 4,096-token context, chosen by the Day-1 benchmark E1 (post-hoc 4k rerun)
+- **Status:** **Accepted (owner, 2026-10-18):** NFR-01 latency targets recorded from E11 (owner approved 2026-10-18). `llama3.2:3b` with a 4,096-token context, chosen by the Day-1 benchmark E1 (post-hoc 4k rerun)
 - **Date:** 2026-10-17
 - **Decision owner:** VJP (product owner); drafted by Claude
 - **Authorisation:** Owner decided: local text model only, no cloud text fallback (2026-10-17). The specific model is not chosen.
@@ -68,6 +68,17 @@ Approved by the owner on 2026-10-18 ("Approve the ADR-002, 004, 005 and 006 prop
   3. Hinglish rows scored lower (F1 0.71 to 0.91).
   4. Live YouTube transcripts can exceed 4k tokens, so the video flow must cap the transcript length it sends (block 2.4).
 - **Latency target (E1 says to record it here):** the extraction call is about 4–5 s (p95 5.4 s). E11 sets the end-to-end targets per flow.
+- **NFR-01 end-to-end targets (owner approved 2026-10-18, from E11; C60).** Server-side p95 per flow on the M5 MacBook Air with other apps closed, the measured p95 rounded up. They are regression limits for this laptop, not user-research thresholds:
+
+  | Flow | E11 median | E11 p95 | Target p95 |
+  |---|---|---|---|
+  | Mood | 1.20 s | 1.25 s | 1.5 s |
+  | Text recipe | 5.06 s | 5.52 s | 6 s |
+  | YouTube (fixture path) | 5.62 s | 11.03 s | 12 s |
+  | Sample photo | 0.27 s | 0.33 s | 0.5 s |
+  | Cart edits (API) | 2 to 15 ms | 2 to 16 ms | 50 ms |
+
+  The photo-upload target is in ADR-003. Source: `eval/results/E11-latency-real-stack.json`, `verify/benchmarks/block31.md`.
 - **Demo rule:** close other apps before the demo (Test Plan §9). The warm-up script loads `llama3.2:3b` at 4k.
 
 ## Related documents

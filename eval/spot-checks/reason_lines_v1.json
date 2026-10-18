@@ -1,0 +1,421 @@
+{
+ "seed": 20261018,
+ "source": "eval/results/post-hoc/c54/E13-reason-line-llama3.2_3b.json",
+ "rows": [
+  {
+   "id": "RP6-1-2",
+   "prompt": "I am feeling indulgent",
+   "persona": "P6",
+   "dish": "Kachumber Salad",
+   "tags": [
+    "fresh",
+    "tangy",
+    "crunchy",
+    "light",
+    "refreshing"
+   ],
+   "drivers": [
+    "purchase history preference high",
+    "strong match for the mood",
+    "trend high right now"
+   ],
+   "shown": "Fresh, tangy, and crunchy, matching current mood and trend, aligning with purchase history preference",
+   "template": false,
+   "c50_problems": []
+  },
+  {
+   "id": "RP6-1-3",
+   "prompt": "I am feeling indulgent",
+   "persona": "P6",
+   "dish": "Virgin Mint Mojito (international)",
+   "tags": [
+    "minty",
+    "tangy",
+    "sweet",
+    "cooling",
+    "refreshing"
+   ],
+   "drivers": [
+    "strong match for the mood",
+    "trend high right now",
+    "gourmet and organic match"
+   ],
+   "shown": "Minty, tangy, and refreshing, matching the current mood and trend",
+   "template": false,
+   "c50_problems": []
+  },
+  {
+   "id": "RP6-2-3",
+   "prompt": "I am feeling cooling",
+   "persona": "P6",
+   "dish": "Kokum Sharbat",
+   "tags": [
+    "tangy",
+    "sweet",
+    "cooling",
+    "refreshing"
+   ],
+   "drivers": [
+    "strong match for the mood",
+    "trend high right now",
+    "purchase history preference high"
+   ],
+   "shown": "Tangy, sweet and refreshing, matching current mood and preferences",
+   "template": false,
+   "c50_problems": []
+  },
+  {
+   "id": "RP6-3-1",
+   "prompt": "a light and healthy dinner",
+   "persona": "P6",
+   "dish": "Jowar Bhakri",
+   "tags": [
+    "earthy",
+    "plain",
+    "healthy",
+    "light"
+   ],
+   "drivers": [
+    "purchase history preference high",
+    "strong match for the mood",
+    "gourmet and organic match"
+   ],
+   "shown": "Matches your mood and fits your settings",
+   "template": true,
+   "c50_problems": []
+  },
+  {
+   "id": "RP6-3-2",
+   "prompt": "a light and healthy dinner",
+   "persona": "P6",
+   "dish": "Garden Salad with Lemon Dressing (international)",
+   "tags": [
+    "fresh",
+    "tangy",
+    "light",
+    "refreshing",
+    "healthy"
+   ],
+   "drivers": [
+    "strong match for the mood",
+    "trend high right now",
+    "purchase history preference high"
+   ],
+   "shown": "Fresh, tangy, and aligns with current mood and purchase history preferences",
+   "template": false,
+   "c50_problems": []
+  },
+  {
+   "id": "RP6-4-1",
+   "prompt": "something spicy",
+   "persona": "P6",
+   "dish": "Spicy Guava Cooler",
+   "tags": [
+    "tangy",
+    "spicy",
+    "sweet",
+    "cooling",
+    "tangy"
+   ],
+   "drivers": [
+    "strong match for the mood",
+    "trend high right now",
+    "gourmet and organic match"
+   ],
+   "shown": "Tangy, spicy, and sweet, matching the current mood and gourmet preferences",
+   "template": false,
+   "c50_problems": []
+  },
+  {
+   "id": "RP6-4-2",
+   "prompt": "something spicy",
+   "persona": "P6",
+   "dish": "Laccha Pyaaz",
+   "tags": [
+    "sharp",
+    "tangy",
+    "crunchy",
+    "light",
+    "tangy"
+   ],
+   "drivers": [
+    "purchase history preference high",
+    "gourmet and organic match"
+   ],
+   "shown": "Sharp, tangy, and crunchy, matching purchase history and gourmet preferences",
+   "template": false,
+   "c50_problems": []
+  },
+  {
+   "id": "RP6-5-1",
+   "prompt": "I am craving something sweet",
+   "persona": "P6",
+   "dish": "Peanut Chikki",
+   "tags": [
+    "crunchy",
+    "nutty",
+    "sweet",
+    "sweet",
+    "quick"
+   ],
+   "drivers": [
+    "purchase history preference high",
+    "strong match for the mood",
+    "gourmet and organic match"
+   ],
+   "shown": "A sweet and crunchy treat that matches your mood and preferences",
+   "template": false,
+   "c50_problems": []
+  },
+  {
+   "id": "RP7-1-1",
+   "prompt": "I am feeling indulgent",
+   "persona": "P7",
+   "dish": "Lachha Paratha",
+   "tags": [
+    "flaky",
+    "buttery",
+    "comfort",
+    "indulgent"
+   ],
+   "drivers": [
+    "purchase history preference high",
+    "strong match for the mood",
+    "gourmet and organic match"
+   ],
+   "shown": "Flaky, buttery, and indulgent, matching purchase history and mood preferences",
+   "template": false,
+   "c50_problems": []
+  },
+  {
+   "id": "RP7-1-2",
+   "prompt": "I am feeling indulgent",
+   "persona": "P7",
+   "dish": "Aloo Paratha",
+   "tags": [
+    "buttery",
+    "spicy",
+    "hearty",
+    "comfort",
+    "indulgent"
+   ],
+   "drivers": [
+    "purchase history preference high",
+    "strong match for the mood",
+    "gourmet and organic match"
+   ],
+   "shown": "Buttery, spicy, and comforting, matching mood and preferences",
+   "template": false,
+   "c50_problems": []
+  },
+  {
+   "id": "RP7-1-3",
+   "prompt": "I am feeling indulgent",
+   "persona": "P7",
+   "dish": "Butter Naan",
+   "tags": [
+    "buttery",
+    "soft",
+    "indulgent",
+    "comfort"
+   ],
+   "drivers": [
+    "strong match for the mood",
+    "purchase history preference high",
+    "gourmet and organic match"
+   ],
+   "shown": "Buttery, soft, and indulgent, matching the mood and preferences",
+   "template": false,
+   "c50_problems": []
+  },
+  {
+   "id": "RP7-2-1",
+   "prompt": "I am feeling cooling",
+   "persona": "P7",
+   "dish": "Cold Coffee",
+   "tags": [
+    "creamy",
+    "sweet",
+    "indulgent",
+    "cooling",
+    "sweet"
+   ],
+   "drivers": [
+    "purchase history preference high",
+    "strong match for the mood",
+    "trend high right now"
+   ],
+   "shown": "A sweet and cooling treat that matches current mood and trends",
+   "template": false,
+   "c50_problems": []
+  },
+  {
+   "id": "RP7-2-3",
+   "prompt": "I am feeling cooling",
+   "persona": "P7",
+   "dish": "Sweet Lassi",
+   "tags": [
+    "sweet",
+    "creamy",
+    "sweet",
+    "cooling",
+    "indulgent"
+   ],
+   "drivers": [
+    "purchase history preference high",
+    "strong match for the mood",
+    "trend high right now"
+   ],
+   "shown": "Sweet and creamy, matching current mood and trend, with high purchase history preference",
+   "template": false,
+   "c50_problems": []
+  },
+  {
+   "id": "RP7-3-1",
+   "prompt": "a light and healthy dinner",
+   "persona": "P7",
+   "dish": "Keto Chicken Salad",
+   "tags": [
+    "fresh",
+    "savoury",
+    "light",
+    "healthy",
+    "light"
+   ],
+   "drivers": [
+    "strong match for the mood",
+    "purchase history preference high",
+    "gourmet and organic match"
+   ],
+   "shown": "Matches your mood and fits your settings",
+   "template": true,
+   "c50_problems": []
+  },
+  {
+   "id": "RP7-3-2",
+   "prompt": "a light and healthy dinner",
+   "persona": "P7",
+   "dish": "Creamy Pasta (international)",
+   "tags": [
+    "creamy",
+    "cheesy",
+    "mild",
+    "indulgent",
+    "comfort"
+   ],
+   "drivers": [
+    "trend high right now",
+    "strong match for the mood",
+    "gourmet and organic match"
+   ],
+   "shown": "Comfort food that matches current mood and trends, with gourmet and organic options available",
+   "template": false,
+   "c50_problems": []
+  },
+  {
+   "id": "RP7-3-3",
+   "prompt": "a light and healthy dinner",
+   "persona": "P7",
+   "dish": "Jain Pav Bhaji",
+   "tags": [
+    "spicy",
+    "buttery",
+    "tangy",
+    "indulgent",
+    "comfort"
+   ],
+   "drivers": [
+    "trend high right now",
+    "gourmet and organic match",
+    "strong match for the mood"
+   ],
+   "shown": "Spicy, buttery, and tangy, a perfect comfort food match for the current trend and mood",
+   "template": false,
+   "c50_problems": []
+  },
+  {
+   "id": "RP7-4-2",
+   "prompt": "something spicy",
+   "persona": "P7",
+   "dish": "Aloo Paratha",
+   "tags": [
+    "buttery",
+    "spicy",
+    "hearty",
+    "comfort",
+    "indulgent"
+   ],
+   "drivers": [
+    "purchase history preference high",
+    "strong match for the mood",
+    "gourmet and organic match"
+   ],
+   "shown": "Buttery, spicy, and comforting, matching mood and preferences",
+   "template": false,
+   "c50_problems": []
+  },
+  {
+   "id": "RP7-4-3",
+   "prompt": "something spicy",
+   "persona": "P7",
+   "dish": "Chicken Seekh Kebab",
+   "tags": [
+    "smoky",
+    "spicy",
+    "savoury",
+    "indulgent",
+    "high_protein"
+   ],
+   "drivers": [
+    "purchase history preference high",
+    "strong match for the mood",
+    "gourmet and organic match"
+   ],
+   "shown": "High protein and gourmet match for the mood and preference",
+   "template": false,
+   "c50_problems": []
+  },
+  {
+   "id": "RP7-5-2",
+   "prompt": "I am craving something sweet",
+   "persona": "P7",
+   "dish": "Sweet Lassi",
+   "tags": [
+    "sweet",
+    "creamy",
+    "sweet",
+    "cooling",
+    "indulgent"
+   ],
+   "drivers": [
+    "purchase history preference high",
+    "strong match for the mood",
+    "trend high right now"
+   ],
+   "shown": "Sweet and creamy, matching current mood and trend, with high purchase history preference",
+   "template": false,
+   "c50_problems": []
+  },
+  {
+   "id": "RP7-5-3",
+   "prompt": "I am craving something sweet",
+   "persona": "P7",
+   "dish": "Hot Chocolate (international)",
+   "tags": [
+    "chocolatey",
+    "creamy",
+    "sweet",
+    "comfort",
+    "indulgent"
+   ],
+   "drivers": [
+    "purchase history preference high",
+    "strong match for the mood",
+    "gourmet and organic match"
+   ],
+   "shown": "Comforting and indulgent, matching purchase history and mood preferences",
+   "template": false,
+   "c50_problems": []
+  }
+ ]
+}
