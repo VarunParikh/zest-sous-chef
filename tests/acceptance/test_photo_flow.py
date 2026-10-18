@@ -46,6 +46,7 @@ def test_t087_detect_confirm_unsure_items_then_cart_only_the_top_dish_missing_it
 
 
 def test_no_unsure_items_still_needs_one_confirming_tap(chat_app, fake):
+    """Detections are shown as estimates (FR-14, US-07)."""
     _, client = chat_app
     sid = start(client)
     r = upload(client, sid, image_bytes())

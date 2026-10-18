@@ -74,6 +74,7 @@ def test_ollama_down_is_503_with_the_server_message(chat_app, fake):
 
 
 def test_templates_for_unsupported_and_allergy(chat_app, fake):
+    """T-074: an allergy request gets MSG-ALLERGY, no assurance (FR-15, US-07)."""
     _, client = chat_app
     sid = start(client)
     fake.intents["can you deliver the groceries to my office"] = intent("unsupported")

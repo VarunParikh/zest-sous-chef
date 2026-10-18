@@ -16,6 +16,7 @@ def _dishes(r):
 
 
 def test_t083_three_messages_cart_immediately_under_one_open_dish(chat_app, fake):
+    """Also checks that an unmeasured quantity is labelled an estimate (FR-14, US-07)."""
     _, client = chat_app
     sid = start(client)
     _recipe(fake, "Kadai paneer: 250 g paneer", "kadai paneer", line("paneer", 250, "g"))

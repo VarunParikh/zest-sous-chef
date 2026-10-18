@@ -25,10 +25,10 @@ test: ## unit, contract and acceptance tests (fakes only)
 
 test-e2e: ## E2E-001 demo path in headless Chromium (fake model, real backend, built frontend)
 	npm --prefix src/frontend run build
-	$(PY) -m pytest -m e2e -rA
+	$(PY) -m pytest -m e2e --junitxml=$(RESULTS)/e2e.xml -rA
 
 test-embedder: ## tests that use the real embedding model (downloads it once into data/models/)
-	$(PY) -m pytest -m embedder -rA
+	$(PY) -m pytest -m embedder --junitxml=$(RESULTS)/embedder.xml -rA
 
 scan: ## secret scan of the working tree and full git history (T-106)
 	$(PY) -I scripts/secret_scan.py

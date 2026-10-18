@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- E14 traceability: `backend.evaluation.traceability` (unit-tested first) and `scripts/benchmark/traceability.py`; `eval/headline.yaml` names each evaluation's verdict file and accepting conflict (C58, C64, for owner review); `make test-e2e` and `make test-embedder` now write JUnit files; tag-only docstrings link T-074 and FR-14 to their existing tests (US-07).
 - E11 latency: `backend.evaluation.latency` (percentile, summary, per-kind model breakdown, flow status; unit-tested first) and `scripts/benchmark/latency.py` (six flows, warm-up plus 10 runs, `llm_call` breakdown, 3 GB free-RAM floor).
 - P0 tests T-103 (image bytes never written to disk during an upload) and T-104 (`file://`, internal-IP and look-alike URLs rejected with no fetch) in `tests/acceptance/test_security_p0.py`; they cover existing behaviour and passed on their first run. T-050 to T-052 already exist as `test_t050…` to `test_t052…` in `tests/unit/cart/test_allocation.py`.
 - E10 resilience result (`eval/results/E10-resilience-real-stack.json`): **PASS**, 26 of 26 pre-registered scenarios, every one in all 3 runs; no crash, no false success, attempt counts as C62 and C66 state.
