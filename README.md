@@ -277,6 +277,96 @@ flowchart TD
   order --> done["Order screen 10 s,<br/>then an empty cart"]
 ```
 
+## Why these models
+Every model was chosen by a benchmark that was written and pre-registered before any model ran (`eval/thresholds.yaml`, datasets hashed in `eval/datasets/MANIFEST.json`). The ADRs record each decision and its caveats. All numbers below are read from the result files in [`eval/results/`](eval/results/), measured on the demo Mac (Apple M5 MacBook Air, 16 GB).
+
+### Why local at all
+The brief and the Constitution set the constraints:
+- **Free, local and offline by default.** No paid API is needed, so the demo works without a network (Constitution G3 and P9).
+- **Private by default.** Photos are stripped of EXIF data and stay on the laptop unless the user opts in to Gemini (P9).
+- **No cloud fallback for text.** If no local text model had passed, the plan was to shorten prompts or pick a smaller model, not to call a cloud model (build plan §8).
+
+The cost of this choice is that every model has to fit, together, in 16 GB beside the backend and the vector index. That memory budget drove most decisions below.
+
+### Text model: `llama3.2:3b` at a 4k context (ADR-002, evaluation E1)
+**Task:** extract ingredient lists from recipes and transcripts (including Hinglish), classify intent, and write the one reason line.
+
+**Gates:** extraction F1 ≥ 0.80, valid JSON ≥ 95%, and ≥ 3 GB of RAM left free.
+
+| Candidate | Extraction F1 | Valid JSON | Latency median / p95 | Free RAM after | Result |
+|---|---|---|---|---|---|
+| **`llama3.2:3b`**, 4k context, other apps closed | **0.86** | **5/5** | **4.2 s / 5.4 s** | **6.7 GB** | **PASS** (owner-approved post-hoc rerun) |
+| `llama3.2:3b`, Ollama default 16k context | 0.86 | 5/5 | 4.6 s / 5.8 s | 2.1 GB | FAIL (memory only) |
+| `qwen2.5:7b`, 16k context | 0.55 | 3/5 | 11.2 s / 23.8 s | 2.1 GB | FAIL |
+| `qwen3:4b-instruct`, 16k context | 0.40 | 2/5 | 16.0 s / 27.4 s | 2.4 GB | FAIL |
+
+**Why:**
+- `llama3.2:3b` was the only candidate with good extraction quality, and it never invented an ingredient (0 of 41 items).
+- At Ollama's default 16k context it left too little memory. A 4k context cut the loaded model from 4.0 GB to 2.6 GB, and the rerun passed every gate.
+- The two Qwen models failed on quality (low F1, invalid JSON on the Hinglish and transcript rows), not just on memory.
+
+**Caveats:**
+- Only 5 test recipes, so the intervals are wide.
+- The rerun changed two things at once: a smaller context and closed apps.
+- Long YouTube transcripts are capped to fit the 4k window.
+
+### Input guard: rules, then `llama-guard3:1b` (ADR-006, evaluation E4)
+**Alternatives:** rules alone, or rules plus a small safety classifier.
+
+**Day-1 evidence:**
+- Rules alone blocked 9 of 13 attacks.
+- Rules plus `llama-guard3:1b` blocked 12 of 13, with no false positives in 7 benign prompts.
+- The classifier costs about 1.7 GB and 53 ms per call (median).
+
+**Held-out set (`guard_v3`, never seen while writing rules):**
+- Rules alone block 0.30 of attacks.
+- Rules plus classifier block 0.55.
+
+**Why:** the classifier still roughly doubles what the rules catch on phrasings nobody tuned for. The result is still below the 0.90 gate, which is an owner-accepted limitation (C56). Harm is contained in code: no attack changed a cart end to end (E9), and no ineligible item reached a persona (E7).
+
+**Tuning:** two of its categories are ignored. Specialised advice, because "what should I eat?" was flagged. Intellectual property only when the message contains a YouTube link, because every bare video link was flagged (C40, C44, C55).
+
+### Photo detection: `qwen3-vl:4b-instruct` locally, Gemini as opt-in (ADR-003, evaluation E3)
+**Gates:** precision ≥ 0.80 and recall ≥ 0.70 on clear photos, with p95 ≤ 20 s while the text model is loaded. Measured on 11 labelled photos, 3 runs each:
+
+| Candidate | Precision | Recall | Latency median / p95 | Failed calls | Result |
+|---|---|---|---|---|---|
+| **`qwen3-vl:4b-instruct`** (local) | **0.68** (108/159) | **0.43** (108/252) | **7.1 s / 109.8 s** | **6 of 33** | FAIL |
+| `gemma4:e2b-it-qat` (local) | 0.44 (31/70) | 0.12 (31/252) | 20.4 s / 51.0 s | 12 of 33 | FAIL |
+| Gemini 3.5 Flash-Lite (cloud, reference) | 0.77 (159/207) | 0.63 (159/252) | 1.6 s / 3.5 s | 0 of 33 | FAIL (just under both gates) |
+| `qwen3-vl:8b-instruct` (local) | — | — | — | — | NOT RUN (owner decision: time and memory; the 4b model already swapped) |
+
+**Why:**
+- No model passed, so photo accuracy is reported as **NOT MET** (accepted, C37).
+- The owner chose the best local model as the default to keep photos on the laptop. `qwen3-vl:4b` beat `gemma4` on both precision and recall.
+- Gemini is the more accurate opt-in, behind a consent notice, because its free tier may use photos to improve Google's products.
+
+**Containing the weakness:**
+- Detections are labelled estimates, and the cart changes only after the user confirms with a tap.
+- Labelled sample photos are the demo path, and the fallback when analysis is slow (60 s timeout) or fails.
+- On the four demo photos, E11 measured a 7.6 s median and a 12.5 s p95 for the full upload-and-confirm flow.
+
+### Embedder: Chroma's default all-MiniLM-L6-v2 (ADR-005, evaluation E5)
+**Alternative:** `nomic-embed-text` through Ollama.
+
+| Embedder | Hybrid recall in the pool | Mood subset | MRR | Index build at 5,135 variants | Query latency median |
+|---|---|---|---|---|---|
+| **all-MiniLM-L6-v2** (Chroma default, ONNX) | **30/30** | **7/7** | **0.88** | **54 s** | **8.4 ms** |
+| `nomic-embed-text` (Ollama) | 30/30 | 7/7 | 0.89 | 62 s | 14.1 ms |
+
+**Why:**
+- The two tied on recall.
+- MiniLM runs inside the backend process, so no fourth model sits in Ollama's memory (nomic needs about 335 MB beside the text model and the guard).
+- It builds the index faster, and it showed no measured quality loss on this set.
+- nomic stays available (`EMBEDDING_PROVIDER=ollama`). It was run without its recommended task prefixes, which may understate it.
+
+**Retrieval method:** hybrid BM25 plus vectors (reciprocal rank fusion, k 60) was chosen over lexical-only. It found the right dish in every mood query, while lexical-only found 5 of 7 (ADR-004).
+
+### What would change the choice
+- **Text:** a larger model fits only with fewer models resident or more memory. Any change would be rerun against the same E1 set.
+- **Vision:** `qwen3-vl:8b` was not benchmarked, to save time and because the 4b model already swapped memory. It is the first candidate to try on a 24 GB machine; on this Mac, Gemini (opt-in) is the accuracy option.
+- **Guard:** a classifier tuned on held-out attack phrasings, measured on a set written by someone other than the rule author (see [Prototyping Feedback](docs/epics/zest/release/prototyping-feedback.md)).
+
 ## Tests and evaluations
 | Command | What it proves | Time (measured on the demo Mac) |
 |---|---|---|

@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- README: a "Why these models" section comparing each chosen local model with the alternatives benchmarked (E1 text, E4 guard, E3 vision, E5 embedder), with numbers read from `eval/results/` and the ADR reasons. Existing README text unchanged.
 - README: a Diagrams section with seven Mermaid diagrams (system architecture, one chat turn, the recommendation pipeline, the photo flow, the YouTube fallback chain, levers and sessions, cart and checkout). Each was checked against the code and parsed with Mermaid 11.4.1. No existing README text changed.
 
 ## [0.1.0] - 2026-10-19
