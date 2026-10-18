@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- E10 resilience harness: `backend.evaluation.resilience` (request kinds, `FaultProxy` that forwards only to local Ollama, per-run checks; unit-tested first), `scripts/benchmark/resilience.py` (26 pre-registered scenarios, 3 runs, in-process with the real models) and `resilience_ui.py` (F25, F26 in Chromium on free ports).
 - `eval/datasets/faults_v1.json` (E10, C63): 26 fault scenarios with injection methods, expected fallback IDs, attempt counts and checks, hashed in `MANIFEST.json` before the harness was written or run.
 - Agent Design v0.5 (C66, owner decision): the A4 and A6 retry columns now match the code; Evaluation Plan v0.6 §4.16 retry bullet reworded to match.
 - `llm_call` traces carry `call` (intent, extract, reason, guard, vision) and `outcome` (ok, invalid, timeout, error); the guard classifier and the vision providers now emit them, including on timeout and error, and a timeout is not retried (Data Model v0.5 §11, C61, C62). `OllamaClient.generate` takes a required `call` keyword.
