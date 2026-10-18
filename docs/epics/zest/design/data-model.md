@@ -1,6 +1,6 @@
 # Data Model: Zest AI Sous-Chef
 
-Status: **APPROVED v0.3 (owner, 2026-10-18)**: §8.4 pack allocation follows FR-71 (combined need per variant, C33) and defines line quantity (C35); §14 adds `CartLine.quantity` and `Cart.quotes` (C34). v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2 and PRD v0.4: add-on retrieval, larger dish pool) · Date: 2026-10-17 · Source: PRD v0.4, Settings Panel, mock-data plan, Constitution G9, ADR-004 v2
+Status: **APPROVED v0.4 (owner, 2026-10-18, with the block 2.6 lever plan)**: §7 pool 25, §5.1 derived premium level, §16 β0 0.20 (C53). v0.3 was **APPROVED (owner, 2026-10-18)**: §8.4 pack allocation follows FR-71 (combined need per variant, C33) and defines line quantity (C35); §14 adds `CartLine.quantity` and `Cart.quotes` (C34). v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2 and PRD v0.4: add-on retrieval, larger dish pool) · Date: 2026-10-17 · Source: PRD v0.4, Settings Panel, mock-data plan, Constitution G9, ADR-004 v2
 Scope: field-level schema for the structured catalogue, recipe base, engine inputs, session state, the retrieval documents embedded in Chroma, trace events and test fixtures. The Pydantic sketches are the contract the generator, validators, API and tests share. Field values in the mock data are illustrative and are not nutritional or medical data.
 
 ## 1. Principles
@@ -97,6 +97,7 @@ Lever values use the Settings Panel option strings exactly (for example `Jain (N
 
 ### 5.1 Dish (35 in the current seed; target at least 127, of which 100 are companion-course dishes)
 The companion-course dishes (`side`, `beverage`, `dessert`) are the add-on pool (ADR-004 v2). Claude Code builds the additional dishes in the Day-1 data block; the final total is fixed when the seed data is built.
+Derived premium level (C24, rescaled by C53): mean variant gourmet score over essential ingredients, min-max rescaled across stored dishes.
 | Field | Type | Notes |
 |---|---|---|
 | `dish_id` | str | `paneer_butter_masala` |
@@ -171,7 +172,7 @@ The attribute phrase turns attributes into words the user might say ("skimmed, l
 | 3. Lexical | top 20 by token overlap with names, aliases and synonyms | same, over variants |
 | 4. Vector | top 20 from `zest_dishes` | top 20 from `zest_variants` |
 | 5. Fuse | reciprocal rank fusion: `score = Σ 1 / (60 + rank_i)` | same |
-| 6. Pool | top 15 dishes | top 10 variants |
+| 6. Pool | top 25 dishes | top 10 variants |
 | 7. Guardrails (code) | `M_elig` on each pool member | same |
 | 8. Levers | rank survivors with `S_final` | `S_v` (FR-113) |
 
@@ -504,7 +505,7 @@ class Cart(BaseModel):
 | NFR-12, 13 | Section 7.1; generator parameters in the mock-data plan |
 
 ## 16. Open items
-1. The `β0 = 0.30` value term, pool sizes, RRF constant and ambiguity margin are initial values to be tuned (Day-1 benchmark and the lever-sensitivity test).
+1. The `β0 = 0.20` value term (E12; was 0.30), pool sizes, RRF constant and ambiguity margin are initial values to be tuned (Day-1 benchmark and the lever-sensitivity test).
 2. Whether to use a library for the lexical scorer (for example BM25) needs owner approval under G3; a simple token-overlap scorer needs no dependency.
 3. Nutrition values are illustrative, generated from base-product templates; they are not nutritional data.
 4. The ingredient lexicon is the highest-leverage file for guardrail correctness. A starter set of 92 terms was written first and has since grown to 203 terms (2026-10-17) to cover the dishes and the taxonomy; it exists in `mock-data/ingredient_lexicon.csv` (owner chose the starter option, 2026-10-17); validator V4 will report every missing term when the generator runs, and the gaps are then filled. Its flags are simplified and need owner review (for example ginger as a root vegetable, mushroom as non-satvik).

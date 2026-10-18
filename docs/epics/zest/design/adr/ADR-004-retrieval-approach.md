@@ -1,8 +1,11 @@
-# ADR-004 (v3): Hybrid retrieval, extended to add-on suggestions; open requests use a course-wide lever-ranked pool
-- **Status:** **Accepted v3, 2026-10-18 (owner decision C45; approved with its plan).** Accepted; **amended 2026-10-17 (v2)** by owner decision; **Day-1 evidence recorded 2026-10-18 (owner approved): hybrid stays the default, `RRF_K=60`, add-on weights curated 2 : vector 1.** v1 (hybrid retrieval for ingredient and mood-to-dish lookups) stays in force and is kept below under "v1 record". The Day-1 benchmark gate now also covers the add-on evidence listed in the v2 amendment.
+# ADR-004 (v4): Hybrid retrieval, extended to add-on suggestions; open requests use a course-wide lever-ranked pool
+- **Status:** **Accepted v4, 2026-10-18 (owner decision C53, approved with its plan): pool sizes 25 dishes and 12 add-ons.** Accepted v3, 2026-10-18 (owner decision C45; approved with its plan). Accepted; **amended 2026-10-17 (v2)** by owner decision; **Day-1 evidence recorded 2026-10-18 (owner approved): hybrid stays the default, `RRF_K=60`, add-on weights curated 2 : vector 1.** v1 (hybrid retrieval for ingredient and mood-to-dish lookups) stays in force and is kept below under "v1 record". The Day-1 benchmark gate now also covers the add-on evidence listed in the v2 amendment.
 - **Date:** 2026-10-17
 - **Decision owner:** VJP (product owner); drafted by Claude
 - **Authorisation:** v1: owner instructed use of a local vector database where possible and approved a BM25 library dependency (G3). v2: owner decisions of 2026-10-17 listed below.
+
+## v4 amendment (2026-10-18, owner decision, C53)
+The dish pool is 25 (`DISH_POOL`, was 15) and the add-on pool is 12 (`ADDON_POOL`, was 8). In E6 most soft levers moved the top 3 less than the 0.33 gate with a 15-dish pool. On the dev split (6 prompts, direction only), 25 raised the weight groups (for example `w_trend` 0.39 → 0.61, `w_gourmet` 0.28 → 0.44) and kept diet near its level, which 30 did not. Retrieval, fusion and guardrails are unchanged; E5 recall at the pool size is not re-measured.
 
 ## v3 amendment (2026-10-18, owner decision, C45)
 **Found in the owner's hand test:** open requests ("I am hungry", "surprise me", "you suggest") gave the same dish as personas and levers changed. Measured over 18 settings (lever extremes and the 11 presets) with the live index, the top dish changed only 4 to 7 times; for "surprise me" it stayed the same in 13 of 18. The 15 candidates come from searching the message words, which say little in an open request, so the levers only reorder a small fixed pool. A simulated course-wide pool gave 8 to 9 distinct top dishes and followed the levers.

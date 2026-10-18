@@ -21,9 +21,9 @@ Approving a document means: you have read it or the parts you care about, you ac
 ## Register
 | Doc | Path | Version | Tier | Status | Approved by / date |
 |---|---|---|---|---|---|
-| Product spec (PRD) | `docs/epics/zest/requirements/product-spec.md` | v0.6 | A | **Approved v0.6** (C37: FR-50, FR-55, AC-11 synced to ADR-003 v3) | Owner, 2026-10-18 (re-approved after the C37 sync) |
-| Data Model | `docs/epics/zest/design/data-model.md` | v0.3 | A | **Approved v0.3** (C33 allocation, C34 quoted prices, C35 quantity) | Owner, 2026-10-18 (approved with the block 2.2 plan) |
-| Architecture | `docs/epics/zest/design/architecture.md` | v0.6 | A | **Approved v0.6** (C45: open requests, no-repeat rule) | Owner, 2026-10-18 (approved with its plan) |
+| Product spec (PRD) | `docs/epics/zest/requirements/product-spec.md` | v0.7 | A | **Approved v0.7** (C53: FR-111 pool 25, β0 0.20, dish premium rescaled) | Owner, 2026-10-18 (approved with the block 2.6 lever plan) |
+| Data Model | `docs/epics/zest/design/data-model.md` | v0.4 | A | **Approved v0.4** (C53: pool 25, premium rescaled, β0 0.20) | Owner, 2026-10-18 (approved with the block 2.6 lever plan) |
+| Architecture | `docs/epics/zest/design/architecture.md` | v0.7 | A | **Approved v0.7** (C53: `DISH_POOL` 25, `ADDON_POOL` 12, `VALUE_WEIGHT` 0.20) | Owner, 2026-10-18 (approved with the block 2.6 lever plan) |
 | API Spec | `docs/epics/zest/design/api-spec.md` | v0.6 | A | **Approved v0.6** (C41: cart line `icon`, dish `course`) | Owner, 2026-10-18 (approved with the block 2.5 plan) |
 | Agent Design | `docs/epics/zest/design/agent-design.md` | v0.3 | A | **Approved v0.3** (C37: A6 provider) | Owner, 2026-10-18 (re-approved after the C37 sync) |
 | Build Plan | `docs/epics/zest/build-plan.md` | v0.4 | A | **Approved v0.4** (C42: React type packages) | Owner, 2026-10-18 (approved with the block 2.5 plan) |
@@ -34,10 +34,10 @@ Approving a document means: you have read it or the parts you care about, you ac
 | Evaluation Plan | `docs/epics/zest/verify/evaluation-plan.md` | v0.3 | B | **Approved v0.3** (C46 to C52 block 2.6 definitions, §4.15); thresholds v3 unchanged | Owner, 2026-10-18 (approved with the block 2.6 plan) |
 | ADR-001 Backend framework | `design/adr/ADR-001-...` | | B | **Accepted** | Owner, 2026-10-17 |
 | ADR-003 Vision approach | `design/adr/ADR-003-...` | v3 | B | **Approved v3** (C37: local `qwen3-vl:4b-instruct` default despite failing E3, Gemini opt-in, samples for the demo and fallback, 60 s timeout; photo accuracy NOT MET) | Owner, 2026-10-18 (re-approved after the C37 sync) |
-| ADR-004 Retrieval approach | `design/adr/ADR-004-...` | v3 | B | **Accepted v3** (C45: open requests use a course-wide lever-ranked pool; no repeats in a session); v2 evidence recorded | Owner, 2026-10-18 (v3 approved with its plan) |
+| ADR-004 Retrieval approach | `design/adr/ADR-004-...` | v4 | B | **Accepted v4** (C53: pool 25, add-on pool 12); v3 (C45: open requests use a course-wide lever-ranked pool; no repeats in a session); v2 evidence recorded | Owner, 2026-10-18 (v3 approved with its plan) |
 | ADR-005 Vector store | `design/adr/ADR-005-...` | | B | **Accepted**: store and default all-MiniLM-L6-v2 embedder (E5) | Owner, 2026-10-17 (store); 2026-10-18 (embedder) |
 | ADR-007 State and storage | `design/adr/ADR-007-...` | | B | **Accepted** | Owner brief |
-| ADR-008 Variant scoring | `design/adr/ADR-008-...` | | B | **Accepted** (constants tuned) | Owner, 2026-10-17 |
+| ADR-008 Variant scoring | `design/adr/ADR-008-...` | v2 | B | **Accepted v2** (C53: β0 0.20 from E12) | Owner, 2026-10-18 (approved with the block 2.6 lever plan) |
 | ADR-009 No MCP | `design/adr/ADR-009-...` | | B | **Accepted** | Owner, 2026-10-17 |
 | ADR-010 Frontend stack | `design/adr/ADR-010-...` | | B | **Accepted** (with TypeScript) | Owner, 2026-10-17 |
 | ADR-002 Text model | `design/adr/ADR-002-...` | | B | **Accepted**: `llama3.2:3b`, 4k context (E1, post-hoc rerun) | Owner, 2026-10-18 |
@@ -100,3 +100,4 @@ Approving a document means: you have read it or the parts you care about, you ac
 | 2026-10-18 | Owner hand test: decided C45 (open requests use a course-wide, lever-ranked pool; no dish repeats in a session; next-session rule kept with a more prominent banner). The approved plan re-approved exactly the ADR-004 v3 and Architecture v0.6 text | this register, `open-conflicts.md` C45 |
 | 2026-10-18 | Block 2.6 planning: owner approved the plan, which re-approved exactly the Evaluation Plan v0.3 text (§4.15, C46 to C52), and the E4 rerun through the production guard pipeline. `eval/thresholds.yaml` stays v3 | this register, `open-conflicts.md` C46 to C52, `evaluation-plan.md` v0.3 |
 | 2026-10-18 | Block 2.6 evaluations run (results in `verify/benchmarks/block26.md`): E8 PASS; E7 adversarial FAIL (stock defect) then PASS post-hoc after the owner-approved allocation fix `77f99ca`, E7 real PASS (zero persona violations); E9 PASS; E12 FAIL at β0 0.30 (0.15 passes); E6 FAIL (gourmet inert); E4 rerun FAIL (11/13); E2 FAIL (22/30); E13 FAIL ("healthy" claim). **Owner decisions pending** on E6, E12, E4, E2 and E13; nothing tuned | this register, `eval/results/`, `verify/benchmarks/block26.md` |
+| 2026-10-18 | Block 2.6 lever decisions (C53): owner chose A2 (rescale dish premium), B2 (`DISH_POOL` 25, `ADDON_POOL` 12) and C2 (β0 0.20), fix F1 (substitution price delta measured against the cart as shown), and allowed changing only the `DISH_POOL`, `ADDON_POOL` and `VALUE_WEIGHT` lines in the local `.env`. The approved plan re-approved exactly the ADR-008 v2, ADR-004 v4, PRD v0.7, Data Model v0.4 and Architecture v0.7 text | this register, `open-conflicts.md` C53 |

@@ -1,6 +1,6 @@
 # Architecture: Zest AI Sous-Chef
 
-Status: **APPROVED v0.6 (owner, 2026-10-18, with its plan): §4.1 adds open requests and the no-repeat rule (ADR-004 v3, C45).** v0.5 was APPROVED (owner re-approved 2026-10-18): §6 adds `GUARD_IGNORE_CATEGORIES` (ADR-006 v2, C40). v0.4 was APPROVED (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.3 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2: add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4, Data Model v0.2, Constitution v0.2, ADR-001 to ADR-010
+Status: **APPROVED v0.7 (owner, 2026-10-18, with the block 2.6 lever plan): §5 β0 from config, §6 `DISH_POOL` 25, `ADDON_POOL` 12, `VALUE_WEIGHT` 0.20 (C53).** v0.6 was **APPROVED (owner, 2026-10-18, with its plan): §4.1 adds open requests and the no-repeat rule (ADR-004 v3, C45).** v0.5 was APPROVED (owner re-approved 2026-10-18): §6 adds `GUARD_IGNORE_CATEGORIES` (ADR-006 v2, C40). v0.4 was APPROVED (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.3 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2: add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4, Data Model v0.2, Constitution v0.2, ADR-001 to ADR-010
 Scope: components, boundaries, data flows, failure handling and quality attributes. Field definitions are in the Data Model; endpoints will be detailed in the API Spec; prompts and tool contracts in the Agent Design.
 
 ## 1. Architectural stance
@@ -119,7 +119,7 @@ Each message → extraction → ingredients carted immediately under the open di
 ```
 pool (IDs) → eligibility mask (diet, faith, specialised, stock, price cap, allergens) → components s_p, s_h, s_t, s_g
           → normalise (rank-based for s_p) → S_final = M × Σ(ŵ_k × s_k)   [dishes, add-ons, substitutes]
-variants:   S_v = M × [(1 − β) Σ(ŵ_k s_k) + β × value],  β = 0.30 × (1 − gourmet)
+variants:   S_v = M × [(1 − β) Σ(ŵ_k s_k) + β × value],  β = β0 × (1 − gourmet), β0 = `VALUE_WEIGHT`
           → ties: s_p, then ID → top results + ScoreBreakdown
 ```
 The pool must be larger than the display set, otherwise the levers cannot reorder anything (FR-111, risk R24).
@@ -132,9 +132,9 @@ The pool must be larger than the display set, otherwise the levers cannot reorde
 | `LLM_PROVIDER`, `LLM_MODEL` | Local text model | `ollama`, chosen by benchmark |
 | `VISION_PROVIDER`, `VISION_MODEL`, `GEMINI_API_KEY` | Photo analysis (key only in local `.env`) | `ollama` with `qwen3-vl:4b-instruct` (ADR-003 v3); opt-in `gemini` with `gemini-3.5-flash-lite`; `samples` |
 | `EMBEDDING_PROVIDER`, `EMBEDDING_MODEL` | Vector embedder | Chroma default ONNX |
-| `RRF_K`, `DISH_POOL`, `VARIANT_POOL`, `AMBIGUITY_MARGIN` | Retrieval tuning | 60, 15, 10, 0.15 |
-| `ADDON_COURSES`, `ADDON_WEIGHTS`, `ADDON_POOL` | Add-on retrieval: companion courses for the vector list; curated and vector fusion weights; add-on pool size (proposed names and starting values, tuned by the ADR-004 v2 weight sweep) | `side,beverage,dessert`; curated 2, vector 1; 8 |
-| `VALUE_WEIGHT` | β0 for variant price term | 0.30 |
+| `RRF_K`, `DISH_POOL`, `VARIANT_POOL`, `AMBIGUITY_MARGIN` | Retrieval tuning | 60, 25, 10, 0.15 |
+| `ADDON_COURSES`, `ADDON_WEIGHTS`, `ADDON_POOL` | Add-on retrieval: companion courses for the vector list; curated and vector fusion weights; add-on pool size (proposed names and starting values, tuned by the ADR-004 v2 weight sweep) | `side,beverage,dessert`; curated 2, vector 1; 12 |
+| `VALUE_WEIGHT` | β0 for variant price term | 0.20 |
 | `TIMEOUT_LLM_S`, `TIMEOUT_VISION_S`, `TIMEOUT_TRANSCRIPT_S` | NFR-10 | 30, 60 (ADR-003 v3), 10 |
 | `LIVE_TRANSCRIPTS`, `MAX_RECIPE_CHARS` | Live YouTube transcript fetch on or off; transcript and recipe text cap for the 4k context (C39) | `true`, 6000 |
 | `CONFIDENCE_THRESHOLD` | Photo detection | 0.6 |
