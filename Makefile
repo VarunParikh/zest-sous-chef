@@ -4,7 +4,7 @@ VENV := .venv
 PY := $(VENV)/bin/python
 RESULTS := docs/epics/zest/verify/test-results
 
-.PHONY: setup dev test test-embedder scan health data index eval-decisions
+.PHONY: setup dev app test test-embedder test-e2e scan health data index eval-decisions
 
 setup: ## create the venv and install pinned dependencies; create .env from the example if missing
 	$(PYTHON) -m venv $(VENV)
@@ -16,9 +16,16 @@ setup: ## create the venv and install pinned dependencies; create .env from the 
 dev: ## run the backend on 127.0.0.1:8000 (health page at /health)
 	$(PY) -m uvicorn backend.api.app:create_app --factory --app-dir src --host 127.0.0.1 --port 8000 --reload
 
+app: ## start the backend (127.0.0.1:8000) and the frontend (http://localhost:5173) together; Ctrl+C stops both
+	./scripts/dev.sh
+
 test: ## unit, contract and acceptance tests (fakes only)
 	@mkdir -p $(RESULTS)
-	$(PY) -m pytest -m "not embedder" --junitxml=$(RESULTS)/latest.xml -rA
+	$(PY) -m pytest -m "not embedder and not e2e" --junitxml=$(RESULTS)/latest.xml -rA
+
+test-e2e: ## E2E-001 demo path in headless Chromium (fake model, real backend, built frontend)
+	npm --prefix src/frontend run build
+	$(PY) -m pytest -m e2e -rA
 
 test-embedder: ## tests that use the real embedding model (downloads it once into data/models/)
 	$(PY) -m pytest -m embedder -rA

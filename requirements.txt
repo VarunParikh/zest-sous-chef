@@ -13,3 +13,4 @@ PyYAML==6.0.3
 Pillow==13.0.0
 youtube-transcript-api==1.2.4
 python-multipart==0.0.32
+pytest-playwright==0.10.0
