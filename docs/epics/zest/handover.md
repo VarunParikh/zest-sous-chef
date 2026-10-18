@@ -6,7 +6,7 @@ Paste everything below the line into the next Claude Code session.
 
 You are continuing the build of Zest, a web-based AI sous-chef prototype (interview assignment).
 Repo: /Users/varunparikh/Projects/zest-sous-chef (GitHub: VarunParikh/zest-sous-chef, branch main).
-The last session (block 3.1: E2E-001, E10, E11, E14) ended with everything committed locally on `main`, **not pushed** (ask the owner before pushing). Block 3.1 is commits `4e5974d` onward plus this handover update (block 2.6 ended at `6b9bc05`).
+The last session (block 3.1: E2E-001, E10, E11, E14) ended with everything committed and pushed to `origin/main` (owner approved the push; ask before any future push). Block 3.1 is commits `4e5974d` onward plus this handover update (block 2.6 ended at `6b9bc05`).
 Start by running `git status` and `git log --oneline -15` to confirm. Ask the owner before any future push.
 
 ## Read first, in this order
