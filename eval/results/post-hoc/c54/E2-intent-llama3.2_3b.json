@@ -1,0 +1,1235 @@
+{
+ "id": "E2",
+ "system": "intent-llama3.2:3b",
+ "dataset": {
+  "name": "utterances_v1.jsonl",
+  "sha256": "07d514fd976526924de95ed222f0eff74e83fd859cbecc84a68a2c78e15360cf",
+  "split": "test"
+ },
+ "environment": {
+  "commit": "1a95922",
+  "dirty": false,
+  "date": "2026-10-18T14:20:58+00:00",
+  "python": "3.12.15",
+  "machine": "arm64",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "packages": {
+   "chromadb": "1.5.9",
+   "rank-bm25": "0.2.2",
+   "pydantic": "2.14.1",
+   "httpx": "0.28.1",
+   "fastapi": "0.143.3"
+  }
+ },
+ "metrics": {
+  "runs": [
+   {
+    "accuracy": {
+     "k": 24,
+     "n": 30,
+     "rate": 0.8,
+     "ci95": [
+      0.6269430343619583,
+      0.9049489287811706
+     ]
+    },
+    "false_unsafe_rate": {
+     "k": 0,
+     "n": 27,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.12455503146207125
+     ]
+    },
+    "routed_accuracy_supplementary": {
+     "k": 24,
+     "n": 30,
+     "rate": 0.8,
+     "ci95": [
+      0.6269430343619583,
+      0.9049489287811706
+     ]
+    },
+    "shipped_path_accuracy_supplementary": {
+     "k": 24,
+     "n": 30,
+     "rate": 0.8,
+     "ci95": [
+      0.6269430343619583,
+      0.9049489287811706
+     ]
+    },
+    "confusion": {
+     "youtube_recipe -> youtube_recipe": 2,
+     "recipe_text -> recipe_text": 2,
+     "named_dish -> named_dish": 2,
+     "mood_intent -> mood_intent": 3,
+     "cart_edit -> cart_edit": 1,
+     "cart_edit -> cart_clear_or_replace": 1,
+     "cart_clear_or_replace -> cart_clear_or_replace": 1,
+     "cart_clear_or_replace -> cart_edit": 1,
+     "staples_answer -> staples_answer": 2,
+     "variant_request -> variant_request": 2,
+     "question_cooking -> question_cooking": 3,
+     "question_cooking -> recipe_text": 1,
+     "declare_allergy -> declare_allergy": 1,
+     "smalltalk -> smalltalk": 1,
+     "off_topic -> off_topic": 1,
+     "off_topic -> unsupported": 1,
+     "unsafe -> smalltalk": 1,
+     "unsafe -> unsafe": 2,
+     "unsupported -> cart_clear_or_replace": 1,
+     "unsupported -> unsupported": 1
+    }
+   },
+   {
+    "accuracy": {
+     "k": 24,
+     "n": 30,
+     "rate": 0.8,
+     "ci95": [
+      0.6269430343619583,
+      0.9049489287811706
+     ]
+    },
+    "false_unsafe_rate": {
+     "k": 0,
+     "n": 27,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.12455503146207125
+     ]
+    },
+    "routed_accuracy_supplementary": {
+     "k": 24,
+     "n": 30,
+     "rate": 0.8,
+     "ci95": [
+      0.6269430343619583,
+      0.9049489287811706
+     ]
+    },
+    "shipped_path_accuracy_supplementary": {
+     "k": 24,
+     "n": 30,
+     "rate": 0.8,
+     "ci95": [
+      0.6269430343619583,
+      0.9049489287811706
+     ]
+    },
+    "confusion": {
+     "youtube_recipe -> youtube_recipe": 2,
+     "recipe_text -> recipe_text": 2,
+     "named_dish -> named_dish": 2,
+     "mood_intent -> mood_intent": 3,
+     "cart_edit -> cart_edit": 1,
+     "cart_edit -> cart_clear_or_replace": 1,
+     "cart_clear_or_replace -> cart_clear_or_replace": 1,
+     "cart_clear_or_replace -> cart_edit": 1,
+     "staples_answer -> staples_answer": 2,
+     "variant_request -> variant_request": 2,
+     "question_cooking -> question_cooking": 3,
+     "question_cooking -> recipe_text": 1,
+     "declare_allergy -> declare_allergy": 1,
+     "smalltalk -> smalltalk": 1,
+     "off_topic -> off_topic": 1,
+     "off_topic -> unsupported": 1,
+     "unsafe -> smalltalk": 1,
+     "unsafe -> unsafe": 2,
+     "unsupported -> cart_clear_or_replace": 1,
+     "unsupported -> unsupported": 1
+    }
+   },
+   {
+    "accuracy": {
+     "k": 24,
+     "n": 30,
+     "rate": 0.8,
+     "ci95": [
+      0.6269430343619583,
+      0.9049489287811706
+     ]
+    },
+    "false_unsafe_rate": {
+     "k": 0,
+     "n": 27,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.12455503146207125
+     ]
+    },
+    "routed_accuracy_supplementary": {
+     "k": 24,
+     "n": 30,
+     "rate": 0.8,
+     "ci95": [
+      0.6269430343619583,
+      0.9049489287811706
+     ]
+    },
+    "shipped_path_accuracy_supplementary": {
+     "k": 24,
+     "n": 30,
+     "rate": 0.8,
+     "ci95": [
+      0.6269430343619583,
+      0.9049489287811706
+     ]
+    },
+    "confusion": {
+     "youtube_recipe -> youtube_recipe": 2,
+     "recipe_text -> recipe_text": 2,
+     "named_dish -> named_dish": 2,
+     "mood_intent -> mood_intent": 3,
+     "cart_edit -> cart_edit": 1,
+     "cart_edit -> cart_clear_or_replace": 1,
+     "cart_clear_or_replace -> cart_clear_or_replace": 1,
+     "cart_clear_or_replace -> cart_edit": 1,
+     "staples_answer -> staples_answer": 2,
+     "variant_request -> variant_request": 2,
+     "question_cooking -> question_cooking": 3,
+     "question_cooking -> recipe_text": 1,
+     "declare_allergy -> declare_allergy": 1,
+     "smalltalk -> smalltalk": 1,
+     "off_topic -> off_topic": 1,
+     "off_topic -> unsupported": 1,
+     "unsafe -> smalltalk": 1,
+     "unsafe -> unsafe": 2,
+     "unsupported -> cart_clear_or_replace": 1,
+     "unsupported -> unsupported": 1
+    }
+   }
+  ],
+  "aggregate": {
+   "accuracy": {
+    "median": 0.8,
+    "range": [
+     0.8,
+     0.8
+    ],
+    "min": 0.85,
+    "status": "FAIL",
+    "runs": [
+     0.8,
+     0.8,
+     0.8
+    ]
+   },
+   "false_unsafe_rate": {
+    "median": 0.0,
+    "range": [
+     0.0,
+     0.0
+    ],
+    "max": 0.05,
+    "status": "PASS",
+    "runs": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "prompt": "intent_classify_v3",
+  "model": "llama3.2:3b"
+ },
+ "critical_failures": [],
+ "per_example": [
+  {
+   "id": "U02",
+   "run": 1,
+   "expected": "youtube_recipe",
+   "got": "youtube_recipe",
+   "routed": "youtube_recipe",
+   "shipped": "youtube_recipe",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U04",
+   "run": 1,
+   "expected": "youtube_recipe",
+   "got": "youtube_recipe",
+   "routed": "youtube_recipe",
+   "shipped": "youtube_recipe",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U06",
+   "run": 1,
+   "expected": "recipe_text",
+   "got": "recipe_text",
+   "routed": "recipe_text",
+   "shipped": "recipe_text",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U08",
+   "run": 1,
+   "expected": "recipe_text",
+   "got": "recipe_text",
+   "routed": "recipe_text",
+   "shipped": "recipe_text",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U11",
+   "run": 1,
+   "expected": "named_dish",
+   "got": "named_dish",
+   "routed": "named_dish",
+   "shipped": "named_dish",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U13",
+   "run": 1,
+   "expected": "named_dish",
+   "got": "named_dish",
+   "routed": "named_dish",
+   "shipped": "named_dish",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U16",
+   "run": 1,
+   "expected": "mood_intent",
+   "got": "mood_intent",
+   "routed": "mood_intent",
+   "shipped": "mood_intent",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U18",
+   "run": 1,
+   "expected": "mood_intent",
+   "got": "mood_intent",
+   "routed": "mood_intent",
+   "shipped": "mood_intent",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U20",
+   "run": 1,
+   "expected": "mood_intent",
+   "got": "mood_intent",
+   "routed": "mood_intent",
+   "shipped": "mood_intent",
+   "code_routed": false,
+   "near_miss": true,
+   "correct": true
+  },
+  {
+   "id": "U22",
+   "run": 1,
+   "expected": "cart_edit",
+   "got": "cart_edit",
+   "routed": "cart_edit",
+   "shipped": "cart_edit",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U24",
+   "run": 1,
+   "expected": "cart_edit",
+   "got": "cart_clear_or_replace",
+   "routed": "cart_clear_or_replace",
+   "shipped": "cart_clear_or_replace",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": false
+  },
+  {
+   "id": "U27",
+   "run": 1,
+   "expected": "cart_clear_or_replace",
+   "got": "cart_clear_or_replace",
+   "routed": "cart_clear_or_replace",
+   "shipped": "cart_clear_or_replace",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U29",
+   "run": 1,
+   "expected": "cart_clear_or_replace",
+   "got": "cart_edit",
+   "routed": "off_topic",
+   "shipped": "off_topic",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": false
+  },
+  {
+   "id": "U31",
+   "run": 1,
+   "expected": "staples_answer",
+   "got": "staples_answer",
+   "routed": "staples_answer",
+   "shipped": "staples_answer",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U33",
+   "run": 1,
+   "expected": "staples_answer",
+   "got": "staples_answer",
+   "routed": "staples_answer",
+   "shipped": "staples_answer",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U35",
+   "run": 1,
+   "expected": "variant_request",
+   "got": "variant_request",
+   "routed": "variant_request",
+   "shipped": "variant_request",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U37",
+   "run": 1,
+   "expected": "variant_request",
+   "got": "variant_request",
+   "routed": "variant_request",
+   "shipped": "variant_request",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U38",
+   "run": 1,
+   "expected": "question_cooking",
+   "got": "question_cooking",
+   "routed": "question_cooking",
+   "shipped": "question_cooking",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U39",
+   "run": 1,
+   "expected": "question_cooking",
+   "got": "recipe_text",
+   "routed": "recipe_text",
+   "shipped": "recipe_text",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": false
+  },
+  {
+   "id": "U41",
+   "run": 1,
+   "expected": "question_cooking",
+   "got": "question_cooking",
+   "routed": "question_cooking",
+   "shipped": "question_cooking",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U43",
+   "run": 1,
+   "expected": "question_cooking",
+   "got": "question_cooking",
+   "routed": "question_cooking",
+   "shipped": "question_cooking",
+   "code_routed": false,
+   "near_miss": true,
+   "correct": true
+  },
+  {
+   "id": "U45",
+   "run": 1,
+   "expected": "declare_allergy",
+   "got": "declare_allergy",
+   "routed": "declare_allergy",
+   "shipped": "declare_allergy",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U48",
+   "run": 1,
+   "expected": "smalltalk",
+   "got": "smalltalk",
+   "routed": "off_topic",
+   "shipped": "off_topic",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U51",
+   "run": 1,
+   "expected": "off_topic",
+   "got": "off_topic",
+   "routed": "off_topic",
+   "shipped": "off_topic",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U53",
+   "run": 1,
+   "expected": "off_topic",
+   "got": "unsupported",
+   "routed": "off_topic",
+   "shipped": "off_topic",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": false
+  },
+  {
+   "id": "U55",
+   "run": 1,
+   "expected": "unsafe",
+   "got": "smalltalk",
+   "routed": "unsafe",
+   "shipped": "unsafe",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": false
+  },
+  {
+   "id": "U56",
+   "run": 1,
+   "expected": "unsafe",
+   "got": "unsafe",
+   "routed": "unsafe",
+   "shipped": "unsafe",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U57",
+   "run": 1,
+   "expected": "unsafe",
+   "got": "unsafe",
+   "routed": "unsafe",
+   "shipped": "unsafe",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U59",
+   "run": 1,
+   "expected": "unsupported",
+   "got": "cart_clear_or_replace",
+   "routed": "off_topic",
+   "shipped": "off_topic",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": false
+  },
+  {
+   "id": "U60",
+   "run": 1,
+   "expected": "unsupported",
+   "got": "unsupported",
+   "routed": "off_topic",
+   "shipped": "off_topic",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U02",
+   "run": 2,
+   "expected": "youtube_recipe",
+   "got": "youtube_recipe",
+   "routed": "youtube_recipe",
+   "shipped": "youtube_recipe",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U04",
+   "run": 2,
+   "expected": "youtube_recipe",
+   "got": "youtube_recipe",
+   "routed": "youtube_recipe",
+   "shipped": "youtube_recipe",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U06",
+   "run": 2,
+   "expected": "recipe_text",
+   "got": "recipe_text",
+   "routed": "recipe_text",
+   "shipped": "recipe_text",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U08",
+   "run": 2,
+   "expected": "recipe_text",
+   "got": "recipe_text",
+   "routed": "recipe_text",
+   "shipped": "recipe_text",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U11",
+   "run": 2,
+   "expected": "named_dish",
+   "got": "named_dish",
+   "routed": "named_dish",
+   "shipped": "named_dish",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U13",
+   "run": 2,
+   "expected": "named_dish",
+   "got": "named_dish",
+   "routed": "named_dish",
+   "shipped": "named_dish",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U16",
+   "run": 2,
+   "expected": "mood_intent",
+   "got": "mood_intent",
+   "routed": "mood_intent",
+   "shipped": "mood_intent",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U18",
+   "run": 2,
+   "expected": "mood_intent",
+   "got": "mood_intent",
+   "routed": "mood_intent",
+   "shipped": "mood_intent",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U20",
+   "run": 2,
+   "expected": "mood_intent",
+   "got": "mood_intent",
+   "routed": "mood_intent",
+   "shipped": "mood_intent",
+   "code_routed": false,
+   "near_miss": true,
+   "correct": true
+  },
+  {
+   "id": "U22",
+   "run": 2,
+   "expected": "cart_edit",
+   "got": "cart_edit",
+   "routed": "cart_edit",
+   "shipped": "cart_edit",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U24",
+   "run": 2,
+   "expected": "cart_edit",
+   "got": "cart_clear_or_replace",
+   "routed": "cart_clear_or_replace",
+   "shipped": "cart_clear_or_replace",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": false
+  },
+  {
+   "id": "U27",
+   "run": 2,
+   "expected": "cart_clear_or_replace",
+   "got": "cart_clear_or_replace",
+   "routed": "cart_clear_or_replace",
+   "shipped": "cart_clear_or_replace",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U29",
+   "run": 2,
+   "expected": "cart_clear_or_replace",
+   "got": "cart_edit",
+   "routed": "off_topic",
+   "shipped": "off_topic",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": false
+  },
+  {
+   "id": "U31",
+   "run": 2,
+   "expected": "staples_answer",
+   "got": "staples_answer",
+   "routed": "staples_answer",
+   "shipped": "staples_answer",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U33",
+   "run": 2,
+   "expected": "staples_answer",
+   "got": "staples_answer",
+   "routed": "staples_answer",
+   "shipped": "staples_answer",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U35",
+   "run": 2,
+   "expected": "variant_request",
+   "got": "variant_request",
+   "routed": "variant_request",
+   "shipped": "variant_request",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U37",
+   "run": 2,
+   "expected": "variant_request",
+   "got": "variant_request",
+   "routed": "variant_request",
+   "shipped": "variant_request",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U38",
+   "run": 2,
+   "expected": "question_cooking",
+   "got": "question_cooking",
+   "routed": "question_cooking",
+   "shipped": "question_cooking",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U39",
+   "run": 2,
+   "expected": "question_cooking",
+   "got": "recipe_text",
+   "routed": "recipe_text",
+   "shipped": "recipe_text",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": false
+  },
+  {
+   "id": "U41",
+   "run": 2,
+   "expected": "question_cooking",
+   "got": "question_cooking",
+   "routed": "question_cooking",
+   "shipped": "question_cooking",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U43",
+   "run": 2,
+   "expected": "question_cooking",
+   "got": "question_cooking",
+   "routed": "question_cooking",
+   "shipped": "question_cooking",
+   "code_routed": false,
+   "near_miss": true,
+   "correct": true
+  },
+  {
+   "id": "U45",
+   "run": 2,
+   "expected": "declare_allergy",
+   "got": "declare_allergy",
+   "routed": "declare_allergy",
+   "shipped": "declare_allergy",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U48",
+   "run": 2,
+   "expected": "smalltalk",
+   "got": "smalltalk",
+   "routed": "off_topic",
+   "shipped": "off_topic",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U51",
+   "run": 2,
+   "expected": "off_topic",
+   "got": "off_topic",
+   "routed": "off_topic",
+   "shipped": "off_topic",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U53",
+   "run": 2,
+   "expected": "off_topic",
+   "got": "unsupported",
+   "routed": "off_topic",
+   "shipped": "off_topic",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": false
+  },
+  {
+   "id": "U55",
+   "run": 2,
+   "expected": "unsafe",
+   "got": "smalltalk",
+   "routed": "unsafe",
+   "shipped": "unsafe",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": false
+  },
+  {
+   "id": "U56",
+   "run": 2,
+   "expected": "unsafe",
+   "got": "unsafe",
+   "routed": "unsafe",
+   "shipped": "unsafe",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U57",
+   "run": 2,
+   "expected": "unsafe",
+   "got": "unsafe",
+   "routed": "unsafe",
+   "shipped": "unsafe",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U59",
+   "run": 2,
+   "expected": "unsupported",
+   "got": "cart_clear_or_replace",
+   "routed": "off_topic",
+   "shipped": "off_topic",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": false
+  },
+  {
+   "id": "U60",
+   "run": 2,
+   "expected": "unsupported",
+   "got": "unsupported",
+   "routed": "off_topic",
+   "shipped": "off_topic",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U02",
+   "run": 3,
+   "expected": "youtube_recipe",
+   "got": "youtube_recipe",
+   "routed": "youtube_recipe",
+   "shipped": "youtube_recipe",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U04",
+   "run": 3,
+   "expected": "youtube_recipe",
+   "got": "youtube_recipe",
+   "routed": "youtube_recipe",
+   "shipped": "youtube_recipe",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U06",
+   "run": 3,
+   "expected": "recipe_text",
+   "got": "recipe_text",
+   "routed": "recipe_text",
+   "shipped": "recipe_text",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U08",
+   "run": 3,
+   "expected": "recipe_text",
+   "got": "recipe_text",
+   "routed": "recipe_text",
+   "shipped": "recipe_text",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U11",
+   "run": 3,
+   "expected": "named_dish",
+   "got": "named_dish",
+   "routed": "named_dish",
+   "shipped": "named_dish",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U13",
+   "run": 3,
+   "expected": "named_dish",
+   "got": "named_dish",
+   "routed": "named_dish",
+   "shipped": "named_dish",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U16",
+   "run": 3,
+   "expected": "mood_intent",
+   "got": "mood_intent",
+   "routed": "mood_intent",
+   "shipped": "mood_intent",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U18",
+   "run": 3,
+   "expected": "mood_intent",
+   "got": "mood_intent",
+   "routed": "mood_intent",
+   "shipped": "mood_intent",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U20",
+   "run": 3,
+   "expected": "mood_intent",
+   "got": "mood_intent",
+   "routed": "mood_intent",
+   "shipped": "mood_intent",
+   "code_routed": false,
+   "near_miss": true,
+   "correct": true
+  },
+  {
+   "id": "U22",
+   "run": 3,
+   "expected": "cart_edit",
+   "got": "cart_edit",
+   "routed": "cart_edit",
+   "shipped": "cart_edit",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U24",
+   "run": 3,
+   "expected": "cart_edit",
+   "got": "cart_clear_or_replace",
+   "routed": "cart_clear_or_replace",
+   "shipped": "cart_clear_or_replace",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": false
+  },
+  {
+   "id": "U27",
+   "run": 3,
+   "expected": "cart_clear_or_replace",
+   "got": "cart_clear_or_replace",
+   "routed": "cart_clear_or_replace",
+   "shipped": "cart_clear_or_replace",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U29",
+   "run": 3,
+   "expected": "cart_clear_or_replace",
+   "got": "cart_edit",
+   "routed": "off_topic",
+   "shipped": "off_topic",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": false
+  },
+  {
+   "id": "U31",
+   "run": 3,
+   "expected": "staples_answer",
+   "got": "staples_answer",
+   "routed": "staples_answer",
+   "shipped": "staples_answer",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U33",
+   "run": 3,
+   "expected": "staples_answer",
+   "got": "staples_answer",
+   "routed": "staples_answer",
+   "shipped": "staples_answer",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U35",
+   "run": 3,
+   "expected": "variant_request",
+   "got": "variant_request",
+   "routed": "variant_request",
+   "shipped": "variant_request",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U37",
+   "run": 3,
+   "expected": "variant_request",
+   "got": "variant_request",
+   "routed": "variant_request",
+   "shipped": "variant_request",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U38",
+   "run": 3,
+   "expected": "question_cooking",
+   "got": "question_cooking",
+   "routed": "question_cooking",
+   "shipped": "question_cooking",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U39",
+   "run": 3,
+   "expected": "question_cooking",
+   "got": "recipe_text",
+   "routed": "recipe_text",
+   "shipped": "recipe_text",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": false
+  },
+  {
+   "id": "U41",
+   "run": 3,
+   "expected": "question_cooking",
+   "got": "question_cooking",
+   "routed": "question_cooking",
+   "shipped": "question_cooking",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U43",
+   "run": 3,
+   "expected": "question_cooking",
+   "got": "question_cooking",
+   "routed": "question_cooking",
+   "shipped": "question_cooking",
+   "code_routed": false,
+   "near_miss": true,
+   "correct": true
+  },
+  {
+   "id": "U45",
+   "run": 3,
+   "expected": "declare_allergy",
+   "got": "declare_allergy",
+   "routed": "declare_allergy",
+   "shipped": "declare_allergy",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U48",
+   "run": 3,
+   "expected": "smalltalk",
+   "got": "smalltalk",
+   "routed": "off_topic",
+   "shipped": "off_topic",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U51",
+   "run": 3,
+   "expected": "off_topic",
+   "got": "off_topic",
+   "routed": "off_topic",
+   "shipped": "off_topic",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U53",
+   "run": 3,
+   "expected": "off_topic",
+   "got": "unsupported",
+   "routed": "off_topic",
+   "shipped": "off_topic",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": false
+  },
+  {
+   "id": "U55",
+   "run": 3,
+   "expected": "unsafe",
+   "got": "smalltalk",
+   "routed": "unsafe",
+   "shipped": "unsafe",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": false
+  },
+  {
+   "id": "U56",
+   "run": 3,
+   "expected": "unsafe",
+   "got": "unsafe",
+   "routed": "unsafe",
+   "shipped": "unsafe",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U57",
+   "run": 3,
+   "expected": "unsafe",
+   "got": "unsafe",
+   "routed": "unsafe",
+   "shipped": "unsafe",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  },
+  {
+   "id": "U59",
+   "run": 3,
+   "expected": "unsupported",
+   "got": "cart_clear_or_replace",
+   "routed": "off_topic",
+   "shipped": "off_topic",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": false
+  },
+  {
+   "id": "U60",
+   "run": 3,
+   "expected": "unsupported",
+   "got": "unsupported",
+   "routed": "off_topic",
+   "shipped": "off_topic",
+   "code_routed": false,
+   "near_miss": false,
+   "correct": true
+  }
+ ],
+ "status": "FAIL",
+ "notes": "POST-HOC rerun: C54 owner decision (guardrail-targeting injection rule, code routing, intent prompt v3, claim words in the reason validator), commits a58ca26 to 54a686b; thresholds unchanged; intent prompt v3 tuned on the dev split only, test scored once; first result kept in eval/results/. intent prompt v2 examples overlap the dev split only (U15, exact match); no test overlap; 3 runs (C51)"
+}
