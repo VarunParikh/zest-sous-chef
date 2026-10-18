@@ -4,7 +4,7 @@ Zest is a web-based cooking assistant linked to a **mock** grocery store, in the
 - paste a YouTube recipe link
 - type a recipe
 - describe a mood ("I am feeling indulgent")
-- upload a photo of your fridge
+- upload a photo from your fridge
 
 Zest builds a cart of real-looking products that you can edit and "buy".
 
