@@ -2,7 +2,7 @@
 
 s_h: mean history slider over the dish's derived buckets (none -> 0.5).
 s_t: trend multiplier from the context.
-s_g: gourmet match between the slider and the dish's premium level, plus a gender
+s_g: gourmet match between the slider and the dish's premium level (rescaled across dishes, C53), plus a gender
      cohort boost of 10% of the base (FR-07: never a filter).
 s_p: from the caller's fused match rank (retrieval, block 1.4).
 """
@@ -49,15 +49,22 @@ def history_buckets(rec: DishRecord, store: Store) -> set[str]:
     return buckets
 
 
-_PREMIUM: dict[tuple[int, str], float] = {}
+_PREMIUM: dict[int, dict[str, float]] = {}
+
+
+def _raw_premium(rec: DishRecord, store: Store) -> float:
+    levels = [mean(v.gourmet_score for v in vs) for t in _essential_terms(rec, store) if (vs := store.variants_for(t))]
+    return mean(levels) if levels else 0.5
 
 
 def premium_level(rec: DishRecord, store: Store) -> float:
-    key = (id(store), rec.dish.dish_id)
-    if key not in _PREMIUM:
-        levels = [mean(v.gourmet_score for v in vs) for t in _essential_terms(rec, store) if (vs := store.variants_for(t))]
-        _PREMIUM[key] = mean(levels) if levels else 0.5
-    return _PREMIUM[key]
+    """Mean variant gourmet score over essential ingredients, min-max rescaled across stored dishes (C24, C53),
+    so the gourmet slider spans the same 0 to 1 range as the dishes it ranks."""
+    if id(store) not in _PREMIUM:
+        raw = {d.dish.dish_id: _raw_premium(d, store) for d in store.dishes}
+        lo, hi = min(raw.values()), max(raw.values())
+        _PREMIUM[id(store)] = {k: (v - lo) / (hi - lo) if hi > lo else 0.5 for k, v in raw.items()}
+    return _PREMIUM[id(store)].get(rec.dish.dish_id, 0.5)
 
 
 def cohort_match(gender: str, terms: set[str], high_protein: bool) -> bool:
