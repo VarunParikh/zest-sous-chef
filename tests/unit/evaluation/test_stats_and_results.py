@@ -42,7 +42,7 @@ def test_gate_status_and_separability():
 
 def test_thresholds_load_with_safe_yaml():
     t = load_thresholds()
-    assert t["E1_text_model"]["extraction_f1_min"] == 0.80 and t["version"] == 3
+    assert t["E1_text_model"]["extraction_f1_min"] == 0.80 and t["version"] == 4
 
 
 def test_result_file_shape(tmp_path):

@@ -1,6 +1,6 @@
 # Evaluation Plan: Zest AI Sous-Chef
 
-Status: **APPROVED v0.6 (owner, 2026-10-18, with the block 3.1 plan)** (v0.6 adds §4.16: E10, E11 and E14 definitions, C58 to C65; the C62 retry bullet follows C66, owner decision the same day). v0.5 was **APPROVED (owner, 2026-10-18)** (v0.5 adds the C55 bullets in §4.15: `guard_v3` and the E2 acceptance). v0.4 was **APPROVED (owner, 2026-10-18)** (v0.4 adds the C54 bullet in §4.15: `guard_v2` and the E2 prompt v3 protocol, approved with the block 2.6 safety plan). v0.3 was **APPROVED (owner, 2026-10-18)** (v0.1 and v0.2 approved 2026-10-17; v0.2 added the add-on arm to E5 and a note to E6; v0.3 adds the block 2.6 definitions C46 to C52 in §4.15, approved with the block 2.6 plan) · Date: 2026-10-18 · Source: PRD v0.4, BRD objectives O1 to O8, ADR-002 to ADR-008, Agent Design, Security and Privacy Note (follows the `eval-runner` procedure)
+Status: **APPROVED v0.7 (owner, 2026-10-18, with the block 3.2 plan)** (v0.7 adds §4.17: required evaluations, overall status, report inputs, C69 to C71). v0.6 was **APPROVED (owner, 2026-10-18, with the block 3.1 plan)** (v0.6 adds §4.16: E10, E11 and E14 definitions, C58 to C65; the C62 retry bullet follows C66, owner decision the same day). v0.5 was **APPROVED (owner, 2026-10-18)** (v0.5 adds the C55 bullets in §4.15: `guard_v3` and the E2 acceptance). v0.4 was **APPROVED (owner, 2026-10-18)** (v0.4 adds the C54 bullet in §4.15: `guard_v2` and the E2 prompt v3 protocol, approved with the block 2.6 safety plan). v0.3 was **APPROVED (owner, 2026-10-18)** (v0.1 and v0.2 approved 2026-10-17; v0.2 added the add-on arm to E5 and a note to E6; v0.3 adds the block 2.6 definitions C46 to C52 in §4.15, approved with the block 2.6 plan) · Date: 2026-10-18 · Source: PRD v0.4, BRD objectives O1 to O8, ADR-002 to ADR-008, Agent Design, Security and Privacy Note (follows the `eval-runner` procedure)
 **Status of every evaluation: NOT RUN.** No system exists yet. This plan defines the questions, datasets, scoring and pass rules *before* any results exist. No score in this document is a result, and the thresholds below are my proposals that the owner approves before the first run.
 
 ## 1. Purpose
@@ -157,6 +157,15 @@ Written before any E10, E11 or E14 run. `eval/thresholds.yaml` is unchanged (v3)
     - every AC maps to an existing, passing test or to an evaluation with a headline result
     - there is no open FAIL
   - Test Plan P0 IDs that no test references are listed as findings. US-25 counts as Must for FR-77 only (C65).
+
+### 4.17 Definitions added in v0.7 (block 3.2, C69 to C71; owner-approved 2026-10-18)
+- **C69 Required evaluations.** Every evaluation E1 to E14 is required for the release gate. The report lists any required evaluation whose headline result is missing or `NOT RUN`, and block 3.2 passes only if that list is empty. A comparison arm not run by owner decision (for example `qwen3-vl:8b` in E3) is listed, not counted.
+- **C70 Overall status.** §7 is applied as written: with a FAIL on a Must objective the overall status is FAIL, even when the owner has accepted that FAIL. Directly beneath the status the report states whether any FAIL is open, whether any critical failure exists, and which FAILs the owner accepted, with their conflict IDs. An evaluation whose headline is FAIL is never shown as PASS.
+- **C71 Report inputs.**
+  - The report reads `eval/results/*.json`, `eval/headline.yaml` (C64) and `eval/thresholds.yaml`, plus git metadata: each headline's commit, and the code commits since it, reported as staleness and not gated.
+  - No number is typed by hand. A provenance table lists every file used, with its commit, date and status.
+  - `make report` builds the report.
+  - `make eval` reruns every headline harness in sequence. It is not run in block 3.2, and running it needs other apps closed (E11).
 
 ## 5. Datasets and versioning
 | Dataset | Location | Size | Owner review |
