@@ -8,6 +8,7 @@ TEMPLATES = {
     "MSG-WEIGHTS-DEFAULT": "All four weights were 0, so I'm using the default mix.",  # C30
     "MSG-PERSONA-WARN": "Your settings overlap: {a} and {b}. I'm applying both, so options may be limited.",
     "MSG-CHAT-CLEAR-CONFIRM": "Clearing the chat will also empty your cart. Continue?",
+    "MSG-EDIT-OK": "Done. {change}. ✅",
     "MSG-SERVER": "Your food will be ready but seems like our servers are struggling. We will be back shortly",
 }
 

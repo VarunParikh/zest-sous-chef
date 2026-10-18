@@ -13,6 +13,7 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from functools import lru_cache
 
 from backend.api import errors
+from backend.api.actions import router as actions_router
 from backend.api.cart import router as cart_router
 from backend.api.health import check_health, render_page
 from backend.api.sessions import load_presets, router as sessions_router
@@ -66,6 +67,7 @@ def create_app(settings: Settings | None = None, http_transport: httpx.AsyncBase
     errors.install(app)
     app.include_router(sessions_router)
     app.include_router(cart_router)
+    app.include_router(actions_router)
 
     @app.get("/api/v1/health")
     async def health(request: Request) -> dict:

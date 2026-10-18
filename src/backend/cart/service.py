@@ -133,3 +133,49 @@ def switch_variant(session, line_id: str, variant_id: str, ctx, store: Store) ->
         ln.variant_id, ln.reason, ln.quantity = variant_id, "Chosen by you", 1
         ln.alternative_variant_ids = [old, *[a for a in ln.alternative_variant_ids if a not in (old, variant_id)]][:3]
     session.cart = allocate(cart, store)
+
+
+def _flavour_note(old, new) -> str:
+    if old.base_id == new.base_id:
+        return "Same product type, so the taste should be very close."
+    return "A close alternative; the taste may differ slightly."
+
+
+def propose_substitution(session, line_id: str, ctx, store: Store):
+    """FR-76: the best in-stock, eligible alternative for a line. Offered only; the cart is unchanged."""
+    from backend.flows.cards import Substitution
+
+    ln = _find_line(session.cart, line_id)
+    levers = session.snapshot
+    levers.business.stock_filter = True  # a substitute must be in stock
+    group = {v.variant_id: v for v in store.variants_for(ln.ingredient_name)}
+
+    def ok(vid):
+        return vid != ln.variant_id and vid in group and check_variant(group[vid], levers, store).eligible
+
+    pick = next((vid for vid in ln.alternative_variant_ids if ok(vid)), None)
+    if pick is None:
+        choice = choose_variant(ln.ingredient_name, levers, ctx, store)
+        pick = next((v.variant_id for v, _ in choice.scored if ok(v.variant_id)), None)
+    if pick is None:
+        return None
+    trial = session.cart.model_copy(deep=True)
+    _find_line(trial, line_id).variant_id = pick
+    delta = view(allocate(trial, store), store).subtotal_inr - view(allocate(session.cart, store), store).subtotal_inr
+    old, new = store.variant(ln.variant_id), store.variant(pick)
+    sub_id = session.next_id("sb")
+    session.pending[sub_id] = {"kind": "substitution", "line_id": line_id, "variant_id": pick}
+    return Substitution(substitution_id=sub_id, from_item=old.name, to_item=new.name, price_delta_inr=delta,
+                        flavour_note=_flavour_note(old, new))
+
+
+def answer_substitution(session, substitution_id: str, choice: str, ctx, store: Store) -> bool:
+    """Accept applies the swap; decline changes nothing. Returns True when the cart changed."""
+    pending = session.pending.get(substitution_id)
+    if not pending or pending["kind"] != "substitution":
+        raise CartRuleError("STALE", "That swap is no longer available.")
+    del session.pending[substitution_id]
+    if choice != "accept":
+        return False
+    switch_variant(session, pending["line_id"], pending["variant_id"], ctx, store)
+    return True

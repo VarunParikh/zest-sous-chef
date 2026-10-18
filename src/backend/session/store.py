@@ -35,6 +35,10 @@ class Session:
     created_at: datetime
     messages: list = field(default_factory=list)
     cart: Cart = field(default_factory=Cart)
+    pending: dict = field(default_factory=dict)  # confirm and substitution ids awaiting a tap
+    undo_stack: list = field(default_factory=list)
+    suggestions: dict = field(default_factory=dict)  # suggestion_id -> record
+    orders: dict = field(default_factory=dict)  # idempotency key -> Order
     _turns: int = 0
     _messages: int = 0
     _ids: dict = field(default_factory=dict)
