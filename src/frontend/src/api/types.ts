@@ -123,7 +123,13 @@ export interface InspectorRow {
   final: number;
 }
 
-export interface Inspector { rows: InspectorRow[]; shown: string[]; weights_effective: Record<string, number> }
+export interface AddonRow extends InspectorRow { curated_rank: number | null; curated_strength: number | null }
+export interface Inspector {
+  rows: InspectorRow[];
+  shown: string[];
+  weights_effective: Record<string, number>;
+  addon?: { anchor: string; rows: AddonRow[]; shown: string[] };  // FR-119
+}
 
 export interface ApiErrorBody {
   code: string;

@@ -107,9 +107,14 @@ def inspector(session_id: str, request: Request) -> dict:
     """API Spec §4.8 (FR-115, US-39): the latest suggestion's pool with ranks, eligibility and scores."""
     session = request.app.state.sessions.get(session_id)
     rec = session.last_recommendation
-    if rec is None:
-        return {"rows": [], "shown": [], "weights_effective": {}}
     store = request.app.state.store
-    rows = [{**row, "name": store.dish(row["candidate_id"]).dish.name} for row in rec.inspector]
-    weights = dict(rec.scored[0].breakdown.weights_effective) if rec.scored else {}
-    return {"rows": rows, "shown": [s.candidate_id for s in rec.shown], "weights_effective": weights}
+    named = lambda rows: [{**row, "name": store.dish(row["candidate_id"]).dish.name} for row in rows]
+    out = {"rows": [], "shown": [], "weights_effective": {}}
+    if rec is not None:
+        out = {"rows": named(rec.inspector), "shown": [s.candidate_id for s in rec.shown],
+               "weights_effective": dict(rec.scored[0].breakdown.weights_effective) if rec.scored else {}}
+    if session.last_addon is not None:  # FR-119: curated strength, vector rank and fused rank of the add-on pool
+        a = session.last_addon
+        out["addon"] = {"anchor": store.dish(a["anchor"]).dish.name, "rows": named(a["rec"].inspector),
+                        "shown": [s.candidate_id for s in a["rec"].shown]}
+    return out

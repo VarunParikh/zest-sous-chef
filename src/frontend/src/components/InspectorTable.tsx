@@ -4,10 +4,12 @@ import type { Inspector } from "../api/types";
 const fmt = (v: number | null, d = 0) => (v === null || v === undefined ? "–" : d ? v.toFixed(d) : String(v));
 
 export function InspectorTable({ inspector }: { inspector: Inspector | null }) {
-  if (!inspector || inspector.rows.length === 0) return <p className="text-sm text-muted">No suggestion yet in this session.</p>;
+  if (!inspector || (inspector.rows.length === 0 && !inspector.addon)) return <p className="text-sm text-muted">No suggestion yet in this session.</p>;
   const shown = new Set(inspector.shown);
   return (
-    <div className="overflow-x-auto">
+    <div className="space-y-4">
+    {inspector.rows.length > 0 && <div className="overflow-x-auto">
+      <p className="mb-1 text-xs font-semibold text-secondary">Latest dish suggestion</p>
       <table className="w-full text-left text-xs">
         <caption className="sr-only">Candidate pool for the latest suggestion</caption>
         <thead className="bg-canvas text-muted">
@@ -25,6 +27,36 @@ export function InspectorTable({ inspector }: { inspector: Inspector | null }) {
               <td className="px-2 font-mono">{fmt(r.lexical_rank)}</td>
               <td className="px-2 font-mono">{fmt(r.vector_rank)}</td>
               <td className="px-2 font-mono">{fmt(r.vector_distance, 3)}</td>
+              <td className="px-2">{r.eligible ? "Yes" : <span className="text-err">No: {r.filtered_by.join(", ")}</span>}</td>
+              <td className="px-2 font-mono">{r.final.toFixed(3)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>}
+    {inspector.addon && <AddonTable addon={inspector.addon} />}
+    </div>
+  );
+}
+
+function AddonTable({ addon }: { addon: NonNullable<Inspector["addon"]> }) {
+  const shown = new Set(addon.shown.slice(0, 1));
+  return (
+    <div className="overflow-x-auto">
+      <p className="mb-1 text-xs font-semibold text-secondary">Add-on pool for {addon.anchor} (curated + vector, weighted fusion)</p>
+      <table className="w-full text-left text-xs">
+        <caption className="sr-only">Add-on candidates</caption>
+        <thead className="bg-canvas text-muted">
+          <tr>{["Fused", "Companion", "Curated", "Strength", "Vector", "Eligible", "Score"].map((h) => <th key={h} scope="col" className="h-[42px] px-2 font-semibold">{h}</th>)}</tr>
+        </thead>
+        <tbody>
+          {addon.rows.map((r) => (
+            <tr key={r.candidate_id} className={`h-[42px] border-t border-line hover:bg-[#F9FAFB] ${shown.has(r.candidate_id) ? "font-semibold text-brand" : ""}`}>
+              <td className="px-2 font-mono">{r.fused_rank}</td>
+              <td className="px-2">{r.name}</td>
+              <td className="px-2 font-mono">{fmt(r.curated_rank)}</td>
+              <td className="px-2 font-mono">{fmt(r.curated_strength, 2)}</td>
+              <td className="px-2 font-mono">{fmt(r.vector_rank)}</td>
               <td className="px-2">{r.eligible ? "Yes" : <span className="text-err">No: {r.filtered_by.join(", ")}</span>}</td>
               <td className="px-2 font-mono">{r.final.toFixed(3)}</td>
             </tr>

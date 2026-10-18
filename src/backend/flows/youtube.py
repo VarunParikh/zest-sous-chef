@@ -3,6 +3,7 @@ spotlighted for the model, and it never changes the cart by itself."""
 from __future__ import annotations
 
 from backend.cart.allocation import allocate
+from backend.flows.addons import offer_addon
 from backend.flows.cards import ChoiceOption, Confirm, Undo
 from backend.flows.text import add_stored, cart_recipe, extract, say, stored_dish
 from backend.llm.client import LLMError
@@ -63,10 +64,11 @@ def youtube_turn(session, text: str, deps, out, force: bool = False) -> None:
     if t.source == "fixture":
         out.messages.append(say(session, "MSG-YT-FIXTURE"))
     res = cart_recipe(session, ex.dish_name, ex.ingredients, "youtube", deps, out, keep_open=False,
-                      headline=lambda d, n: ("MSG-YT-OK", {"dish": d.name, "n": n}))
+                      headline=lambda d, n: ("MSG-YT-OK", {"dish": d.name, "n": n}), offer=False)
     if res and res[0] is not None:
         session.videos[vid] = res[0].cart_dish_id
         _pantry(session, res[0], prior, deps, out)
+        offer_addon(session, res[0], deps, out)
 
 
 def _is_staple(line, store) -> bool:

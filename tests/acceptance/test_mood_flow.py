@@ -3,7 +3,7 @@ from backend.engine.context import build_context
 from backend.flows.templates import TEMPLATES
 from backend.retrieval.retriever import Retriever
 from backend.session.levers import LeverSet
-from tests.acceptance.chat_harness import intent, say, start, trace
+from tests.acceptance.chat_harness import intent, say, start, trace, find
 
 MOOD = "I am feeling indulgent"
 
@@ -23,10 +23,10 @@ def test_t085_top_dish_carted_two_swaps_and_undo(chat_app, fake):
     r = say(client, sid, MOOD)
     assert r.status_code == 200
     turn = r.json()
-    msg = turn["messages"][-1]
+    msg = find(turn, "MSG-MOOD-ADD")
     cards = _cards(msg)
     added = cards["dish_added"]
-    assert msg["template_id"] == "MSG-MOOD-ADD"
+    assert turn["messages"][-1]["template_id"] == "MSG-ADDON"  # US-19: one add-on follows the main reply
     assert msg["text"] == (f"Feeling indulgent? Let's go with {added['dish_name']}: Rich, creamy and a weekend favourite. "
                            "I've added the ingredients. ✅")
     assert turn["cart_changed"] is True and [d["dish_id"] for d in turn["cart"]["dishes"]] == [added["dish_id"]]
@@ -87,7 +87,7 @@ def test_invalid_reason_line_falls_back_to_the_template(chat_app, fake):
     _, client = chat_app
     _setup(fake)
     fake.reason = {"reason": "Only ₹99 today, grab it before stock runs out"}
-    msg = say(client, start(client), MOOD).json()["messages"][-1]
+    msg = find(say(client, start(client), MOOD).json(), "MSG-MOOD-ADD")
     assert "Matches your mood and fits your settings" in msg["text"] and "99" not in msg["text"]
     assert _cards(msg)["dish_added"]["reason"] == "Matches your mood and fits your settings"
 
@@ -99,6 +99,6 @@ def test_fr02_levers_sent_mid_session_flag_the_banner_but_do_not_change_the_dish
     first = say(client, sid, MOOD).json()
     edited = LeverSet(diet="Pure Veg (Strict)", gourmet_affinity=1.0).model_dump(mode="json")
     second = say(client, sid, MOOD, levers=edited).json()
-    pick = lambda t: _cards(t["messages"][-1])["dish_added"]["dish_id"]
+    pick = lambda t: _cards(find(t, "MSG-MOOD-ADD"))["dish_added"]["dish_id"]
     assert pick(second) == pick(first) and second["levers_changed_since_snapshot"] is True
     assert first["levers_changed_since_snapshot"] is False

@@ -13,6 +13,7 @@ from backend.cart import service
 from backend.cart.service import CartRuleError
 from backend.catalogue.seed import MOCK
 from backend.flows.cards import ChoiceOption, Confirm, PhotoConsent, SamplePhoto, SamplePhotos, SuggestionRef, SwapOption, SwapOptions, Undo
+from backend.flows.addons import offer_addon
 from backend.flows.recipe import resolve
 from backend.flows.text import say
 from backend.llm.client import LLMError
@@ -167,3 +168,4 @@ def _cart(session, terms: list[str], deps, out) -> None:
     out.suggestions.append(SuggestionRef(suggestion_id=sid, type="dish", candidate_id=top.candidate_id, rank=1))
     deps.tracer.emit("suggestion_shown", session.session_id, suggestion_id=sid, candidate_id=top.candidate_id, alternatives=alts)
     deps.tracer.emit("cart_mutated", session.session_id, action="photo_add", item_count=len(session.cart.lines()))
+    offer_addon(session, added, deps, out)

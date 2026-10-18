@@ -134,7 +134,21 @@ def _consent(session, p: dict, request: Request) -> tuple[list[Message], bool]:
     return [], False
 
 
-HANDLERS = {"consent_photo": _consent, "substitute": _substitute, "confirm": _confirm, "undo": _undo, "swap": _swap, "answer": _answer}
+def _add_on(session, p: dict, request: Request) -> tuple[list[Message], bool]:
+    """FR-64: an add-on enters the cart only on this tap; decline changes nothing."""
+    pending = session.pending.get(p.get("suggestion_id", ""))
+    if not pending or pending["kind"] != "addon" or p.get("choice") not in ("add", "decline"):
+        raise CartRuleError("STALE", "That suggestion has expired.")
+    del session.pending[p["suggestion_id"]]
+    if p["choice"] == "decline":
+        return [reply(session, "MSG-ADDON-DECLINED")], False
+    sid, added = service.add_suggested(session, pending["dish_id"], [], pending["source"], context(request), request.app.state.store)
+    msg = reply(session, "MSG-EDIT-OK", change=f"Added {added.name}")
+    msg.cards = [Undo(suggestion_id=sid)]
+    return [msg], True
+
+
+HANDLERS = {"add_on": _add_on, "consent_photo": _consent, "substitute": _substitute, "confirm": _confirm, "undo": _undo, "swap": _swap, "answer": _answer}
 
 
 @router.post("/action")

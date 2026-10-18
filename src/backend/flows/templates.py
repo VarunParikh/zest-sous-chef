@@ -34,6 +34,8 @@ TEMPLATES = {
     "MSG-PHOTO-NONE": "I couldn't spot any ingredients there. Try a photo of your fridge or counter.",
     "MSG-PHOTO-SAMPLES": "Live photo analysis isn't available right now. Try one of these sample photos instead.",
     "MSG-UPLOAD-REJECT": "I can take one JPEG, PNG or WebP image up to 5 MB. Could you try again?",
+    "MSG-ADDON": "{companion} goes well with {dish}. Add it?",
+    "MSG-ADDON-DECLINED": "No problem.",
     "MSG-MOOD-SWAP": "Swapped to {dish}. Your earlier items are untouched.",
     "MSG-UNDO": "Done. Removed {dish}.",
     "MSG-EMPTY-CART": "Your cart is empty. Pick a recipe or paste a YouTube link to get started!",

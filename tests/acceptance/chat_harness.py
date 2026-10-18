@@ -136,3 +136,8 @@ def line(name, qty=None, unit=None, estimated=False):
 
 def extraction(dish=None, *lines, servings=None):
     return {"dish_name": dish, "servings": servings, "ingredients": list(lines)}
+
+
+def find(turn: dict, template_id: str) -> dict:
+    """The message with this template in a turn (an add-on suggestion, US-19, may follow the main reply)."""
+    return next(m for m in turn["messages"] if m["template_id"] == template_id)

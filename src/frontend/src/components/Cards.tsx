@@ -79,7 +79,7 @@ export function CardView({ card, h }: { card: Card; h: CardHandlers }) {
     case "addon_suggestion":
       return (
         <div className="mt-2 rounded-md border border-line bg-white p-3 text-sm">
-          <p><span className="font-semibold">{card.item.name}</span> · {rupees(card.item.price_inr)}</p>
+          <p><span className="font-semibold">{card.item.name}</span> · {card.item.price_inr > 0 ? `about ${rupees(card.item.price_inr)} extra` : "uses items already in your cart"}</p>
           <p className="text-secondary">{card.reason}</p>
           <Choices options={[{ value: "add", label: "Add" }, { value: "decline", label: "Not now" }]} disabled={h.busy}
             onPick={(v) => h.onAction("add_on", { suggestion_id: card.suggestion_id, choice: v })} />

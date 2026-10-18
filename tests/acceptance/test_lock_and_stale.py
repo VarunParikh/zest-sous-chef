@@ -1,5 +1,5 @@
 """Input lock and stale taps (FR-102, AC-27; API Spec §4.3; T-093, T-094)."""
-from tests.acceptance.chat_harness import intent, say, start
+from tests.acceptance.chat_harness import intent, say, start, find
 
 MOOD = "I am feeling indulgent"
 
@@ -19,7 +19,7 @@ def test_t094_a_tap_from_an_earlier_turn_after_the_cart_changed_is_stale(chat_ap
     _, client = chat_app
     fake.intents[MOOD] = intent("mood_intent", mood_tags=["indulgent"])
     sid = start(client)
-    cards = {c["type"]: c for c in say(client, sid, MOOD).json()["messages"][-1]["cards"]}
+    cards = {c["type"]: c for c in find(say(client, sid, MOOD).json(), "MSG-MOOD-ADD")["cards"]}
     sg = cards["undo"]["suggestion_id"]
     alt = cards["swap_options"]["options"][0]["dish_id"]
     assert client.post(f"/api/v1/sessions/{sid}/action", json={"type": "undo", "payload": {"suggestion_id": sg}}).status_code == 200

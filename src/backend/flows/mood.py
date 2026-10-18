@@ -10,6 +10,7 @@ from __future__ import annotations
 import re
 
 from backend.cart import service
+from backend.flows.addons import offer_addon
 from backend.cart.service import CartRuleError
 from backend.flows.cards import DishAdded, SuggestionRef, SwapOption, SwapOptions, Undo, WhyThis
 from backend.llm import prompts
@@ -96,3 +97,4 @@ def mood_turn(session, text: str, result, deps, out) -> None:
     deps.tracer.emit("suggestion_shown", session.session_id, suggestion_id=sid, candidate_id=dish.dish_id,
                      alternatives=alternatives, final=round(b.final, 4))
     deps.tracer.emit("cart_mutated", session.session_id, action="mood_add", item_count=len(session.cart.lines()))
+    offer_addon(session, added, deps, out)

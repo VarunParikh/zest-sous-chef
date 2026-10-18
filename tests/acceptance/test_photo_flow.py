@@ -6,7 +6,7 @@ import httpx
 from PIL import Image
 
 from backend.config import load_settings
-from tests.acceptance.chat_harness import detection, image_bytes, say, start, trace, upload
+from tests.acceptance.chat_harness import detection, image_bytes, say, start, trace, upload, find
 
 
 def _t(r):
@@ -30,8 +30,8 @@ def test_t087_detect_confirm_unsure_items_then_cart_only_the_top_dish_missing_it
     (card,) = msg["cards"]
     r = _confirm(client, sid, card, "yes")
     out = r.json()
-    msg = out["messages"][-1]
-    assert msg["template_id"] == "MSG-PHOTO-OK" and msg["text"].startswith("I can see paneer, capsicum, onion.")
+    msg = find(out, "MSG-PHOTO-OK")
+    assert out["messages"][-1]["template_id"] == "MSG-ADDON"  # US-19 and msg["text"].startswith("I can see paneer, capsicum, onion.")
     (dish,) = out["cart"]["dishes"]
     carted = {ln["ingredient_name"] for ln in dish["lines"]}
     assert not carted & {"paneer", "capsicum", "onion"}  # only the missing items (FR-54, OQ-9)
@@ -62,7 +62,7 @@ def test_unsure_item_declined_is_left_out(chat_app, fake):
     fake.detection = detection(("paneer", 0.95), ("capsicum", 0.3))
     sid = start(client)
     card = upload(client, sid, image_bytes()).json()["messages"][0]["cards"][0]
-    msg = _confirm(client, sid, card, "no").json()["messages"][-1]
+    msg = find(_confirm(client, sid, card, "no").json(), "MSG-PHOTO-OK")
     assert msg["template_id"] == "MSG-PHOTO-OK" and msg["text"].startswith("I can see paneer.")
 
 
@@ -94,7 +94,7 @@ def test_sample_photo_pick_uses_precomputed_detections(chat_app, fake):
     assert msg["template_id"] == "MSG-PHOTO-CONFIRM" and "capsicum" in msg["text"]
     assert "vision" not in fake.calls and "gemini" not in fake.calls  # pre-computed; only the guard screens the names
     ok = _confirm(client, sid, msg["cards"][0], "yes").json()
-    assert ok["messages"][-1]["template_id"] == "MSG-PHOTO-OK" and ok["cart"]["item_count"] > 0
+    assert find(ok, "MSG-PHOTO-OK") and ok["cart"]["item_count"] > 0
     blurry = client.post(f"/api/v1/sessions/{sid}/chat", json={"text": "", "sample_photo_id": "RF04"})
     assert _t(blurry) == ["MSG-PHOTO-DARK"]
     assert client.post(f"/api/v1/sessions/{sid}/chat", json={"text": "", "sample_photo_id": "RF99"}).status_code == 400

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from backend.cart import service
 from backend.cart.service import CartRuleError
+from backend.flows.addons import offer_addon
 from backend.flows.cards import Undo
 from backend.flows.recipe import DEFAULT_NAME, dish_choice, item_question, prepare, setting_label
 from backend.llm import prompts
@@ -52,7 +53,8 @@ def block(session, item: str, rules, query: str, deps, out) -> None:
                             alternative=alt[1] if alt else "another dish"))
 
 
-def cart_recipe(session, dish_name: str | None, lines, source: str, deps, out, keep_open: bool, headline=None):
+def cart_recipe(session, dish_name: str | None, lines, source: str, deps, out, keep_open: bool, headline=None,
+                offer: bool = True):
     """Prepare and cart extracted lines. `headline(dish, n)` returns (template_id, values) for the first message.
     Returns (dish or None, items carted), or None when a blocked item stopped the whole recipe."""
     prep = prepare(session, lines, deps)
@@ -76,12 +78,15 @@ def cart_recipe(session, dish_name: str | None, lines, source: str, deps, out, k
     if dish is not None and headline is not None:
         template_id, values = headline(dish, len(prep.items))
         out.messages.append(say(session, template_id, **values))
+    new_dish = dish is not None and target is None
     pending = dish.cart_dish_id if dish else target
     for line, options in prep.ambiguous:
         card = item_question(session, line, options, pending, dish.name if dish else name)
         out.messages.append(say(session, "MSG-AMBIG", cards=[card], option_a=options[0], option_b=options[1]))
     if prep.unknown:
         out.messages.append(say(session, "MSG-EDIT-UNCLEAR", options=", ".join(f'"{n}"' for n in prep.unknown)))
+    if new_dish and offer:  # one add-on per new dish, not per follow-up message (US-19)
+        offer_addon(session, dish, deps, out)
     return dish, len(prep.items)
 
 
@@ -115,6 +120,7 @@ def add_stored(session, dish_id: str, deps, out, source: str = "text") -> None:
     out.cart_changed = True
     deps.tracer.emit("cart_mutated", session.session_id, action="named_dish", item_count=len(session.cart.lines()))
     out.messages.append(say(session, "MSG-TXT-STORED", cards=[Undo(suggestion_id=sid)], dish=added.name, servings=added.servings))
+    offer_addon(session, added, deps, out)
 
 
 def named_dish_turn(session, dish_name: str | None, deps, out) -> None:

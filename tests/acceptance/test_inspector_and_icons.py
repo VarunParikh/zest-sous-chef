@@ -1,6 +1,6 @@
 """Inspector endpoint (API Spec §4.8; FR-115; US-39; T-046 API part) and cart icons (API Spec v0.6 §4.6; C41)."""
 from backend.cart import service
-from tests.acceptance.chat_harness import intent, say, start
+from tests.acceptance.chat_harness import intent, say, start, find
 from tests.acceptance.test_cart_api import CTX
 
 MOOD = "I am feeling indulgent"
@@ -16,7 +16,7 @@ def test_inspector_lists_the_pool_after_a_mood_suggestion(chat_app, fake):
     _, client = chat_app
     fake.intents[MOOD] = intent("mood_intent", mood_tags=["indulgent"])
     sid = start(client)
-    added = next(c for c in say(client, sid, MOOD).json()["messages"][-1]["cards"] if c["type"] == "dish_added")
+    added = next(c for c in find(say(client, sid, MOOD).json(), "MSG-MOOD-ADD")["cards"] if c["type"] == "dish_added")
     body = client.get(f"/api/v1/sessions/{sid}/inspector").json()
     assert len(body["rows"]) >= 15 and body["shown"][0] == added["dish_id"] and len(body["shown"]) == 3  # FR-111
     row = body["rows"][0]

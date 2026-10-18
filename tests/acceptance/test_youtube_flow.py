@@ -3,7 +3,7 @@ import httpx
 
 from backend.cart import service
 from backend.transcripts.source import default_chain
-from tests.acceptance.chat_harness import extraction, line, say, start, trace
+from tests.acceptance.chat_harness import extraction, line, say, start, trace, find
 
 RASAM_URL = "https://www.youtube.com/watch?v=6YVx0i_hrZ0"
 CURRY_URL = "https://youtu.be/fRPDabc-Oh0"
@@ -20,10 +20,10 @@ def test_t080_demo_link_fixture_extracted_mapped_and_carted_at_catalogue_prices(
     fake.extractions["Mysore rasam"] = RASAM
     sid = start(client)
     r = say(client, sid, f"Make this: {RASAM_URL}")
-    assert r.status_code == 200 and _msgs(r) == ["MSG-YT-FIXTURE", "MSG-YT-OK"]
+    assert r.status_code == 200 and _msgs(r) == ["MSG-YT-FIXTURE", "MSG-YT-OK", "MSG-ADDON"]  # US-19 add-on last
     (dish,) = r.json()["cart"]["dishes"]
     assert dish["name"] == "Mysore Rasam" and len(dish["lines"]) == 6
-    assert r.json()["messages"][-1]["text"] == "Lovely choice. That's Mysore Rasam. I've added 6 ingredients to your cart. ✅"
+    assert find(r.json(), "MSG-YT-OK")["text"] == "Lovely choice. That's Mysore Rasam. I've added 6 ingredients to your cart. ✅"
     session = app.state.sessions.get(sid)
     assert r.json()["cart"] == service.view(session.cart, app.state.store).model_dump(mode="json")  # catalogue prices
     assert "intent" not in fake.calls  # a link is routed by code
@@ -114,7 +114,7 @@ def test_t092_second_link_shares_packs_and_asks_about_staples(chat_app, fake):
     sid = start(client)
     say(client, sid, RASAM_URL)
     r = say(client, sid, CURRY_URL)
-    msg = r.json()["messages"][-1]
+    msg = find(r.json(), "MSG-PANTRY")
     assert msg["template_id"] == "MSG-PANTRY" and "salt" in msg["text"] and "mustard seeds" in msg["text"]
     lines = [ln for d in r.json()["cart"]["dishes"] for ln in d["lines"]]
     assert any(ln["shared_from_line_id"] for ln in lines)  # aggregated into shared packs (FR-71, 73)

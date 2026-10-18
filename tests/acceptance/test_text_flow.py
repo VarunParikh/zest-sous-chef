@@ -1,5 +1,5 @@
 """Text recipe flow (US-11; FR-30, 31, 33, 13; NFR-10; T-083, T-084, T-090, T-012 text part)."""
-from tests.acceptance.chat_harness import extraction, intent, line, say, start
+from tests.acceptance.chat_harness import extraction, intent, line, say, start, find
 
 
 def _msg(r):
@@ -22,8 +22,8 @@ def test_t083_three_messages_cart_immediately_under_one_open_dish(chat_app, fake
     _recipe(fake, "then 2 capsicum and one onion", None, line("capsicum", 2, "piece"), line("onion", 1, "piece"))
     _recipe(fake, "a tbsp of garam masala and salt", None, line("garam masala", 1, "tbsp"), line("salt", None, "pinch", True))
     r1 = say(client, sid, "Kadai paneer: 250 g paneer")
-    assert _msg(r1)["template_id"] == "MSG-TXT-DRAFT" and len(_dishes(r1)) == 1 and r1.json()["cart_changed"]
-    assert _msg(r1)["text"] == "Got it. Adding 1 ingredients for Kadai Paneer. Say 'new dish' when you start another. ✅"
+    assert find(r1.json(), "MSG-TXT-DRAFT") and len(_dishes(r1)) == 1 and r1.json()["cart_changed"]
+    assert find(r1.json(), "MSG-TXT-DRAFT")["text"] == "Got it. Adding 1 ingredients for Kadai Paneer. Say 'new dish' when you start another. ✅"
     r2 = say(client, sid, "then 2 capsicum and one onion")
     r3 = say(client, sid, "a tbsp of garam masala and salt")
     (dish,) = _dishes(r3)
@@ -51,7 +51,7 @@ def test_fr31_named_dish_uses_the_stored_recipe(chat_app, fake):
     sid = start(client)
     fake.intents["I want to make dal chawal"] = intent("named_dish", dish_name="dal chawal")
     r = say(client, sid, "I want to make dal chawal")
-    msg = _msg(r)
+    msg = find(r.json(), "MSG-TXT-STORED")
     assert msg["template_id"] == "MSG-TXT-STORED"
     assert msg["text"] == "I'll use my standard Dal Chawal recipe for 2. Tell me if you cook it differently."
     assert [d["dish_id"] for d in _dishes(r)] == ["D01"] and any(c["type"] == "undo" for c in msg["cards"])
