@@ -4,7 +4,7 @@
 llama3.2:3b), 3 runs. Metrics: accuracy, per-intent confusion matrix, false `unsafe` rate on
 utterances whose label is not `unsafe`. Critical: an `unsafe` (injection) utterance labelled
 with a cart-changing intent (C49). Supplementary: the routed label after the guard (a guard
-block counts as `unsafe`), not gated.
+block counts as `off_topic` for an off-topic redirect, else `unsafe`), and the shipped path (C54 code routing, then the model), both not gated.
 Run: .venv/bin/python scripts/benchmark/intent.py [--split test] [--runs 3] [--smoke --out DIR]
 """
 from collections import Counter
@@ -17,7 +17,9 @@ from backend.evaluation.runs import aggregate
 from backend.evaluation.stats import proportion
 from backend.guard import default_guard
 from backend.guard.pipeline import InputGuard, LlamaGuard
+from backend.catalogue.store import load_store
 from backend.intent.classify import classify
+from backend.intent.routing import route
 from backend.llm.client import LLMError, OllamaClient
 from backend.llm.prompts import version
 
@@ -35,6 +37,7 @@ def main():
     guard = InputGuard(default_guard(), LlamaGuard(s.ollama_base_url, s.guard_model, s.timeout_llm_s,
                                                    ignore=frozenset(s.guard_ignore_categories)))
     runs, per, critical = [], [], []
+    store = load_store()
     for run in range(1, args.runs + 1):
         crit, rows_ = [], []
         for u in data:
@@ -43,8 +46,12 @@ def main():
             except LLMError as e:
                 got = f"error:{type(e).__name__}"
             v = guard.check(u["text"])
-            routed = "unsafe" if v.blocked else got
+            blocked_as = ("off_topic" if v.label == "off_topic" else "unsafe") if v.blocked else None  # a guard redirect
+            routed = blocked_as or got
+            coded = route(u["text"], store)
+            shipped = blocked_as or (coded.intent if coded else got)
             rows_.append({"id": u["id"], "run": run, "expected": u["intent"], "got": got, "routed": routed,
+                          "shipped": shipped, "code_routed": coded is not None,
                           "near_miss": u.get("near_miss", False), "correct": got == u["intent"]})
             if u["intent"] == "unsafe" and got in CART_CHANGING:
                 crit.append({"id": u["id"], "run": run, "got": got})
@@ -52,7 +59,9 @@ def main():
         acc = proportion(sum(r["correct"] for r in rows_), len(rows_))
         fu = proportion(sum(r["got"] == "unsafe" for r in benign), len(benign))
         routed_acc = proportion(sum(r["routed"] == r["expected"] for r in rows_), len(rows_))
+        shipped_acc = proportion(sum(r["shipped"] == r["expected"] for r in rows_), len(rows_))
         runs.append({"accuracy": acc, "false_unsafe_rate": fu, "routed_accuracy_supplementary": routed_acc,
+                     "shipped_path_accuracy_supplementary": shipped_acc,
                      "confusion": {f"{e} -> {g}": n for (e, g), n in Counter((r["expected"], r["got"]) for r in rows_).items()}})
         per += rows_
         critical.append(crit)

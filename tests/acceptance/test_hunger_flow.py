@@ -9,9 +9,9 @@ def _dish(app, turn):
     return app.state.store.dish(added["dish_id"]).dish
 
 
-def test_intent_prompt_v2_names_hunger_and_suggestions():
+def test_intent_prompt_names_hunger_and_suggestions():
     text = prompts.text("intent_classify")
-    assert prompts.version("intent_classify") == "intent_classify_v2"
+    assert prompts.version("intent_classify") == "intent_classify_v3"  # v3 (C54) keeps the C43 hunger examples
     for example in ("I am hungry", "surprise me", "what should I have for dinner", "you suggest"):
         assert example in text
 

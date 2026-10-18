@@ -5,7 +5,7 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 VERSIONS = {"recipe_extract": "recipe_extract_v1.txt", "photo_detect": "photo_detect_v1.txt",
-            "intent_classify": "intent_classify_v2.txt", "reason_line": "reason_line_v1.txt"}
+            "intent_classify": "intent_classify_v3.txt", "reason_line": "reason_line_v1.txt"}
 
 
 def spotlight(text: str) -> str:
