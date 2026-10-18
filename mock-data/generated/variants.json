@@ -2255,6 +2255,7 @@
   "diet_class": "vegan",
   "embedding_text": "Mushroom (Button). Category: vegetables. button. Ingredients: mushroom (button). Also called: Mushroom, khumb.",
   "flags": [
+   "fungi",
    "non_satvik"
   ],
   "gi_label": "low",
@@ -2266,7 +2267,7 @@
   "ingredient_list": [
    "mushroom (button)"
   ],
-  "jain_ok": true,
+  "jain_ok": false,
   "name": "Mushroom (Button)",
   "nutrition": {
    "carbs_g": 2.9,
@@ -2294,6 +2295,7 @@
   "diet_class": "vegan",
   "embedding_text": "Mushroom (Oyster). Category: vegetables. oyster, premium. Ingredients: mushroom (oyster). Also called: Mushroom, khumb.",
   "flags": [
+   "fungi",
    "non_satvik"
   ],
   "gi_label": "low",
@@ -2305,7 +2307,7 @@
   "ingredient_list": [
    "mushroom (oyster)"
   ],
-  "jain_ok": true,
+  "jain_ok": false,
   "name": "Mushroom (Oyster)",
   "nutrition": {
    "carbs_g": 3.0,
@@ -2333,6 +2335,7 @@
   "diet_class": "vegan",
   "embedding_text": "Mushroom (Shiitake). Category: vegetables. shiitake, premium. Ingredients: mushroom (shiitake). Also called: Mushroom, khumb.",
   "flags": [
+   "fungi",
    "non_satvik"
   ],
   "gi_label": "low",
@@ -2344,7 +2347,7 @@
   "ingredient_list": [
    "mushroom (shiitake)"
   ],
-  "jain_ok": true,
+  "jain_ok": false,
   "name": "Mushroom (Shiitake)",
   "nutrition": {
    "carbs_g": 3.1,
@@ -2372,6 +2375,7 @@
   "diet_class": "vegan",
   "embedding_text": "Mushroom (Organic button). Category: vegetables. button, organic. Ingredients: mushroom (button, organic). Also called: Mushroom, khumb.",
   "flags": [
+   "fungi",
    "non_satvik"
   ],
   "gi_label": "low",
@@ -2383,7 +2387,7 @@
   "ingredient_list": [
    "mushroom (button, organic)"
   ],
-  "jain_ok": true,
+  "jain_ok": false,
   "name": "Mushroom (Organic button)",
   "nutrition": {
    "carbs_g": 3.0,
@@ -13487,7 +13491,9 @@
   "category": "oils",
   "diet_class": "vegan",
   "embedding_text": "Truffle oil (Black truffle). Category: oils. black, premium. Ingredients: truffle oil (black). Also called: Truffle oil.",
-  "flags": [],
+  "flags": [
+   "fungi"
+  ],
   "gi_label": "not_applicable",
   "gluten_free": true,
   "gourmet_score": 0.8,
@@ -13497,7 +13503,7 @@
   "ingredient_list": [
    "truffle oil (black)"
   ],
-  "jain_ok": true,
+  "jain_ok": false,
   "name": "Truffle oil (Black truffle)",
   "nutrition": {
    "carbs_g": 0.0,
@@ -21442,6 +21448,7 @@
   "embedding_text": "Soup mix (Mushroom). Category: ready. regular. Ingredients: tomato (soup mix), mushroom, milk, salt. Also called: Soup mix, tamatar.",
   "flags": [
    "dairy",
+   "fungi",
    "non_satvik"
   ],
   "gi_label": "low",
@@ -21456,7 +21463,7 @@
    "milk",
    "salt"
   ],
-  "jain_ok": true,
+  "jain_ok": false,
   "name": "Soup mix (Mushroom)",
   "nutrition": {
    "carbs_g": 4.1,

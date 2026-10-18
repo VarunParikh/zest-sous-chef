@@ -26,6 +26,7 @@ KEYWORDS = {  # lexicon-flagged terms (mock-data/ingredient_lexicon.csv) plus co
     "alcohol": r"\bwine\b|\bbeer\b|\brum\b|vodka|whisk(e)?y|brandy|liqueur|\bsake\b|mirin",
     "root_veg": r"potato|carrot|beetroot|radish|ginger|\byam\b|colocasia|arbi|turnip",
     "onion_garlic": r"onion|garlic|shallot|\bleek",
+    "fungi": r"mushroom|truffle|fungi|\bkhumb\b",  # C68
     "gluten": r"wheat|refined flour|maida|semolina|sooji|\brava\b|barley|\brye\b",
     "pork": r"pork|bacon|\bham\b|lard|gelatin",
 }
@@ -89,7 +90,7 @@ def violations(v: dict, levers: dict) -> list[str]:
     if diet == "Pure Veg (Strict)" and veg_bad:
         out.append("pure_veg:" + "+".join(sorted(veg_bad)))
     if diet.startswith("Jain") or faith.startswith("Jain"):
-        bad = veg_bad | (c & {"root_veg", "onion_garlic", "not_jain"})
+        bad = veg_bad | (c & {"root_veg", "onion_garlic", "fungi", "not_jain"})
         if bad:
             out.append("jain:" + "+".join(sorted(bad)))
     if faith.startswith("Hindu (Shravan"):

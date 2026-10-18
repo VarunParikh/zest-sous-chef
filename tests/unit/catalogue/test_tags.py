@@ -53,6 +53,13 @@ def test_hidden_animal_ingredients(lex):
     assert derive(["parmesan (aged)"], lex).diet_class == "non_veg"
 
 
-def test_mushroom_not_satvik(lex):
+def test_mushroom_not_satvik_and_not_jain(lex):
+    """C68 (Data Model v0.6 §9): Jain excludes fungi."""
     t = derive(["mushroom (button)"], lex)
-    assert not t.satvik_ok and t.jain_ok
+    assert not t.satvik_ok and not t.jain_ok and "fungi" in t.flags
+
+
+def test_truffle_is_a_fungus_for_jain(lex):
+    """C68: truffle oil carries the fungi flag; its Satvik tag is unchanged (not part of the owner's decision)."""
+    t = derive(["truffle oil"], lex)
+    assert not t.jain_ok and "fungi" in t.flags

@@ -20,7 +20,7 @@ def _oracle(variant, lev, lexicon):
     bad = []
     if lev.diet == PURE_VEG and animal:
         bad.append("pure_veg")
-    if (lev.diet == JAIN or lev.faith == "Jain (Strict Root-Free)") and (animal or flags & {"root_veg", "onion_garlic"}):
+    if (lev.diet == JAIN or lev.faith == "Jain (Strict Root-Free)") and (animal or flags & {"root_veg", "onion_garlic", "fungi"}):
         bad.append("jain")
     if lev.faith.startswith("Hindu (Shravan") and (animal or flags & {"onion_garlic", "non_satvik"}):
         bad.append("shravan")
@@ -146,3 +146,11 @@ def test_declared_allergen(store):
     cashew = store.variants_for("cashew")[0]
     m = check_variant(cashew, levers(), store, declared_allergens=("tree_nut",))
     assert not m.eligible and "allergen:tree_nut" in m.failed
+
+
+def test_c68_jain_never_gets_fungi(store, personas):
+    """C68: Grilled Vegetables (D111, mushroom) is not eligible for a Jain persona; it still is by default."""
+    dish = store.dish("D111")
+    jain = levers(diet=JAIN, faith="Jain (Strict Root-Free)")
+    assert not check_dish(dish, jain, store).eligible
+    assert check_dish(dish, levers(), store).eligible

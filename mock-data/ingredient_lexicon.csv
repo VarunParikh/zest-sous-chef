@@ -19,7 +19,7 @@ cabbage,patta gobi,,,vegan,
 cucumber,kheera,,,vegan,
 lemon,nimbu,,,vegan,
 raw banana,kaccha kela,,,vegan,
-mushroom,khumb,non_satvik,,vegan,Some Jain and Satvik traditions avoid fungi (simplified)
+mushroom,khumb,non_satvik|fungi,,vegan,Some Jain and Satvik traditions avoid fungi (simplified)
 wheat flour,atta,gluten,gluten,vegan,
 refined flour,maida,gluten,gluten,vegan,
 semolina,rava|sooji,gluten,gluten,vegan,
@@ -51,7 +51,7 @@ mustard oil,sarson ka tel,,,vegan,
 olive oil,,,,vegan,
 coconut oil,,,,vegan,
 sesame oil,til oil,,sesame,vegan,
-truffle oil,,,,vegan,Imported specialty (gourmet lever)
+truffle oil,,fungi,,vegan,Imported specialty (gourmet lever)
 salt,namak,,,vegan,
 turmeric,haldi,,,vegan,
 cumin,jeera,,,vegan,

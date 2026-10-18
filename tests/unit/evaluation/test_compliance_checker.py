@@ -46,3 +46,10 @@ def test_plant_products_are_not_flagged():
     for name in ("Plant milk (Soy)", "Peanut butter (Creamy)", "Garam masala (No onion no garlic)"):
         v = next(x for x in V.values() if x["name"] == name)
         assert not violations(v, PERSONA["vegan"] if "milk" in name or "butter" in name else PERSONA["jain"]), name
+
+
+def test_c68_checker_flags_fungi_for_jain_even_if_stored_tags_say_jain_ok():
+    """C68: the checker's keyword reading catches fungi, so it stays stricter than the stored tags."""
+    mushroom = dict(named("Mushroom ("), jain_ok=True, flags=[f for f in named("Mushroom (")["flags"] if f != "fungi"])
+    assert any(x.startswith("jain") for x in violations(mushroom, PERSONA["jain"]))
+    assert not violations(mushroom, PERSONA["default"])

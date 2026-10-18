@@ -12,7 +12,7 @@ from backend.catalogue.seed import Lexicon
 
 DIET_RANK = {"vegan": 0, "vegetarian": 1, "egg": 2, "non_veg": 3}
 _BY_RANK = {v: k for k, v in DIET_RANK.items()}
-NOT_JAIN = {"meat", "fish", "egg", "root_veg", "onion_garlic"}
+NOT_JAIN = {"meat", "fish", "egg", "root_veg", "onion_garlic", "fungi"}  # fungi: C68, Data Model v0.6 §9
 NOT_SATVIK = {"onion_garlic", "non_satvik"}
 
 
