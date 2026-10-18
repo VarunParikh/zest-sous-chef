@@ -1,7 +1,7 @@
 """Release-document checks (block 3.3 plan §2): links resolve, named make targets exist, cited IDs exist."""
 from scripts.doc_check import check_document
 
-MAKEFILE = "test: ## t\n\techo\nreport: ## r\n\techo\n"
+MAKEFILE = "test: ## t\n\techo\nreport: ## r\n\techo\ntest-e2e: ## e\n\techo\n"
 CONFLICTS = "| C57 | x | y | z | Resolved |\n| C72 | x | y | z | Resolved |\n"
 EVAL_IDS = {"E1", "E6", "E14"}
 ADRS = {"ADR-002", "ADR-003"}
@@ -16,7 +16,7 @@ def _check(text, tmp_path, name="README.md"):
 
 
 def test_clean_document_has_no_problems(tmp_path):
-    text = "See [the report](docs/real.md) and [site](https://example.com). Run `make test` then `make report`. E6 failed (C57); ADR-002."
+    text = "See [the report](docs/real.md) and [site](https://example.com). Run `make test`, `make test-e2e` then `make report`. E6 failed (C57); ADR-002."
     assert _check(text, tmp_path) == []
 
 

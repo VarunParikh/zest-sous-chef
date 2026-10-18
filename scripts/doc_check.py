@@ -11,7 +11,7 @@ DOCS = ["README.md", *sorted(str(p.relative_to(ROOT)) for p in (ROOT / "docs/epi
 
 
 def _targets(makefile: str) -> set[str]:
-    return set(re.findall(r"^([a-z][a-z-]*):", makefile, re.M))
+    return set(re.findall(r"^([a-z][a-z0-9-]*):", makefile, re.M))
 
 
 def check_document(path: Path, root: Path, makefile: str, conflicts_md: str, eval_ids: set[str], adrs: set[str]) -> list[str]:
@@ -23,7 +23,7 @@ def check_document(path: Path, root: Path, makefile: str, conflicts_md: str, eva
             problems.append(f"broken link: {target}")
     code = " ".join(re.findall(r"`([^`]+)`", text)) + "\n" + "\n".join(re.findall(r"```.*?\n(.*?)```", text, re.S))
     targets = _targets(makefile)
-    for t in sorted(set(re.findall(r"(?:^|[\s`&;])make ([a-z][a-z-]*)", code, re.M))):
+    for t in sorted(set(re.findall(r"(?:^|[\s`&;])make ([a-z][a-z0-9-]*)", code, re.M))):
         if t not in targets:
             problems.append(f"unknown make target: {t}")
     known_c = set(re.findall(r"^\| (C\d+) \|", conflicts_md, re.M))
