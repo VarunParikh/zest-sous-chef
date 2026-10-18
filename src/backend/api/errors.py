@@ -8,7 +8,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
 from backend.flows.templates import TEMPLATES
-from backend.session.store import SessionNotFound
+from backend.session.store import SessionBusy, SessionNotFound
 
 
 class ApiError(Exception):
@@ -40,6 +40,11 @@ def install(app: FastAPI) -> None:
     async def _not_found(request: Request, exc: SessionNotFound):
         return JSONResponse(status_code=404, content=envelope(
             "SESSION_NOT_FOUND", "This chat session has ended. Starting a new one.", retryable=False))
+
+    @app.exception_handler(SessionBusy)
+    async def _busy(request: Request, exc: SessionBusy):
+        return JSONResponse(status_code=409, content=envelope(
+            "SESSION_BUSY", "Still working on your last message.", retryable=True))
 
     @app.exception_handler(RequestValidationError)
     async def _invalid(request: Request, exc: RequestValidationError):

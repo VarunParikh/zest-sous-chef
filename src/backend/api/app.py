@@ -10,12 +10,21 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, JSONResponse
 
+from functools import lru_cache
+
 from backend.api import errors
+from backend.api.cart import router as cart_router
 from backend.api.health import check_health, render_page
 from backend.api.sessions import load_presets, router as sessions_router
+from backend.catalogue.store import Store, load_store
 from backend.config import Settings, load_settings
 from backend.session.store import SessionStore
 from backend.trace import Tracer
+
+@lru_cache(maxsize=1)
+def default_store() -> Store:
+    return load_store()
+
 
 LOCALHOST_ORIGINS = r"^https?://(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$"
 log = logging.getLogger("zest")
@@ -36,6 +45,7 @@ def create_app(settings: Settings | None = None, http_transport: httpx.AsyncBase
     app.state.http = http
     app.state.tracer = Tracer(settings.resolve(settings.trace_path))
     app.state.presets = load_presets()
+    app.state.store = default_store()  # the catalogue service; tests and stock scenarios swap it
     app.state.sessions = SessionStore(app.state.tracer, app.state.presets)
 
     @app.middleware("http")
@@ -55,6 +65,7 @@ def create_app(settings: Settings | None = None, http_transport: httpx.AsyncBase
 
     errors.install(app)
     app.include_router(sessions_router)
+    app.include_router(cart_router)
 
     @app.get("/api/v1/health")
     async def health(request: Request) -> dict:

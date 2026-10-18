@@ -8,7 +8,9 @@ other lever state: the client owns the panel (API Spec §1).
 from __future__ import annotations
 
 import secrets
+import threading
 from collections.abc import Mapping
+from contextlib import contextmanager
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 
@@ -18,6 +20,10 @@ from backend.session.levers import LeverSet, persona_label, snapshot_hash
 
 class SessionNotFound(LookupError):
     pass
+
+
+class SessionBusy(RuntimeError):
+    """Another turn or cart change is in progress for this session (FR-102)."""
 
 
 @dataclass
@@ -31,6 +37,8 @@ class Session:
     cart: Cart = field(default_factory=Cart)
     _turns: int = 0
     _messages: int = 0
+    _ids: dict = field(default_factory=dict)
+    _lock: threading.Lock = field(default_factory=threading.Lock, repr=False)
 
     @property
     def snapshot(self) -> LeverSet:
@@ -43,6 +51,21 @@ class Session:
     def next_message_id(self) -> str:
         self._messages += 1
         return f"m_{self._messages}"
+
+    def next_id(self, prefix: str) -> str:
+        """Session-scoped ids: cd_1, l_1, sg_1, ..."""
+        self._ids[prefix] = self._ids.get(prefix, 0) + 1
+        return f"{prefix}_{self._ids[prefix]}"
+
+    @contextmanager
+    def busy(self):
+        """Non-blocking per-session lock: a second mutation while one runs raises SessionBusy (FR-102)."""
+        if not self._lock.acquire(blocking=False):
+            raise SessionBusy(self.session_id)
+        try:
+            yield self
+        finally:
+            self._lock.release()
 
     def recommend_dishes(self, query: str, ctx, store, retriever, tracer=None, display: int = 3):
         """FR-02: the engine sees this session's snapshot and nothing else."""
