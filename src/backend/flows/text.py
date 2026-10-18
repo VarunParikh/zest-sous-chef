@@ -1,8 +1,11 @@
 """Text recipe and named-dish flows (US-11; FR-30, 31, 33; Conversation Design MSG-TXT-*)."""
 from __future__ import annotations
 
+import re
+
 from backend.cart import service
 from backend.cart.service import CartRuleError
+from backend.engine.eligibility import check_dish
 from backend.flows.addons import offer_addon
 from backend.flows.cards import Undo
 from backend.flows.recipe import DEFAULT_NAME, dish_choice, item_question, prepare, setting_label
@@ -48,7 +51,7 @@ def block(session, item: str, rules, query: str, deps, out) -> None:
     """Nothing from the recipe is carted; the top eligible similar dish is offered as one chip (FR-90)."""
     alt = _alternative(session, query, deps)
     cards = [dish_choice(session, [alt])] if alt else []
-    out.messages.append(say(session, "MSG-PERSONA-BLOCK", cards=cards, item=item.capitalize(),
+    out.messages.append(say(session, "MSG-PERSONA-BLOCK", cards=cards, item=item[:1].upper() + item[1:],
                             setting=setting_label(tuple(rules), session.snapshot),
                             alternative=alt[1] if alt else "another dish"))
 
@@ -123,9 +126,26 @@ def add_stored(session, dish_id: str, deps, out, source: str = "text") -> None:
     offer_addon(session, added, deps, out)
 
 
+def word_matches(store, name: str | None) -> list:
+    """Stored dishes whose name contains every word asked for ("pasta" -> Creamy Pasta)."""
+    words = set(re.findall(r"[a-z]+", (name or "").lower()))
+    if not words:
+        return []
+    return [rec for rec in store.dishes
+            if words <= set(re.findall(r"[a-z]+", rec.dish.name.lower().replace("(international)", "")))]
+
+
 def named_dish_turn(session, dish_name: str | None, deps, out) -> None:
     rec = stored_dish(deps.store, dish_name)
+    if rec is None:
+        matches = word_matches(deps.store, dish_name)
+        if len(matches) == 1:
+            rec = matches[0]
     if rec is not None:
+        mask = check_dish(rec, session.snapshot, deps.store)
+        if not mask.eligible:  # FR-90: say which setting removed it, and offer an eligible alternative
+            block(session, rec.dish.name, mask.failed, dish_name or rec.dish.name, deps, out)
+            return
         add_stored(session, rec.dish.dish_id, deps, out)
         return
     query = dish_name or ""

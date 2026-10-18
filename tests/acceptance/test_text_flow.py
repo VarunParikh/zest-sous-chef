@@ -126,3 +126,29 @@ def test_t090_invalid_extraction_is_retried_once_then_rephrase(chat_app, fake):
     r = say(client, sid, "paneer 200 g, capsicum")
     assert _msg(r)["template_id"] == "MSG-REPHRASE" and r.json()["cart"]["item_count"] == 0
     assert fake.calls.count("extract") == 2
+
+
+JAIN = {"diet": "Jain (No Root Veggies / Pure Veg)", "faith": "Jain (Strict Root-Free)"}
+
+
+def test_named_dish_matches_by_word(chat_app, fake):
+    _, client = chat_app
+    fake.intents["I want to make pasta"] = intent("named_dish", dish_name="pasta")
+    r = say(client, start(client), "I want to make pasta")
+    assert find(r.json(), "MSG-TXT-STORED")["text"].startswith("I'll use my standard Creamy Pasta (international) recipe")
+    assert [d["dish_id"] for d in r.json()["cart"]["dishes"]] == ["D34"]
+
+
+def test_named_dish_blocked_by_persona_says_why_and_offers_an_alternative(chat_app, fake):
+    _, client = chat_app
+    fake.intents["I want to make pasta"] = intent("named_dish", dish_name="pasta")
+    r = say(client, start(client, JAIN), "I want to make pasta")
+    msg = find(r.json(), "MSG-PERSONA-BLOCK")
+    assert msg["text"].startswith("Creamy Pasta (international) isn't available with your Jain (No Root Veggies / Pure Veg) setting.")
+    assert msg["cards"][0]["type"] == "clarify" and r.json()["cart"]["item_count"] == 0
+
+
+def test_no_word_match_still_offers_nearest_dishes(chat_app, fake):
+    _, client = chat_app
+    fake.intents["I want to make cheese cake"] = intent("named_dish", dish_name="cheese cake")
+    assert find(say(client, start(client), "I want to make cheese cake").json(), "MSG-TXT-UNKNOWN")
