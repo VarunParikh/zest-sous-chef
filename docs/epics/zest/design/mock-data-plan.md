@@ -1,6 +1,6 @@
 # Mock Data Plan: Zest AI Sous-Chef
 
-Status: **APPROVED v0.2 (owner, 2026-10-17)** (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2: 100 companion-course dishes, larger dish and pairing sets) · Date: 2026-10-17
+Status: **APPROVED v0.2 (owner, 2026-10-17)** (note 2026-10-18, status unchanged: the taxonomy seed format gains `!term`, which replaces the base term, and the `|carrier` marker; see `mock-data/taxonomy/README.md`, C68) (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2: 100 companion-course dishes, larger dish and pairing sets) · Date: 2026-10-17
 The full field-level schema belongs in the Data Model document (document 16). This plan fixes **when** the data is built, **how**, and **what** it contains.
 
 ## 1. When

@@ -1,6 +1,6 @@
 # Data Model: Zest AI Sous-Chef
 
-Status: **APPROVED v0.5 (owner, 2026-10-18, with the block 3.1 plan)**: §11 `llm_call` adds call and outcome and covers the guard and vision calls (C61). v0.4 was **APPROVED (owner, 2026-10-18, with the block 2.6 lever plan)**: §7 pool 25, §5.1 derived premium level, §16 β0 0.20 (C53). v0.3 was **APPROVED (owner, 2026-10-18)**: §8.4 pack allocation follows FR-71 (combined need per variant, C33) and defines line quantity (C35); §14 adds `CartLine.quantity` and `Cart.quotes` (C34). v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2 and PRD v0.4: add-on retrieval, larger dish pool) · Date: 2026-10-17 · Source: PRD v0.4, Settings Panel, mock-data plan, Constitution G9, ADR-004 v2
+Status: **APPROVED v0.6 (owner, 2026-10-18, with the spot-check follow-up plan)**: §9 Jain excludes `fungi`; validators V15 to V17 (C68). v0.5 was **APPROVED (owner, 2026-10-18, with the block 3.1 plan)**: §11 `llm_call` adds call and outcome and covers the guard and vision calls (C61). v0.4 was **APPROVED (owner, 2026-10-18, with the block 2.6 lever plan)**: §7 pool 25, §5.1 derived premium level, §16 β0 0.20 (C53). v0.3 was **APPROVED (owner, 2026-10-18)**: §8.4 pack allocation follows FR-71 (combined need per variant, C33) and defines line quantity (C35); §14 adds `CartLine.quantity` and `Cart.quotes` (C34). v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 syncs to ADR-004 v2 and PRD v0.4: add-on retrieval, larger dish pool) · Date: 2026-10-17 · Source: PRD v0.4, Settings Panel, mock-data plan, Constitution G9, ADR-004 v2
 Scope: field-level schema for the structured catalogue, recipe base, engine inputs, session state, the retrieval documents embedded in Chroma, trace events and test fixtures. The Pydantic sketches are the contract the generator, validators, API and tests share. Field values in the mock data are illustrative and are not nutritional or medical data.
 
 ## 1. Principles
@@ -255,7 +255,7 @@ Derived flags come from the ingredient lexicon. A candidate is eligible only if 
 | Lever option | Rule on a variant | Rule on a dish |
 |---|---|---|
 | Pure Veg (Strict) | `diet_class` in {vegan, vegetarian}; no egg | All essential ingredients have an eligible variant |
-| Jain (No Root Veggies / Pure Veg) and faith Jain (Strict Root-Free) | `jain_ok` = no meat, fish, egg, `root_veg`, `onion_garlic`, honey allowed | As above, or a dish variant (`variant_of`) exists |
+| Jain (No Root Veggies / Pure Veg) and faith Jain (Strict Root-Free) | `jain_ok` = no meat, fish, egg, `root_veg`, `onion_garlic`, `fungi` (mushrooms, truffle; C68), honey allowed | As above, or a dish variant (`variant_of`) exists |
 | Non-Veg / Flexitarian | no rule | |
 | Hindu (Shravan Month / Fasting Active) | `satvik_ok` = vegetarian, no `onion_garlic`, no `non_satvik` | As above |
 | Muslim (Strict Halal Only) | `halal_status` in {halal, not_applicable}; no `alcohol`; no pork | As above |
@@ -324,6 +324,9 @@ Each line of `trace.jsonl`: `ts`, `session_id`, `event`, `data`. No images, trun
 | V12 | Retrieval evaluation set expected IDs exist |
 | V13 | Generated output is byte-identical for the same seed |
 | V14 | Persona lever values within the Settings Panel ranges |
+| V15 | A variant named after an ingredient lists it first, unless its base product is declared a carrier (C68) |
+| V16 | Names agree with tags and units: negation words (alternative, eggless, egg-free, dairy-free, vegan, plant-based, gluten-free, sugar free, zero sugar) match the tags; cube or tablet is never sold in ml; juice, syrup, squash, sharbat and kombucha are sold in ml (C68) |
+| V17 | A pack of 10 or more pieces costs at most ₹20 per piece (C68) |
 
 ## 14. Pydantic sketches (contract for implementation)
 ```python

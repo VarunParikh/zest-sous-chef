@@ -1,6 +1,6 @@
 # Test Plan: Zest AI Sous-Chef
 
-Status: **APPROVED v0.4 (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.3 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 adds T-047 to T-049 for ADR-004 v2 add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4 (AC-01 to AC-45), User Stories, Architecture, API Spec, Agent Design, Security and Privacy Note
+Status: **APPROVED v0.5 (owner, 2026-10-18, C68): T-100 covers V1 to V17.** v0.4 was **APPROVED (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.3 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 adds T-047 to T-049 for ADR-004 v2 add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4 (AC-01 to AC-45), User Stories, Architecture, API Spec, Agent Design, Security and Privacy Note
 Owner decision (2026-10-17): **lean test set.** Full coverage of the engine, cart and guardrails; acceptance tests for the Must stories; one Playwright demo-path test. Dependency Pillow approved.
 **Status of every test in this plan: NOT RUN.** No code exists. Nothing here is a result.
 
@@ -144,7 +144,7 @@ IDs are stable. Priority P0 = must pass before any demo; P1 = should pass.
 ### 4.8 Data, security and privacy
 | ID | Test | Covers | Pri |
 |---|---|---|---|
-| T-100 | Validators V1 to V14 pass on the shipped data and generation is byte-identical for one seed | NFR-08, V13 | P0 |
+| T-100 | Validators V1 to V17 pass on the shipped data and generation is byte-identical for one seed | NFR-08, V13 | P0 |
 | T-101 | Every dish ingredient resolves to at least one variant; lever-test ingredients have at least 4 | V8 | P0 |
 | T-102 | EXIF stripped (GPS tag absent after processing) using a fixture image with metadata | FR-51, S-03 | P0 |
 | T-103 | Image bytes never written to disk or logs | NFR-06, AC-34 | P0 |
