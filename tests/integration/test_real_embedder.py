@@ -18,4 +18,7 @@ def test_mood_phrase_without_keywords_still_fills_the_pool(tmp_path):
     r = Retriever(store, vector, settings)
     res = r.dishes("beat the summer heat")
     assert not res.lexical_ids  # no keyword match at all
-    assert len(res.hits) == 15 and not res.fallback_used
+    # with no keyword match the pool is the vector top 20 (Data Model §7), capped by DISH_POOL (25 since C53; was 15)
+    from backend.retrieval.retriever import VECTOR_TOP
+
+    assert len(res.hits) == min(settings.dish_pool, VECTOR_TOP) == 20 and not res.fallback_used
