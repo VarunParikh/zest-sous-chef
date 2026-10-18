@@ -1,21 +1,5 @@
 # Zest: an AI sous-chef for a mock quick-commerce store
 
-## Reviewer's map
-The repository holds hundreds of files because every decision, test and result is kept. These are the ones to open first.
-
-| If you want to… | Open |
-|---|---|
-| **Run it** | [Setup from a clean clone](#setup-from-a-clean-clone), then [Using Zest](#using-zest) |
-| **Know what it is and why** | [Why Zest exists](#why-zest-exists), the [product vision](docs/core/product-vision.md) (the owner's brief) and the [PRD](docs/epics/zest/requirements/product-spec.md) |
-| **See the evidence** | [Evidence report](docs/epics/zest/verify/report/report.md) (every number generated from `eval/results/`) |
-| **Understand the design** | [Diagrams](#diagrams), [architecture](docs/epics/zest/design/architecture.md), [retrieval, vector database and levers explained](docs/epics/zest/design/retrieval-explained.md) |
-| **See why these models and decisions** | [Why these models](#why-these-models), the [decision records (ADRs)](docs/epics/zest/design/adr/README.md) |
-| **Check safety and honesty** | [Keeping Zest on topic](#keeping-zest-on-topic), [Known limitations and Responsible-AI note](docs/epics/zest/release/known-limitations.md), [release checklist](docs/epics/zest/release/release-checklist.md) |
-| **See how it was built with Claude** | [How Zest was built](docs/epics/zest/release/how-it-was-built.md), [build plan](docs/epics/zest/build-plan.md), [prototyping feedback](docs/epics/zest/release/prototyping-feedback.md) |
-| **Trace requirements to tests** | [User stories](docs/epics/zest/requirements/user-stories.md), [test plan](docs/epics/zest/verify/test-plan.md), [evaluation plan](docs/epics/zest/verify/evaluation-plan.md) |
-| **Follow the decision trail** | [Conflicts log](docs/core/open-conflicts.md), [approval register](docs/core/approval-register.md), [CHANGELOG](CHANGELOG.md) |
-| **Read the code** | [`src/backend/`](src/backend/), [`src/frontend/src/`](src/frontend/src/), [`mock-data/`](mock-data/), [`tests/`](tests/), [`Makefile`](Makefile) |
-
 Zest is a web-based cooking assistant linked to a **mock** grocery store, in the style of JioMart. Tell it what you want to cook in any of four ways:
 - paste a YouTube recipe link
 - type a recipe
@@ -35,6 +19,22 @@ The screen is split in two. On the left are **recommendation levers**: weights, 
 This is a prototype: a working, documented, local demo with its evidence. It runs entirely on one Mac with local models;
 
 [![Watch the video ad for Zest, to know what is the product vision](https://img.youtube.com/vi/Pp7ahW03ne8/hqdefault.jpg)](https://www.youtube.com/watch?v=Pp7ahW03ne8)
+
+## Reviewer's map
+The repository holds hundreds of files because every decision, test and result is kept. These are the ones to open first.
+
+| If you want to… | Open |
+|---|---|
+| **Run it** | [Setup from a clean clone](#setup-from-a-clean-clone), then [Using Zest](#using-zest) |
+| **Know what it is and why** | [Why Zest exists](#why-zest-exists), the [product vision](docs/core/product-vision.md) (the owner's brief) and the [PRD](docs/epics/zest/requirements/product-spec.md) |
+| **See the evidence** | [Evidence report](docs/epics/zest/verify/report/report.md) (every number generated from `eval/results/`) |
+| **Understand the design** | [Diagrams](#diagrams), [architecture](docs/epics/zest/design/architecture.md), [retrieval, vector database and levers explained](docs/epics/zest/design/retrieval-explained.md) |
+| **See why these models and decisions** | [Why these models](#why-these-models), the [decision records (ADRs)](docs/epics/zest/design/adr/README.md) |
+| **Check safety and honesty** | [Keeping Zest on topic](#keeping-zest-on-topic), [Known limitations and Responsible-AI note](docs/epics/zest/release/known-limitations.md), [release checklist](docs/epics/zest/release/release-checklist.md) |
+| **See how it was built with Claude** | [How Zest was built](docs/epics/zest/release/how-it-was-built.md), [build plan](docs/epics/zest/build-plan.md), [prototyping feedback](docs/epics/zest/release/prototyping-feedback.md) |
+| **Trace requirements to tests** | [User stories](docs/epics/zest/requirements/user-stories.md), [test plan](docs/epics/zest/verify/test-plan.md), [evaluation plan](docs/epics/zest/verify/evaluation-plan.md) |
+| **Follow the decision trail** | [Conflicts log](docs/core/open-conflicts.md), [approval register](docs/core/approval-register.md), [CHANGELOG](CHANGELOG.md) |
+| **Read the code** | [`src/backend/`](src/backend/), [`src/frontend/src/`](src/frontend/src/), [`mock-data/`](mock-data/), [`tests/`](tests/), [`Makefile`](Makefile) |
 
 ## Why Zest exists
 **The problem.** In quick commerce, "what should I cook tonight" and "what should I buy" are two separate steps. A cooking assistant that builds the cart from a recipe video, a typed recipe, a mood or a photo of the fridge collapses them into one. But such an assistant is only useful if it can be trusted with what you eat.
