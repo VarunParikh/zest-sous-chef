@@ -1,6 +1,6 @@
 # Block 3.2: evidence report
 
-**Report.** `docs/epics/zest/verify/report/index.html`, plus `report.md` for GitHub. It is built by `make report` (`scripts/eval_report.py`) at commit `b657d04`, from `eval/results/`, `eval/headline.yaml` and `eval/thresholds.yaml` v4 (Evaluation Plan v0.7 §4.17, C69 to C71). Rebuilding unchanged inputs gives byte-identical output.
+**Report.** `docs/epics/zest/verify/report/index.html`, plus `report.md` for GitHub. It is built by `make report` (`scripts/eval_report.py`) at commit `09f0d5d` (code `b657d04` plus the chart-layout fix), from `eval/results/`, `eval/headline.yaml` and `eval/thresholds.yaml` v4 (Evaluation Plan v0.7 §4.17, C69 to C71). Rebuilding unchanged inputs gives byte-identical output.
 
 ## Gate
 - `make report` exits 0: **no required evaluation is without a result** (C69).
