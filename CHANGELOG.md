@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- Demo Script (`docs/epics/zest/release/demo-script.md`): 10 steps, talking points and fallback plays, every step's input dry-run in-process with the real models (commit `b4cd018`); the stock-out play is left out (C72).
 - `scripts/doc_check.py` (`python -m scripts.doc_check`): the README and release documents' relative links resolve, named `make` targets exist, and cited conflict, evaluation and ADR IDs exist (unit-tested first).
 - Block 3.3 amendments: Test Plan v0.6 and API Spec v0.7 record demo endpoints 14 and 15 as cut with UJ22 (C72); C73 places the release documents in `docs/epics/zest/release/`.
 - Block 3.2 closed: the owner reviewed the evidence report and confirmed the numbers.
