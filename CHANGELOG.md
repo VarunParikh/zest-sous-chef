@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- Rules guard (C54, ADR-006 v4): an injection rule for instructions aimed at the guardrails (disable, bypass, lift… a guard, filter, allergy, diet, faith or vegan setting in the same sentence; or "pretend … off").
 - `eval/datasets/guard_v2.jsonl` (C54): 30 held-out guard rows, hashed in `MANIFEST.json` before the C54 rule existed.
 - C53 post-hoc results (`eval/results/post-hoc/c53/`, `block26.md`): E12 PASS at β0 0.20; E6 FAIL without a critical; E7 both arms PASS; E8 PASS.
 - Block 2.6 results report `docs/epics/zest/verify/benchmarks/block26.md` and result files: E8 PASS; E7 PASS (adversarial post-hoc after the allocation fix, real-model arm); E9 PASS (0 injection cart changes); E12 FAIL at β0 0.30; E6 FAIL (gourmet inert); E4 rerun FAIL 11/13; E2 FAIL 22/30; E13 FAIL ("healthy" in 4 shown lines). Owner decisions pending; nothing tuned.

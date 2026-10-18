@@ -26,6 +26,10 @@ INJECTION = [
     r"\bnew rule\b",
     r"\b(approve|place)\b.{0,30}\b(any|every|all)\b.{0,20}\b(order|orders)\b",
     r"\bfor free\b",
+    # C54 (ADR-006 v4): instructions aimed at the guardrails, within one sentence
+    r"\b(disable|turn off|switch off|bypass|ignore|override|skip|remove|lift)\b[^.!?\n]{0,40}\b(guards?|guardrails?|filters?|"
+    r"restrictions?|rules?|safety|allergy|allergens?|diet|dietary|faith|jain|halal|vegan|settings?)\b",
+    r"\bpretend\b[^.!?\n]{0,60}\b(off|disabled|does not apply|doesn't apply)\b",
 ]
 HAZARD = [
     r"\b(poison|poisonous|toxin|cyanide|arsenic)\b",
