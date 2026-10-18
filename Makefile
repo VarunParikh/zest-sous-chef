@@ -4,7 +4,7 @@ VENV := .venv
 PY := $(VENV)/bin/python
 RESULTS := docs/epics/zest/verify/test-results
 
-.PHONY: setup dev app test test-embedder test-e2e scan health data index eval-decisions
+.PHONY: setup dev app test test-embedder test-e2e scan health data index eval-decisions eval report
 
 setup: ## create the venv and install pinned dependencies; create .env from the example if missing
 	$(PYTHON) -m venv $(VENV)
@@ -52,3 +52,21 @@ eval-decisions: ## Day-1 decision evidence E5, E4, E1 on the test split (E3 visi
 	$(PY) scripts/benchmark/retrieval.py --split test
 	$(PY) scripts/benchmark/guard.py --split test
 	$(PY) scripts/benchmark/text_models.py --split test --models $(TEXT_MODELS)
+
+eval: ## rerun every headline evaluation harness in sequence (long; stop make app and close other apps for E11)
+	$(PY) scripts/benchmark/integrity.py
+	$(PY) scripts/benchmark/variants.py
+	$(PY) scripts/benchmark/levers.py --split test
+	$(PY) scripts/benchmark/compliance.py --arm adversarial
+	$(PY) scripts/benchmark/compliance.py --arm real
+	$(PY) scripts/benchmark/intent_to_cart.py --runs 3
+	$(PY) scripts/benchmark/reasons.py --runs 3
+	$(PY) scripts/benchmark/intent.py --split test --runs 3
+	$(PY) scripts/benchmark/guard.py --split test --dataset guard_v3.jsonl --runs 3
+	$(PY) scripts/benchmark/retrieval.py --split test --embedders chroma_default
+	$(PY) scripts/benchmark/resilience.py --runs 3
+	$(PY) scripts/benchmark/latency.py --runs 10
+	$(PY) scripts/benchmark/traceability.py
+
+report: ## build the evidence report (docs/epics/zest/verify/report/) from eval/results only; fails if a required evaluation has no result
+	$(PY) scripts/eval_report.py

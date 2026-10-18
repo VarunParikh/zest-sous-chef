@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- Evidence report builder (Evaluation Plan §9, v0.7 §4.17): `backend.evaluation.report` (unit-tested first), `scripts/eval_report.py`, `make report` (exits 1 if a required evaluation has no result) and `make eval` (reruns every headline harness). Deterministic output; inline SVG charts.
 - Block 3.2 amendments (owner-approved): Evaluation Plan v0.7 §4.17 (C69 to C71) and `eval/thresholds.yaml` v4 with the approved NFR-01 targets.
 - E14 rerun after C68 (`eval/results/post-hoc/c68/E14-traceability.json`): PASS. Spot-check report, handover and register updated.
 - C68 post-hoc reruns (`eval/results/post-hoc/c68/`) after the catalogue fix and Jain fungi rule: E5, E7 (both arms), E8, E9, E12 and E13 PASS, E6 FAIL as before (accepted, C57; no critical); every status unchanged; `eval/headline.yaml` now points to them.
@@ -116,6 +117,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 - `dishes.csv` gains `aliases`, `flavour` and `description` columns, back-filled for D01 to D35 (C20); ingredient lines accept a fourth field `opt` for non-essential garnish lines. `check_seed.py` reads the new format.
 
 ### Fixed
+- `levers.py`, `variants.py`, `retrieval.py`, `text_models.py` and `vision.py` dropped `--post-hoc`, so the E6 and E12 reruns (C53, C68) were filed under `post-hoc/` without the marker; every save now passes it (test guards all scripts), and the report treats any file under `post-hoc/` as post-hoc. Existing result files are unchanged.
 - Real-embedder test still expected the old 15-dish pool (missed in the C53 change because embedder tests run only under `make test-embedder`); with no keyword match the pool is the vector top 20, capped by `DISH_POOL` 25.
 - E12 harness read the shipped β0 as a hard-coded 0.30; it now reads `VALUE_WEIGHT` from settings and adds it to the sweep. The C53 post-hoc E12 file made with the old script is kept as `E12-variant-sweep-harness-error.json`.
 - Substitution price change (F1, FR-76): measured against the cart as the user sees it, not against a re-allocated copy, so accepting moves the shown total by exactly the quoted amount. In the app the only caller (checkout) re-allocates first, so shown deltas were already right (E8: 81 of 81).

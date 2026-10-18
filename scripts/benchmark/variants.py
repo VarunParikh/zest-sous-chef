@@ -64,7 +64,7 @@ def main():
     metrics = {"gates_by_beta0": gates, "shipped_beta0": SHIPPED, "rejected_beta0": rejected}
     save(make_result("E12", "variant-sweep", "mock-data/generated/variants.json", "all", metrics, per, [],
                      shipped["status"], notes=f"gate applied to the shipped beta0 {SHIPPED} (from settings); the other values reported. Price effect = "
-                     "choice at gourmet 0 with the value term off (beta0 0) vs on; defined before the run"), args.out)
+                     "choice at gourmet 0 with the value term off (beta0 0) vs on; defined before the run"), args.out, args.post_hoc)
     for b, g in gates.items():
         print(b, g["status"], {e: g[e]["k"] for e in ("organic", "gourmet", "price")}, "price_overrides_organic:",
               g["price_overrides_organic"], "cheapest@g0", g["cheapest_at_gourmet_0"]["k"], "premium@g1", g["premium_at_gourmet_1"]["k"])

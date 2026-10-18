@@ -135,7 +135,7 @@ def peak_rss_mb() -> float:
     return round(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 2**20, 1)  # bytes on macOS
 
 
-def latency_at_scale(store_small, spec, settings, queries, out, split, notes):
+def latency_at_scale(store_small, spec, settings, queries, out, split, notes, post_hoc: str = ""):
     """Index build time and query latency at 1,000 and 5,000 variants (ADR-004, 005)."""
     from backend.catalogue.store import GENERATED
 
@@ -154,7 +154,7 @@ def latency_at_scale(store_small, spec, settings, queries, out, split, notes):
         metrics[label] = {"variants": len(st.variants), **env, "query_ms_median": round(lat[len(lat) // 2], 1),
                           "query_ms_p95": round(lat[min(len(lat) - 1, int(0.95 * len(lat)))], 1)}
     save(make_result("E5_scale", spec, "retrieval_v1.jsonl", split, metrics, [], [], "PASS",
-                     notes=notes + "; latency is reported, not gated (targets come from E11)"), out)
+                     notes=notes + "; latency is reported, not gated (targets come from E11)"), out, post_hoc)
 
 
 def main():
@@ -170,7 +170,7 @@ def main():
     lexical = Retriever(store, None, load_settings(env={"RETRIEVAL_MODE": "lexical"}, env_file=None))
     metrics, per, crit = run_system("lexical", lexical, None, queries, store)
     save(make_result("E5", "lexical", "retrieval_v1.jsonl", split, metrics, per, crit, "FAIL" if crit else "PASS",
-                     env={"peak_rss_mb": peak_rss_mb()}, notes=notes), args.out)
+                     env={"peak_rss_mb": peak_rss_mb()}, notes=notes), args.out, args.post_hoc)
     first_vector = None
     for spec in args.embedders.split(","):
         vector, env = index_for(spec, store, settings, "main")
@@ -180,16 +180,16 @@ def main():
         for name, r in systems:
             metrics, per, crit = run_system("vector" if name == "vector" else name, r, vector, queries, store)
             save(make_result("E5", f"{name}-{vector.embedder.name}", "retrieval_v1.jsonl", split, metrics, per, crit,
-                             "FAIL" if crit else "PASS", env=env, notes=notes), args.out)
+                             "FAIL" if crit else "PASS", env=env, notes=notes), args.out, args.post_hoc)
         if not args.smoke:
-            latency_at_scale(store, spec, settings, queries, args.out, split, notes)
+            latency_at_scale(store, spec, settings, queries, args.out, split, notes, args.post_hoc)
     ta = load_thresholds()["E5_addons"]
     for label, metrics, crit in addon_arm(store, first_vector, settings, split):
         ok = (metrics["curated_pair_recovery_top5"]["rate"] or 0) >= ta["curated_pair_recovery_top5_min"] and \
              (metrics["no_pair_dish_coverage"]["rate"] or 0) >= ta["no_pair_dish_coverage_min"]
         save(make_result("E5_addons", label, "retrieval_v1.jsonl", "pairings.csv", metrics, [], crit,
                          "FAIL" if crit or not ok else "PASS", env={"embedder": first_vector.embedder.name},
-                         notes="dataset is pairings.csv and the dish pool (no labels); " + notes), args.out)
+                         notes="dataset is pairings.csv and the dish pool (no labels); " + notes), args.out, args.post_hoc)
 
 
 if __name__ == "__main__":

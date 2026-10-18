@@ -156,7 +156,7 @@ def main():
     save(make_result("E6", f"lever-sensitivity-{split}", "levers_v1.jsonl", split, metrics,
                      per + [{"id": "persona_top3", "top3": persona_top}], critical, status,
                      notes="scripted intent, real hybrid retrieval and engine through the API; fresh session per run; "
-                           "applicability computed on the baseline pool before comparison (C47)"), args.out)
+                           "applicability computed on the baseline pool before comparison (C47)"), args.out, args.post_hoc)
     for g, v in groups.items():
         print(f"{g:13s} {v['status']:12s} rdi={v['rdi']} n={v['applicable']} random={v['random_rdi_expected']} zero={v['zero_prompts']}")
     print("overall:", status)

@@ -75,7 +75,7 @@ def main():
     for model in args.models.split(","):
         if model not in tags:
             save(make_result("E1", model, "recipes_v1.jsonl", split, {}, [], [], "NOT RUN",
-                             notes="model not installed (download needs owner approval)"), args.out)
+                             notes="model not installed (download needs owner approval)"), args.out, args.post_hoc)
             continue
         unload_all()  # each model is measured alone (plus Chroma), not beside the previous candidate
         num_ctx = args.num_ctx or settings.llm_num_ctx
@@ -122,7 +122,7 @@ def main():
         crit = [{"invention_rate_above_10pct": metrics["invention_rate"]}] if (metrics["invention_rate"]["rate"] or 0) > 0.10 else []
         status = overall_status(gates, crit)
         save(make_result("E1", model, "recipes_v1.jsonl", split, {**metrics, "gates": gates, "f1_gate_min": th["extraction_f1_min"]},
-                         per, crit, status, notes="smoke run: plumbing only, not a result" if args.smoke else args.notes), args.out)
+                         per, crit, status, notes="smoke run: plumbing only, not a result" if args.smoke else args.notes), args.out, args.post_hoc)
 
 
 if __name__ == "__main__":

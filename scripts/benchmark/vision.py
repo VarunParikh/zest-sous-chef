@@ -132,10 +132,10 @@ def main():
     for kind, model in candidates:
         system = f"{kind}:{model}"
         if kind == "ollama" and model not in installed:
-            save(make_result("E3", system, "mock-data/photos.json", split, {}, [], [], "NOT RUN", notes="model not installed"), args.out)
+            save(make_result("E3", system, "mock-data/photos.json", split, {}, [], [], "NOT RUN", notes="model not installed"), args.out, args.post_hoc)
             continue
         if kind == "gemini" and not settings.gemini_api_key.get_secret_value():
-            save(make_result("E3", system, "mock-data/photos.json", split, {}, [], [], "NOT RUN", notes="no GEMINI_API_KEY in .env"), args.out)
+            save(make_result("E3", system, "mock-data/photos.json", split, {}, [], [], "NOT RUN", notes="no GEMINI_API_KEY in .env"), args.out, args.post_hoc)
             continue
         keep_resident(base)
         unload_vision(base)
@@ -170,7 +170,7 @@ def main():
         notes = "; ".join(x for x in ["smoke run: plumbing only, not a result" if args.smoke else "", LABEL_NOTE,
                                      "Gemini free tier may use submitted content (C8); sample photos only; Flash-Lite chosen because three "
                                      "gemini-3.8-flash probe calls took 23.5 s, 40 s and over 60 s (gate 20 s)" if kind == "gemini" else ""] if x)
-        save(make_result("E3", system, "mock-data/photos.json", split, m, per, [], overall_status(gates, []), notes=notes), args.out)
+        save(make_result("E3", system, "mock-data/photos.json", split, m, per, [], overall_status(gates, []), notes=notes), args.out, args.post_hoc)
     unload_vision(base)
 
 
