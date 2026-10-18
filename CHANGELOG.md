@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- Known Limitations and Responsible-AI Note (`docs/epics/zest/release/known-limitations.md`): accepted FAILs with their numbers from the report, behaviours re-checked on 2026-10-19 (the cooling quirk still occurs; the Shakshuka add-on quirk no longer applies, as Shakshuka is not a catalogue dish), data, cut scope, platform limits, and a model-card style note. C74 syncs one Security Note sentence to C37.
 - Demo Script (`docs/epics/zest/release/demo-script.md`): 10 steps, talking points and fallback plays, every step's input dry-run in-process with the real models (commit `b4cd018`); the stock-out play is left out (C72).
 - `scripts/doc_check.py` (`python -m scripts.doc_check`): the README and release documents' relative links resolve, named `make` targets exist, and cited conflict, evaluation and ADR IDs exist (unit-tested first).
 - Block 3.3 amendments: Test Plan v0.6 and API Spec v0.7 record demo endpoints 14 and 15 as cut with UJ22 (C72); C73 places the release documents in `docs/epics/zest/release/`.

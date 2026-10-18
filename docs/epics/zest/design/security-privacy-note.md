@@ -5,7 +5,7 @@ This note supplements, and does not replace, a specialist security or compliance
 
 ## 1. Scope and assumptions
 - A local prototype on one laptop, shared as a public GitHub repository. No hosting, no accounts, mock commerce data only, at most 5 testers running it locally.
-- By default there is no cloud call: photos use bundled sample photos (ADR-003, 2026-10-18). The only possible cloud call is the opt-in Gemini photo demo, off by default. Text prompts stay on the machine.
+- By default there is no cloud call: photos go to the local `qwen3-vl:4b-instruct` model, and labelled sample photos are the demo path and the fallback (ADR-003 v3, C37; wording synced 2026-10-19, C74). The only possible cloud call is the opt-in Gemini photo demo, off by default. Text prompts stay on the machine.
 - The owner built this with Claude Code; the repo is public, so everything committed is world-readable.
 - Out of scope: production hosting, payments, real user accounts, multi-tenant isolation (there is no tenancy).
 
