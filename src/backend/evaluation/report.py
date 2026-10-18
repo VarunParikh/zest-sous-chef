@@ -360,10 +360,10 @@ def _hbars(rows: list[tuple[str, float | None]], vmax: float, unit_fmt, gate=Non
             continue
         bw = max(x(v) - label_w, 1.5)
         parts.append(f'<rect class="bar" x="{label_w}" y="{y + 5}" width="{bw:.1f}" height="12" rx="2"><title>{_e(label)}: {_e(unit_fmt(v))}</title></rect>')
-        parts.append(f'<text x="{label_w + bw + 6:.1f}" y="{y + 15}">{_e(unit_fmt(v))}</text>')
+        parts.append(f'<text class="lbl" x="{label_w + plot + 8:.1f}" y="{y + 15}">{_e(unit_fmt(v))}</text>')  # a fixed value column: never under a tick
         for m in (markers or {}).get(label, []):
-            mx = x(m[0])
-            parts.append(f'<line class="tick" x1="{mx:.1f}" x2="{mx:.1f}" y1="{y + 2}" y2="{y + 20}" stroke-width="2"><title>{_e(m[1])}</title></line>')
+            mx, cls = x(m[0]), (m[2] if len(m) > 2 else "tick")
+            parts.append(f'<line class="{cls}" x1="{mx:.1f}" x2="{mx:.1f}" y1="{y + 2}" y2="{y + 20}" stroke-width="2"><title>{_e(m[1])}</title></line>')
     if gate is not None:
         parts.append(f'<line class="gate" x1="{x(gate):.1f}" x2="{x(gate):.1f}" y1="{top}" y2="{h - 18}"><title>gate {gate}</title></line>')
     parts.append("</svg>")
@@ -389,14 +389,14 @@ def _chart(kind: str, data: dict) -> str:
         if not flows:
             return ""
         vmax = max(max(f[2] or 0, f[3] or 0) for f in flows) * 1.1
-        markers = {f[0]: [m for m in ((f[2], f"p95 {f[2] / 1000:.2f} s"), (f[3], f"target p95 {f[3] / 1000:g} s" if f[3] else "")) if m[0]] for f in flows}
+        markers = {f[0]: [m for m in ((f[2], f"p95 {f[2] / 1000:.2f} s", "tick"), (f[3], f"target p95 {f[3] / 1000:g} s" if f[3] else "", "gate")) if m[0]] for f in flows}
         rows = [(f[0], f[1]) for f in flows]
-        return f"<figure>{_hbars(rows, vmax, lambda v: f'{v / 1000:.2f} s', None, markers)}<figcaption>Bars: median per flow. Ticks: measured p95 and the NFR-01 target p95 (hover for values). Cart edits (milliseconds) are in the table.</figcaption></figure>"
+        return f"<figure>{_hbars(rows, vmax, lambda v: f'{v / 1000:.2f} s', None, markers)}<figcaption>Bars: median per flow (value at right). Solid tick: measured p95. Dashed tick: the NFR-01 target p95. Hover for values. Cart edits (milliseconds) are in the table.</figcaption></figure>"
     if kind == "overlap":
         ps, pairs = data["personas"], data["pairs"]
         n, cell, lab = len(ps), 34, 170
         size = lab + n * cell + 4
-        parts = [f'<svg viewBox="0 0 {size} {size}" role="img">']
+        parts = [f'<svg viewBox="0 0 {size + 130} {size}" role="img">']  # right margin: the rotated column labels
         for i, a in enumerate(ps):
             parts.append(f'<text class="lbl" x="{lab - 6}" y="{lab + i * cell + 21}" text-anchor="end">{_e(a)}</text>')
             parts.append(f'<text class="lbl" transform="translate({lab + i * cell + 20},{lab - 6}) rotate(-45)">{_e(a)}</text>')
