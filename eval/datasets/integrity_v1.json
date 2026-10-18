@@ -1,0 +1,24 @@
+{
+ "seed": 20261018,
+ "carts": 200,
+ "actions_per_cart": [
+  3,
+  8
+ ],
+ "actions": [
+  "mood_add",
+  "named_add",
+  "addon_add",
+  "quantity",
+  "swap_variant",
+  "swap_dish",
+  "remove_line",
+  "remove_dish",
+  "undo",
+  "substitute",
+  "checkout"
+ ],
+ "persona_mix": "P1 to P11 presets, uniform",
+ "context_now": "2026-05-16T19:30:00",
+ "context_weather": "hot"
+}

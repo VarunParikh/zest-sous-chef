@@ -5,6 +5,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 ## [Unreleased]
 
 ### Added
+- Block 2.6 evaluation datasets, pre-registered in `eval/datasets/MANIFEST.json` before any run: `levers_v1` (E6, 26 prompts), `persona_prompts_v1` (E7, 220 prompts), `reasons_v1` (E13, 30 suggestions) and `integrity_v1.json` (E8, 200 seeded carts).
 - Backend scaffold (FastAPI, Python 3.12), `Settings` config from `.env` with architecture §6 defaults, `.env.example`, `make setup|dev|test|scan|health`, and `GET /api/v1/health` plus a `/health` page that report text model, vision provider, fixtures and index status (block 1.1; API Spec endpoint 1, NFR-02).
 - Trace module `backend.trace` writing `logs/trace.jsonl`: only the 12 data-model §11 events, strings cut to 120 characters, bytes, data URIs and base64 payloads removed (US-35; NFR-06; T-109 unit level).
 - `scripts/secret_scan.py` (`make scan`): stdlib scan of the working tree and full git history for key-shaped strings, masked output, `findings: N` (T-106, S-01). Fake test values carry the `not-a-real-key` marker, which exempts only the loose `GEMINI_API_KEY=` assignment rule.

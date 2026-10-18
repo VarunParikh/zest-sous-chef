@@ -22,6 +22,26 @@
    "sha256": "fb5f9a1ee875dea17316cf1b0bcf02a012c7e2490be06311c289a4efdf5a671c",
    "rows": 61,
    "added": "2026-10-18"
+  },
+  "levers_v1.jsonl": {
+   "sha256": "72fbd3db01ad81b8afe74cccca3e3fe18b59884a6fc8e3c84a78cd663febb55a",
+   "rows": 26,
+   "added": "2026-10-18"
+  },
+  "persona_prompts_v1.jsonl": {
+   "sha256": "c0699a8628659a8105ade4a8665de56fd0be2ee12fe5a124ee45b0fdb9fd4ee3",
+   "rows": 220,
+   "added": "2026-10-18"
+  },
+  "reasons_v1.jsonl": {
+   "sha256": "2cf2ffeab964357a8137c407b6879963a286f1b3a2f9ef1f8deadca84e930573",
+   "rows": 10,
+   "added": "2026-10-18"
+  },
+  "integrity_v1.json": {
+   "sha256": "8cba655512f4172c6d9edd813183c02de8e52d857b2074c5e640b1e30d2fa3d8",
+   "rows": 1,
+   "added": "2026-10-18"
   }
  }
 }
