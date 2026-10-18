@@ -23,7 +23,7 @@ Approving a document means: you have read it or the parts you care about, you ac
 |---|---|---|---|---|---|
 | Product spec (PRD) | `docs/epics/zest/requirements/product-spec.md` | v0.6 | A | **Approved v0.6** (C37: FR-50, FR-55, AC-11 synced to ADR-003 v3) | Owner, 2026-10-18 (re-approved after the C37 sync) |
 | Data Model | `docs/epics/zest/design/data-model.md` | v0.3 | A | **Approved v0.3** (C33 allocation, C34 quoted prices, C35 quantity) | Owner, 2026-10-18 (approved with the block 2.2 plan) |
-| Architecture | `docs/epics/zest/design/architecture.md` | v0.5 | A | **Approved v0.5** (C40: `GUARD_IGNORE_CATEGORIES` row) | Owner, 2026-10-18 (re-approved after C40) |
+| Architecture | `docs/epics/zest/design/architecture.md` | v0.6 | A | **Approved v0.6** (C45: open requests, no-repeat rule) | Owner, 2026-10-18 (approved with its plan) |
 | API Spec | `docs/epics/zest/design/api-spec.md` | v0.6 | A | **Approved v0.6** (C41: cart line `icon`, dish `course`) | Owner, 2026-10-18 (approved with the block 2.5 plan) |
 | Agent Design | `docs/epics/zest/design/agent-design.md` | v0.3 | A | **Approved v0.3** (C37: A6 provider) | Owner, 2026-10-18 (re-approved after the C37 sync) |
 | Build Plan | `docs/epics/zest/build-plan.md` | v0.4 | A | **Approved v0.4** (C42: React type packages) | Owner, 2026-10-18 (approved with the block 2.5 plan) |
@@ -34,7 +34,7 @@ Approving a document means: you have read it or the parts you care about, you ac
 | Evaluation Plan | `docs/epics/zest/verify/evaluation-plan.md` | v0.2 | B | **Approved** (ADR-004 v2 sync, C16); thresholds v3 approved as proposed | Owner, 2026-10-17 (re-approved after ADR-004 v2 sync) |
 | ADR-001 Backend framework | `design/adr/ADR-001-...` | | B | **Accepted** | Owner, 2026-10-17 |
 | ADR-003 Vision approach | `design/adr/ADR-003-...` | v3 | B | **Approved v3** (C37: local `qwen3-vl:4b-instruct` default despite failing E3, Gemini opt-in, samples for the demo and fallback, 60 s timeout; photo accuracy NOT MET) | Owner, 2026-10-18 (re-approved after the C37 sync) |
-| ADR-004 Retrieval approach | `design/adr/ADR-004-...` | v2 | B | **Accepted, amended v2**; Day-1 evidence recorded (hybrid default, k = 60, add-ons 2:1) | Owner, 2026-10-17; evidence approved 2026-10-18 |
+| ADR-004 Retrieval approach | `design/adr/ADR-004-...` | v3 | B | **Accepted v3** (C45: open requests use a course-wide lever-ranked pool; no repeats in a session); v2 evidence recorded | Owner, 2026-10-18 (v3 approved with its plan) |
 | ADR-005 Vector store | `design/adr/ADR-005-...` | | B | **Accepted**: store and default all-MiniLM-L6-v2 embedder (E5) | Owner, 2026-10-17 (store); 2026-10-18 (embedder) |
 | ADR-007 State and storage | `design/adr/ADR-007-...` | | B | **Accepted** | Owner brief |
 | ADR-008 Variant scoring | `design/adr/ADR-008-...` | | B | **Accepted** (constants tuned) | Owner, 2026-10-17 |
@@ -97,3 +97,4 @@ Approving a document means: you have read it or the parts you care about, you ac
 | 2026-10-18 | Owner re-approved ADR-006 v2 and Architecture v0.5 (C40, S8 ignored) | this register |
 | 2026-10-18 | Block 2.5 planning: owner resolved C41 (cart `icon` and `course`) and C42 (`@types/react`, `@types/react-dom`); approved the Chromium download for Playwright and `make app` as two dev servers (backend :8000, Vite :5173). The approved plan re-approved exactly API Spec v0.6 and Build Plan v0.4 | this register, `open-conflicts.md` C41, C42 |
 | 2026-10-18 | Owner hand test of block 2.5: decided C43 (hunger, suggestion and stove words in the rules vocabulary; intent prompt v2; meal-aware mood picks) and C44 (ignore the classifier's S6 verdicts, ADR-006 v3). The E4 rerun is NOT RUN | this register, `open-conflicts.md` C43, C44 |
+| 2026-10-18 | Owner hand test: decided C45 (open requests use a course-wide, lever-ranked pool; no dish repeats in a session; next-session rule kept with a more prominent banner). The approved plan re-approved exactly the ADR-004 v3 and Architecture v0.6 text | this register, `open-conflicts.md` C45 |

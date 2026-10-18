@@ -1,8 +1,17 @@
-# ADR-004 (v2): Hybrid retrieval, extended to add-on suggestions with curated pairs plus vector neighbours
-- **Status:** Accepted; **amended 2026-10-17 (v2)** by owner decision; **Day-1 evidence recorded 2026-10-18 (owner approved): hybrid stays the default, `RRF_K=60`, add-on weights curated 2 : vector 1.** v1 (hybrid retrieval for ingredient and mood-to-dish lookups) stays in force and is kept below under "v1 record". The Day-1 benchmark gate now also covers the add-on evidence listed in the v2 amendment.
+# ADR-004 (v3): Hybrid retrieval, extended to add-on suggestions; open requests use a course-wide lever-ranked pool
+- **Status:** **Accepted v3, 2026-10-18 (owner decision C45; approved with its plan).** Accepted; **amended 2026-10-17 (v2)** by owner decision; **Day-1 evidence recorded 2026-10-18 (owner approved): hybrid stays the default, `RRF_K=60`, add-on weights curated 2 : vector 1.** v1 (hybrid retrieval for ingredient and mood-to-dish lookups) stays in force and is kept below under "v1 record". The Day-1 benchmark gate now also covers the add-on evidence listed in the v2 amendment.
 - **Date:** 2026-10-17
 - **Decision owner:** VJP (product owner); drafted by Claude
 - **Authorisation:** v1: owner instructed use of a local vector database where possible and approved a BM25 library dependency (G3). v2: owner decisions of 2026-10-17 listed below.
+
+## v3 amendment (2026-10-18, owner decision, C45)
+**Found in the owner's hand test:** open requests ("I am hungry", "surprise me", "you suggest") gave the same dish as personas and levers changed. Measured over 18 settings (lever extremes and the 11 presets) with the live index, the top dish changed only 4 to 7 times; for "surprise me" it stayed the same in 13 of 18. The 15 candidates come from searching the message words, which say little in an open request, so the levers only reorder a small fixed pool. A simulated course-wide pool gave 8 to 9 distinct top dishes and followed the levers.
+
+**Decision.**
+1. An *open request* is a mood request with no dish name and no mood words other than generic ones (hungry, food, anything). Its candidates are every dish of the meal course chosen by the C43 rule (breakfast; lunch or dinner → main; snack → side), or all dishes when no meal applies, instead of hybrid retrieval. Every candidate gets the same culinary-match score `s_p`, so the message words do not count and history, trend and persona/gourmet decide. Eligibility (FR-60) still runs first in code; the inspector shows the pool with empty lexical and vector ranks. Requests with a mood or a dish keep hybrid retrieval unchanged.
+2. **Variety:** within one chat session, dishes already suggested (mood picks and offered add-ons) are skipped, unless nothing else is eligible.
+
+**Unchanged:** lever edits still apply from the next chat session (C4); the same settings and session history give the same answer (NFR-11).
 
 ## v2 amendment (2026-10-17, owner decisions)
 **Owner decisions:**
