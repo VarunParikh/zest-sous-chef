@@ -7,13 +7,15 @@ from backend.cart import service
 from backend.flows.cards import Message, SuggestionRef
 from backend.flows.templates import render
 from backend.flows.text import CLOSE_WORDS, named_dish_turn, recipe_text_turn
+from backend.flows.youtube import youtube_turn
 from backend.intent.classify import classify
+from backend.transcripts.source import find_url
 from backend.llm.client import LLMInvalid
 
 REDIRECT_INTENTS = {"off_topic": "MSG-REDIRECT", "unsafe": "MSG-REDIRECT"}
 TEMPLATE_INTENTS = {"smalltalk": "MSG-THANKS", "unsupported": "MSG-UNSUPPORTED", "declare_allergy": "MSG-ALLERGY"}
 # Flows built in block 2.4; until then the honest reply is MSG-UNSUPPORTED.
-LATER_INTENTS = {"youtube_recipe", "cart_edit", "staples_answer", "variant_request", "question_cooking"}
+LATER_INTENTS = {"cart_edit", "staples_answer", "variant_request", "question_cooking"}
 
 
 @dataclass
@@ -34,6 +36,7 @@ class Deps:
     ctx: object
     tracer: object
     settings: object
+    transcripts: object = None  # TranscriptChain
 
 
 def say(session, template_id: str, cards=None, **values) -> Message:
@@ -49,6 +52,9 @@ def handle(session, text: str, deps: Deps) -> Outcome:
     if verdict.blocked:
         deps.tracer.emit("intent_classified", session.session_id, intent=verdict.label, layer=verdict.layer)
         out.messages.append(say(session, verdict.template_id))
+        return out
+    if find_url(text):  # FR-24: links are routed by code, never by the model
+        youtube_turn(session, text, deps, out)
         return out
     if text.strip().lower() in CLOSE_WORDS:  # FR-30: closes the open dish; rules, no model call
         session.open_dish_id = None

@@ -35,7 +35,7 @@ def _llm(request: Request, session_id: str) -> OllamaClient:
 def chat_deps(request: Request, session_id: str) -> Deps:
     state = request.app.state
     return Deps(guard=state.guard, llm=_llm(request, session_id), store=state.store, retriever_factory=state.get_retriever,
-                ctx=context(request), tracer=state.tracer, settings=state.settings)
+                ctx=context(request), tracer=state.tracer, settings=state.settings, transcripts=state.transcripts)
 
 
 @router.post("/chat")

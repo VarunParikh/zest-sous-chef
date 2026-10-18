@@ -65,6 +65,12 @@ def chat_app(tmp_path, fake, store, vector, settings):
     app = create_app(load_settings(env=env, env_file=None), http_transport=httpx.MockTransport(fake),
                      llm_transport=httpx.MockTransport(fake))
     app.state.retriever = Retriever(store, vector, settings, app.state.tracer)
+    from backend.transcripts.source import default_chain
+
+    def live_down(vid, timeout):  # tests never touch the network; a test can swap in its own chain
+        raise RuntimeError("no network in tests")
+
+    app.state.transcripts = default_chain(live=live_down)
     return app, TestClient(app, raise_server_exceptions=False)
 
 

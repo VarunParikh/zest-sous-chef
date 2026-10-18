@@ -43,6 +43,18 @@ def _substitute(session, p: dict, request: Request) -> tuple[list[Message], bool
 
 
 def _confirm(session, p: dict, request: Request) -> tuple[list[Message], bool]:
+    pending = session.pending.get(p.get("confirm_id", ""))
+    if pending and pending["kind"] in ("dup_video", "pantry"):
+        from backend.flows.chat import Outcome
+        from backend.flows.youtube import answer
+
+        choices = {"dup_video": {"yes", "no"}, "pantry": {"have", "add"}}[pending["kind"]]
+        if p.get("choice") not in choices:
+            raise CartRuleError("STALE", "That question has expired.")
+        del session.pending[p["confirm_id"]]
+        out = Outcome()
+        answer(session, pending, p["choice"], _deps(request, session.session_id), out)
+        return out.messages, out.cart_changed
     added = service.answer_confirm(session, p.get("confirm_id", ""), p.get("choice", ""), context(request),
                                    request.app.state.store)
     if added is None:

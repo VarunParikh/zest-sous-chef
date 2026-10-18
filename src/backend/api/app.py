@@ -56,6 +56,10 @@ def create_app(settings: Settings | None = None, http_transport: httpx.AsyncBase
                   if settings.guard_classifier else None)
     app.state.guard = InputGuard(default_guard(), classifier, app.state.tracer)
     app.state.retriever = None  # built on the first chat turn (index load); tests set it
+    from backend.transcripts.source import default_chain, live_fetch
+
+    app.state.transcripts = default_chain(live=live_fetch if settings.live_transcripts else None,
+                                          timeout_s=settings.timeout_transcript_s, cap=settings.max_recipe_chars)
     app.state.get_retriever = lambda: get_retriever(app)
     app.state.sessions = SessionStore(app.state.tracer, app.state.presets)
 
