@@ -83,6 +83,7 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 - `dishes.csv` gains `aliases`, `flavour` and `description` columns, back-filled for D01 to D35 (C20); ingredient lines accept a fourth field `opt` for non-essential garnish lines. `check_seed.py` reads the new format.
 
 ### Fixed
+- E12 harness read the shipped β0 as a hard-coded 0.30; it now reads `VALUE_WEIGHT` from settings and adds it to the sweep. The C53 post-hoc E12 file made with the old script is kept as `E12-variant-sweep-harness-error.json`.
 - Substitution price change (F1, FR-76): measured against the cart as the user sees it, not against a re-allocated copy, so accepting moves the shown total by exactly the quoted amount. In the app the only caller (checkout) re-allocates first, so shown deltas were already right (E8: 81 of 81).
 - Pack allocation: when a recipe unit does not match how an item is sold ("1 piece" of bread sold by weight), the single fallback pack is now the smallest one in stock, not the smallest overall (FR-71, Data Model §9 stock rule). Found by the E7 adversarial arm: the 400 g bread pack had stock 0 while the 700 g pack was in stock, so the line was carted out of stock with the stock filter on.
 - Generator GI labels: pulses are low-GI (V9 found the Low-GI persona had only 2 eligible mains); spices, oils and sauces are `not_applicable` (C25). A plural base name ("Eggs", "Millets") is no longer treated as a product form.

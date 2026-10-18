@@ -1,9 +1,9 @@
 """E12 variant scoring sweep (Evaluation Plan §4 E12; ADR-008; FR-113).
 
 The 6 lever-test ingredients (validator V8) with the Settings Panel defaults (P7), swept over
-β0 (VALUE_WEIGHT) in {0.15, 0.30, 0.45}, gourmet {0, 0.5, 1} and organic {0, 0.6, 1}, with
-`choose_variant` exactly as the cart uses it. The gate is applied to each β0; the shipped
-β0 is 0.30. Deterministic: no model.
+β0 (VALUE_WEIGHT) in {0.15, 0.30, 0.45} plus the shipped value, gourmet {0, 0.5, 1} and organic {0, 0.6, 1}, with
+`choose_variant` exactly as the cart uses it. The gate is applied to each β0; the status is
+the shipped β0's, read from settings (0.20 since C53; the first E12 run hard-coded 0.30). Deterministic: no model.
 Run: .venv/bin/python scripts/benchmark/variants.py [--out DIR]
 """
 import itertools
@@ -20,6 +20,8 @@ from backend.evaluation.variant_sweep import IngredientSweep, e12_gate
 from backend.session.levers import LeverSet
 
 BETAS = (0.15, 0.30, 0.45)
+SHIPPED = load_settings().value_weight
+SWEEP = tuple(sorted({*BETAS, SHIPPED}))
 LEVELS = {"gourmet": (0.0, 0.5, 1.0), "organic": (0.0, 0.6, 1.0)}
 
 
@@ -33,7 +35,7 @@ def main():
 
     grid, per, gates = {}, [], {}
     for label, term in LEVER_TEST.items():
-        for beta0, g, o in itertools.product((0.0, *BETAS), LEVELS["gourmet"], LEVELS["organic"]):
+        for beta0, g, o in itertools.product((0.0, *SWEEP), LEVELS["gourmet"], LEVELS["organic"]):
             c = pick(term, beta0, g, o)
             grid[(label, beta0, g, o)] = c
             per.append({"id": f"{label}|b{beta0}|g{g}|o{o}", "ingredient": label, "beta0": beta0, "gourmet": g, "organic": o,
@@ -41,7 +43,7 @@ def main():
                         "organic_variant": c.chosen.attributes.get("organic") == "yes",
                         "premium_variant": c.chosen.attributes.get("premium") == "yes",
                         "eligible": len(c.scored)})
-    for beta0 in BETAS:
+    for beta0 in SWEEP:
         rows = []
         for label in LEVER_TEST:
             ch = lambda g, o, b=beta0: grid[(label, b, g, o)]
@@ -57,11 +59,11 @@ def main():
                 cheapest_at_g0=ch(0.0, 0.6).chosen.price_per_unit_inr == cheapest.price_per_unit_inr,
                 premium_at_g1=ch(1.0, 0.6).chosen.attributes.get("premium") == "yes"))
         gates[str(beta0)] = {**e12_gate(rows), "per_ingredient": [r.__dict__ for r in rows]}
-    shipped = gates["0.3"]
+    shipped = gates[str(SHIPPED)]
     rejected = [b for b, g in gates.items() if g["price_overrides_organic"]]
-    metrics = {"gates_by_beta0": gates, "shipped_beta0": 0.30, "rejected_beta0": rejected}
+    metrics = {"gates_by_beta0": gates, "shipped_beta0": SHIPPED, "rejected_beta0": rejected}
     save(make_result("E12", "variant-sweep", "mock-data/generated/variants.json", "all", metrics, per, [],
-                     shipped["status"], notes="gate applied to the shipped beta0 0.30; 0.15 and 0.45 reported. Price effect = "
+                     shipped["status"], notes=f"gate applied to the shipped beta0 {SHIPPED} (from settings); the other values reported. Price effect = "
                      "choice at gourmet 0 with the value term off (beta0 0) vs on; defined before the run"), args.out)
     for b, g in gates.items():
         print(b, g["status"], {e: g[e]["k"] for e in ("organic", "gourmet", "price")}, "price_overrides_organic:",
