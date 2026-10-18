@@ -34,7 +34,7 @@ The screen is split in two. On the left are **recommendation levers**: weights, 
 
 This is a prototype: a working, documented, local demo with its evidence. It runs entirely on one Mac with local models;
 
-[![Watch the video ad for Zest, to know what is the product vision](https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=Pp7ahW03ne8)
+[![Watch the video ad for Zest, to know what is the product vision](https://img.youtube.com/vi/VIDEO_ID/hqdefault.jpg)](https://www.youtube.com/watch?v=Pp7ahW03ne8)
 
 ## Why Zest exists
 **The problem.** In quick commerce, "what should I cook tonight" and "what should I buy" are two separate steps. A cooking assistant that builds the cart from a recipe video, a typed recipe, a mood or a photo of the fridge collapses them into one. But such an assistant is only useful if it can be trusted with what you eat.
