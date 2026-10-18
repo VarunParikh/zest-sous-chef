@@ -3744,43 +3744,6 @@
   "attributes": {
    "organic": "no",
    "premium": "no",
-   "qualifiers": "baby",
-   "variant": "Baby corn"
-  },
-  "base_id": "B036",
-  "brand": "MockMart Basics",
-  "category": "vegetables",
-  "diet_class": "vegan",
-  "embedding_text": "Corn (Baby corn). Category: vegetables. baby. Ingredients: corn (baby). Also called: Corn, makka, bhutta, sweet corn.",
-  "flags": [],
-  "gi_label": "low",
-  "gluten_free": true,
-  "gourmet_score": 0.398,
-  "halal_status": "not_applicable",
-  "history_bucket": null,
-  "icon": "vegetables",
-  "ingredient_list": [
-   "corn (baby)"
-  ],
-  "jain_ok": true,
-  "name": "Corn (Baby corn)",
-  "nutrition": {
-   "carbs_g": 6.2,
-   "fat_g": 0.3,
-   "protein_g": 2.0,
-   "sugar_g": 3.0
-  },
-  "organic_score": 0.074,
-  "price_per_unit_inr": 23.72,
-  "satvik_ok": true,
-  "variant_id": "b036-032f40c1",
-  "vegan": true
- },
- {
-  "allergens": [],
-  "attributes": {
-   "organic": "no",
-   "premium": "no",
    "qualifiers": "kernels,frozen",
    "variant": "Frozen kernels"
   },
@@ -10293,9 +10256,7 @@
   "vegan": true
  },
  {
-  "allergens": [
-   "gluten"
-  ],
+  "allergens": [],
   "attributes": {
    "organic": "no",
    "premium": "no",
@@ -10306,19 +10267,16 @@
   "brand": "MockMart Select",
   "category": "grains",
   "diet_class": "vegan",
-  "embedding_text": "Noodles (Rice noodles). Category: grains. regular. Ingredients: refined flour (noodles), rice. Also called: Noodles, maida.",
-  "flags": [
-   "gluten"
-  ],
+  "embedding_text": "Noodles (Rice noodles). Category: grains. regular. Ingredients: rice (noodles). Also called: Noodles, chawal.",
+  "flags": [],
   "gi_label": "high",
-  "gluten_free": false,
+  "gluten_free": true,
   "gourmet_score": 0.229,
   "halal_status": "not_applicable",
   "history_bucket": null,
   "icon": "grains",
   "ingredient_list": [
-   "refined flour (noodles)",
-   "rice"
+   "rice (noodles)"
   ],
   "jain_ok": true,
   "name": "Noodles (Rice noodles)",
@@ -10331,7 +10289,7 @@
   "organic_score": 0.175,
   "price_per_unit_inr": 14.65,
   "satvik_ok": true,
-  "variant_id": "b091-b6832261",
+  "variant_id": "b091-418950a4",
   "vegan": true
  },
  {
@@ -15952,7 +15910,7 @@
   "brand": "MockMart Select",
   "category": "beverages",
   "diet_class": "vegan",
-  "embedding_text": "Packaged juice (Mango). Category: beverages. regular. Ingredients: orange (packaged juice), mango, sugar. Also called: Packaged juice, santra, narangi.",
+  "embedding_text": "Packaged juice (Mango). Category: beverages. regular. Ingredients: mango (packaged juice), sugar. Also called: Packaged juice, aam.",
   "flags": [],
   "gi_label": "low",
   "gluten_free": true,
@@ -15961,8 +15919,7 @@
   "history_bucket": null,
   "icon": "beverages",
   "ingredient_list": [
-   "orange (packaged juice)",
-   "mango",
+   "mango (packaged juice)",
    "sugar"
   ],
   "jain_ok": true,
@@ -15976,7 +15933,7 @@
   "organic_score": 0.085,
   "price_per_unit_inr": 9.08,
   "satvik_ok": true,
-  "variant_id": "b158-0cc36eb2",
+  "variant_id": "b158-3eceb317",
   "vegan": true
  },
  {
@@ -15991,7 +15948,7 @@
   "brand": "MockMart Daily",
   "category": "beverages",
   "diet_class": "vegan",
-  "embedding_text": "Packaged juice (Apple). Category: beverages. regular. Ingredients: orange (packaged juice), apple, sugar. Also called: Packaged juice, santra, narangi.",
+  "embedding_text": "Packaged juice (Apple). Category: beverages. regular. Ingredients: apple (packaged juice), sugar. Also called: Packaged juice, seb.",
   "flags": [],
   "gi_label": "low",
   "gluten_free": true,
@@ -16000,8 +15957,7 @@
   "history_bucket": null,
   "icon": "beverages",
   "ingredient_list": [
-   "orange (packaged juice)",
-   "apple",
+   "apple (packaged juice)",
    "sugar"
   ],
   "jain_ok": true,
@@ -16015,7 +15971,7 @@
   "organic_score": 0.104,
   "price_per_unit_inr": 9.26,
   "satvik_ok": true,
-  "variant_id": "b158-6f071db1",
+  "variant_id": "b158-8791e8f3",
   "vegan": true
  },
  {
@@ -16261,30 +16217,29 @@
   "brand": "MockMart Select",
   "category": "beverages",
   "diet_class": "vegan",
-  "embedding_text": "Soft drinks (Zero sugar). Category: beverages. regular. Ingredients: sugar (soft drinks), stevia. Also called: Soft drinks, cheeni.",
+  "embedding_text": "Soft drinks (Zero sugar). Category: beverages. regular. Ingredients: stevia (soft drinks). Also called: Soft drinks.",
   "flags": [],
-  "gi_label": "low",
+  "gi_label": "not_applicable",
   "gluten_free": true,
   "gourmet_score": 0.129,
   "halal_status": "not_applicable",
   "history_bucket": null,
   "icon": "beverages",
   "ingredient_list": [
-   "sugar (soft drinks)",
-   "stevia"
+   "stevia (soft drinks)"
   ],
   "jain_ok": true,
   "name": "Soft drinks (Zero sugar)",
   "nutrition": {
-   "carbs_g": 10.1,
-   "fat_g": 0.5,
-   "protein_g": 0.5,
-   "sugar_g": 1.8
+   "carbs_g": 0.0,
+   "fat_g": 0.0,
+   "protein_g": 0.0,
+   "sugar_g": 0.0
   },
   "organic_score": 0.173,
   "price_per_unit_inr": 5.07,
   "satvik_ok": true,
-  "variant_id": "b160-8d0d63b1",
+  "variant_id": "b160-0e57ae69",
   "vegan": true
  },
  {
@@ -16602,30 +16557,29 @@
   "brand": "MockMart Basics",
   "category": "beverages",
   "diet_class": "vegan",
-  "embedding_text": "Energy drink (Sugar free). Category: beverages. regular. Ingredients: sugar (energy drink), stevia. Also called: Energy drink, cheeni.",
+  "embedding_text": "Energy drink (Sugar free). Category: beverages. regular. Ingredients: stevia (energy drink). Also called: Energy drink.",
   "flags": [],
-  "gi_label": "low",
+  "gi_label": "not_applicable",
   "gluten_free": true,
   "gourmet_score": 0.135,
   "halal_status": "not_applicable",
   "history_bucket": null,
   "icon": "beverages",
   "ingredient_list": [
-   "sugar (energy drink)",
-   "stevia"
+   "stevia (energy drink)"
   ],
   "jain_ok": true,
   "name": "Energy drink (Sugar free)",
   "nutrition": {
-   "carbs_g": 10.2,
-   "fat_g": 0.5,
-   "protein_g": 0.5,
-   "sugar_g": 1.8
+   "carbs_g": 0.0,
+   "fat_g": 0.0,
+   "protein_g": 0.0,
+   "sugar_g": 0.0
   },
   "organic_score": 0.27,
   "price_per_unit_inr": 22.21,
   "satvik_ok": true,
-  "variant_id": "b164-41da501a",
+  "variant_id": "b164-0543e438",
   "vegan": true
  },
  {
@@ -17257,30 +17211,29 @@
   "brand": "MockMart Select",
   "category": "breakfast",
   "diet_class": "vegan",
-  "embedding_text": "Jam (Sugar-free). Category: breakfast. regular. Ingredients: sugar (jam), stevia. Also called: Jam, cheeni.",
+  "embedding_text": "Jam (Sugar-free). Category: breakfast. regular. Ingredients: stevia (jam). Also called: Jam.",
   "flags": [],
-  "gi_label": "high",
+  "gi_label": "not_applicable",
   "gluten_free": true,
   "gourmet_score": 0.252,
   "halal_status": "not_applicable",
   "history_bucket": null,
   "icon": "breakfast",
   "ingredient_list": [
-   "sugar (jam)",
-   "stevia"
+   "stevia (jam)"
   ],
   "jain_ok": true,
   "name": "Jam (Sugar-free)",
   "nutrition": {
-   "carbs_g": 67.4,
-   "fat_g": 10.5,
-   "protein_g": 10.5,
-   "sugar_g": 3.1
+   "carbs_g": 0.0,
+   "fat_g": 0.0,
+   "protein_g": 0.0,
+   "sugar_g": 0.0
   },
   "organic_score": 0.259,
   "price_per_unit_inr": 28.82,
   "satvik_ok": true,
-  "variant_id": "b171-2a648201",
+  "variant_id": "b171-03ba8dbd",
   "vegan": true
  },
  {
@@ -17708,7 +17661,7 @@
   "brand": "MockMart Select",
   "category": "snacks",
   "diet_class": "vegan",
-  "embedding_text": "Namkeen mix (Moong dal). Category: snacks. regular. Ingredients: gram flour (namkeen mix), moong dal, sunflower oil, salt. Also called: Namkeen mix, besan.",
+  "embedding_text": "Namkeen mix (Moong dal). Category: snacks. regular. Ingredients: moong dal (namkeen mix), sunflower oil, salt. Also called: Namkeen mix, mung dal.",
   "flags": [],
   "gi_label": "medium",
   "gluten_free": true,
@@ -17717,8 +17670,7 @@
   "history_bucket": null,
   "icon": "snacks",
   "ingredient_list": [
-   "gram flour (namkeen mix)",
-   "moong dal",
+   "moong dal (namkeen mix)",
    "sunflower oil",
    "salt"
   ],
@@ -17733,7 +17685,7 @@
   "organic_score": 0.179,
   "price_per_unit_inr": 29.2,
   "satvik_ok": true,
-  "variant_id": "b177-a0de7dde",
+  "variant_id": "b177-ef9a2482",
   "vegan": true
  },
  {
@@ -18153,7 +18105,7 @@
   "brand": "MockMart Reserve",
   "category": "snacks",
   "diet_class": "vegan",
-  "embedding_text": "Dark chocolate (Sugar free). Category: snacks. premium. Ingredients: sugar (dark chocolate), cocoa, stevia. Also called: Dark chocolate, cheeni.",
+  "embedding_text": "Dark chocolate (Sugar free). Category: snacks. premium. Ingredients: cocoa (dark chocolate), stevia. Also called: Dark chocolate, cacao.",
   "flags": [],
   "gi_label": "medium",
   "gluten_free": true,
@@ -18162,22 +18114,21 @@
   "history_bucket": "desserts",
   "icon": "snacks",
   "ingredient_list": [
-   "sugar (dark chocolate)",
-   "cocoa",
+   "cocoa (dark chocolate)",
    "stevia"
   ],
   "jain_ok": true,
   "name": "Dark chocolate (Sugar free)",
   "nutrition": {
-   "carbs_g": 54.1,
-   "fat_g": 25.5,
-   "protein_g": 10.2,
-   "sugar_g": 1.9
+   "carbs_g": 57.1,
+   "fat_g": 14.3,
+   "protein_g": 20.5,
+   "sugar_g": 0.4
   },
   "organic_score": 0.074,
   "price_per_unit_inr": 177.06,
   "satvik_ok": true,
-  "variant_id": "b181-8aaade85",
+  "variant_id": "b181-7673228c",
   "vegan": true
  },
  {
@@ -18721,7 +18672,7 @@
   "brand": "MockMart Daily",
   "category": "sauces",
   "diet_class": "vegan",
-  "embedding_text": "Pickle (Mango). Category: sauces. regular. Ingredients: lemon (pickle), mango, salt, red chilli powder, mustard oil. Also called: Pickle, nimbu.",
+  "embedding_text": "Pickle (Mango). Category: sauces. regular. Ingredients: mango (pickle), salt, red chilli powder, mustard oil. Also called: Pickle, aam.",
   "flags": [],
   "gi_label": "not_applicable",
   "gluten_free": true,
@@ -18730,8 +18681,7 @@
   "history_bucket": null,
   "icon": "sauces",
   "ingredient_list": [
-   "lemon (pickle)",
-   "mango",
+   "mango (pickle)",
    "salt",
    "red chilli powder",
    "mustard oil"
@@ -18747,7 +18697,7 @@
   "organic_score": 0.136,
   "price_per_unit_inr": 21.53,
   "satvik_ok": true,
-  "variant_id": "b187-3badd1e6",
+  "variant_id": "b187-8bc49913",
   "vegan": true
  },
  {
@@ -18805,7 +18755,7 @@
   "brand": "MockMart Basics",
   "category": "sauces",
   "diet_class": "vegan",
-  "embedding_text": "Pickle (Garlic). Category: sauces. regular. Ingredients: lemon (pickle), garlic, salt, mustard oil. Also called: Pickle, nimbu.",
+  "embedding_text": "Pickle (Garlic). Category: sauces. regular. Ingredients: garlic (pickle), salt, mustard oil. Also called: Pickle, lehsun, lasun.",
   "flags": [
    "non_satvik",
    "onion_garlic"
@@ -18817,8 +18767,7 @@
   "history_bucket": null,
   "icon": "sauces",
   "ingredient_list": [
-   "lemon (pickle)",
-   "garlic",
+   "garlic (pickle)",
    "salt",
    "mustard oil"
   ],
@@ -18833,7 +18782,7 @@
   "organic_score": 0.187,
   "price_per_unit_inr": 23.45,
   "satvik_ok": false,
-  "variant_id": "b187-eda88379",
+  "variant_id": "b187-b6ad329a",
   "vegan": true
  },
  {
@@ -19494,7 +19443,7 @@
    "sugar_g": 0.0
   },
   "organic_score": 0.228,
-  "price_per_unit_inr": 56.53,
+  "price_per_unit_inr": 10.28,
   "satvik_ok": false,
   "variant_id": "b195-5b051d25",
   "vegan": false
@@ -19585,7 +19534,7 @@
   "brand": "MockMart Daily",
   "category": "sauces",
   "diet_class": "vegan",
-  "embedding_text": "Baking essentials (Dry yeast). Category: sauces. regular. Ingredients: baking soda (baking essentials), yeast. Also called: Baking essentials.",
+  "embedding_text": "Baking essentials (Dry yeast). Category: sauces. regular. Ingredients: yeast (baking essentials). Also called: Baking essentials.",
   "flags": [],
   "gi_label": "not_applicable",
   "gluten_free": true,
@@ -19594,8 +19543,7 @@
   "history_bucket": null,
   "icon": "sauces",
   "ingredient_list": [
-   "baking soda (baking essentials)",
-   "yeast"
+   "yeast (baking essentials)"
   ],
   "jain_ok": true,
   "name": "Baking essentials (Dry yeast)",
@@ -19608,7 +19556,7 @@
   "organic_score": 0.149,
   "price_per_unit_inr": 34.95,
   "satvik_ok": true,
-  "variant_id": "b196-1e19d888",
+  "variant_id": "b196-b308c227",
   "vegan": true
  },
  {
@@ -20231,9 +20179,7 @@
   "vegan": true
  },
  {
-  "allergens": [
-   "sesame"
-  ],
+  "allergens": [],
   "attributes": {
    "organic": "no",
    "premium": "yes",
@@ -20244,7 +20190,7 @@
   "brand": "MockMart Reserve",
   "category": "nuts",
   "diet_class": "vegan",
-  "embedding_text": "Seeds mix (Chia). Category: nuts. premium. Ingredients: sesame seeds (seeds mix), chia. Also called: Seeds mix, til.",
+  "embedding_text": "Seeds mix (Chia). Category: nuts. premium. Ingredients: chia (seeds mix). Also called: Seeds mix, chia seeds.",
   "flags": [],
   "gi_label": "low",
   "gluten_free": true,
@@ -20253,8 +20199,7 @@
   "history_bucket": null,
   "icon": "nuts",
   "ingredient_list": [
-   "sesame seeds (seeds mix)",
-   "chia"
+   "chia (seeds mix)"
   ],
   "jain_ok": true,
   "name": "Seeds mix (Chia)",
@@ -20267,13 +20212,11 @@
   "organic_score": 0.262,
   "price_per_unit_inr": 64.31,
   "satvik_ok": true,
-  "variant_id": "b204-9c4ea647",
+  "variant_id": "b204-9a0f95d9",
   "vegan": true
  },
  {
-  "allergens": [
-   "sesame"
-  ],
+  "allergens": [],
   "attributes": {
    "organic": "no",
    "premium": "yes",
@@ -20284,7 +20227,7 @@
   "brand": "MockMart Reserve",
   "category": "nuts",
   "diet_class": "vegan",
-  "embedding_text": "Seeds mix (Flax). Category: nuts. premium. Ingredients: sesame seeds (seeds mix), flax. Also called: Seeds mix, til.",
+  "embedding_text": "Seeds mix (Flax). Category: nuts. premium. Ingredients: flax (seeds mix). Also called: Seeds mix, flax seeds, alsi.",
   "flags": [],
   "gi_label": "low",
   "gluten_free": true,
@@ -20293,8 +20236,7 @@
   "history_bucket": null,
   "icon": "nuts",
   "ingredient_list": [
-   "sesame seeds (seeds mix)",
-   "flax"
+   "flax (seeds mix)"
   ],
   "jain_ok": true,
   "name": "Seeds mix (Flax)",
@@ -20307,7 +20249,7 @@
   "organic_score": 0.127,
   "price_per_unit_inr": 42.29,
   "satvik_ok": true,
-  "variant_id": "b204-b387cdbe",
+  "variant_id": "b204-e17be402",
   "vegan": true
  },
  {
@@ -21403,32 +21345,31 @@
   "brand": "MockMart Basics",
   "category": "ready",
   "diet_class": "vegan",
-  "embedding_text": "Soup mix (Sweet corn). Category: ready. regular. Ingredients: tomato (soup mix), corn, salt, sugar. Also called: Soup mix, tamatar.",
+  "embedding_text": "Soup mix (Sweet corn). Category: ready. regular. Ingredients: corn (soup mix), salt, sugar. Also called: Soup mix, makka, bhutta, sweet corn.",
   "flags": [],
-  "gi_label": "low",
+  "gi_label": "medium",
   "gluten_free": true,
   "gourmet_score": 0.112,
   "halal_status": "not_applicable",
   "history_bucket": "desserts",
   "icon": "ready",
   "ingredient_list": [
-   "tomato (soup mix)",
-   "corn",
+   "corn (soup mix)",
    "salt",
    "sugar"
   ],
   "jain_ok": true,
   "name": "Soup mix (Sweet corn)",
   "nutrition": {
-   "carbs_g": 14.6,
-   "fat_g": 0.2,
-   "protein_g": 1.0,
-   "sugar_g": 12.9
+   "carbs_g": 31.2,
+   "fat_g": 5.8,
+   "protein_g": 5.8,
+   "sugar_g": 13.9
   },
   "organic_score": 0.079,
   "price_per_unit_inr": 24.76,
   "satvik_ok": true,
-  "variant_id": "b216-720c84dc",
+  "variant_id": "b216-87cb70d0",
   "vegan": true
  },
  {
@@ -21445,7 +21386,7 @@
   "brand": "MockMart Daily",
   "category": "ready",
   "diet_class": "vegetarian",
-  "embedding_text": "Soup mix (Mushroom). Category: ready. regular. Ingredients: tomato (soup mix), mushroom, milk, salt. Also called: Soup mix, tamatar.",
+  "embedding_text": "Soup mix (Mushroom). Category: ready. regular. Ingredients: mushroom (soup mix), milk, salt. Also called: Soup mix, khumb.",
   "flags": [
    "dairy",
    "fungi",
@@ -21458,23 +21399,22 @@
   "history_bucket": null,
   "icon": "ready",
   "ingredient_list": [
-   "tomato (soup mix)",
-   "mushroom",
+   "mushroom (soup mix)",
    "milk",
    "salt"
   ],
   "jain_ok": false,
   "name": "Soup mix (Mushroom)",
   "nutrition": {
-   "carbs_g": 4.1,
-   "fat_g": 0.2,
-   "protein_g": 1.0,
-   "sugar_g": 3.1
+   "carbs_g": 3.1,
+   "fat_g": 0.3,
+   "protein_g": 2.9,
+   "sugar_g": 2.0
   },
   "organic_score": 0.292,
   "price_per_unit_inr": 28.02,
   "satvik_ok": false,
-  "variant_id": "b216-c5e2e517",
+  "variant_id": "b216-d24871e1",
   "vegan": false
  },
  {
@@ -21784,7 +21724,7 @@
    "sugar_g": 0.0
   },
   "organic_score": 0.216,
-  "price_per_unit_inr": 40.6,
+  "price_per_unit_inr": 1.32,
   "satvik_ok": true,
   "variant_id": "b223-846939e9",
   "vegan": true
@@ -27043,7 +26983,7 @@
   "brand": "MockMart Daily",
   "category": "fruits",
   "diet_class": "vegan",
-  "embedding_text": "Frozen fruit pulp (Guava). Category: fruits. regular. Ingredients: mango (frozen fruit pulp), guava. Also called: Frozen fruit pulp, aam.",
+  "embedding_text": "Frozen fruit pulp (Guava). Category: fruits. regular. Ingredients: guava (frozen fruit pulp). Also called: Frozen fruit pulp, amrud.",
   "flags": [],
   "gi_label": "low",
   "gluten_free": true,
@@ -27052,8 +26992,7 @@
   "history_bucket": null,
   "icon": "fruits",
   "ingredient_list": [
-   "mango (frozen fruit pulp)",
-   "guava"
+   "guava (frozen fruit pulp)"
   ],
   "jain_ok": true,
   "name": "Frozen fruit pulp (Guava)",
@@ -27066,7 +27005,7 @@
   "organic_score": 0.293,
   "price_per_unit_inr": 21.62,
   "satvik_ok": true,
-  "variant_id": "b259-c4b37e7e",
+  "variant_id": "b259-089b352d",
   "vegan": true
  },
  {
@@ -27081,7 +27020,7 @@
   "brand": "MockMart Basics",
   "category": "fruits",
   "diet_class": "vegan",
-  "embedding_text": "Frozen fruit pulp (Chikoo). Category: fruits. regular. Ingredients: mango (frozen fruit pulp), sapota. Also called: Frozen fruit pulp, aam.",
+  "embedding_text": "Frozen fruit pulp (Chikoo). Category: fruits. regular. Ingredients: sapota (frozen fruit pulp). Also called: Frozen fruit pulp, chikoo, chiku.",
   "flags": [],
   "gi_label": "low",
   "gluten_free": true,
@@ -27090,8 +27029,7 @@
   "history_bucket": null,
   "icon": "fruits",
   "ingredient_list": [
-   "mango (frozen fruit pulp)",
-   "sapota"
+   "sapota (frozen fruit pulp)"
   ],
   "jain_ok": true,
   "name": "Frozen fruit pulp (Chikoo)",
@@ -27104,7 +27042,7 @@
   "organic_score": 0.204,
   "price_per_unit_inr": 21.47,
   "satvik_ok": true,
-  "variant_id": "b259-970fd7cf",
+  "variant_id": "b259-ae3d0195",
   "vegan": true
  },
  {
@@ -28358,7 +28296,7 @@
   "brand": "MockMart Reserve",
   "category": "dairy",
   "diet_class": "egg",
-  "embedding_text": "Egg alternatives (Quail eggs). Category: dairy. quail, premium. Ingredients: egg (egg alternatives, quail). Also called: Egg alternatives, anda.",
+  "embedding_text": "Speciality eggs (Quail eggs). Category: dairy. quail, premium. Ingredients: egg (speciality eggs, quail). Also called: Speciality eggs, anda.",
   "flags": [
    "egg",
    "non_satvik"
@@ -28370,10 +28308,10 @@
   "history_bucket": "dairy",
   "icon": "dairy",
   "ingredient_list": [
-   "egg (egg alternatives, quail)"
+   "egg (speciality eggs, quail)"
   ],
   "jain_ok": false,
-  "name": "Egg alternatives (Quail eggs)",
+  "name": "Speciality eggs (Quail eggs)",
   "nutrition": {
    "carbs_g": 1.0,
    "fat_g": 10.2,
@@ -28383,7 +28321,7 @@
   "organic_score": 0.119,
   "price_per_unit_inr": 99.48,
   "satvik_ok": false,
-  "variant_id": "b267-406a3921",
+  "variant_id": "b267-8df3c34a",
   "vegan": false
  },
  {
@@ -28400,7 +28338,7 @@
   "brand": "MockMart Reserve",
   "category": "dairy",
   "diet_class": "egg",
-  "embedding_text": "Egg alternatives (Duck eggs). Category: dairy. duck, premium. Ingredients: egg (egg alternatives, duck). Also called: Egg alternatives, anda.",
+  "embedding_text": "Speciality eggs (Duck eggs). Category: dairy. duck, premium. Ingredients: egg (speciality eggs, duck). Also called: Speciality eggs, anda.",
   "flags": [
    "egg",
    "non_satvik"
@@ -28412,10 +28350,10 @@
   "history_bucket": "dairy",
   "icon": "dairy",
   "ingredient_list": [
-   "egg (egg alternatives, duck)"
+   "egg (speciality eggs, duck)"
   ],
   "jain_ok": false,
-  "name": "Egg alternatives (Duck eggs)",
+  "name": "Speciality eggs (Duck eggs)",
   "nutrition": {
    "carbs_g": 1.0,
    "fat_g": 9.7,
@@ -28425,7 +28363,7 @@
   "organic_score": 0.124,
   "price_per_unit_inr": 63.05,
   "satvik_ok": false,
-  "variant_id": "b267-67e15522",
+  "variant_id": "b267-6123edf7",
   "vegan": false
  },
  {
@@ -28442,7 +28380,7 @@
   "brand": "MockMart Daily",
   "category": "dairy",
   "diet_class": "egg",
-  "embedding_text": "Egg alternatives (Boiled peeled). Category: dairy. boiled. Ingredients: egg (egg alternatives, boiled). Also called: Egg alternatives, anda.",
+  "embedding_text": "Speciality eggs (Boiled peeled). Category: dairy. boiled. Ingredients: egg (speciality eggs, boiled). Also called: Speciality eggs, anda.",
   "flags": [
    "egg",
    "non_satvik"
@@ -28454,10 +28392,10 @@
   "history_bucket": "dairy",
   "icon": "dairy",
   "ingredient_list": [
-   "egg (egg alternatives, boiled)"
+   "egg (speciality eggs, boiled)"
   ],
   "jain_ok": false,
-  "name": "Egg alternatives (Boiled peeled)",
+  "name": "Speciality eggs (Boiled peeled)",
   "nutrition": {
    "carbs_g": 1.0,
    "fat_g": 10.1,
@@ -28467,7 +28405,7 @@
   "organic_score": 0.228,
   "price_per_unit_inr": 60.19,
   "satvik_ok": false,
-  "variant_id": "b267-e9c237f5",
+  "variant_id": "b267-0d1268a1",
   "vegan": false
  },
  {
@@ -28484,7 +28422,7 @@
   "brand": "MockMart Basics",
   "category": "dairy",
   "diet_class": "egg",
-  "embedding_text": "Egg alternatives (Egg whites). Category: dairy. whites. Ingredients: egg (egg alternatives, whites). Also called: Egg alternatives, anda.",
+  "embedding_text": "Speciality eggs (Egg whites). Category: dairy. whites. Ingredients: egg (speciality eggs, whites). Also called: Speciality eggs, anda.",
   "flags": [
    "egg",
    "non_satvik"
@@ -28496,10 +28434,10 @@
   "history_bucket": "dairy",
   "icon": "dairy",
   "ingredient_list": [
-   "egg (egg alternatives, whites)"
+   "egg (speciality eggs, whites)"
   ],
   "jain_ok": false,
-  "name": "Egg alternatives (Egg whites)",
+  "name": "Speciality eggs (Egg whites)",
   "nutrition": {
    "carbs_g": 1.0,
    "fat_g": 9.8,
@@ -28509,7 +28447,7 @@
   "organic_score": 0.079,
   "price_per_unit_inr": 52.1,
   "satvik_ok": false,
-  "variant_id": "b267-2f1d7594",
+  "variant_id": "b267-a7eb7a6e",
   "vegan": false
  },
  {
@@ -29655,9 +29593,7 @@
   "vegan": true
  },
  {
-  "allergens": [
-   "gluten"
-  ],
+  "allergens": [],
   "attributes": {
    "organic": "no",
    "premium": "no",
@@ -29668,19 +29604,16 @@
   "brand": "MockMart Daily",
   "category": "bakery",
   "diet_class": "vegan",
-  "embedding_text": "Tortilla and wraps (Corn tortilla). Category: bakery. regular. Ingredients: wheat flour (tortilla and wraps), corn, salt. Also called: Tortilla and wraps, atta.",
-  "flags": [
-   "gluten"
-  ],
+  "embedding_text": "Tortilla and wraps (Corn tortilla). Category: bakery. regular. Ingredients: corn (tortilla and wraps), salt. Also called: Tortilla and wraps, makka, bhutta, sweet corn.",
+  "flags": [],
   "gi_label": "medium",
-  "gluten_free": false,
+  "gluten_free": true,
   "gourmet_score": 0.165,
   "halal_status": "not_applicable",
   "history_bucket": "bakery",
   "icon": "bakery",
   "ingredient_list": [
-   "wheat flour (tortilla and wraps)",
-   "corn",
+   "corn (tortilla and wraps)",
    "salt"
   ],
   "jain_ok": true,
@@ -29694,7 +29627,7 @@
   "organic_score": 0.207,
   "price_per_unit_inr": 8.75,
   "satvik_ok": true,
-  "variant_id": "b274-f7f40205",
+  "variant_id": "b274-0b32fb99",
   "vegan": true
  },
  {
@@ -32001,9 +31934,7 @@
   "vegan": true
  },
  {
-  "allergens": [
-   "gluten"
-  ],
+  "allergens": [],
   "attributes": {
    "organic": "no",
    "premium": "no",
@@ -32014,31 +31945,30 @@
   "brand": "MockMart Basics",
   "category": "grains",
   "diet_class": "vegan",
-  "embedding_text": "Breakfast porridge mix (Millet porridge). Category: grains. regular. Ingredients: oats (breakfast porridge mix), millet, jaggery. Also called: Breakfast porridge mix.",
+  "embedding_text": "Breakfast porridge mix (Millet porridge). Category: grains. regular. Ingredients: millet (breakfast porridge mix), jaggery. Also called: Breakfast porridge mix, ragi, bajra, jowar.",
   "flags": [],
   "gi_label": "medium",
-  "gluten_free": false,
+  "gluten_free": true,
   "gourmet_score": 0.153,
   "halal_status": "not_applicable",
   "history_bucket": null,
   "icon": "grains",
   "ingredient_list": [
-   "oats (breakfast porridge mix)",
-   "millet",
+   "millet (breakfast porridge mix)",
    "jaggery"
   ],
   "jain_ok": true,
   "name": "Breakfast porridge mix (Millet porridge)",
   "nutrition": {
-   "carbs_g": 66.9,
-   "fat_g": 7.2,
-   "protein_g": 16.2,
+   "carbs_g": 73.0,
+   "fat_g": 2.1,
+   "protein_g": 9.5,
    "sugar_g": 1.0
   },
   "organic_score": 0.256,
   "price_per_unit_inr": 28.86,
   "satvik_ok": true,
-  "variant_id": "b289-fdce11fc",
+  "variant_id": "b289-09991810",
   "vegan": true
  },
  {
@@ -33284,7 +33214,7 @@
   "brand": "MockMart Select",
   "category": "pulses",
   "diet_class": "vegan",
-  "embedding_text": "Sattu (Barley sattu). Category: pulses. sattu. Ingredients: gram flour (sattu, sattu), barley. Also called: Sattu, besan.",
+  "embedding_text": "Sattu (Barley sattu). Category: pulses. sattu. Ingredients: barley (sattu, sattu). Also called: Sattu, jau.",
   "flags": [],
   "gi_label": "low",
   "gluten_free": false,
@@ -33293,8 +33223,7 @@
   "history_bucket": null,
   "icon": "pulses",
   "ingredient_list": [
-   "gram flour (sattu, sattu)",
-   "barley"
+   "barley (sattu, sattu)"
   ],
   "jain_ok": true,
   "name": "Sattu (Barley sattu)",
@@ -33307,7 +33236,7 @@
   "organic_score": 0.196,
   "price_per_unit_inr": 11.72,
   "satvik_ok": true,
-  "variant_id": "b297-8d691934",
+  "variant_id": "b297-a5f9f327",
   "vegan": true
  },
  {
@@ -35906,7 +35835,7 @@
   "brand": "MockMart Reserve",
   "category": "oils",
   "diet_class": "vegan",
-  "embedding_text": "Avocado and flaxseed oil (Avocado). Category: oils. premium. Ingredients: flax (avocado and flaxseed oil), avocado. Also called: Avocado and flaxseed oil, flax seeds, alsi.",
+  "embedding_text": "Avocado and flaxseed oil (Avocado). Category: oils. premium. Ingredients: avocado (avocado and flaxseed oil). Also called: Avocado and flaxseed oil.",
   "flags": [],
   "gi_label": "not_applicable",
   "gluten_free": true,
@@ -35915,21 +35844,20 @@
   "history_bucket": null,
   "icon": "oils",
   "ingredient_list": [
-   "flax (avocado and flaxseed oil)",
-   "avocado"
+   "avocado (avocado and flaxseed oil)"
   ],
   "jain_ok": true,
   "name": "Avocado and flaxseed oil (Avocado)",
   "nutrition": {
-   "carbs_g": 0.0,
-   "fat_g": 100.9,
-   "protein_g": 0.0,
-   "sugar_g": 0.0
+   "carbs_g": 8.7,
+   "fat_g": 15.1,
+   "protein_g": 2.0,
+   "sugar_g": 0.7
   },
   "organic_score": 0.127,
   "price_per_unit_inr": 156.24,
   "satvik_ok": true,
-  "variant_id": "b315-7581654f",
+  "variant_id": "b315-30eb1c54",
   "vegan": true
  },
  {
@@ -35983,7 +35911,7 @@
   "brand": "MockMart Reserve",
   "category": "oils",
   "diet_class": "vegan",
-  "embedding_text": "Avocado and flaxseed oil (Walnut oil). Category: oils. premium. Ingredients: flax (avocado and flaxseed oil), walnut. Also called: Avocado and flaxseed oil, flax seeds, alsi.",
+  "embedding_text": "Avocado and flaxseed oil (Walnut oil). Category: oils. premium. Ingredients: walnut (avocado and flaxseed oil). Also called: Avocado and flaxseed oil, akhrot.",
   "flags": [],
   "gi_label": "not_applicable",
   "gluten_free": true,
@@ -35992,21 +35920,20 @@
   "history_bucket": null,
   "icon": "oils",
   "ingredient_list": [
-   "flax (avocado and flaxseed oil)",
-   "walnut"
+   "walnut (avocado and flaxseed oil)"
   ],
   "jain_ok": true,
   "name": "Avocado and flaxseed oil (Walnut oil)",
   "nutrition": {
-   "carbs_g": 0.0,
-   "fat_g": 103.3,
-   "protein_g": 0.0,
-   "sugar_g": 0.0
+   "carbs_g": 13.3,
+   "fat_g": 67.2,
+   "protein_g": 15.4,
+   "sugar_g": 3.0
   },
   "organic_score": 0.101,
   "price_per_unit_inr": 171.39,
   "satvik_ok": true,
-  "variant_id": "b315-b89c484e",
+  "variant_id": "b315-0bd78d3b",
   "vegan": true
  },
  {
@@ -37089,9 +37016,7 @@
   "vegan": true
  },
  {
-  "allergens": [
-   "soy"
-  ],
+  "allergens": [],
   "attributes": {
    "organic": "no",
    "premium": "yes",
@@ -37102,31 +37027,30 @@
   "brand": "MockMart Reserve",
   "category": "meat",
   "diet_class": "vegan",
-  "embedding_text": "Plant-based meat (Jackfruit meat). Category: meat. premium. Ingredients: soy chunks (plant-based meat), jackfruit, salt. Also called: Plant-based meat, soya chunks.",
+  "embedding_text": "Plant-based meat (Jackfruit meat). Category: meat. premium. Ingredients: jackfruit (plant-based meat), salt. Also called: Plant-based meat, kathal, phanas.",
   "flags": [],
-  "gi_label": "medium",
+  "gi_label": "not_applicable",
   "gluten_free": true,
   "gourmet_score": 0.769,
   "halal_status": "not_applicable",
   "history_bucket": "kebabs",
   "icon": "meat",
   "ingredient_list": [
-   "soy chunks (plant-based meat)",
-   "jackfruit",
+   "jackfruit (plant-based meat)",
    "salt"
   ],
   "jain_ok": true,
   "name": "Plant-based meat (Jackfruit meat)",
   "nutrition": {
-   "carbs_g": 32.6,
-   "fat_g": 0.5,
-   "protein_g": 50.0,
-   "sugar_g": 1.0
+   "carbs_g": 0.0,
+   "fat_g": 8.2,
+   "protein_g": 21.2,
+   "sugar_g": 0.0
   },
   "organic_score": 0.256,
   "price_per_unit_inr": 70.46,
   "satvik_ok": true,
-  "variant_id": "b322-d27a40f9",
+  "variant_id": "b322-3880e24d",
   "vegan": true
  },
  {
@@ -37611,9 +37535,7 @@
   "vegan": false
  },
  {
-  "allergens": [
-   "milk"
-  ],
+  "allergens": [],
   "attributes": {
    "organic": "no",
    "premium": "no",
@@ -37623,11 +37545,9 @@
   "base_id": "B325",
   "brand": "MockMart Basics",
   "category": "beverages",
-  "diet_class": "vegetarian",
-  "embedding_text": "Protein and health shakes (Millet health drink). Category: beverages. regular. Ingredients: whey protein (protein and health shakes), millet, jaggery. Also called: Protein and health shakes.",
-  "flags": [
-   "dairy"
-  ],
+  "diet_class": "vegan",
+  "embedding_text": "Protein and health shakes (Millet health drink). Category: beverages. regular. Ingredients: millet (protein and health shakes), jaggery. Also called: Protein and health shakes, ragi, bajra, jowar.",
+  "flags": [],
   "gi_label": "low",
   "gluten_free": true,
   "gourmet_score": 0.102,
@@ -37635,23 +37555,22 @@
   "history_bucket": null,
   "icon": "beverages",
   "ingredient_list": [
-   "whey protein (protein and health shakes)",
-   "millet",
+   "millet (protein and health shakes)",
    "jaggery"
   ],
   "jain_ok": true,
   "name": "Protein and health shakes (Millet health drink)",
   "nutrition": {
-   "carbs_g": 8.3,
-   "fat_g": 5.0,
-   "protein_g": 71.7,
-   "sugar_g": 3.8
+   "carbs_g": 10.4,
+   "fat_g": 0.5,
+   "protein_g": 0.5,
+   "sugar_g": 8.6
   },
   "organic_score": 0.289,
   "price_per_unit_inr": 60.93,
   "satvik_ok": true,
-  "variant_id": "b325-da475cdb",
-  "vegan": false
+  "variant_id": "b325-1b433877",
+  "vegan": true
  },
  {
   "allergens": [],
@@ -37706,34 +37625,33 @@
   "brand": "MockMart Basics",
   "category": "beverages",
   "diet_class": "vegan",
-  "embedding_text": "Kombucha and fermented drinks (Kanji (carrot)). Category: beverages. regular. Ingredients: tea leaves (kombucha and fermented drinks), carrot, mustard seeds, salt. Also called: Kombucha and fermented drinks, chai patti, tea.",
+  "embedding_text": "Kombucha and fermented drinks (Kanji (carrot)). Category: beverages. regular. Ingredients: carrot (kombucha and fermented drinks), mustard seeds, salt. Also called: Kombucha and fermented drinks, gajar.",
   "flags": [
    "root_veg"
   ],
-  "gi_label": "not_applicable",
+  "gi_label": "low",
   "gluten_free": true,
   "gourmet_score": 0.118,
   "halal_status": "not_applicable",
   "history_bucket": null,
   "icon": "beverages",
   "ingredient_list": [
-   "tea leaves (kombucha and fermented drinks)",
-   "carrot",
+   "carrot (kombucha and fermented drinks)",
    "mustard seeds",
    "salt"
   ],
   "jain_ok": false,
   "name": "Kombucha and fermented drinks (Kanji (carrot))",
   "nutrition": {
-   "carbs_g": 0.0,
-   "fat_g": 0.0,
-   "protein_g": 0.0,
-   "sugar_g": 0.0
+   "carbs_g": 10.4,
+   "fat_g": 0.5,
+   "protein_g": 0.5,
+   "sugar_g": 8.7
   },
   "organic_score": 0.27,
   "price_per_unit_inr": 44.17,
   "satvik_ok": true,
-  "variant_id": "b326-bc419150",
+  "variant_id": "b326-b042f882",
   "vegan": true
  },
  {
@@ -37907,34 +37825,33 @@
   "brand": "MockMart Reserve",
   "category": "beverages",
   "diet_class": "vegetarian",
-  "embedding_text": "Hot chocolate and malt mix (Turmeric golden milk). Category: beverages. premium. Ingredients: cocoa (hot chocolate and malt mix), turmeric, milk powder, black pepper. Also called: Hot chocolate and malt mix, cacao.",
+  "embedding_text": "Hot chocolate and malt mix (Turmeric golden milk). Category: beverages. premium. Ingredients: turmeric (hot chocolate and malt mix), milk powder, black pepper. Also called: Hot chocolate and malt mix, haldi.",
   "flags": [
    "dairy"
   ],
-  "gi_label": "medium",
+  "gi_label": "low",
   "gluten_free": true,
   "gourmet_score": 0.884,
   "halal_status": "not_applicable",
   "history_bucket": "desserts",
   "icon": "beverages",
   "ingredient_list": [
-   "cocoa (hot chocolate and malt mix)",
-   "turmeric",
+   "turmeric (hot chocolate and malt mix)",
    "milk powder",
    "black pepper"
   ],
   "jain_ok": true,
   "name": "Hot chocolate and malt mix (Turmeric golden milk)",
   "nutrition": {
-   "carbs_g": 59.7,
-   "fat_g": 14.1,
-   "protein_g": 20.2,
-   "sugar_g": 2.0
+   "carbs_g": 10.3,
+   "fat_g": 0.5,
+   "protein_g": 0.5,
+   "sugar_g": 9.2
   },
   "organic_score": 0.159,
   "price_per_unit_inr": 45.05,
   "satvik_ok": true,
-  "variant_id": "b327-fd7273a1",
+  "variant_id": "b327-a008b566",
   "vegan": false
  },
  {
@@ -38181,30 +38098,29 @@
   "brand": "MockMart Gourmet",
   "category": "beverages",
   "diet_class": "vegan",
-  "embedding_text": "Green and herbal teas (Chamomile). Category: beverages. premium. Ingredients: tea leaves (green and herbal teas), chamomile. Also called: Green and herbal teas, chai patti, tea.",
+  "embedding_text": "Green and herbal teas (Chamomile). Category: beverages. premium. Ingredients: chamomile (green and herbal teas). Also called: Green and herbal teas.",
   "flags": [],
-  "gi_label": "not_applicable",
+  "gi_label": "low",
   "gluten_free": true,
   "gourmet_score": 0.779,
   "halal_status": "not_applicable",
   "history_bucket": null,
   "icon": "beverages",
   "ingredient_list": [
-   "tea leaves (green and herbal teas)",
-   "chamomile"
+   "chamomile (green and herbal teas)"
   ],
   "jain_ok": true,
   "name": "Green and herbal teas (Chamomile)",
   "nutrition": {
-   "carbs_g": 0.0,
-   "fat_g": 0.0,
-   "protein_g": 0.0,
-   "sugar_g": 0.0
+   "carbs_g": 9.6,
+   "fat_g": 0.5,
+   "protein_g": 0.5,
+   "sugar_g": 9.4
   },
   "organic_score": 0.12,
   "price_per_unit_inr": 78.12,
   "satvik_ok": true,
-  "variant_id": "b329-caf33ade",
+  "variant_id": "b329-70970361",
   "vegan": true
  },
  {
@@ -38257,30 +38173,29 @@
   "brand": "MockMart Gourmet",
   "category": "beverages",
   "diet_class": "vegan",
-  "embedding_text": "Green and herbal teas (Hibiscus). Category: beverages. premium. Ingredients: tea leaves (green and herbal teas), hibiscus. Also called: Green and herbal teas, chai patti, tea.",
+  "embedding_text": "Green and herbal teas (Hibiscus). Category: beverages. premium. Ingredients: hibiscus (green and herbal teas). Also called: Green and herbal teas.",
   "flags": [],
-  "gi_label": "not_applicable",
+  "gi_label": "low",
   "gluten_free": true,
   "gourmet_score": 0.809,
   "halal_status": "not_applicable",
   "history_bucket": null,
   "icon": "beverages",
   "ingredient_list": [
-   "tea leaves (green and herbal teas)",
-   "hibiscus"
+   "hibiscus (green and herbal teas)"
   ],
   "jain_ok": true,
   "name": "Green and herbal teas (Hibiscus)",
   "nutrition": {
-   "carbs_g": 0.0,
-   "fat_g": 0.0,
-   "protein_g": 0.0,
-   "sugar_g": 0.0
+   "carbs_g": 9.8,
+   "fat_g": 0.5,
+   "protein_g": 0.5,
+   "sugar_g": 8.8
   },
   "organic_score": 0.128,
   "price_per_unit_inr": 70.68,
   "satvik_ok": true,
-  "variant_id": "b329-7fde635b",
+  "variant_id": "b329-0ca96ce6",
   "vegan": true
  },
  {
@@ -38909,33 +38824,30 @@
   "brand": "MockMart Basics",
   "category": "snacks",
   "diet_class": "vegan",
-  "embedding_text": "Wafers and extruded snacks (Sabudana wafers). Category: snacks. regular. Ingredients: potato (wafers and extruded snacks), tapioca pearls, salt. Also called: Wafers and extruded snacks, batata, aloo.",
-  "flags": [
-   "root_veg"
-  ],
-  "gi_label": "low",
+  "embedding_text": "Wafers and extruded snacks (Sabudana wafers). Category: snacks. regular. Ingredients: tapioca pearls (wafers and extruded snacks), salt. Also called: Wafers and extruded snacks, sabudana.",
+  "flags": [],
+  "gi_label": "medium",
   "gluten_free": true,
   "gourmet_score": 0.102,
   "halal_status": "not_applicable",
   "history_bucket": null,
   "icon": "snacks",
   "ingredient_list": [
-   "potato (wafers and extruded snacks)",
-   "tapioca pearls",
+   "tapioca pearls (wafers and extruded snacks)",
    "salt"
   ],
-  "jain_ok": false,
+  "jain_ok": true,
   "name": "Wafers and extruded snacks (Sabudana wafers)",
   "nutrition": {
-   "carbs_g": 17.5,
-   "fat_g": 0.1,
-   "protein_g": 2.0,
-   "sugar_g": 1.0
+   "carbs_g": 56.6,
+   "fat_g": 23.9,
+   "protein_g": 9.8,
+   "sugar_g": 9.8
   },
   "organic_score": 0.168,
   "price_per_unit_inr": 35.76,
   "satvik_ok": true,
-  "variant_id": "b333-d5da97ea",
+  "variant_id": "b333-762f4789",
   "vegan": true
  },
  {
@@ -38950,34 +38862,31 @@
   "brand": "MockMart Select",
   "category": "snacks",
   "diet_class": "vegan",
-  "embedding_text": "Wafers and extruded snacks (Corn puffs). Category: snacks. regular. Ingredients: potato (wafers and extruded snacks), corn, palm oil, salt. Also called: Wafers and extruded snacks, batata, aloo.",
-  "flags": [
-   "root_veg"
-  ],
-  "gi_label": "low",
+  "embedding_text": "Wafers and extruded snacks (Corn puffs). Category: snacks. regular. Ingredients: corn (wafers and extruded snacks), palm oil, salt. Also called: Wafers and extruded snacks, makka, bhutta, sweet corn.",
+  "flags": [],
+  "gi_label": "medium",
   "gluten_free": true,
   "gourmet_score": 0.171,
   "halal_status": "not_applicable",
   "history_bucket": null,
   "icon": "snacks",
   "ingredient_list": [
-   "potato (wafers and extruded snacks)",
-   "corn",
+   "corn (wafers and extruded snacks)",
    "palm oil",
    "salt"
   ],
-  "jain_ok": false,
+  "jain_ok": true,
   "name": "Wafers and extruded snacks (Corn puffs)",
   "nutrition": {
-   "carbs_g": 16.5,
-   "fat_g": 0.1,
-   "protein_g": 2.1,
-   "sugar_g": 1.0
+   "carbs_g": 53.4,
+   "fat_g": 23.9,
+   "protein_g": 10.3,
+   "sugar_g": 9.8
   },
   "organic_score": 0.13,
   "price_per_unit_inr": 32.36,
   "satvik_ok": true,
-  "variant_id": "b333-c3341adb",
+  "variant_id": "b333-48d43a11",
   "vegan": true
  },
  {
@@ -38992,34 +38901,31 @@
   "brand": "MockMart Daily",
   "category": "snacks",
   "diet_class": "vegan",
-  "embedding_text": "Wafers and extruded snacks (Rice puffs masala). Category: snacks. regular. Ingredients: potato (wafers and extruded snacks), rice, palm oil, red chilli powder. Also called: Wafers and extruded snacks, batata, aloo.",
-  "flags": [
-   "root_veg"
-  ],
-  "gi_label": "low",
+  "embedding_text": "Wafers and extruded snacks (Rice puffs masala). Category: snacks. regular. Ingredients: rice (wafers and extruded snacks), palm oil, red chilli powder. Also called: Wafers and extruded snacks, chawal.",
+  "flags": [],
+  "gi_label": "medium",
   "gluten_free": true,
   "gourmet_score": 0.114,
   "halal_status": "not_applicable",
   "history_bucket": null,
   "icon": "snacks",
   "ingredient_list": [
-   "potato (wafers and extruded snacks)",
-   "rice",
+   "rice (wafers and extruded snacks)",
    "palm oil",
    "red chilli powder"
   ],
-  "jain_ok": false,
+  "jain_ok": true,
   "name": "Wafers and extruded snacks (Rice puffs masala)",
   "nutrition": {
-   "carbs_g": 16.9,
-   "fat_g": 0.1,
-   "protein_g": 1.9,
-   "sugar_g": 1.0
+   "carbs_g": 54.6,
+   "fat_g": 24.1,
+   "protein_g": 9.7,
+   "sugar_g": 10.2
   },
   "organic_score": 0.264,
   "price_per_unit_inr": 31.4,
   "satvik_ok": true,
-  "variant_id": "b333-14ef549e",
+  "variant_id": "b333-706421aa",
   "vegan": true
  },
  {
@@ -39404,7 +39310,7 @@
   "brand": "MockMart Daily",
   "category": "dairy",
   "diet_class": "vegan",
-  "embedding_text": "Plant-based cream (Soy cream). Category: dairy. regular. Ingredients: coconut (plant-based cream), soy. Also called: Plant-based cream, nariyal.",
+  "embedding_text": "Plant-based cream (Soy cream). Category: dairy. regular. Ingredients: soy (plant-based cream). Also called: Plant-based cream.",
   "flags": [],
   "gi_label": "low",
   "gluten_free": true,
@@ -39413,21 +39319,20 @@
   "history_bucket": "dairy",
   "icon": "dairy",
   "ingredient_list": [
-   "coconut (plant-based cream)",
-   "soy"
+   "soy (plant-based cream)"
   ],
   "jain_ok": true,
   "name": "Plant-based cream (Soy cream)",
   "nutrition": {
-   "carbs_g": 14.8,
-   "fat_g": 33.6,
-   "protein_g": 2.9,
-   "sugar_g": 6.2
+   "carbs_g": 4.9,
+   "fat_g": 3.6,
+   "protein_g": 3.4,
+   "sugar_g": 5.1
   },
   "organic_score": 0.156,
   "price_per_unit_inr": 41.12,
   "satvik_ok": true,
-  "variant_id": "b336-c658b982",
+  "variant_id": "b336-45bb4003",
   "vegan": true
  },
  {
@@ -39695,31 +39600,30 @@
   "brand": "MockMart Reserve",
   "category": "frozen",
   "diet_class": "vegan",
-  "embedding_text": "Dairy-free ice cream (Almond). Category: frozen. premium. Ingredients: coconut (dairy-free ice cream), almond, sugar. Also called: Dairy-free ice cream, nariyal.",
+  "embedding_text": "Dairy-free ice cream (Almond). Category: frozen. premium. Ingredients: almond (dairy-free ice cream), sugar. Also called: Dairy-free ice cream, badam.",
   "flags": [],
-  "gi_label": "low",
+  "gi_label": "medium",
   "gluten_free": true,
   "gourmet_score": 0.791,
   "halal_status": "not_applicable",
   "history_bucket": "desserts",
   "icon": "frozen",
   "ingredient_list": [
-   "coconut (dairy-free ice cream)",
-   "almond",
+   "almond (dairy-free ice cream)",
    "sugar"
   ],
   "jain_ok": true,
   "name": "Dairy-free ice cream (Almond)",
   "nutrition": {
-   "carbs_g": 24.9,
-   "fat_g": 32.5,
-   "protein_g": 3.1,
-   "sugar_g": 16.4
+   "carbs_g": 31.9,
+   "fat_g": 49.2,
+   "protein_g": 21.8,
+   "sugar_g": 14.3
   },
   "organic_score": 0.19,
   "price_per_unit_inr": 48.69,
   "satvik_ok": true,
-  "variant_id": "b339-f4e0557c",
+  "variant_id": "b339-6b5a2237",
   "vegan": true
  },
  {
@@ -39926,8 +39830,7 @@
  },
  {
   "allergens": [
-   "soy",
-   "tree_nut"
+   "soy"
   ],
   "attributes": {
    "organic": "no",
@@ -39939,7 +39842,7 @@
   "brand": "MockMart Gourmet",
   "category": "protein",
   "diet_class": "vegan",
-  "embedding_text": "Plant protein shakes (Soy). Category: protein. premium. Ingredients: almond (plant protein shakes), soy. Also called: Plant protein shakes, badam.",
+  "embedding_text": "Plant protein shakes (Soy). Category: protein. premium. Ingredients: soy (plant protein shakes). Also called: Plant protein shakes.",
   "flags": [],
   "gi_label": "low",
   "gluten_free": true,
@@ -39948,21 +39851,20 @@
   "history_bucket": null,
   "icon": "protein",
   "ingredient_list": [
-   "almond (plant protein shakes)",
-   "soy"
+   "soy (plant protein shakes)"
   ],
   "jain_ok": true,
   "name": "Plant protein shakes (Soy)",
   "nutrition": {
-   "carbs_g": 21.0,
-   "fat_g": 50.5,
-   "protein_g": 21.6,
-   "sugar_g": 3.9
+   "carbs_g": 7.6,
+   "fat_g": 6.1,
+   "protein_g": 41.2,
+   "sugar_g": 1.9
   },
   "organic_score": 0.228,
   "price_per_unit_inr": 56.12,
   "satvik_ok": true,
-  "variant_id": "b341-eb5d4f71",
+  "variant_id": "b341-917a6029",
   "vegan": true
  },
  {
@@ -40583,6 +40485,43 @@
   "price_per_unit_inr": 43.92,
   "satvik_ok": true,
   "variant_id": "b352-2304be1c",
+  "vegan": true
+ },
+ {
+  "allergens": [],
+  "attributes": {
+   "organic": "no",
+   "premium": "no",
+   "qualifiers": "fresh",
+   "variant": "Fresh"
+  },
+  "base_id": "B353",
+  "brand": "MockMart Basics",
+  "category": "vegetables",
+  "diet_class": "vegan",
+  "embedding_text": "Baby corn (Fresh). Category: vegetables. fresh. Ingredients: corn (baby corn, fresh). Also called: Baby corn, makka, bhutta, sweet corn.",
+  "flags": [],
+  "gi_label": "low",
+  "gluten_free": true,
+  "gourmet_score": 0.173,
+  "halal_status": "not_applicable",
+  "history_bucket": null,
+  "icon": "vegetables",
+  "ingredient_list": [
+   "corn (baby corn, fresh)"
+  ],
+  "jain_ok": true,
+  "name": "Baby corn (Fresh)",
+  "nutrition": {
+   "carbs_g": 6.2,
+   "fat_g": 0.3,
+   "protein_g": 2.0,
+   "sugar_g": 3.1
+  },
+  "organic_score": 0.17,
+  "price_per_unit_inr": 19.65,
+  "satvik_ok": true,
+  "variant_id": "b353-4c38a5ed",
   "vegan": true
  }
 ]

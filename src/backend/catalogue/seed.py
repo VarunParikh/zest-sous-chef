@@ -77,6 +77,7 @@ class VariantSpec:
     mult: float
     gourmet: bool
     organic: bool
+    replaces: str | None = None  # `!term`: this term replaces the base term as the first ingredient (C68)
 
 
 @dataclass(frozen=True)
@@ -89,6 +90,7 @@ class BaseProduct:
     packs: tuple[float, ...]
     ppu: float  # per 100 g, 100 ml or per piece
     variants: tuple[VariantSpec, ...]
+    carrier: bool = False  # `|carrier`: the base term really is in every variant, even one named after another ingredient (C68)
 
     @property
     def price_range(self) -> tuple[float, float]:
@@ -101,11 +103,12 @@ def _parse_variant(text: str) -> VariantSpec:
     items = [e.strip() for e in extras.split(",") if e.strip()]
     return VariantSpec(
         name=name.strip(),
-        extras=tuple(e for e in items if not e.startswith("=")),
+        extras=tuple(e for e in items if not e.startswith(("=", "!"))),
         qualifiers=tuple(e[1:].strip() for e in items if e.startswith("=")),
         mult=float(mult),
         gourmet="g" in flags,
         organic="o" in flags,
+        replaces=next((e[1:].strip() for e in items if e.startswith("!")), None),
     )
 
 
@@ -115,7 +118,7 @@ def load_taxonomy(folder: Path = MOCK / "taxonomy") -> list[BaseProduct]:
         for line in path.read_text().splitlines():
             if not line.strip():
                 continue
-            bid, cat, name, term, unit, packs, ppu, variants = line.strip().split("|")
+            bid, cat, name, term, unit, packs, ppu, variants, *marks = line.strip().split("|")
             out.append(
                 BaseProduct(
                     base_id=bid,
@@ -126,6 +129,7 @@ def load_taxonomy(folder: Path = MOCK / "taxonomy") -> list[BaseProduct]:
                     packs=tuple(sorted(float(p) for p in packs.split("/"))),
                     ppu=float(ppu),
                     variants=tuple(_parse_variant(v) for v in variants.split(";")),
+                    carrier="carrier" in marks,
                 )
             )
     return out

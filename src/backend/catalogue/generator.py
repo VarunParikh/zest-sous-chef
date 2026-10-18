@@ -76,12 +76,13 @@ def _ingredient_list(base: BaseProduct, spec: VariantSpec, replica: int) -> list
     quals = ([form] if form else []) + list(spec.qualifiers) + (["organic"] if spec.organic else []) + ([f"line {replica + 1}"] if replica else [])
     if base.term == "-":
         return [f"{NON_FOOD} ({base.name.lower()}, {spec.name.lower()}{', line ' + str(replica + 1) if replica else ''})"]
-    head = f"{base.term} ({', '.join(quals)})" if quals else base.term
+    term = spec.replaces or base.term  # C68: a replacing variant names its own first ingredient
+    head = f"{term} ({', '.join(quals)})" if quals else term
     return [head, *spec.extras]
 
 
 def _nutrition(base: BaseProduct, spec: VariantSpec, lexicon: Lexicon, rng: random.Random) -> Nutrition:
-    term = lexicon.canonical(base.term) or base.term
+    term = lexicon.canonical(spec.replaces or base.term) or spec.replaces or base.term
     carbs, sugar, protein, fat = NUTRITION_BY_TERM.get(term, NUTRITION_BY_CATEGORY[base.category])
     words = " ".join(spec.qualifiers + (spec.name.lower(),))
     if any(w in words for w in LOW_FAT):
@@ -165,7 +166,7 @@ def _variant(base: BaseProduct, spec: VariantSpec, replica: int, lexicon: Lexico
     name = f"{base.name} ({spec.name})" + (f" Line {replica + 1}" if replica else "")
     vid_hash = hashlib.sha1("|".join([base.base_id, spec.name, *items]).encode()).hexdigest()[:8]
     nutrition = _nutrition(base, spec, lexicon, rng)
-    term = lexicon.canonical(base.term)
+    term = lexicon.canonical(spec.replaces or base.term)
     also = [base.name] + (lexicon.entries[term].aliases if term else [])
     attributes = {
         "variant": spec.name,

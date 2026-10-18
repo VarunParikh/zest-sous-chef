@@ -1,4 +1,4 @@
-"""Data validators V1 to V14 (Data Model §13). Any FAIL fails the build.
+"""Data validators V1 to V17 (Data Model §13; V15 to V17 added by C68). Any FAIL fails the build.
 
 Statuses are real: PASS, FAIL or NOT RUN (a check whose input or dependency does
 not exist yet). They run on the generated JSON as shipped, not on in-memory
@@ -341,9 +341,84 @@ def v14(ctx: Context) -> Result:
                    f"{len(ctx.personas['personas'])} personas")
 
 
+def _term_names(ctx: Context) -> dict[str, str]:
+    """Every way a lexicon term is written: the term, its aliases and its ingredient synonyms."""
+    names = {}
+    for e in ctx.lexicon.entries.values():
+        for n in (e.term, *e.aliases):
+            names[n.lower()] = e.term
+    for s in ctx.synonyms:
+        if s.get("type") == "ingredient" and s["maps_to"] in ctx.lexicon.entries:
+            names.setdefault(s["query_term"].lower(), s["maps_to"])
+    return names
+
+
+def _named(text: str, names: dict[str, str]) -> set[str]:
+    t = text.lower()
+    return {term for n, term in names.items() if re.search(rf"\b{re.escape(n)}\b", t)}
+
+
+def v15(ctx: Context) -> Result:
+    """A variant named after an ingredient lists it first, unless its base product is declared a carrier (C68)."""
+    names, bases, errors = _term_names(ctx), {b.base_id: b for b in ctx.taxonomy}, []
+    for v in ctx.variants:
+        base = bases.get(v["base_id"])
+        if base is None or base.term == "-" or base.carrier:
+            continue
+        spec_name = v["attributes"]["variant"]
+        first = ctx.lexicon.canonical(v["ingredient_list"][0]) or strip_qualifier(v["ingredient_list"][0])
+        rest = {ctx.lexicon.canonical(i) or strip_qualifier(i) for i in v["ingredient_list"][1:]}
+        named = _named(spec_name, names) - {first}
+        if named & rest and first not in _named(f"{base.name} {spec_name}", names):
+            errors.append(f"{v['variant_id']} {v['name']}: named {sorted(named & rest)} but lists {first} first "
+                          "(use !term, or mark the base a carrier)")
+    return _result("V15", "Variant named after an ingredient lists it first (or its base is a carrier)", errors)
+
+
+NEGATIONS = (
+    (r"\begg alternatives?\b|\beggless\b|\begg[- ]free\b", "egg", lambda v: v["diet_class"] == "egg" or "egg" in v["allergens"]),
+    (r"\bdairy[- ]free\b|\bnon[- ]dairy\b|\bvegan\b|\bplant[- ]based\b", "vegan", lambda v: not v["vegan"]),
+    (r"\bgluten[- ]free\b", "gluten_free", lambda v: not v["gluten_free"]),
+    (r"\bsugar[- ]free\b|\bzero sugar\b", "no sugar", lambda v: any(strip_qualifier(i) == "sugar" for i in v["ingredient_list"])),
+)
+SOLID_FORMS = re.compile(r"\bcubes?\b|\btablets?\b")
+LIQUID_FORMS = re.compile(r"\bjuice\b|\bsyrups?\b|\bsquash\b|\bsharbat\b|\bkombucha\b")
+
+
+def v16(ctx: Context) -> Result:
+    """Names agree with tags and units (C68)."""
+    units: dict[str, set] = defaultdict(set)
+    for s in ctx.skus:
+        units[s["variant_id"]].add(s["pack"]["unit"])
+    errors = []
+    for v in ctx.variants:
+        name = v["name"].lower()
+        for pattern, meaning, broken in NEGATIONS:
+            if re.search(pattern, name) and broken(v):
+                errors.append(f"{v['variant_id']} {v['name']}: name implies {meaning}, tags disagree")
+        u = units.get(v["variant_id"], set())
+        if SOLID_FORMS.search(name) and "ml" in u:
+            errors.append(f"{v['variant_id']} {v['name']}: a cube or tablet sold in ml")
+        if LIQUID_FORMS.search(name) and u - {"ml"}:
+            errors.append(f"{v['variant_id']} {v['name']}: a liquid sold in {sorted(u - {'ml'})}")
+    return _result("V16", "Names agree with tags and units", errors)
+
+
+BULK_PIECES, MAX_PER_PIECE_INR = 10, 20
+
+
+def v17(ctx: Context) -> Result:
+    """A pack of 10 or more pieces costs at most ₹20 per piece (C68)."""
+    errors = [f"{s['sku_id']}: ₹{s['price_inr']} for {s['pack']['qty']:g} pieces (₹{s['price_inr'] / s['pack']['qty']:.1f} each)"
+              for s in ctx.skus if s["pack"]["unit"] == "piece" and s["pack"]["qty"] >= BULK_PIECES
+              and s["price_inr"] / s["pack"]["qty"] > MAX_PER_PIECE_INR]
+    return _result("V17", "Bulk packs at most ₹20 per piece", errors)
+
+
 VALIDATORS: dict[str, Callable[[Context], Result]] = {
     "V1": v1, "V2": v2, "V3": v3, "V4": v4, "V5": v5, "V6": v6, "V7": v7,
     "V8": v8, "V9": v9, "V10": v10, "V11": v11, "V12": v12, "V13": v13, "V14": v14,
+    "V15": v15, "V16": v16, "V17": v17,
 }
 
 

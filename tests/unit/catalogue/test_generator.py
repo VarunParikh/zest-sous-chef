@@ -116,3 +116,25 @@ def test_variant_names_agree_with_derived_tags(cat):
         if re.search(r"\((almond|oat|coconut)\)", n) and "soy" in v.allergens and "soy" not in n:
             bad.append(f"{v.name}: soy allergen")
     assert not bad, bad
+
+
+def test_c68_replace_marker_puts_the_named_term_first():
+    """C68: `!term` in a variant's extras replaces the base term as the first ingredient."""
+    from backend.catalogue.generator import _ingredient_list
+    from backend.catalogue.seed import BaseProduct, _parse_variant
+
+    spec = _parse_variant("Corn tortilla~!corn,sunflower oil~1.2~-")
+    assert spec.replaces == "corn" and spec.extras == ("sunflower oil",)
+    base = BaseProduct("B999", "bakery", "Tortilla and wraps", "wheat flour", "pc", (4.0,), 10.0, (spec,))
+    assert _ingredient_list(base, spec, 0) == ["corn (tortilla and wraps)", "sunflower oil"]
+    plain = _parse_variant("Plain~sunflower oil~1.0~-")
+    assert plain.replaces is None and _ingredient_list(base, plain, 0)[0] == "wheat flour (tortilla and wraps)"
+
+
+def test_c68_carrier_marker_is_parsed(tmp_path):
+    from backend.catalogue.seed import load_taxonomy as load
+
+    (tmp_path / "01_x.txt").write_text("B001|dairy|Flavoured yoghurt|curd|g|100|10|Mango~mango~1.0~-|carrier\n"
+                                       "B002|vegetables|Onion|onion|g|500|4|Red~=red~1.0~-\n")
+    a, b = load(tmp_path)
+    assert a.carrier is True and b.carrier is False

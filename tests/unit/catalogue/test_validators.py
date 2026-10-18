@@ -23,7 +23,7 @@ def _first(ctx, pred):
 
 def test_shipped_data_passes(base_ctx):
     results = run_all(base_ctx)
-    assert set(results) == {f"V{i}" for i in range(1, 15)}
+    assert set(results) == {f"V{i}" for i in range(1, 18)}
     failing = {k: r.errors[:5] for k, r in results.items() if r.status == "FAIL"}
     assert not failing
     assert results["V9"].status == "PASS"
@@ -157,3 +157,38 @@ def test_v12_unknown_expected_id(ctx, tmp_path, monkeypatch):
     monkeypatch.setattr(val, "RETRIEVAL_SET", bad)
     r = VALIDATORS["V12"](ctx)
     assert r.status == "FAIL" and len(r.errors) == 2
+
+
+def test_c68_v15_named_ingredient_not_first_fails_unless_carrier(ctx):
+    """V15 canary: a carrier base product (curd first, mango named) fails once it is no longer declared a carrier."""
+    import dataclasses
+
+    v = _first(ctx, lambda v: v["name"] == "Flavoured yoghurt (Mango)")
+    assert VALIDATORS["V15"](ctx).status == "PASS"
+    ctx.taxonomy = [dataclasses.replace(b, carrier=False) if b.base_id == v["base_id"] else b for b in ctx.taxonomy]
+    assert VALIDATORS["V15"](ctx).status == "FAIL"
+
+
+def test_c68_v16_negating_name_contradicting_tags_fails(ctx):
+    v = _first(ctx, lambda v: v["diet_class"] == "egg")
+    v["name"] = v["name"].split(" (")[0] + " (Eggless)"
+    assert VALIDATORS["V16"](ctx).status == "FAIL"
+
+
+def test_c68_v16_cube_sold_in_ml_fails(ctx):
+    v = _first(ctx, lambda v: any(s["variant_id"] == v["variant_id"] and s["pack"]["unit"] == "ml" for s in ctx.skus))
+    v["name"] = v["name"].split(" (")[0] + " (Cube)"
+    assert VALIDATORS["V16"](ctx).status == "FAIL"
+
+
+def test_c68_v16_juice_not_in_ml_fails(ctx):
+    v = _first(ctx, lambda v: any(s["variant_id"] == v["variant_id"] and s["pack"]["unit"] == "g" for s in ctx.skus))
+    v["name"] = v["name"].split(" (")[0] + " (Juice)"
+    assert VALIDATORS["V16"](ctx).status == "FAIL"
+
+
+def test_c68_v17_bulk_pack_over_20_per_piece_fails(ctx):
+    s = next(s for s in ctx.skus if s["pack"]["unit"] == "piece" and s["pack"]["qty"] >= 10)
+    assert VALIDATORS["V17"](ctx).status == "PASS"
+    s["price_inr"] = int(s["pack"]["qty"] * 21)
+    assert VALIDATORS["V17"](ctx).status == "FAIL"

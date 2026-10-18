@@ -12,15 +12,15 @@ B061|dairy|Khoya (mawa)|khoya|g|100/200|90|Plain~=plain~1.0~-;Danedar~=danedar~1
 B062|dairy|Eggs|egg|pc|6/12/30|8|White~=white~1.0~-;Brown~=brown~1.1~-;Free range~=free range~1.6~g;Omega-3~=omega~1.5~g
 B063|dairy|Condensed milk|milk|g|200/400|30|Sweetened~sugar~1.0~-;Low sugar~=low sugar~1.2~-
 B064|dairy|Milk powder|milk|g|200/500|45|Full cream~=full cream~1.0~-;Skimmed~=skimmed~0.9~-
-B065|dairy|Plant milk|soy milk|ml|200/1000|18|Soy~soy~1.0~-
-B066|dairy|Flavoured yoghurt|curd|g|100/200|22|Mango~mango,sugar~1.0~-;Strawberry~strawberry,sugar~1.0~-;Plain no sugar~=plain~0.8~-
-B067|dairy|Lassi|curd|ml|200/500|10|Sweet~sugar~1.0~-;Salted~salt~1.0~-;Mango~mango,sugar~1.2~-
+B065|dairy|Plant milk|soy milk|ml|200/1000|18|Soy~soy~1.0~-|carrier
+B066|dairy|Flavoured yoghurt|curd|g|100/200|22|Mango~mango,sugar~1.0~-;Strawberry~strawberry,sugar~1.0~-;Plain no sugar~=plain~0.8~-|carrier
+B067|dairy|Lassi|curd|ml|200/500|10|Sweet~sugar~1.0~-;Salted~salt~1.0~-;Mango~mango,sugar~1.2~-|carrier
 B068|dairy|Paneer cubes (ready)|paneer|g|200|40|Plain~=plain~1.0~-;Tikka marinated~curd,red chilli powder,salt~1.4~g
 B069|bakery|Bread|bread loaf|g|400/700|9|White~refined flour,yeast,sugar,salt~1.0~-;Brown (wheat blend)~wheat flour,refined flour,yeast,sugar,salt~1.1~-;Whole wheat~wheat flour,yeast,salt~1.25~-;High protein~wheat flour,whey protein,yeast,salt~1.6~g;Multigrain~wheat flour,oats,sesame seeds,yeast,salt~1.5~g
 B070|bakery|Pav|bread rolls|pc|6/12|5|Soft~refined flour,milk,yeast,sugar,salt~1.0~-;Eggless~refined flour,yeast,sugar,salt~1.0~-;Whole wheat~wheat flour,yeast,salt~1.3~-
 B071|bakery|Burger buns|bread rolls|pc|4/6|8|Plain~refined flour,milk,yeast,sugar~1.0~-;Sesame~refined flour,milk,yeast,sesame seeds~1.15~-;Whole wheat~wheat flour,yeast~1.3~-
-B072|bakery|Rusk|bread loaf|g|200/400|12|Plain~refined flour,sugar,yeast~1.0~-;Elaichi~refined flour,sugar,yeast,cardamom~1.15~-;Atta~wheat flour,sugar,yeast~1.2~-
-B073|bakery|Naan|bread rolls|pc|2/4|14|Plain~refined flour,curd,yeast~1.0~-;Garlic~refined flour,curd,garlic~1.2~-;Butter~refined flour,curd,butter~1.25~-
+B072|bakery|Rusk|bread loaf|g|200/400|12|Plain~refined flour,sugar,yeast~1.0~-;Elaichi~refined flour,sugar,yeast,cardamom~1.15~-;Atta~wheat flour,sugar,yeast~1.2~-|carrier
+B073|bakery|Naan|bread rolls|pc|2/4|14|Plain~refined flour,curd,yeast~1.0~-;Garlic~refined flour,curd,garlic~1.2~-;Butter~refined flour,curd,butter~1.25~-|carrier
 B074|bakery|Chapati (ready)|wheat flour|pc|6/12|6|Plain~water,salt~1.0~-;Multigrain~oats,water,salt~1.3~-
 B075|bakery|Pizza base|refined flour|pc|2|25|Regular~yeast,salt~1.0~-;Whole wheat~=wheat,yeast,salt~1.3~-
 B076|bakery|Cake sponge|refined flour|g|250|15|Vanilla~egg,sugar,butter~1.0~-;Eggless vanilla~sugar,sunflower oil~1.0~-

@@ -2370,28 +2370,6 @@
    "qty": 2.0,
    "unit": "piece"
   },
-  "price_inr": 47,
-  "sku_id": "b036-032f40c1-2pc",
-  "stock_count": 17,
-  "variant_id": "b036-032f40c1"
- },
- {
-  "dark_store_ok": true,
-  "pack": {
-   "qty": 4.0,
-   "unit": "piece"
-  },
-  "price_inr": 91,
-  "sku_id": "b036-032f40c1-4pc",
-  "stock_count": 29,
-  "variant_id": "b036-032f40c1"
- },
- {
-  "dark_store_ok": true,
-  "pack": {
-   "qty": 2.0,
-   "unit": "piece"
-  },
   "price_inr": 35,
   "sku_id": "b036-9cee70ca-2pc",
   "stock_count": 38,
@@ -6100,9 +6078,9 @@
    "unit": "g"
   },
   "price_inr": 22,
-  "sku_id": "b091-b6832261-150g",
-  "stock_count": 30,
-  "variant_id": "b091-b6832261"
+  "sku_id": "b091-418950a4-150g",
+  "stock_count": 24,
+  "variant_id": "b091-418950a4"
  },
  {
   "dark_store_ok": true,
@@ -6111,9 +6089,9 @@
    "unit": "g"
   },
   "price_inr": 56,
-  "sku_id": "b091-b6832261-400g",
-  "stock_count": 16,
-  "variant_id": "b091-b6832261"
+  "sku_id": "b091-418950a4-400g",
+  "stock_count": 53,
+  "variant_id": "b091-418950a4"
  },
  {
   "dark_store_ok": true,
@@ -9411,9 +9389,9 @@
    "unit": "ml"
   },
   "price_inr": 18,
-  "sku_id": "b158-0cc36eb2-200ml",
-  "stock_count": 0,
-  "variant_id": "b158-0cc36eb2"
+  "sku_id": "b158-3eceb317-200ml",
+  "stock_count": 39,
+  "variant_id": "b158-3eceb317"
  },
  {
   "dark_store_ok": true,
@@ -9422,9 +9400,9 @@
    "unit": "ml"
   },
   "price_inr": 87,
-  "sku_id": "b158-0cc36eb2-1000ml",
-  "stock_count": 42,
-  "variant_id": "b158-0cc36eb2"
+  "sku_id": "b158-3eceb317-1000ml",
+  "stock_count": 35,
+  "variant_id": "b158-3eceb317"
  },
  {
   "dark_store_ok": true,
@@ -9433,9 +9411,9 @@
    "unit": "ml"
   },
   "price_inr": 19,
-  "sku_id": "b158-6f071db1-200ml",
-  "stock_count": 3,
-  "variant_id": "b158-6f071db1"
+  "sku_id": "b158-8791e8f3-200ml",
+  "stock_count": 4,
+  "variant_id": "b158-8791e8f3"
  },
  {
   "dark_store_ok": true,
@@ -9444,9 +9422,9 @@
    "unit": "ml"
   },
   "price_inr": 89,
-  "sku_id": "b158-6f071db1-1000ml",
-  "stock_count": 39,
-  "variant_id": "b158-6f071db1"
+  "sku_id": "b158-8791e8f3-1000ml",
+  "stock_count": 46,
+  "variant_id": "b158-8791e8f3"
  },
  {
   "dark_store_ok": true,
@@ -9609,9 +9587,9 @@
    "unit": "ml"
   },
   "price_inr": 13,
-  "sku_id": "b160-8d0d63b1-250ml",
-  "stock_count": 33,
-  "variant_id": "b160-8d0d63b1"
+  "sku_id": "b160-0e57ae69-250ml",
+  "stock_count": 21,
+  "variant_id": "b160-0e57ae69"
  },
  {
   "dark_store_ok": true,
@@ -9620,9 +9598,9 @@
    "unit": "ml"
   },
   "price_inr": 37,
-  "sku_id": "b160-8d0d63b1-750ml",
-  "stock_count": 31,
-  "variant_id": "b160-8d0d63b1"
+  "sku_id": "b160-0e57ae69-750ml",
+  "stock_count": 53,
+  "variant_id": "b160-0e57ae69"
  },
  {
   "dark_store_ok": true,
@@ -9631,9 +9609,9 @@
    "unit": "ml"
   },
   "price_inr": 93,
-  "sku_id": "b160-8d0d63b1-2000ml",
-  "stock_count": 26,
-  "variant_id": "b160-8d0d63b1"
+  "sku_id": "b160-0e57ae69-2000ml",
+  "stock_count": 48,
+  "variant_id": "b160-0e57ae69"
  },
  {
   "dark_store_ok": true,
@@ -9840,9 +9818,9 @@
    "unit": "ml"
   },
   "price_inr": 56,
-  "sku_id": "b164-41da501a-250ml",
-  "stock_count": 18,
-  "variant_id": "b164-41da501a"
+  "sku_id": "b164-0543e438-250ml",
+  "stock_count": 14,
+  "variant_id": "b164-0543e438"
  },
  {
   "dark_store_ok": true,
@@ -10192,9 +10170,9 @@
    "unit": "g"
   },
   "price_inr": 58,
-  "sku_id": "b171-2a648201-200g",
-  "stock_count": 54,
-  "variant_id": "b171-2a648201"
+  "sku_id": "b171-03ba8dbd-200g",
+  "stock_count": 57,
+  "variant_id": "b171-03ba8dbd"
  },
  {
   "dark_store_ok": true,
@@ -10203,9 +10181,9 @@
    "unit": "g"
   },
   "price_inr": 138,
-  "sku_id": "b171-2a648201-500g",
-  "stock_count": 42,
-  "variant_id": "b171-2a648201"
+  "sku_id": "b171-03ba8dbd-500g",
+  "stock_count": 29,
+  "variant_id": "b171-03ba8dbd"
  },
  {
   "dark_store_ok": true,
@@ -10467,9 +10445,9 @@
    "unit": "g"
   },
   "price_inr": 58,
-  "sku_id": "b177-a0de7dde-200g",
-  "stock_count": 20,
-  "variant_id": "b177-a0de7dde"
+  "sku_id": "b177-ef9a2482-200g",
+  "stock_count": 26,
+  "variant_id": "b177-ef9a2482"
  },
  {
   "dark_store_ok": true,
@@ -10478,9 +10456,9 @@
    "unit": "g"
   },
   "price_inr": 112,
-  "sku_id": "b177-a0de7dde-400g",
-  "stock_count": 31,
-  "variant_id": "b177-a0de7dde"
+  "sku_id": "b177-ef9a2482-400g",
+  "stock_count": 10,
+  "variant_id": "b177-ef9a2482"
  },
  {
   "dark_store_ok": true,
@@ -10709,9 +10687,9 @@
    "unit": "g"
   },
   "price_inr": 89,
-  "sku_id": "b181-8aaade85-50g",
-  "stock_count": 12,
-  "variant_id": "b181-8aaade85"
+  "sku_id": "b181-7673228c-50g",
+  "stock_count": 39,
+  "variant_id": "b181-7673228c"
  },
  {
   "dark_store_ok": true,
@@ -10720,9 +10698,9 @@
    "unit": "g"
   },
   "price_inr": 170,
-  "sku_id": "b181-8aaade85-100g",
-  "stock_count": 24,
-  "variant_id": "b181-8aaade85"
+  "sku_id": "b181-7673228c-100g",
+  "stock_count": 47,
+  "variant_id": "b181-7673228c"
  },
  {
   "dark_store_ok": true,
@@ -11044,15 +11022,15 @@
   "variant_id": "b187-6b6b4605"
  },
  {
-  "dark_store_ok": true,
+  "dark_store_ok": false,
   "pack": {
    "qty": 200.0,
    "unit": "g"
   },
   "price_inr": 43,
-  "sku_id": "b187-3badd1e6-200g",
-  "stock_count": 40,
-  "variant_id": "b187-3badd1e6"
+  "sku_id": "b187-8bc49913-200g",
+  "stock_count": 54,
+  "variant_id": "b187-8bc49913"
  },
  {
   "dark_store_ok": true,
@@ -11061,9 +11039,9 @@
    "unit": "g"
   },
   "price_inr": 103,
-  "sku_id": "b187-3badd1e6-500g",
-  "stock_count": 46,
-  "variant_id": "b187-3badd1e6"
+  "sku_id": "b187-8bc49913-500g",
+  "stock_count": 7,
+  "variant_id": "b187-8bc49913"
  },
  {
   "dark_store_ok": true,
@@ -11094,9 +11072,9 @@
    "unit": "g"
   },
   "price_inr": 47,
-  "sku_id": "b187-eda88379-200g",
-  "stock_count": 28,
-  "variant_id": "b187-eda88379"
+  "sku_id": "b187-b6ad329a-200g",
+  "stock_count": 48,
+  "variant_id": "b187-b6ad329a"
  },
  {
   "dark_store_ok": true,
@@ -11105,9 +11083,9 @@
    "unit": "g"
   },
   "price_inr": 113,
-  "sku_id": "b187-eda88379-500g",
-  "stock_count": 44,
-  "variant_id": "b187-eda88379"
+  "sku_id": "b187-b6ad329a-500g",
+  "stock_count": 0,
+  "variant_id": "b187-b6ad329a"
  },
  {
   "dark_store_ok": true,
@@ -11442,22 +11420,22 @@
  {
   "dark_store_ok": true,
   "pack": {
-   "qty": 250.0,
-   "unit": "ml"
+   "qty": 6.0,
+   "unit": "piece"
   },
-  "price_inr": 141,
-  "sku_id": "b195-5b051d25-250ml",
+  "price_inr": 62,
+  "sku_id": "b195-5b051d25-6pc",
   "stock_count": 31,
   "variant_id": "b195-5b051d25"
  },
  {
   "dark_store_ok": true,
   "pack": {
-   "qty": 500.0,
-   "unit": "ml"
+   "qty": 12.0,
+   "unit": "piece"
   },
-  "price_inr": 271,
-  "sku_id": "b195-5b051d25-500ml",
+  "price_inr": 118,
+  "sku_id": "b195-5b051d25-12pc",
   "stock_count": 11,
   "variant_id": "b195-5b051d25"
  },
@@ -11512,9 +11490,9 @@
    "unit": "g"
   },
   "price_inr": 17,
-  "sku_id": "b196-1e19d888-50g",
-  "stock_count": 13,
-  "variant_id": "b196-1e19d888"
+  "sku_id": "b196-b308c227-50g",
+  "stock_count": 0,
+  "variant_id": "b196-b308c227"
  },
  {
   "dark_store_ok": true,
@@ -11523,9 +11501,9 @@
    "unit": "g"
   },
   "price_inr": 34,
-  "sku_id": "b196-1e19d888-100g",
+  "sku_id": "b196-b308c227-100g",
   "stock_count": 38,
-  "variant_id": "b196-1e19d888"
+  "variant_id": "b196-b308c227"
  },
  {
   "dark_store_ok": true,
@@ -11952,9 +11930,9 @@
    "unit": "g"
   },
   "price_inr": 64,
-  "sku_id": "b204-9c4ea647-100g",
-  "stock_count": 11,
-  "variant_id": "b204-9c4ea647"
+  "sku_id": "b204-9a0f95d9-100g",
+  "stock_count": 39,
+  "variant_id": "b204-9a0f95d9"
  },
  {
   "dark_store_ok": true,
@@ -11963,20 +11941,20 @@
    "unit": "g"
   },
   "price_inr": 123,
-  "sku_id": "b204-9c4ea647-200g",
-  "stock_count": 58,
-  "variant_id": "b204-9c4ea647"
+  "sku_id": "b204-9a0f95d9-200g",
+  "stock_count": 49,
+  "variant_id": "b204-9a0f95d9"
  },
  {
-  "dark_store_ok": true,
+  "dark_store_ok": false,
   "pack": {
    "qty": 100.0,
    "unit": "g"
   },
   "price_inr": 42,
-  "sku_id": "b204-b387cdbe-100g",
-  "stock_count": 41,
-  "variant_id": "b204-b387cdbe"
+  "sku_id": "b204-e17be402-100g",
+  "stock_count": 13,
+  "variant_id": "b204-e17be402"
  },
  {
   "dark_store_ok": true,
@@ -11985,9 +11963,9 @@
    "unit": "g"
   },
   "price_inr": 81,
-  "sku_id": "b204-b387cdbe-200g",
-  "stock_count": 52,
-  "variant_id": "b204-b387cdbe"
+  "sku_id": "b204-e17be402-200g",
+  "stock_count": 0,
+  "variant_id": "b204-e17be402"
  },
  {
   "dark_store_ok": true,
@@ -12573,15 +12551,15 @@
   "variant_id": "b216-b2b122a5"
  },
  {
-  "dark_store_ok": true,
+  "dark_store_ok": false,
   "pack": {
    "qty": 50.0,
    "unit": "g"
   },
   "price_inr": 12,
-  "sku_id": "b216-720c84dc-50g",
-  "stock_count": 46,
-  "variant_id": "b216-720c84dc"
+  "sku_id": "b216-87cb70d0-50g",
+  "stock_count": 23,
+  "variant_id": "b216-87cb70d0"
  },
  {
   "dark_store_ok": true,
@@ -12590,9 +12568,9 @@
    "unit": "g"
   },
   "price_inr": 24,
-  "sku_id": "b216-720c84dc-100g",
-  "stock_count": 21,
-  "variant_id": "b216-720c84dc"
+  "sku_id": "b216-87cb70d0-100g",
+  "stock_count": 58,
+  "variant_id": "b216-87cb70d0"
  },
  {
   "dark_store_ok": true,
@@ -12601,9 +12579,9 @@
    "unit": "g"
   },
   "price_inr": 14,
-  "sku_id": "b216-c5e2e517-50g",
-  "stock_count": 38,
-  "variant_id": "b216-c5e2e517"
+  "sku_id": "b216-d24871e1-50g",
+  "stock_count": 52,
+  "variant_id": "b216-d24871e1"
  },
  {
   "dark_store_ok": true,
@@ -12612,9 +12590,9 @@
    "unit": "g"
   },
   "price_inr": 27,
-  "sku_id": "b216-c5e2e517-100g",
-  "stock_count": 0,
-  "variant_id": "b216-c5e2e517"
+  "sku_id": "b216-d24871e1-100g",
+  "stock_count": 20,
+  "variant_id": "b216-d24871e1"
  },
  {
   "dark_store_ok": true,
@@ -12754,7 +12732,7 @@
    "qty": 30.0,
    "unit": "piece"
   },
-  "price_inr": 1218,
+  "price_inr": 40,
   "sku_id": "b223-846939e9-30pc",
   "stock_count": 34,
   "variant_id": "b223-846939e9"
@@ -15725,9 +15703,9 @@
    "unit": "g"
   },
   "price_inr": 54,
-  "sku_id": "b259-c4b37e7e-250g",
-  "stock_count": 28,
-  "variant_id": "b259-c4b37e7e"
+  "sku_id": "b259-089b352d-250g",
+  "stock_count": 3,
+  "variant_id": "b259-089b352d"
  },
  {
   "dark_store_ok": true,
@@ -15736,9 +15714,9 @@
    "unit": "g"
   },
   "price_inr": 104,
-  "sku_id": "b259-c4b37e7e-500g",
-  "stock_count": 52,
-  "variant_id": "b259-c4b37e7e"
+  "sku_id": "b259-089b352d-500g",
+  "stock_count": 43,
+  "variant_id": "b259-089b352d"
  },
  {
   "dark_store_ok": true,
@@ -15747,9 +15725,9 @@
    "unit": "g"
   },
   "price_inr": 54,
-  "sku_id": "b259-970fd7cf-250g",
-  "stock_count": 47,
-  "variant_id": "b259-970fd7cf"
+  "sku_id": "b259-ae3d0195-250g",
+  "stock_count": 57,
+  "variant_id": "b259-ae3d0195"
  },
  {
   "dark_store_ok": true,
@@ -15758,9 +15736,9 @@
    "unit": "g"
   },
   "price_inr": 103,
-  "sku_id": "b259-970fd7cf-500g",
-  "stock_count": 31,
-  "variant_id": "b259-970fd7cf"
+  "sku_id": "b259-ae3d0195-500g",
+  "stock_count": 48,
+  "variant_id": "b259-ae3d0195"
  },
  {
   "dark_store_ok": true,
@@ -16407,9 +16385,9 @@
    "unit": "g"
   },
   "price_inr": 199,
-  "sku_id": "b267-406a3921-200g",
-  "stock_count": 30,
-  "variant_id": "b267-406a3921"
+  "sku_id": "b267-8df3c34a-200g",
+  "stock_count": 7,
+  "variant_id": "b267-8df3c34a"
  },
  {
   "dark_store_ok": true,
@@ -16418,9 +16396,9 @@
    "unit": "g"
   },
   "price_inr": 382,
-  "sku_id": "b267-406a3921-400g",
-  "stock_count": 15,
-  "variant_id": "b267-406a3921"
+  "sku_id": "b267-8df3c34a-400g",
+  "stock_count": 32,
+  "variant_id": "b267-8df3c34a"
  },
  {
   "dark_store_ok": true,
@@ -16429,9 +16407,9 @@
    "unit": "g"
   },
   "price_inr": 126,
-  "sku_id": "b267-67e15522-200g",
-  "stock_count": 12,
-  "variant_id": "b267-67e15522"
+  "sku_id": "b267-6123edf7-200g",
+  "stock_count": 17,
+  "variant_id": "b267-6123edf7"
  },
  {
   "dark_store_ok": true,
@@ -16440,9 +16418,9 @@
    "unit": "g"
   },
   "price_inr": 242,
-  "sku_id": "b267-67e15522-400g",
-  "stock_count": 33,
-  "variant_id": "b267-67e15522"
+  "sku_id": "b267-6123edf7-400g",
+  "stock_count": 43,
+  "variant_id": "b267-6123edf7"
  },
  {
   "dark_store_ok": true,
@@ -16451,9 +16429,9 @@
    "unit": "g"
   },
   "price_inr": 120,
-  "sku_id": "b267-e9c237f5-200g",
-  "stock_count": 41,
-  "variant_id": "b267-e9c237f5"
+  "sku_id": "b267-0d1268a1-200g",
+  "stock_count": 49,
+  "variant_id": "b267-0d1268a1"
  },
  {
   "dark_store_ok": true,
@@ -16462,9 +16440,9 @@
    "unit": "g"
   },
   "price_inr": 231,
-  "sku_id": "b267-e9c237f5-400g",
-  "stock_count": 34,
-  "variant_id": "b267-e9c237f5"
+  "sku_id": "b267-0d1268a1-400g",
+  "stock_count": 33,
+  "variant_id": "b267-0d1268a1"
  },
  {
   "dark_store_ok": true,
@@ -16473,9 +16451,9 @@
    "unit": "g"
   },
   "price_inr": 104,
-  "sku_id": "b267-2f1d7594-200g",
-  "stock_count": 3,
-  "variant_id": "b267-2f1d7594"
+  "sku_id": "b267-a7eb7a6e-200g",
+  "stock_count": 38,
+  "variant_id": "b267-a7eb7a6e"
  },
  {
   "dark_store_ok": true,
@@ -16484,9 +16462,9 @@
    "unit": "g"
   },
   "price_inr": 200,
-  "sku_id": "b267-2f1d7594-400g",
-  "stock_count": 36,
-  "variant_id": "b267-2f1d7594"
+  "sku_id": "b267-a7eb7a6e-400g",
+  "stock_count": 20,
+  "variant_id": "b267-a7eb7a6e"
  },
  {
   "dark_store_ok": true,
@@ -17067,9 +17045,9 @@
    "unit": "piece"
   },
   "price_inr": 35,
-  "sku_id": "b274-f7f40205-4pc",
-  "stock_count": 58,
-  "variant_id": "b274-f7f40205"
+  "sku_id": "b274-0b32fb99-4pc",
+  "stock_count": 38,
+  "variant_id": "b274-0b32fb99"
  },
  {
   "dark_store_ok": true,
@@ -17078,9 +17056,9 @@
    "unit": "piece"
   },
   "price_inr": 67,
-  "sku_id": "b274-f7f40205-8pc",
-  "stock_count": 20,
-  "variant_id": "b274-f7f40205"
+  "sku_id": "b274-0b32fb99-8pc",
+  "stock_count": 0,
+  "variant_id": "b274-0b32fb99"
  },
  {
   "dark_store_ok": true,
@@ -18343,9 +18321,9 @@
    "unit": "g"
   },
   "price_inr": 58,
-  "sku_id": "b289-fdce11fc-200g",
-  "stock_count": 35,
-  "variant_id": "b289-fdce11fc"
+  "sku_id": "b289-09991810-200g",
+  "stock_count": 40,
+  "variant_id": "b289-09991810"
  },
  {
   "dark_store_ok": true,
@@ -18354,9 +18332,9 @@
    "unit": "g"
   },
   "price_inr": 111,
-  "sku_id": "b289-fdce11fc-400g",
-  "stock_count": 30,
-  "variant_id": "b289-fdce11fc"
+  "sku_id": "b289-09991810-400g",
+  "stock_count": 11,
+  "variant_id": "b289-09991810"
  },
  {
   "dark_store_ok": true,
@@ -18981,9 +18959,9 @@
    "unit": "g"
   },
   "price_inr": 29,
-  "sku_id": "b297-8d691934-250g",
-  "stock_count": 23,
-  "variant_id": "b297-8d691934"
+  "sku_id": "b297-a5f9f327-250g",
+  "stock_count": 17,
+  "variant_id": "b297-a5f9f327"
  },
  {
   "dark_store_ok": true,
@@ -18992,9 +18970,9 @@
    "unit": "g"
   },
   "price_inr": 56,
-  "sku_id": "b297-8d691934-500g",
-  "stock_count": 34,
-  "variant_id": "b297-8d691934"
+  "sku_id": "b297-a5f9f327-500g",
+  "stock_count": 58,
+  "variant_id": "b297-a5f9f327"
  },
  {
   "dark_store_ok": true,
@@ -20493,15 +20471,15 @@
   "variant_id": "b314-3b05ede4"
  },
  {
-  "dark_store_ok": false,
+  "dark_store_ok": true,
   "pack": {
    "qty": 100.0,
    "unit": "ml"
   },
   "price_inr": 156,
-  "sku_id": "b315-7581654f-100ml",
-  "stock_count": 35,
-  "variant_id": "b315-7581654f"
+  "sku_id": "b315-30eb1c54-100ml",
+  "stock_count": 12,
+  "variant_id": "b315-30eb1c54"
  },
  {
   "dark_store_ok": true,
@@ -20510,9 +20488,9 @@
    "unit": "ml"
   },
   "price_inr": 375,
-  "sku_id": "b315-7581654f-250ml",
-  "stock_count": 15,
-  "variant_id": "b315-7581654f"
+  "sku_id": "b315-30eb1c54-250ml",
+  "stock_count": 18,
+  "variant_id": "b315-30eb1c54"
  },
  {
   "dark_store_ok": true,
@@ -20543,9 +20521,9 @@
    "unit": "ml"
   },
   "price_inr": 171,
-  "sku_id": "b315-b89c484e-100ml",
-  "stock_count": 50,
-  "variant_id": "b315-b89c484e"
+  "sku_id": "b315-0bd78d3b-100ml",
+  "stock_count": 0,
+  "variant_id": "b315-0bd78d3b"
  },
  {
   "dark_store_ok": true,
@@ -20554,9 +20532,9 @@
    "unit": "ml"
   },
   "price_inr": 411,
-  "sku_id": "b315-b89c484e-250ml",
-  "stock_count": 49,
-  "variant_id": "b315-b89c484e"
+  "sku_id": "b315-0bd78d3b-250ml",
+  "stock_count": 60,
+  "variant_id": "b315-0bd78d3b"
  },
  {
   "dark_store_ok": true,
@@ -21137,9 +21115,9 @@
    "unit": "g"
   },
   "price_inr": 141,
-  "sku_id": "b322-d27a40f9-200g",
-  "stock_count": 24,
-  "variant_id": "b322-d27a40f9"
+  "sku_id": "b322-3880e24d-200g",
+  "stock_count": 0,
+  "variant_id": "b322-3880e24d"
  },
  {
   "dark_store_ok": true,
@@ -21148,9 +21126,9 @@
    "unit": "g"
   },
   "price_inr": 271,
-  "sku_id": "b322-d27a40f9-400g",
-  "stock_count": 32,
-  "variant_id": "b322-d27a40f9"
+  "sku_id": "b322-3880e24d-400g",
+  "stock_count": 39,
+  "variant_id": "b322-3880e24d"
  },
  {
   "dark_store_ok": true,
@@ -21368,9 +21346,9 @@
    "unit": "ml"
   },
   "price_inr": 122,
-  "sku_id": "b325-da475cdb-200ml",
-  "stock_count": 53,
-  "variant_id": "b325-da475cdb"
+  "sku_id": "b325-1b433877-200ml",
+  "stock_count": 18,
+  "variant_id": "b325-1b433877"
  },
  {
   "dark_store_ok": true,
@@ -21379,9 +21357,9 @@
    "unit": "ml"
   },
   "price_inr": 193,
-  "sku_id": "b325-da475cdb-330ml",
-  "stock_count": 39,
-  "variant_id": "b325-da475cdb"
+  "sku_id": "b325-1b433877-330ml",
+  "stock_count": 0,
+  "variant_id": "b325-1b433877"
  },
  {
   "dark_store_ok": true,
@@ -21406,15 +21384,15 @@
   "variant_id": "b326-20c01885"
  },
  {
-  "dark_store_ok": true,
+  "dark_store_ok": false,
   "pack": {
    "qty": 250.0,
    "unit": "ml"
   },
   "price_inr": 110,
-  "sku_id": "b326-bc419150-250ml",
-  "stock_count": 31,
-  "variant_id": "b326-bc419150"
+  "sku_id": "b326-b042f882-250ml",
+  "stock_count": 48,
+  "variant_id": "b326-b042f882"
  },
  {
   "dark_store_ok": true,
@@ -21423,9 +21401,9 @@
    "unit": "ml"
   },
   "price_inr": 140,
-  "sku_id": "b326-bc419150-330ml",
-  "stock_count": 13,
-  "variant_id": "b326-bc419150"
+  "sku_id": "b326-b042f882-330ml",
+  "stock_count": 0,
+  "variant_id": "b326-b042f882"
  },
  {
   "dark_store_ok": true,
@@ -21522,20 +21500,20 @@
    "unit": "g"
   },
   "price_inr": 90,
-  "sku_id": "b327-fd7273a1-200g",
-  "stock_count": 26,
-  "variant_id": "b327-fd7273a1"
+  "sku_id": "b327-a008b566-200g",
+  "stock_count": 58,
+  "variant_id": "b327-a008b566"
  },
  {
-  "dark_store_ok": false,
+  "dark_store_ok": true,
   "pack": {
    "qty": 500.0,
    "unit": "g"
   },
   "price_inr": 216,
-  "sku_id": "b327-fd7273a1-500g",
-  "stock_count": 29,
-  "variant_id": "b327-fd7273a1"
+  "sku_id": "b327-a008b566-500g",
+  "stock_count": 24,
+  "variant_id": "b327-a008b566"
  },
  {
   "dark_store_ok": true,
@@ -21676,9 +21654,9 @@
    "unit": "g"
   },
   "price_inr": 20,
-  "sku_id": "b329-caf33ade-25g",
-  "stock_count": 31,
-  "variant_id": "b329-caf33ade"
+  "sku_id": "b329-70970361-25g",
+  "stock_count": 0,
+  "variant_id": "b329-70970361"
  },
  {
   "dark_store_ok": true,
@@ -21687,9 +21665,9 @@
    "unit": "g"
   },
   "price_inr": 75,
-  "sku_id": "b329-caf33ade-100g",
-  "stock_count": 0,
-  "variant_id": "b329-caf33ade"
+  "sku_id": "b329-70970361-100g",
+  "stock_count": 4,
+  "variant_id": "b329-70970361"
  },
  {
   "dark_store_ok": true,
@@ -21720,9 +21698,9 @@
    "unit": "g"
   },
   "price_inr": 18,
-  "sku_id": "b329-7fde635b-25g",
-  "stock_count": 44,
-  "variant_id": "b329-7fde635b"
+  "sku_id": "b329-0ca96ce6-25g",
+  "stock_count": 38,
+  "variant_id": "b329-0ca96ce6"
  },
  {
   "dark_store_ok": true,
@@ -21731,9 +21709,9 @@
    "unit": "g"
   },
   "price_inr": 68,
-  "sku_id": "b329-7fde635b-100g",
-  "stock_count": 31,
-  "variant_id": "b329-7fde635b"
+  "sku_id": "b329-0ca96ce6-100g",
+  "stock_count": 49,
+  "variant_id": "b329-0ca96ce6"
  },
  {
   "dark_store_ok": true,
@@ -22072,9 +22050,9 @@
    "unit": "g"
   },
   "price_inr": 18,
-  "sku_id": "b333-d5da97ea-50g",
-  "stock_count": 51,
-  "variant_id": "b333-d5da97ea"
+  "sku_id": "b333-762f4789-50g",
+  "stock_count": 11,
+  "variant_id": "b333-762f4789"
  },
  {
   "dark_store_ok": true,
@@ -22083,9 +22061,9 @@
    "unit": "g"
   },
   "price_inr": 51,
-  "sku_id": "b333-d5da97ea-150g",
-  "stock_count": 31,
-  "variant_id": "b333-d5da97ea"
+  "sku_id": "b333-762f4789-150g",
+  "stock_count": 19,
+  "variant_id": "b333-762f4789"
  },
  {
   "dark_store_ok": true,
@@ -22094,9 +22072,9 @@
    "unit": "g"
   },
   "price_inr": 16,
-  "sku_id": "b333-c3341adb-50g",
-  "stock_count": 16,
-  "variant_id": "b333-c3341adb"
+  "sku_id": "b333-48d43a11-50g",
+  "stock_count": 58,
+  "variant_id": "b333-48d43a11"
  },
  {
   "dark_store_ok": true,
@@ -22105,9 +22083,9 @@
    "unit": "g"
   },
   "price_inr": 47,
-  "sku_id": "b333-c3341adb-150g",
-  "stock_count": 33,
-  "variant_id": "b333-c3341adb"
+  "sku_id": "b333-48d43a11-150g",
+  "stock_count": 0,
+  "variant_id": "b333-48d43a11"
  },
  {
   "dark_store_ok": true,
@@ -22116,9 +22094,9 @@
    "unit": "g"
   },
   "price_inr": 16,
-  "sku_id": "b333-14ef549e-50g",
-  "stock_count": 33,
-  "variant_id": "b333-14ef549e"
+  "sku_id": "b333-706421aa-50g",
+  "stock_count": 28,
+  "variant_id": "b333-706421aa"
  },
  {
   "dark_store_ok": true,
@@ -22127,9 +22105,9 @@
    "unit": "g"
   },
   "price_inr": 45,
-  "sku_id": "b333-14ef549e-150g",
-  "stock_count": 8,
-  "variant_id": "b333-14ef549e"
+  "sku_id": "b333-706421aa-150g",
+  "stock_count": 25,
+  "variant_id": "b333-706421aa"
  },
  {
   "dark_store_ok": true,
@@ -22336,9 +22314,9 @@
    "unit": "ml"
   },
   "price_inr": 82,
-  "sku_id": "b336-c658b982-200ml",
-  "stock_count": 26,
-  "variant_id": "b336-c658b982"
+  "sku_id": "b336-45bb4003-200ml",
+  "stock_count": 5,
+  "variant_id": "b336-45bb4003"
  },
  {
   "dark_store_ok": true,
@@ -22347,9 +22325,9 @@
    "unit": "ml"
   },
   "price_inr": 99,
-  "sku_id": "b336-c658b982-250ml",
-  "stock_count": 41,
-  "variant_id": "b336-c658b982"
+  "sku_id": "b336-45bb4003-250ml",
+  "stock_count": 29,
+  "variant_id": "b336-45bb4003"
  },
  {
   "dark_store_ok": true,
@@ -22490,9 +22468,9 @@
    "unit": "ml"
   },
   "price_inr": 49,
-  "sku_id": "b339-f4e0557c-100ml",
-  "stock_count": 31,
-  "variant_id": "b339-f4e0557c"
+  "sku_id": "b339-6b5a2237-100ml",
+  "stock_count": 21,
+  "variant_id": "b339-6b5a2237"
  },
  {
   "dark_store_ok": true,
@@ -22501,9 +22479,9 @@
    "unit": "ml"
   },
   "price_inr": 234,
-  "sku_id": "b339-f4e0557c-500ml",
-  "stock_count": 18,
-  "variant_id": "b339-f4e0557c"
+  "sku_id": "b339-6b5a2237-500ml",
+  "stock_count": 31,
+  "variant_id": "b339-6b5a2237"
  },
  {
   "dark_store_ok": true,
@@ -22622,9 +22600,9 @@
    "unit": "ml"
   },
   "price_inr": 112,
-  "sku_id": "b341-eb5d4f71-200ml",
-  "stock_count": 0,
-  "variant_id": "b341-eb5d4f71"
+  "sku_id": "b341-917a6029-200ml",
+  "stock_count": 58,
+  "variant_id": "b341-917a6029"
  },
  {
   "dark_store_ok": true,
@@ -22633,9 +22611,9 @@
    "unit": "ml"
   },
   "price_inr": 178,
-  "sku_id": "b341-eb5d4f71-330ml",
-  "stock_count": 57,
-  "variant_id": "b341-eb5d4f71"
+  "sku_id": "b341-917a6029-330ml",
+  "stock_count": 24,
+  "variant_id": "b341-917a6029"
  },
  {
   "dark_store_ok": true,
@@ -22988,5 +22966,27 @@
   "sku_id": "b352-2304be1c-50g",
   "stock_count": 41,
   "variant_id": "b352-2304be1c"
+ },
+ {
+  "dark_store_ok": true,
+  "pack": {
+   "qty": 200.0,
+   "unit": "g"
+  },
+  "price_inr": 39,
+  "sku_id": "b353-4c38a5ed-200g",
+  "stock_count": 23,
+  "variant_id": "b353-4c38a5ed"
+ },
+ {
+  "dark_store_ok": false,
+  "pack": {
+   "qty": 400.0,
+   "unit": "g"
+  },
+  "price_inr": 75,
+  "sku_id": "b353-4c38a5ed-400g",
+  "stock_count": 56,
+  "variant_id": "b353-4c38a5ed"
  }
 ]

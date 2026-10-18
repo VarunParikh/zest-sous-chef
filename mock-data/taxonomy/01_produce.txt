@@ -33,7 +33,7 @@ B032|vegetables|Lettuce|lettuce|g|150/250|16|Iceberg~=iceberg~1.0~-;Romaine~=rom
 B033|vegetables|Avocado|avocado|pc|1/2|90|Hass~=hass~1.0~g;Local green~=local~0.6~-
 B034|vegetables|Parsley|parsley|g|50/100|25|Flat leaf~=flat~1.0~g;Curly~=curly~0.9~g
 B035|vegetables|Broccoli|broccoli|g|250/500|14|Regular~=regular~1.0~-;Florets~=florets~1.4~-;Organic~=regular~1.8~o
-B036|vegetables|Corn|corn|pc|2/4|12|Sweet corn cob~=cob~1.0~-;Baby corn~=baby~2.0~-;Frozen kernels~=kernels,=frozen~1.5~-
+B036|vegetables|Corn|corn|pc|2/4|12|Sweet corn cob~=cob~1.0~-;Frozen kernels~=kernels,=frozen~1.5~-
 B037|fruits|Banana|banana|g|500/1000|6|Robusta~=robusta~1.0~-;Elaichi (small)~=elaichi~1.8~g;Raw for chips~=raw~0.8~-
 B038|fruits|Apple|apple|g|500/1000|20|Shimla~=shimla~1.0~-;Fuji~=fuji~1.4~g;Organic~=shimla~1.7~o
 B039|fruits|Mango|mango|g|500/1000|12|Alphonso~=alphonso~4.0~g;Kesar~=kesar~2.5~g;Totapuri~=totapuri~1.0~-
