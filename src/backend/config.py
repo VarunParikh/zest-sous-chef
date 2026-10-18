@@ -23,6 +23,11 @@ class Settings(BaseModel):
     llm_model: str = "llama3.2:3b"  # ADR-002, chosen by the Day-1 benchmark E1 (2026-10-18)
     llm_num_ctx: int = 4096  # context window; 4k keeps the model's memory down (E1 post-hoc, 2026-10-18)
     ollama_base_url: str = "http://127.0.0.1:11434"
+    # Input guard (ADR-006): rules first, then this classifier on text the rules pass
+    guard_classifier: bool = True
+    guard_model: str = "llama-guard3:1b"
+    # Intent (Agent Design §6.1): below this confidence the bot asks to rephrase, never acts
+    intent_confidence_min: float = 0.5
     vision_provider: Literal["ollama", "gemini", "samples"] = "samples"  # local-first; E3 decides (C15)
     vision_model: str = ""
     vision_num_ctx: int = 4096  # set before the first official E3 run: at 16k Ollama evicted the text model

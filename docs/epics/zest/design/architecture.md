@@ -135,6 +135,8 @@ The pool must be larger than the display set, otherwise the levers cannot reorde
 | `VALUE_WEIGHT` | β0 for variant price term | 0.30 |
 | `TIMEOUT_LLM_S`, `TIMEOUT_VISION_S`, `TIMEOUT_TRANSCRIPT_S` | NFR-10 | 30, 20, 10 |
 | `CONFIDENCE_THRESHOLD` | Photo detection | 0.6 |
+| `GUARD_CLASSIFIER`, `GUARD_MODEL` | Second guard layer on text the rules pass (ADR-006; C36 doc-sync) | `true`, `llama-guard3:1b` |
+| `INTENT_CONFIDENCE_MIN` | Below it, the intent result triggers MSG-REPHRASE, never an action (Agent Design §6.1; C36 doc-sync) | 0.5 |
 | `CONTEXT_NOW`, `CONTEXT_WEATHER` | Reproducible trend context | system clock, mock label |
 
 ## 7. Failure handling
