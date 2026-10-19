@@ -29,7 +29,7 @@ This is a prototype: a working, documented, local demo with its evidence. It run
 
 NOTE: Voice interaction is not available currently. The video is for representation only, to showcase the potential.
 
-# 🎬 Video for Zest, to know the product vision
+## 🎬 Video for Zest, to know the product vision
 
 Click the thumbnail below to watch the demo:
 NOTE: Voice interaction is not available currently. The video is for representation only, to showcase the potential.
