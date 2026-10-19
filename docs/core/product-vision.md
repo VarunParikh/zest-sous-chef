@@ -1,4 +1,3 @@
-<img width="2811" height="2268" alt="image" src="https://github.com/user-attachments/assets/b8649ded-a3f9-4292-babd-bc0bd01689fc" /><img width="2811" height="2268" alt="image" src="https://github.com/user-attachments/assets/fb6c3ac5-d97e-48c9-9dcf-93d84da9724e" /># Product Vision (owner's brief, verbatim intent)
 
 An interactive sous-chef AI bot linked to a quick-commerce application such as JioMart. Changes made to the recommendation engine directly affect the recommendations the chatbot suggests. Users interact in natural language, by sharing YouTube videos, and by uploading pictures.
 
