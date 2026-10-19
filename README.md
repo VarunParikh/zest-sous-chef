@@ -1,3 +1,10 @@
+![Text LLM](https://img.shields.io/badge/Text_LLM-llama3.2%3A3b_(Ollama)-blue)
+![Guard](https://img.shields.io/badge/Guard-llama--guard3%3A1b-blue)
+![Vision](https://img.shields.io/badge/Vision-qwen3--vl%3A4b_(local)-lightgrey)
+![Embeddings](https://img.shields.io/badge/Embeddings-all--MiniLM--L6--v2-blue)
+![Local first](https://img.shields.io/badge/Inference-local--first-green)
+![Built with](https://img.shields.io/badge/Built_with-Claude_Code-orange)
+
 # Zest: an AI sous-chef for a mock quick-commerce store
 
 Zest is a web-based cooking assistant linked to a **mock** grocery store, in the style of JioMart. Tell it what you want to cook in any of four ways:
