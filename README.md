@@ -29,8 +29,6 @@ This is a prototype: a working, documented, local demo with its evidence. It run
 
 NOTE: Voice interaction is not available currently. The video is for representation only, to showcase the potential.
 
-[![Watch the video ad for Zest, to know what is the product vision](https://img.youtube.com/vi/Pp7ahW03ne8/hqdefault.jpg)](https://www.youtube.com/watch?v=Pp7ahW03ne8)
-
 # 🎬 Video for Zest, to know the product vision
 
 Click the thumbnail below to watch the demo:
