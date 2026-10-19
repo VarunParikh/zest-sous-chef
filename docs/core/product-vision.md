@@ -31,10 +31,13 @@ AI software development lifecycle · documentation · engine affects recommendat
 Local LLMs allowed · MacBook M5, 16 GB RAM, 1 TB SSD · bot may access the internet · Claude Code for development.
 
 ## Project future features
-1. Voice chat.
-2. Ability of the bot to upsell sponsored ingredients. 
-3. Increase in accuracy of object identification.
-4. Allow the user to converse in multiple indian languages 
-5. The message tone of the bot must be friendlier 
-6. An MCP that can be integrated with existing chatbots (Example: Claude / ChatGPT / Gemini etc)
-7. A WhatsApp variant for the bot.
+1. Voice chat
+2. Ability to add single ingredients via text / voice (Example: "Add eggs to by cart")
+3. Ability of the bot to upsell sponsored ingredients. 
+4. Increase in accuracy of object identification.
+5. Allow the user to converse in multiple indian languages 
+6. The message tone of the bot must be friendlier 
+7. An MCP that can be integrated with existing chatbots (Example: Claude / ChatGPT / Gemini etc)
+8. A WhatsApp variant for the bot.
+9. Adding a calorie calculator
+10. Ability to set up subscriptions schedule (Example: On 1st of every month, place an order for whey protein)
