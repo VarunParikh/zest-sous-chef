@@ -5,7 +5,7 @@
 import type { ReactElement } from "react";
 import type { LeverSet } from "../api/types";
 
-type Prop = "leaf" | "dumbbell" | "clock" | "bowl" | "clipboard" | "spoon";
+type Prop = "leaf" | "dumbbell" | "clock" | "bowl" | "clipboard" | "spoon" | "sliders";
 const HEADS = ["#CECBF6", "#9FE1CB", "#F5C4B3", "#B5D4F4", "#C0DD97", "#FAC775", "#F4C0D1"];
 const INK = "#2C2C2A";
 const PROP_INK = "#5F5E5A";
@@ -32,6 +32,9 @@ function PropShape({ prop }: { prop: Prop }) {
       return <g><circle cx="58" cy="56" r="8" fill="#FFFFFF" stroke={PROP_INK} strokeWidth="2" /><path d="M58 51 V56 L61 58" stroke={PROP_INK} strokeWidth="2" strokeLinecap="round" fill="none" /></g>;
     case "bowl":
       return <g><path d="M48 54 H68 A10 9 0 0 1 48 54 Z" fill="#FAC775" stroke="#854F0B" strokeWidth="1.5" /><path d="M53 50 q2 -3 0 -6 M58 50 q2 -3 0 -6 M63 50 q2 -3 0 -6" stroke="#B4B2A9" strokeWidth="1.3" fill="none" /></g>;
+    case "sliders":  // the Custom card: the user's own mix of levers
+      return <g stroke={PROP_INK} strokeWidth="2" strokeLinecap="round"><path d="M51 47 V65 M58 47 V65 M65 47 V65" />
+        <circle cx="51" cy="60" r="2.8" fill="#FFFFFF" /><circle cx="58" cy="51" r="2.8" fill="#FFFFFF" /><circle cx="65" cy="57" r="2.8" fill="#FFFFFF" /></g>;
     case "clipboard":
       return <g><rect x="50" y="46" width="15" height="19" rx="2" fill="#FFFFFF" stroke={PROP_INK} strokeWidth="1.8" /><path d="M53 52 H62 M53 56 H62 M53 60 H59" stroke={PROP_INK} strokeWidth="1.4" /></g>;
     default:
@@ -40,8 +43,10 @@ function PropShape({ prop }: { prop: Prop }) {
 }
 
 /** A friendly chef: coloured head, chef's hat, a smile, and the persona's prop. */
-export function PersonaAvatar({ name, levers, tag, size = 52 }: { name: string; levers: LeverSet; tag: string | null; size?: number }) {
-  const prop = personaProp(levers, tag);
+export function PersonaAvatar({ name, levers, tag, prop: given, size = 52 }: {
+  name: string; levers: LeverSet; tag: string | null; prop?: Prop; size?: number;
+}) {
+  const prop = given ?? personaProp(levers, tag);
   return (
     <svg width={size} height={size} viewBox="0 0 72 72" aria-hidden="true" data-avatar={prop} className="shrink-0">
       <circle cx="34" cy="42" r="20" fill={HEADS[hash(name) % HEADS.length]} />

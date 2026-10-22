@@ -91,8 +91,8 @@ def test_t120_persona_card_selects_its_preset(page: Page, app_url: str):
     for hidden in ["Alex", "Jordan", "Vikram"]:  # not offered (C81, C82)
         expect(page.get_by_role("radio", name=re.compile(hidden))).to_have_count(0)
     cards = page.get_by_role("radio")
-    expect(cards).to_have_count(8)
-    for i in range(8):
+    expect(cards).to_have_count(9)  # eight personas and Custom
+    for i in range(9):
         expect(cards.nth(i).locator("svg[data-avatar]")).to_have_count(1)
     meera.click()
     expect(meera).to_have_attribute("aria-checked", "true")
@@ -186,3 +186,17 @@ def test_t126_tour_first_visit_skip_and_restart_from_the_help_icon(page: Page, a
     expect(tour).not_to_contain_text("ⓘ on a suggestion")  # the cart step no longer points at an ⓘ (owner, 2026-10-23)
     page.keyboard.press("Escape")
     expect(tour).to_be_hidden()
+
+
+def test_custom_card_is_in_use_when_the_levers_match_no_persona(page: Page, app_url: str):
+    _open(page, app_url)
+    custom = page.get_by_role("radio", name=re.compile("^Custom"))
+    expect(custom).to_have_attribute("aria-checked", "false")  # untouched defaults
+    expect(page.get_by_text("Default settings: no persona chosen yet")).to_be_visible()
+    page.get_by_role("slider", name="Culinary Pairing").fill("0.5")
+    expect(custom).to_have_attribute("aria-checked", "true")
+    expect(custom).to_contain_text("Your own mix of levers")
+    page.get_by_role("radio", name=re.compile("Meera Shah")).click()  # a persona replaces the custom mix
+    expect(custom).to_have_attribute("aria-checked", "false")
+    custom.click()  # Custom takes the user to the levers
+    expect(page.get_by_role("slider", name="Culinary Pairing")).to_be_focused()

@@ -83,7 +83,12 @@ export function LeverPanel({ config, levers, onChange, breakdown, inspector }: {
     <div className="px-5">
       <p className="pt-4 text-xs text-muted">Reviewer Workbench &gt; Active Persona Levers</p>
       <div className="mt-3">
-        <PersonaCards config={config} active={presetMatch} isDefault={sameLevers(levers, config.defaults)} onChange={onChange} />
+        <PersonaCards config={config} active={presetMatch} isDefault={sameLevers(levers, config.defaults)} levers={levers}
+          onChange={onChange} onCustom={() => {
+            const target = document.querySelector<HTMLElement>('[data-tour="lever"]');
+            target?.scrollIntoView({ behavior: "smooth", block: "start" });
+            target?.querySelector<HTMLInputElement>("input[type=range]")?.focus({ preventScroll: true });
+          }} />
       </div>
 
       <div className="mt-2">
