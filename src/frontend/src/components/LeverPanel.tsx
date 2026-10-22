@@ -81,8 +81,7 @@ export function LeverPanel({ config, levers, onChange, breakdown, inspector }: {
 
   return (
     <div className="px-5">
-      <p className="pt-4 text-xs text-muted">Reviewer Workbench &gt; Active Persona Levers</p>
-      <div className="mt-3">
+      <div className="pt-4">  {/* C83: no breadcrumb above the persona cards (owner, 2026-10-23) */}
         <PersonaCards config={config} active={presetMatch} isDefault={sameLevers(levers, config.defaults)} levers={levers}
           onChange={onChange} onCustom={() => {
             const target = document.querySelector<HTMLElement>('[data-tour="lever"]');
