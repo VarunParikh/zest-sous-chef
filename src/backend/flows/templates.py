@@ -48,12 +48,23 @@ TEMPLATES = {
     "MSG-INJECT-DATA": "That content contained instructions, so I ignored them.",
     "MSG-REPHRASE": "I didn't quite catch that. Could you rephrase it?",
     "MSG-THANKS": "Anytime. What shall we cook next?",
+    "MSG-HELP": "Here's how to start. Tap an example, or type your own:",
     "MSG-UNSUPPORTED": "I can't do that here. I can build your cart and you can place the order with Buy Now.",
     "MSG-ALLERGY": "I can't confirm that an item is safe for an allergy. Dietary labels here are simplified, so please check the product label.",
     "MSG-SERVER": "Your food will be ready but seems like our servers are struggling. We will be back shortly",
 }
 
 STARTER_CHIPS = ["YouTube link", "Upload photo", "Text recipe", "Feeling hungry"]
+
+# MSG-HELP card (FR-123; Conversation Design §6.1): the four ways in, each acting on one tap
+DEMO_VIDEO = "https://www.youtube.com/watch?v=6YVx0i_hrZ0"  # a saved-transcript demo video (mock-data/videos.json)
+HELP_EXAMPLES = [
+    ("🎥 A YouTube recipe", "send", DEMO_VIDEO),
+    ("✍️ A dish or recipe", "send", "I want to make paneer butter masala"),
+    ("😋 A mood", "send", "Something comforting tonight"),
+    ("📷 A fridge photo", "sample", "RF02"),
+]
+HELP_NOTE = "Change a lever or pick a persona on the left, and the suggestions change."
 
 
 def render(template_id: str, **values: str) -> str:

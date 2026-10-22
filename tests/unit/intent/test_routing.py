@@ -36,3 +36,24 @@ def test_clearing_the_cart_is_routed(text):
 
 def test_a_cart_edit_is_not_a_clear():
     assert route("remove the oil from my cart", STORE) is None
+
+
+# T-122 (FR-123, AC-54; Zest 2.0): help questions are routed in code; cooking requests that say "help" are not
+@pytest.mark.parametrize("text", ["help", "Help!", "what can I say?", "What can you do", "how does this work?",
+                                  "How do I start", "how to use Zest"])
+def test_t122_help_questions_route_to_help(text):
+    r = route(text, STORE)
+    assert r is not None and r.intent == "help" and r.confidence == 1.0
+
+
+@pytest.mark.parametrize("text,intent", [
+    ("help me make paneer butter masala", "named_dish"),  # a cooking request, not a help question
+    ("can you help me make Chole tonight", "named_dish"),
+])
+def test_t122_cooking_requests_mentioning_help_keep_their_route(text, intent):
+    assert route(text, STORE).intent == intent
+
+
+def test_t122_long_or_partial_messages_are_not_help():
+    assert route("what can I say to get a quick dinner that is light and has no onions in it?", STORE) is None
+    assert route("I need help choosing something cooling", STORE) is None

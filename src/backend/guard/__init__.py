@@ -84,8 +84,16 @@ class Guard:
             if toks and not _food_signal(toks, self.vocabulary):
                 if len(toks) <= 2 and set(toks) <= GREETINGS:
                     return Screen("ok", None)
+                if _is_help(text):  # C79: an exact help question (FR-123) passes the topic rule like a greeting;
+                    return Screen("ok", None)  # injection and hazard rules above and the classifier still apply
                 return Screen("off_topic", "MSG-REDIRECT", ["no food, cooking or grocery word"])
         return Screen("ok", None)
+
+
+def _is_help(text: str) -> bool:
+    from backend.intent.routing import is_help
+
+    return is_help(text)
 
 
 def _food_signal(toks: list[str], vocab: set[str]) -> bool:

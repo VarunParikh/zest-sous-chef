@@ -84,12 +84,13 @@ export default function App() {
     busy,
     onAction: (t: string, p: Record<string, unknown>) => void act(t, p),
     onChip: (chip: string) => {
-      if (chip === "YouTube link") setDraft(DEMO_LINK);
-      else if (chip === "Text recipe") setDraft(DEMO_RECIPE);
+      if (chip === "YouTube link") send(DEMO_LINK);  // FR-124: starters act on one tap
+      else if (chip === "Text recipe") send(DEMO_RECIPE);
       else if (chip === "Upload photo") window.dispatchEvent(new Event("zest:upload"));
       else send("I am feeling indulgent");
     },
     onSample: (id: string) => { if (session && levers) { userSays(`Sample photo ${id}`); void guarded(() => api.samplePhoto(session.id, id, levers), "sample"); } },
+    onSend: send,
     onOpenCart: () => setCartOpen(true),
     onBreakdown: setBreakdown,
   };

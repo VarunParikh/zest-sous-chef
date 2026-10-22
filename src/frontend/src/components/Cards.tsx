@@ -1,4 +1,4 @@
-// Renderers for the 13 card types (API Spec §4.5). Taps go to `onAction`; nothing here changes the cart directly.
+// Renderers for the 14 card types (API Spec §4.5). Taps go to `onAction`; nothing here changes the cart directly.
 import { useState, type ReactElement } from "react";
 import type { Breakdown, Card, WhyInfo } from "../api/types";
 import { Camera, Play, Sparkle, Utensils, rupees } from "../icons";
@@ -8,6 +8,8 @@ export interface CardHandlers {
   onAction: (type: string, payload: Record<string, unknown>) => void;
   onChip: (chip: string) => void;
   onSample: (photoId: string) => void;
+  onSend: (text: string) => void;
+  onTour?: () => void;
   onOpenCart: () => void;
   onBreakdown: (b: Breakdown) => void;
   busy: boolean;
@@ -39,6 +41,19 @@ export function CardView({ card, h }: { card: Card; h: CardHandlers }) {
       return (
         <div className="mt-2 flex flex-wrap gap-2">
           {card.chips.map((c) => <button key={c} type="button" className={pill} disabled={h.busy} onClick={() => h.onChip(c)}>{CHIP_ICON[c]}{c}</button>)}
+        </div>
+      );
+    case "help":  // MSG-HELP (FR-123): each example acts on one tap
+      return (
+        <div className="mt-2 rounded-md border border-line bg-white p-3 text-sm" data-testid="help-card">
+          <div className="flex flex-wrap gap-2">
+            {card.examples.map((e) => (
+              <button key={e.label} type="button" className={pill} disabled={h.busy}
+                onClick={() => (e.kind === "sample" ? h.onSample(e.value) : h.onSend(e.value))}>{e.label}</button>
+            ))}
+          </div>
+          <p className="mt-2 text-secondary">{card.note}</p>
+          {card.tour && h.onTour && <button type="button" className={`${primary} mt-2`} onClick={h.onTour}>Take the tour</button>}
         </div>
       );
     case "dish_added":

@@ -50,6 +50,7 @@ export interface WhyInfo extends Partial<Breakdown> {
 
 export type Card =
   | { type: "starter_chips"; chips: string[] }
+  | { type: "help"; examples: { label: string; kind: "send" | "sample"; value: string }[]; note: string; tour: boolean }
   | { type: "dish_added"; suggestion_id: string; dish_id: string; dish_name: string; reason: string; line_count: number; dish_total_inr: number }
   | { type: "swap_options"; suggestion_id: string; options: SwapOption[] }
   | { type: "undo"; suggestion_id: string }

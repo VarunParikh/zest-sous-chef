@@ -78,7 +78,7 @@ class DetectionResult(BaseModel):
 
 Intent = Literal["youtube_recipe", "recipe_text", "named_dish", "mood_intent", "cart_edit",
                  "cart_clear_or_replace", "staples_answer", "variant_request", "question_cooking",
-                 "declare_allergy", "smalltalk", "off_topic", "unsafe", "unsupported"]
+                 "declare_allergy", "smalltalk", "off_topic", "unsafe", "unsupported", "help"]  # help: code-routed only (FR-123)
 
 
 class IntentResult(BaseModel):

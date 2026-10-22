@@ -42,6 +42,7 @@ def _wait(url: str, timeout: float = 30) -> None:
 def backend_url(tmp_path_factory):
     fake = FakeOllama()
     fake.intents[MOOD] = intent("mood_intent", mood_tags=["indulgent"])
+    fake.intents["Something comforting tonight"] = intent("mood_intent", mood_tags=["comforting"])  # MSG-HELP example
     tmp = tmp_path_factory.mktemp("e2e")
     settings = load_settings(env={"TRACE_PATH": str(tmp / "trace.jsonl"), "CHROMA_PATH": str(tmp / "chroma"),
                                   "CONTEXT_NOW": "2026-10-17T19:30:00", "CONTEXT_WEATHER": "cool"}, env_file=None)
