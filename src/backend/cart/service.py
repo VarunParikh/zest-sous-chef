@@ -244,7 +244,9 @@ def undo(session, suggestion_id: str, store: Store) -> str | None:
     if entry is None:
         raise CartRuleError("STALE", "There's nothing to undo for that.")
     session.undo_stack.remove(entry)
-    session.suggestions.pop(suggestion_id, None)
+    rec = session.suggestions.get(suggestion_id)
+    if rec is not None:  # kept, marked undone: a later swap tap asks to add that dish instead (FR-127)
+        rec["undone"] = True
     if entry["kind"] == "replace":
         session.cart = allocate(entry["prior"], store)
     else:
@@ -270,7 +272,7 @@ def swap(session, suggestion_id: str, alt_dish_id: str, ctx, store: Store) -> Ca
     """Replace only the dish this suggestion added, in place; items added earlier are never touched (FR-41)."""
     rec = session.suggestions.get(suggestion_id)
     current = next((d for d in session.cart.dishes if d.added_by_suggestion_id == suggestion_id), None)
-    if rec is None or current is None or alt_dish_id not in rec["alternatives"]:
+    if rec is None or rec.get("undone") or current is None or alt_dish_id not in rec["alternatives"]:
         raise CartRuleError("STALE", "That swap is no longer available.")
     index = session.cart.dishes.index(current)
     prior = session.cart.model_copy(deep=True)

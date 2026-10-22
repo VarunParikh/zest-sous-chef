@@ -1,4 +1,6 @@
 """Swap and Undo by suggestion (FR-41; AC-30; T-062). The mood flow that creates the suggestion is block 2.3."""
+import pytest
+
 from backend.cart import service
 from tests.acceptance.test_cart_api import CTX, _carted
 
@@ -37,4 +39,9 @@ def test_swap_to_a_dish_not_offered_or_after_undo_is_stale(tmp_path):
     sg, _ = service.add_suggested(session, "D06", ["D130", "D05"], "mood", CTX, app.state.store)
     assert _act(client, sid, "swap", suggestion_id=sg, alt_dish_id="D01").status_code == 409
     _act(client, sid, "undo", suggestion_id=sg)
-    assert _act(client, sid, "swap", suggestion_id=sg, alt_dish_id="D05").status_code == 409
+    # FR-127: after Undo the tap asks whether to add D05 instead; the cart is not swapped, and the service still refuses
+    after = _act(client, sid, "swap", suggestion_id=sg, alt_dish_id="D05")
+    assert after.status_code == 200 and after.json()["messages"][-1]["template_id"] == "MSG-SWAP-GONE"
+    assert "D05" not in [d.dish_id for d in session.cart.dishes]
+    with pytest.raises(service.CartRuleError):
+        service.swap(session, sg, "D05", CTX, app.state.store)

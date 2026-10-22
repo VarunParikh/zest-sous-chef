@@ -98,6 +98,8 @@ Timeout: if the user is silent, nothing happens; the session persists until refr
 |---|---|---|
 | MSG-GREET | Session start | "Hey there! I'm Zest, your AI cooking assistant. Paste a YouTube recipe link, describe what's in your fridge, or upload a photo of your ingredients to start!" (DESIGN.md) |
 | MSG-HELP | `help` intent (FR-123) | "Here's how to start. Tap an example, or type your own:" + help card: 🎥 A YouTube recipe (sends the demo video link) · ✍️ A dish or recipe ("I want to make paneer butter masala") · 😋 A mood ("Something comforting tonight") · 📷 A fridge photo (sends sample photo RF02), then "Change a lever or pick a persona on the left, and the suggestions change." and a **Take the tour** button |
+| MSG-SWAP-GONE | a swap tapped after Undo removed its dish (FR-127) | "You removed {dish} with Undo, so there's nothing to swap. Would you like to add {alt} instead?" + Add {alt} · No thanks |
+| MSG-SWAP-GONE-NO | No thanks on MSG-SWAP-GONE | "No problem, your cart stays as it is." |
 | MSG-THANKS | smalltalk thanks | "Anytime. What shall we cook next?" |
 | MSG-BUSY | processing | Typing indicator only (no text) |
 | MSG-LEVER-BANNER | levers changed mid-session (UI banner) | "Changes apply from your next chat session." |

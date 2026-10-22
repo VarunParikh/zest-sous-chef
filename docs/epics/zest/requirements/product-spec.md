@@ -186,6 +186,7 @@ Below 1024 px, a segmented control switches between Levers and Chat.
 | FR-124 | The greeting chips "YouTube link" and "Text recipe" shall send their demo input on one tap instead of filling the message box | S |
 | FR-125 | While the Mac app downloads models, the setup page shall show a five-slide introduction (four ways in, levers, rules in code, privacy, mock store). It makes no network request, respects reduced motion and never delays opening Zest | C |
 | FR-126 | On the first visit to the main screen a six-step, skippable tour shall highlight the chat starters, the message box, persona cards, a lever and its tooltip, the cart, and the inspector (noting that it fills once the user starts chatting). Dismissal is remembered in the browser; the help icon in the top-right corner of the screen restarts the tour at any time. The tour never blocks the chat | S |
+| FR-127 | A swap tapped after its dish was removed with Undo shall not fail: Zest asks whether to add the chosen dish instead (MSG-SWAP-GONE, buttons "Add {dish}" and "No thanks"). Adding it carts the dish under a new suggestion with Undo and the remaining swap, then suggests its add-on as usual (FR-64); "No thanks" changes nothing (owner, 2026-10-23, from the owner's session log) | S |
 
 ## 7. Non-functional requirements
 | ID | Requirement |
@@ -306,6 +307,7 @@ No product analytics. A local trace log (no images, truncated text, no personal 
 | AC-58 | The setup-page slides advance every 8 s, pause on hover or focus, work with the keyboard and stay still under reduced motion; the page makes no network request | FR-125 |
 | AC-59 | The setup-page privacy slide matches the Security and Privacy Note: chats, photos and cart stay on the Mac; a pasted YouTube link fetches its transcript; Gemini is opt-in | FR-125 |
 | AC-60 | On a first visit the tour shows six steps; step 1 waits for a starter or Next | FR-126 |
+| AC-62 | After Undo on a suggested dish, tapping one of its swaps asks "Would you like to add {dish} instead?"; Add carts that dish and then offers its add-on; No thanks leaves the cart unchanged; nothing returns an error | FR-127 |
 | AC-61 | Skip, Escape, Back and Next work; dismissal is remembered; the help icon restarts the tour; the chat stays usable during the tour | FR-126 |
 
 ## 13. Dependencies and rollout

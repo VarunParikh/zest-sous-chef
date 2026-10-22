@@ -23,5 +23,8 @@ def test_t094_a_tap_from_an_earlier_turn_after_the_cart_changed_is_stale(chat_ap
     sg = cards["undo"]["suggestion_id"]
     alt = cards["swap_options"]["options"][0]["dish_id"]
     assert client.post(f"/api/v1/sessions/{sid}/action", json={"type": "undo", "payload": {"suggestion_id": sg}}).status_code == 200
-    stale = client.post(f"/api/v1/sessions/{sid}/action", json={"type": "swap", "payload": {"suggestion_id": sg, "alt_dish_id": alt}})
+    # The same Undo tapped again is stale. (A swap after Undo is no longer stale: it asks to add instead, FR-127, T-129.)
+    stale = client.post(f"/api/v1/sessions/{sid}/action", json={"type": "undo", "payload": {"suggestion_id": sg}})
     assert stale.status_code == 409 and stale.json()["error"]["code"] == "STALE_ACTION"
+    swap = client.post(f"/api/v1/sessions/{sid}/action", json={"type": "swap", "payload": {"suggestion_id": sg, "alt_dish_id": alt}})
+    assert swap.status_code == 200 and swap.json()["cart"]["item_count"] == 0  # asks; nothing is swapped

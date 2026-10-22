@@ -22,6 +22,7 @@ Zest 2.0 (branch `zest-2.0`; released as 2.0.0 after owner review).
 - **Ports:** source runs default to 8100 and 5273 (`API_PORT`, `WEB_PORT`; C78).
 
 ### Fixed
+- A swap tapped after Undo returned an error (409, "That swap is no longer available"), seen three times in the owner's session log. Zest now asks whether to add that dish instead and, if added, suggests its add-on (FR-127). T-129.
 - The Mac app's free-port check now ignores ports held only by closed connections, as uvicorn does, so Quit then reopen keeps port 8100 instead of a random port. A regression test failed before the fix.
 - `make dmg` refuses to run while an app from `macapp/out/` is running. A rebuild during testing had deleted a running 1.0's files, so its health reported fixtures missing.
 - Zest 2.0 specification, approved with the Zest 2.0 plan (2026-10-22): first-use onboarding US-42 to US-47 (PRD §6.13, FR-120 to FR-126, AC-46 to AC-61), Conversation Design §6.7 copy and MSG-HELP, API `presets[].summary`/`tag` and the `help` card, Test Plan §4.10 (T-117 to T-128), ADR-012 (running next to 1.0), conflicts C77 and C78.

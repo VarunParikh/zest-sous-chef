@@ -49,6 +49,8 @@ TEMPLATES = {
     "MSG-REPHRASE": "I didn't quite catch that. Could you rephrase it?",
     "MSG-THANKS": "Anytime. What shall we cook next?",
     "MSG-HELP": "Here's how to start. Tap an example, or type your own:",
+    "MSG-SWAP-GONE": "You removed {dish} with Undo, so there's nothing to swap. Would you like to add {alt} instead?",
+    "MSG-SWAP-GONE-NO": "No problem, your cart stays as it is.",
     "MSG-UNSUPPORTED": "I can't do that here. I can build your cart and you can place the order with Buy Now.",
     "MSG-ALLERGY": "I can't confirm that an item is safe for an allergy. Dietary labels here are simplified, so please check the product label.",
     "MSG-SERVER": "Your food will be ready but seems like our servers are struggling. We will be back shortly",
