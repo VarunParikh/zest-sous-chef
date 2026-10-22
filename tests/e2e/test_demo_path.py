@@ -20,7 +20,7 @@ def test_e2e_001_demo_path(page: Page, app_url: str):
     expect(cart).to_be_disabled()  # FR-75: greyed and disabled when empty
 
     # Pick a persona preset (Meera Shah has three eligible indulgent dishes); the banner appears (FR-03); start a new session.
-    page.get_by_label("Persona preset").select_option("Meera Shah")
+    page.get_by_role("radio", name=re.compile("Meera Shah")).click()  # Zest 2.0: persona cards (FR-121)
     expect(page.get_by_text("Changes apply from your next chat session.")).to_be_visible()
     page.get_by_role("button", name="Start new chat").click()
     expect(page.get_by_text("Persona: Meera Shah")).to_be_visible()

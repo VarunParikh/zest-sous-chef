@@ -2,8 +2,9 @@
 import { useId, useState, type ReactNode } from "react";
 import type { Breakdown, Inspector, LeverConfig, LeverSet } from "../api/types";
 import { Chevron } from "../icons";
-import { HISTORY_LABELS, LEVER_HELP, TREND_LABELS, WEIGHT_LABELS, clone, shares } from "../levers";
+import { HISTORY_LABELS, LEVER_HELP, TREND_LABELS, WEIGHT_LABELS, clone, sameLevers, shares } from "../levers";
 import { InfoTip, TagPill } from "./InfoTip";
+import { PersonaCards } from "./PersonaCards";
 import { InspectorTable } from "./InspectorTable";
 import { ScoreChart } from "./ScoreChart";
 
@@ -72,23 +73,16 @@ export function LeverPanel({ config, levers, onChange, breakdown, inspector }: {
 }) {
   const set = (fn: (l: LeverSet) => void) => { const next = clone(levers); fn(next); onChange(next); };
   const { shares: eff, restored } = shares(levers.weights, config.defaults.weights);
-  const presetId = useId();
   const dietTip = `${useId()}-tip`;
   const stockTip = `${useId()}-tip`;
-  const presetMatch = config.presets.find((p) => JSON.stringify(p.levers) === JSON.stringify(levers))?.name ?? "";
+  const presetMatch = config.presets.find((p) => sameLevers(p.levers, levers))?.name ?? "";
   const cap = config.ranges["business.price_cap_inr"] ?? { min: 80, max: 400 };
 
   return (
     <div className="px-5">
       <p className="pt-4 text-xs text-muted">Reviewer Workbench &gt; Active Persona Levers</p>
       <div className="mt-3">
-        <label htmlFor={presetId} className={fieldLabel}>Persona preset</label>
-        <select id={presetId} value={presetMatch} onChange={(e) => {
-          const p = config.presets.find((x) => x.name === e.target.value); if (p) onChange(clone(p.levers));
-        }} className="mt-1 h-10 w-full rounded-md border border-strong bg-white px-3 text-sm">
-          <option value="">Custom</option>
-          {config.presets.map((p) => <option key={p.name} value={p.name}>{p.name}</option>)}
-        </select>
+        <PersonaCards config={config} active={presetMatch} onChange={onChange} />
       </div>
 
       <div className="mt-2">

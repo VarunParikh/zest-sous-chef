@@ -1,0 +1,66 @@
+// "Who's cooking?" persona cards (FR-121, AC-50, AC-51; Zest 2.0). Summaries and tags come from the server,
+// generated from each preset's levers. A keyboard radio group: arrows move and select, like native radios.
+import { useRef, useState } from "react";
+import type { LeverConfig, LeverSet } from "../api/types";
+import { clone } from "../levers";
+
+type Preset = LeverConfig["presets"][number];
+const SHOWN = 4;
+const AVATAR = ["#3B2A87", "#0F766E", "#B45309", "#9D174D", "#1D4ED8", "#4D7C0F"];  // white text passes AA on each
+
+const display = (name: string) => name.replace(/\s*\(.*\)\s*$/, "");
+const initials = (name: string) => display(name).split(/\s+/).map((w) => w[0]).slice(0, 2).join("").toUpperCase();
+const colour = (name: string) => AVATAR[[...name].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7) % AVATAR.length];
+
+export function PersonaCards({ config, active, onChange }: { config: LeverConfig; active: string; onChange: (l: LeverSet) => void }) {
+  const ordered: Preset[] = [...config.presets.filter((p) => !p.tag), ...config.presets.filter((p) => p.tag)];
+  const activeIndex = ordered.findIndex((p) => p.name === active);
+  const [all, setAll] = useState(activeIndex >= SHOWN);
+  const visible = all || activeIndex >= SHOWN ? ordered : ordered.slice(0, SHOWN);
+  const refs = useRef<(HTMLButtonElement | null)[]>([]);
+  const pick = (i: number) => { onChange(clone(visible[i].levers)); refs.current[i]?.focus(); };
+  const focusable = activeIndex >= 0 && activeIndex < visible.length ? activeIndex : 0;
+
+  return (
+    <div data-tour="personas">
+      <p id="who-cooking" className="block text-xs font-semibold uppercase tracking-[0.05em] text-secondary">Who's cooking?</p>
+      <div role="radiogroup" aria-labelledby="who-cooking" className="mt-2 grid gap-2 sm:grid-cols-2"
+        onKeyDown={(e) => {
+          const i = refs.current.findIndex((r) => r === document.activeElement);
+          if (i < 0) return;
+          const step = e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : e.key === "ArrowLeft" || e.key === "ArrowUp" ? -1 : 0;
+          if (step) { e.preventDefault(); pick((i + step + visible.length) % visible.length); }
+        }}>
+        {visible.map((p, i) => {
+          const checked = p.name === active;
+          return (
+            <button key={p.name} ref={(el) => { refs.current[i] = el; }} type="button" role="radio" aria-checked={checked}
+              tabIndex={i === focusable ? 0 : -1} onClick={() => pick(i)}
+              className={`flex items-start gap-3 rounded-lg border p-3 text-left transition-colors ${checked ? "border-brand bg-brand-tint" : "border-line bg-white hover:border-brand"}`}>
+              <span aria-hidden="true" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-semibold text-white"
+                style={{ background: colour(p.name) }}>{initials(p.name)}</span>
+              <span className="min-w-0 flex-1">
+                <span className="flex flex-wrap items-center gap-1.5 text-sm font-semibold text-ink">
+                  {display(p.name)}
+                  {p.tag && <span className="rounded-xs bg-subtle px-1.5 text-[10px] font-semibold uppercase text-muted">{p.tag}</span>}
+                </span>
+                <span className="block text-xs text-secondary">{p.summary}</span>
+                <span className={`mt-1.5 inline-block text-xs font-semibold ${checked ? "text-brand" : "text-brand underline"}`}>
+                  {checked ? "✓ In use" : "Use this persona"}
+                </span>
+              </span>
+            </button>
+          );
+        })}
+      </div>
+      <div className="mt-2 flex items-center justify-between text-xs">
+        {active ? <span /> : <span className="text-muted">Custom settings (no persona matches your levers)</span>}
+        {ordered.length > SHOWN && activeIndex < SHOWN && (
+          <button type="button" className="font-semibold text-brand hover:underline" onClick={() => setAll(!all)}>
+            {all ? "Show fewer" : `Show all ${ordered.length}`}
+          </button>
+        )}
+      </div>
+    </div>
+  );
+}

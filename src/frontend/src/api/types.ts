@@ -25,7 +25,7 @@ export interface LeverConfig {
   options: { gender: string[]; diet: string[]; faith: string[]; specialized_diets: string[] };
   ranges: Record<string, { min: number; max: number }>;
   default_shares: Record<string, number>;
-  presets: { name: string; levers: LeverSet }[];
+  presets: { name: string; levers: LeverSet; summary: string; tag: string | null }[];
 }
 
 export interface ChoiceOption { value: string; label: string }

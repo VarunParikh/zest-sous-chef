@@ -50,7 +50,6 @@ def test_t121_every_lever_has_a_tooltip_and_a_tag(page: Page, app_url: str):
     _open(page, app_url)
     panel = _expand_all(page)
     controls = panel.evaluate("""el => [...el.querySelectorAll("input[type=range], select, input[role=switch], fieldset")]
-        .filter(c => document.querySelector(`label[for="${c.id}"]`)?.textContent !== 'Persona preset')
         .map(c => {
           const tip = document.getElementById(c.getAttribute('aria-describedby') || '');
           const box = c.closest('div, label, fieldset');
@@ -73,3 +72,18 @@ def test_t121_tooltip_opens_on_focus_and_closes_with_escape(page: Page, app_url:
     expect(tip).to_be_visible()
     tip_button.press("Escape")
     expect(tip).to_be_hidden()
+
+
+def test_t120_persona_card_selects_its_preset(page: Page, app_url: str):
+    _open(page, app_url)
+    meera = page.get_by_role("radio", name=re.compile("Meera Shah"))
+    expect(meera).to_contain_text("Jain: no root vegetables, onion, garlic or mushrooms")
+    meera.click()
+    expect(meera).to_have_attribute("aria-checked", "true")
+    expect(page.get_by_text("Changes apply from your next chat session.")).to_be_visible()
+    page.get_by_role("button", name="Start new chat").click()
+    expect(page.get_by_text("Persona: Meera Shah")).to_be_visible()
+    # The cards are a radio group: an arrow key moves to and selects the next persona
+    meera.press("ArrowRight")
+    expect(meera).to_have_attribute("aria-checked", "false")
+    expect(page.get_by_role("radio", checked=True)).to_have_count(1)

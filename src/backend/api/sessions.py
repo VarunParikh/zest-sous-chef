@@ -8,7 +8,7 @@ from backend.catalogue.seed import load_personas
 from backend.engine.scoring import effective_weights
 from backend.flows.cards import TurnResponse
 from backend.flows.greeting import greeting_turn
-from backend.session.levers import LEVER_OPTIONS, LeverSet, merge_levers
+from backend.session.levers import LEVER_OPTIONS, LeverSet, merge_levers, persona_summary, persona_tag
 
 router = APIRouter(prefix="/api/v1")
 
@@ -57,7 +57,8 @@ def config_levers(request: Request) -> dict:
         "options": {k: list(v) for k, v in LEVER_OPTIONS.items()},
         "ranges": _ranges(LeverSet),
         "default_shares": effective_weights(LeverSet().weights)[0],  # FR-08, FR-104
-        "presets": [{"name": n, "levers": p.model_dump(mode="json")} for n, p in presets.items()],
+        "presets": [{"name": n, "levers": p.model_dump(mode="json"), "summary": persona_summary(p), "tag": persona_tag(n)}
+                    for n, p in presets.items()],  # FR-121: summary and tag generated from the levers
     }
 
 
