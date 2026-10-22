@@ -6,8 +6,11 @@ import AppKit
 
 final class ZestApp: NSObject, NSApplicationDelegate {
     private var server: Process?
+    // The data folder name comes from Info.plist (ZestRuntimeFolder), so 1.0 and 2.0 never share one (ADR-012)
     private let runtime = ProcessInfo.processInfo.environment["ZEST_RUNTIME_DIR"].map { URL(fileURLWithPath: $0) }
-        ?? FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support/Zest")
+        ?? FileManager.default.homeDirectoryForCurrentUser
+            .appendingPathComponent("Library/Application Support")
+            .appendingPathComponent(Bundle.main.object(forInfoDictionaryKey: "ZestRuntimeFolder") as? String ?? "Zest")
 
     private var sigterm: DispatchSourceSignal?
 

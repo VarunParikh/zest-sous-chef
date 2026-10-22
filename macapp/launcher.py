@@ -1,4 +1,4 @@
-"""Zest.app launcher (ADR-011; US-41; tests T-111 to T-114).
+"""Zest 2.0.app launcher (ADR-011, ADR-012; US-41, US-46; tests T-111 to T-114, T-125, T-127).
 
 Started by the Dock app (`macapp/ZestApp.swift`) through `zest-server.sh` with the bundled Python. It checks the Mac, seeds
 the writable runtime folder, picks or starts an Ollama server, serves Zest's unchanged API
@@ -30,8 +30,13 @@ MIN_MACOS = (14, 0)
 MIN_RAM_GB = 16
 MIN_FREE_GB_FOR_MODELS = 9  # three models are about 6.9 GB; Ollama needs headroom while unpacking
 DEFAULT_OLLAMA = "http://127.0.0.1:11434"
-PRIVATE_OLLAMA_PORT = 11435
-PREFERRED_PORT = 8000
+# Zest 2.0 edition (ADR-012): runs next to the released Zest 1.0 (data folder "Zest", ports 8000 and 11435)
+APP_NAME = "Zest 2.0"
+RUNTIME_FOLDER = "Zest 2.0"  # must match ZestRuntimeFolder in Info.plist (T-127)
+PRIVATE_OLLAMA_PORT = 11436
+PREFERRED_PORT = 8100
+SUPPORT = Path.home() / "Library" / "Application Support"
+SHARED_MODELS = SUPPORT / "Zest" / "ollama-models"  # 1.0's model files: reused, so there is no second 7 GB download
 STALL_S = 120  # no progress message from Ollama for this long: the pull is dropped and retried (Ollama resumes)
 AUTO_RETRIES = 3  # attempts per model before the page asks the user to press Try again
 RETRY_BACKOFF_S = 5.0
@@ -105,6 +110,13 @@ def seed_runtime(seed_chroma: Path, runtime: Path, version: str) -> bool:
         target.mkdir(parents=True)
     marker.write_text(version + "\n")
     return True
+
+
+def models_folder(runtime: Path, shared: Path = SHARED_MODELS, override: str | None = None) -> Path:
+    """Where the private Ollama keeps model files: an explicit override, else 1.0's folder when it exists, else our own."""
+    if override:
+        return Path(override)
+    return shared if shared.is_dir() else runtime / "ollama-models"
 
 
 def runtime_env(runtime: Path, ollama_url: str) -> dict[str, str]:
@@ -234,7 +246,7 @@ def _served(base: str, timeout: float = 2.0) -> list[str] | None:
 def _start_private_ollama(runtime: Path) -> tuple[subprocess.Popen, str]:
     binary = RESOURCES / "ollama" / "ollama"
     base = f"http://127.0.0.1:{PRIVATE_OLLAMA_PORT}"
-    models_dir = Path(os.environ.get("ZEST_OLLAMA_MODELS") or runtime / "ollama-models")
+    models_dir = models_folder(runtime, override=os.environ.get("ZEST_OLLAMA_MODELS"))
     models_dir.mkdir(parents=True, exist_ok=True)
     env = {**os.environ, "OLLAMA_HOST": f"127.0.0.1:{PRIVATE_OLLAMA_PORT}", "OLLAMA_MODELS": str(models_dir)}
     log = open(runtime / "logs" / "ollama.log", "ab")  # noqa: SIM115  kept open for the child's lifetime
@@ -343,7 +355,7 @@ def _running_instance(lock: Path) -> str | None:
 
 def main() -> int:
     headless = os.environ.get("ZEST_HEADLESS") == "1"
-    runtime = Path(os.environ.get("ZEST_RUNTIME_DIR") or Path.home() / "Library" / "Application Support" / "Zest")
+    runtime = Path(os.environ.get("ZEST_RUNTIME_DIR") or SUPPORT / RUNTIME_FOLDER)
     (runtime / "logs").mkdir(parents=True, exist_ok=True)
 
     errors, warnings = platform_problems(platform.machine(), platform.mac_ver()[0], _ram_bytes())
@@ -437,10 +449,35 @@ h1{font-size:1.5rem;margin:0 0 4px}p{margin:0 0 16px;color:var(--muted)}.row{mar
 .bar{height:8px;border-radius:4px;background:var(--line);overflow:hidden;margin-top:6px}.fill{height:100%;background:var(--accent);width:0;transition:width .4s}
 .warn{color:var(--warn);font-size:.9rem}.err{color:var(--err)}button.alt{background:transparent;color:var(--accent);border:1px solid var(--accent);margin-left:8px}button{margin-top:12px;font:inherit;padding:8px 16px;border-radius:8px;border:0;background:var(--accent);color:#fff;cursor:pointer}
 small{color:var(--muted)}
+.intro{margin-top:22px;border-top:1px solid var(--line);padding-top:18px}.slide h2{font-size:1.05rem;margin:0 0 4px}.slide p{margin:0;min-height:4.5em}
+.nav{display:flex;align-items:center;justify-content:space-between;margin-top:10px}.nav button{margin:0;padding:4px 12px;background:transparent;color:var(--ink);border:1px solid var(--line)}
+.dots{display:flex;gap:6px}.dot{width:8px;height:8px;border-radius:50%;background:var(--line)}.dot.on{background:var(--accent)}
+.slide{animation:fade .35s ease}@keyframes fade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion: reduce){.slide{animation:none}.fill{transition:none}}
 </style></head><body><main><div class="card">
 <h1>Getting Zest ready</h1><p id="msg">Starting…</p><div id="models"></div><div id="warn"></div><div id="act"></div>
+<section class="intro" id="intro" aria-roledescription="carousel" aria-label="How Zest works">
+<div class="slide" role="group" aria-roledescription="slide" aria-label="1 of 5"><h2>Four ways to start</h2><p>Paste a YouTube recipe, type a recipe or dish, describe a mood, or show your fridge.</p></div>
+<div class="slide" role="group" aria-roledescription="slide" aria-label="2 of 5" hidden><h2>Levers change the picks</h2><p>Move a slider or pick a persona and Zest re-ranks its suggestions. Look for “Why this?” on every dish.</p></div>
+<div class="slide" role="group" aria-roledescription="slide" aria-label="3 of 5" hidden><h2>Rules are code, not wishes</h2><p>If you're Jain, vegan or halal, unsuitable dishes are removed before ranking, every time.</p></div>
+<div class="slide" role="group" aria-roledescription="slide" aria-label="4 of 5" hidden><h2>Private by design</h2><p>Your chats, photos and cart stay on this Mac. Zest goes online only to fetch the transcript of a YouTube link you paste, or if you turn on Gemini photo analysis yourself.</p></div>
+<div class="slide" role="group" aria-roledescription="slide" aria-label="5 of 5" hidden><h2>A mock store</h2><p>Products and prices are made up, and Buy Now never charges anything.</p></div>
+<div class="nav"><button type="button" id="prev" aria-label="Previous slide">‹</button><span class="dots" id="dots" aria-hidden="true"></span><button type="button" id="next" aria-label="Next slide">›</button></div>
+</section>
 <small>All store data in Zest is mock. Models run on this Mac.</small></div></main>
 <script>
+// FR-125 introduction: 8 s per slide, paused on hover or focus, still under reduced motion; no network request
+(function(){
+  const box=document.getElementById("intro"), slides=[...box.querySelectorAll(".slide")], dots=document.getElementById("dots");
+  slides.forEach(()=>{const d=document.createElement("span");d.className="dot";dots.append(d)});
+  let i=0, paused=false; const still=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const show=n=>{i=(n+slides.length)%slides.length;slides.forEach((s,k)=>s.hidden=k!==i);[...dots.children].forEach((d,k)=>d.className=k===i?"dot on":"dot")};
+  document.getElementById("prev").onclick=()=>show(i-1); document.getElementById("next").onclick=()=>show(i+1);
+  box.addEventListener("keydown",e=>{if(e.key==="ArrowLeft")show(i-1);if(e.key==="ArrowRight")show(i+1)});
+  box.addEventListener("mouseenter",()=>paused=true); box.addEventListener("mouseleave",()=>paused=false);
+  box.addEventListener("focusin",()=>paused=true); box.addEventListener("focusout",()=>paused=false);
+  show(0); if(!still) setInterval(()=>{if(!paused)show(i+1)},8000);
+})();
 const label={waiting:"Waiting",downloading:"Downloading",ready:"Ready",failed:"Paused"};
 async function tick(){
   let s;try{s=await (await fetch("/launcher/status",{cache:"no-store"})).json()}catch(e){return setTimeout(tick,1500)}

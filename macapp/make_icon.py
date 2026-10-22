@@ -4,14 +4,16 @@ The source is a full-bleed rounded square on a white background. The corner radi
 the white corners become transparent, and the artwork is placed on Apple's macOS icon grid: 824 px inside a
 1024 px canvas, with a soft shadow, so it sits at the same size as other apps in the Dock and Finder.
 
-Usage: python make_icon.py SOURCE OUT.icns
+Usage: python make_icon.py SOURCE OUT.icns [--badge TEXT]
+--badge draws a small pill (for example "2.0") in the lower-right corner, so Zest 2.0 is told apart from 1.0 in the
+Dock (ADR-012, owner-approved); the source artwork is never edited.
 """
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 CANVAS, ART, SHADOW_Y, SHADOW_BLUR = 1024, 824, 12, 14
 SIZES = [16, 32, 128, 256, 512]
@@ -45,8 +47,29 @@ def icon(source: Path) -> Image.Image:
     return canvas
 
 
-def main(source: str, out: str) -> int:
+BADGE_FILL, BADGE_TEXT = (59, 42, 135, 255), (255, 255, 255, 255)  # the app's brand purple, white text
+FONTS = ["/System/Library/Fonts/SFNS.ttf", "/System/Library/Fonts/Helvetica.ttc", "/Library/Fonts/Arial Bold.ttf"]
+
+
+def badge(img: Image.Image, text: str) -> Image.Image:
+    """A rounded pill with `text`, over the artwork's lower-right corner, with a thin white outline for contrast."""
+    draw = ImageDraw.Draw(img)
+    size = 150
+    font = next((ImageFont.truetype(f, size) for f in FONTS if Path(f).exists()), None) or ImageFont.load_default(size)
+    left, top, right, bottom = draw.textbbox((0, 0), text, font=font)
+    w, h = right - left + 90, bottom - top + 60
+    off = (CANVAS - ART) // 2
+    x1, y1 = off + ART - 30, off + ART - 30
+    box = (x1 - w, y1 - h, x1, y1)
+    draw.rounded_rectangle(box, radius=h // 2, fill=BADGE_FILL, outline=(255, 255, 255, 255), width=10)
+    draw.text(((box[0] + box[2]) / 2, (box[1] + box[3]) / 2), text, font=font, fill=BADGE_TEXT, anchor="mm")
+    return img
+
+
+def main(source: str, out: str, *flags: str) -> int:
     big = icon(Path(source))
+    if "--badge" in flags:
+        big = badge(big, flags[flags.index("--badge") + 1])
     with tempfile.TemporaryDirectory() as tmp:
         iconset = Path(tmp) / "AppIcon.iconset"
         iconset.mkdir()
@@ -59,4 +82,4 @@ def main(source: str, out: str) -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main(*sys.argv[1:3]))
+    sys.exit(main(*sys.argv[1:]))

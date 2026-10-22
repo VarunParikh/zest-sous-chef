@@ -12,6 +12,6 @@ export PYTHONNOUSERSITE=1
 export PYTHONUNBUFFERED=1
 export HF_HUB_OFFLINE=1
 cd "$RES/zest" || exit 1
-LOG_DIR="${ZEST_RUNTIME_DIR:-$HOME/Library/Application Support/Zest}/logs"
+LOG_DIR="${ZEST_RUNTIME_DIR:-$HOME/Library/Application Support/Zest 2.0}/logs"  # Zest 2.0 data folder (ADR-012)
 mkdir -p "$LOG_DIR"
 exec "$RES/python/bin/python3" -s -X utf8 "$RES/zest/macapp/launcher.py" "$@" 2>>"$LOG_DIR/launcher.log"
