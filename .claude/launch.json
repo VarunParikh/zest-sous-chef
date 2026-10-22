@@ -4,14 +4,14 @@
     {
       "name": "zest-backend",
       "runtimeExecutable": ".venv/bin/python",
-      "runtimeArgs": ["-m", "uvicorn", "backend.api.app:create_app", "--factory", "--app-dir", "src", "--host", "127.0.0.1", "--port", "8000"],
-      "port": 8000
+      "runtimeArgs": ["-m", "uvicorn", "backend.api.app:create_app", "--factory", "--app-dir", "src", "--host", "127.0.0.1", "--port", "8100"],
+      "port": 8100
     },
     {
       "name": "zest-frontend",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["--prefix", "src/frontend", "run", "dev"],
-      "port": 5173,
+      "port": 5273,
       "autoPort": false
     }
   ]

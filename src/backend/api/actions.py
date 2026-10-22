@@ -9,7 +9,7 @@ from pydantic import BaseModel, ConfigDict
 from backend.api.cart import context, rule_error
 from backend.cart import service
 from backend.cart.service import CartRuleError
-from backend.flows.cards import Message, SwapOption, SwapOptions, TurnResponse, Undo
+from backend.flows.cards import ChoiceOption, Confirm, Message, SwapOption, SwapOptions, TurnResponse, Undo
 from backend.flows.templates import render
 from backend.flows.turns import build_turn
 from backend.session.levers import LeverSet
@@ -54,6 +54,11 @@ def _confirm(session, p: dict, request: Request) -> tuple[list[Message], bool]:
         out = Outcome()
         photo.answer(session, pending, p["choice"], _deps(request, session.session_id), out)
         return out.messages, out.cart_changed
+    if pending and pending["kind"] == "add_instead":
+        if p.get("choice") not in ("add", "no"):
+            raise CartRuleError("STALE", "That question has expired.")
+        del session.pending[p["confirm_id"]]
+        return _add_instead(session, pending, p["choice"], request)
     if pending and pending["kind"] in ("dup_video", "pantry"):
         from backend.flows.chat import Outcome
         from backend.flows.youtube import answer
@@ -88,10 +93,44 @@ def _undo(session, p: dict, request: Request) -> tuple[list[Message], bool]:
     return [reply(session, "MSG-UNDO", dish=name)], True
 
 
+def _offer_instead(session, rec: dict, alt: str, store) -> Message:
+    """FR-127: the dish was undone, so there is nothing to swap; ask whether to add the chosen dish instead."""
+    alt_name = store.dish(alt).dish.name
+    cid = session.next_id("c")
+    session.pending[cid] = {"kind": "add_instead", "dish_id": alt, "source": rec["source"],
+                            "exclude": rec.get("exclude", frozenset()),
+                            "alternatives": [a for a in rec["alternatives"] if a != alt]}
+    msg = reply(session, "MSG-SWAP-GONE", dish=store.dish(rec["dish_id"]).dish.name, alt=alt_name)
+    msg.cards = [Confirm(confirm_id=cid, prompt="", options=[ChoiceOption(value="add", label=f"Add {alt_name}"),
+                                                             ChoiceOption(value="no", label="No thanks")])]
+    return msg
+
+
+def _add_instead(session, pending: dict, choice: str, request: Request) -> tuple[list[Message], bool]:
+    """Add carts the dish under a new suggestion (Undo, the remaining swap), then its add-on offer (FR-64, FR-127)."""
+    from backend.flows.addons import offer_addon
+    from backend.flows.chat import Outcome
+
+    if choice != "add":
+        return [reply(session, "MSG-SWAP-GONE-NO")], False
+    store = request.app.state.store
+    sid, added = service.add_suggested(session, pending["dish_id"], pending["alternatives"], pending["source"],
+                                       context(request), store, exclude_terms=pending["exclude"])
+    msg = reply(session, "MSG-EDIT-OK", change=f"Added {added.name}")
+    options = [SwapOption(dish_id=d, name=store.dish(d).dish.name) for d in session.suggestions[sid]["alternatives"]]
+    msg.cards = ([SwapOptions(suggestion_id=sid, options=options)] if options else []) + [Undo(suggestion_id=sid)]
+    out = Outcome()
+    offer_addon(session, added, _deps(request, session.session_id), out)
+    return [msg, *out.messages], True
+
+
 def _swap(session, p: dict, request: Request) -> tuple[list[Message], bool]:
     store = request.app.state.store
-    sid = p.get("suggestion_id", "")
-    added = service.swap(session, sid, p.get("alt_dish_id", ""), context(request), store)
+    sid, alt = p.get("suggestion_id", ""), p.get("alt_dish_id", "")
+    rec = session.suggestions.get(sid)
+    if rec is not None and rec.get("undone") and alt in rec["alternatives"]:
+        return [_offer_instead(session, rec, alt, store)], False
+    added = service.swap(session, sid, alt, context(request), store)
     msg = reply(session, "MSG-MOOD-SWAP", dish=added.name)
     options = [SwapOption(dish_id=d, name=store.dish(d).dish.name) for d in session.suggestions[sid]["alternatives"]]
     msg.cards = [SwapOptions(suggestion_id=sid, options=options), Undo(suggestion_id=sid)]

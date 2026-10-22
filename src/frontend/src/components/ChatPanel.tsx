@@ -48,10 +48,11 @@ function InfoButton({ open, onToggle, controls }: { open: boolean; onToggle: () 
 }
 
 export function ChatPanel({ messages, busy, busyKind, error, draft, setDraft, onSend, onUpload, handlers, cartCount, onOpenCart,
-  cartButton, onClearChat, banner, onNewChat }: {
+  cartButton, onClearChat, banner, onNewChat, rerunLabel, onRerun }: {
   messages: Message[]; busy: boolean; busyKind: BusyKind; error: string | null; draft: string; setDraft: (s: string) => void;
   onSend: (text: string) => void; onUpload: (f: File) => void; handlers: CardHandlers; cartCount: number;
   onOpenCart: () => void; cartButton: RefObject<HTMLButtonElement | null>; onClearChat: () => void; banner: boolean; onNewChat: () => void;
+  rerunLabel: string | null; onRerun: () => void;
 }) {
   const feed = useRef<HTMLDivElement>(null);
   const file = useRef<HTMLInputElement>(null);
@@ -78,7 +79,7 @@ export function ChatPanel({ messages, busy, busyKind, error, draft, setDraft, on
             className="rounded-[10px] border border-strong bg-white px-3 py-1.5 text-xs font-medium text-secondary hover:bg-[#F9FAFB] disabled:opacity-40">
             Clear chat
           </button>
-          <button ref={cartButton} type="button" onClick={onOpenCart} disabled={empty}
+          <button ref={cartButton} type="button" onClick={onOpenCart} disabled={empty} data-tour="cart"
             aria-label={empty ? "Cart is empty" : `Open cart, ${cartCount} items`}
             className="relative flex h-[38px] w-[38px] items-center justify-center rounded-md text-brand hover:bg-brand-tint disabled:cursor-not-allowed disabled:text-dim disabled:opacity-40">
             <CartIcon />
@@ -92,8 +93,15 @@ export function ChatPanel({ messages, busy, busyKind, error, draft, setDraft, on
       {banner && (
         <div role="status" className="flex shrink-0 items-center justify-between gap-3 border-b-2 border-warn bg-warn-surface px-5 py-3 text-sm font-semibold text-ink">
           <span className="flex items-center gap-2"><span aria-hidden="true">⚠️</span>Changes apply from your next chat session.</span>
-          <button type="button" onClick={onNewChat}
-            className="rounded-[10px] bg-brand px-3 py-1.5 text-xs font-semibold text-white hover:bg-brand-hover">Start new chat</button>
+          <span className="flex shrink-0 flex-wrap justify-end gap-2">
+            {rerunLabel && (  /* FR-120: apply the levers and rerun the last request in one click */
+              <button type="button" onClick={onRerun} disabled={busy}
+                className="rounded-[10px] bg-brand px-3 py-1.5 text-xs font-semibold text-white hover:bg-brand-hover disabled:opacity-40">{rerunLabel}</button>
+            )}
+            <button type="button" onClick={onNewChat}
+              className={rerunLabel ? "rounded-[10px] border border-strong bg-white px-3 py-1.5 text-xs font-semibold text-secondary hover:bg-[#F9FAFB]"
+                : "rounded-[10px] bg-brand px-3 py-1.5 text-xs font-semibold text-white hover:bg-brand-hover"}>Start new chat</button>
+          </span>
         </div>
       )}
 
@@ -136,7 +144,7 @@ export function ChatPanel({ messages, busy, busyKind, error, draft, setDraft, on
         <p role="alert" className="mx-5 mb-2 rounded-md border border-err-border bg-err-surface px-3 py-2 text-sm text-err">{error}</p>
       )}
 
-      <form onSubmit={submit} className="flex shrink-0 items-center gap-2 border-t border-line bg-white px-5 py-3">
+      <form onSubmit={submit} data-tour="chatbox" className="flex shrink-0 items-center gap-2 border-t border-line bg-white px-5 py-3">
         <input ref={file} type="file" accept="image/jpeg,image/png,image/webp" className="hidden" tabIndex={-1}
           onChange={(e) => { const f = e.target.files?.[0]; if (f) onUpload(f); e.target.value = ""; }} />
         <button type="button" aria-label="Upload food or fridge image" disabled={busy} onClick={() => file.current?.click()}

@@ -3,6 +3,33 @@
 All notable changes to this project are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+Zest 2.0 (branch `zest-2.0`; released as 2.0.0 after owner review).
+
+### Added
+- **Help card and one-tap starters (US-45):** "what can I say?" and similar whole-message questions are routed in code to MSG-HELP, whose four examples act on one tap. The YouTube link and Text recipe starters now send. The guard's topic rule lets an exact help question through like a greeting (C79, proposed for owner review). T-122 to T-124.
+- **Lever tooltips (US-44):** every lever has a plain-language tooltip and a Rule or Preference tag. T-121.
+- **Persona cards (US-43):** "Who's cooking?" cards with summaries generated from the levers (`/config/levers` `summary` and `tag`). T-119, T-120.
+- **Apply and rerun (US-42):** one click applies the levers in a new session and resends the last request, with a Before/Now line. With items in the cart it asks first. T-117, T-118. In the real app, Meera Shah turned "Something comforting tonight" from Mushroom Risotto (0.58) into Jain Dal Chawal (0.36).
+- **Characters and icons (owner-approved mockup, 2026-10-23):** persona cards show cartoon chefs, with non-skin colours and a prop chosen from the levers (leaf, dumbbell, clock, bowl, clipboard, spoon), and each specialised diet has a small icon.
+  - A last **Custom** card is in use when the levers match no persona; choosing it scrolls to the levers.
+  - Vikram Rao and Jordan Fernandes (control) are also no longer offered (C82), and untouched default levers are labelled "Default settings".
+  - The reviewer persona is no longer offered. It stays in `personas.json` for the evaluations (C81), so a new chat is labelled "Jordan Fernandes (control)", which has the same default levers.
+- **Tour (US-47):** a skippable five-step tour on the first visit, restartable from the help icon at the top right. T-126.
+- **Zest 2.0 Mac app (US-46, ADR-012):**
+  - It runs next to 1.0: own bundle id and data folder, ports 8100 and 11436, 1.0's model folder reused, and a "2.0" badge on the icon.
+  - The first-launch page plays a five-slide introduction. T-125, T-127.
+  - T-128 PASS on the owner's Mac.
+- **Ports:** source runs default to 8100 and 5273 (`API_PORT`, `WEB_PORT`; C78).
+
+### Fixed
+- The header's "Persona:" label now follows the levers at once (a persona, Custom or Default settings), noting "applies from your next chat" until a new chat starts. It used to show only the persona the chat began with.
+- The order-placed screen shows "Order ID:" and "Order cost:" on separate lines.
+- The breadcrumb "Reviewer Workbench > Active Persona Levers" is removed from the lever panel (C83).
+- The "Effective share = weight ÷ sum of weights" note under the weight sliders is removed; the percentages and the all-zero warning stay.
+- A swap tapped after Undo returned an error (409, "That swap is no longer available"), seen three times in the owner's session log. Zest now asks whether to add that dish instead and, if added, suggests its add-on (FR-127). T-129.
+- The Mac app's free-port check now ignores ports held only by closed connections, as uvicorn does, so Quit then reopen keeps port 8100 instead of a random port. A regression test failed before the fix.
+- `make dmg` refuses to run while an app from `macapp/out/` is running. A rebuild during testing had deleted a running 1.0's files, so its health reported fixtures missing.
+- Zest 2.0 specification, approved with the Zest 2.0 plan (2026-10-22): first-use onboarding US-42 to US-47 (PRD §6.13, FR-120 to FR-126, AC-46 to AC-61), Conversation Design §6.7 copy and MSG-HELP, API `presets[].summary`/`tag` and the `help` card, Test Plan §4.10 (T-117 to T-128), ADR-012 (running next to 1.0), conflicts C77 and C78.
 
 ## [0.2.0] - 2026-10-22
 The prototype as a Mac app: `Zest-0.2.0.dmg` (GitHub Release `v0.2.0`) runs Zest on an Apple-silicon Mac with no setup (ADR-011, US-41). Also fixes the inspector after named-dish and YouTube turns. Evidence report unchanged from 0.1.0; no evaluation was rerun.

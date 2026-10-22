@@ -105,10 +105,13 @@ def snapshot_hash(levers: LeverSet) -> str:
 def persona_label(levers: LeverSet, presets: Mapping[str, LeverSet]) -> str:
     """The preset name when the levers equal a preset, else "Custom" (API Spec §10 item 3).
 
-    When several presets are equal (P7 and P9 both use the defaults), the first in `personas.json` wins.
+    When several presets are equal, the first in `personas.json` wins. Personas not offered in the interface (C81) are
+    never the label; untouched default levers read "Default settings".
     """
     h = snapshot_hash(levers)
-    return next((name for name, preset in presets.items() if snapshot_hash(preset) == h), "Custom")
+    if h == snapshot_hash(LeverSet()):
+        return "Default settings"
+    return next((name for name, preset in presets.items() if snapshot_hash(preset) == h and offered(name)), "Custom")
 
 
 # C30: item classes each diet allows, and the classes a faith or specialised diet forbids.
@@ -133,3 +136,45 @@ def persona_conflicts(levers: LeverSet) -> list[tuple[str, str]]:
     allowed = DIET_ALLOWS[levers.diet]
     others = [levers.faith, *levers.specialized_diets]
     return [(levers.diet, s) for s in others if allowed & FORBIDS.get(s, frozenset())]
+
+
+# Persona cards (FR-121, AC-50; Zest 2.0): the summary is generated from the levers, never typed by hand.
+SPECIAL_WORDS = {"Keto Diet": "keto", "Intermittent Fasting / Low-GI": "low-GI", "Vegan": "vegan",
+                 "Gluten-Free": "gluten-free", "High-Protein Fitness": "high-protein"}
+JAIN_SUMMARY = "Jain: no root vegetables, onion, garlic or mushrooms"  # Data Model §9 with C68 (fungi)
+
+
+def persona_summary(levers: LeverSet) -> str:
+    """One plain line for a persona card, for example "Vegan, gluten-free" or "No restrictions"."""
+    special = [SPECIAL_WORDS[d] for d in LEVER_OPTIONS["specialized_diets"] if d in levers.specialized_diets and d in SPECIAL_WORDS]
+    halal = levers.faith == "Muslim (Strict Halal Only)"
+    parts: list[str] = []
+    if levers.diet.startswith("Jain") or levers.faith.startswith("Jain"):
+        parts.append(JAIN_SUMMARY)
+    elif levers.diet == "Pure Veg (Strict)" and "vegan" not in special:
+        parts.append("pure vegetarian")
+    if halal:
+        parts.append("halal only")
+    if levers.faith.startswith("Hindu (Shravan"):
+        parts.append("Shravan fasting")
+    parts += special
+    if levers.diet == "Non-Veg / Flexitarian" and special and not halal:
+        parts.append("eats meat")
+    if not parts:
+        return "No restrictions"
+    text = ", ".join(parts)
+    return text[0].upper() + text[1:]
+
+
+def persona_tag(name: str) -> str | None:
+    """Reviewer and control personas are tagged so the cards list them last (FR-121)."""
+    low = name.lower()
+    return "Reviewer" if "(reviewer)" in low else "Control" if "(control)" in low else None
+
+
+# Personas kept in personas.json for the evaluations (E7, E9, E13) but not offered in the interface (C81, owner 2026-10-23)
+NOT_OFFERED = frozenset({"Alex (Reviewer)", "Jordan Fernandes (control)", "Vikram Rao"})
+
+
+def offered(name: str) -> bool:
+    return name not in NOT_OFFERED

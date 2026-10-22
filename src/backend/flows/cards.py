@@ -41,6 +41,19 @@ class StarterChips(_Card):
     chips: list[str]
 
 
+class HelpExample(_Card):
+    label: str
+    kind: Literal["send", "sample"]  # send: the value as a chat message; sample: the sample photo with this id
+    value: str
+
+
+class HelpCard(_Card):
+    type: Literal["help"] = "help"
+    examples: list[HelpExample]
+    note: str
+    tour: bool = True
+
+
 class DishAdded(_Card):
     type: Literal["dish_added"] = "dish_added"
     suggestion_id: str
@@ -122,7 +135,7 @@ class CartSummary(_Card):
 
 
 Card = Annotated[
-    Union[StarterChips, DishAdded, SwapOptions, Undo, WhyThis, Clarify, Confirm, AddonSuggestion,
+    Union[StarterChips, HelpCard, DishAdded, SwapOptions, Undo, WhyThis, Clarify, Confirm, AddonSuggestion,
           Substitution, PhotoConsent, SamplePhotos, Notice, CartSummary],
     Field(discriminator="type"),
 ]

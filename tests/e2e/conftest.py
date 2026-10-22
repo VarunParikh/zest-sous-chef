@@ -42,6 +42,7 @@ def _wait(url: str, timeout: float = 30) -> None:
 def backend_url(tmp_path_factory):
     fake = FakeOllama()
     fake.intents[MOOD] = intent("mood_intent", mood_tags=["indulgent"])
+    fake.intents["Something comforting tonight"] = intent("mood_intent", mood_tags=["comforting"])  # MSG-HELP example
     tmp = tmp_path_factory.mktemp("e2e")
     settings = load_settings(env={"TRACE_PATH": str(tmp / "trace.jsonl"), "CHROMA_PATH": str(tmp / "chroma"),
                                   "CONTEXT_NOW": "2026-10-17T19:30:00", "CONTEXT_WEATHER": "cool"}, env_file=None)
@@ -71,3 +72,12 @@ def app_url(backend_url):
     finally:
         proc.terminate()
         proc.wait(timeout=10)
+
+
+@pytest.fixture(autouse=True)
+def _tour_seen(request):
+    """Zest 2.0 shows a tour on a first visit (FR-126). Tests start with it marked as seen, except those marked
+    `fresh_tour` (T-126), so the overlay never changes what the other tests see."""
+    if request.node.get_closest_marker("fresh_tour") or "page" not in request.fixturenames:
+        return
+    request.getfixturevalue("page").add_init_script("try { localStorage.setItem('zest2.tourSeen', '1') } catch (e) {}")

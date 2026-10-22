@@ -1,6 +1,6 @@
 # User Stories and Traceability Matrix: Zest AI Sous-Chef
 
-Status: **APPROVED v0.5 (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.4 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.3 was APPROVED (owner, 2026-10-17) (v0.2 was approved earlier the same day; v0.3 changes US-19 only, to sync with ADR-004 v2 and PRD v0.4) · Date: 2026-10-17 · Source: PRD v0.4, BRD, Strategy
+Status: **APPROVED v0.6 (owner, 2026-10-22, with the Zest 2.0 plan): section M adds US-42 to US-47 (onboarding).** v0.5 was **APPROVED v0.5 (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.4 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.3 was APPROVED (owner, 2026-10-17) (v0.2 was approved earlier the same day; v0.3 changes US-19 only, to sync with ADR-004 v2 and PRD v0.4) · Date: 2026-10-17 · Source: PRD v0.4, BRD, Strategy
 Sizing: S = under 1 day, M = 1 to 2 days, L = 2 to 3 days of build effort. The playbook allows 1 to 5 days; the 3-day deadline means each story here is kept to 3 days or less and the parallel work is stated in the Strategy plan. Priority follows PRD (M/S/C). Every story states acceptance criteria (AC) as Given/When/Then, and test IDs are assigned in the Test Plan (document 19).
 
 Format: **US-xx** As a *persona*, I want *capability*, so that *benefit*. Covers: FR/AC.
@@ -154,6 +154,25 @@ Format: **US-xx** As a *persona*, I want *capability*, so that *benefit*. Covers
 **US-36** As the owner, I want a seeded, validated catalogue of at least 1,000 unique SKUs and a one-command setup, so that anyone can reproduce the demo. *M · L* Covers NFR-08, 09, 12, 13; mock-data plan.
 - Given the generator, then every tag agrees with its SKU's ingredient list, every dish ingredient resolves, and the 5,000-SKU set builds with the same code.
 
+## M. First-use onboarding (Zest 2.0)
+**US-42** As a user, when I change a lever I want one click to apply it and rerun my last request, so that I see how the change affects the pick. *S · M* Covers FR-120; AC-46 to AC-49.
+- Given a carted suggestion, when I change a lever and press Apply and rerun, then a new session starts with my new levers and my last request is sent again; if my cart had items I confirmed first.
+
+**US-43** As a first-time user, I want to pick who I'm cooking for from cards, so that I understand each persona at a glance. *S · M* Covers FR-121; AC-50, AC-51.
+- Given the persona cards, when I press Use this persona on Meera Shah, then her levers are set and her card reads "Jain: no root vegetables, onion, garlic or mushrooms".
+
+**US-44** As a first-time user, I want each lever explained in plain words, so that I know what moving it does. *S · S* Covers FR-122; AC-52, AC-53.
+- Given any lever, when I hover, focus or tap its ⓘ, then I read what it changes and whether it is a Rule or a Preference.
+
+**US-45** As a first-time user, I want to ask "what can I say?" and get examples I can tap, so that I can start in one click. *S · S* Covers FR-123, FR-124; AC-54 to AC-57.
+- Given a new chat, when I type "what can I say?", then Zest lists the four ways in with examples that act on one tap; the greeting chips also act on one tap.
+
+**US-46** As a first-time user of the Mac app, I want to learn how Zest works while the models download, so that I'm ready when it opens. *C · S* Covers FR-125; AC-58, AC-59.
+- Given the first launch, when models are downloading, then a short introduction plays under the progress bars and Zest still opens as soon as the models are ready.
+
+**US-47** As a first-time user, I want a short, skippable tour of the main screen, so that I know where to start. *S · M* Covers FR-126; AC-56, AC-60, AC-61.
+- Given my first visit, when the main screen opens, then a six-step tour starts; I can skip it, and the help icon in the top-right corner starts it again.
+
 ## Traceability matrix (objectives to stories)
 | Objective | BR | FR | Stories | AC | Tests |
 |---|---|---|---|---|---|
@@ -165,5 +184,7 @@ Format: **US-xx** As a *persona*, I want *capability*, so that *benefit*. Covers
 | O6 Responsiveness | BR-13 | NFR-01, 10 | US-34 | Benchmark ADR | E1, E11 |
 | O7 Traceability | BR-12 | NFR-06 | US-35 | AC-34 | E14 |
 | O8 Responsible AI | BR-11 | FR-07, 14, 15, 50, 51 | US-04, 07, 14 | AC-34 | T-102, 103, 109; E3 |
+
+Zest 2.0 onboarding (US-42 to US-47) answers reviewer feedback rather than a BRD objective (owner request 2026-10-22): FR-120 to FR-126, AC-46 to AC-61, T-117 to T-128 (ADR-012 for running next to 1.0).
 
 BR identifiers follow BRD section 9. Test IDs (T-xxx) are from the Test Plan and E-numbers from the Evaluation Plan. O6's AC cell is the benchmark ADR target, which is set on Day 1. Coverage check: every FR above FR-92 appears in at least one story; FR-65 and FR-32 sit in Could stories.

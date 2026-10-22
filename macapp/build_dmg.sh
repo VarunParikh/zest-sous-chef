@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Build Zest.app and Zest-<version>.dmg (ADR-011; US-41). Run with `make dmg` on an Apple-silicon Mac
+# Build Zest 2.0.app and Zest-<version>.dmg (ADR-011, ADR-012; US-41). Run with `make dmg` on an Apple-silicon Mac
 # that has done `make setup` (Node is needed here only to build the frontend; the app needs no Node).
 # Output: macapp/out/. Downloads (pinned, SHA-256 checked) are cached in macapp/.cache/.
 set -euo pipefail
@@ -16,12 +16,18 @@ OLLAMA_URL="https://github.com/ollama/ollama/releases/download/v0.40.5/ollama-da
 OLLAMA_SHA="75f9907dafa2fd4c61b5967de2ebb81ccc17eb28da9172edbad0dbc717474dcf"
 
 [ "$(uname -m)" = "arm64" ] || { echo "Build on an Apple-silicon Mac."; exit 1; }
+# The build replaces macapp/out/; an app still running from there would lose its files mid-session
+if pgrep -f "$OUT/.*\.app/Contents/" >/dev/null; then
+  echo "A Zest app is running from $OUT. Quit it first (or run the copy in Applications), then build again."
+  exit 1
+fi
 cd "$ROOT"
 if [ -n "$(git status --porcelain)" ] && [ "${ZEST_ALLOW_DIRTY:-0}" != "1" ]; then
   echo "Uncommitted changes: commit first so the app matches a commit (or set ZEST_ALLOW_DIRTY=1 for a test build)."
   exit 1
 fi
-APP_VERSION="$(grep -m1 -E '^## \[[0-9]' CHANGELOG.md | sed -E 's/^## \[([^]]+)\].*/\1/')"
+# The version comes from the newest CHANGELOG release; ZEST_VERSION overrides it for a pre-release build (e.g. 2.0.0-dev)
+APP_VERSION="${ZEST_VERSION:-$(grep -m1 -E '^## \[[0-9]' CHANGELOG.md | sed -E 's/^## \[([^]]+)\].*/\1/')}"
 COMMIT="$(git rev-parse --short HEAD)$( [ -n "$(git status --porcelain)" ] && echo -dirty || true)"
 VERSION="$APP_VERSION+$COMMIT"
 echo "==> Building Zest $VERSION"
@@ -38,7 +44,7 @@ fetch() {  # url sha file
 fetch "$PY_URL" "$PY_SHA" python.tar.gz
 fetch "$OLLAMA_URL" "$OLLAMA_SHA" ollama-darwin.tgz
 
-APP="$OUT/Zest.app"
+APP="$OUT/Zest 2.0.app"  # its own name and bundle id, so it installs next to Zest 1.0 (ADR-012)
 RES="$APP/Contents/Resources"
 ZEST="$RES/zest"
 rm -rf "$OUT"
@@ -92,7 +98,7 @@ echo "==> Pre-compiling Python"
 
 echo "==> App bundle"
 # Icon from the owner-supplied artwork (macapp/icon/), placed on the macOS icon grid by make_icon.py
-"$PY" -s "$HERE/make_icon.py" "$HERE/icon/zest-icon-source.webp" "$OUT/AppIcon.icns"
+"$PY" -s "$HERE/make_icon.py" "$HERE/icon/zest-icon-source.webp" "$OUT/AppIcon.icns" --badge "2.0"  # owner-approved 2.0 badge
 cp "$OUT/AppIcon.icns" "$RES/AppIcon.icns"
 sed "s/__VERSION__/$APP_VERSION/g; s/__BUILD__/$COMMIT/g" "$HERE/Info.plist" > "$APP/Contents/Info.plist"
 # The Dock front end, built for macOS 14+ whatever this Mac runs (swiftc comes with Apple's command-line tools)

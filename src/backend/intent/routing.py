@@ -1,6 +1,8 @@
 """Code routing before the intent model (C54; Agent Design v0.4 §6.1; Architecture v0.8 §4).
 
-Runs after the guard. Two deterministic routes; everything else goes to A2:
+Runs after the guard. Three deterministic routes; everything else goes to A2:
+- a whole message asking for help ("help", "what can I say", "how does this work"), at most
+  60 characters, is `help` (FR-123; Zest 2.0);
 - a message with no digits and at most one comma, with a cooking verb and a stored dish
   name or alias as whole words, is `named_dish` with that dish;
 - "clear", "empty", "reset" or "start over" within 15 characters of "cart" or "basket"
@@ -13,6 +15,10 @@ import re
 from backend.llm.schemas import IntentResult
 
 VERBS = re.compile(r"\b(make|cook|prepare|want|try)\b", re.I)
+HELP = re.compile(
+    r"^\s*(help( me)?|what can (i|you) (say|do|ask)( here)?|what (do|should) i (say|do|type|ask)|"
+    r"how (does (this|zest|it) work|do i (start|use (this|zest|it))|to (start|use (this|zest|it))))\s*[?!.]*\s*$", re.I)
+HELP_MAX = 60
 CLEAR = re.compile(r"\b(clear|empty|reset|start over)\b.{0,15}\b(cart|basket)\b|\b(cart|basket)\b.{0,15}\b(clear|empty|reset)\b", re.I)
 
 
@@ -26,7 +32,14 @@ def _names(store) -> list[tuple[str, str]]:
     return out
 
 
+def is_help(text: str) -> bool:
+    """A whole, short help question (FR-123). The guard's topic rule lets these through like greetings (C79)."""
+    return len(text) <= HELP_MAX and HELP.match(text) is not None
+
+
 def route(text: str, store) -> IntentResult | None:
+    if is_help(text):
+        return IntentResult(intent="help", confidence=1.0)
     if CLEAR.search(text):
         return IntentResult(intent="cart_clear_or_replace", confidence=1.0)
     if re.search(r"\d", text) or text.count(",") > 1 or not VERBS.search(text):

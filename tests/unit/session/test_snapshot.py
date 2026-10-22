@@ -60,7 +60,8 @@ def test_snapshot_hash_is_stable_and_ignores_diet_order():
 
 def test_persona_label_custom_unless_a_preset_matches():
     presets = {"Priya Nair": LeverSet(diet="Pure Veg (Strict)")}
-    assert persona_label(LeverSet(), presets) == "Custom"
+    assert persona_label(LeverSet(), presets) == "Default settings"  # untouched defaults (Zest 2.0, C82)
+    assert persona_label(LeverSet(faith="Hindu (Regular)"), presets) == "Custom"
     assert persona_label(LeverSet(diet="Pure Veg (Strict)"), presets) == "Priya Nair"
 
 

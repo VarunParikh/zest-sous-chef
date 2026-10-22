@@ -80,6 +80,10 @@ def handle(session, text: str, deps: Deps) -> Outcome:
         out.messages.append(say(session, REDIRECT_INTENTS[result.intent]))
     elif result.intent in TEMPLATE_INTENTS:
         out.messages.append(say(session, TEMPLATE_INTENTS[result.intent]))
+    elif result.intent == "help":  # FR-123: code-routed, no intent-model call
+        from backend.flows.greeting import help_card
+
+        out.messages.append(say(session, "MSG-HELP", cards=[help_card()]))
     elif result.intent == "cart_clear_or_replace":
         if session.cart.is_empty:
             out.messages.append(say(session, "MSG-EMPTY-CART"))

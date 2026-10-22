@@ -217,3 +217,52 @@ def test_bundle_env_comes_from_the_example_only():
     script = (ROOT / "macapp" / "build_dmg.sh").read_text()
     copies = re.findall(r'cp\s+"?\$ROOT/(\.env[^"\s]*)"?\s+"?\$ZEST/\.env"?', script)
     assert copies == [".env.example"]
+
+
+# T-125 (FR-125, AC-58, AC-59; Zest 2.0): the setup-page introduction
+def test_t125_setup_page_has_five_slides_with_accurate_privacy_and_no_network():
+    import re
+
+    page = L.SETUP_PAGE
+    assert page.count('aria-roledescription="slide"') == 5
+    privacy = re.search(r"Private by design</h2><p>(.*?)</p>", page).group(1)
+    assert "stay on this Mac" in privacy and "YouTube" in privacy and "Gemini" in privacy
+    assert "prefers-reduced-motion" in page and "8000" in page  # still under reduced motion; 8 s per slide
+    assert not re.search(r"(src|href)=\"https?://", page) and "fetch(\"http" not in page  # nothing loaded from the network
+
+
+# T-127 (ADR-012): Zest 2.0 never collides with the released Zest 1.0
+def test_t127_edition_constants_match_info_plist_and_avoid_1_0():
+    import plistlib
+
+    plist = plistlib.loads((ROOT / "macapp" / "Info.plist").read_bytes())
+    assert plist["ZestRuntimeFolder"] == L.RUNTIME_FOLDER == "Zest 2.0"
+    assert plist["CFBundleIdentifier"] == "io.github.varunparikh.zest-sous-chef.v2"
+    assert plist["CFBundleName"] == L.APP_NAME
+    assert (L.PREFERRED_PORT, L.PRIVATE_OLLAMA_PORT) == (8100, 11436)  # 1.0 uses 8000 and 11435
+    assert L.RUNTIME_FOLDER in (ROOT / "macapp" / "zest-server.sh").read_text()
+    assert '"Zest 2.0.app"' in (ROOT / "macapp" / "build_dmg.sh").read_text().replace("$OUT/", "")
+
+
+def test_t127_models_are_shared_with_1_0_when_it_has_them(tmp_path):
+    shared, runtime = tmp_path / "Zest" / "ollama-models", tmp_path / "Zest 2.0"
+    assert L.models_folder(runtime, shared) == runtime / "ollama-models"  # no 1.0 install: our own folder
+    shared.mkdir(parents=True)
+    assert L.models_folder(runtime, shared) == shared  # 1.0's models are reused, no second download
+    assert L.models_folder(runtime, shared, override="/x/y") == Path("/x/y")
+
+
+def test_free_port_keeps_the_preferred_port_after_a_quick_restart():
+    """A port whose last connection just closed is reused (as uvicorn does); a live listener is not."""
+    import socket
+
+    with socket.socket() as srv:
+        srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        srv.bind(("127.0.0.1", 0))
+        port = srv.getsockname()[1]
+        srv.listen()
+        assert L.free_port(port) != port  # in use
+        cli = socket.create_connection(("127.0.0.1", port))
+        conn, _ = srv.accept()
+        conn.close(); cli.close()  # the server side closes first: TIME_WAIT on the listening port
+    assert L.free_port(port) == port

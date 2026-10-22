@@ -2,15 +2,18 @@
 import { useId, useState, type ReactNode } from "react";
 import type { Breakdown, Inspector, LeverConfig, LeverSet } from "../api/types";
 import { Chevron } from "../icons";
-import { HISTORY_LABELS, TREND_LABELS, WEIGHT_LABELS, clone, shares } from "../levers";
+import { HISTORY_LABELS, LEVER_HELP, TREND_LABELS, WEIGHT_LABELS, clone, sameLevers, shares } from "../levers";
+import { InfoTip, TagPill } from "./InfoTip";
+import { PersonaCards } from "./PersonaCards";
+import { DietIcon } from "./Illustrations";
 import { InspectorTable } from "./InspectorTable";
 import { ScoreChart } from "./ScoreChart";
 
-function Accordion({ title, children, open: initial = false }: { title: string; children: ReactNode; open?: boolean }) {
+function Accordion({ title, children, open: initial = false, tour }: { title: string; children: ReactNode; open?: boolean; tour?: string }) {
   const [open, setOpen] = useState(initial);
   const id = useId();
   return (
-    <section className="border-b border-line last:border-b-0">
+    <section className="border-b border-line last:border-b-0" data-tour={tour}>
       <h3>
         <button type="button" aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}
           className="flex h-12 w-full items-center justify-between text-left text-sm font-semibold text-ink">
@@ -25,19 +28,28 @@ function Accordion({ title, children, open: initial = false }: { title: string; 
 
 const fieldLabel = "block text-xs font-semibold uppercase tracking-[0.05em] text-secondary";
 
+/** Tag and ⓘ for a lever label (FR-122); returns the tooltip id for aria-describedby. */
+function Help({ label, tipId }: { label: string; tipId: string }) {
+  const h = LEVER_HELP[label];
+  if (!h) return null;
+  return <span className="ml-1.5 inline-flex items-center gap-1.5 align-middle"><TagPill tag={h.tag} /><InfoTip id={tipId} label={label} text={h.text} /></span>;
+}
+
 function Slider({ label, value, min = 0, max = 1, step = 0.05, onChange, suffix, format }: {
   label: string; value: number; min?: number; max?: number; step?: number; onChange: (v: number) => void;
   suffix?: ReactNode; format?: (v: number) => string;
 }) {
   const id = useId();
+  const tipId = `${id}-tip`;
   const shown = format ? format(value) : value.toFixed(2);
   return (
     <div>
       <div className="mb-1 flex items-baseline justify-between gap-3">
-        <label htmlFor={id} className="text-sm text-secondary">{label}</label>
+        <span><label htmlFor={id} className="text-sm text-secondary">{label}</label><Help label={label} tipId={tipId} /></span>
         <span className="font-mono text-sm tabular-nums text-ink">{shown}{suffix}</span>
       </div>
       <input id={id} type="range" min={min} max={max} step={step} value={value} aria-valuetext={shown}
+        aria-describedby={LEVER_HELP[label] ? tipId : undefined}
         onChange={(e) => onChange(Number(e.target.value))} className="w-full accent-brand" />
     </div>
   );
@@ -45,10 +57,11 @@ function Slider({ label, value, min = 0, max = 1, step = 0.05, onChange, suffix,
 
 function Select({ label, value, options, onChange }: { label: string; value: string; options: string[]; onChange: (v: string) => void }) {
   const id = useId();
+  const tipId = `${id}-tip`;
   return (
     <div>
-      <label htmlFor={id} className={fieldLabel}>{label}</label>
-      <select id={id} value={value} onChange={(e) => onChange(e.target.value)}
+      <span className="flex items-center"><label htmlFor={id} className={fieldLabel}>{label}</label><Help label={label} tipId={tipId} /></span>
+      <select id={id} value={value} onChange={(e) => onChange(e.target.value)} aria-describedby={LEVER_HELP[label] ? tipId : undefined}
         className="mt-1 h-10 w-full rounded-md border border-strong bg-white px-3 text-sm">
         {options.map((o) => <option key={o} value={o}>{o}</option>)}
       </select>
@@ -61,34 +74,30 @@ export function LeverPanel({ config, levers, onChange, breakdown, inspector }: {
 }) {
   const set = (fn: (l: LeverSet) => void) => { const next = clone(levers); fn(next); onChange(next); };
   const { shares: eff, restored } = shares(levers.weights, config.defaults.weights);
-  const presetId = useId();
-  const presetMatch = config.presets.find((p) => JSON.stringify(p.levers) === JSON.stringify(levers))?.name ?? "";
+  const dietTip = `${useId()}-tip`;
+  const stockTip = `${useId()}-tip`;
+  const presetMatch = config.presets.find((p) => sameLevers(p.levers, levers))?.name ?? "";
   const cap = config.ranges["business.price_cap_inr"] ?? { min: 80, max: 400 };
 
   return (
     <div className="px-5">
-      <p className="pt-4 text-xs text-muted">Reviewer Workbench &gt; Active Persona Levers</p>
-      <div className="mt-3">
-        <label htmlFor={presetId} className={fieldLabel}>Persona preset</label>
-        <select id={presetId} value={presetMatch} onChange={(e) => {
-          const p = config.presets.find((x) => x.name === e.target.value); if (p) onChange(clone(p.levers));
-        }} className="mt-1 h-10 w-full rounded-md border border-strong bg-white px-3 text-sm">
-          <option value="">Custom</option>
-          {config.presets.map((p) => <option key={p.name} value={p.name}>{p.name}</option>)}
-        </select>
+      <div className="pt-4">  {/* C83: no breadcrumb above the persona cards (owner, 2026-10-23) */}
+        <PersonaCards config={config} active={presetMatch} isDefault={sameLevers(levers, config.defaults)} levers={levers}
+          onChange={onChange} onCustom={() => {
+            const target = document.querySelector<HTMLElement>('[data-tour="lever"]');
+            target?.scrollIntoView({ behavior: "smooth", block: "start" });
+            target?.querySelector<HTMLInputElement>("input[type=range]")?.focus({ preventScroll: true });
+          }} />
       </div>
 
       <div className="mt-2">
-        <Accordion title="Master Scoring & Algorithmic Weights" open>
+        <Accordion title="Master Scoring & Algorithmic Weights" open tour="lever">
           {WEIGHT_LABELS.map((w) => (
             <Slider key={w.key} label={w.label} value={levers.weights[w.key]}
               onChange={(v) => set((l) => { l.weights[w.key] = v; })}
               suffix={<span className="ml-2 text-muted">({Math.round(eff[w.share] * 100)}%)</span>} />
           ))}
-          <p className="text-xs text-muted">
-            Effective share = weight ÷ sum of weights.
-            {restored && <span className="text-warn"> All four are 0, so the defaults apply in the next session.</span>}
-          </p>
+          {restored && <p className="text-xs text-warn">All four are 0, so the defaults apply in the next session.</p>}
         </Accordion>
 
         <Accordion title="User Persona & Hard-Constraint Guardrails" open>
@@ -100,8 +109,8 @@ export function LeverPanel({ config, levers, onChange, breakdown, inspector }: {
         </Accordion>
 
         <Accordion title="Specialized Diets & Lifestyle">
-          <fieldset>
-            <legend className={fieldLabel}>Specialized Diet Mode</legend>
+          <fieldset aria-describedby={`${dietTip}`}>
+            <legend className={`${fieldLabel} flex items-center`}>Specialized Diet Mode<Help label="Specialized Diet Mode" tipId={dietTip} /></legend>
             <div className="mt-2 grid gap-2 sm:grid-cols-2">
               {config.options.specialized_diets.map((d) => (
                 <label key={d} className="flex items-center gap-2 text-sm text-secondary">
@@ -111,6 +120,7 @@ export function LeverPanel({ config, levers, onChange, breakdown, inspector }: {
                       const next = e.target.checked ? [...rest, d] : rest;
                       l.specialized_diets = d === "Standard / Balanced" && e.target.checked ? [d] : next.length ? next : ["Standard / Balanced"];
                     })} />
+                  <DietIcon diet={d} />
                   {d}
                 </label>
               ))}
@@ -140,8 +150,10 @@ export function LeverPanel({ config, levers, onChange, breakdown, inspector }: {
             format={(v) => `₹${v}`} onChange={(v) => set((l) => { l.business.price_cap_inr = v; })} />
           <label className="flex items-center gap-3 text-sm text-secondary">
             <input type="checkbox" role="switch" aria-checked={levers.business.stock_filter} checked={levers.business.stock_filter}
+              aria-describedby={stockTip}
               className="h-[18px] w-[18px] accent-brand" onChange={(e) => set((l) => { l.business.stock_filter = e.target.checked; })} />
             Hide out-of-stock items (stock filter)
+            <Help label="Hide out-of-stock items (stock filter)" tipId={stockTip} />
           </label>
         </Accordion>
 
@@ -149,7 +161,7 @@ export function LeverPanel({ config, levers, onChange, breakdown, inspector }: {
           <ScoreChart breakdown={breakdown} />
         </Accordion>
 
-        <Accordion title="Retrieval & Scoring Inspector">
+        <Accordion title="Retrieval & Scoring Inspector" tour="inspector">
           <InspectorTable inspector={inspector} />
         </Accordion>
       </div>

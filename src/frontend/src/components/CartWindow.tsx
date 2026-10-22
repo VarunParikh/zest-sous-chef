@@ -78,7 +78,8 @@ export function CartWindow({ sessionId, cart, setCart, onClose, returnFocus, onA
               <span className="flex h-16 w-16 items-center justify-center rounded-full bg-celebrate-seal text-white"><Check /></span>
             </span>
             <p className="font-display text-2xl font-bold leading-tight">🎉 {order.message.text}</p>
-            <p className="text-celebrate-text">Order {order.order_id} · {rupees(order.subtotal_inr)}</p>
+            <p className="text-celebrate-text">Order ID: {order.order_id}</p>
+            <p className="text-celebrate-text">Order cost: {rupees(order.subtotal_inr)}</p>
             <span className="text-celebrate-text"><Bike /></span>
             <p className="text-sm text-celebrate-text">Packed → Dispatched → Arriving shortly</p>
             <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-white/20" role="progressbar" aria-label="Closing in 10 seconds"
