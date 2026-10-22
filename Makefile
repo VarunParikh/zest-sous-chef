@@ -2,6 +2,9 @@
 PYTHON ?= python3.12
 VENV := .venv
 PY := $(VENV)/bin/python
+# Zest 2.0 ports (ADR-012): 1.0 keeps 8000 and 5173, so both can run at once
+API_PORT ?= 8100
+WEB_PORT ?= 5273
 RESULTS := docs/epics/zest/verify/test-results
 
 .PHONY: setup dev app test test-embedder test-e2e scan health data index eval-decisions eval report dmg
@@ -13,11 +16,11 @@ setup: ## create the venv and install pinned dependencies; create .env from the 
 	@test -f .env || (cp .env.example .env && echo "Created .env from .env.example")
 	cd src/frontend && npm ci --no-audit --no-fund
 
-dev: ## run the backend on 127.0.0.1:8000 (health page at /health)
-	$(PY) -m uvicorn backend.api.app:create_app --factory --app-dir src --host 127.0.0.1 --port 8000 --reload
+dev: ## run the backend on 127.0.0.1:$(API_PORT) (health page at /health)
+	$(PY) -m uvicorn backend.api.app:create_app --factory --app-dir src --host 127.0.0.1 --port $(API_PORT) --reload
 
-app: ## start the backend (127.0.0.1:8000) and the frontend (http://localhost:5173) together; Ctrl+C stops both
-	./scripts/dev.sh
+app: ## start the backend (127.0.0.1:$(API_PORT)) and the frontend (http://localhost:$(WEB_PORT)) together; Ctrl+C stops both
+	API_PORT=$(API_PORT) WEB_PORT=$(WEB_PORT) ./scripts/dev.sh
 
 test: ## unit, contract and acceptance tests (fakes only)
 	@mkdir -p $(RESULTS)
@@ -34,7 +37,7 @@ scan: ## secret scan of the working tree and full git history (T-106)
 	$(PY) -I scripts/secret_scan.py
 
 health: ## print the health JSON from a running backend
-	@curl -s http://127.0.0.1:8000/api/v1/health | $(PY) -m json.tool
+	@curl -s http://127.0.0.1:$(API_PORT)/api/v1/health | $(PY) -m json.tool
 
 data: ## generate the mock catalogue (1,000+ and 5,000+ sets) and run validators V1-V14 on both
 	$(PY) mock-data/build.py

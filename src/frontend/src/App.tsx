@@ -104,7 +104,7 @@ export default function App() {
     <div className="flex h-[100dvh] flex-col overflow-hidden">
       <header className="z-20 flex h-14 shrink-0 items-center justify-between gap-4 border-b border-line bg-white px-6">
         <div>
-          <p className="font-display text-lg font-bold leading-tight text-ink">Zest 🧑‍🍳</p>
+          <p className="font-display text-lg font-bold leading-tight text-ink">Zest 2.0 🧑‍🍳</p>
           <p className="text-xs text-muted">QuickMart AI Sous-Chef</p>
         </div>
         <div className="flex items-center gap-3">
