@@ -250,3 +250,19 @@ def test_t127_models_are_shared_with_1_0_when_it_has_them(tmp_path):
     shared.mkdir(parents=True)
     assert L.models_folder(runtime, shared) == shared  # 1.0's models are reused, no second download
     assert L.models_folder(runtime, shared, override="/x/y") == Path("/x/y")
+
+
+def test_free_port_keeps_the_preferred_port_after_a_quick_restart():
+    """A port whose last connection just closed is reused (as uvicorn does); a live listener is not."""
+    import socket
+
+    with socket.socket() as srv:
+        srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        srv.bind(("127.0.0.1", 0))
+        port = srv.getsockname()[1]
+        srv.listen()
+        assert L.free_port(port) != port  # in use
+        cli = socket.create_connection(("127.0.0.1", port))
+        conn, _ = srv.accept()
+        conn.close(); cli.close()  # the server side closes first: TIME_WAIT on the listening port
+    assert L.free_port(port) == port

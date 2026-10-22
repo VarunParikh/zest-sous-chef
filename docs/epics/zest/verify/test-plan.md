@@ -184,7 +184,7 @@ E2E tests start with the tour marked as seen (`tests/e2e/conftest.py`), except T
 | T-125 | Unit: the setup page has five slides, the privacy slide names YouTube and Gemini, a reduced-motion rule exists, and the page loads nothing from the network | FR-125, AC-58, AC-59 | P2 |
 | T-126 | E2E: the tour shows on a first visit, Skip hides it after reload, the top-right help icon restarts it, and step 1 waits for a starter | FR-126, AC-56, AC-60, AC-61 | P1 |
 | T-127 | Unit: the Mac app's edition constants match `Info.plist`; 2.0 never uses 1.0's data folder or private Ollama port | ADR-012 | P1 |
-| T-128 | Manual: Zest 1.0 and Zest 2.0 run at the same time; quitting one leaves the other running; no second model download | ADR-012 | P1 |
+| T-128 | Manual: Zest 1.0 and Zest 2.0 run at the same time; quitting one leaves the other running; no second model download. **PASS 2026-10-23** on the owner's Mac with the `2.0.0-dev` build: 1.0 on 8000 and 2.0 on 8100 at once, two Dock apps, shared Ollama on 11434; quitting 2.0 left 1.0 answering; 2.0's private Ollama on 11436 read 1.0's model folder with no download | ADR-012 | P1 |
 
 ## 5. Acceptance criteria to test map
 | AC | Test(s) | AC | Test(s) |

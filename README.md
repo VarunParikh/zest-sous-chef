@@ -97,7 +97,7 @@ What these mean, and everything else that is limited or not built: **[Known Limi
   ```bash
   brew install python@3.12 node ollama
   ```
-- Ports **8000** and **5173** free on your machine.
+- Ports **8100** and **5273** free on your machine (Zest 2.0; Zest 1.0 uses 8000 and 5173, so both can run at once).
 - Internet access during setup (packages, models, embedder). After setup the app runs offline. Live YouTube transcripts need the network; the demo videos fall back to saved copies.
 - Tested on an Apple-silicon MacBook Air with 16 GB and macOS. Intel Macs, Linux and Windows are untested.
 - About **7 GB of disk** for the local models, plus about 1 GB for Python and Node packages.
@@ -130,7 +130,7 @@ What each step does:
 1. `make setup` creates `.venv` with Python 3.12, installs the pinned packages from `requirements.lock.txt`, creates `.env` from `.env.example` if it is missing, and runs `npm ci` for the frontend.
 2. `ollama pull` downloads each model (about 7 GB in total). If it says it cannot connect, the Ollama server is not running: see above.
 3. `make index` builds the local vector index in `data/chroma/`. The first run downloads Chroma's default embedder (all-MiniLM-L6-v2, about 80 MB) into `data/models/`.
-4. `make app` starts the backend on http://127.0.0.1:8000 and the app on **http://localhost:5173**. Ctrl+C stops both. Open http://127.0.0.1:8000/health to check that the models, fixtures and index are ready. The first message after a start is slower while the models load (about 4 s; later mood replies take about 1.2 s).
+4. `make app` starts the backend on http://127.0.0.1:8100 and the app on **http://localhost:5273**. Ctrl+C stops both. Other ports: `make app API_PORT=… WEB_PORT=…`. Open http://127.0.0.1:8100/health to check that the models, fixtures and index are ready. The first message after a start is slower while the models load (about 4 s; later mood replies take about 1.2 s).
 
 If `make index` stops with a connection error while downloading the embedder, run it again. This happened once in our clean-clone check, and the retry succeeded (81 s on a home connection).
 
@@ -141,15 +141,41 @@ The generated catalogue (`mock-data/generated/`) is committed, so `make data` is
 - The first upload then shows a consent notice, because photos go to Google's free tier.
 
 ## Option: the macOS app (no setup)
-For a reviewer without the developer tools: **download `Zest-0.2.0.dmg` (about 290 MB) from [Releases](https://github.com/VarunParikh/zest-sous-chef/releases/latest)**, or build it with `make dmg` into `macapp/out/` ([ADR-011](docs/epics/zest/design/adr/ADR-011-macos-app-packaging.md)).
+For a reviewer without the developer tools: **download the DMG (about 290 MB) from [Releases](https://github.com/VarunParikh/zest-sous-chef/releases)**, or build it with `make dmg` into `macapp/out/` ([ADR-011](docs/epics/zest/design/adr/ADR-011-macos-app-packaging.md)). This branch builds **Zest 2.0.app**, which installs next to Zest 1.0 (`Zest-0.2.0.dmg`): see [Compare Zest 1.0 and 2.0](#compare-zest-10-and-20).
 - **Inside the app:** Python 3.12 with the pinned packages, Ollama 0.40.5, the built frontend, the embedder and a pre-built index. The recipient needs no Homebrew, Python, Node, Ollama or terminal.
 - **Needs:** an Apple-silicon Mac on macOS 14 or newer, about 10 GB free, and internet on the first launch.
 - **First launch:** a "Getting Zest ready" page downloads the three models (about 7 GB) with a progress bar, then opens Zest.
   - If an Ollama with all three models already runs on port 11434, the app uses it and downloads nothing.
-  - Otherwise it runs its own private Ollama on port 11435.
+  - Otherwise it runs its own private Ollama (1.0: port 11435; 2.0: port 11436, reusing 1.0's downloaded models).
 - **Unsigned:** macOS blocks the app the first time. The recipient clicks **System Settings → Privacy & Security → Open Anyway** once. The DMG's "Read me first" note walks through it.
-- **Runtime files** (models, index, logs) live in `~/Library/Application Support/Zest`.
+- **Runtime files** (models, index, logs) live in `~/Library/Application Support/Zest` (1.0) or `…/Zest 2.0` (2.0).
 - **Building:** `make dmg` needs `make setup` first, a clean git tree and internet. It downloads two archives pinned by SHA-256 and ends with a headless smoke check.
+
+## Compare Zest 1.0 and 2.0
+Zest 2.0 adds first-use onboarding (US-42 to US-47): a skippable tour (restart it with the **?** at the top right), persona cards, plain-language lever tooltips, a "what can I say?" help card, **Apply and rerun** with a Before/Now line, and an introduction while the Mac app downloads its models. It is built to run next to 1.0 ([ADR-012](docs/epics/zest/design/adr/ADR-012-zest-2-side-by-side.md)):
+
+| | Zest 1.0 (v0.2.0) | Zest 2.0 |
+|---|---|---|
+| Mac app | `Zest.app`, http://127.0.0.1:8000 | `Zest 2.0.app` (icon with a "2.0" badge), http://127.0.0.1:8100 |
+| From source | a `v0.2.0` worktree: 8000 and 5173 | this branch: 8100 and 5273 |
+| Data folder | `~/Library/Application Support/Zest` | `~/Library/Application Support/Zest 2.0` (models shared with 1.0) |
+
+**As apps:** install both DMGs, then open both. On a 16 GB Mac, start one Ollama first so both apps share the models in memory:
+```bash
+brew services start ollama
+```
+
+**From source:** check out 1.0 next to this folder, then run each in its own terminal:
+```bash
+git worktree add ../zest-1.0 v0.2.0
+```
+```bash
+cd ../zest-1.0 && make setup && make index && make app
+```
+```bash
+make app
+```
+1.0 opens on http://localhost:5173 and 2.0 on http://localhost:5273.
 
 ## Using Zest
 - **Levers apply from the next chat session** (owner decision, C4). After changing one, a banner says so; press **Start new chat** to apply it.
@@ -186,12 +212,12 @@ GitHub renders these Mermaid diagrams directly. They describe what is built; cut
 flowchart LR
   user(["Reviewer in a browser"])
   subgraph laptop["One Mac, everything local"]
-    subgraph fe["Frontend: React + Vite (localhost:5173)"]
+    subgraph fe["Frontend: React + Vite (localhost:5273)"]
       levers["Lever panel<br/>weights, sliders, personas"]
       chat["Chat with Zest<br/>cards, Why this?, inspector"]
       cartw["Cart window<br/>edits, Undo, Buy Now"]
     end
-    subgraph be["Backend: FastAPI (127.0.0.1:8000)"]
+    subgraph be["Backend: FastAPI (127.0.0.1:8100)"]
       api["REST API /api/v1"]
       sess["Sessions in memory<br/>lever snapshot per session"]
       guard["Input guard<br/>rules, then classifier"]

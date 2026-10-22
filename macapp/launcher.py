@@ -167,6 +167,9 @@ def can_open(models: dict[str, dict], optional: list[str]) -> bool:
 def free_port(preferred: int) -> int:
     for port in (preferred, 0):
         with socket.socket() as s:
+            # As uvicorn binds: a port held only by closed connections (TIME_WAIT, e.g. just after Quit and reopen)
+            # is free; only a live listener makes us fall back to another port
+            s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             try:
                 s.bind(("127.0.0.1", port))
                 return s.getsockname()[1]

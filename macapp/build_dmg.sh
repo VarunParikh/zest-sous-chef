@@ -16,6 +16,11 @@ OLLAMA_URL="https://github.com/ollama/ollama/releases/download/v0.40.5/ollama-da
 OLLAMA_SHA="75f9907dafa2fd4c61b5967de2ebb81ccc17eb28da9172edbad0dbc717474dcf"
 
 [ "$(uname -m)" = "arm64" ] || { echo "Build on an Apple-silicon Mac."; exit 1; }
+# The build replaces macapp/out/; an app still running from there would lose its files mid-session
+if pgrep -f "$OUT/.*\.app/Contents/" >/dev/null; then
+  echo "A Zest app is running from $OUT. Quit it first (or run the copy in Applications), then build again."
+  exit 1
+fi
 cd "$ROOT"
 if [ -n "$(git status --porcelain)" ] && [ "${ZEST_ALLOW_DIRTY:-0}" != "1" ]; then
   echo "Uncommitted changes: commit first so the app matches a commit (or set ZEST_ALLOW_DIRTY=1 for a test build)."
