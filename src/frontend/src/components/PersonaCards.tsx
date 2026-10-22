@@ -14,9 +14,11 @@ const colour = (name: string) => AVATAR[[...name].reduce((h, c) => (h * 31 + c.c
 
 export function PersonaCards({ config, active, onChange }: { config: LeverConfig; active: string; onChange: (l: LeverSet) => void }) {
   const ordered: Preset[] = [...config.presets.filter((p) => !p.tag), ...config.presets.filter((p) => p.tag)];
-  const activeIndex = ordered.findIndex((p) => p.name === active);
-  const [all, setAll] = useState(activeIndex >= SHOWN);
-  const visible = all || activeIndex >= SHOWN ? ordered : ordered.slice(0, SHOWN);
+  const [all, setAll] = useState(false);
+  // Four cards, plus the persona in use if it is further down the list (the default reviewer is), then "Show all"
+  const inUse = ordered.find((p) => p.name === active);
+  const visible = all ? ordered : [...ordered.slice(0, SHOWN), ...(inUse && !ordered.slice(0, SHOWN).includes(inUse) ? [inUse] : [])];
+  const activeIndex = visible.findIndex((p) => p.name === active);
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
   const pick = (i: number) => { onChange(clone(visible[i].levers)); refs.current[i]?.focus(); };
   const focusable = activeIndex >= 0 && activeIndex < visible.length ? activeIndex : 0;
@@ -55,7 +57,7 @@ export function PersonaCards({ config, active, onChange }: { config: LeverConfig
       </div>
       <div className="mt-2 flex items-center justify-between text-xs">
         {active ? <span /> : <span className="text-muted">Custom settings (no persona matches your levers)</span>}
-        {ordered.length > SHOWN && activeIndex < SHOWN && (
+        {ordered.length > SHOWN && (
           <button type="button" className="font-semibold text-brand hover:underline" onClick={() => setAll(!all)}>
             {all ? "Show fewer" : `Show all ${ordered.length}`}
           </button>

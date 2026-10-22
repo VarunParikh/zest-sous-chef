@@ -8,7 +8,7 @@ requires-python = ">=3.12,<3.13"
 testpaths = ["tests"]
 pythonpath = ["src", "."]
 addopts = "-q"
-markers = ["embedder: needs the downloaded embedding model (make test-embedder)", "e2e: real-browser demo path (make test-e2e)"]
+markers = ["embedder: needs the downloaded embedding model (make test-embedder)", "e2e: real-browser demo path (make test-e2e)", "fresh_tour: start an E2E test without the tour marked as seen (T-126)"]
 
 [tool.coverage.run]
 branch = true

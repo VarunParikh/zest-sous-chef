@@ -72,3 +72,12 @@ def app_url(backend_url):
     finally:
         proc.terminate()
         proc.wait(timeout=10)
+
+
+@pytest.fixture(autouse=True)
+def _tour_seen(request):
+    """Zest 2.0 shows a tour on a first visit (FR-126). Tests start with it marked as seen, except those marked
+    `fresh_tour` (T-126), so the overlay never changes what the other tests see."""
+    if request.node.get_closest_marker("fresh_tour") or "page" not in request.fixturenames:
+        return
+    request.getfixturevalue("page").add_init_script("try { localStorage.setItem('zest2.tourSeen', '1') } catch (e) {}")

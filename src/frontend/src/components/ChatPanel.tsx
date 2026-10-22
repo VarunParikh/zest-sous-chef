@@ -79,7 +79,7 @@ export function ChatPanel({ messages, busy, busyKind, error, draft, setDraft, on
             className="rounded-[10px] border border-strong bg-white px-3 py-1.5 text-xs font-medium text-secondary hover:bg-[#F9FAFB] disabled:opacity-40">
             Clear chat
           </button>
-          <button ref={cartButton} type="button" onClick={onOpenCart} disabled={empty}
+          <button ref={cartButton} type="button" onClick={onOpenCart} disabled={empty} data-tour="cart"
             aria-label={empty ? "Cart is empty" : `Open cart, ${cartCount} items`}
             className="relative flex h-[38px] w-[38px] items-center justify-center rounded-md text-brand hover:bg-brand-tint disabled:cursor-not-allowed disabled:text-dim disabled:opacity-40">
             <CartIcon />

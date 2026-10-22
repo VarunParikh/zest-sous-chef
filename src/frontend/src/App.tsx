@@ -6,6 +6,7 @@ import { EMPTY_CART, type Breakdown, type Card, type CartView, type Inspector, t
 import { CartWindow } from "./components/CartWindow";
 import { ChatPanel, type BusyKind } from "./components/ChatPanel";
 import { LeverPanel } from "./components/LeverPanel";
+import { Tour, tourSeen } from "./components/Tour";
 import { clone, sameLevers } from "./levers";
 import { rupees } from "./icons";
 
@@ -61,6 +62,7 @@ export default function App() {
   const [lastRequest, setLastRequest] = useState<LastRequest | null>(null);
   const [lastPick, setLastPick] = useState<Pick | null>(null);
   const [confirmRerun, setConfirmRerun] = useState(false);
+  const [tourOpen, setTourOpen] = useState(false);
   const cartButton = useRef<HTMLButtonElement>(null);
   const sessionRef = useRef<{ id: string; persona: string } | null>(null);  // current at once, unlike state, for the rerun
 
@@ -76,7 +78,10 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    api.config().then(async (c) => { setConfig(c); setLevers(clone(c.defaults)); await startSession(c.defaults); })
+    api.config().then(async (c) => {
+      setConfig(c); setLevers(clone(c.defaults)); await startSession(c.defaults);
+      if (!tourSeen()) setTourOpen(true);  // FR-126: first visit only; the help icon restarts it
+    })
       .catch((e) => setError(e instanceof ApiFailure ? e.body.user_message : String(e)));
   }, [startSession]);
 
@@ -164,6 +169,7 @@ export default function App() {
       if (session && levers) { setLastRequest({ kind: "sample", id }); userSays(`Sample photo ${id}`); void guarded(() => api.samplePhoto(session.id, id, levers), "sample"); }
     },
     onSend: send,
+    onTour: () => setTourOpen(true),
     onOpenCart: () => setCartOpen(true),
     onBreakdown: setBreakdown,
   };
@@ -189,6 +195,10 @@ export default function App() {
           <button type="button" onClick={() => setLevers(clone(config.defaults))}
             className="rounded-[10px] border border-strong bg-white px-3 py-1.5 text-xs font-medium text-secondary hover:bg-[#F9FAFB]">
             Reset levers
+          </button>
+          <button type="button" aria-label="Help and tour" title="Help and tour" onClick={() => setTourOpen(true)}
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-strong bg-white text-sm font-semibold text-secondary hover:border-brand hover:text-brand">
+            ?
           </button>
         </div>
       </header>
@@ -233,6 +243,8 @@ export default function App() {
           </div>
         </div>
       )}
+
+      <Tour open={tourOpen} onClose={() => setTourOpen(false)} userActions={messages.filter((m) => m.role === "user").length} />
 
       {confirmRerun && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-[rgba(17,24,39,0.45)]">

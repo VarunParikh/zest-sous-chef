@@ -8,11 +8,11 @@ import { PersonaCards } from "./PersonaCards";
 import { InspectorTable } from "./InspectorTable";
 import { ScoreChart } from "./ScoreChart";
 
-function Accordion({ title, children, open: initial = false }: { title: string; children: ReactNode; open?: boolean }) {
+function Accordion({ title, children, open: initial = false, tour }: { title: string; children: ReactNode; open?: boolean; tour?: string }) {
   const [open, setOpen] = useState(initial);
   const id = useId();
   return (
-    <section className="border-b border-line last:border-b-0">
+    <section className="border-b border-line last:border-b-0" data-tour={tour}>
       <h3>
         <button type="button" aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}
           className="flex h-12 w-full items-center justify-between text-left text-sm font-semibold text-ink">
@@ -86,7 +86,7 @@ export function LeverPanel({ config, levers, onChange, breakdown, inspector }: {
       </div>
 
       <div className="mt-2">
-        <Accordion title="Master Scoring & Algorithmic Weights" open>
+        <Accordion title="Master Scoring & Algorithmic Weights" open tour="lever">
           {WEIGHT_LABELS.map((w) => (
             <Slider key={w.key} label={w.label} value={levers.weights[w.key]}
               onChange={(v) => set((l) => { l.weights[w.key] = v; })}
@@ -158,7 +158,7 @@ export function LeverPanel({ config, levers, onChange, breakdown, inspector }: {
           <ScoreChart breakdown={breakdown} />
         </Accordion>
 
-        <Accordion title="Retrieval & Scoring Inspector">
+        <Accordion title="Retrieval & Scoring Inspector" tour="inspector">
           <InspectorTable inspector={inspector} />
         </Accordion>
       </div>

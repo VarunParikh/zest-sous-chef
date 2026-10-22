@@ -39,7 +39,7 @@ export function CardView({ card, h }: { card: Card; h: CardHandlers }) {
   switch (card.type) {
     case "starter_chips":
       return (
-        <div className="mt-2 flex flex-wrap gap-2">
+        <div className="mt-2 flex flex-wrap gap-2" data-tour="starters">
           {card.chips.map((c) => <button key={c} type="button" className={pill} disabled={h.busy} onClick={() => h.onChip(c)}>{CHIP_ICON[c]}{c}</button>)}
         </div>
       );
