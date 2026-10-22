@@ -4,6 +4,9 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-22
+The prototype as a Mac app: `Zest-0.2.0.dmg` (GitHub Release `v0.2.0`) runs Zest on an Apple-silicon Mac with no setup (ADR-011, US-41). Also fixes the inspector after named-dish and YouTube turns. Evidence report unchanged from 0.1.0; no evaluation was rerun.
+
 ### Fixed
 - Retrieval and scoring inspector (FR-115, FR-119): after a named dish or a YouTube recipe, the panel said "No suggestion yet" although the server held the add-on pool. The frontend fetched the inspector only for turns with a dish suggestion, and add-on offers arrive as cards, so it now fetches after every turn.
   - The empty state now says which requests fill the inspector, and a note explains when only the add-on pool was ranked.

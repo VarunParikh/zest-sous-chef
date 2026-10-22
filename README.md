@@ -141,7 +141,7 @@ The generated catalogue (`mock-data/generated/`) is committed, so `make data` is
 - The first upload then shows a consent notice, because photos go to Google's free tier.
 
 ## Option: the macOS app (no setup)
-For a reviewer without the developer tools, `make dmg` builds **`Zest-<version>.dmg`** (about 400 MB) in `macapp/out/` ([ADR-011](docs/epics/zest/design/adr/ADR-011-macos-app-packaging.md)).
+For a reviewer without the developer tools: **download `Zest-0.2.0.dmg` (about 290 MB) from [Releases](https://github.com/VarunParikh/zest-sous-chef/releases/latest)**, or build it with `make dmg` into `macapp/out/` ([ADR-011](docs/epics/zest/design/adr/ADR-011-macos-app-packaging.md)).
 - **Inside the app:** Python 3.12 with the pinned packages, Ollama 0.40.5, the built frontend, the embedder and a pre-built index. The recipient needs no Homebrew, Python, Node, Ollama or terminal.
 - **Needs:** an Apple-silicon Mac on macOS 14 or newer, about 10 GB free, and internet on the first launch.
 - **First launch:** a "Getting Zest ready" page downloads the three models (about 7 GB) with a progress bar, then opens Zest.
