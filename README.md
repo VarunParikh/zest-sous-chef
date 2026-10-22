@@ -141,7 +141,7 @@ The generated catalogue (`mock-data/generated/`) is committed, so `make data` is
 - The first upload then shows a consent notice, because photos go to Google's free tier.
 
 ## Option: the macOS app (no setup)
-For a reviewer without the developer tools: **download the DMG (about 290 MB) from [Releases](https://github.com/VarunParikh/zest-sous-chef/releases)**, or build it with `make dmg` into `macapp/out/` ([ADR-011](docs/epics/zest/design/adr/ADR-011-macos-app-packaging.md)). This branch builds **Zest 2.0.app**, which installs next to Zest 1.0 (`Zest-0.2.0.dmg`): see [Compare Zest 1.0 and 2.0](#compare-zest-10-and-20).
+For a reviewer without the developer tools: **download the DMG (about 290 MB) from [Releases](https://github.com/VarunParikh/zest-sous-chef/releases)**, or build it with `make dmg` into `macapp/out/` ([ADR-011](docs/epics/zest/design/adr/ADR-011-macos-app-packaging.md)). The latest release is **Zest 2.0** (`Zest-2.0.0.dmg`, v2.0.0), which installs next to Zest 1.0 (`Zest-0.2.0.dmg`, v0.2.0): see [Compare Zest 1.0 and 2.0](#compare-zest-10-and-20).
 - **Inside the app:** Python 3.12 with the pinned packages, Ollama 0.40.5, the built frontend, the embedder and a pre-built index. The recipient needs no Homebrew, Python, Node, Ollama or terminal.
 - **Needs:** an Apple-silicon Mac on macOS 14 or newer, about 10 GB free, and internet on the first launch.
 - **First launch:** a "Getting Zest ready" page downloads the three models (about 7 GB) with a progress bar, then opens Zest.
@@ -157,7 +157,7 @@ Zest 2.0 adds first-use onboarding (US-42 to US-47): a skippable tour (restart i
 | | Zest 1.0 (v0.2.0) | Zest 2.0 |
 |---|---|---|
 | Mac app | `Zest.app`, http://127.0.0.1:8000 | `Zest 2.0.app` (icon with a "2.0" badge), http://127.0.0.1:8100 |
-| From source | a `v0.2.0` worktree: 8000 and 5173 | this branch: 8100 and 5273 |
+| From source | a `v0.2.0` worktree: 8000 and 5173 | `main` (v2.0.0): 8100 and 5273 |
 | Data folder | `~/Library/Application Support/Zest` | `~/Library/Application Support/Zest 2.0` (models shared with 1.0) |
 
 **As apps:** install both DMGs, then open both. On a 16 GB Mac, start one Ollama first so both apps share the models in memory:
