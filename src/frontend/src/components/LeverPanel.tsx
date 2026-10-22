@@ -98,10 +98,7 @@ export function LeverPanel({ config, levers, onChange, breakdown, inspector }: {
               onChange={(v) => set((l) => { l.weights[w.key] = v; })}
               suffix={<span className="ml-2 text-muted">({Math.round(eff[w.share] * 100)}%)</span>} />
           ))}
-          <p className="text-xs text-muted">
-            Effective share = weight ÷ sum of weights. Weights are relative: doubling all four changes nothing.
-            {restored && <span className="text-warn"> All four are 0, so the defaults apply in the next session.</span>}
-          </p>
+          {restored && <p className="text-xs text-warn">All four are 0, so the defaults apply in the next session.</p>}
         </Accordion>
 
         <Accordion title="User Persona & Hard-Constraint Guardrails" open>

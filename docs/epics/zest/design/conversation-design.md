@@ -185,7 +185,7 @@ UI copy produced by the frontend or the setup page, not by a model.
 | UI-RERUN-COMPARE | under the new suggestion | "Before: {old dish} ({old score}) → Now: {new dish} ({new score})"; same dish: "Same pick, new score {new score} (was {old score})" |
 | UI-PERSONA | persona cards | heading "Who's cooking?"; button "Use this persona"; "Show all {n}". Each card shows a cartoon chef (non-skin colour, chef's hat) holding a prop chosen from the levers: leaf (vegan), dumbbell (keto or high-protein), clock (fasting or low-GI), bowl (Jain or vegetarian), clipboard (control), spoon (no restrictions). P7 (reviewer), P9 (control) and P11 (Vikram Rao) are not shown (C81); untouched defaults read "Default settings" in the header and "Default settings: no persona chosen yet" under the cards. The last card, **Custom** (chef holding sliders), is in use when the levers match no persona: "Your own mix of levers"; otherwise it reads "Change any lever below to make your own mix" with the action "Adjust the levers", which scrolls to the levers |
 | UI-PERSONA-HEADER | header, top right (owner, 2026-10-23) | "Persona: {Meera Shah | Custom | Default settings}", following the levers at once; while the change is not yet applied: "Persona: {name} · applies from your next chat" |
-| UI-ORDER | order-placed screen | "Order {order_id}" and "{amount}" on two separate lines (owner, 2026-10-23) |
+| UI-ORDER | order-placed screen | "Order ID: {order_id}" and "Order cost: {amount}" on two separate lines (owner, 2026-10-23) |
 | UI-DIET-ICONS | specialised diet options | Standard / Balanced: balance scale; Keto: egg; Intermittent fasting / Low-GI: clock; Vegan: leaf; Gluten-free: crossed-out wheat; High-protein fitness: dumbbell (decorative; the label carries the meaning) |
 
 **Lever tooltips** (Rule: removes options; Preference: re-ranks):
@@ -207,7 +207,7 @@ UI copy produced by the frontend or the setup page, not by a model.
 | Max Companion Add-on Price Cap | Rule | Add-on suggestions never cost more than this. |
 | Hide out-of-stock items (stock filter) | Rule | When on, out-of-stock items are removed before ranking and never carted. |
 
-Weights note under the weight sliders: "Weights are relative: doubling all four changes nothing."
+No explanatory note under the weight sliders (owner, 2026-10-23: the share formula was removed as too technical); each slider still shows its share as a percentage (PRD §5.1), and the all-zero warning stays (FR-08).
 
 **Tour** (FR-126; buttons Back · Next · Skip; last step "Done"; help icon label "Help and tour"; six steps, owner 2026-10-23):
 1. *Start here* (starter buttons): "Tap a starter to try Zest in one click."

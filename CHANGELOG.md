@@ -23,7 +23,8 @@ Zest 2.0 (branch `zest-2.0`; released as 2.0.0 after owner review).
 
 ### Fixed
 - The header's "Persona:" label now follows the levers at once (a persona, Custom or Default settings), noting "applies from your next chat" until a new chat starts. It used to show only the persona the chat began with.
-- The order-placed screen shows the order ID and the amount on separate lines.
+- The order-placed screen shows "Order ID:" and "Order cost:" on separate lines.
+- The "Effective share = weight ÷ sum of weights" note under the weight sliders is removed; the percentages and the all-zero warning stay.
 - A swap tapped after Undo returned an error (409, "That swap is no longer available"), seen three times in the owner's session log. Zest now asks whether to add that dish instead and, if added, suggests its add-on (FR-127). T-129.
 - The Mac app's free-port check now ignores ports held only by closed connections, as uvicorn does, so Quit then reopen keeps port 8100 instead of a random port. A regression test failed before the fix.
 - `make dmg` refuses to run while an app from `macapp/out/` is running. A rebuild during testing had deleted a running 1.0's files, so its health reported fixtures missing.

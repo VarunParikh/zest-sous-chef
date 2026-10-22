@@ -69,6 +69,8 @@ def test_e2e_001_demo_path(page: Page, app_url: str):
     expect(dialog.get_by_role("group").first.get_by_text("2", exact=True)).to_be_visible()
     dialog.get_by_role("button", name=re.compile("Buy Now")).click()
     expect(dialog.get_by_text("Order is placed, the rider will see you in 10 mins")).to_be_visible()
+    expect(dialog.get_by_text(re.compile(r"^Order ID: o_\w+$"))).to_be_visible()  # Zest 2.0: labelled, separate lines
+    expect(dialog.get_by_text(re.compile(r"^Order cost: ₹[\d,]+$"))).to_be_visible()
     expect(dialog.get_by_role("progressbar")).to_be_visible()
     page.keyboard.press("Escape")
     expect(dialog).to_be_visible()  # no Escape during the order state
