@@ -3,7 +3,9 @@
 All notable changes to this project are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
-Zest 2.0 (branch `zest-2.0`; released as 2.0.0 after owner review).
+
+## [2.0.0] - 2026-10-23
+Zest 2.0: first-use onboarding (tour, help card, persona cards, tooltips, Apply and rerun), running next to Zest 1.0 (ADR-012). Evidence report unchanged from 0.1.0.
 
 ### Added
 - **Help card and one-tap starters (US-45):** "what can I say?" and similar whole-message questions are routed in code to MSG-HELP, whose four examples act on one tap. The YouTube link and Text recipe starters now send. The guard's topic rule lets an exact help question through like a greeting (C79, proposed for owner review). T-122 to T-124.
