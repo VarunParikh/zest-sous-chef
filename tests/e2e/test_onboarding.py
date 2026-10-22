@@ -87,3 +87,58 @@ def test_t120_persona_card_selects_its_preset(page: Page, app_url: str):
     meera.press("ArrowRight")
     expect(meera).to_have_attribute("aria-checked", "false")
     expect(page.get_by_role("radio", checked=True)).to_have_count(1)
+
+
+MOOD = "I am feeling indulgent"
+
+
+def _carted_mood(page: Page, app_url: str):
+    _open(page, app_url)
+    _send(page, MOOD)
+    expect(page.get_by_text(re.compile("Let's go with"))).to_be_visible(timeout=15000)
+    page.get_by_role("radio", name=re.compile("Meera Shah")).click()
+    return page.get_by_role("button", name=f"Apply and rerun “{MOOD}”")
+
+
+def test_t117_apply_and_rerun_shows_before_and_now(page: Page, app_url: str):
+    apply = _carted_mood(page, app_url)
+    apply.click()
+    dialog = page.get_by_role("alertdialog")
+    expect(dialog).to_contain_text("empties your cart")
+    dialog.get_by_role("button", name="Apply and rerun").click()
+    expect(page.get_by_text("Persona: Meera Shah")).to_be_visible(timeout=15000)
+    expect(page.get_by_text(re.compile(r"^(Before: .+ → Now: .+|Same pick.+)$"))).to_be_visible(timeout=15000)
+    expect(page.get_by_text(MOOD, exact=True)).to_have_count(1)  # the new chat holds the resent request only
+    expect(page.get_by_text("Changes apply from your next chat session.")).to_be_hidden()
+
+
+def test_t118_cancel_keeps_the_cart_and_the_session(page: Page, app_url: str):
+    apply = _carted_mood(page, app_url)
+    cart = page.locator("button[aria-label^='Open cart']")
+    label = cart.get_attribute("aria-label")
+    apply.click()
+    dialog = page.get_by_role("alertdialog")
+    expect(dialog).to_contain_text(re.compile(r"empties your cart \(\d+ items, ₹[\d,]+\)"))
+    dialog.get_by_role("button", name="Cancel").click()
+    expect(dialog).to_be_hidden()
+    expect(cart).to_have_attribute("aria-label", label)
+    expect(page.get_by_text("Persona: Alex (Reviewer)")).to_be_visible()
+    expect(page.get_by_text(re.compile("^Before: |^Same pick"))).to_have_count(0)
+
+
+def test_t117_photo_requests_get_the_right_apply_button(page: Page, app_url: str, tmp_path):
+    """AC-48: a sample photo is rerun as that sample; an uploaded photo is never stored, so the user re-uploads."""
+    from tests.acceptance.chat_harness import image_bytes
+
+    _open(page, app_url)
+    _send(page, "what can I say?")
+    page.get_by_test_id("help-card").last.get_by_role("button", name=re.compile("A fridge photo")).click()
+    expect(page.get_by_label("Message Zest")).to_be_enabled(timeout=15000)
+    page.get_by_role("radio", name=re.compile("Meera Shah")).click()
+    expect(page.get_by_role("button", name="Apply and rerun “Sample photo RF02”")).to_be_visible()
+
+    photo = tmp_path / "fridge.png"
+    photo.write_bytes(image_bytes())
+    page.locator("input[type=file]").set_input_files(str(photo))
+    expect(page.get_by_label("Message Zest")).to_be_enabled(timeout=15000)
+    expect(page.get_by_role("button", name="Apply, then upload your photo again")).to_be_visible()
