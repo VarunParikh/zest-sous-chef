@@ -4,7 +4,14 @@ import type { Inspector } from "../api/types";
 const fmt = (v: number | null, d = 0) => (v === null || v === undefined ? "–" : d ? v.toFixed(d) : String(v));
 
 export function InspectorTable({ inspector }: { inspector: Inspector | null }) {
-  if (!inspector || (inspector.rows.length === 0 && !inspector.addon)) return <p className="text-sm text-muted">No suggestion yet in this session.</p>;
+  if (!inspector || (inspector.rows.length === 0 && !inspector.addon))
+    return (
+      <p className="text-sm text-muted">
+        Nothing ranked yet in this session. The inspector fills after a mood request (for example "I am feeling indulgent"),
+        a confirmed photo or an add-on suggestion. A named dish, typed recipe or video uses that dish directly, so it has no
+        dish pool to rank.
+      </p>
+    );
   const shown = new Set(inspector.shown);
   return (
     <div className="space-y-4">
@@ -34,6 +41,9 @@ export function InspectorTable({ inspector }: { inspector: Inspector | null }) {
         </tbody>
       </table>
     </div>}
+    {inspector.rows.length === 0 && inspector.addon && (
+      <p className="text-xs text-muted">The latest dish came from your request directly, so no dish pool was ranked; the add-on pool is below.</p>
+    )}
     {inspector.addon && <AddonTable addon={inspector.addon} />}
     </div>
   );

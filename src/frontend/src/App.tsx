@@ -51,7 +51,8 @@ export default function App() {
     setCart(turn.cart);
     setServerFlag(turn.levers_changed_since_snapshot);
     for (const msg of turn.messages) for (const c of msg.cards) if (c.type === "why_this" && c.breakdown?.contributions && c.breakdown.kind !== "addon") setBreakdown(c.breakdown as Breakdown);
-    if (turn.suggestions.length && session) setInspector(await api.inspector(session.id).catch(() => null));
+    // After every turn: add-on offers (FR-119) arrive as cards, not suggestions, and the server keeps the latest pool
+    if (session) setInspector(await api.inspector(session.id).catch(() => null));
   }, [session]);
 
   const guarded = useCallback(async (fn: () => Promise<TurnResponse>, kind: BusyKind = "text") => {
