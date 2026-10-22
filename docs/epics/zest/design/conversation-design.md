@@ -196,7 +196,7 @@ UI copy produced by the frontend or the setup page, not by a model.
 | User Purchase History | Preference | How much your (mock) past purchases count. |
 | Market Trend & Velocity | Preference | How much Zest favours what is popular in the store right now. |
 | Persona & Gourmet Boost | Preference | How much your style settings below (gourmet, organic) count. |
-| Probable Gender | Preference | A small preference: Female slightly favours iron- and calcium-rich items, Male slightly favours high-protein items. It never removes a dish. (Owner to review: sensitive field.) |
+| Probable Gender | Preference | A small preference: Female slightly favours iron- and calcium-rich items, Male slightly favours high-protein items. It never removes a dish. (Sensitive field; wording approved by the owner, 2026-10-23.) |
 | Dietary Preference | Rule | Dishes that break it are removed before ranking and never suggested. |
 | Religious / Cultural Beliefs | Rule | Dishes that break it are removed before ranking and never suggested. |
 | Specialized diets | Rule | Each diet you tick removes dishes that break it before ranking. |

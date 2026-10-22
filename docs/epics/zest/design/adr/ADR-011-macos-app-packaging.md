@@ -1,5 +1,5 @@
 # ADR-011: Ship Zest as a self-contained macOS app in a DMG
-- **Status:** Accepted in part. Owner decisions D1 to D3 were taken on 2026-10-22; the rest of this text awaits owner review.
+- **Status:** Accepted (owner, 2026-10-23). Owner decisions D1 to D3 were taken on 2026-10-22; the owner accepted the full text on 2026-10-23. Conflict C76 (one port for the packaged app) stays Proposed.
 - **Date:** 2026-10-22
 - **Decision owner:** VJP (product owner); drafted by Claude
 - **Authorisation:** On 2026-10-22 the owner asked for a transferable application file that runs on a MacBook with none of the setup installed. The owner chose: models downloaded on first launch (D1); a portable Python and the Ollama macOS release as build-time downloads (D2); an unsigned app (D3).

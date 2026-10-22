@@ -4,6 +4,9 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 
 ## [Unreleased]
 
+### Changed
+- Owner decisions recorded after the 2.0.0 release: C79 resolved (approved), ADR-011 accepted in full, and the Probable Gender tooltip wording approved. C76 stays Proposed. Documentation only; no code changed.
+
 ## [2.0.0] - 2026-10-23
 Zest 2.0: first-use onboarding (tour, help card, persona cards, tooltips, Apply and rerun), running next to Zest 1.0 (ADR-012). Evidence report unchanged from 0.1.0.
 
