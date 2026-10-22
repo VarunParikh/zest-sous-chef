@@ -171,7 +171,7 @@ Format: **US-xx** As a *persona*, I want *capability*, so that *benefit*. Covers
 - Given the first launch, when models are downloading, then a short introduction plays under the progress bars and Zest still opens as soon as the models are ready.
 
 **US-47** As a first-time user, I want a short, skippable tour of the main screen, so that I know where to start. *S · M* Covers FR-126; AC-56, AC-60, AC-61.
-- Given my first visit, when the main screen opens, then a five-step tour starts; I can skip it, and the help icon in the top-right corner starts it again.
+- Given my first visit, when the main screen opens, then a six-step tour starts; I can skip it, and the help icon in the top-right corner starts it again.
 
 ## Traceability matrix (objectives to stories)
 | Objective | BR | FR | Stories | AC | Tests |

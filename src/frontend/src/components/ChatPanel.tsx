@@ -144,7 +144,7 @@ export function ChatPanel({ messages, busy, busyKind, error, draft, setDraft, on
         <p role="alert" className="mx-5 mb-2 rounded-md border border-err-border bg-err-surface px-3 py-2 text-sm text-err">{error}</p>
       )}
 
-      <form onSubmit={submit} className="flex shrink-0 items-center gap-2 border-t border-line bg-white px-5 py-3">
+      <form onSubmit={submit} data-tour="chatbox" className="flex shrink-0 items-center gap-2 border-t border-line bg-white px-5 py-3">
         <input ref={file} type="file" accept="image/jpeg,image/png,image/webp" className="hidden" tabIndex={-1}
           onChange={(e) => { const f = e.target.files?.[0]; if (f) onUpload(f); e.target.value = ""; }} />
         <button type="button" aria-label="Upload food or fridge image" disabled={busy} onClick={() => file.current?.click()}

@@ -1,15 +1,16 @@
-// First-screen tour (FR-126, AC-60, AC-61; Conversation Design §6.7; Zest 2.0). Five steps over `data-tour`
+// First-screen tour (FR-126, AC-60, AC-61; Conversation Design §6.7; Zest 2.0). Six steps over `data-tour`
 // anchors. It never blocks the app: the highlight ignores the pointer and only the bubble takes clicks.
 // "Seen" lives in this browser's storage (a per-viewer convenience); without storage the tour simply shows again.
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 const SEEN_KEY = "zest2.tourSeen";
 const STEPS = [
-  { anchor: "starters", title: "Start here", text: "Tap a starter or type what you feel like eating. Zest builds a cart from it." },
+  { anchor: "starters", title: "Start here", text: "Tap a starter to try Zest in one click." },
+  { anchor: "chatbox", title: "Chat with Zest", text: "Or type here: a dish, a recipe, a mood, or paste a YouTube link. Press Enter or Send." },
   { anchor: "personas", title: "Who's cooking?", text: "Pick a persona. Their diet and faith rules are applied in code, every time." },
   { anchor: "lever", title: "Levers", text: "Move a lever to change what Zest suggests. The ⓘ says whether it's a Rule (removes dishes) or a Preference (re-ranks them)." },
-  { anchor: "cart", title: "Why this? and your cart", text: "Tap ⓘ on a suggestion to see why Zest picked it. Your cart is at the top right." },
-  { anchor: "inspector", title: "Inspector", text: "For the curious: every candidate, its ranks, whether it passed your rules, and its score." },
+  { anchor: "cart", title: "Your cart", text: "Everything Zest adds goes into your cart, at the top right. Open it to change quantities, swap items or place a mock order." },
+  { anchor: "inspector", title: "Inspector", text: "For the curious: every candidate, its ranks, whether it passed your rules, and its score. It fills in once you start chatting and Zest suggests a dish." },
 ];
 
 export function tourSeen(): boolean {
@@ -22,7 +23,9 @@ function markSeen() {
 type Rect = { top: number; left: number; width: number; height: number };
 
 /** `userActions` counts the user's messages; a new one while on step 1 moves the tour on (AC-60). */
-export function Tour({ open, onClose, userActions }: { open: boolean; onClose: () => void; userActions: number }) {
+export function Tour({ open, onClose, userActions, onStep }: {
+  open: boolean; onClose: () => void; userActions: number; onStep?: (anchor: string) => void;
+}) {
   const [step, setStep] = useState(0);
   const [rect, setRect] = useState<Rect | null>(null);
   const heading = useRef<HTMLHeadingElement>(null);
@@ -37,6 +40,8 @@ export function Tour({ open, onClose, userActions }: { open: boolean; onClose: (
     if (open && step === 0 && userActions > startActions.current) { startActions.current = userActions; setStep(1); }  // used once
   }, [open, step, userActions]);
 
+  useEffect(() => { if (open) onStep?.(STEPS[step].anchor); }, [open, step]);  // eslint-disable-line react-hooks/exhaustive-deps
+
   useLayoutEffect(() => {
     if (!open) return;
     const place = () => {
@@ -46,10 +51,11 @@ export function Tour({ open, onClose, userActions }: { open: boolean; onClose: (
     };
     document.querySelector(`[data-tour="${STEPS[step].anchor}"]`)?.scrollIntoView({ block: "nearest" });
     place();
+    const again = window.setTimeout(place, 50);  // after a narrow-screen tab switch (onStep) has rendered
     heading.current?.focus();
     window.addEventListener("resize", place);
     window.addEventListener("scroll", place, true);
-    return () => { window.removeEventListener("resize", place); window.removeEventListener("scroll", place, true); };
+    return () => { window.clearTimeout(again); window.removeEventListener("resize", place); window.removeEventListener("scroll", place, true); };
   }, [open, step]);
 
   if (!open) return null;

@@ -244,7 +244,8 @@ export default function App() {
         </div>
       )}
 
-      <Tour open={tourOpen} onClose={() => setTourOpen(false)} userActions={messages.filter((m) => m.role === "user").length} />
+      <Tour open={tourOpen} onClose={() => setTourOpen(false)} userActions={messages.filter((m) => m.role === "user").length}
+        onStep={(anchor) => setTab(["personas", "lever", "inspector"].includes(anchor) ? "levers" : "chat")} />
 
       {confirmRerun && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-[rgba(17,24,39,0.45)]">

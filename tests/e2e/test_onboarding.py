@@ -149,10 +149,10 @@ def test_t126_tour_first_visit_skip_and_restart_from_the_help_icon(page: Page, a
     _open(page, app_url)
     tour = page.get_by_test_id("tour")
     expect(tour).to_contain_text("Start here")
-    expect(tour).to_contain_text("Step 1 of 5")
+    expect(tour).to_contain_text("Step 1 of 6")
     # Step 1 is interactive and the chat is not blocked: a starter moves the tour on
     page.get_by_role("button", name="Feeling hungry").click()
-    expect(tour).to_contain_text("Who's cooking?")
+    expect(tour).to_contain_text("Chat with Zest")
     tour.get_by_role("button", name="Back").click()
     expect(tour).to_contain_text("Start here")
     tour.get_by_role("button", name="Skip").click()
@@ -161,9 +161,12 @@ def test_t126_tour_first_visit_skip_and_restart_from_the_help_icon(page: Page, a
     expect(page.get_by_text("Hey there! I'm Zest")).to_be_visible()
     expect(page.get_by_test_id("tour")).to_be_hidden()  # dismissal is remembered
     page.get_by_role("button", name="Help and tour").click()  # the top-right help icon restarts it (AC-56)
-    expect(tour).to_contain_text("Step 1 of 5")
-    for _ in range(4):
+    expect(tour).to_contain_text("Step 1 of 6")
+    titles = ["Chat with Zest", "Who's cooking?", "Levers", "Your cart", "Inspector"]
+    for title in titles:
         tour.get_by_role("button", name="Next").click()
-    expect(tour).to_contain_text("Inspector")
+        expect(tour).to_contain_text(title)
+    expect(tour).to_contain_text("It fills in once you start chatting")
+    expect(tour).not_to_contain_text("ⓘ on a suggestion")  # the cart step no longer points at an ⓘ (owner, 2026-10-23)
     page.keyboard.press("Escape")
     expect(tour).to_be_hidden()

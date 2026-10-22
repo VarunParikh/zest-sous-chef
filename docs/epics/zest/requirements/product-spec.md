@@ -185,7 +185,7 @@ Below 1024 px, a segmented control switches between Levers and Chat.
 | FR-123 | A whole message asking for help ("help", "what can I say", "how does this work", at most 60 characters, no dish name) shall be routed in code to a `help` intent with no intent-model call; the input guard still runs first. The reply (MSG-HELP) lists the four ways in, each with an example that acts on one tap, and offers the tour | S |
 | FR-124 | The greeting chips "YouTube link" and "Text recipe" shall send their demo input on one tap instead of filling the message box | S |
 | FR-125 | While the Mac app downloads models, the setup page shall show a five-slide introduction (four ways in, levers, rules in code, privacy, mock store). It makes no network request, respects reduced motion and never delays opening Zest | C |
-| FR-126 | On the first visit to the main screen a five-step, skippable tour shall highlight the chat starters, persona cards, a lever and its tooltip, "Why this?" with the cart, and the inspector. Dismissal is remembered in the browser; the help icon in the top-right corner of the screen restarts the tour at any time. The tour never blocks the chat | S |
+| FR-126 | On the first visit to the main screen a six-step, skippable tour shall highlight the chat starters, the message box, persona cards, a lever and its tooltip, the cart, and the inspector (noting that it fills once the user starts chatting). Dismissal is remembered in the browser; the help icon in the top-right corner of the screen restarts the tour at any time. The tour never blocks the chat | S |
 
 ## 7. Non-functional requirements
 | ID | Requirement |
@@ -305,7 +305,7 @@ No product analytics. A local trace log (no images, truncated text, no personal 
 | AC-57 | Tapping the "YouTube link" or "Text recipe" greeting chip sends the demo input | FR-124 |
 | AC-58 | The setup-page slides advance every 8 s, pause on hover or focus, work with the keyboard and stay still under reduced motion; the page makes no network request | FR-125 |
 | AC-59 | The setup-page privacy slide matches the Security and Privacy Note: chats, photos and cart stay on the Mac; a pasted YouTube link fetches its transcript; Gemini is opt-in | FR-125 |
-| AC-60 | On a first visit the tour shows five steps; step 1 waits for a starter or Next | FR-126 |
+| AC-60 | On a first visit the tour shows six steps; step 1 waits for a starter or Next | FR-126 |
 | AC-61 | Skip, Escape, Back and Next work; dismissal is remembered; the help icon restarts the tour; the chat stays usable during the tour | FR-126 |
 
 ## 13. Dependencies and rollout

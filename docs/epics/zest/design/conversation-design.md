@@ -187,10 +187,10 @@ UI copy produced by the frontend or the setup page, not by a model.
 
 | Lever | Tag | Tooltip |
 |---|---|---|
-| Culinary Pairing Weight | Preference | How much Zest favours dishes that match your request and pair well with it. |
-| User Purchase History Weight | Preference | How much your (mock) past purchases count. |
-| Market Trend & Velocity Weight | Preference | How much Zest favours what is popular in the store right now. |
-| Persona & Gourmet Boost Weight | Preference | How much your style settings below (gourmet, organic) count. |
+| Culinary Pairing | Preference | How much Zest favours dishes that match your request and pair well with it. |
+| User Purchase History | Preference | How much your (mock) past purchases count. |
+| Market Trend & Velocity | Preference | How much Zest favours what is popular in the store right now. |
+| Persona & Gourmet Boost | Preference | How much your style settings below (gourmet, organic) count. |
 | Probable Gender | Preference | A small preference: Female slightly favours iron- and calcium-rich items, Male slightly favours high-protein items. It never removes a dish. (Owner to review: sensitive field.) |
 | Dietary Preference | Rule | Dishes that break it are removed before ranking and never suggested. |
 | Religious / Cultural Beliefs | Rule | Dishes that break it are removed before ranking and never suggested. |
@@ -204,12 +204,15 @@ UI copy produced by the frontend or the setup page, not by a model.
 
 Weights note under the weight sliders: "Weights are relative: doubling all four changes nothing."
 
-**Tour** (FR-126; buttons Back · Next · Skip; last step "Done"; help icon label "Help and tour"):
-1. *Start here*: "Tap a starter or type what you feel like eating. Zest builds a cart from it."
-2. *Who's cooking?*: "Pick a persona. Their diet and faith rules are applied in code, every time."
-3. *Levers*: "Move a lever to change what Zest suggests. The ⓘ says whether it's a Rule (removes dishes) or a Preference (re-ranks them)."
-4. *Why this? and your cart*: "Tap ⓘ on a suggestion to see why Zest picked it. Your cart is at the top right."
-5. *Inspector*: "For the curious: every candidate, its ranks, whether it passed your rules, and its score."
+**Tour** (FR-126; buttons Back · Next · Skip; last step "Done"; help icon label "Help and tour"; six steps, owner 2026-10-23):
+1. *Start here* (starter buttons): "Tap a starter to try Zest in one click."
+2. *Chat with Zest* (message box): "Or type here: a dish, a recipe, a mood, or paste a YouTube link. Press Enter or Send."
+3. *Who's cooking?*: "Pick a persona. Their diet and faith rules are applied in code, every time."
+4. *Levers*: "Move a lever to change what Zest suggests. The ⓘ says whether it's a Rule (removes dishes) or a Preference (re-ranks them)."
+5. *Your cart* (cart icon): "Everything Zest adds goes into your cart, at the top right. Open it to change quantities, swap items or place a mock order."
+6. *Inspector*: "For the curious: every candidate, its ranks, whether it passed your rules, and its score. It fills in once you start chatting and Zest suggests a dish."
+
+The four weight sliders are labelled without the word "Weight" (C80): Culinary Pairing, User Purchase History, Market Trend & Velocity, Persona & Gourmet Boost.
 
 **Setup-page slides** (FR-125, Mac app first launch):
 1. "Four ways to start: paste a YouTube recipe, type a recipe or dish, describe a mood, or show your fridge."
