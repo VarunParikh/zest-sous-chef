@@ -7,7 +7,7 @@ import { CartWindow } from "./components/CartWindow";
 import { ChatPanel, type BusyKind } from "./components/ChatPanel";
 import { LeverPanel } from "./components/LeverPanel";
 import { Tour, tourSeen } from "./components/Tour";
-import { clone, sameLevers } from "./levers";
+import { clone, personaLabel, sameLevers } from "./levers";
 import { rupees } from "./icons";
 
 const DEMO_LINK = "https://www.youtube.com/watch?v=6YVx0i_hrZ0";
@@ -191,7 +191,10 @@ export default function App() {
           <span className="hidden items-center gap-2 rounded-full border border-ok-border bg-ok-surface px-3 py-1 text-xs text-ok-text md:flex">
             <span className="h-2 w-2 rounded-full bg-ok" aria-hidden="true" /> Active - 10 Min Delivery Connected · mock data
           </span>
-          <span className="text-xs text-secondary">Persona: <span className="font-semibold">{session.persona}</span></span>
+          <span className="text-xs text-secondary" data-testid="persona-label">
+            Persona: <span className="font-semibold">{personaLabel(levers, config.presets, config.defaults)}</span>
+            {!sameLevers(levers, snapshot) && <span className="text-muted"> · applies from your next chat</span>}
+          </span>
           <button type="button" onClick={() => setLevers(clone(config.defaults))}
             className="rounded-[10px] border border-strong bg-white px-3 py-1.5 text-xs font-medium text-secondary hover:bg-[#F9FAFB]">
             Reset levers

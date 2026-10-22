@@ -138,7 +138,8 @@ def test_t118_cancel_keeps_the_cart_and_the_session(page: Page, app_url: str):
     dialog.get_by_role("button", name="Cancel").click()
     expect(dialog).to_be_hidden()
     expect(cart).to_have_attribute("aria-label", label)
-    expect(page.get_by_text("Persona: Default settings")).to_be_visible()
+    # The session did not change; the header names the selected persona and says when it applies (C4)
+    expect(page.get_by_test_id("persona-label")).to_have_text("Persona: Meera Shah · applies from your next chat")
     expect(page.get_by_text(re.compile("^Before: |^Same pick"))).to_have_count(0)
 
 
@@ -200,3 +201,16 @@ def test_custom_card_is_in_use_when_the_levers_match_no_persona(page: Page, app_
     expect(custom).to_have_attribute("aria-checked", "false")
     custom.click()  # Custom takes the user to the levers
     expect(page.get_by_role("slider", name="Culinary Pairing")).to_be_focused()
+
+
+def test_header_persona_follows_the_levers_at_once(page: Page, app_url: str):
+    """Owner review 2026-10-23: the header reads Custom the moment a lever changes, and a persona's name when one is chosen."""
+    _open(page, app_url)
+    label = page.get_by_test_id("persona-label")
+    expect(label).to_have_text("Persona: Default settings")
+    page.get_by_role("slider", name="Culinary Pairing").fill("0.5")
+    expect(label).to_have_text("Persona: Custom · applies from your next chat")
+    page.get_by_role("radio", name=re.compile("Rohan Deshmukh")).click()
+    expect(label).to_have_text("Persona: Rohan Deshmukh · applies from your next chat")
+    page.get_by_role("button", name="Start new chat").click()
+    expect(label).to_have_text("Persona: Rohan Deshmukh")  # applied: the note goes

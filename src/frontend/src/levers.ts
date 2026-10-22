@@ -61,3 +61,11 @@ export const LEVER_HELP: Record<string, { tag: LeverTag; text: string }> = {
   "Max Companion Add-on Price Cap": { tag: "Rule", text: "Add-on suggestions never cost more than this." },
   "Hide out-of-stock items (stock filter)": { tag: "Rule", text: "When on, out-of-stock items are removed before ranking and never carted." },
 };
+
+/** The persona the current levers describe (FR-121; the server's persona_label rules, for the offered presets):
+ * a preset's name, "Default settings" when untouched, else "Custom". */
+export function personaLabel(levers: LeverSet, presets: { name: string; levers: LeverSet }[], defaults: LeverSet): string {
+  const match = presets.find((p) => sameLevers(p.levers, levers));
+  if (match) return match.name;
+  return sameLevers(levers, defaults) ? "Default settings" : "Custom";
+}
