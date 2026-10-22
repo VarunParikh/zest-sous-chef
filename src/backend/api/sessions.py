@@ -8,7 +8,7 @@ from backend.catalogue.seed import load_personas
 from backend.engine.scoring import effective_weights
 from backend.flows.cards import TurnResponse
 from backend.flows.greeting import greeting_turn
-from backend.session.levers import LEVER_OPTIONS, LeverSet, merge_levers, persona_summary, persona_tag
+from backend.session.levers import LEVER_OPTIONS, LeverSet, merge_levers, offered, persona_summary, persona_tag
 
 router = APIRouter(prefix="/api/v1")
 
@@ -58,7 +58,7 @@ def config_levers(request: Request) -> dict:
         "ranges": _ranges(LeverSet),
         "default_shares": effective_weights(LeverSet().weights)[0],  # FR-08, FR-104
         "presets": [{"name": n, "levers": p.model_dump(mode="json"), "summary": persona_summary(p), "tag": persona_tag(n)}
-                    for n, p in presets.items() if persona_tag(n) != "Reviewer"],  # FR-121; reviewer not offered (C81)
+                    for n, p in presets.items() if offered(n)],  # FR-121; some personas are not offered (C81)
     }
 
 

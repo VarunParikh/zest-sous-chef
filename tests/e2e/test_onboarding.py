@@ -88,10 +88,11 @@ def test_t120_persona_card_selects_its_preset(page: Page, app_url: str):
     expect(meera).to_contain_text("Jain: no root vegetables, onion, garlic or mushrooms")
     expect(meera.locator("svg[data-avatar='bowl']")).to_have_count(1)  # a cartoon chef with a prop from her levers
     page.get_by_role("button", name=re.compile("Show all")).click()
-    expect(page.get_by_role("radio", name=re.compile("Alex"))).to_have_count(0)  # the reviewer persona is not offered (C81)
+    for hidden in ["Alex", "Jordan", "Vikram"]:  # not offered (C81, C82)
+        expect(page.get_by_role("radio", name=re.compile(hidden))).to_have_count(0)
     cards = page.get_by_role("radio")
-    expect(cards).to_have_count(10)
-    for i in range(10):
+    expect(cards).to_have_count(8)
+    for i in range(8):
         expect(cards.nth(i).locator("svg[data-avatar]")).to_have_count(1)
     meera.click()
     expect(meera).to_have_attribute("aria-checked", "true")
@@ -137,7 +138,7 @@ def test_t118_cancel_keeps_the_cart_and_the_session(page: Page, app_url: str):
     dialog.get_by_role("button", name="Cancel").click()
     expect(dialog).to_be_hidden()
     expect(cart).to_have_attribute("aria-label", label)
-    expect(page.get_by_text("Persona: Jordan Fernandes (control)")).to_be_visible()
+    expect(page.get_by_text("Persona: Default settings")).to_be_visible()
     expect(page.get_by_text(re.compile("^Before: |^Same pick"))).to_have_count(0)
 
 

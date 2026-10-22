@@ -10,7 +10,9 @@ const SHOWN = 4;
 
 const display = (name: string) => name.replace(/\s*\(.*\)\s*$/, "");
 
-export function PersonaCards({ config, active, onChange }: { config: LeverConfig; active: string; onChange: (l: LeverSet) => void }) {
+export function PersonaCards({ config, active, isDefault, onChange }: {
+  config: LeverConfig; active: string; isDefault: boolean; onChange: (l: LeverSet) => void;
+}) {
   const ordered: Preset[] = [...config.presets.filter((p) => !p.tag), ...config.presets.filter((p) => p.tag)];
   const [all, setAll] = useState(false);
   // Four cards, plus the persona in use if it is further down the list (the default reviewer is), then "Show all"
@@ -53,7 +55,7 @@ export function PersonaCards({ config, active, onChange }: { config: LeverConfig
         })}
       </div>
       <div className="mt-2 flex items-center justify-between text-xs">
-        {active ? <span /> : <span className="text-muted">Custom settings (no persona matches your levers)</span>}
+        {active ? <span /> : <span className="text-muted">{isDefault ? "Default settings: no persona chosen yet" : "Custom settings (no persona matches your levers)"}</span>}
         {ordered.length > SHOWN && (
           <button type="button" className="font-semibold text-brand hover:underline" onClick={() => setAll(!all)}>
             {all ? "Show fewer" : `Show all ${ordered.length}`}

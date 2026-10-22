@@ -11,6 +11,7 @@ Zest 2.0 (branch `zest-2.0`; released as 2.0.0 after owner review).
 - **Persona cards (US-43):** "Who's cooking?" cards with summaries generated from the levers (`/config/levers` `summary` and `tag`). T-119, T-120.
 - **Apply and rerun (US-42):** one click applies the levers in a new session and resends the last request, with a Before/Now line. With items in the cart it asks first. T-117, T-118. In the real app, Meera Shah turned "Something comforting tonight" from Mushroom Risotto (0.58) into Jain Dal Chawal (0.36).
 - **Characters and icons (owner-approved mockup, 2026-10-23):** persona cards show cartoon chefs, with non-skin colours and a prop chosen from the levers (leaf, dumbbell, clock, bowl, clipboard, spoon), and each specialised diet has a small icon.
+  - Vikram Rao and Jordan Fernandes (control) are also no longer offered (C82), and untouched default levers are labelled "Default settings".
   - The reviewer persona is no longer offered. It stays in `personas.json` for the evaluations (C81), so a new chat is labelled "Jordan Fernandes (control)", which has the same default levers.
 - **Tour (US-47):** a skippable five-step tour on the first visit, restartable from the help icon at the top right. T-126.
 - **Zest 2.0 Mac app (US-46, ADR-012):**

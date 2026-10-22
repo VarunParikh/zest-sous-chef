@@ -105,12 +105,13 @@ def snapshot_hash(levers: LeverSet) -> str:
 def persona_label(levers: LeverSet, presets: Mapping[str, LeverSet]) -> str:
     """The preset name when the levers equal a preset, else "Custom" (API Spec §10 item 3).
 
-    When several presets are equal, the first in `personas.json` wins. The reviewer persona (P7) is never the label:
-    Zest 2.0 does not offer it (C81), so the default levers it shares with P9 read "Jordan Fernandes (control)".
+    When several presets are equal, the first in `personas.json` wins. Personas not offered in the interface (C81) are
+    never the label; untouched default levers read "Default settings".
     """
     h = snapshot_hash(levers)
-    return next((name for name, preset in presets.items() if snapshot_hash(preset) == h and persona_tag(name) != "Reviewer"),
-                "Custom")
+    if h == snapshot_hash(LeverSet()):
+        return "Default settings"
+    return next((name for name, preset in presets.items() if snapshot_hash(preset) == h and offered(name)), "Custom")
 
 
 # C30: item classes each diet allows, and the classes a faith or specialised diet forbids.
@@ -169,3 +170,11 @@ def persona_tag(name: str) -> str | None:
     """Reviewer and control personas are tagged so the cards list them last (FR-121)."""
     low = name.lower()
     return "Reviewer" if "(reviewer)" in low else "Control" if "(control)" in low else None
+
+
+# Personas kept in personas.json for the evaluations (E7, E9, E13) but not offered in the interface (C81, owner 2026-10-23)
+NOT_OFFERED = frozenset({"Alex (Reviewer)", "Jordan Fernandes (control)", "Vikram Rao"})
+
+
+def offered(name: str) -> bool:
+    return name not in NOT_OFFERED

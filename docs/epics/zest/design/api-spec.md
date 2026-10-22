@@ -228,7 +228,7 @@ FastAPI's generated OpenAPI is exported to `docs/.../openapi.json` on each build
 ## 10. Open items
 1. Exact field names may be refined when the Pydantic models are generated; the OpenAPI output then becomes authoritative.
 2. Whether `why_this` embeds the breakdown or fetches it lazily is an implementation choice; embedding is simpler for two or three items.
-3. `persona_label` for custom lever sets is "Custom"; presets come from `GET /config/levers`.
+3. `persona_label` for custom lever sets is "Custom" and for untouched defaults "Default settings" (Zest 2.0, C81); presets come from `GET /config/levers`, which does not offer P7, P9 or P11.
 
 ## 11. Sources
 | Source | Used for | Link |
