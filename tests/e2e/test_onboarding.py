@@ -64,6 +64,14 @@ def test_t121_every_lever_has_a_tooltip_and_a_tag(page: Page, app_url: str):
     assert len(rules) == 5 and all(("removed" in c["tip"]) or ("never" in c["tip"]) for c in rules)
 
 
+def test_t121_every_specialised_diet_has_an_icon(page: Page, app_url: str):
+    _open(page, app_url)
+    panel = _expand_all(page)
+    diets = ["Standard / Balanced", "Keto Diet", "Intermittent Fasting / Low-GI", "Vegan", "Gluten-Free", "High-Protein Fitness"]
+    for d in diets:
+        expect(panel.locator(f"[data-diet-icon='{d}']")).to_have_count(1)
+
+
 def test_t121_tooltip_opens_on_focus_and_closes_with_escape(page: Page, app_url: str):
     _open(page, app_url)
     tip_button = page.get_by_role("button", name="About Dietary Preference")
@@ -78,6 +86,13 @@ def test_t120_persona_card_selects_its_preset(page: Page, app_url: str):
     _open(page, app_url)
     meera = page.get_by_role("radio", name=re.compile("Meera Shah"))
     expect(meera).to_contain_text("Jain: no root vegetables, onion, garlic or mushrooms")
+    expect(meera.locator("svg[data-avatar='bowl']")).to_have_count(1)  # a cartoon chef with a prop from her levers
+    page.get_by_role("button", name=re.compile("Show all")).click()
+    expect(page.get_by_role("radio", name=re.compile("Alex"))).to_have_count(0)  # the reviewer persona is not offered (C81)
+    cards = page.get_by_role("radio")
+    expect(cards).to_have_count(10)
+    for i in range(10):
+        expect(cards.nth(i).locator("svg[data-avatar]")).to_have_count(1)
     meera.click()
     expect(meera).to_have_attribute("aria-checked", "true")
     expect(page.get_by_text("Changes apply from your next chat session.")).to_be_visible()
@@ -122,7 +137,7 @@ def test_t118_cancel_keeps_the_cart_and_the_session(page: Page, app_url: str):
     dialog.get_by_role("button", name="Cancel").click()
     expect(dialog).to_be_hidden()
     expect(cart).to_have_attribute("aria-label", label)
-    expect(page.get_by_text("Persona: Alex (Reviewer)")).to_be_visible()
+    expect(page.get_by_text("Persona: Jordan Fernandes (control)")).to_be_visible()
     expect(page.get_by_text(re.compile("^Before: |^Same pick"))).to_have_count(0)
 
 

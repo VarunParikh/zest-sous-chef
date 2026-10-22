@@ -5,6 +5,7 @@ import { Chevron } from "../icons";
 import { HISTORY_LABELS, LEVER_HELP, TREND_LABELS, WEIGHT_LABELS, clone, sameLevers, shares } from "../levers";
 import { InfoTip, TagPill } from "./InfoTip";
 import { PersonaCards } from "./PersonaCards";
+import { DietIcon } from "./Illustrations";
 import { InspectorTable } from "./InspectorTable";
 import { ScoreChart } from "./ScoreChart";
 
@@ -118,6 +119,7 @@ export function LeverPanel({ config, levers, onChange, breakdown, inspector }: {
                       const next = e.target.checked ? [...rest, d] : rest;
                       l.specialized_diets = d === "Standard / Balanced" && e.target.checked ? [d] : next.length ? next : ["Standard / Balanced"];
                     })} />
+                  <DietIcon diet={d} />
                   {d}
                 </label>
               ))}

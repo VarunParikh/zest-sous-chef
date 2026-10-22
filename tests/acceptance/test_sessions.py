@@ -23,8 +23,8 @@ def test_create_session_returns_greeting_turn(tmp_path):
     body = r.json()
     assert body["session_id"].startswith("s_")
     assert body["snapshot_hash"] == snapshot_hash(LeverSet())
-    # The defaults equal two presets (P7 Alex and P9 Jordan, the control); the first in personas.json wins.
-    assert body["persona_label"] == "Alex (Reviewer)"
+    # The defaults equal two presets (P7 Alex and P9 Jordan, the control); the reviewer is never the label (C81).
+    assert body["persona_label"] == "Jordan Fernandes (control)"
     turn = body["turn"]
     assert turn["turn_id"] == "t_0001"
     (msg,) = turn["messages"]
@@ -93,7 +93,8 @@ def test_config_levers_lists_defaults_options_ranges_presets(tmp_path):
     assert body["ranges"]["weights.culinary_pairing"] == {"min": 0, "max": 1}
     assert body["ranges"]["history.bakery"] == {"min": 0, "max": 1}
     names = [p["name"] for p in body["presets"]]
-    assert "Priya Nair" in names and len(names) == 11
+    assert "Priya Nair" in names and len(names) == 10
+    assert "Alex (Reviewer)" not in names  # C81: in personas.json for the evaluations, not offered in the interface
     for p in body["presets"]:
         LeverSet.model_validate(p["levers"])  # every preset is a full, valid lever set
 

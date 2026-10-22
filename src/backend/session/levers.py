@@ -105,10 +105,12 @@ def snapshot_hash(levers: LeverSet) -> str:
 def persona_label(levers: LeverSet, presets: Mapping[str, LeverSet]) -> str:
     """The preset name when the levers equal a preset, else "Custom" (API Spec §10 item 3).
 
-    When several presets are equal (P7 and P9 both use the defaults), the first in `personas.json` wins.
+    When several presets are equal, the first in `personas.json` wins. The reviewer persona (P7) is never the label:
+    Zest 2.0 does not offer it (C81), so the default levers it shares with P9 read "Jordan Fernandes (control)".
     """
     h = snapshot_hash(levers)
-    return next((name for name, preset in presets.items() if snapshot_hash(preset) == h), "Custom")
+    return next((name for name, preset in presets.items() if snapshot_hash(preset) == h and persona_tag(name) != "Reviewer"),
+                "Custom")
 
 
 # C30: item classes each diet allows, and the classes a faith or specialised diet forbids.

@@ -3,14 +3,12 @@
 import { useRef, useState } from "react";
 import type { LeverConfig, LeverSet } from "../api/types";
 import { clone } from "../levers";
+import { PersonaAvatar } from "./Illustrations";
 
 type Preset = LeverConfig["presets"][number];
 const SHOWN = 4;
-const AVATAR = ["#3B2A87", "#0F766E", "#B45309", "#9D174D", "#1D4ED8", "#4D7C0F"];  // white text passes AA on each
 
 const display = (name: string) => name.replace(/\s*\(.*\)\s*$/, "");
-const initials = (name: string) => display(name).split(/\s+/).map((w) => w[0]).slice(0, 2).join("").toUpperCase();
-const colour = (name: string) => AVATAR[[...name].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7) % AVATAR.length];
 
 export function PersonaCards({ config, active, onChange }: { config: LeverConfig; active: string; onChange: (l: LeverSet) => void }) {
   const ordered: Preset[] = [...config.presets.filter((p) => !p.tag), ...config.presets.filter((p) => p.tag)];
@@ -38,9 +36,8 @@ export function PersonaCards({ config, active, onChange }: { config: LeverConfig
           return (
             <button key={p.name} ref={(el) => { refs.current[i] = el; }} type="button" role="radio" aria-checked={checked}
               tabIndex={i === focusable ? 0 : -1} onClick={() => pick(i)}
-              className={`flex items-start gap-3 rounded-lg border p-3 text-left transition-colors ${checked ? "border-brand bg-brand-tint" : "border-line bg-white hover:border-brand"}`}>
-              <span aria-hidden="true" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-semibold text-white"
-                style={{ background: colour(p.name) }}>{initials(p.name)}</span>
+              className={`flex items-center gap-3 rounded-lg border p-3 text-left transition-colors ${checked ? "border-brand bg-brand-tint" : "border-line bg-white hover:border-brand"}`}>
+              <PersonaAvatar name={p.name} levers={p.levers} tag={p.tag} />
               <span className="min-w-0 flex-1">
                 <span className="flex flex-wrap items-center gap-1.5 text-sm font-semibold text-ink">
                   {display(p.name)}

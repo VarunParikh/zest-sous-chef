@@ -41,9 +41,18 @@ def test_t119_tags_mark_reviewer_and_control():
     assert persona_tag("Meera Shah") is None
 
 
+def test_c81_reviewer_persona_is_never_the_label():
+    from backend.session.levers import persona_label
+
+    presets = load_presets()
+    assert "Alex (Reviewer)" in presets  # still in personas.json for the evaluations (E9, E13)
+    assert persona_label(LeverSet(), presets) == "Jordan Fernandes (control)"
+
+
 def test_t119_config_endpoint_returns_summary_and_tag(tmp_path):
     env = {"CHROMA_PATH": str(tmp_path / "c"), "TRACE_PATH": str(tmp_path / "t.jsonl")}
     app = create_app(load_settings(env=env, env_file=None), http_transport=httpx.MockTransport(lambda r: httpx.Response(200, json={"models": []})))
     presets = TestClient(app).get("/api/v1/config/levers").json()["presets"]
-    assert {p["name"]: p["summary"] for p in presets} == EXPECTED
-    assert {p["name"]: p["tag"] for p in presets if p["tag"]} == {"Alex (Reviewer)": "Reviewer", "Jordan Fernandes (control)": "Control"}
+    offered = {k: v for k, v in EXPECTED.items() if k != "Alex (Reviewer)"}  # C81: the reviewer is not offered
+    assert {p["name"]: p["summary"] for p in presets} == offered
+    assert {p["name"]: p["tag"] for p in presets if p["tag"]} == {"Jordan Fernandes (control)": "Control"}

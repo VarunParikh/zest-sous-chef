@@ -58,7 +58,7 @@ def config_levers(request: Request) -> dict:
         "ranges": _ranges(LeverSet),
         "default_shares": effective_weights(LeverSet().weights)[0],  # FR-08, FR-104
         "presets": [{"name": n, "levers": p.model_dump(mode="json"), "summary": persona_summary(p), "tag": persona_tag(n)}
-                    for n, p in presets.items()],  # FR-121: summary and tag generated from the levers
+                    for n, p in presets.items() if persona_tag(n) != "Reviewer"],  # FR-121; reviewer not offered (C81)
     }
 
 
