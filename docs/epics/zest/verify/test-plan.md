@@ -1,6 +1,6 @@
 # Test Plan: Zest AI Sous-Chef
 
-Status: **APPROVED v0.6 (owner, 2026-10-19, with the block 3.3 plan): §9 step 6 and T-105 NOT RUN, demo endpoints cut (C72).** v0.5 was **APPROVED (owner, 2026-10-18, C68): T-100 covers V1 to V17.** v0.4 was **APPROVED (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.3 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 adds T-047 to T-049 for ADR-004 v2 add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4 (AC-01 to AC-45), User Stories, Architecture, API Spec, Agent Design, Security and Privacy Note
+Status: **APPROVED v0.7 (owner, 2026-10-22, with the Zest 2.0 plan): §4.10 adds T-117 to T-128.** v0.6 was **APPROVED v0.6 (owner, 2026-10-19, with the block 3.3 plan): §9 step 6 and T-105 NOT RUN, demo endpoints cut (C72).** v0.5 was **APPROVED (owner, 2026-10-18, C68): T-100 covers V1 to V17.** v0.4 was **APPROVED (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.3 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.2 was APPROVED (owner, 2026-10-17) (v0.1 was approved earlier the same day; v0.2 adds T-047 to T-049 for ADR-004 v2 add-on retrieval) · Date: 2026-10-17 · Source: PRD v0.4 (AC-01 to AC-45), User Stories, Architecture, API Spec, Agent Design, Security and Privacy Note
 Owner decision (2026-10-17): **lean test set.** Full coverage of the engine, cart and guardrails; acceptance tests for the Must stories; one Playwright demo-path test. Dependency Pillow approved.
 **Status of every test in this plan: NOT RUN.** No code exists. Nothing here is a result.
 
@@ -168,6 +168,23 @@ Component-level checks (React Testing Library, only if the dependency is approve
 | E2E-001 | As above | AC-12, 13, 32; FR-81, 100 to 104 | P0 |
 | T-110 | Responsive switch below 1024 px (manual check, part of rehearsal) | FR-100 | P1 |
 | T-116 | The inspector fills after a named-dish turn (add-on pool only, with a note that no dish pool was ranked), and the empty state says which requests fill it (`tests/e2e/test_inspector.py`) | FR-115, FR-119 | P1 |
+
+### 4.10 Zest 2.0 onboarding and side by side (US-42 to US-47; ADR-012)
+E2E tests start with the tour marked as seen (`tests/e2e/conftest.py`), except T-126.
+| ID | Test | Covers | Pri |
+|---|---|---|---|
+| T-117 | E2E: after a persona change, Apply and rerun starts a new session, resends the request and shows Before/Now | FR-120, AC-46, AC-49 | P1 |
+| T-118 | E2E: Apply and rerun with items in the cart asks first; Cancel keeps the cart and session | FR-120, AC-47 | P0 |
+| T-119 | Unit: every persona preset gets a summary and tag generated from its levers; Jain, vegan and halal wording | FR-121, AC-50 | P1 |
+| T-120 | E2E: a persona card selects exactly its preset; Apply and rerun gives a suggestion for that persona | FR-121, AC-51 | P1 |
+| T-121 | E2E: every lever in the panel has a tooltip and a Rule or Preference tag; Rule tooltips say "removed" or "never" | FR-122, AC-52, AC-53 | P1 |
+| T-122 | Unit: help phrases route to `help`; "help me make paneer butter masala" routes to `named_dish`; long messages are not help | FR-123, AC-54 | P1 |
+| T-123 | Acceptance: a help turn returns MSG-HELP with the help card and makes no intent, extraction or reason model call | FR-123, AC-54, AC-55 | P1 |
+| T-124 | E2E: "what can I say?" shows the help card and an example produces a cart; the YouTube and Text recipe chips send on one tap | FR-123, FR-124, AC-55, AC-57 | P1 |
+| T-125 | Unit: the setup page has five slides, the privacy slide names YouTube and Gemini, a reduced-motion rule exists, and the page loads nothing from the network | FR-125, AC-58, AC-59 | P2 |
+| T-126 | E2E: the tour shows on a first visit, Skip hides it after reload, the top-right help icon restarts it, and step 1 waits for a starter | FR-126, AC-56, AC-60, AC-61 | P1 |
+| T-127 | Unit: the Mac app's edition constants match `Info.plist`; 2.0 never uses 1.0's data folder or private Ollama port | ADR-012 | P1 |
+| T-128 | Manual: Zest 1.0 and Zest 2.0 run at the same time; quitting one leaves the other running; no second model download | ADR-012 | P1 |
 
 ## 5. Acceptance criteria to test map
 | AC | Test(s) | AC | Test(s) |

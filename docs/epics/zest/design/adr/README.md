@@ -15,5 +15,6 @@ Format follows the `write-adr` skill. An ADR is marked **Accepted** only where t
 | [009](ADR-009-no-mcp-plain-rest.md) | Plain REST, no MCP | Accepted | Qualitative |
 | [010](ADR-010-frontend-stack.md) | React, Vite, Tailwind | Accepted (owner, 2026-10-17) | Qualitative |
 | [011](ADR-011-macos-app-packaging.md) | Self-contained `Zest.app` in a DMG: bundled Python 3.12 and Ollama 0.40.5, models fetched on first launch, unsigned | Accepted in part (owner decisions D1 to D3, 2026-10-22); text awaits owner review | T-111 to T-115 |
+| [012](ADR-012-zest-2-side-by-side.md) | Zest 2.0 next to 1.0: ports 8100/5273, own data folder, private Ollama 11436, shared model folder, badged icon | Accepted (owner, 2026-10-22, with the Zest 2.0 plan) | T-127, T-128 |
 
 Dependencies awaiting approval under Constitution G3 at install time: a BM25 library (approved in principle for ADR-004), Chroma, Pydantic, FastAPI, pytest, Playwright.

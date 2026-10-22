@@ -1,6 +1,6 @@
 # Conversation Design: Zest AI Sous-Chef
 
-Status: **APPROVED v0.4 (owner, 2026-10-18, with the block 3.1 plan): §9 a timeout is not retried (C62).** v0.3 was **APPROVED (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). Also C38: MSG-PHOTO-CONFIRM added and MSG-TXT-STORED names the stored servings.** v0.2 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, DESIGN.md, UserJourneys.md, Constitution v0.2
+Status: **APPROVED v0.5 (owner, 2026-10-22, with the Zest 2.0 plan): `help` intent, MSG-HELP and §6.7 onboarding copy (FR-120 to FR-126).** v0.4 was **APPROVED v0.4 (owner, 2026-10-18, with the block 3.1 plan): §9 a timeout is not retried (C62).** v0.3 was **APPROVED (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). Also C38: MSG-PHOTO-CONFIRM added and MSG-TXT-STORED names the stored servings.** v0.2 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision. v0.1 was APPROVED (owner, 2026-10-17) · Date: 2026-10-17 · Source: PRD v0.3, Architecture v0.1, DESIGN.md, UserJourneys.md, Constitution v0.2
 Design stance: provisional where marked. The tools Zest can use are only the ones in the Architecture; this document promises no integration that does not exist (all commerce is mock).
 
 ## 1. Goals and measurable outcomes
@@ -48,6 +48,7 @@ Small local models drift in tone and invent details. So:
 | `variant_request` | "skimmed milk", "organic" | `attribute` | none | M |
 | `question_cooking` | "how long does biryani take" | `topic` | on topic | S |
 | `declare_allergy` | "I'm allergic to peanuts" | `allergen` | none | C |
+| `help` | "what can I say?", "help", "how does this work" (whole message, at most 60 characters, no dish name; routed in code, FR-123) | none | none | S |
 | `smalltalk` | "hi", "thanks" | none | none | M |
 | `off_topic` | anything else | none | none | M |
 | `unsafe` | injection, hazardous | none | none | M |
@@ -96,6 +97,7 @@ Timeout: if the user is silent, nothing happens; the session persists until refr
 | ID | When | Copy |
 |---|---|---|
 | MSG-GREET | Session start | "Hey there! I'm Zest, your AI cooking assistant. Paste a YouTube recipe link, describe what's in your fridge, or upload a photo of your ingredients to start!" (DESIGN.md) |
+| MSG-HELP | `help` intent (FR-123) | "Here's how to start. Tap an example, or type your own:" + help card: 🎥 A YouTube recipe (sends the demo video link) · ✍️ A dish or recipe ("I want to make paneer butter masala") · 😋 A mood ("Something comforting tonight") · 📷 A fridge photo (sends sample photo RF02), then "Change a lever or pick a persona on the left, and the suggestions change." and a **Take the tour** button |
 | MSG-THANKS | smalltalk thanks | "Anytime. What shall we cook next?" |
 | MSG-BUSY | processing | Typing indicator only (no text) |
 | MSG-LEVER-BANNER | levers changed mid-session (UI banner) | "Changes apply from your next chat session." |
@@ -170,6 +172,50 @@ Timeout: if the user is silent, nothing happens; the session persists until refr
 | MSG-UNSUPPORTED | voice, address, payment | "I can't do that here. I can build your cart and you can place the order with Buy Now." |
 | MSG-REPHRASE | model invalid after retry | "I didn't quite catch that. Could you rephrase it?" |
 | MSG-SERVER | dependency or backend failure | "Your food will be ready but seems like our servers are struggling. We will be back shortly" (DESIGN.md, NFR-02) |
+
+### 6.7 Onboarding copy (Zest 2.0; FR-120, FR-122, FR-125, FR-126)
+UI copy produced by the frontend or the setup page, not by a model.
+
+| ID | Where | Copy |
+|---|---|---|
+| UI-RERUN | lever banner, main button | "Apply and rerun “{request, at most 40 characters}”"; after an upload: "Apply, then upload your photo again"; secondary button "Start new chat" |
+| UI-RERUN-CONFIRM | cart not empty | "This starts a fresh chat with your new settings and empties your cart ({n} items, ₹{total})." Buttons: Cancel · Apply and rerun |
+| UI-RERUN-COMPARE | under the new suggestion | "Before: {old dish} ({old score}) → Now: {new dish} ({new score})"; same dish: "Same pick, new score {new score} (was {old score})" |
+| UI-PERSONA | persona cards | heading "Who's cooking?"; button "Use this persona"; "Show all {n}" |
+
+**Lever tooltips** (Rule: removes options; Preference: re-ranks):
+
+| Lever | Tag | Tooltip |
+|---|---|---|
+| Culinary Pairing Weight | Preference | How much Zest favours dishes that match your request and pair well with it. |
+| User Purchase History Weight | Preference | How much your (mock) past purchases count. |
+| Market Trend & Velocity Weight | Preference | How much Zest favours what is popular in the store right now. |
+| Persona & Gourmet Boost Weight | Preference | How much your style settings below (gourmet, organic) count. |
+| Probable Gender | Preference | A small preference: Female slightly favours iron- and calcium-rich items, Male slightly favours high-protein items. It never removes a dish. (Owner to review: sensitive field.) |
+| Dietary Preference | Rule | Dishes that break it are removed before ranking and never suggested. |
+| Religious / Cultural Beliefs | Rule | Dishes that break it are removed before ranking and never suggested. |
+| Specialized diets | Rule | Each diet you tick removes dishes that break it before ranking. |
+| Gourmet / Imported Food Affinity | Preference | Nudges Zest towards gourmet and imported products. |
+| Artisanal & Organic Preference | Preference | Nudges Zest towards artisanal and organic products. |
+| Historical category sliders | Preference | How often you have bought from this category before (mock history). |
+| Market trend sliders | Preference | How strongly this week's store trends count (mock trends). |
+| Max Companion Add-on Price Cap | Rule | Add-on suggestions never cost more than this. |
+
+Weights note under the weight sliders: "Weights are relative: doubling all four changes nothing."
+
+**Tour** (FR-126; buttons Back · Next · Skip; last step "Done"; help icon label "Help and tour"):
+1. *Start here*: "Tap a starter or type what you feel like eating. Zest builds a cart from it."
+2. *Who's cooking?*: "Pick a persona. Their diet and faith rules are applied in code, every time."
+3. *Levers*: "Move a lever to change what Zest suggests. The ⓘ says whether it's a Rule (removes dishes) or a Preference (re-ranks them)."
+4. *Why this? and your cart*: "Tap ⓘ on a suggestion to see why Zest picked it. Your cart is at the top right."
+5. *Inspector*: "For the curious: every candidate, its ranks, whether it passed your rules, and its score."
+
+**Setup-page slides** (FR-125, Mac app first launch):
+1. "Four ways to start: paste a YouTube recipe, type a recipe or dish, describe a mood, or show your fridge."
+2. "Levers change the picks. Move a slider or pick a persona and Zest re-ranks its suggestions. Look for “Why this?” on every dish."
+3. "Rules are code, not wishes. If you're Jain, vegan or halal, unsuitable dishes are removed before ranking, every time."
+4. "Private by design. Your chats, photos and cart stay on this Mac. Zest goes online only to fetch the transcript of a YouTube link you paste, or if you turn on Gemini photo analysis yourself."
+5. "A mock store. Products and prices are made up, and Buy Now never charges anything."
 
 ## 7. Confirmation and authority rules
 | Action | Rule | Source |

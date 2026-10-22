@@ -1,6 +1,6 @@
 # Specification (PRD): Zest AI Sous-Chef
 
-- **Status:** **APPROVED v0.8 (owner, 2026-10-18, with the block 3.1 plan): §9 timeouts are not retried (C62); §10 `llm_call` adds call and outcome (C61).** v0.7 was **APPROVED (owner, 2026-10-18, with the block 2.6 lever plan): FR-111 pool 25, OQ-13 and Appendix A β0 0.20, dish premium rescaled (C53).** v0.6 was **APPROVED (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.5 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.4 was approved by the owner 2026-10-17 after the ADR-004 v2 sync (Approval Register Rule 2). v0.3 was approved by the owner 2026-10-17 (OQ-8 to OQ-10 accepted at their defaults); v0.2 reviewed (see `spec-review-v0.1.md`); v0.3 and v0.4 changes not independently re-reviewed
+- **Status:** **APPROVED v0.9 (owner, 2026-10-22, with the Zest 2.0 plan): §6.13 onboarding FR-120 to FR-126, AC-46 to AC-61; NFR-08 note on the 2.0 ports (ADR-012).** v0.8 was **APPROVED v0.8 (owner, 2026-10-18, with the block 3.1 plan): §9 timeouts are not retried (C62); §10 `llm_call` adds call and outcome (C61).** v0.7 was **APPROVED (owner, 2026-10-18, with the block 2.6 lever plan): FR-111 pool 25, OQ-13 and Appendix A β0 0.20, dish premium rescaled (C53).** v0.6 was **APPROVED (owner re-approved 2026-10-18) (2026-10-18): C37 doc-sync to ADR-003 v3 (local `qwen3-vl:4b-instruct` default, Gemini opt-in, samples for the demo and as fallback). ** v0.5 was APPROVED (owner, 2026-10-18), re-approved after the C15 sync to the ADR-003 Day-1 decision.** v0.4 was approved by the owner 2026-10-17 after the ADR-004 v2 sync (Approval Register Rule 2). v0.3 was approved by the owner 2026-10-17 (OQ-8 to OQ-10 accepted at their defaults); v0.2 reviewed (see `spec-review-v0.1.md`); v0.3 and v0.4 changes not independently re-reviewed
 - **Owner:** VJP (product owner) · **Date:** 2026-10-17
 - **Inputs:** BRD, Strategy, Platforms, Personas, Risk Register, Settings Panel, DESIGN.md, User Journeys, mockups
 - **Convention:** "shall" marks a testable requirement. Priority: M = Must, S = Should, C = Could. Items needing an owner decision are in section 15.
@@ -176,6 +176,17 @@ Below 1024 px, a segmented control switches between Levers and Chat.
 | FR-118 | Add-on candidates for a cart dish shall come from two lists: (a) curated companions in `pairings.csv`, ranked by `strength`; (b) the nearest neighbours of the cart dish's stored embedding in `zest_dishes`, excluding the dish itself and dishes already in the cart. A course rule (config `ADDON_COURSES`, initially side, beverage and dessert) applies to list (b). The lists are merged by weighted reciprocal rank fusion, `score = Σ w_i / (k + rank_i)` with `k` as in FR-110 and initial weights curated 2 and vector 1 (config `ADDON_WEIGHTS`). The fused rank feeds the add-on `s_p` (Appendix A). Ties break by curated strength, then ID | M |
 | FR-119 | Eligibility (FR-60) shall be applied in code to every fused add-on candidate before ranking by the levers, so a vector neighbour that breaks the persona is removed (G9, FR-112). Each add-on suggestion shall show its curated strength, vector rank and fused rank in the inspector (FR-115) | M |
 
+### 6.13 First-use onboarding (Zest 2.0, owner request 2026-10-22)
+| ID | Requirement | Pri |
+|---|---|---|
+| FR-120 | When a lever differs from the session snapshot and the session has an earlier request, the banner shall offer **Apply and rerun** that request: it starts a new session with the current levers (C4 kept) and resends the request. A non-empty cart is emptied only after the user confirms. After an uploaded photo the action starts the new session and reopens the file picker, because image bytes are never stored (T-103). The new suggestion shows the previous and new top pick with their scores | S |
+| FR-121 | Persona presets shall be chosen from cards showing an initials avatar, the name, a one-line summary and a "Use this persona" button. The summary and an optional tag (Reviewer, Control) shall be generated in code from the preset's levers and returned by `GET /config/levers`, never typed by hand | S |
+| FR-122 | Every lever shall have a plain-language tooltip (DESIGN.md Tooltips) and a **Rule** or **Preference** tag. Rule levers (diet, faith, specialised diets, add-on price cap) shall say that they remove options; preference levers that they re-rank | S |
+| FR-123 | A whole message asking for help ("help", "what can I say", "how does this work", at most 60 characters, no dish name) shall be routed in code to a `help` intent with no intent-model call; the input guard still runs first. The reply (MSG-HELP) lists the four ways in, each with an example that acts on one tap, and offers the tour | S |
+| FR-124 | The greeting chips "YouTube link" and "Text recipe" shall send their demo input on one tap instead of filling the message box | S |
+| FR-125 | While the Mac app downloads models, the setup page shall show a five-slide introduction (four ways in, levers, rules in code, privacy, mock store). It makes no network request, respects reduced motion and never delays opening Zest | C |
+| FR-126 | On the first visit to the main screen a five-step, skippable tour shall highlight the chat starters, persona cards, a lever and its tooltip, "Why this?" with the cart, and the inspector. Dismissal is remembered in the browser; the help icon in the top-right corner of the screen restarts the tour at any time. The tour never blocks the chat | S |
+
 ## 7. Non-functional requirements
 | ID | Requirement |
 |---|---|
@@ -186,7 +197,7 @@ Below 1024 px, a segmented control switches between Levers and Chat.
 | NFR-05 | Security: secrets only in a git-ignored `.env`; prompt-injection tests; no real credentials or data in the repo |
 | NFR-06 | Observability: structured trace per request (section 10); no images stored; user text truncated; local and git-ignored |
 | NFR-07 | Maintainability: prompts in files, models and thresholds in config, guardrail logic in one tested module |
-| NFR-08 | Reproducibility: seeded mock data, pinned dependencies, one-command setup and run on macOS |
+| NFR-08 | Reproducibility: seeded mock data, pinned dependencies, one-command setup and run on macOS. Zest 2.0 runs on ports 8100 (API) and 5273 (dev frontend) so it can run next to 1.0 on 8000 and 5173 (ADR-012, C78) |
 | NFR-09 | Transparency: UI and README state that all commerce data is mock |
 | NFR-10 | Timeouts: every external call has a timeout and at most one retry. Initial values: local model 30 s, Gemini 20 s, transcript fetch 10 s; tuned by the benchmark. On expiry the fallback in section 9 applies |
 | NFR-11 | Testability: temperature 0 for extraction; acceptance tests assert on structured output (IDs, quantities), not wording |
@@ -280,6 +291,22 @@ No product analytics. A local trace log (no images, truncated text, no personal 
 | AC-43 | A dish with no curated pair (for example Sushi, D35) is carted: at least one eligible companion-course add-on is offered from the vector list, and nothing is added without a tap | FR-118, 64 |
 | AC-44 | An add-on suggestion list for a cart dish: every vector-sourced dish is of an allowed companion course (`ADDON_COURSES`), and a vector neighbour that breaks the persona is removed with `guardrail_filtered` in the trace | FR-118, 119 |
 | AC-45 | Vector store disabled: add-on suggestions are still offered from the curated list, `fallback_used` is traced and no error is shown | FR-117 |
+| AC-46 | A carted suggestion, then a lever change and **Apply and rerun**: a new session starts with the new snapshot and the same request is sent | FR-120 |
+| AC-47 | Apply and rerun with items in the cart: the user first confirms "This starts a fresh chat with your new settings and empties your cart (N items, ₹X)"; Cancel changes nothing | FR-120 |
+| AC-48 | After a sample photo the rerun resends that sample; after an uploaded photo the action reads "Apply, then upload your photo again" and opens the file picker | FR-120 |
+| AC-49 | After a rerun, the new suggestion shows "Before: {old} ({score}) → Now: {new} ({score})", or "Same pick, new score {score}" | FR-120 |
+| AC-50 | Every persona preset has a summary and optional tag generated from its levers, returned by `GET /config/levers` | FR-121 |
+| AC-51 | Choosing a persona card sets exactly that preset's levers; the cards work as a keyboard radio group | FR-121 |
+| AC-52 | Every lever has a tooltip that opens on hover, focus or tap, closes with Escape and is linked by `aria-describedby` | FR-122 |
+| AC-53 | Every lever carries a Rule or Preference tag; every Rule tooltip says the lever removes options | FR-122 |
+| AC-54 | "what can I say?" is routed to `help` with no intent-model call; "help me make paneer butter masala" is still a named dish | FR-123 |
+| AC-55 | The help reply lists four ways in, each example acts on one tap, and it offers "Take the tour" | FR-123 |
+| AC-56 | The help icon in the top-right corner of the screen restarts the tour | FR-123, FR-126 |
+| AC-57 | Tapping the "YouTube link" or "Text recipe" greeting chip sends the demo input | FR-124 |
+| AC-58 | The setup-page slides advance every 8 s, pause on hover or focus, work with the keyboard and stay still under reduced motion; the page makes no network request | FR-125 |
+| AC-59 | The setup-page privacy slide matches the Security and Privacy Note: chats, photos and cart stay on the Mac; a pasted YouTube link fetches its transcript; Gemini is opt-in | FR-125 |
+| AC-60 | On a first visit the tour shows five steps; step 1 waits for a starter or Next | FR-126 |
+| AC-61 | Skip, Escape, Back and Next work; dismissal is remembered; the help icon restarts the tour; the chat stays usable during the tour | FR-126 |
 
 ## 13. Dependencies and rollout
 Ollama model passing the Day-1 benchmark; optional Gemini key in the local `.env` for the opt-in photo demo; transcript fixtures; validated mock data. Rollout: public GitHub repository, run locally; at most 5 testers. Rollback: tag each working state.

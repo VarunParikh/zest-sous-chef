@@ -3,6 +3,10 @@
 All notable changes to this project are recorded here. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+Zest 2.0 (branch `zest-2.0`; released as 2.0.0 after owner review).
+
+### Added
+- Zest 2.0 specification, approved with the Zest 2.0 plan (2026-10-22): first-use onboarding US-42 to US-47 (PRD §6.13, FR-120 to FR-126, AC-46 to AC-61), Conversation Design §6.7 copy and MSG-HELP, API `presets[].summary`/`tag` and the `help` card, Test Plan §4.10 (T-117 to T-128), ADR-012 (running next to 1.0), conflicts C77 and C78.
 
 ## [0.2.0] - 2026-10-22
 The prototype as a Mac app: `Zest-0.2.0.dmg` (GitHub Release `v0.2.0`) runs Zest on an Apple-silicon Mac with no setup (ADR-011, US-41). Also fixes the inspector after named-dish and YouTube turns. Evidence report unchanged from 0.1.0; no evaluation was rerun.
