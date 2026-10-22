@@ -7,6 +7,7 @@
   - both a Mac app and a source run;
   - a "2.0" badge on the icon;
   - development on the branch `zest-2.0`, merged only when approved.
+- **Outcome (2026-10-23):** `zest-2.0` was merged into `main` and released as v2.0.0 (tag on commit `85e7661`). The owner chose to keep the branch, locally and on GitHub, as the record of the 2.0 work.
 
 ## Context
 Zest 2.0 adds six onboarding features (US-42 to US-47). The owner wants to compare it with the released 1.0 (tag `v0.2.0`, `Zest.app`) on the same Mac at the same time. 1.0 uses these resources:
