@@ -40,3 +40,7 @@ eval/results/smoke/
 
 # evaluation-only vector indexes
 data/chroma-eval/
+
+# macOS app build (ADR-011): pinned downloads and build output
+macapp/.cache/
+macapp/out/

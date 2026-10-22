@@ -154,6 +154,11 @@ IDs are stable. Priority P0 = must pass before any demo; P1 = should pass.
 | T-107 | `.gitignore` covers `.env`, logs, Chroma folder, uploads | S-07 | P0 |
 | T-108 | Session IDs are random and unknown IDs return 404 | S-12 | P1 |
 | T-109 | Trace log contains truncated text and no images | NFR-06 | P1 |
+| T-111 | Launcher platform check rejects Intel and macOS older than 14 with a reason, and warns below 16 GB of RAM (US-41, ADR-011) | NFR-08 | P1 |
+| T-112 | Launcher model plan: reuse a running Ollama on 11434 only when it serves all three configured models; otherwise the private server on 11435; lists exactly the missing models | NFR-08 | P1 |
+| T-113 | Launcher seeds the runtime folder: copies the bundled index on first launch and on a new app version, never overwrites the same version, and points `CHROMA_PATH` and `TRACE_PATH` outside the bundle | NFR-08, S-07 | P1 |
+| T-114 | Packaged server: the built frontend is served at `/`, Zest's API routes are unchanged and take precedence, the setup page reports pull progress, and the bundled `.env` carries no secret | NFR-08, S-01 | P1 |
+| T-115 | Manual: open the DMG as a download and reach a carted dish with no terminal step. **PASS 2026-10-22** on the owner's Mac: Gatekeeper Open Anyway, models downloaded from empty, photo analysis ran. Caveat: the owner's own account, not a fresh user or second Mac | US-41 | P1 |
 
 ### 4.9 Interface and accessibility (one Playwright test, plus unit-level component checks)
 **E2E-001 demo path** (fake model, deterministic): load page and see split screen and greeting; choose a persona preset and start a new session; send the mood message; see the cart badge; tap a swap; open the cart; change a quantity; press Buy Now; see the order message; wait for the 10 second collapse and the progress bar; cart empty and icon disabled. The test also checks: Tab order reaches the cart icon; cart window traps focus and Escape closes it when not in the order state (FR-103); inert markup (T-075).
@@ -162,6 +167,7 @@ Component-level checks (React Testing Library, only if the dependency is approve
 |---|---|---|---|
 | E2E-001 | As above | AC-12, 13, 32; FR-81, 100 to 104 | P0 |
 | T-110 | Responsive switch below 1024 px (manual check, part of rehearsal) | FR-100 | P1 |
+| T-116 | The inspector fills after a named-dish turn (add-on pool only, with a note that no dish pool was ranked), and the empty state says which requests fill it (`tests/e2e/test_inspector.py`) | FR-115, FR-119 | P1 |
 
 ## 5. Acceptance criteria to test map
 | AC | Test(s) | AC | Test(s) |

@@ -1,0 +1,10 @@
+coverage==.*
+greenlet==.*
+iniconfig==.*
+playwright==.*
+pluggy==.*
+pyee==.*
+pytest==.*
+pytest-playwright==.*
+python-slugify==.*
+text-unidecode==.*

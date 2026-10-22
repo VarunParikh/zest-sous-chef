@@ -4,7 +4,34 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 
 ## [Unreleased]
 
+### Fixed
+- Retrieval and scoring inspector (FR-115, FR-119): after a named dish or a YouTube recipe, the panel said "No suggestion yet" although the server held the add-on pool. The frontend fetched the inspector only for turns with a dish suggestion, and add-on offers arrive as cards, so it now fetches after every turn.
+  - The empty state now says which requests fill the inspector, and a note explains when only the add-on pool was ranked.
+  - T-116 is an E2E test; it failed before the fix and passes after. Found in the owner's test of the macOS app; the bug was not specific to packaging.
+
 ### Added
+- macOS app packaging (ADR-011, US-41):
+  - `make dmg` builds `Zest.app` and `Zest-<version>.dmg` for a clean Apple-silicon Mac. Inside are Python 3.12.15 (python-build-standalone `20261003`) and Ollama 0.40.5, both SHA-256 pinned, plus the built frontend, embedder and pre-built index.
+  - `macapp/launcher.py` checks the Mac, reuses an Ollama that already serves all three models or starts a private one on port 11435, and fetches missing models on first launch with a progress page and Try again. It serves the unchanged API and the frontend on one port, and Quit stops everything.
+  - No `src/backend` change and no new runtime package.
+  - Tests T-111 to T-114: 18 unit tests, PASS. The build's headless smoke check PASS.
+  - Manual checks on the owner's Mac, PASS:
+    - private Ollama with the real models and a real mood chat to a carted dish;
+    - a first-launch download into an empty model folder, with progress and the hand-off to Zest;
+    - the error and Try again path;
+    - a clean stop.
+  - Clean-Mac stand-in on the owner's Mac, PASS:
+    - a bundle scan found no link to Homebrew, the repository or `.venv`; the build now strips pip's console scripts, whose first line hard-coded the build folder;
+    - a `sandbox-exec` run with an empty environment and reads blocked to Homebrew, `/usr/local`, the repository, `~/.ollama` and Ollama.app, and port 11434 refused: health all ok, the private Ollama, a real mood chat to a carted dish, no fallbacks.
+  - Fixed after the owner's first test: the "Zest is running" dialog stayed on top of the browser and reappeared after Open Zest. It is replaced by a native Dock app (`macapp/ZestApp.swift`, built for macOS 14 or newer): click the Dock icon to reopen Zest, Quit to stop it. Force Quit of the Dock app now also stops the server. Checked by launching it through `open`: a Foreground app with no dialog; Quit, the server stopping on its own, and Force Quit each leave no Zest process (a first Quit test found a hang: the terminate reply went through the busy main dispatch queue; fixed by using the main run loop).
+  - Fixed after the owner's second test: a stalled model pull left the page on "Downloading 100%" with no way forward.
+    - The launcher now drops a pull that sends no progress for 120 s and retries it automatically, up to 3 times.
+    - The page shows Verifying or Finishing instead of "Downloading 100%", a plain sentence instead of the raw network error, and **Open Zest without photo analysis** when only the photo model is missing.
+    - The action buttons are no longer rebuilt every second, which could swallow a click.
+    - Tests: 7 more (25 in `test_launcher.py`); checked in the browser with a photo model that cannot download.
+  - App and DMG icon from the owner-supplied artwork (`macapp/icon/`). `make_icon.py` places it on the macOS icon grid with transparent corners; the build sets it as the app icon and the DMG volume icon.
+  - T-115 on the owner's Mac, 2026-10-22: PASS. The DMG was opened as a download, followed by Gatekeeper's Open Anyway; the model download started from an empty folder with the owner's own Ollama quit. It ran in the owner's own account, not a fresh user, and the first download stalled once (fixed above). The trace shows all three models working (guard, intent, reason line and photo detection with `qwen3-vl:4b-instruct`, 9.0 s, schema valid).
+  - Docs: ADR-011, US-41, Test Plan T-111 to T-115, build plan §4 rows, C75 (resolved) and C76 (proposed), approval register, README section.
 - README: a "Reviewer's map" under the title linking the files a reviewer should open first. Existing README text unchanged.
 - Explanatory documents: `docs/epics/zest/release/how-it-was-built.md` (what was built and how it was planned with Claude) and `docs/epics/zest/design/retrieval-explained.md` (the vector database, retrieval and how the levers fit in). README gains "Why Zest exists" and "Keeping Zest on topic" sections; existing README text unchanged.
 - README: a "Why these models" section comparing each chosen local model with the alternatives benchmarked (E1 text, E4 guard, E3 vision, E5 embedder), with numbers read from `eval/results/` and the ADR reasons. Existing README text unchanged.

@@ -5,7 +5,7 @@ The repository holds hundreds of files because every decision, test and result i
 
 | If you want to… | Open |
 |---|---|
-| **Run it** | [Setup from a clean clone](#setup-from-a-clean-clone), then [Using Zest](#using-zest) |
+| **Run it** | [Setup from a clean clone](#setup-from-a-clean-clone), then [Using Zest](#using-zest); or the [macOS app](#option-the-macos-app-no-setup) |
 | **See it in 8 minutes** | [Demo Script](docs/epics/zest/release/demo-script.md) |
 | **Know what it is and why** | [Why Zest exists](#why-zest-exists), the [product vision](docs/core/product-vision.md) (the owner's brief) and the [PRD](docs/epics/zest/requirements/product-spec.md) |
 | **See the evidence** | [Evidence report](docs/epics/zest/verify/report/report.md) (every number generated from `eval/results/`) |
@@ -119,6 +119,17 @@ The generated catalogue (`mock-data/generated/`) is committed, so `make data` is
 **Optional: Gemini photo analysis.** Photos use the local model by default, and labelled sample photos are the demo path and the fallback.
 - To try Gemini instead, set `VISION_PROVIDER=gemini`, `VISION_MODEL=gemini-3.5-flash-lite` and `GEMINI_API_KEY=…` in your local `.env` only. Never put a key anywhere else.
 - The first upload then shows a consent notice, because photos go to Google's free tier.
+
+## Option: the macOS app (no setup)
+For a reviewer without the developer tools, `make dmg` builds **`Zest-<version>.dmg`** (about 400 MB) in `macapp/out/` ([ADR-011](docs/epics/zest/design/adr/ADR-011-macos-app-packaging.md)).
+- **Inside the app:** Python 3.12 with the pinned packages, Ollama 0.40.5, the built frontend, the embedder and a pre-built index. The recipient needs no Homebrew, Python, Node, Ollama or terminal.
+- **Needs:** an Apple-silicon Mac on macOS 14 or newer, about 10 GB free, and internet on the first launch.
+- **First launch:** a "Getting Zest ready" page downloads the three models (about 7 GB) with a progress bar, then opens Zest.
+  - If an Ollama with all three models already runs on port 11434, the app uses it and downloads nothing.
+  - Otherwise it runs its own private Ollama on port 11435.
+- **Unsigned:** macOS blocks the app the first time. The recipient clicks **System Settings → Privacy & Security → Open Anyway** once. The DMG's "Read me first" note walks through it.
+- **Runtime files** (models, index, logs) live in `~/Library/Application Support/Zest`.
+- **Building:** `make dmg` needs `make setup` first, a clean git tree and internet. It downloads two archives pinned by SHA-256 and ends with a headless smoke check.
 
 ## Using Zest
 - **Levers apply from the next chat session** (owner decision, C4). After changing one, a banner says so; press **Start new chat** to apply it.

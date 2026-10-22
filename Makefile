@@ -4,7 +4,7 @@ VENV := .venv
 PY := $(VENV)/bin/python
 RESULTS := docs/epics/zest/verify/test-results
 
-.PHONY: setup dev app test test-embedder test-e2e scan health data index eval-decisions eval report
+.PHONY: setup dev app test test-embedder test-e2e scan health data index eval-decisions eval report dmg
 
 setup: ## create the venv and install pinned dependencies; create .env from the example if missing
 	$(PYTHON) -m venv $(VENV)
@@ -70,3 +70,6 @@ eval: ## rerun every headline evaluation harness in sequence (long; stop make ap
 
 report: ## build the evidence report (docs/epics/zest/verify/report/) from eval/results only; fails if a required evaluation has no result
 	$(PY) scripts/eval_report.py
+
+dmg: ## build macapp/out/Zest.app and Zest-<version>.dmg for a clean Apple-silicon Mac (ADR-011; after make setup)
+	./macapp/build_dmg.sh

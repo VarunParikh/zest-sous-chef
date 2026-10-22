@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CFBundleName</key><string>Zest</string>
+  <key>CFBundleDisplayName</key><string>Zest AI Sous-Chef</string>
+  <key>CFBundleIdentifier</key><string>io.github.varunparikh.zest-sous-chef</string>
+  <key>CFBundleExecutable</key><string>Zest</string>
+  <key>CFBundleIconFile</key><string>AppIcon</string>
+  <key>CFBundlePackageType</key><string>APPL</string>
+  <key>CFBundleShortVersionString</key><string>__VERSION__</string>
+  <key>CFBundleVersion</key><string>__BUILD__</string>
+  <key>CFBundleInfoDictionaryVersion</key><string>6.0</string>
+  <key>LSMinimumSystemVersion</key><string>14.0</string>
+  <key>LSArchitecturePriority</key><array><string>arm64</string></array>
+  <key>NSPrincipalClass</key><string>NSApplication</string>
+  <key>NSHumanReadableCopyright</key><string>Prototype with mock data only. See LICENSE.</string>
+</dict>
+</plist>

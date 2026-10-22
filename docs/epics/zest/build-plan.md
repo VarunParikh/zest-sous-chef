@@ -43,6 +43,8 @@ Versions are pinned at install. Package names marked * must be confirmed on the 
 | Frontend | `react`, `react-dom`, `vite`, `tailwindcss` | UI | ADR-010 |
 | Frontend | `typescript` | Typed cards and API types | Owner approved 2026-10-17 |
 | Frontend | `@types/react`, `@types/react-dom` | Type definitions for the TypeScript check (dev only) | 19.3.0; owner approved 2026-10-18 (C42) |
+| Packaging (build time only, ADR-011) | python-build-standalone CPython 3.12.15 (`20261003`, `aarch64-apple-darwin-install_only`) | Portable Python inside `Zest.app` | Pinned by SHA-256 in `macapp/build_dmg.sh`; owner approved 2026-10-22 (C75) |
+| Packaging (build time only, ADR-011) | Ollama macOS release 0.40.5 (`ollama-darwin.tgz`, MIT) | Model server inside `Zest.app` | Pinned by SHA-256 in `macapp/build_dmg.sh`; owner approved 2026-10-22 (C75) |
 Anything else needs a separate ask.
 
 ## 5. Build order

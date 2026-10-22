@@ -103,6 +103,12 @@ Format: **US-xx** As a *persona*, I want *capability*, so that *benefit*. Covers
 
 **US-39** As Alex (P7), I want a retrieval and scoring inspector, so that I can see candidates, similarity, eligibility and final score. *M · M* Covers FR-115; AC-41.
 
+**US-41** As a reviewer with a clean MacBook, I want to open one downloaded app and have Zest set itself up, so that I can try it without installing Python, Node, Homebrew or Ollama. *S · M* Covers NFR-08; ADR-011.
+- Given a clean Apple-silicon Mac on macOS 14 or newer, when I open `Zest.app` from the DMG (after the one-time Gatekeeper "Open Anyway"), then a setup page shows each missing model downloading and opens Zest when all are present, with no terminal step.
+- Given an Ollama server already running on port 11434 with all three models, when I open the app, then Zest uses it and downloads nothing.
+- Given an Intel Mac or macOS older than 14, when I open the app, then a dialog says why it cannot run and nothing starts.
+- Given the app is running, when I choose Quit Zest, then the API server and any Ollama server the app started both stop.
+
 **US-40** As the owner, I want retrieval to degrade to lexical matching if the vector store fails, so that the demo never breaks. *M · S* Covers FR-117; AC-40.
 
 ## H. Catalogue and cart
