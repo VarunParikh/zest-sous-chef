@@ -200,6 +200,7 @@ UI copy produced by the frontend or the setup page, not by a model.
 | Historical category sliders | Preference | How often you have bought from this category before (mock history). |
 | Market trend sliders | Preference | How strongly this week's store trends count (mock trends). |
 | Max Companion Add-on Price Cap | Rule | Add-on suggestions never cost more than this. |
+| Hide out-of-stock items (stock filter) | Rule | When on, out-of-stock items are removed before ranking and never carted. |
 
 Weights note under the weight sliders: "Weights are relative: doubling all four changes nothing."
 

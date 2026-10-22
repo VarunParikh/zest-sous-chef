@@ -36,3 +36,40 @@ def test_t124_starter_chips_send_on_one_tap(page: Page, app_url: str):
     page.get_by_role("button", name="Text recipe").click()
     expect(page.get_by_text("Kadai paneer: 250 g paneer, 2 capsicum and 1 onion")).to_be_visible()  # sent, not pre-filled
     expect(page.get_by_label("Message Zest")).to_have_value("")
+
+
+def _expand_all(page: Page):
+    panel = page.get_by_label("Recommendation levers")
+    closed = panel.locator("h3 > button[aria-expanded='false']")
+    while closed.count():
+        closed.first.click()
+    return panel
+
+
+def test_t121_every_lever_has_a_tooltip_and_a_tag(page: Page, app_url: str):
+    _open(page, app_url)
+    panel = _expand_all(page)
+    controls = panel.evaluate("""el => [...el.querySelectorAll("input[type=range], select, input[role=switch], fieldset")]
+        .filter(c => document.querySelector(`label[for="${c.id}"]`)?.textContent !== 'Persona preset')
+        .map(c => {
+          const tip = document.getElementById(c.getAttribute('aria-describedby') || '');
+          const box = c.closest('div, label, fieldset');
+          const tag = (c.tagName === 'FIELDSET' ? c : box)?.querySelector('[data-lever-tag]')?.getAttribute('data-lever-tag')
+                      || c.parentElement?.parentElement?.querySelector('[data-lever-tag]')?.getAttribute('data-lever-tag');
+          return {name: c.id, tip: tip ? tip.textContent : null, tag: tag || null};
+        })""")
+    assert len(controls) >= 17  # 4 weights, 3 selects, diets, 2 style, 5 history, 2 trends, price cap, stock switch
+    missing = [c for c in controls if not c["tip"] or not c["tag"]]
+    assert not missing, missing
+    rules = [c for c in controls if c["tag"] == "Rule"]
+    assert len(rules) == 5 and all(("removed" in c["tip"]) or ("never" in c["tip"]) for c in rules)
+
+
+def test_t121_tooltip_opens_on_focus_and_closes_with_escape(page: Page, app_url: str):
+    _open(page, app_url)
+    tip_button = page.get_by_role("button", name="About Dietary Preference")
+    tip_button.focus()
+    tip = page.get_by_role("tooltip").filter(has_text="removed before ranking").first
+    expect(tip).to_be_visible()
+    tip_button.press("Escape")
+    expect(tip).to_be_hidden()
