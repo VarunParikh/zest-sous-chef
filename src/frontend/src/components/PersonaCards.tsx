@@ -7,6 +7,9 @@ import { PersonaAvatar } from "./Illustrations";
 
 type Preset = LeverConfig["presets"][number];
 const SHOWN = 4;
+// The first four show different kinds of rule: Jain diet and faith, Keto + High-Protein, Vegan + Gluten-Free, Low-GI
+// (owner, 2026-10-23). The rest follow in personas.json order behind "Show all".
+const FIRST = ["Meera Shah", "Karan Malhotra", "Priya Nair", "Lakshmi Pillai"];
 
 const display = (name: string) => name.replace(/\s*\(.*\)\s*$/, "");
 
@@ -15,7 +18,9 @@ const display = (name: string) => name.replace(/\s*\(.*\)\s*$/, "");
 export function PersonaCards({ config, active, isDefault, levers, onChange, onCustom }: {
   config: LeverConfig; active: string; isDefault: boolean; levers: LeverSet; onChange: (l: LeverSet) => void; onCustom: () => void;
 }) {
-  const ordered: Preset[] = [...config.presets.filter((p) => !p.tag), ...config.presets.filter((p) => p.tag)];
+  const rank = (p: Preset) => (FIRST.includes(p.name) ? FIRST.indexOf(p.name) : FIRST.length);
+  const ordered: Preset[] = [...config.presets.filter((p) => !p.tag), ...config.presets.filter((p) => p.tag)]
+    .map((p, i) => ({ p, i })).sort((a, b) => rank(a.p) - rank(b.p) || a.i - b.i).map(({ p }) => p);
   const [all, setAll] = useState(false);
   // Four cards, plus the persona in use if it is further down the list (the default reviewer is), then "Show all"
   const inUse = ordered.find((p) => p.name === active);

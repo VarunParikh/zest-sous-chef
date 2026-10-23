@@ -100,7 +100,7 @@ def test_t120_persona_card_selects_its_preset(page: Page, app_url: str):
     page.get_by_role("button", name="Start new chat").click()
     expect(page.get_by_text("Persona: Meera Shah")).to_be_visible()
     # The cards are a radio group: an arrow key moves to and selects the next persona
-    meera.press("ArrowRight")
+    meera.press("ArrowRight")  # moves to Karan, the next card
     expect(meera).to_have_attribute("aria-checked", "false")
     expect(page.get_by_role("radio", checked=True)).to_have_count(1)
 
@@ -210,10 +210,10 @@ def test_header_persona_follows_the_levers_at_once(page: Page, app_url: str):
     expect(label).to_have_text("Persona: Default settings")
     page.get_by_role("slider", name="Culinary Pairing").fill("0.5")
     expect(label).to_have_text("Persona: Custom · applies from your next chat")
-    page.get_by_role("radio", name=re.compile("Rohan Deshmukh")).click()
-    expect(label).to_have_text("Persona: Rohan Deshmukh · applies from your next chat")
+    page.get_by_role("radio", name=re.compile("Karan Malhotra")).click()
+    expect(label).to_have_text("Persona: Karan Malhotra · applies from your next chat")
     page.get_by_role("button", name="Start new chat").click()
-    expect(label).to_have_text("Persona: Rohan Deshmukh")  # applied: the note goes
+    expect(label).to_have_text("Persona: Karan Malhotra")  # applied: the note goes
 
 
 def test_t131_choosing_a_persona_shows_what_it_sets(page: Page, app_url: str):
@@ -230,7 +230,13 @@ def test_t131_choosing_a_persona_shows_what_it_sets(page: Page, app_url: str):
     expect(history).to_have_attribute("aria-expanded", "true")  # opened because Meera changes it
     expect(page.locator("[data-set-by='weights.purchase_history']")).to_contain_text("Set by Meera Shah")
     expect(page.locator("[data-set-by='history.kebabs']")).to_be_visible()
-    page.get_by_role("radio", name=re.compile("Rohan Deshmukh")).click()
-    expect(sets).to_contain_text("Rohan Deshmukh sets:")
-    expect(sets).to_contain_text("Culinary Pairing 0.40")
-    expect(page.locator("[data-set-by='history.kebabs']")).to_have_count(0)  # Rohan leaves kebabs at the default
+    diets = page.get_by_role("button", name="Specialized Diets & Lifestyle")
+    expect(diets).to_have_attribute("aria-expanded", "false")  # Meera uses no specialised diet
+    page.get_by_role("radio", name=re.compile("Karan Malhotra")).click()  # one of the first four cards
+    expect(sets).to_contain_text("Karan Malhotra sets:")
+    expect(sets).to_contain_text("Persona & Gourmet Boost 0.30")
+    expect(sets).to_contain_text("Keto Diet + High-Protein Fitness")
+    expect(diets).to_have_attribute("aria-expanded", "true")  # his specialised diets open and show
+    expect(page.get_by_role("checkbox", name="Keto Diet")).to_be_checked()
+    expect(page.get_by_role("checkbox", name="Standard / Balanced")).not_to_be_checked()
+    expect(page.locator("[data-set-by='specialized_diets']")).to_contain_text("Set by Karan Malhotra")
