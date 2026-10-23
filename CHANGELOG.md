@@ -4,6 +4,9 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-10-23
+Personas update: each persona shown sets its own weights, and choosing one shows what it changes. Rankings shift; E6, E7 and E9 were not rerun.
+
 ### Added
 - **Persona changes are visible (FR-128):** choosing a persona lists what it sets under the cards, opens the sections it changes, and marks each changed control "Set by {persona}". T-130, T-131.
 
