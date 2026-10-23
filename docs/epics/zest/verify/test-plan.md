@@ -185,6 +185,8 @@ E2E tests start with the tour marked as seen (`tests/e2e/conftest.py`), except T
 | T-126 | E2E: the tour shows on a first visit, Skip hides it after reload, the top-right help icon restarts it, step 1 waits for a starter, and Next walks all six steps | FR-126, AC-56, AC-60, AC-61 | P1 |
 | T-127 | Unit: the Mac app's edition constants match `Info.plist`; 2.0 never uses 1.0's data folder or private Ollama port | ADR-012 | P1 |
 | T-129 | Acceptance: Undo, then a swap: MSG-SWAP-GONE with Add and No thanks (200, not 409); Add carts the dish with Undo and offers its add-on; No thanks changes nothing; a swap on an unknown suggestion is still refused | FR-127, AC-62 | P1 |
+| T-130 | Unit: each persona shown in the app sets its own four weights (none equals the defaults); P9 keeps all defaults; every persona's diet, faith, specialised diets and gender are unchanged from v2.0.0 | C84 | P1 |
+| T-131 | E2E: choosing a persona lists what it sets, opens the changed sections and marks the changed controls; choosing another updates them | FR-128, AC-63 | P1 |
 | T-128 | Manual: Zest 1.0 and Zest 2.0 run at the same time; quitting one leaves the other running; no second model download. **PASS 2026-10-23** on the owner's Mac with the `2.0.0-dev` build: 1.0 on 8000 and 2.0 on 8100 at once, two Dock apps, shared Ollama on 11434; quitting 2.0 left 1.0 answering; 2.0's private Ollama on 11436 read 1.0's model folder with no download | ADR-012 | P1 |
 
 ## 5. Acceptance criteria to test map

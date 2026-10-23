@@ -69,3 +69,25 @@ export function personaLabel(levers: LeverSet, presets: { name: string; levers: 
   if (match) return match.name;
   return sameLevers(levers, defaults) ? "Default settings" : "Custom";
 }
+
+/** Every lever that differs from the defaults, in panel order, with its section (FR-128: "{persona} sets: …"). */
+export type LeverChange = { path: string; section: string; text: string };
+export function changedLevers(l: LeverSet, d: LeverSet): LeverChange[] {
+  const out: LeverChange[] = [];
+  const num = (v: number) => v.toFixed(2);
+  const add = (path: string, section: string, text: string) => out.push({ path, section, text });
+  for (const w of WEIGHT_LABELS) if (l.weights[w.key] !== d.weights[w.key]) add(`weights.${w.key}`, "weights", `${w.label} ${num(l.weights[w.key])}`);
+  if (l.gender !== d.gender) add("gender", "persona", l.gender);
+  if (l.diet !== d.diet) add("diet", "persona", `Diet: ${l.diet}`);
+  if (l.faith !== d.faith) add("faith", "persona", `Faith: ${l.faith}`);
+  if ([...l.specialized_diets].sort().join() !== [...d.specialized_diets].sort().join())
+    add("specialized_diets", "diets", l.specialized_diets.join(" + "));
+  if (l.gourmet_affinity !== d.gourmet_affinity) add("gourmet_affinity", "style", `Gourmet ${num(l.gourmet_affinity)}`);
+  if (l.artisanal_organic !== d.artisanal_organic) add("artisanal_organic", "style", `Organic ${num(l.artisanal_organic)}`);
+  for (const h of HISTORY_LABELS) if (l.history[h.key] !== d.history[h.key])
+    add(`history.${h.key}`, "history", `${h.label.replace(/ Affinity$/, "")} ${num(l.history[h.key])}`);
+  for (const t of TREND_LABELS) if (l.trends[t.key] !== d.trends[t.key]) add(`trends.${t.key}`, "trends", `${t.label} ${num(l.trends[t.key])}`);
+  if (l.business.price_cap_inr !== d.business.price_cap_inr) add("business.price_cap_inr", "business", `Add-on price cap ₹${l.business.price_cap_inr}`);
+  if (l.business.stock_filter !== d.business.stock_filter) add("business.stock_filter", "business", `Stock filter ${l.business.stock_filter ? "on" : "off"}`);
+  return out;
+}

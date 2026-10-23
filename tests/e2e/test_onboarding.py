@@ -214,3 +214,23 @@ def test_header_persona_follows_the_levers_at_once(page: Page, app_url: str):
     expect(label).to_have_text("Persona: Rohan Deshmukh · applies from your next chat")
     page.get_by_role("button", name="Start new chat").click()
     expect(label).to_have_text("Persona: Rohan Deshmukh")  # applied: the note goes
+
+
+def test_t131_choosing_a_persona_shows_what_it_sets(page: Page, app_url: str):
+    """FR-128, AC-63: the persona's changes are listed, their sections open and each changed control is marked."""
+    _open(page, app_url)
+    expect(page.get_by_test_id("persona-sets")).to_have_count(0)  # untouched defaults: nothing to list
+    history = page.get_by_role("button", name="Historical Category Affinity")
+    expect(history).to_have_attribute("aria-expanded", "false")
+    page.get_by_role("radio", name=re.compile("Meera Shah")).click()
+    sets = page.get_by_test_id("persona-sets")
+    expect(sets).to_contain_text("Meera Shah sets:")
+    expect(sets).to_contain_text("User Purchase History 0.45")
+    expect(sets).to_contain_text("Diet: Jain (No Root Veggies / Pure Veg)")
+    expect(history).to_have_attribute("aria-expanded", "true")  # opened because Meera changes it
+    expect(page.locator("[data-set-by='weights.purchase_history']")).to_contain_text("Set by Meera Shah")
+    expect(page.locator("[data-set-by='history.kebabs']")).to_be_visible()
+    page.get_by_role("radio", name=re.compile("Rohan Deshmukh")).click()
+    expect(sets).to_contain_text("Rohan Deshmukh sets:")
+    expect(sets).to_contain_text("Culinary Pairing 0.40")
+    expect(page.locator("[data-set-by='history.kebabs']")).to_have_count(0)  # Rohan leaves kebabs at the default

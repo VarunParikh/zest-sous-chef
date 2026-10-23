@@ -4,7 +4,11 @@ All notable changes to this project are recorded here. Format: [Keep a Changelog
 
 ## [Unreleased]
 
+### Added
+- **Persona changes are visible (FR-128):** choosing a persona lists what it sets under the cards, opens the sections it changes, and marks each changed control "Set by {persona}". T-130, T-131.
+
 ### Changed
+- **Personas set their own weights (C84, Personas v0.2):** the eight personas shown in the app now set their own four weights and a few more levers (owner-approved values). Diet, faith, specialised diets and gender are unchanged, so no dish becomes allowed or blocked. The recorded E6, E7 and E9 results describe the earlier personas until rerun.
 - Owner decisions recorded after the 2.0.0 release: C79 resolved (approved), ADR-011 accepted in full, and the Probable Gender tooltip wording approved. C76 stays Proposed. Documentation only; no code changed.
 
 ## [2.0.0] - 2026-10-23
